@@ -1,4 +1,4 @@
-name: ACM UCR Static Website
+name: ACM UCR Website
 on:
   pull_request:
     branches: [main, dev]
