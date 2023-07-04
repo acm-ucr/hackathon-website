@@ -2,7 +2,7 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import Member from "./Member";
-import Tag from "./Tag";
+// import Tag from "./Tag";
 import { RiVipCrown2Fill } from "react-icons/ri";
 
 const Teams = ({ teamName, other, tag, members }) => {
