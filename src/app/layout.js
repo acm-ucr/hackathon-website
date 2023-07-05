@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={poppins.variable}>
-        <div className="flex justify-center items-center w-full">
+        <div className="flex justify-center items-center w-full bg-hackathon-page">
           {children}
         </div>
       </body>
