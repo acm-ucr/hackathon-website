@@ -18,7 +18,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={poppins.variable}>{children}</body>
+      <body className={poppins.variable}>
+        <div className="flex justify-center items-center w-full">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
