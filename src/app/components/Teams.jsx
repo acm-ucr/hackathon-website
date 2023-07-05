@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import Team from "./Team";
