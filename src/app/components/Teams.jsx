@@ -35,25 +35,29 @@ const couple = [
 const teams = [
   {
     teamName: "The couple",
-    other: "Other information",
+    github: "https://github.com",
+    devpost: "https://rose-hack-2021.devpost.com",
     tag: "winner",
     members: couple,
   },
   {
     teamName: "The deer",
-    other: "Other information",
+    github: "https://github.com",
+    devpost: "https://rose-hack-2021.devpost.com",
     tag: "winner",
     members: deer,
   },
   {
     teamName: "The couple",
-    other: "Other information",
+    github: "https://github.com",
+    devpost: "https://rose-hack-2021.devpost.com",
     tag: "qualify",
     members: couple,
   },
   {
     teamName: "The deer",
-    other: "Other information",
+    github: "https://github.com",
+    devpost: "https://rose-hack-2021.devpost.com",
     tag: "disqualify",
     members: deer,
   },
@@ -61,25 +65,24 @@ const teams = [
 
 const Teams = () => {
   return (
-    <div className=" flex justify-center">
-      <div className="w-[95%]">
-        <div className="text-sm rounded-sm flex font-bold text-white bg-hackathon-blue-200 py-1.5">
-          <p className="pl-[5%] w-[35%] m-0">Name</p>
-          <p className="m-0">Other</p>
-        </div>
-        <Col>
-          {teams.map((team, index) => (
-            <Row key={index}>
-              <Team
-                teamName={team.teamName}
-                other={team.other}
-                tag={team.tag}
-                members={team.members}
-              />
-            </Row>
-          ))}
-        </Col>
+    <div>
+      <div className="text-sm rounded-sm flex font-bold text-white bg-hackathon-blue-200 py-1.5">
+        <p className="pl-[5%] w-[35%] m-0">Name</p>
+        <p className="m-0">Links</p>
       </div>
+      <Col className="bg-white">
+        {teams.map((team, index) => (
+          <Row key={index}>
+            <Team
+              teamName={team.teamName}
+              github={team.github}
+              devpost={team.devpost}
+              tag={team.tag}
+              members={team.members}
+            />
+          </Row>
+        ))}
+      </Col>
     </div>
   );
 };

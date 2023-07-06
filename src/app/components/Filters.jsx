@@ -12,7 +12,7 @@ const filters = [
     tag: "Disqualify",
   },
   {
-    tag: "Regect",
+    tag: "Reject",
   },
   {
     tag: "Accept",
