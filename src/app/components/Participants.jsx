@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import SortIcon from "./SortIcon";
+import Filters from "@/app/components/Filters";
 
 const participants = [
   {
@@ -10,7 +11,7 @@ const participants = [
     email: "a",
     team: "b",
     major: "Computer Science",
-    status: "accepted",
+    status: "pending",
   },
   {
     name: "Divyank Shah",
@@ -24,7 +25,7 @@ const participants = [
     email: "c",
     team: "d",
     major: "Computer Science",
-    status: "accepted",
+    status: "rejected",
   },
   {
     name: "Sachin Chopra",
@@ -56,8 +57,20 @@ const Participants = () => {
     status: "off",
   });
 
+  const [filters, setFilters] = useState({
+    rejected: false,
+    accepted: false,
+    pending: false,
+  });
+
   return (
     <div className="font-poppins">
+      <Filters
+        filters={filters}
+        setFilters={setFilters}
+        setfilteredParticipants={setfilteredParticipants}
+        participants={participants}
+      />
       <div className="flex bg-hackathon-blue-200 py-2 rounded-t !z-[1000]">
         {headers.map((header, index) => (
           <div
