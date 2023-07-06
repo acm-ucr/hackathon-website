@@ -62,8 +62,8 @@ const Navigation = () => {
         <div
           className={
             expand
-              ? "left-0 h-screen w-1/2 fixed z-10 lg:block lg:w-[12%]"
-              : `hidden lg:block w-[12%] z-10`
+              ? "left-0 h-screen w-1/2 fixed z-10 lg:flex lg:w-[12%]"
+              : `hidden lg:flex w-[12%] z-10`
           }
         >
           <div className="bg-hackathon-blue-200 h-screen flex flex-col justify-start items-center w-full">
