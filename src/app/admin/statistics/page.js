@@ -1,7 +1,12 @@
 import React from "react";
+import Title from "@/app/components/Title";
 
 const StatisticsPage = () => {
-  return <div>Statistics</div>;
+  return (
+    <div>
+      <Title title="Statistics" />
+    </div>
+  );
 };
 
 export default StatisticsPage;
