@@ -2,6 +2,7 @@
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Poppins } from "next/font/google";
+import Navigation from "./components/Navigation";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -18,8 +19,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={poppins.variable}>
-        <div className="flex justify-center items-center w-full bg-hackathon-page">
+      <body className={`${poppins.variable} flex flex-col lg:flex-row `}>
+        <Navigation />
+        <div className="flex justify-center items-start w-full lg:w-[88%] bg-hackathon-page justify-self-end z-0">
           {children}
         </div>
       </body>
