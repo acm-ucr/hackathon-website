@@ -1,51 +1,84 @@
-import React from "react";
-import { Accordion } from "react-bootstrap";
+"use client";
+
+import React, { useState } from "react";
+import Accordion from "react-bootstrap/Accordion";
+import SortIcon from "./SortIcon";
 
 const participants = [
   {
     name: "Menthy Wu",
-    email: "mwu171@ucr.edu",
-    team: "poggers",
+    email: "a",
+    team: "b",
     major: "Computer Science",
     status: "accepted",
   },
   {
-    name: "Menthy Wu",
-    email: "mwu171@ucr.edu",
-    team: "poggers",
+    name: "Divyank Shah",
+    email: "b",
+    team: "c",
     major: "Computer Science",
     status: "accepted",
   },
   {
-    name: "Menthy Wu",
-    email: "mwu171@ucr.edu",
-    team: "poggers",
+    name: "Shing Hung",
+    email: "c",
+    team: "d",
+    major: "Computer Science",
+    status: "accepted",
+  },
+  {
+    name: "Sachin Chopra",
+    email: "d",
+    team: "a",
     major: "Computer Science",
     status: "accepted",
   },
 ];
 
 const headers = [
-  { name: "", size: "w-1/12" },
-  { name: "Name", size: "w-1/6" },
-  { name: "Email", size: "w-1/6" },
-  { name: "Team", size: "w-1/6" },
-  { name: "Major", size: "w-1/6" },
-  { name: "Status", size: "w-1/6" },
+  { name: "", size: "w-1/12", icon: false },
+  { name: "Name", size: "w-1/6", icon: true },
+  { name: "Email", size: "w-1/6", icon: true },
+  { name: "Team", size: "w-1/6", icon: true },
+  { name: "Major", size: "w-1/6", icon: true },
+  { name: "Status", size: "w-1/6", icon: true },
 ];
 
 const Participants = () => {
+  const [filteredParticipants, setfilteredParticipants] =
+    useState(participants);
+
+  const [sorts, setSorts] = useState({
+    name: "down",
+    email: "off",
+    team: "off",
+    major: "off",
+    status: "off",
+  });
+
   return (
     <div className="font-poppins">
       <div className="flex bg-hackathon-blue-200 py-2 rounded-t !z-[1000]">
         {headers.map((header, index) => (
-          <div key={index} className={`${header.size} font-bold text-white`}>
+          <div
+            key={index}
+            className={`${header.size} font-bold text-white flex items-center`}
+          >
             {header.name}
+            {header.icon && (
+              <SortIcon
+                name={header.name.toLowerCase()}
+                sorts={sorts}
+                setSorts={setSorts}
+                setfilteredParticipants={setfilteredParticipants}
+                participants={participants}
+              />
+            )}
           </div>
         ))}
       </div>
       <Accordion>
-        {participants.map((participant, index) => (
+        {filteredParticipants.map((participant, index) => (
           <Accordion.Item
             eventKey={index}
             key={index}
