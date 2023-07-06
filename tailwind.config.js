@@ -17,6 +17,7 @@ module.exports = {
           "green-100": "#E7F7E9",
           "green-200": "#80ED99",
           "green-300": "#57CC99",
+          yellow: "#FFCF55",
           gray: "#E7E7E7",
           darkgray: "#525252",
           page: "#F5F5F5",
