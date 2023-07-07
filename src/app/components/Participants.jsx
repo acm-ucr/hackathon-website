@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import SortIcon from "./SortIcon";
 import Filters from "@/app/components/Filters";
+import Checkbox from "./Checkbox";
 
 const participants = [
   {
@@ -58,9 +59,9 @@ const Participants = () => {
   });
 
   const [filters, setFilters] = useState({
-    rejected: false,
-    accepted: false,
-    pending: false,
+    rejected: true,
+    accepted: true,
+    pending: true,
   });
 
   return (
@@ -68,8 +69,8 @@ const Participants = () => {
       <Filters
         filters={filters}
         setFilters={setFilters}
-        setfilteredParticipants={setfilteredParticipants}
-        participants={participants}
+        setfilteredObjects={setfilteredParticipants}
+        objects={participants}
       />
       <div className="flex bg-hackathon-blue-200 py-2 rounded-t !z-[1000]">
         {headers.map((header, index) => (
@@ -83,41 +84,55 @@ const Participants = () => {
                 name={header.name.toLowerCase()}
                 sorts={sorts}
                 setSorts={setSorts}
-                setfilteredParticipants={setfilteredParticipants}
-                participants={participants}
+                setfilteredObjects={setfilteredParticipants}
+                objects={participants}
+                reset={{
+                  name: "off",
+                  email: "off",
+                  team: "off",
+                  major: "off",
+                  status: "off",
+                }}
               />
             )}
           </div>
         ))}
       </div>
       <Accordion>
-        {filteredParticipants.map((participant, index) => (
-          <Accordion.Item
-            eventKey={index}
-            key={index}
-            className="!rounded-none"
-          >
-            <Accordion.Header className="font-normal">
-              <div className="w-1/12">
-                <input type="checkbox" />
-              </div>
-              <div className="w-1/6">{participant.name}</div>
-              <div className="w-1/6">{participant.email}</div>
-              <div className="w-1/6">{participant.team}</div>
-              <div className="w-1/6">{participant.major}</div>
-              <div className="w-1/6">{participant.status}</div>
-            </Accordion.Header>
-            <Accordion.Body>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </Accordion.Body>
-          </Accordion.Item>
-        ))}
+        {filteredParticipants.map((participant, index) => {
+          const [selected, setSelected] = useState(false);
+          return (
+            <Accordion.Item
+              eventKey={index}
+              key={index}
+              className="!rounded-none"
+            >
+              <Accordion.Header className="font-normal">
+                <Checkbox
+                  selected={selected}
+                  setSelected={setSelected}
+                  onClick={() => {
+                    if (!selected) console.log("check");
+                  }}
+                />
+                <div className="w-1/6">{participant.name}</div>
+                <div className="w-1/6">{participant.email}</div>
+                <div className="w-1/6">{participant.team}</div>
+                <div className="w-1/6">{participant.major}</div>
+                <div className="w-1/6">{participant.status}</div>
+              </Accordion.Header>
+              <Accordion.Body>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </Accordion.Body>
+            </Accordion.Item>
+          );
+        })}
       </Accordion>
     </div>
   );
