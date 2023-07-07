@@ -98,17 +98,17 @@ const headers = [
 const Teams = () => {
   const [filteredTeams, setFilteredTeams] = useState(teams);
 
+  const [sorts, setSorts] = useState({
+    name: "down",
+    team: "off",
+    status: "off",
+  });
+
   const [filters, setFilters] = useState({
     disqualified: true,
     qualified: true,
     pending: true,
     winner: true,
-  });
-
-  const [sorts, setSorts] = useState({
-    name: "down",
-    team: "off",
-    status: "off",
   });
 
   return (
@@ -135,7 +135,7 @@ const Teams = () => {
                 objects={filteredTeams}
                 reset={{
                   name: "off",
-                  email: "off",
+                  team: "off",
                   status: "off",
                 }}
               />

@@ -101,7 +101,6 @@ const Participants = () => {
       </div>
       <Accordion>
         {filteredParticipants.map((participant, index) => {
-          const [selected, setSelected] = useState(false);
           return (
             <Accordion.Item
               eventKey={index}
@@ -109,13 +108,7 @@ const Participants = () => {
               className="!rounded-none"
             >
               <Accordion.Header className="font-normal">
-                <Checkbox
-                  selected={selected}
-                  setSelected={setSelected}
-                  onClick={() => {
-                    if (!selected) console.log("check");
-                  }}
-                />
+                <Checkbox />
                 <div className="w-1/6">{participant.name}</div>
                 <div className="w-1/6">{participant.email}</div>
                 <div className="w-1/6">{participant.team}</div>
