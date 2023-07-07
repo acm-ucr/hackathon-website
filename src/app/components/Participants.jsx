@@ -4,8 +4,7 @@ import React, { useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import SortIcon from "./SortIcon";
 import Filters from "@/app/components/Filters";
-import Checkbox from "./Checkbox";
-import Tag from "./Tag";
+import Participant from "./Participant";
 
 const participants = [
   {
@@ -100,35 +99,9 @@ const Participants = () => {
         ))}
       </div>
       <Accordion>
-        {filteredParticipants.map((participant, index) => {
-          return (
-            <Accordion.Item
-              eventKey={index}
-              key={index}
-              className="!rounded-none"
-            >
-              <Accordion.Header className="font-normal">
-                <Checkbox />
-                <div className="w-1/6">{participant.name}</div>
-                <div className="w-1/6">{participant.email}</div>
-                <div className="w-1/6">{participant.team}</div>
-                <div className="w-1/6">{participant.major}</div>
-                <div className="w-1/6">
-                  <Tag text={participant.status} />
-                </div>
-              </Accordion.Header>
-              <Accordion.Body>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </Accordion.Body>
-            </Accordion.Item>
-          );
-        })}
+        {filteredParticipants.map((participant, index) => (
+          <Participant key={index} participant={participant} index={index} />
+        ))}
       </Accordion>
     </div>
   );
