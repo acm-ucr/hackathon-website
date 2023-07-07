@@ -30,7 +30,7 @@ const Filters = ({ filters, setFilters, setfilteredObjects, objects }) => {
               filters[filter]
                 ? "text-white bg-hackathon-blue-100"
                 : "text-hackathon-blue-100 bg-white"
-            } flex items-center w-fit m-0`}
+            } cursor-pointer flex items-center w-fit m-0`}
           >
             <p className="my-0 mx-1 px-2 py-[2px]">{filter}</p>
             <TiPlus
