@@ -70,7 +70,9 @@ const Navigation = () => {
             <div className="hidden lg:flex items-center my-3">
 
               <Image src={LOGO} alt="Logo" className=" scale-90" />
-              <p className="text-white font-bold text-lg pr-2 m-0">ROSEHACK</p>
+              <p className="text-white font-bold text-lg pr-2 m-0">
+                ROSEHACK
+              </p>
 
             </div>
             <div className="mt-[30%] w-full flex justify-center">
