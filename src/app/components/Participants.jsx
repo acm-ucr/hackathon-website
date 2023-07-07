@@ -5,6 +5,7 @@ import Accordion from "react-bootstrap/Accordion";
 import SortIcon from "./SortIcon";
 import Filters from "@/app/components/Filters";
 import Checkbox from "./Checkbox";
+import Tag from "./Tag";
 
 const participants = [
   {
@@ -119,7 +120,9 @@ const Participants = () => {
                 <div className="w-1/6">{participant.email}</div>
                 <div className="w-1/6">{participant.team}</div>
                 <div className="w-1/6">{participant.major}</div>
-                <div className="w-1/6">{participant.status}</div>
+                <div className="w-1/6">
+                  <Tag text={participant.status} />
+                </div>
               </Accordion.Header>
               <Accordion.Body>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

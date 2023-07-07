@@ -40,7 +40,7 @@ const teams = [
     name: "The couple",
     github: "https://github.com",
     devpost: "https://rose-hack-2021.devpost.com",
-    status: "winners",
+    status: "winner",
     members: couple,
   },
   {
@@ -80,7 +80,7 @@ const Teams = () => {
     disqualified: true,
     qualified: true,
     pending: true,
-    winners: true,
+    winner: true,
   });
 
   const [sorts, setSorts] = useState({
