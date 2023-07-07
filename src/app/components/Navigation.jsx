@@ -48,7 +48,7 @@ const Navigation = () => {
       <>
         <div className="flex lg:hidden w-full bg-hackathon-blue-200 h-12 items-center sticky z-50">
           <div
-            className="flex hover:cursor-pointer"
+            className="flex items-center hover:cursor-pointer"
             onClick={() => {
               setExpand(!expand);
             }}
@@ -68,27 +68,27 @@ const Navigation = () => {
         >
           <div className="bg-hackathon-blue-200 h-screen flex flex-col justify-start items-center w-full">
             <div className="hidden lg:flex items-center my-3">
-              <Image src={LOGO} className="w-1/3" />
-              <p className="text-white font-bold text-2xl p-0 mx-1 my-0">
-                ROSEHACK
-              </p>
+              <Image src={LOGO} className=" scale-90" />
+              <p className="text-white font-bold text-lg pr-2 m-0">ROSEHACK</p>
             </div>
-            <div className="mt-24 w-full">
-              {tabs.map((tab, index) => (
-                <Link key={index} href={tab.link} className=" no-underline">
-                  <div
-                    onClick={() => setExpand(false)}
-                    className={`w-full flex [&>*]:text-white justify-start items-center py-2 m-0 pl-4 ${
-                      pathName.endsWith(tab.link)
-                        ? "bg-hackathon-blue-100"
-                        : "[&>*]:hover:text-hackathon-blue-100"
-                    }`}
-                  >
-                    {tab.icon}
-                    <p className="text-2xl m-0 p-0">{tab.name}</p>
-                  </div>
-                </Link>
-              ))}
+            <div className="mt-[30%] w-full flex justify-center">
+              <div className="w-fit">
+                {tabs.map((tab, index) => (
+                  <Link key={index} href={tab.link} className=" no-underline">
+                    <div
+                      onClick={() => setExpand(false)}
+                      className={`w-full flex [&>*]:text-white justify-start items-center pr-3.5 pl-1.5 py-1 m-0 ${
+                        pathName.endsWith(tab.link)
+                          ? "bg-hackathon-blue-100"
+                          : "[&>*]:hover:text-hackathon-blue-100"
+                      }`}
+                    >
+                      {tab.icon}
+                      <p className="text-lg m-0 p-0">{tab.name}</p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>
