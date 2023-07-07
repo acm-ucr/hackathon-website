@@ -16,7 +16,6 @@ const Filters = ({ filters, setFilters, setfilteredObjects, objects }) => {
             boolean = true;
           }
         });
-
         return boolean;
       })
     );

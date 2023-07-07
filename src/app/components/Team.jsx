@@ -4,10 +4,12 @@ import Member from "./Member";
 import { RiVipCrown2Fill } from "react-icons/ri";
 import { SiGithub, SiDevpost } from "react-icons/si";
 import Tag from "./Tag";
+import Checkbox from "./Checkbox";
 
 const Teams = ({ teamName, github, devpost, status, members }) => {
   return (
     <div>
+      <Checkbox />
       <div className="flex font-semibold pl-[5%] w-[35%]">
         <p className="m-0">{teamName}</p>
         {status == "winner" && (
