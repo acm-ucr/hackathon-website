@@ -2,23 +2,23 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { TiPlus } from "react-icons/ti";
 
-const Filters = ({
-  filters,
-  setFilters,
-  setfilteredParticipants,
-  participants,
-}) => {
+const Filters = ({ filters, setFilters, setfilteredObjects, objects }) => {
   const handleClick = (filter) => {
     const filterValues = { ...filters, [filter]: !filters[filter] };
     setFilters(filterValues);
 
-    setfilteredParticipants(
-      participants.filter(
-        (a) =>
-          (a.status === "pending" && filterValues["pending"]) ||
-          (a.status === "rejected" && filterValues["rejected"]) ||
-          (a.status === "accepted" && filterValues["accepted"])
-      )
+    setfilteredObjects(
+      objects.filter((a) => {
+        let boolean = false;
+
+        Object.keys(filterValues).map((value) => {
+          if (a.status === value && filterValues[value]) {
+            boolean = true;
+          }
+        });
+
+        return boolean;
+      })
     );
   };
 

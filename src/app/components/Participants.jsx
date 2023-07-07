@@ -58,9 +58,9 @@ const Participants = () => {
   });
 
   const [filters, setFilters] = useState({
-    rejected: false,
-    accepted: false,
-    pending: false,
+    rejected: true,
+    accepted: true,
+    pending: true,
   });
 
   return (
@@ -68,8 +68,8 @@ const Participants = () => {
       <Filters
         filters={filters}
         setFilters={setFilters}
-        setfilteredParticipants={setfilteredParticipants}
-        participants={participants}
+        setfilteredObjects={setfilteredParticipants}
+        objects={participants}
       />
       <div className="flex bg-hackathon-blue-200 py-2 rounded-t !z-[1000]">
         {headers.map((header, index) => (
@@ -83,8 +83,15 @@ const Participants = () => {
                 name={header.name.toLowerCase()}
                 sorts={sorts}
                 setSorts={setSorts}
-                setfilteredParticipants={setfilteredParticipants}
-                participants={participants}
+                setfilteredObjects={setfilteredParticipants}
+                objects={participants}
+                reset={{
+                  name: "off",
+                  email: "off",
+                  team: "off",
+                  major: "off",
+                  status: "off",
+                }}
               />
             )}
           </div>
