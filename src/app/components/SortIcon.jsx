@@ -3,30 +3,23 @@
 import React from "react";
 import { TbTriangleFilled, TbTriangleInvertedFilled } from "react-icons/tb";
 
-const reset = {
-  name: "off",
-  email: "off",
-  team: "off",
-  major: "off",
-  status: "off",
-};
-
 const SortIcon = ({
   name,
   sorts,
   setSorts,
-  setfilteredParticipants,
-  participants,
+  setfilteredObjects,
+  objects,
+  reset,
 }) => {
   const handleClick = (state) => {
     setSorts({ ...reset, [name]: state });
 
-    setfilteredParticipants(
-      participants.sort((a, b) => {
+    setfilteredObjects(
+      objects.sort((a, b) => {
         if (state === "up") {
-          return a[name] > b[name];
+          return a[name] > b[name] ? -1 : 1;
         } else if (state === "down") {
-          return b[name] > a[name];
+          return b[name] > a[name] ? -1 : 1;
         }
       })
     );
