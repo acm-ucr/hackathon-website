@@ -3,13 +3,14 @@ import { Row, Col } from "react-bootstrap";
 import Member from "./Member";
 import { RiVipCrown2Fill } from "react-icons/ri";
 import { SiGithub, SiDevpost } from "react-icons/si";
+import Tag from "./Tag";
 
 const Teams = ({ teamName, github, devpost, status, members }) => {
   return (
     <div>
       <div className="flex font-semibold pl-[5%] w-[35%]">
         <p className="m-0">{teamName}</p>
-        {status == "winners" && (
+        {status == "winner" && (
           <RiVipCrown2Fill className="ml-2 text-yellow-500 text-xl" />
         )}
       </div>
@@ -45,7 +46,9 @@ const Teams = ({ teamName, github, devpost, status, members }) => {
             </a>
           </div>
         </div>
-        <div className="pl-[5%] m-0 w-[35%]">{status}</div>
+        <div className="pl-[5%] m-0 w-[35%]">
+          <Tag text={status} />
+        </div>
       </Col>
       <div className="my-1 h-[2px] bg-hackathon-gray" />
     </div>
