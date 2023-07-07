@@ -5,64 +5,86 @@ import Team from "./Team";
 import Filters from "@/app/components/Filters";
 import SortIcon from "./SortIcon";
 
-const deer = [
-  {
-    name: "Blip Gunnels",
-    email: "yhung022@ucr.edu",
-  },
-  {
-    name: "Bling Gunnels",
-    email: "yhung022@ucr.edu",
-  },
-  {
-    name: "Shing Hung",
-    email: "yhung022@ucr.edu",
-  },
-  {
-    name: "Cheuy Cheu",
-    email: "yhung022@ucr.edu",
-  },
-];
-
-const couple = [
-  {
-    name: "Menthy Wu",
-    email: "yhung022@ucr.edu",
-  },
-  {
-    name: "Divyank Shah",
-    email: "yhung022@ucr.edu",
-  },
-];
-
 const teams = [
   {
     name: "The couple",
     github: "https://github.com",
     devpost: "https://rose-hack-2021.devpost.com",
     status: "winner",
-    members: couple,
+    members: [
+      {
+        name: "Menthy Wu",
+        email: "yhung022@ucr.edu",
+      },
+      {
+        name: "Divyank Shah",
+        email: "yhung022@ucr.edu",
+      },
+    ],
   },
   {
     name: "The deer",
     github: "https://github.com",
     devpost: "https://rose-hack-2021.devpost.com",
     status: "pending",
-    members: deer,
+    members: [
+      {
+        name: "Blip Gunnels",
+        email: "yhung022@ucr.edu",
+      },
+      {
+        name: "Bling Gunnels",
+        email: "yhung022@ucr.edu",
+      },
+      {
+        name: "Shing Hung",
+        email: "yhung022@ucr.edu",
+      },
+      {
+        name: "Cheuy Cheu",
+        email: "yhung022@ucr.edu",
+      },
+    ],
   },
   {
     name: "The couple",
     github: "https://github.com",
     devpost: "https://rose-hack-2021.devpost.com",
     status: "qualified",
-    members: couple,
+    members: [
+      {
+        name: "Menthy Wu",
+        email: "yhung022@ucr.edu",
+      },
+      {
+        name: "Divyank Shah",
+        email: "yhung022@ucr.edu",
+      },
+    ],
   },
   {
     name: "The deer",
     github: "https://github.com",
     devpost: "https://rose-hack-2021.devpost.com",
     status: "disqualified",
-    members: deer,
+    members: [
+      {
+        name: "Blip Gunnels",
+        email: "yhung022@ucr.edu",
+      },
+      {
+        name: "Bling Gunnels",
+        email: "yhung022@ucr.edu",
+      },
+      {
+        name: "Shing Hung",
+        email: "yhung022@ucr.edu",
+      },
+      {
+        name: "Cheuy Cheu",
+        email: "yhung022@ucr.edu",
+      },
+    ],
   },
 ];
 
@@ -110,7 +132,7 @@ const Teams = () => {
                 sorts={sorts}
                 setSorts={setSorts}
                 setfilteredObjects={setFilteredTeams}
-                objects={teams}
+                objects={filteredTeams}
                 reset={{
                   name: "off",
                   email: "off",

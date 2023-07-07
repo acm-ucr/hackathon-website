@@ -86,7 +86,7 @@ const Participants = () => {
                 sorts={sorts}
                 setSorts={setSorts}
                 setfilteredObjects={setfilteredParticipants}
-                objects={participants}
+                objects={filteredParticipants}
                 reset={{
                   name: "off",
                   email: "off",

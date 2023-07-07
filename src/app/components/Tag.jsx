@@ -22,7 +22,7 @@ const colors = {
   },
 };
 
-const Tag = ({ text, onClick }) => {
+const Tag = ({ text, name, onClick }) => {
   const color =
     text === "disqualified" || text === "rejected"
       ? colors["red"]
@@ -40,6 +40,7 @@ const Tag = ({ text, onClick }) => {
       onClick={onClick}
     >
       {text}
+      {name}
     </div>
   );
 };
