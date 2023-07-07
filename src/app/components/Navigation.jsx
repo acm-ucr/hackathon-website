@@ -11,7 +11,7 @@ import {
   BsBoxArrowInRight,
 } from "react-icons/bs";
 import { usePathname } from "next/navigation";
-const iconStyle = "text-2xl m-2";
+const iconStyle = "text-2xl mr-2 mt-2 mb-2";
 const tabs = [
   {
     name: "participants",
@@ -71,24 +71,22 @@ const Navigation = () => {
               <Image src={LOGO} className=" scale-90" />
               <p className="text-white font-bold text-lg pr-2 m-0">ROSEHACK</p>
             </div>
-            <div className="mt-[30%] w-full flex justify-center">
-              <div className="w-fit">
-                {tabs.map((tab, index) => (
-                  <Link key={index} href={tab.link} className=" no-underline">
-                    <div
-                      onClick={() => setExpand(false)}
-                      className={`w-full flex [&>*]:text-white justify-start items-center pr-3.5 pl-1.5 py-1 m-0 ${
-                        pathName.endsWith(tab.link)
-                          ? "bg-hackathon-blue-100"
-                          : "[&>*]:hover:text-hackathon-blue-100"
-                      }`}
-                    >
-                      {tab.icon}
-                      <p className="text-lg m-0 p-0">{tab.name}</p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
+            <div className="mt-[30%] w-full">
+              {tabs.map((tab, index) => (
+                <Link key={index} href={tab.link} className=" no-underline">
+                  <div
+                    onClick={() => setExpand(false)}
+                    className={`w-full flex [&>*]:text-white items-center justify-start pl-[10%] py-1 m-0 ${
+                      pathName.endsWith(tab.link)
+                        ? "bg-hackathon-blue-100"
+                        : "[&>*]:hover:text-hackathon-blue-100"
+                    }`}
+                  >
+                    {tab.icon}
+                    <p className="text-lg m-0 p-0">{tab.name}</p>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
