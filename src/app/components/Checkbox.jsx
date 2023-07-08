@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BsCheckLg } from "react-icons/bs";
+
 const Checkbox = ({ onClick = () => {} }) => {
   const [selected, setSelected] = useState(false);
 
