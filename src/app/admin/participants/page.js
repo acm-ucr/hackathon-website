@@ -4,9 +4,19 @@ import Toolbar from "@/app/components/Toolbar";
 import React from "react";
 
 const ParticipantsPage = () => {
+  const handleTagClick = (tagText) => {
+    console.log(`Tag "${tagText}" clicked!`);
+  };
+
+  const tags = [
+    { text: "winner", name: "" },
+    { text: "disqualified", name: "" },
+    { text: "pending", name: "" },
+  ];
+
   return (
     <div className="w-11/12">
-      <Toolbar />
+      <Toolbar tags={tags} onClick={handleTagClick} />
       <Participants />
     </div>
   );
