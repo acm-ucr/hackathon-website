@@ -6,8 +6,11 @@ import Tag from "./Tag.jsx";
 const Toolbar = ({ tags }) => {
   return (
     <div className="w-2/3 flex items-center ">
-      <Checkbox />
-      <div className="ml-auto space-x-2">
+      <div className="mr-4">
+        <Checkbox />
+      </div>
+
+      <div className="flex flex-row gap-2 ">
         {tags.map((tag, index) => (
           <Tag
             key={index}
