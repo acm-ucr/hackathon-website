@@ -80,14 +80,30 @@ const Participants = () => {
       text: "accepted",
       name: "Accept",
       onClick: () => {
-        console.log(filteredParticipants.filter((a) => a.selected === true));
+        setfilteredParticipants(
+          filteredParticipants.map((a) => {
+            if (a.selected === true) {
+              a.status = "accepted";
+              a.selected = false;
+            }
+            return a;
+          })
+        );
       },
     },
     {
       text: "rejected",
       name: "Reject",
       onClick: () => {
-        console.log(filteredParticipants.filter((a) => a.selected === true));
+        setfilteredParticipants(
+          filteredParticipants.map((a) => {
+            if (a.selected === true) {
+              a.status = "rejected";
+              a.selected = false;
+            }
+            return a;
+          })
+        );
       },
     },
   ];

@@ -127,21 +127,45 @@ const Teams = () => {
       text: "winner",
       name: "Winner",
       onClick: () => {
-        console.log(filteredTeams.filter((a) => a.selected === true));
+        setFilteredTeams(
+          filteredTeams.map((a) => {
+            if (a.selected === true) {
+              a.status = "winner";
+              a.selected = false;
+            }
+            return a;
+          })
+        );
       },
     },
     {
       text: "disqualified",
       name: "Disqualify",
       onClick: () => {
-        console.log(filteredTeams.filter((a) => a.selected === true));
+        setFilteredTeams(
+          filteredTeams.map((a) => {
+            if (a.selected === true) {
+              a.status = "disqualified";
+              a.selected = false;
+            }
+            return a;
+          })
+        );
       },
     },
     {
       text: "qualified",
       name: "Qualify",
       onClick: () => {
-        console.log(filteredTeams.filter((a) => a.selected === true));
+        setFilteredTeams(
+          filteredTeams.map((a) => {
+            if (a.selected === true) {
+              a.status = "qualified";
+              a.selected = false;
+            }
+            return a;
+          })
+        );
       },
     },
   ];
