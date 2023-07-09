@@ -15,6 +15,7 @@ const participants = [
     team: "b",
     major: "Computer Science",
     status: "pending",
+    selected: false,
   },
   {
     uid: "2",
@@ -23,6 +24,7 @@ const participants = [
     team: "c",
     major: "Computer Science",
     status: "accepted",
+    selected: false,
   },
   {
     uid: "3",
@@ -31,6 +33,7 @@ const participants = [
     team: "d",
     major: "Computer Science",
     status: "rejected",
+    selected: false,
   },
   {
     uid: "4",
@@ -39,6 +42,7 @@ const participants = [
     team: "a",
     major: "Computer Science",
     status: "accepted",
+    selected: false,
   },
 ];
 
@@ -71,21 +75,19 @@ const Participants = () => {
     pending: true,
   });
 
-  const [selected, setSelected] = useState([]);
-
   const tags = [
     {
       text: "accepted",
       name: "Accept",
       onClick: () => {
-        console.log(selected);
+        console.log(filteredParticipants.filter((a) => a.selected === true));
       },
     },
     {
       text: "rejected",
       name: "Reject",
       onClick: () => {
-        console.log(selected);
+        console.log(filteredParticipants.filter((a) => a.selected === true));
       },
     },
   ];
@@ -140,8 +142,8 @@ const Participants = () => {
             key={index}
             participant={participant}
             index={index}
-            selected={selected}
-            setSelected={setSelected}
+            setfilteredParticipants={setfilteredParticipants}
+            filteredParticipants={filteredParticipants}
           />
         ))}
       </Accordion>
