@@ -9,32 +9,40 @@ import Toolbar from "@/app/components/Toolbar";
 
 const participants = [
   {
+    uid: "1",
     name: "Menthy Wu",
     email: "a",
     team: "b",
     major: "Computer Science",
     status: "pending",
+    selected: false,
   },
   {
+    uid: "2",
     name: "Divyank Shah",
     email: "b",
     team: "c",
     major: "Computer Science",
     status: "accepted",
+    selected: false,
   },
   {
+    uid: "3",
     name: "Shing Hung",
     email: "c",
     team: "d",
     major: "Computer Science",
     status: "rejected",
+    selected: false,
   },
   {
+    uid: "4",
     name: "Sachin Chopra",
     email: "d",
     team: "a",
     major: "Computer Science",
     status: "accepted",
+    selected: false,
   },
 ];
 
@@ -68,8 +76,36 @@ const Participants = () => {
   });
 
   const tags = [
-    { text: "accepted", name: "Accept" },
-    { text: "rejected", name: "Reject" },
+    {
+      text: "accepted",
+      name: "Accept",
+      onClick: () => {
+        setfilteredParticipants(
+          filteredParticipants.map((a) => {
+            if (a.selected === true) {
+              a.status = "accepted";
+              a.selected = false;
+            }
+            return a;
+          })
+        );
+      },
+    },
+    {
+      text: "rejected",
+      name: "Reject",
+      onClick: () => {
+        setfilteredParticipants(
+          filteredParticipants.map((a) => {
+            if (a.selected === true) {
+              a.status = "rejected";
+              a.selected = false;
+            }
+            return a;
+          })
+        );
+      },
+    },
   ];
 
   return (
@@ -118,7 +154,13 @@ const Participants = () => {
       </div>
       <Accordion>
         {filteredParticipants.map((participant, index) => (
-          <Participant key={index} participant={participant} index={index} />
+          <Participant
+            key={index}
+            participant={participant}
+            index={index}
+            setfilteredParticipants={setfilteredParticipants}
+            filteredParticipants={filteredParticipants}
+          />
         ))}
       </Accordion>
     </div>

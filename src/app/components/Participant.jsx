@@ -3,11 +3,38 @@ import Accordion from "react-bootstrap/Accordion";
 import Checkbox from "./Checkbox";
 import Tag from "./Tag";
 
-const Participant = ({ participant, index }) => {
+const Participant = ({
+  filteredParticipants,
+  setfilteredParticipants,
+  participant,
+  index,
+}) => {
+  const handleSelect = () => {
+    if (!participant.selected) {
+      setfilteredParticipants(
+        filteredParticipants.map((a) => {
+          if (a.uid === participant.uid) {
+            a.selected = true;
+          }
+          return a;
+        })
+      );
+    } else {
+      setfilteredParticipants(
+        filteredParticipants.map((a) => {
+          if (a.uid === participant.uid) {
+            a.selected = false;
+          }
+          return a;
+        })
+      );
+    }
+  };
+
   return (
     <Accordion.Item eventKey={index} className="!rounded-none">
       <Accordion.Button className="focus:!ring-0 focus:!bg-hackathon-green-100 !bg-transparent">
-        <Checkbox />
+        <Checkbox onClick={handleSelect} toggle={participant.selected} />
         <div className="w-1/6">{participant.name}</div>
         <div className="w-1/6">{participant.email}</div>
         <div className="w-1/6">{participant.team}</div>
