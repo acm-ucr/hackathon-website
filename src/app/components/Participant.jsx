@@ -35,10 +35,7 @@ const Participant = ({
     <Accordion.Item eventKey={index} className="!rounded-none">
       <Accordion.Button className="focus:!ring-0 focus:!bg-hackathon-green-100 !bg-transparent">
         <Checkbox onClick={handleSelect} toggle={participant.selected} />
-        <div className="w-1/6">
-          {participant.name} {participant.uid}{" "}
-          {participant.selected ? "true" : "false"}
-        </div>
+        <div className="w-1/6">{participant.name}</div>
         <div className="w-1/6">{participant.email}</div>
         <div className="w-1/6">{participant.team}</div>
         <div className="w-1/6">{participant.major}</div>

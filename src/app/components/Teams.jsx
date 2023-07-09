@@ -9,10 +9,12 @@ import Toolbar from "@/app/components/Toolbar";
 
 const teams = [
   {
+    uid: 1,
     name: "The couple",
     github: "https://github.com",
     devpost: "https://rose-hack-2021.devpost.com",
     status: "winner",
+    selected: false,
     members: [
       {
         name: "Menthy Wu",
@@ -25,10 +27,12 @@ const teams = [
     ],
   },
   {
+    uid: 2,
     name: "The deer",
     github: "https://github.com",
     devpost: "https://rose-hack-2021.devpost.com",
     status: "pending",
+    selected: false,
     members: [
       {
         name: "Blip Gunnels",
@@ -49,10 +53,12 @@ const teams = [
     ],
   },
   {
+    uid: 3,
     name: "The couple",
     github: "https://github.com",
     devpost: "https://rose-hack-2021.devpost.com",
     status: "qualified",
+    selected: false,
     members: [
       {
         name: "Menthy Wu",
@@ -65,10 +71,12 @@ const teams = [
     ],
   },
   {
+    uid: 4,
     name: "The deer",
     github: "https://github.com",
     devpost: "https://rose-hack-2021.devpost.com",
     status: "disqualified",
+    selected: false,
     members: [
       {
         name: "Blip Gunnels",
@@ -97,16 +105,9 @@ const headers = [
   { name: "Status", size: "w-1/6", icon: true },
 ];
 
-const tags = [
-  { text: "winner", name: "Winner" },
-  { text: "disqualified", name: "Disqualify" },
-  { text: "qualified", name: "Qualify" },
-];
-
 const Teams = () => {
   const [filteredTeams, setFilteredTeams] = useState(teams);
   const [input, setInput] = useState("");
-  // const [filteredSearchTeams, setFilteredSearchTeams] = useState(teams);
 
   const [sorts, setSorts] = useState({
     name: "down",
@@ -120,6 +121,30 @@ const Teams = () => {
     pending: true,
     winner: true,
   });
+
+  const tags = [
+    {
+      text: "winner",
+      name: "Winner",
+      onClick: () => {
+        console.log(filteredTeams.filter((a) => a.selected === true));
+      },
+    },
+    {
+      text: "disqualified",
+      name: "Disqualify",
+      onClick: () => {
+        console.log(filteredTeams.filter((a) => a.selected === true));
+      },
+    },
+    {
+      text: "qualified",
+      name: "Qualify",
+      onClick: () => {
+        console.log(filteredTeams.filter((a) => a.selected === true));
+      },
+    },
+  ];
 
   return (
     <div>
@@ -167,11 +192,15 @@ const Teams = () => {
         {filteredTeams.map((team, index) => (
           <Row key={index}>
             <Team
+              uid={team.uid}
               teamName={team.name}
               github={team.github}
               devpost={team.devpost}
               status={team.status}
               members={team.members}
+              selected={team.selected}
+              filteredTeams={filteredTeams}
+              setFilteredTeams={setFilteredTeams}
             />
           </Row>
         ))}
