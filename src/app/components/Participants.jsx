@@ -9,6 +9,7 @@ import Toolbar from "@/app/components/Toolbar";
 
 const participants = [
   {
+    uid: "1",
     name: "Menthy Wu",
     email: "a",
     team: "b",
@@ -16,6 +17,7 @@ const participants = [
     status: "pending",
   },
   {
+    uid: "2",
     name: "Divyank Shah",
     email: "b",
     team: "c",
@@ -23,6 +25,7 @@ const participants = [
     status: "accepted",
   },
   {
+    uid: "3",
     name: "Shing Hung",
     email: "c",
     team: "d",
@@ -30,6 +33,7 @@ const participants = [
     status: "rejected",
   },
   {
+    uid: "4",
     name: "Sachin Chopra",
     email: "d",
     team: "a",
@@ -67,9 +71,23 @@ const Participants = () => {
     pending: true,
   });
 
+  const [selected, setSelected] = useState([]);
+
   const tags = [
-    { text: "accepted", name: "Accept" },
-    { text: "rejected", name: "Reject" },
+    {
+      text: "accepted",
+      name: "Accept",
+      onClick: () => {
+        console.log(selected);
+      },
+    },
+    {
+      text: "rejected",
+      name: "Reject",
+      onClick: () => {
+        console.log(selected);
+      },
+    },
   ];
 
   return (
@@ -118,7 +136,13 @@ const Participants = () => {
       </div>
       <Accordion>
         {filteredParticipants.map((participant, index) => (
-          <Participant key={index} participant={participant} index={index} />
+          <Participant
+            key={index}
+            participant={participant}
+            index={index}
+            selected={selected}
+            setSelected={setSelected}
+          />
         ))}
       </Accordion>
     </div>
