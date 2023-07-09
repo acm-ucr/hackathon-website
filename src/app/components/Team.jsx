@@ -24,29 +24,25 @@ const Teams = ({ teamName, github, devpost, status, members }) => {
             </Row>
           ))}
         </div>
-        <div className="flex flex-col justify-between text-sm">
-          <div className="flex items-start h-[50%]">
-            <a
-              href={github}
-              rel="noreferrer"
-              target="_blank"
-              className="no-underline hover:opacity-70 text-black flex flex-row items-center"
-            >
-              <SiGithub className="text-lg mr-1" />
-              {github}
-            </a>
-          </div>
-          <div className="flex items-start h-[50%]">
-            <a
-              href={devpost}
-              rel="noreferrer"
-              target="_blank"
-              className=" no-underline hover:opacity-70 text-black flex flex-row items-center"
-            >
-              <SiDevpost className="text-lg mr-1" />
-              {devpost}
-            </a>
-          </div>
+        <div className="flex flex-col justify-start items-start text-sm">
+          <a
+            href={github}
+            rel="noreferrer"
+            target="_blank"
+            className="no-underline hover:opacity-70 text-black flex flex-row items-center"
+          >
+            <SiGithub className="text-lg mr-1" />
+            {github}
+          </a>
+          <a
+            href={devpost}
+            rel="noreferrer"
+            target="_blank"
+            className=" no-underline hover:opacity-70 text-black flex flex-row items-center"
+          >
+            <SiDevpost className="text-lg mr-1" />
+            {devpost}
+          </a>
         </div>
         <div className="pl-[5%] m-0 w-[35%]">
           <Tag text={status} />

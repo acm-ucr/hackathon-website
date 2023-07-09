@@ -1,9 +1,11 @@
 "use client";
+
 import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import Team from "./Team";
 import Filters from "@/app/components/Filters";
 import SortIcon from "./SortIcon";
+import Toolbar from "@/app/components/Toolbar";
 
 const teams = [
   {
@@ -95,8 +97,16 @@ const headers = [
   { name: "Status", size: "w-1/6", icon: true },
 ];
 
+const tags = [
+  { text: "winner", name: "Winner" },
+  { text: "disqualified", name: "Disqualify" },
+  { text: "qualified", name: "Qualify" },
+];
+
 const Teams = () => {
   const [filteredTeams, setFilteredTeams] = useState(teams);
+  const [input, setInput] = useState("");
+  // const [filteredSearchTeams, setFilteredSearchTeams] = useState(teams);
 
   const [sorts, setSorts] = useState({
     name: "down",
@@ -118,6 +128,16 @@ const Teams = () => {
         setFilters={setFilters}
         setfilteredObjects={setFilteredTeams}
         objects={teams}
+        input={input}
+      />
+      <Toolbar
+        input={input}
+        setInput={setInput}
+        tags={tags}
+        setFilteredObjects={setFilteredTeams}
+        objects={filteredTeams}
+        filters={filters}
+        reset={teams}
       />
       <div className="text-sm rounded-sm flex font-bold text-white bg-hackathon-blue-200 py-1.5">
         {headers.map((header, index) => (

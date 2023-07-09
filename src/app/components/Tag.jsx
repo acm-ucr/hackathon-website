@@ -39,8 +39,7 @@ const Tag = ({ text, name, onClick }) => {
       className={`${color.background} ${color.text} px-2 py-1 rounded w-fit`}
       onClick={onClick}
     >
-      {text}
-      {name}
+      {name ? name : text}
     </div>
   );
 };

@@ -5,6 +5,7 @@ import Accordion from "react-bootstrap/Accordion";
 import SortIcon from "./SortIcon";
 import Filters from "@/app/components/Filters";
 import Participant from "./Participant";
+import Toolbar from "@/app/components/Toolbar";
 
 const participants = [
   {
@@ -50,6 +51,8 @@ const Participants = () => {
   const [filteredParticipants, setfilteredParticipants] =
     useState(participants);
 
+  const [input, setInput] = useState("");
+
   const [sorts, setSorts] = useState({
     name: "down",
     email: "off",
@@ -64,6 +67,11 @@ const Participants = () => {
     pending: true,
   });
 
+  const tags = [
+    { text: "accepted", name: "Accept" },
+    { text: "rejected", name: "Reject" },
+  ];
+
   return (
     <div className="font-poppins">
       <Filters
@@ -71,6 +79,16 @@ const Participants = () => {
         setFilters={setFilters}
         setfilteredObjects={setfilteredParticipants}
         objects={participants}
+        input={input}
+      />
+      <Toolbar
+        input={input}
+        setInput={setInput}
+        tags={tags}
+        setFilteredObjects={setfilteredParticipants}
+        objects={filteredParticipants}
+        filters={filters}
+        reset={participants}
       />
       <div className="flex bg-hackathon-blue-200 py-2 rounded-t !z-[1000]">
         {headers.map((header, index) => (
