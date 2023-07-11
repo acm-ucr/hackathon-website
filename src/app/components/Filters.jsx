@@ -2,7 +2,13 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { TiPlus } from "react-icons/ti";
 
-const Filters = ({ filters, setFilters, setfilteredObjects, objects }) => {
+const Filters = ({
+  filters,
+  setFilters,
+  setfilteredObjects,
+  objects,
+  input,
+}) => {
   const handleClick = (filter) => {
     const filterValues = { ...filters, [filter]: !filters[filter] };
     setFilters(filterValues);
@@ -12,7 +18,11 @@ const Filters = ({ filters, setFilters, setfilteredObjects, objects }) => {
         let boolean = false;
 
         Object.keys(filterValues).map((value) => {
-          if (a.status === value && filterValues[value]) {
+          if (
+            a.status === value &&
+            filterValues[value] &&
+            a.name.toLowerCase().match(input.toLowerCase())
+          ) {
             boolean = true;
           }
         });

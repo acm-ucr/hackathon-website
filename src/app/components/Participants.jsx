@@ -4,37 +4,45 @@ import React, { useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import SortIcon from "./SortIcon";
 import Filters from "@/app/components/Filters";
-import Checkbox from "./Checkbox";
-import Tag from "./Tag";
+import Participant from "./Participant";
+import Toolbar from "@/app/components/Toolbar";
 
 const participants = [
   {
+    uid: "1",
     name: "Menthy Wu",
     email: "yhung022@ucr.edu",
     team: "Deers",
     major: "Computer Science",
     status: "pending",
+    selected: false,
   },
   {
+    uid: "2",
     name: "Divyank Shah",
     email: "yhung022@ucr.edu",
     team: "Deers",
     major: "Computer Science",
     status: "accepted",
+    selected: false,
   },
   {
+    uid: "3",
     name: "Shing Hung",
     email: "yhung022@ucr.edu",
     team: "Deers",
     major: "Electrical Engineering",
     status: "rejected",
+    selected: false,
   },
   {
+    uid: "4",
     name: "Sachin Chopra",
     email: "yhung022@ucr.edu",
     team: "Deers",
     major: "Computer Science",
     status: "accepted",
+    selected: false,
   },
 ];
 
@@ -51,6 +59,8 @@ const Participants = () => {
   const [filteredParticipants, setfilteredParticipants] =
     useState(participants);
 
+  const [input, setInput] = useState("");
+
   const [sorts, setSorts] = useState({
     name: "down",
     email: "off",
@@ -65,6 +75,39 @@ const Participants = () => {
     pending: true,
   });
 
+  const tags = [
+    {
+      text: "accepted",
+      name: "Accept",
+      onClick: () => {
+        setfilteredParticipants(
+          filteredParticipants.map((a) => {
+            if (a.selected === true) {
+              a.status = "accepted";
+              a.selected = false;
+            }
+            return a;
+          })
+        );
+      },
+    },
+    {
+      text: "rejected",
+      name: "Reject",
+      onClick: () => {
+        setfilteredParticipants(
+          filteredParticipants.map((a) => {
+            if (a.selected === true) {
+              a.status = "rejected";
+              a.selected = false;
+            }
+            return a;
+          })
+        );
+      },
+    },
+  ];
+
   return (
     <div className="font-poppins">
       <Filters
@@ -72,6 +115,16 @@ const Participants = () => {
         setFilters={setFilters}
         setfilteredObjects={setfilteredParticipants}
         objects={participants}
+        input={input}
+      />
+      <Toolbar
+        input={input}
+        setInput={setInput}
+        tags={tags}
+        setFilteredObjects={setfilteredParticipants}
+        objects={filteredParticipants}
+        filters={filters}
+        reset={participants}
       />
       <div className="flex bg-hackathon-blue-200 py-2 rounded-t !z-[1000]">
         {headers.map((header, index) => (

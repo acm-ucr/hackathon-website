@@ -1,6 +1,5 @@
 "use client";
 import Participants from "@/app/components/Participants";
-import Toolbar from "@/app/components/Toolbar";
 import React from "react";
 
 const ParticipantsPage = () => {

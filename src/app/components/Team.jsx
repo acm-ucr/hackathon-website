@@ -6,14 +6,45 @@ import { SiGithub, SiDevpost } from "react-icons/si";
 import Tag from "./Tag";
 import Checkbox from "./Checkbox";
 
-const Teams = ({ teamName, github, devpost, status, members }) => {
+const Teams = ({
+  uid,
+  teamName,
+  github,
+  devpost,
+  status,
+  members,
+  selected,
+  setFilteredTeams,
+  filteredTeams,
+}) => {
+  const handleSelect = () => {
+    if (!selected) {
+      setFilteredTeams(
+        filteredTeams.map((a) => {
+          if (a.uid === uid) {
+            a.selected = true;
+          }
+          return a;
+        })
+      );
+    } else {
+      setFilteredTeams(
+        filteredTeams.map((a) => {
+          if (a.uid === uid) {
+            a.selected = false;
+          }
+          return a;
+        })
+      );
+    }
+  };
+
   return (
     <div className="h-fit">
       <div className="flex font-semibold">
         <div className="flex items-center pt-0.5 ml-[2%] mr-[3%]">
-          <Checkbox />
+          <Checkbox onClick={handleSelect} toggle={selected} />
         </div>
-
         <p className="m-0">{teamName}</p>
         {status == "winner" && (
           <RiVipCrown2Fill className="ml-2 text-yellow-500 text-xl" />
