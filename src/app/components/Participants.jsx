@@ -10,40 +10,40 @@ import Tag from "./Tag";
 const participants = [
   {
     name: "Menthy Wu",
-    email: "a",
-    team: "b",
+    email: "yhung022@ucr.edu",
+    team: "Deers",
     major: "Computer Science",
     status: "pending",
   },
   {
     name: "Divyank Shah",
-    email: "b",
-    team: "c",
+    email: "yhung022@ucr.edu",
+    team: "Deers",
     major: "Computer Science",
     status: "accepted",
   },
   {
     name: "Shing Hung",
-    email: "c",
-    team: "d",
-    major: "Computer Science",
+    email: "yhung022@ucr.edu",
+    team: "Deers",
+    major: "Electrical Engineering",
     status: "rejected",
   },
   {
     name: "Sachin Chopra",
-    email: "d",
-    team: "a",
+    email: "yhung022@ucr.edu",
+    team: "Deers",
     major: "Computer Science",
     status: "accepted",
   },
 ];
 
 const headers = [
-  { name: "", size: "w-1/12", icon: false },
-  { name: "Name", size: "w-1/6", icon: true },
-  { name: "Email", size: "w-1/6", icon: true },
+  { name: "", size: "w-[9%]", icon: false },
+  { name: "Name", size: "w-1/5", icon: true },
+  { name: "Email", size: "w-1/5", icon: true },
   { name: "Team", size: "w-1/6", icon: true },
-  { name: "Major", size: "w-1/6", icon: true },
+  { name: "Major", size: "w-1/5", icon: true },
   { name: "Status", size: "w-1/6", icon: true },
 ];
 
@@ -107,13 +107,15 @@ const Participants = () => {
               key={index}
               className="!rounded-none"
             >
-              <Accordion.Header className="font-normal">
-                <Checkbox />
-                <div className="w-1/6">{participant.name}</div>
-                <div className="w-1/6">{participant.email}</div>
+              <Accordion.Header className=" w-full font-normal text-start">
+                <div className="w-[7%]">
+                  <Checkbox />
+                </div>
+                <div className="w-1/5">{participant.name}</div>
+                <div className="w-[21%]">{participant.email}</div>
                 <div className="w-1/6">{participant.team}</div>
-                <div className="w-1/6">{participant.major}</div>
-                <div className="w-1/6">
+                <div className="w-1/5">{participant.major}</div>
+                <div className="w-[5%]">
                   <Tag text={participant.status} />
                 </div>
               </Accordion.Header>

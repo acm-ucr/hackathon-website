@@ -29,14 +29,16 @@ const SortIcon = ({
     <div className="mx-2">
       <TbTriangleFilled
         className={`${
-          sorts[name] === "up" ? "text-green-500" : ""
+          sorts[name] === "up" ? " text-hackathon-blue-100" : "hover:opacity-50"
         } text-xs hover:cursor-pointer`}
         onClick={() => handleClick("up")}
       />
       <TbTriangleInvertedFilled
         onClick={() => handleClick("down")}
         className={`${
-          sorts[name] === "down" ? "text-green-500" : ""
+          sorts[name] === "down"
+            ? " text-hackathon-blue-100"
+            : "hover:opacity-50"
         } text-xs hover:cursor-pointer`}
       />
     </div>

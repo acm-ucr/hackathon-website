@@ -6,7 +6,7 @@ const Checkbox = ({ onClick = () => {} }) => {
 
   return (
     <div
-      className={`w-5 h-5 hover:cursor-pointer ${
+      className={`w-4 h-4 rounded-sm hover:cursor-pointer ${
         selected ? "bg-hackathon-blue-100" : "bg-hackathon-gray"
       } flex items-center justify-center`}
       onClick={() => {
