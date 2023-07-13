@@ -11,7 +11,7 @@ const participants = [
   {
     uid: "1",
     name: "Menthy Wu",
-    email: "a",
+    email: "yhung022@ucr.edu",
     team: "b",
     major: "Computer Science",
     status: "pending",
@@ -20,7 +20,7 @@ const participants = [
   {
     uid: "2",
     name: "Divyank Shah",
-    email: "b",
+    email: "yhung022@ucr.edu",
     team: "c",
     major: "Computer Science",
     status: "accepted",
@@ -29,7 +29,7 @@ const participants = [
   {
     uid: "3",
     name: "Shing Hung",
-    email: "c",
+    email: "yhung022@ucr.edu",
     team: "d",
     major: "Computer Science",
     status: "rejected",
@@ -38,7 +38,7 @@ const participants = [
   {
     uid: "4",
     name: "Sachin Chopra",
-    email: "d",
+    email: "yhung022@ucr.edu",
     team: "a",
     major: "Computer Science",
     status: "accepted",
@@ -47,12 +47,12 @@ const participants = [
 ];
 
 const headers = [
-  { name: "", size: "w-1/12", icon: false },
+  { name: "", size: "w-[6%]", icon: false },
   { name: "Name", size: "w-1/6", icon: true },
-  { name: "Email", size: "w-1/6", icon: true },
-  { name: "Team", size: "w-1/6", icon: true },
-  { name: "Major", size: "w-1/6", icon: true },
-  { name: "Status", size: "w-1/6", icon: true },
+  { name: "Email", size: "w-1/5", icon: true },
+  { name: "Team", size: "w-1/5", icon: true },
+  { name: "Major", size: "w-1/5", icon: true },
+  { name: "Status", size: "", icon: true },
 ];
 
 const Participants = () => {
