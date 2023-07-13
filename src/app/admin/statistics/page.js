@@ -3,10 +3,9 @@ import Title from "@/app/components/Title";
 
 const StatisticsPage = () => {
   return (
-    <div className="w-11/12">
-      <div className="lg:w-[88%]">
-        <Title title="Statistics" />
-      </div>
+    <div>
+      <title>Admin | Statistics</title>
+      <Title title="Statistics" />
     </div>
   );
 };

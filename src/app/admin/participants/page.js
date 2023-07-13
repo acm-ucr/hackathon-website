@@ -5,9 +5,8 @@ import React from "react";
 const ParticipantsPage = () => {
   return (
     <div className="w-11/12">
-      <div className="lg:w-[88%]">
-        <Participants />
-      </div>
+      <title>Admin | Participants</title>
+      <Participants />
     </div>
   );
 };
