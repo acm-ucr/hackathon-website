@@ -40,23 +40,25 @@ const Teams = ({
   };
 
   return (
-    <div>
-      <Checkbox onClick={handleSelect} toggle={selected} />
-      <div className="flex font-semibold pl-[5%] w-[35%]">
+    <div className="w-full">
+      <div className="flex font-semibold">
+        <div className=" flex items-center mx-2.5 w-[5%]">
+          <Checkbox onClick={handleSelect} toggle={selected} />
+        </div>
         <p className="m-0">{teamName}</p>
         {status == "winner" && (
           <RiVipCrown2Fill className="ml-2 text-yellow-500 text-xl" />
         )}
       </div>
-      <Col className="flex">
-        <div className="pl-[5%] m-0 w-[35%]">
+      <Col className="flex w-full">
+        <div className="pl-[7%] m-0 w-[52%]">
           {members.map((member, index) => (
             <Row key={index}>
               <Member name={member.name} email={member.email} />
             </Row>
           ))}
         </div>
-        <div className="flex flex-col justify-start items-start text-sm">
+        <div className="flex flex-col justify-start items-start text-sm w-1/3">
           <a
             href={github}
             rel="noreferrer"
@@ -76,7 +78,7 @@ const Teams = ({
             {devpost}
           </a>
         </div>
-        <div className="pl-[5%] m-0 w-[35%]">
+        <div className="m-0">
           <Tag text={status} />
         </div>
       </Col>

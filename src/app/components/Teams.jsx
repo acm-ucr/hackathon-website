@@ -99,10 +99,11 @@ const teams = [
 ];
 
 const headers = [
-  { name: "", size: "w-1/12", icon: false },
-  { name: "Name", size: "w-1/6", icon: true },
-  { name: "Email", size: "w-1/6", icon: false },
-  { name: "Status", size: "w-1/6", icon: true },
+  { name: "", size: "w-[7%]", icon: false },
+  { name: "Name", size: "w-1/4", icon: true },
+  { name: "Email", size: "w-1/5", icon: false },
+  { name: "Links", size: "w-4/12", icon: false },
+  { name: "Status", size: "", icon: true },
 ];
 
 const Teams = () => {
