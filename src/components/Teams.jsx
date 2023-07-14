@@ -3,9 +3,9 @@
 import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import Team from "./Team";
-import Filters from "@/app/components/Filters";
+import Filters from "@/components/Filters";
 import SortIcon from "./SortIcon";
-import Toolbar from "@/app/components/Toolbar";
+import Toolbar from "@/components/Toolbar";
 
 const teams = [
   {
@@ -127,7 +127,8 @@ const Teams = () => {
     {
       text: "winner",
       name: "Winner",
-      onClick: () => {
+      onClick: (setToggle) => {
+        setToggle(false);
         setFilteredTeams(
           filteredTeams.map((a) => {
             if (a.selected === true) {
@@ -142,7 +143,8 @@ const Teams = () => {
     {
       text: "disqualified",
       name: "Disqualify",
-      onClick: () => {
+      onClick: (setToggle) => {
+        setToggle(false);
         setFilteredTeams(
           filteredTeams.map((a) => {
             if (a.selected === true) {
@@ -157,7 +159,8 @@ const Teams = () => {
     {
       text: "qualified",
       name: "Qualify",
-      onClick: () => {
+      onClick: (setToggle) => {
+        setToggle(false);
         setFilteredTeams(
           filteredTeams.map((a) => {
             if (a.selected === true) {

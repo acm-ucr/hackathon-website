@@ -1,5 +1,5 @@
 import React from "react";
-import Title from "@/app/components/Title";
+import Title from "@/components/Title";
 
 const StatisticsPage = () => {
   return (

@@ -1,50 +1,24 @@
 "use client";
+
 import React, { useState } from "react";
-import LOGO from "../../../public/LOGO.png";
+import LOGO from "../../public/LOGO.png";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  BsFillPersonFill,
-  BsPeopleFill,
-  BsBarChartFill,
-  BsGlobe2,
-  BsBoxArrowInRight,
-} from "react-icons/bs";
+import { AdminTabs, UserTabs } from "@/data/Navigation";
 import { usePathname } from "next/navigation";
-const iconStyle = "text-2xl mr-2 mt-2 mb-2";
-const tabs = [
-  {
-    name: "participants",
-    link: "participants",
-    icon: <BsFillPersonFill className={iconStyle} />,
-  },
-  {
-    name: "teams",
-    link: "teams",
-    icon: <BsPeopleFill className={iconStyle} />,
-  },
-  {
-    name: "statistics",
-    link: "statistics",
-    icon: <BsBarChartFill className={iconStyle} />,
-  },
-  {
-    name: "website",
-    link: "/",
-    icon: <BsGlobe2 className={iconStyle} />,
-  },
-  {
-    name: "sign out",
-    link: "sign out",
-    icon: <BsBoxArrowInRight className={iconStyle} />,
-  },
-];
 
 const Navigation = () => {
   const pathName = usePathname();
+
+  const tabs = pathName.startsWith("/admin")
+    ? AdminTabs
+    : pathName.startsWith("/user")
+    ? UserTabs
+    : null;
+
   const [expand, setExpand] = useState(false);
   return (
-    pathName.startsWith("/admin") && (
+    tabs && (
       <>
         <div className="flex lg:hidden w-full bg-hackathon-blue-200 h-12 items-center sticky z-50">
           <div
