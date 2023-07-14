@@ -79,7 +79,8 @@ const Participants = () => {
     {
       text: "accepted",
       name: "Accept",
-      onClick: () => {
+      onClick: (setToggle) => {
+        setToggle(false);
         setfilteredParticipants(
           filteredParticipants.map((a) => {
             if (a.selected === true) {
@@ -94,7 +95,8 @@ const Participants = () => {
     {
       text: "rejected",
       name: "Reject",
-      onClick: () => {
+      onClick: (setToggle) => {
+        setToggle(false);
         setfilteredParticipants(
           filteredParticipants.map((a) => {
             if (a.selected === true) {

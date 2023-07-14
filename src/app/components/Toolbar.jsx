@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Checkbox from "./Checkbox";
 import { HiSearch } from "react-icons/hi";
 import Tag from "./Tag.jsx";
@@ -13,6 +13,8 @@ const Toolbar = ({
   filters,
   reset,
 }) => {
+  const [toggle, setToggle] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -42,10 +44,30 @@ const Toolbar = ({
     );
   };
 
+  const selectAll = () => {
+    setToggle(!toggle);
+
+    if (!toggle === true) {
+      setFilteredObjects(
+        objects.map((a) => {
+          a.selected = true;
+          return a;
+        })
+      );
+    } else {
+      setFilteredObjects(
+        objects.map((a) => {
+          a.selected = false;
+          return a;
+        })
+      );
+    }
+  };
+
   return (
     <div className="w-2/3 flex items-center ">
       <div className="mr-4">
-        <Checkbox />
+        <Checkbox onClick={selectAll} toggle={toggle} />
       </div>
 
       <div className="flex flex-row gap-2 ">
@@ -54,7 +76,7 @@ const Toolbar = ({
             key={index}
             text={tag.text}
             name={tag.name}
-            onClick={tag.onClick}
+            onClick={() => tag.onClick(setToggle)}
           />
         ))}
       </div>
