@@ -2,7 +2,7 @@
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Poppins } from "next/font/google";
-import Navigation from "./components/Navigation";
+import Navigation from "../components/Navigation";
 
 const poppins = Poppins({
   subsets: ["latin"],

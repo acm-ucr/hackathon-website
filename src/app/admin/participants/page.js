@@ -1,5 +1,5 @@
 "use client";
-import Participants from "@/app/components/Participants";
+import Participants from "@/components/Participants";
 import React from "react";
 
 const ParticipantsPage = () => {

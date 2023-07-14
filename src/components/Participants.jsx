@@ -3,9 +3,9 @@
 import React, { useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import SortIcon from "./SortIcon";
-import Filters from "@/app/components/Filters";
+import Filters from "@/components/Filters";
 import Participant from "./Participant";
-import Toolbar from "@/app/components/Toolbar";
+import Toolbar from "@/components/Toolbar";
 
 const participants = [
   {

@@ -3,9 +3,9 @@
 import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import Team from "./Team";
-import Filters from "@/app/components/Filters";
+import Filters from "@/components/Filters";
 import SortIcon from "./SortIcon";
-import Toolbar from "@/app/components/Toolbar";
+import Toolbar from "@/components/Toolbar";
 
 const teams = [
   {
