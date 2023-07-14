@@ -38,8 +38,23 @@ export const AdminTabs = [
 
 export const UserTabs = [
   {
-    name: "participants",
-    link: "/admin/participants",
+    name: "dashboard",
+    link: "/user/dashboard",
     icon: <BsFillPersonFill className={iconStyle} />,
+  },
+  {
+    name: "checkin",
+    link: "/user/checkin",
+    icon: <BsPeopleFill className={iconStyle} />,
+  },
+  {
+    name: "website",
+    link: "/",
+    icon: <BsGlobe2 className={iconStyle} />,
+  },
+  {
+    name: "sign out",
+    link: "sign out",
+    icon: <BsBoxArrowInRight className={iconStyle} />,
   },
 ];
