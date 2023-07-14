@@ -15,17 +15,17 @@ const iconStyle = "text-2xl mr-2 mt-2 mb-2";
 const tabs = [
   {
     name: "participants",
-    link: "participants",
+    link: "/admin/participants",
     icon: <BsFillPersonFill className={iconStyle} />,
   },
   {
     name: "teams",
-    link: "teams",
+    link: "/admin/teams",
     icon: <BsPeopleFill className={iconStyle} />,
   },
   {
     name: "statistics",
-    link: "statistics",
+    link: "/admin/statistics",
     icon: <BsBarChartFill className={iconStyle} />,
   },
   {

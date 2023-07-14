@@ -7,12 +7,10 @@ import Card from "react-bootstrap/Card";
 import { IoIosArrowDown } from "react-icons/io";
 import AccordionContext from "react-bootstrap/AccordionContext";
 import { useContext } from "react";
-const Toggle = ({ children, eventKey }) => {
+const Toggle = ({ eventKey }) => {
   const { activeEventKey } = useContext(AccordionContext);
 
-  const decoratedOnClick = useAccordionButton(eventKey, () => {
-    console.log(eventKey);
-  });
+  const decoratedOnClick = useAccordionButton(eventKey);
 
   return (
     <div onClick={decoratedOnClick}>
