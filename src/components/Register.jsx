@@ -7,16 +7,40 @@ import { Ages, Majors, Grades, Genders, Shirts } from "../data/Register";
 import Select from "@/components/Select";
 import Radio from "@/components/Radio";
 import Upload from "@/components/Upload";
+import Checkbox from "./Checkbox";
 
 const Register = () => {
   const [user, setUser] = useState(User);
+
+  const [requirements, setRequirements] = useState({
+    photography: {
+      state: false,
+      text: "HELLO PLS SAY YES TO PHOTOGRAPH",
+    },
+    inPerson: {
+      state: false,
+      text: "HELLO PLS SAY YES TO IN PERSON",
+    },
+  });
 
   const handleInput = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  const handleSubmit = () => {
+    console.log(user);
+    console.log(requirements);
+  };
+
+  const handleRequirementsCheckbox = (key, value) => {
+    setRequirements({
+      ...requirements,
+      [key]: { state: !value.state, text: value.text },
+    });
+  };
+
   return (
-    <div>
+    <div className="bg-red-500 w-full">
       <input
         type="text"
         name="first"
@@ -66,10 +90,19 @@ const Register = () => {
         setUser={setUser}
         placeholder="Grade"
       />
+      {Object.entries(requirements).map(([key, value], index) => (
+        <Checkbox
+          key={index}
+          toggle={value.state}
+          text={value.text}
+          onClick={() => handleRequirementsCheckbox(key, value)}
+        />
+      ))}
+
       <Radio options={Genders} field="gender" user={user} setUser={setUser} />
       <Radio options={Shirts} field="shirt" user={user} setUser={setUser} />
       <Upload field="resume" user={user} setUser={setUser} />
-      <button onClick={() => console.log(user)}>SUBMIT</button>
+      <button onClick={handleSubmit}>SUBMIT</button>
     </div>
   );
 };
