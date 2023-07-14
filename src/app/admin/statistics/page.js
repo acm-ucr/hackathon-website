@@ -7,9 +7,7 @@ const StatisticsPage = () => {
     <div className="h-screen w-full">
       <title>Admin | Statistics</title>
       <Title title="Statistics" />
-      hello
       <PieChart />
-      hello
     </div>
   );
 };
