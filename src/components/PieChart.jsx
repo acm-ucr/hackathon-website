@@ -38,7 +38,7 @@ const MyResponsivePie = () => (
   <div className="h-80">
     <ResponsivePie
       data={data}
-      margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+      margin={{ top: 0, right: 0, bottom: 0, left: 0 }} // was 40, 80, 80, 80
       innerRadius={0.5}
       padAngle={0.7}
       cornerRadius={3}
