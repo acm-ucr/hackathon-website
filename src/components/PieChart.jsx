@@ -82,7 +82,7 @@ const MyResponsivePie = () => (
           match: {
             id: "ruby",
           },
-          id: "dots",
+          id: "solid",
         },
         {
           match: {
@@ -124,7 +124,7 @@ const MyResponsivePie = () => (
           match: {
             id: "javascript",
           },
-          id: "lines",
+          id: "solid",
         },
       ]}
       legends={[
