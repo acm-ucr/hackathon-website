@@ -129,12 +129,12 @@ const MyResponsivePie = () => (
       ]}
       legends={[
         {
-          anchor: "bottom",
-          direction: "row",
+          anchor: "right",
+          direction: "column",
           justify: false,
           translateX: 0,
           translateY: 56,
-          itemsSpacing: 0,
+          itemsSpacing: 5,
           itemWidth: 100,
           itemHeight: 18,
           itemTextColor: "#999",
