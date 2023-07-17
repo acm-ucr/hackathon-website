@@ -9,9 +9,18 @@ const ProtectedPage = ({ title, children, restrictions }) => {
 
   useEffect(() => {
     console.log(status);
-    if (status != "authenticated") {
+    if (status !== "authenticated") {
       console.log("Not signed in");
       router.push("/login");
+      return;
+    }
+    if (
+      status === "authenticated" &&
+      restrictions.includes("hacker") &&
+      !session.user.role
+    ) {
+      console.log("Have not register");
+      router.push("/");
       return;
     }
     if (
@@ -20,7 +29,8 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       session.user.role !== "admin"
     ) {
       console.log("Dont have admin permissions");
-      router.push("/user/dashboard");
+      router.push("/");
+      return;
     }
   }, [status]);
 
