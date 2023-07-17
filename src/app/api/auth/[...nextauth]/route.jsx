@@ -34,7 +34,7 @@ export const authOptions = {
       return token;
     },
     session({ session, user }) {
-      session.user.role = user.role;
+      session.user = user;
       // console.log(session);
       return session;
     },

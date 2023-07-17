@@ -1,7 +1,12 @@
 import React from "react";
+import ProtectedPage from "@/components/ProtectedPage";
 
 const Page = () => {
-  return <div>Page</div>;
+  return (
+    <ProtectedPage title="User | Dashboard" restrictions={["hacker"]}>
+      <div>Page</div>;
+    </ProtectedPage>
+  );
 };
 
 export default Page;

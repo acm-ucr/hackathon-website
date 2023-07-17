@@ -21,7 +21,7 @@ export const metadata = {
 export default function RootLayout({ children, session }) {
   return (
     <html lang="en">
-      <SessionProvider session={session}>
+      <SessionProvider session={session} refetchInterval={5 * 60}>
         <body className={`${poppins.variable} flex flex-col lg:flex-row`}>
           <Navigation />
           <div className="flex justify-center items-start w-full bg-hackathon-page z-0">
