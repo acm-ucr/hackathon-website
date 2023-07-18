@@ -16,8 +16,10 @@ const Judging = () => {
   };
 
   const handleSubmit = () => {
-    const judgesFormatted = input.split(",").map((judge) => judge.trim());
-    setJudges({ ...judges, [judges.current]: judgesFormatted });
+    setJudges({
+      ...judges,
+      [judges.current]: [...judges[judges.current], input],
+    });
   };
 
   const removeJudge = (judge, index) => {
