@@ -50,7 +50,7 @@ const Participant = ({
     }
   };
   return (
-    <Card eventKey={index} className="!rounded-none ">
+    <Card eventKey={index} className="!rounded-none border-t-0">
       <Card.Header
         className={
           "flex items-center focus:!ring-0 focus:!bg-hackathon-green-100 " +
