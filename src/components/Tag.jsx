@@ -40,7 +40,7 @@ const Tag = ({ text, name, onClick }) => {
 
   return (
     <div
-      className={`${color.background} ${color.text} ${color.hover} px-2 py-1 rounded w-fit hover:cursor-pointer`}
+      className={`${color.background} ${color.text} ${color.hover} px-2 rounded-full text-base w-fit hover:cursor-pointer`}
       onClick={onClick}
     >
       {name ? name : text}
