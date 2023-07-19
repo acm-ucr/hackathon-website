@@ -6,7 +6,7 @@ import Team from "./Team";
 import Filters from "@/components/Filters";
 import SortIcon from "./SortIcon";
 import Toolbar from "@/components/Toolbar";
-
+import Title from "./Title";
 const teams = [
   {
     uid: 1,
@@ -176,13 +176,16 @@ const Teams = () => {
 
   return (
     <div>
-      <Filters
-        filters={filters}
-        setFilters={setFilters}
-        setfilteredObjects={setFilteredTeams}
-        objects={teams}
-        input={input}
-      />
+      <div className="flex mb-3 mt-4">
+        <Title title="Teams" />
+        <Filters
+          filters={filters}
+          setFilters={setFilters}
+          setfilteredObjects={setFilteredTeams}
+          objects={teams}
+          input={input}
+        />
+      </div>
       <Toolbar
         input={input}
         setInput={setInput}
@@ -192,7 +195,7 @@ const Teams = () => {
         filters={filters}
         reset={teams}
       />
-      <div className="text-sm rounded-sm flex font-bold text-white bg-hackathon-blue-200 py-1.5">
+      <div className="text-sm rounded-t-xl flex font-bold text-white bg-hackathon-blue-200 py-1.5">
         {headers.map((header, index) => (
           <div
             key={index}
