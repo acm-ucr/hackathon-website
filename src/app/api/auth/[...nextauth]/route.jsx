@@ -7,7 +7,10 @@ export const authOptions = {
   // eslint-disable-next-line new-cap
   adapter: FirestoreAdapter({
     credential: cert({
-      projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+      projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID.replace(
+        /\\n/gm,
+        "\n"
+      ),
       clientEmail: process.env.NEXT_PUBLIC_FIREBASE_CLIENT_EMAIL,
       privateKey: process.env.NEXT_PUBLIC_FIREBASE_PRIVATE_KEY,
     }),
