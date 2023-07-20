@@ -32,6 +32,15 @@ jobs:
   build:
     name: build
     runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16.14.2"
+      - run: npm ci
+      - run: npm run build
     env:
       NEXT_PUBLIC_FIREBASE_API_KEY: ${{secrets.NEXT_PUBLIC_FIREBASE_API_KEY}}
       NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN}}
@@ -45,12 +54,3 @@ jobs:
       NEXT_PUBLIC_GOOGLE_CLIENT_SECRET: ${{secrets.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET}}
       NEXTAUTH_SECRET: ${{secrets.NEXTAUTH_SECRET}}
       NEXTAUTH_URL: ${{secrets.NEXTAUTH_URL}}
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "16.14.2"
-      - run: echo "$NEXTAUTH_SECRET"
-      - run: npm ci
-      - run: npm run build
