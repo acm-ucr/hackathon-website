@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image.js";
 // import Title from "../../../components/Title.jsx"
 import { QRCodeSVG } from "qrcode.react";
-import LOGO from "../../../../public/LOGO.png";
+import LOGO from "../../public/LOGO.png";
 
 const mockuser = {
   name: "Big Chungus",
