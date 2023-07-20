@@ -3,6 +3,7 @@ import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Poppins } from "next/font/google";
 import Navigation from "../components/Navigation";
+import { Toaster } from "react-hot-toast";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${poppins.variable} flex flex-col lg:flex-row`}>
+        <Toaster />
         <Navigation />
         <div className="flex justify-center items-start w-full bg-hackathon-page z-0">
           {children}
