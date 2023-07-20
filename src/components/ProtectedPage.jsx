@@ -9,6 +9,7 @@ const ProtectedPage = ({ title, children, restrictions }) => {
 
   useEffect(() => {
     console.log(status);
+    if (status === "loading") return;
     if (status !== "authenticated") {
       console.log("Not signed in");
       router.push("/login");
