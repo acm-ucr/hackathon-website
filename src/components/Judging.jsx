@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Radio from "../components/Radio";
+import toast from "react-hot-toast";
 
 const Judging = () => {
   const [input, setInput] = useState("");
@@ -16,8 +17,15 @@ const Judging = () => {
   };
 
   const handleSubmit = () => {
-    const judgesFormatted = input.split(",").map((judge) => judge.trim());
-    setJudges({ ...judges, [judges.current]: judgesFormatted });
+    if (judges.current === "") {
+      toast.error("Please select a type of judge!");
+      return;
+    }
+
+    setJudges({
+      ...judges,
+      [judges.current]: [...judges[judges.current], input],
+    });
   };
 
   const removeJudge = (judge, index) => {

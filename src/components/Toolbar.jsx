@@ -65,7 +65,7 @@ const Toolbar = ({
   };
 
   return (
-    <div className="w-2/3 flex items-center ">
+    <div className="my-2.5 w-2/3 flex items-center ">
       <div className="mr-4">
         <Checkbox onClick={selectAll} toggle={toggle} />
       </div>

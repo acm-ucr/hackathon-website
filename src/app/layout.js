@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Poppins } from "next/font/google";
 import Navigation from "../components/Navigation";
 import { SessionProvider } from "next-auth/react";
+import { Toaster } from "react-hot-toast";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -18,6 +19,7 @@ export default function RootLayout({ children, session }) {
     <html lang="en">
       <SessionProvider session={session} refetchInterval={5 * 60}>
         <body className={`${poppins.variable} flex flex-col lg:flex-row`}>
+          <Toaster />
           <Navigation />
           <div className="flex justify-center items-start w-full bg-hackathon-page z-0">
             {children}
