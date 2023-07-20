@@ -8,16 +8,14 @@ const ParticipantsPage = () => {
   const session = useSession();
   console.log(session);
 
-  if (session?.data?.user?.role === "admin") {
-    return (
-      <ProtectedPage title="Admin | Participants" restrictions={["admin"]}>
-        <div className="w-11/12">
-          <title>Admin | Participants</title>
-          <Participants />
-        </div>
-      </ProtectedPage>
-    );
-  } else return <p>You are not authorized to view this page!</p>;
+  return (
+    <ProtectedPage title="Admin | Participants" restrictions={["admin"]}>
+      <div className="w-11/12">
+        <title>Admin | Participants</title>
+        <Participants />
+      </div>
+    </ProtectedPage>
+  );
 };
 
 export default ParticipantsPage;
