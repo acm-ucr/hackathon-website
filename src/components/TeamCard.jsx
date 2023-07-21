@@ -1,6 +1,7 @@
 import React from "react";
 import ProfileButton from "./ProfileButton";
 import { PiCopyBold } from "react-icons/pi";
+import { BiEdit, BiExit } from "react-icons/bi";
 
 const TeamCard = ({ team, devpost, members, teamID }) => {
   return (
@@ -17,8 +18,8 @@ const TeamCard = ({ team, devpost, members, teamID }) => {
         <PiCopyBold className="ml-auto" />
       </div>
       <div className="flex flex-row justify-between w-full mt-20 mb-2">
-        <ProfileButton name="leave the team" />
-        <ProfileButton name="edit" />
+        <ProfileButton name="leave the team" color="blue" icon={<BiExit />} />
+        <ProfileButton name="edit" color="blue" icon={<BiEdit />} />
       </div>
     </div>
   );
