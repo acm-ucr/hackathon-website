@@ -1,7 +1,6 @@
 import React from "react";
-
+import CheckIn from "../../../components/CheckIn.jsx";
 const Page = () => {
-  return <div>Page</div>;
+  return <CheckIn />;
 };
-
 export default Page;
