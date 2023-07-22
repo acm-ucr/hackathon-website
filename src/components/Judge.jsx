@@ -38,7 +38,7 @@ const Judge = ({ type, name, email }) => {
           <div>{type}</div>
         </div>
       </div>
-      <div className="text-lg w-[27%] ">{email}</div>
+      <div className="text-lg w-[27%] mr-4">{email}</div>
     </Card>
   );
 };
