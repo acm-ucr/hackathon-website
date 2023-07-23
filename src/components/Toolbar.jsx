@@ -91,7 +91,12 @@ const Toolbar = ({
           <HiSearch size={30} className="ml-2" />
         </button>
       </form>
-      <button onClick={handleReset}>Clear</button>
+      <button
+        onClick={handleReset}
+        className={`bg-hackathon-tags-gray-bg text-hackathon-tags-gray-text hover:shadow-[inset_0px_0px_0px_2px_#969696] px-2 rounded-full text-base w-fit hover:cursor-pointer`}
+      >
+        Reset
+      </button>
     </div>
   );
 };
