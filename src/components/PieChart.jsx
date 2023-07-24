@@ -6,19 +6,16 @@ const data = [
     id: "rejected",
     label: "rejected",
     value: 34,
-    color: "hsl(327, 70%, 50%)",
   },
   {
     id: "accepted",
     label: "accepted",
     value: 56,
-    color: "hsl(35, 70%, 50%)",
   },
   {
     id: "pending",
     label: "pending",
     value: 56,
-    color: "hsl(199, 70%, 50%)",
   },
 ];
 
@@ -32,6 +29,8 @@ const MyResponsivePie = () => (
       cornerRadius={3}
       activeOuterRadiusOffset={8}
       borderWidth={1}
+      colors={["#38A3A5", "#57CC99", "#80ED99", "#277D72", "#83C5BE"]}
+      colorBy="index"
       borderColor={{
         from: "color",
         modifiers: [["darker", 0.2]],
