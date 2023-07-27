@@ -42,6 +42,7 @@ const Tag = ({ text, name, onClick, withHover = true }) => {
   return (
     <div
       className={`${color.background} ${color.text} ${inToolbar} ${pointCursor} px-2 rounded-full text-base w-fit `}
+
       onClick={onClick}
     >
       {name ? name : text}

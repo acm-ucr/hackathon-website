@@ -6,7 +6,7 @@ import SortIcon from "./SortIcon";
 import Filters from "@/components/Filters";
 import Participant from "./Participant";
 import Toolbar from "@/components/Toolbar";
-
+import Title from "./Title";
 const participants = [
   {
     uid: "1",
@@ -112,13 +112,16 @@ const Participants = () => {
 
   return (
     <div className="font-poppins">
-      <Filters
-        filters={filters}
-        setFilters={setFilters}
-        setfilteredObjects={setfilteredParticipants}
-        objects={participants}
-        input={input}
-      />
+      <div className="flex mb-3 mt-4">
+        <Title title="Participants" />
+        <Filters
+          filters={filters}
+          setFilters={setFilters}
+          setfilteredObjects={setfilteredParticipants}
+          objects={participants}
+          input={input}
+        />
+      </div>
       <Toolbar
         input={input}
         setInput={setInput}

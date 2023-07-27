@@ -3,34 +3,19 @@ import { ResponsivePie } from "@nivo/pie";
 
 const data = [
   {
-    id: "sass",
-    label: "sass",
-    value: 514,
-    color: "hsl(327, 70%, 50%)",
+    id: "rejected",
+    label: "rejected",
+    value: 34,
   },
   {
-    id: "javascript",
-    label: "javascript",
-    value: 43,
-    color: "hsl(35, 70%, 50%)",
+    id: "accepted",
+    label: "accepted",
+    value: 56,
   },
   {
-    id: "php",
-    label: "php",
-    value: 527,
-    color: "hsl(199, 70%, 50%)",
-  },
-  {
-    id: "hack",
-    label: "hack",
-    value: 356,
-    color: "hsl(213, 70%, 50%)",
-  },
-  {
-    id: "ruby",
-    label: "ruby",
-    value: 84,
-    color: "hsl(340, 70%, 50%)",
+    id: "pending",
+    label: "pending",
+    value: 56,
   },
 ];
 
