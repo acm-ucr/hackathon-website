@@ -1,21 +1,13 @@
 import React from "react";
-import Image from "next/image.js";
-// import Title from "../../../components/Title.jsx"
-import { QRCodeSVG } from "qrcode.react";
-import LOGO from "../../../../public/LOGO.png";
 import ProtectedPage from "@/components/ProtectedPage";
+import CheckinPage from "@/components/CheckIn";
 
-const user = {
-  name: "Big Chungus",
-  email: "big.chungus@email.com",
-  pfp: LOGO,
-};
-const CheckinPage = () => {
+const Page = () => {
   return (
     <ProtectedPage title="User | CheckIn" restrictions={["hacker"]}>
-      <CheckIn />
+      <CheckinPage />
     </ProtectedPage>
   );
 };
 
-export default CheckinPage;
+export default Page;
