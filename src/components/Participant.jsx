@@ -50,8 +50,13 @@ const Participant = ({
     }
   };
   return (
-    <Card eventKey={index} className="!rounded-none ">
-      <Card.Header className="flex items-center focus:!ring-0 focus:!bg-hackathon-green-100 !bg-transparent">
+    <Card className="!rounded-none border-t-0">
+      <Card.Header
+        className={
+          "flex items-center focus:!ring-0 focus:!bg-hackathon-green-100 " +
+          (participant.selected ? "!bg-green-100" : "!bg-transparent")
+        }
+      >
         <div className="flex items-center w-[4.5%]">
           <Checkbox onClick={handleSelect} toggle={participant.selected} />
         </div>
@@ -60,7 +65,7 @@ const Participant = ({
         <div className="w-1/5">{participant.team}</div>
         <div className="w-[21%]">{participant.major}</div>
         <div className="w-[12%]">
-          <Tag text={participant.status} />
+          <Tag text={participant.status} withHover={false} />
         </div>
         <Toggle eventKey={index} />
       </Card.Header>
