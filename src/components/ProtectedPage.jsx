@@ -6,7 +6,6 @@ import { useSession } from "next-auth/react";
 const ProtectedPage = ({ title, children, restrictions }) => {
   const router = useRouter();
   const { data: session, status } = useSession();
-
   useEffect(() => {
     if (status === "loading") return;
     if (status !== "authenticated") {
@@ -38,7 +37,7 @@ const ProtectedPage = ({ title, children, restrictions }) => {
     <>
       {status === "loading" && <>LOADING</>}
       {status === "authenticated" && (
-        <div>
+        <div className="w-full flex justify-center">
           <title>{title}</title>
           {children}
         </div>

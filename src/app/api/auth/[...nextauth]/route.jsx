@@ -27,14 +27,8 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    jwt({ token, user }) {
-      console.log(user);
-      if (user) token.role = user.role;
-      return token;
-    },
-    session({ session, user }) {
+    async session({ session, user }) {
       session.user = user;
-      // console.log(session);
       return session;
     },
   },
