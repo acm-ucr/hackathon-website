@@ -22,6 +22,7 @@ const Toolbar = ({
       handleReset();
       return;
     }
+    console.log("CALLED", objects, input);
 
     setFilteredObjects(
       objects.filter((a) => a.name.toLowerCase().match(input.toLowerCase()))
