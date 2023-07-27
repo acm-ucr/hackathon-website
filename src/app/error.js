@@ -16,12 +16,6 @@ export default function Error({ error }) {
         {error.message}
       </p>
       <p className="text-center text-sm md:text-lg  text-hackathon-blue-200"></p>
-      <button
-        onClick={() => reset()}
-        className="text-center text-base md:text-xl font-bold text-hackathon-green-200 no-underline"
-      >
-        Back To Home Page
-      </button>
     </div>
   );
 }

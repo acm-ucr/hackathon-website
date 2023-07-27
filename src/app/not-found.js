@@ -12,12 +12,6 @@ const error = () => {
       <p className="text-center text-sm md:text-lg  text-hackathon-blue-200">
         The page you are looking for does not seem to exist
       </p>
-      <a
-        href="/"
-        className="text-center text-base md:text-xl font-bold text-hackathon-green-200 no-underline"
-      >
-        Back To Home Page
-      </a>
     </div>
   );
 };
