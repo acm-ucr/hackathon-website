@@ -19,7 +19,7 @@ export const authOptions = {
           id: profile.sub,
           email: profile.email,
           name: profile.name,
-          picture: profile.picture,
+          image: profile.picture,
         };
       },
       clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
