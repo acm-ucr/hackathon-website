@@ -79,7 +79,7 @@ const Teams = ({
           </a>
         </div>
         <div className="m-0">
-          <Tag text={status} />
+          <Tag text={status} withHover={false} />
         </div>
       </Col>
       <div className="my-1 h-[2px] bg-hackathon-gray" />
