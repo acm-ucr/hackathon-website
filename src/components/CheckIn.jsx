@@ -8,6 +8,7 @@ const mockuser = {
   name: "Big Chungus",
   email: "big.chungus@email.com",
   pfp: LOGO,
+  uid: 123456789,
 };
 const CheckinPage = () => {
   return (
@@ -25,7 +26,7 @@ const CheckinPage = () => {
           <p className="text-base">{mockuser.email}</p>
         </div>
         <div className="bg-white w-2/3 h-1/3 lg:h-5/6 flex justify-center items-center flex-col rounded-lg m-auto">
-          <QRCodeSVG value={mockuser?.email} className="w-2/3 h-2/3" />
+          <QRCodeSVG value={mockuser?.uid} className="w-2/3 h-2/3" />
           <p className="text-2xl lg:text-xl">Show this to a lead</p>
         </div>
       </div>
