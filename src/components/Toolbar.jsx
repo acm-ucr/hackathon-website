@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import Checkbox from "./Checkbox";
 import { HiSearch } from "react-icons/hi";
 import Tag from "./Tag.jsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDownload } from "@fortawesome/free-solid-svg-icons";
 
 const Toolbar = ({
   input,
@@ -94,10 +96,18 @@ const Toolbar = ({
       </form>
       <button
         onClick={handleReset}
-        className={`bg-hackathon-tags-gray-bg text-hackathon-tags-gray-text hover:shadow-[inset_0px_0px_0px_2px_#969696] px-2 rounded-full text-base w-fit hover:cursor-pointer`}
+        className={
+          "bg-hackathon-tags-gray-bg text-hackathon-tags-gray-text hover:shadow-[inset_0px_0px_0px_2px_#969696] px-2 rounded-full text-base w-fit hover:cursor-pointer"
+        }
       >
         Reset
       </button>
+      <div>
+        <FontAwesomeIcon
+          icon={faDownload}
+          className="text-hackathon-darkgray hover:cursor-pointer ml-2 text-xl"
+        />
+      </div>
     </div>
   );
 };
