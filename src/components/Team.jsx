@@ -41,12 +41,10 @@ const Teams = ({
 
   return (
     <div className="w-full">
-      <Col
-        className={
-          "flex items-center focus:!ring-0 focus:!bg-hackathon-green-100 " +
+      <Col className={
+          "flex w-full focus:!ring-0 focus:!bg-hackathon-green-100 " +
           (selected ? "!bg-green-100" : "!bg-transparent")
-        }
-      >
+        }>
         <div className="pl-[7%] m-0 w-[52%]">
           <p className="m-0 flex font-semibold">
             <Checkbox onClick={handleSelect} toggle={selected} />
