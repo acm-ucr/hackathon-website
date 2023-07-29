@@ -41,17 +41,16 @@ const Teams = ({
 
   return (
     <div className="w-full">
-      <div className="flex font-semibold">
-        <div className=" flex items-center mx-2.5 w-[5%]">
-          <Checkbox onClick={handleSelect} toggle={selected} />
-        </div>
-        <p className="m-0">{teamName}</p>
-        {status == "winner" && (
-          <RiVipCrown2Fill className="ml-2 text-yellow-500 text-xl" />
-        )}
-      </div>
+
       <Col className="flex w-full">
         <div className="pl-[7%] m-0 w-[52%]">
+        <p className="m-0 flex font-semibold">
+        <Checkbox onClick={handleSelect} toggle={selected} />
+          {teamName}
+          {status == "winner" && (
+          <RiVipCrown2Fill className="ml-2 text-yellow-500 text-xl" />
+        )}
+        </p>
           {members.map((member, index) => (
             <Row key={index}>
               <Member name={member.name} email={member.email} />
