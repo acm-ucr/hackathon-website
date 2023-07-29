@@ -47,7 +47,7 @@ const Teams = ({
           (selected ? "!bg-green-100" : "!bg-transparent")
         }
       >
-        <div className="pl-[7%] m-0 w-[52%]">
+        <div className="pl-[7%] my-[5px] w-[52%]">
           <p className="m-0 flex font-semibold">
             <Checkbox onClick={handleSelect} toggle={selected} />
             {teamName}
@@ -66,7 +66,7 @@ const Teams = ({
             href={github}
             rel="noreferrer"
             target="_blank"
-            className="no-underline hover:opacity-70 text-black flex flex-row items-center"
+            className="no-underline hover:opacity-70 text-black flex flex-row items-center my-[2px]"
           >
             <SiGithub className="text-lg mr-1" />
             {github}
@@ -75,17 +75,17 @@ const Teams = ({
             href={devpost}
             rel="noreferrer"
             target="_blank"
-            className=" no-underline hover:opacity-70 text-black flex flex-row items-center"
+            className=" no-underline hover:opacity-70 text-black flex flex-row items-center my-[2px]"
           >
             <SiDevpost className="text-lg mr-1" />
             {devpost}
           </a>
         </div>
-        <div className="m-0">
+        <div className="my-[10px]">
           <Tag text={status} withHover={false} />
         </div>
       </Col>
-      <div className="my-1 h-[2px] bg-hackathon-gray" />
+      <div className="h-[3px] bg-hackathon-gray" />
     </div>
   );
 };
