@@ -110,8 +110,8 @@ const Judges = () => {
       />
       <div className="flex bg-white rounded-2xl flex-col">
         <div className="bg-hackathon-blue-200 flex text-white font-bold text-xl justify-around font-poppins items-center rounded-t-2xl">
-          <p className="">Name</p> <p className="">Type</p>{" "}
-          <p className="">Email</p>
+          <p className="">Name</p> <p className="">Email</p>{" "}
+          <p className="">Type</p>
         </div>
         <div className=" flex flex-col">
           {filteredJudges.map((judge, index) => (

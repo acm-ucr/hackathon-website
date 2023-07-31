@@ -85,7 +85,7 @@ const Teams = ({
           <Tag text={status} withHover={false} />
         </div>
       </Col>
-      <div className="h-[3px] bg-hackathon-gray" />
+      <div className="mt-1 h-[2px] bg-hackathon-gray" />
     </div>
   );
 };
