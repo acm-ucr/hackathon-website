@@ -1,12 +1,15 @@
 "use client";
 import Teams from "@/components/Teams";
 import React from "react";
+import ProtectedPage from "@/components/ProtectedPage";
 const TeamsPage = () => {
   return (
-    <div className="w-11/12">
-      <title>Admin | Teams</title>
-      <Teams />
-    </div>
+    <ProtectedPage title="Admin | Teams" restrictions={["admin"]}>
+      <div className="w-11/12">
+        <title></title>
+        <Teams />
+      </div>
+    </ProtectedPage>
   );
 };
 

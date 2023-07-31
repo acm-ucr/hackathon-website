@@ -26,7 +26,7 @@ const colors = {
   },
 };
 
-const Tag = ({ text, name, onClick }) => {
+const Tag = ({ text, name, onClick, withHover = true }) => {
   const color =
     text === "disqualified" || text === "rejected"
       ? colors["red"]
@@ -37,10 +37,11 @@ const Tag = ({ text, name, onClick }) => {
       : text === "pending"
       ? colors["gray"]
       : undefined;
-
+  const inToolbar = withHover ? color.hover : "";
+  const pointCursor = withHover ? "hover:cursor-pointer" : "";
   return (
     <div
-      className={`${color.background} ${color.text} ${color.hover} px-2 rounded-full text-base w-fit hover:cursor-pointer`}
+      className={`${color.background} ${color.text} ${inToolbar} ${pointCursor} px-2 rounded-full text-base w-fit `}
       onClick={onClick}
     >
       {name ? name : text}

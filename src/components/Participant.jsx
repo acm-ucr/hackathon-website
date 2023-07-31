@@ -65,7 +65,7 @@ const Participant = ({
         <div className="w-1/5">{participant.team}</div>
         <div className="w-[21%]">{participant.major}</div>
         <div className="w-[12%]">
-          <Tag text={participant.status} />
+          <Tag text={participant.status} withHover={false} />
         </div>
         <Toggle eventKey={index} />
       </Card.Header>

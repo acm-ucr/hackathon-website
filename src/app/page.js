@@ -1,6 +1,6 @@
-"use client";
+import LoginButton from "@/components/LoginButton";
 const Home = () => {
-  return <h1 style={{}}>HOME PAGE PLACEHOLDER</h1>;
+  return <LoginButton />;
 };
 
 export default Home;

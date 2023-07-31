@@ -1,6 +1,13 @@
 import React from "react";
-import CheckIn from "../../../components/CheckIn.jsx";
+import ProtectedPage from "@/components/ProtectedPage";
+import CheckinPage from "@/components/CheckIn";
+
 const Page = () => {
-  return <CheckIn />;
+  return (
+    <ProtectedPage title="User | CheckIn" restrictions={["hacker"]}>
+      <CheckinPage />
+    </ProtectedPage>
+  );
 };
+
 export default Page;
