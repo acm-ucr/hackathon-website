@@ -27,7 +27,11 @@ const Navigation = () => {
               setExpand(!expand);
             }}
           >
-            <Image src={LOGO} className="w-10 h-10 mx-2" />
+            <Image
+              src={LOGO}
+              className="w-10 h-10 mx-2"
+              alt="Picture of RoseHack Logo"
+            />
             <p className="text-white text-xl font-semibold my-0">
               {pathName.split("/")[2]}
             </p>
@@ -42,7 +46,11 @@ const Navigation = () => {
         >
           <div className="bg-hackathon-blue-200 h-screen flex flex-col justify-start items-center w-full">
             <div className="hidden lg:flex items-center my-3">
-              <Image src={LOGO} className=" scale-90" />
+              <Image
+                src={LOGO}
+                className=" scale-90"
+                alt="Picture of RoseHack Logo"
+              />
               <p className="text-white font-bold text-lg pr-2 m-0">ROSEHACK</p>
             </div>
             <div className="mt-[30%] w-full">
