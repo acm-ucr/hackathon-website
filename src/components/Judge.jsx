@@ -55,6 +55,7 @@ const Judge = ({
       </div>
 
       <div className="text-xl w-[34%] my-2">{name}</div>
+      <div className="text-lg w-[27%] mr-4">{email}</div>
       <div className="w-[28%]">
         <div
           className={`${colors[type].bg} ${colors[type].text} px-4 text-xl rounded-full w-fit bg-opacity-20`}
@@ -62,7 +63,6 @@ const Judge = ({
           <div>{type}</div>
         </div>
       </div>
-      <div className="text-lg w-[27%] mr-4">{email}</div>
     </Card>
   );
 };
