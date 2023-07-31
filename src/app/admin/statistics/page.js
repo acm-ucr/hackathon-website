@@ -8,7 +8,10 @@ const StatisticsPage = () => {
     <ProtectedPage title="Admin | Statistics" restrictions={["admin"]}>
       <div className="h-screen w-full">
         <Title title="Statistics" />
-        <PieChart />
+        <div className="flex flex-row w-full">
+          <PieChart />
+          <PieChart />
+        </div>
       </div>
     </ProtectedPage>
   );

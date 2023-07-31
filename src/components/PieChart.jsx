@@ -20,7 +20,7 @@ const data = [
 ];
 
 const MyResponsivePie = () => (
-  <div className="h-80">
+  <div className="h-80 w-full">
     <ResponsivePie
       data={data}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }} // was 40, 80, 80, 80
