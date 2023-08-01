@@ -49,7 +49,7 @@ const Judges = () => {
     {
       color: "green",
       text: "confirm",
-      name: "confirm",
+      name: "Confirm",
       onClick: (setToggle) => {
         setToggle(false);
         setFilteredJudges(
@@ -66,7 +66,7 @@ const Judges = () => {
     {
       color: "red",
       text: "remove",
-      name: "remove",
+      name: "Remove",
       onClick: (setToggle) => {
         setToggle(false);
         setFilteredJudges(
@@ -81,7 +81,7 @@ const Judges = () => {
     {
       color: "yellow",
       text: "pending",
-      name: "pending",
+      name: "Pending",
       onClick: (setToggle) => {
         setToggle(false);
         setFilteredJudges(
