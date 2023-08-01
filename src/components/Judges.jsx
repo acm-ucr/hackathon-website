@@ -151,19 +151,25 @@ const Judges = () => {
           ))}
         </div>
         <div className="w-full flex flex-col">
-          {filteredJudges.map((judge, index) => (
-            <Judge
-              uid={judge.uid}
-              setFilteredJudges={setFilteredJudges}
-              filteredJudges={filteredJudges}
-              key={index}
-              name={judge.name}
-              status={judge.status}
-              type={judge.type}
-              email={judge.email}
-              selected={judge.selected}
-            />
-          ))}
+          {filteredJudges.length > 0 ? (
+            filteredJudges.map((judge, index) => (
+              <Judge
+                uid={judge.uid}
+                setFilteredJudges={setFilteredJudges}
+                filteredJudges={filteredJudges}
+                key={index}
+                name={judge.name}
+                status={judge.status}
+                type={judge.type}
+                email={judge.email}
+                selected={judge.selected}
+              />
+            ))
+          ) : (
+            <p className="font-poppins text-hackathon-darkgray ml-5 my-1">
+              no judges
+            </p>
+          )}
         </div>
       </div>
     </div>
