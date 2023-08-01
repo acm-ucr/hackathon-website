@@ -1,21 +1,7 @@
 "use client";
 import React from "react";
 import Checkbox from "./Checkbox";
-import Card from "react-bootstrap/Card";
-const colors = {
-  professor: {
-    bg: "bg-hackathon-judge-professor-bg",
-    text: "text-hackathon-judge-professor-text",
-  },
-  student: {
-    bg: "bg-hackathon-judge-student-bg",
-    text: "text-hackathon-judge-student-text",
-  },
-  industry: {
-    bg: "bg-hackathon-judge-student-bg",
-    text: "text-hackathon-judge-student-text",
-  },
-};
+import Tag from "./Tag";
 
 const Judge = ({
   uid,
@@ -25,6 +11,7 @@ const Judge = ({
   selected,
   filteredJudges,
   setFilteredJudges,
+  status,
 }) => {
   const handleSelect = () => {
     setFilteredJudges(
@@ -36,25 +23,35 @@ const Judge = ({
       })
     );
   };
-  const cardBg = selected ? " !bg-green-100" : " !bg-transparent";
   return (
-    <Card
-      className={"flex flex-row items-center !rounded-none border-t-0" + cardBg}
+    <div
+      className={
+        " py-1 first:border-0 border-t-[1px] flex w-full focus:!ring-0 focus:!bg-hackathon-green-100 " +
+        (selected ? "!bg-green-100" : "!bg-transparent")
+      }
     >
-      <div className=" ml-4 w-[11%]">
+      <div className="w-[7%] flex justify-center">
         <Checkbox onClick={handleSelect} toggle={selected} />
       </div>
-
-      <div className="text-xl w-[34%] my-2">{name}</div>
-      <div className="text-lg w-[27%] mr-4">{email}</div>
-      <div className="w-[28%]">
-        <div
-          className={`${colors[type].bg} ${colors[type].text} px-4 text-xl rounded-full w-fit bg-opacity-20`}
-        >
-          <div>{type}</div>
-        </div>
+      <div className="w-1/5">{name}</div>
+      <div className="w-1/3">{email}</div>
+      <div className="w-1/5">
+        <Tag color={type} text={type} withHover={false} />
       </div>
-    </Card>
+      <div className="text-lg mr-4">
+        <Tag
+          color={
+            status === "pending"
+              ? "yellow"
+              : status === "confirmed"
+              ? "green"
+              : "gray"
+          }
+          text={status}
+          withHover={false}
+        />
+      </div>
+    </div>
   );
 };
 
