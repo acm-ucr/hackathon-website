@@ -48,7 +48,7 @@ const Tag = ({ color = "gray", text, name, onClick, withHover = true }) => {
   const pointCursor = withHover ? "hover:cursor-pointer" : "";
   return (
     <div
-      className={`${colors[color].background} ${colors[color].text} ${inToolbar} ${pointCursor} px-2 rounded-full text-base w-fit `}
+      className={`${colors[color].background} ${colors[color].text} ${inToolbar} ${pointCursor} px-2 rounded-full text-xs md:text-base w-fit `}
       onClick={onClick}
     >
       {name ? name : text}

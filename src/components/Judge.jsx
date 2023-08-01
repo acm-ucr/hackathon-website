@@ -33,9 +33,9 @@ const Judge = ({
       <div className="w-[7%] flex justify-center">
         <Checkbox onClick={handleSelect} toggle={selected} />
       </div>
-      <div className="w-1/5">{name}</div>
-      <div className="w-1/3">{email}</div>
-      <div className="w-1/5">
+      <div className="text-xs md:text-base w-1/5">{name}</div>
+      <div className="text-xs md:text-base w-1/3">{email}</div>
+      <div className="text-xs md:text-base w-1/5">
         <Tag color={type} text={type} withHover={false} />
       </div>
       <div className="text-lg mr-4">

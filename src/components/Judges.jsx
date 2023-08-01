@@ -105,8 +105,8 @@ const Judges = () => {
     { name: "Status", size: "", icon: true },
   ];
   return (
-    <div className="w-full">
-      <div className="flex mb-3 mt-4">
+    <div className="w-full h-screen">
+      <div className="flex pb-3 pt-4">
         <Title title="Judges" />
         <Filters
           filters={filters}
@@ -125,7 +125,7 @@ const Judges = () => {
         filters={filters}
         reset={judges}
       />
-      <div className="w-full flex bg-white rounded-2xl flex-col">
+      <div className="h-[80%] w-full flex bg-white rounded-2xl flex-col">
         <div className="w-full text-sm rounded-t-xl flex font-bold text-white bg-hackathon-blue-200 py-1.5">
           {headers.map((header, index) => (
             <div
@@ -150,7 +150,7 @@ const Judges = () => {
             </div>
           ))}
         </div>
-        <div className="w-full flex flex-col">
+        <div className="w-full flex flex-col overflow-scroll">
           {filteredJudges.length > 0 ? (
             filteredJudges.map((judge, index) => (
               <Judge
