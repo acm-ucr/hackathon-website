@@ -125,7 +125,7 @@ const Judges = () => {
         filters={filters}
         reset={judges}
       />
-      <div className="h-[80%] w-full flex bg-white rounded-2xl flex-col">
+      <div className="max-h-[80%] w-full flex bg-white rounded-2xl flex-col">
         <div className="w-full text-sm rounded-t-xl flex font-bold text-white bg-hackathon-blue-200 py-1.5">
           {headers.map((header, index) => (
             <div
