@@ -82,7 +82,21 @@ const Teams = ({
           </a>
         </div>
         <div className="my-[10px]">
-          <Tag text={status} withHover={false} />
+          <Tag
+            color={
+              status === "pending"
+                ? "yellow"
+                : status === "qualified"
+                ? "green"
+                : status === "disqualified"
+                ? "red"
+                : status === "winner"
+                ? "purple"
+                : "gray"
+            }
+            text={status}
+            withHover={false}
+          />
         </div>
       </Col>
       <div className="mt-1 h-[2px] bg-hackathon-gray" />
