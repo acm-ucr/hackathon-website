@@ -105,7 +105,7 @@ const Judges = () => {
     { name: "Status", size: "", icon: true },
   ];
   return (
-    <div className="w-full h-screen">
+    <div className="w-full font-poppins">
       <div className="flex pb-3 pt-4">
         <Title title="Judges" />
         <Filters
@@ -126,11 +126,11 @@ const Judges = () => {
         reset={judges}
       />
       <div className="max-h-[80%] w-full flex bg-white rounded-2xl flex-col">
-        <div className="w-full text-sm rounded-t-xl flex font-bold text-white bg-hackathon-blue-200 py-1.5">
+        <div className="w-full text-sm rounded-t-xl flex font-poppins text-white bg-hackathon-blue-200 py-2">
           {headers.map((header, index) => (
             <div
               key={index}
-              className={`${header.size} font-bold text-white flex items-center`}
+              className={`${header.size} font-semibold text-white flex items-center`}
             >
               {header.name}
               {header.icon && (
@@ -150,8 +150,8 @@ const Judges = () => {
             </div>
           ))}
         </div>
-        <div className="w-full flex flex-col overflow-scroll">
-          {filteredJudges.length > 0 ? (
+        <div className="w-full flex flex-col ">
+          {filteredJudges.length != 0 ? (
             filteredJudges.map((judge, index) => (
               <Judge
                 uid={judge.uid}
@@ -166,8 +166,8 @@ const Judges = () => {
               />
             ))
           ) : (
-            <p className="font-poppins text-hackathon-darkgray ml-5 my-1">
-              no judges
+            <p className="m-0 bg-white rounded-b-2xl p-4 text-center w-full text-hackathon-darkgray">
+              No judge to display
             </p>
           )}
         </div>
