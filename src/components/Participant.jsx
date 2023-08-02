@@ -61,11 +61,23 @@ const Participant = ({
           <Checkbox onClick={handleSelect} toggle={participant.selected} />
         </div>
         <div className="w-[17%]">{participant.name}</div>
-        <div className="w-[21%]">{participant.email}</div>
+        <div className="w-[21%]">{participant.email}</div>y
         <div className="w-1/5">{participant.team}</div>
         <div className="w-[21%]">{participant.major}</div>
         <div className="w-[12%]">
-          <Tag text={participant.status} />
+          <Tag
+            color={
+              participant.status === "pending"
+                ? "yellow"
+                : participant.status === "accepted"
+                ? "green"
+                : participant.status === "accepted"
+                ? "green"
+                : "gray"
+            }
+            text={participant.status}
+            withHover={false}
+          />
         </div>
         <Toggle eventKey={index} />
       </Card.Header>

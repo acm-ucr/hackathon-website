@@ -77,6 +77,7 @@ const Participants = () => {
 
   const tags = [
     {
+      color: "green",
       text: "accepted",
       name: "Accept",
       onClick: (setToggle) => {
@@ -93,6 +94,7 @@ const Participants = () => {
       },
     },
     {
+      color: "red",
       text: "rejected",
       name: "Reject",
       onClick: (setToggle) => {

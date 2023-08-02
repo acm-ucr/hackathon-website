@@ -125,6 +125,7 @@ const Teams = () => {
 
   const tags = [
     {
+      color: "purple",
       text: "winner",
       name: "Winner",
       onClick: (setToggle) => {
@@ -141,6 +142,7 @@ const Teams = () => {
       },
     },
     {
+      color: "red",
       text: "disqualified",
       name: "Disqualify",
       onClick: (setToggle) => {
@@ -157,6 +159,7 @@ const Teams = () => {
       },
     },
     {
+      color: "green",
       text: "qualified",
       name: "Qualify",
       onClick: (setToggle) => {

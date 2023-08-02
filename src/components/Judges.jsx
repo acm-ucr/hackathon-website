@@ -4,26 +4,29 @@ import Judge from "./Judge.jsx";
 import Title from "./Title.jsx";
 import Filters from "./Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
-
+import SortIcon from "./SortIcon.jsx";
 const judges = [
   {
     uid: 1,
     name: "Big Chungus",
-    status: "professor",
+    status: "confirmed",
+    type: "professor",
     email: "bigchungus101@email.com",
     selected: false,
   },
   {
     uid: 2,
     name: "Mario Kart",
-    status: "student",
+    status: "confirmed",
+    type: "student",
     email: "mariomoviegoated101@email.com",
     selected: false,
   },
   {
     uid: 3,
     name: "Ash Ketchum",
-    status: "industry",
+    type: "industry",
+    status: "pending",
     email: "ash.ketchum12@email.com",
     selected: false,
   },
@@ -33,21 +36,26 @@ const Judges = () => {
   const [filteredJudges, setFilteredJudges] = useState(judges);
   const [input, setInput] = useState("");
   const [filters, setFilters] = useState({
-    student: true,
-    industry: true,
-    professor: true,
+    pending: true,
+    confirmed: true,
+  });
+  const [sorts, setSorts] = useState({
+    name: "down",
+    team: "off",
+    status: "off",
   });
 
   const tags = [
     {
-      text: "qualified",
-      name: "student",
+      color: "green",
+      text: "confirm",
+      name: "Confirm",
       onClick: (setToggle) => {
         setToggle(false);
         setFilteredJudges(
           filteredJudges.map((a) => {
             if (a.selected === true) {
-              a.status = "student";
+              a.status = "confirmed";
               a.selected = false;
             }
             return a;
@@ -56,30 +64,30 @@ const Judges = () => {
       },
     },
     {
-      text: "disqualified",
-      name: "professor",
+      color: "red",
+      text: "remove",
+      name: "Remove",
       onClick: (setToggle) => {
         setToggle(false);
         setFilteredJudges(
-          filteredJudges.map((a) => {
-            if (a.selected === true) {
-              a.status = "professor";
-              a.selected = false;
+          filteredJudges.filter((a) => {
+            if (a.selected !== true) {
+              return a;
             }
-            return a;
           })
         );
       },
     },
     {
-      text: "winner",
-      name: "industry",
+      color: "yellow",
+      text: "pending",
+      name: "Pending",
       onClick: (setToggle) => {
         setToggle(false);
         setFilteredJudges(
           filteredJudges.map((a) => {
             if (a.selected === true) {
-              a.status = "industry";
+              a.status = "pending";
               a.selected = false;
             }
             return a;
@@ -89,16 +97,25 @@ const Judges = () => {
     },
   ];
 
+  const headers = [
+    { name: "", size: "w-[7%]", icon: false },
+    { name: "Name", size: "w-1/5", icon: true },
+    { name: "Email", size: "w-1/3", icon: false },
+    { name: "Type", size: "w-1/5", icon: false },
+    { name: "Status", size: "", icon: true },
+  ];
   return (
-    <div className="w-full">
-      <Title title="Judges" />
-      <Filters
-        filters={filters}
-        setFilters={setFilters}
-        setfilteredObjects={setFilteredJudges}
-        objects={judges}
-        input={input}
-      />
+    <div className="w-full h-screen">
+      <div className="flex pb-3 pt-4">
+        <Title title="Judges" />
+        <Filters
+          filters={filters}
+          setFilters={setFilters}
+          setfilteredObjects={setFilteredJudges}
+          objects={judges}
+          input={input}
+        />
+      </div>
       <Toolbar
         input={input}
         setInput={setInput}
@@ -108,24 +125,51 @@ const Judges = () => {
         filters={filters}
         reset={judges}
       />
-      <div className="flex bg-white rounded-2xl flex-col">
-        <div className="bg-hackathon-blue-200 flex text-white font-bold text-xl justify-around font-poppins items-center rounded-t-2xl">
-          <p className="">Name</p> <p className="">Type</p>{" "}
-          <p className="">Email</p>
-        </div>
-        <div className=" flex flex-col">
-          {filteredJudges.map((judge, index) => (
-            <Judge
-              uid={judge.uid}
-              setFilteredJudges={setFilteredJudges}
-              filteredJudges={filteredJudges}
+      <div className="max-h-[80%] w-full flex bg-white rounded-2xl flex-col">
+        <div className="w-full text-sm rounded-t-xl flex font-bold text-white bg-hackathon-blue-200 py-1.5">
+          {headers.map((header, index) => (
+            <div
               key={index}
-              name={judge.name}
-              type={judge.status}
-              email={judge.email}
-              selected={judge.selected}
-            />
+              className={`${header.size} font-bold text-white flex items-center`}
+            >
+              {header.name}
+              {header.icon && (
+                <SortIcon
+                  name={header.name.toLowerCase()}
+                  sorts={sorts}
+                  setSorts={setSorts}
+                  setfilteredObjects={setFilteredJudges}
+                  objects={filteredJudges}
+                  reset={{
+                    name: "off",
+                    team: "off",
+                    status: "off",
+                  }}
+                />
+              )}
+            </div>
           ))}
+        </div>
+        <div className="w-full flex flex-col overflow-scroll">
+          {filteredJudges.length > 0 ? (
+            filteredJudges.map((judge, index) => (
+              <Judge
+                uid={judge.uid}
+                setFilteredJudges={setFilteredJudges}
+                filteredJudges={filteredJudges}
+                key={index}
+                name={judge.name}
+                status={judge.status}
+                type={judge.type}
+                email={judge.email}
+                selected={judge.selected}
+              />
+            ))
+          ) : (
+            <p className="font-poppins text-hackathon-darkgray ml-5 my-1">
+              no judges
+            </p>
+          )}
         </div>
       </div>
     </div>
