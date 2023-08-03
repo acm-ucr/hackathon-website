@@ -40,16 +40,18 @@ const Teams = ({
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full font-poppins">
       <Col
         className={
-          "flex w-full focus:!ring-0 focus:!bg-hackathon-green-100 " +
+          "border-t-[1px] border-hackathon-gray flex w-full focus:!ring-0 focus:!bg-hackathon-green-100 " +
           (selected ? "!bg-green-100" : "!bg-transparent")
         }
       >
-        <div className="pl-[7%] my-[5px] w-[52%]">
-          <p className="m-0 flex font-semibold">
-            <Checkbox onClick={handleSelect} toggle={selected} />
+        <div className="h-full items-start pl-3 pt-2">
+          <Checkbox onClick={handleSelect} toggle={selected} />
+        </div>
+        <div className="pl-[3%] my-2 w-2/5">
+          <p className="m-0 text-sm flex font-semibold">
             {teamName}
             {status == "winner" && (
               <RiVipCrown2Fill className="ml-2 text-yellow-500 text-xl" />
@@ -61,7 +63,7 @@ const Teams = ({
             </Row>
           ))}
         </div>
-        <div className="flex flex-col justify-start items-start text-sm w-1/3">
+        <div className=" pt-2 flex flex-col justify-start items-start text-sm w-[42%]">
           <a
             href={github}
             rel="noreferrer"
@@ -82,10 +84,23 @@ const Teams = ({
           </a>
         </div>
         <div className="my-[10px]">
-          <Tag text={status} withHover={false} />
+          <Tag
+            color={
+              status === "pending"
+                ? "yellow"
+                : status === "qualified"
+                ? "green"
+                : status === "disqualified"
+                ? "red"
+                : status === "winner"
+                ? "purple"
+                : "gray"
+            }
+            text={status}
+            withHover={false}
+          />
         </div>
       </Col>
-      <div className="h-[3px] bg-hackathon-gray" />
     </div>
   );
 };

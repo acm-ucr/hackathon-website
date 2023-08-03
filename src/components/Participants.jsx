@@ -51,7 +51,7 @@ const headers = [
   { name: "Name", size: "w-1/6", icon: true },
   { name: "Email", size: "w-1/5", icon: true },
   { name: "Team", size: "w-1/5", icon: true },
-  { name: "Major", size: "w-1/5", icon: true },
+  { name: "Major", size: "w-[22%]", icon: true },
   { name: "Status", size: "", icon: true },
 ];
 
@@ -77,6 +77,7 @@ const Participants = () => {
 
   const tags = [
     {
+      color: "green",
       text: "accepted",
       name: "Accept",
       onClick: (setToggle) => {
@@ -93,6 +94,7 @@ const Participants = () => {
       },
     },
     {
+      color: "red",
       text: "rejected",
       name: "Reject",
       onClick: (setToggle) => {
@@ -111,8 +113,8 @@ const Participants = () => {
   ];
 
   return (
-    <div className="font-poppins">
-      <div className="flex mb-3 mt-4">
+    <div className="max-h-[80%] font-poppins">
+      <div className="flex pb-3 pt-4">
         <Title title="Participants" />
         <Filters
           filters={filters}
@@ -131,11 +133,11 @@ const Participants = () => {
         filters={filters}
         reset={participants}
       />
-      <div className="flex bg-hackathon-blue-200 py-2 rounded-t !z-[1000]">
+      <div className="flex bg-hackathon-blue-200 py-2 rounded-t-xl !z-[1000]">
         {headers.map((header, index) => (
           <div
             key={index}
-            className={`${header.size} font-bold text-white flex items-center`}
+            className={`${header.size} font-semibold text-sm text-white flex items-center`}
           >
             {header.name}
             {header.icon && (
@@ -157,17 +159,23 @@ const Participants = () => {
           </div>
         ))}
       </div>
-      <Accordion>
-        {filteredParticipants.map((participant, index) => (
-          <Participant
-            key={index}
-            participant={participant}
-            index={index}
-            setfilteredParticipants={setfilteredParticipants}
-            filteredParticipants={filteredParticipants}
-          />
-        ))}
-      </Accordion>
+      {filteredParticipants.length != 0 ? (
+        <Accordion>
+          {filteredParticipants.map((participant, index) => (
+            <Participant
+              key={index}
+              participant={participant}
+              index={index}
+              setfilteredParticipants={setfilteredParticipants}
+              filteredParticipants={filteredParticipants}
+            />
+          ))}
+        </Accordion>
+      ) : (
+        <p className=" text-hackathon-darkgray font-poppins bg-white p-4 text-center w-full rounded-b-2xl">
+          No participant to display
+        </p>
+      )}
     </div>
   );
 };

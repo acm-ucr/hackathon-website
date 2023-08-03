@@ -22,10 +22,17 @@ const Toolbar = ({
       handleReset();
       return;
     }
-    console.log("CALLED", objects, input);
-
     setFilteredObjects(
-      objects.filter((a) => a.name.toLowerCase().match(input.toLowerCase()))
+      reset.filter((a) => {
+        let boolean = false;
+
+        Object.keys(filters).map((value) => {
+          if (a.status === value && filters[value]) {
+            boolean = true;
+          }
+        });
+        return boolean && a.name.toLowerCase().match(input.toLowerCase());
+      })
     );
   };
 
@@ -78,6 +85,7 @@ const Toolbar = ({
             text={tag.text}
             name={tag.name}
             onClick={() => tag.onClick(setToggle)}
+            color={tag.color}
           />
         ))}
       </div>
