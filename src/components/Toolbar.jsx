@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import Checkbox from "./Checkbox";
 import { HiSearch } from "react-icons/hi";
 import Tag from "./Tag.jsx";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload } from "@fortawesome/free-solid-svg-icons";
+import { FaDownload } from "react-icons/fa";
 
 const Toolbar = ({
   input,
@@ -102,12 +101,12 @@ const Toolbar = ({
       >
         Reset
       </button>
-      <div>
-        <FontAwesomeIcon
-          icon={faDownload}
-          className="text-hackathon-darkgray hover:cursor-pointer ml-2 text-xl"
+      <button>
+        <FaDownload
+          size={22.5}
+          className="ml-2 text-hackathon-darkgray hover:cursor-pointer"
         />
-      </div>
+      </button>
     </div>
   );
 };
