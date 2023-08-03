@@ -33,11 +33,6 @@ export const AdminTabs = [
     icon: <BsBarChartFill className={iconStyle} />,
   },
   {
-    name: "website",
-    link: "/",
-    icon: <BsGlobe2 className={iconStyle} />,
-  },
-  {
     name: "volunteer",
     link: "/admin/volunteer",
     icon: <MdVolunteerActivism className={iconStyle} />,
@@ -46,6 +41,11 @@ export const AdminTabs = [
     name: "mentor",
     link: "/admin/mentor",
     icon: <BiSolidHelpCircle className={iconStyle} />,
+  },
+  {
+    name: "website",
+    link: "/",
+    icon: <BsGlobe2 className={iconStyle} />,
   },
   {
     name: "sign out",
