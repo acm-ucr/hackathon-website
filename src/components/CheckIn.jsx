@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image from "next/image.js";
 // import Title from "../../../components/Title.jsx"
@@ -9,6 +11,23 @@ const mockuser = {
   email: "big.chungus@email.com",
   pfp: LOGO,
 };
+
+const Timer = () => {
+  const date = new Date();
+  const [currentTime, setCurrentTime] = React.useState("");
+
+  React.useEffect(() => {
+    const letTime = date.toLocaleTimeString("en-US", { hour12: true });
+
+    const setTime = setInterval(() => {
+      setCurrentTime(letTime);
+    }, 1000);
+
+    return () => clearInterval(setTime);
+  }, [currentTime]);
+  return <> {currentTime} </>;
+};
+
 const CheckinPage = () => {
   return (
     <div className="flex w-full flex-col h-[calc(100vh-48px)]">
@@ -26,7 +45,7 @@ const CheckinPage = () => {
         </div>
         <div className="bg-white w-2/3 h-1/3 lg:h-5/6 flex justify-center items-center flex-col rounded-lg m-auto">
           <QRCodeSVG value={mockuser?.email} className="w-2/3 h-2/3" />
-          <p className="text-2xl lg:text-xl">Show this to a lead</p>
+          <Timer />
         </div>
       </div>
     </div>
