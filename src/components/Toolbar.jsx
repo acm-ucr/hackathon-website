@@ -23,10 +23,17 @@ const Toolbar = ({
       handleReset();
       return;
     }
-    console.log("CALLED", objects, input);
-
     setFilteredObjects(
-      objects.filter((a) => a.name.toLowerCase().match(input.toLowerCase()))
+      reset.filter((a) => {
+        let boolean = false;
+
+        Object.keys(filters).map((value) => {
+          if (a.status === value && filters[value]) {
+            boolean = true;
+          }
+        });
+        return boolean && a.name.toLowerCase().match(input.toLowerCase());
+      })
     );
   };
 
@@ -67,46 +74,46 @@ const Toolbar = ({
   };
 
   return (
-    <div className="my-2.5 w-2/3 flex items-center ">
-      <div className="mr-4">
-        <Checkbox onClick={selectAll} toggle={toggle} />
-      </div>
-
-      <div className="flex flex-row gap-2 ">
-        {tags.map((tag, index) => (
-          <Tag
-            key={index}
-            text={tag.text}
-            name={tag.name}
-            onClick={() => tag.onClick(setToggle)}
+    <div className="w-full flex justify-between items-center">
+      <div className="my-2.5 w-2/3 flex items-center">
+        <div className="mr-4">
+          <Checkbox onClick={selectAll} toggle={toggle} />
+        </div>
+        <div className="flex flex-row gap-2 ">
+          {tags.map((tag, index) => (
+            <Tag
+              key={index}
+              text={tag.text}
+              name={tag.name}
+              onClick={() => tag.onClick(setToggle)}
+              color={tag.color}
+            />
+          ))}
+        </div>
+        <form className="flex ml-2 w-full items-center" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            className="px-2 py-1 w-full bg-hackathon-gray rounded-full focus:outline-none"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
           />
-        ))}
-      </div>
-      <form className="flex ml-2 w-full items-center" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          className="px-2 py-1 w-full bg-hackathon-gray rounded-full focus:outline-none"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-        <button className=" text-hackathon-darkgray rounded focus:outline-none">
-          <HiSearch size={30} className="ml-2" />
+          <button className=" text-hackathon-darkgray rounded focus:outline-none">
+            <HiSearch size={30} className="ml-2" />
+          </button>
+        </form>
+        <button
+          onClick={handleReset}
+          className={
+            "bg-hackathon-tags-gray-bg text-hackathon-tags-gray-text hover:shadow-[inset_0px_0px_0px_2px_#969696] px-2 rounded-full text-base w-fit hover:cursor-pointer"
+          }
+        >
+          Reset
         </button>
-      </form>
-      <button
-        onClick={handleReset}
-        className={
-          "bg-hackathon-tags-gray-bg text-hackathon-tags-gray-text hover:shadow-[inset_0px_0px_0px_2px_#969696] px-2 rounded-full text-base w-fit hover:cursor-pointer"
-        }
-      >
-        Reset
-      </button>
-      <button>
-        <FaDownload
-          size={22.5}
-          className="ml-2 text-hackathon-darkgray hover:cursor-pointer"
-        />
-      </button>
+      </div>
+      <FaDownload
+        size={22.5}
+        className="ml-2 text-hackathon-darkgray hover:cursor-pointer"
+      />
     </div>
   );
 };

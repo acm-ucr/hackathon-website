@@ -100,9 +100,9 @@ const teams = [
 
 const headers = [
   { name: "", size: "w-[7%]", icon: false },
-  { name: "Name", size: "w-1/4", icon: true },
+  { name: "Name", size: "w-[18%]", icon: true },
   { name: "Email", size: "w-1/5", icon: false },
-  { name: "Links", size: "w-4/12", icon: false },
+  { name: "Links", size: "w-[41%]", icon: false },
   { name: "Status", size: "", icon: true },
 ];
 
@@ -125,6 +125,7 @@ const Teams = () => {
 
   const tags = [
     {
+      color: "purple",
       text: "winner",
       name: "Winner",
       onClick: (setToggle) => {
@@ -141,6 +142,7 @@ const Teams = () => {
       },
     },
     {
+      color: "red",
       text: "disqualified",
       name: "Disqualify",
       onClick: (setToggle) => {
@@ -157,6 +159,7 @@ const Teams = () => {
       },
     },
     {
+      color: "green",
       text: "qualified",
       name: "Qualify",
       onClick: (setToggle) => {
@@ -175,8 +178,8 @@ const Teams = () => {
   ];
 
   return (
-    <div>
-      <div className="flex mb-3 mt-4">
+    <div className="max-h-[80%] font-poppins">
+      <div className="flex pb-3 pt-4">
         <Title title="Teams" />
         <Filters
           filters={filters}
@@ -195,11 +198,11 @@ const Teams = () => {
         filters={filters}
         reset={teams}
       />
-      <div className="text-sm rounded-t-xl flex font-bold text-white bg-hackathon-blue-200 py-1.5">
+      <div className=" py-2 text-sm rounded-t-xl flex text-white bg-hackathon-blue-200">
         {headers.map((header, index) => (
           <div
             key={index}
-            className={`${header.size} font-bold text-white flex items-center`}
+            className={`${header.size} font-semibold text-white flex items-center`}
           >
             {header.name}
             {header.icon && (
@@ -219,22 +222,28 @@ const Teams = () => {
           </div>
         ))}
       </div>
-      <Col className="bg-white">
-        {filteredTeams.map((team, index) => (
-          <Row key={index}>
-            <Team
-              uid={team.uid}
-              teamName={team.name}
-              github={team.github}
-              devpost={team.devpost}
-              status={team.status}
-              members={team.members}
-              selected={team.selected}
-              filteredTeams={filteredTeams}
-              setFilteredTeams={setFilteredTeams}
-            />
-          </Row>
-        ))}
+      <Col className="bg-white last:rounded-b-2xl">
+        {filteredTeams.length != 0 ? (
+          filteredTeams.map((team, index) => (
+            <Row key={index}>
+              <Team
+                uid={team.uid}
+                teamName={team.name}
+                github={team.github}
+                devpost={team.devpost}
+                status={team.status}
+                members={team.members}
+                selected={team.selected}
+                filteredTeams={filteredTeams}
+                setFilteredTeams={setFilteredTeams}
+              />
+            </Row>
+          ))
+        ) : (
+          <p className=" text-hackathon-darkgray font-poppins bg-white p-4 text-center rounded-b-2xl w-full">
+            No team to display
+          </p>
+        )}
       </Col>
     </div>
   );

@@ -1,21 +1,7 @@
 "use client";
 import React from "react";
 import Checkbox from "./Checkbox";
-import Card from "react-bootstrap/Card";
-const colors = {
-  professor: {
-    bg: "bg-hackathon-judge-professor-bg",
-    text: "text-hackathon-judge-professor-text",
-  },
-  student: {
-    bg: "bg-hackathon-judge-student-bg",
-    text: "text-hackathon-judge-student-text",
-  },
-  industry: {
-    bg: "bg-hackathon-judge-student-bg",
-    text: "text-hackathon-judge-student-text",
-  },
-};
+import Tag from "./Tag";
 
 const Judge = ({
   uid,
@@ -25,45 +11,47 @@ const Judge = ({
   selected,
   filteredJudges,
   setFilteredJudges,
+  status,
 }) => {
   const handleSelect = () => {
-    if (!selected) {
-      setFilteredJudges(
-        filteredJudges.map((a) => {
-          if (a.uid === uid) {
-            a.selected = true;
-          }
-          return a;
-        })
-      );
-    } else {
-      setFilteredTeams(
-        setFilteredJudges.map((a) => {
-          if (a.uid === uid) {
-            a.selected = false;
-          }
-          return a;
-        })
-      );
-    }
+    setFilteredJudges(
+      filteredJudges.map((a) => {
+        if (a.uid === uid) {
+          a.selected = !selected;
+        }
+        return a;
+      })
+    );
   };
-
   return (
-    <Card className="flex flex-row items-center !rounded-none border-t-0">
-      <div className=" ml-4 w-[11%]">
+    <div
+      className={
+        " py-2 first:border-0 border-t-[1px] border-hackathon-gray flex items-center w-full focus:!ring-0 focus:!bg-hackathon-green-100 " +
+        (selected ? "!bg-green-100" : "!bg-transparent")
+      }
+    >
+      <div className="w-[7%] flex justify-center items-center">
         <Checkbox onClick={handleSelect} toggle={selected} />
       </div>
-
-      <div className="text-xl w-[34%] my-2">{name}</div>
-      <div className="w-[28%]">
-        <div
-          className={`${colors[type].bg} ${colors[type].text} px-4 text-xl rounded-full w-fit bg-opacity-20`}
-        >
-          <div>{type}</div>
-        </div>
+      <div className=" font-semibold text-xs md:text-sm w-1/5">{name}</div>
+      <div className="text-xs md:text-sm w-1/3">{email}</div>
+      <div className="text-xs md:text-sm w-1/5">
+        <Tag color={type} text={type} withHover={false} />
       </div>
-      <div className="text-lg w-[27%] mr-4">{email}</div>
-    </Card>
+      <div className="text-lg mr-4">
+        <Tag
+          color={
+            status === "pending"
+              ? "yellow"
+              : status === "confirmed"
+              ? "green"
+              : "gray"
+          }
+          text={status}
+          withHover={false}
+        />
+      </div>
+    </div>
   );
 };
 
