@@ -21,7 +21,7 @@ export default function RootLayout({ children, session }) {
         <body className={`${poppins.variable} flex flex-col lg:flex-row`}>
           <Toaster />
           <Navigation />
-          <div className="flex justify-center items-start w-full bg-hackathon-page z-0">
+          <div className="flex justify-center items-start w-full bg-hackathon-page z-0 min-h-screen">
             {children}
           </div>
         </body>

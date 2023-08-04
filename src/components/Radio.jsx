@@ -7,19 +7,19 @@ const Radio = ({ text, field, options, user, setUser }) => {
   };
 
   return (
-    <div className=" mt-4 flex flex-col">
-      <p>{text}</p>
-      <div className="flex flex-wrap mt-2">
+    <div className="flex flex-col mt-3">
+      <p className="mb-0">{text}</p>
+      <div className="flex flex-wrap">
         {options.map((option, index) => (
           <div
-            className="flex items-center px-1 w-1/4"
+            className="flex items-center px-1 w-1/4 hover:cursor-pointer"
             key={index}
             onClick={() => handleClick(option)}
           >
             {option === user[field] ? (
-              <BsCircleFill className="mx-1 w-3.5 h-3.5 text-hackathon-green-300 border-[1.5px] rounded-full border-black" />
+              <BsCircleFill className="mx-1 w-3.5 h-3.5 text-hackathon-green-300 border-[1.5px] p-0.5 rounded-full border-black" />
             ) : (
-              <BsCircle className=" hover:cursor-pointer mx-1 h-3.5 w-3.5" />
+              <BsCircle className="mx-1 h-3.5 w-3.5" />
             )}
             {option}
           </div>
