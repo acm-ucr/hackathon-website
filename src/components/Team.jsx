@@ -40,30 +40,35 @@ const Teams = ({
   };
 
   return (
-    <div className="w-full">
-      <div className="flex font-semibold">
-        <div className=" flex items-center mx-2.5 w-[5%]">
+    <div className="w-full font-poppins">
+      <Col
+        className={
+          "border-t-[1px] border-hackathon-gray flex w-full focus:!ring-0 focus:!bg-hackathon-green-100 " +
+          (selected ? "!bg-green-100" : "!bg-transparent")
+        }
+      >
+        <div className="h-full items-start pl-3 pt-2">
           <Checkbox onClick={handleSelect} toggle={selected} />
         </div>
-        <p className="m-0">{teamName}</p>
-        {status == "winner" && (
-          <RiVipCrown2Fill className="ml-2 text-yellow-500 text-xl" />
-        )}
-      </div>
-      <Col className="flex w-full">
-        <div className="pl-[7%] m-0 w-[52%]">
+        <div className="pl-[3%] my-2 w-2/5">
+          <p className="m-0 text-sm flex font-semibold">
+            {teamName}
+            {status == "winner" && (
+              <RiVipCrown2Fill className="ml-2 text-yellow-500 text-xl" />
+            )}
+          </p>
           {members.map((member, index) => (
             <Row key={index}>
               <Member name={member.name} email={member.email} />
             </Row>
           ))}
         </div>
-        <div className="flex flex-col justify-start items-start text-sm w-1/3">
+        <div className=" pt-2 flex flex-col justify-start items-start text-sm w-[42%]">
           <a
             href={github}
             rel="noreferrer"
             target="_blank"
-            className="no-underline hover:opacity-70 text-black flex flex-row items-center"
+            className="no-underline hover:opacity-70 text-black flex flex-row items-center my-[2px]"
           >
             <SiGithub className="text-lg mr-1" />
             {github}
@@ -72,17 +77,30 @@ const Teams = ({
             href={devpost}
             rel="noreferrer"
             target="_blank"
-            className=" no-underline hover:opacity-70 text-black flex flex-row items-center"
+            className=" no-underline hover:opacity-70 text-black flex flex-row items-center my-[2px]"
           >
             <SiDevpost className="text-lg mr-1" />
             {devpost}
           </a>
         </div>
-        <div className="m-0">
-          <Tag text={status} withHover={false} />
+        <div className="my-[10px]">
+          <Tag
+            color={
+              status === "pending"
+                ? "yellow"
+                : status === "qualified"
+                ? "green"
+                : status === "disqualified"
+                ? "red"
+                : status === "winner"
+                ? "purple"
+                : "gray"
+            }
+            text={status}
+            withHover={false}
+          />
         </div>
       </Col>
-      <div className="my-1 h-[2px] bg-hackathon-gray" />
     </div>
   );
 };

@@ -30,7 +30,7 @@ const SortIcon = ({
       <TbTriangleFilled
         className={`${
           sorts[name] === "up" ? " text-hackathon-blue-100" : "hover:opacity-50"
-        } text-xs hover:cursor-pointer`}
+        } text-[8px] hover:cursor-pointer`}
         onClick={() => handleClick("up")}
       />
       <TbTriangleInvertedFilled
@@ -39,7 +39,7 @@ const SortIcon = ({
           sorts[name] === "down"
             ? " text-hackathon-blue-100"
             : "hover:opacity-50"
-        } text-xs hover:cursor-pointer`}
+        } text-[8px] hover:cursor-pointer`}
       />
     </div>
   );

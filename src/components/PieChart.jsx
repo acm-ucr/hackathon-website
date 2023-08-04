@@ -20,14 +20,14 @@ const data = [
 ];
 
 const MyResponsivePie = () => (
-  <div className="h-80">
+  <div className="h-80 w-full">
     <ResponsivePie
       data={data}
-      margin={{ top: 0, right: 0, bottom: 0, left: 0 }} // was 40, 80, 80, 80
+      margin={{ top: 10, right: 0, bottom: 10, left: 0 }} // was 40, 80, 80, 80
       innerRadius={0.5}
       padAngle={0.7}
       cornerRadius={3}
-      activeOuterRadiusOffset={8}
+      activeOuterRadiusOffset={5}
       borderWidth={1}
       colors={["#38A3A5", "#57CC99", "#80ED99", "#277D72", "#83C5BE"]}
       colorBy="index"
