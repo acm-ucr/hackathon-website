@@ -33,13 +33,13 @@ export const AdminTabs = [
     icon: <BsBarChartFill className={iconStyle} />,
   },
   {
-    name: "volunteer",
-    link: "/admin/volunteer",
+    name: "volunteers",
+    link: "/admin/volunteers",
     icon: <MdVolunteerActivism className={iconStyle} />,
   },
   {
-    name: "mentor",
-    link: "/admin/mentor",
+    name: "mentors",
+    link: "/admin/mentors",
     icon: <BiSolidHelpCircle className={iconStyle} />,
   },
   {
