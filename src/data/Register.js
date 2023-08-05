@@ -1,11 +1,4 @@
-export const Shirts = [
-  "Xtra Small",
-  "Small",
-  "Medium",
-  "Large",
-  "Xtra Large",
-  "Xtra Xtra Large",
-];
+export const Shirts = ["XS", "S", "M", "L", "XL", "XXL"];
 
 export const Grades = [
   "Less than Secondary / High School",
