@@ -120,7 +120,7 @@ const MyResponsivePie = () => (
           direction: "column",
           justify: false,
           translateX: 0,
-          translateY: 48,
+          translateY: 45,
           itemsSpacing: 5,
           itemWidth: 100,
           itemHeight: 18,
