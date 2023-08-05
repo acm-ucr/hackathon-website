@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
+import { FaPencil, FaCheck } from "react-icons/fa6";
 
-const Select = ({ options, user, field, setUser, placeholder, title }) => {
+const Select = ({
+  options,
+  user,
+  field,
+  setUser,
+  placeholder,
+  title,
+  editable = false,
+}) => {
+  const [edit, setEdit] = useState(false);
+
+  const handleEdit = () => {
+    setEdit(true);
+  };
+
+  const handleSave = () => {
+    setEdit(false);
+  };
+
   return (
     <div className="mt-3">
       <p className="mb-1">{title}</p>
+      {editable && !edit && (
+        <FaPencil className="hover:cursor-pointer" onClick={handleEdit} />
+      )}
+      {editable && edit && (
+        <FaCheck className="hover:cursor-pointer" onClick={handleSave} />
+      )}
       <Dropdown className="w-full m-0">
         <Dropdown.Toggle
           id="dropdown-toggle"
@@ -14,17 +39,19 @@ const Select = ({ options, user, field, setUser, placeholder, title }) => {
         >
           {user[field] || placeholder}
         </Dropdown.Toggle>
-        <Dropdown.Menu className="w-full bg-hackathon-green-100 !border-none !rounded-none !p-0">
-          {options.map((option, index) => (
-            <Dropdown.Item
-              className=" hover:!bg-hackathon-green-200 !bg-hackathon-green-100 overflow-hidden"
-              key={index}
-              onClick={() => setUser({ ...user, [field]: option })}
-            >
-              {option}
-            </Dropdown.Item>
-          ))}
-        </Dropdown.Menu>
+        {((editable && edit) || editable === false) && (
+          <Dropdown.Menu className="w-full bg-hackathon-green-100 !border-none !rounded-none !p-0">
+            {options.map((option, index) => (
+              <Dropdown.Item
+                className=" hover:!bg-hackathon-green-200 !bg-hackathon-green-100 overflow-hidden"
+                key={index}
+                onClick={() => setUser({ ...user, [field]: option })}
+              >
+                {option}
+              </Dropdown.Item>
+            ))}
+          </Dropdown.Menu>
+        )}
       </Dropdown>
     </div>
   );
