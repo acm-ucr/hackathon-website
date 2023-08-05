@@ -69,8 +69,8 @@ const Participant = ({
               ? "yellow"
               : participant.status === "accepted"
               ? "green"
-              : participant.status === "accepted"
-              ? "green"
+              : participant.status === "rejected"
+              ? "red"
               : "gray"
           }
           text={participant.status}
