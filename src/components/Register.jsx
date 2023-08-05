@@ -26,10 +26,6 @@ const Register = () => {
     },
   });
 
-  const handleInput = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
-
   const handleSubmit = () => {
     console.log(user);
     console.log(requirements);
@@ -56,7 +52,8 @@ const Register = () => {
               title="First Name"
               placeholder="John"
               value={user.first}
-              onChange={handleInput}
+              user={user}
+              setUser={setUser}
             />
           </Col>
           <Col xl={6}>
@@ -66,7 +63,8 @@ const Register = () => {
               title="Last Name"
               placeholder="Doe"
               value={user.last}
-              onChange={handleInput}
+              user={user}
+              setUser={setUser}
             />
           </Col>
           <Col xl={6}>
@@ -76,7 +74,8 @@ const Register = () => {
               title="Phone Number"
               placeholder="123 456 7890"
               value={user.phone}
-              onChange={handleInput}
+              user={user}
+              setUser={setUser}
             />
           </Col>
           <Col xl={6}>
@@ -86,7 +85,8 @@ const Register = () => {
               title="Email Address"
               placeholder="john_doe@gmail.com"
               value={user.email}
-              onChange={handleInput}
+              user={user}
+              setUser={setUser}
             />
           </Col>
           <Col xl={6}>

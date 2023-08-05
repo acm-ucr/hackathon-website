@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaPencil, FaCheck } from "react-icons/fa6";
 
-const Input = ({
+const Text = ({
   name,
   type,
   title,
@@ -30,7 +30,7 @@ const Input = ({
       {editable && edit && (
         <FaCheck className="hover:cursor-pointer" onClick={handleSave} />
       )}
-      <input
+      <textarea
         disabled={editable && !edit}
         className="pl-3 w-full focus:outline-none placeholder:text-hackathon-placeholder"
         type={type}
@@ -43,4 +43,4 @@ const Input = ({
   );
 };
 
-export default Input;
+export default Text;

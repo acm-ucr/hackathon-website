@@ -24,10 +24,6 @@ const Register = () => {
     },
   });
 
-  const handleInput = (e) => {
-    setVolunteer({ ...volunteer, [e.target.name]: e.target.value });
-  };
-
   const handleSubmit = () => {
     console.log(volunteer);
     console.log(requirements);
@@ -71,7 +67,8 @@ const Register = () => {
               title="First Name"
               placeholder="John"
               value={volunteer.first}
-              onChange={handleInput}
+              user={volunteer}
+              setUser={setVolunteer}
             />
           </Col>
           <Col xl={6}>
@@ -81,7 +78,8 @@ const Register = () => {
               title="Last Name"
               placeholder="Doe"
               value={volunteer.last}
-              onChange={handleInput}
+              user={volunteer}
+              setUser={setVolunteer}
             />
           </Col>
           <Col xl={6}>
@@ -91,7 +89,8 @@ const Register = () => {
               title="Phone Number"
               placeholder="123 456 7890"
               value={volunteer.phone}
-              onChange={handleInput}
+              user={volunteer}
+              setUser={setVolunteer}
             />
           </Col>
           <Col xl={6}>
@@ -101,7 +100,8 @@ const Register = () => {
               title="Email Address"
               placeholder="john_doe@gmail.com"
               value={volunteer.email}
-              onChange={handleInput}
+              user={volunteer}
+              setUser={setVolunteer}
             />
           </Col>
           <Col xl={12}>

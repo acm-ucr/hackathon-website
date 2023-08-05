@@ -9,6 +9,7 @@ import Input from "./Input";
 import { Row, Col } from "react-bootstrap";
 import Button from "./Button";
 import { Helper } from "../data/User";
+import Text from "./Text";
 
 const Register = () => {
   const [mentor, setMentor] = useState(Helper);
@@ -23,10 +24,6 @@ const Register = () => {
       text: "I understand that I will attend the event in person.",
     },
   });
-
-  const handleInput = (e) => {
-    setMentor({ ...mentor, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = () => {
     console.log(mentor);
@@ -73,7 +70,8 @@ const Register = () => {
               title="First Name"
               placeholder="John"
               value={mentor.first}
-              onChange={handleInput}
+              user={mentor}
+              setUser={setMentor}
             />
           </Col>
           <Col xl={6}>
@@ -83,7 +81,8 @@ const Register = () => {
               title="Last Name"
               placeholder="Doe"
               value={mentor.last}
-              onChange={handleInput}
+              user={mentor}
+              setUser={setMentor}
             />
           </Col>
           <Col xl={6}>
@@ -93,7 +92,8 @@ const Register = () => {
               title="Phone Number"
               placeholder="123 456 7890"
               value={mentor.phone}
-              onChange={handleInput}
+              user={mentor}
+              setUser={setMentor}
             />
           </Col>
           <Col xl={6}>
@@ -103,7 +103,8 @@ const Register = () => {
               title="Email Address"
               placeholder="john_doe@gmail.com"
               value={mentor.email}
-              onChange={handleInput}
+              user={mentor}
+              setUser={setMentor}
             />
           </Col>
           <Col xl={12}>
@@ -140,6 +141,17 @@ const Register = () => {
               text="Shirt Size"
               options={Shirts}
               field="shirt"
+              user={mentor}
+              setUser={setMentor}
+            />
+          </Col>
+          <Col xl={12}>
+            <Text
+              name="response"
+              type="email"
+              title="What skills and experience can you bring as a mentor?"
+              placeholder="I can bring..."
+              value={mentor.response}
               user={mentor}
               setUser={setMentor}
             />

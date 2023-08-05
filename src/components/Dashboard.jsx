@@ -19,10 +19,6 @@ const Dashboard = () => {
     team: "lololol",
   });
 
-  const handleInput = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
-
   return (
     <div className="w-full">
       <div className="flex justify-between items-center">
@@ -39,7 +35,8 @@ const Dashboard = () => {
             type="phone"
             title="Phone Number"
             value={user.phone}
-            onChange={handleInput}
+            user={user}
+            setUser={setUser}
             editable={true}
           />
           <Select
@@ -81,7 +78,8 @@ const Dashboard = () => {
             type="text"
             title="Team Name"
             value={user.team}
-            onChange={handleInput}
+            user={user}
+            setUser={setUser}
             editable={true}
           />
           <p>team id lolololololol</p>
@@ -90,7 +88,8 @@ const Dashboard = () => {
             type="text"
             title="Github Link"
             value={user.github}
-            onChange={handleInput}
+            user={user}
+            setUser={setUser}
             editable={true}
           />
           <Input
@@ -98,7 +97,8 @@ const Dashboard = () => {
             type="text"
             title="Devpost Link"
             value={user.devpost}
-            onChange={handleInput}
+            user={user}
+            setUser={setUser}
             editable={true}
           />
           <p>TEAM MEMBER 1</p>
