@@ -20,10 +20,10 @@ const data = [
 ];
 
 const MyResponsivePie = () => (
-  <div className="h-80 w-full">
+  <div className="h-[82%] w-full">
     <ResponsivePie
       data={data}
-      margin={{ top: 10, right: 0, bottom: 10, left: 0 }} // was 40, 80, 80, 80
+      margin={{ top: 10, right: 0, bottom: 19, left: 0 }} // was 40, 80, 80, 80
       innerRadius={0.5}
       padAngle={0.7}
       cornerRadius={3}
@@ -116,11 +116,11 @@ const MyResponsivePie = () => (
       ]}
       legends={[
         {
-          anchor: "right",
+          anchor: "top-right",
           direction: "column",
           justify: false,
           translateX: 0,
-          translateY: 56,
+          translateY: 48,
           itemsSpacing: 5,
           itemWidth: 100,
           itemHeight: 18,
