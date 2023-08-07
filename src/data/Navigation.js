@@ -7,7 +7,7 @@ import {
 } from "react-icons/bs";
 import { MdVolunteerActivism } from "react-icons/md";
 import { BiSolidHelpCircle } from "react-icons/bi";
-import { FaGavel } from "react-icons/fa";
+import { FaGavel, FaEnvelope } from "react-icons/fa";
 
 const iconStyle = "text-2xl mr-2 mt-2 mb-2";
 
@@ -33,14 +33,19 @@ export const AdminTabs = [
     icon: <BsBarChartFill className={iconStyle} />,
   },
   {
-    name: "volunteers",
-    link: "/admin/volunteers",
+    name: "volunteer",
+    link: "/admin/volunteer",
     icon: <MdVolunteerActivism className={iconStyle} />,
   },
   {
-    name: "mentors",
-    link: "/admin/mentors",
+    name: "mentor",
+    link: "/admin/mentor",
     icon: <BiSolidHelpCircle className={iconStyle} />,
+  },
+  {
+    name: "messenger",
+    link: "/admin/messenger",
+    icon: <FaEnvelope className={iconStyle} />,
   },
   {
     name: "website",
