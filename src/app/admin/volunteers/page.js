@@ -1,12 +1,16 @@
+"use client";
+import Volunteers from "@/components/Volunteers";
 import React from "react";
-import Title from "@/components/Title";
-
-const VolunteerPage = () => {
+import ProtectedPage from "@/components/ProtectedPage";
+const VolunteersPage = () => {
   return (
-    <div className="w-11/12">
-      <Title title="Volunteering" />
-    </div>
+    <ProtectedPage title="Admin | Volunteers" restrictions={["admin"]}>
+      <div className="w-11/12">
+        <title></title>
+        <Volunteers />
+      </div>
+    </ProtectedPage>
   );
 };
 
-export default VolunteerPage;
+export default VolunteersPage;
