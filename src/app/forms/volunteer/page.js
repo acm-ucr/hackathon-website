@@ -1,4 +1,4 @@
-import Volunteer from "@/components/Volunteer";
+import { Volunteer } from "@/components/Volunteer";
 import React from "react";
 
 const Page = () => {
