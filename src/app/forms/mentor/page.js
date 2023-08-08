@@ -1,4 +1,4 @@
-import Mentor from "@/components/Mentor";
+import { Mentor } from "@/components/Mentor";
 import React from "react";
 
 const Page = () => {
