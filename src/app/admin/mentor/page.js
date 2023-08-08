@@ -1,12 +1,16 @@
+"use client";
+import Mentors from "@/components/Mentors";
 import React from "react";
-import Title from "@/components/Title";
-
-const MentorPage = () => {
+import ProtectedPage from "@/components/ProtectedPage";
+const MentorsPage = () => {
   return (
-    <div className="w-11/12">
-      <Title title="Mentoring" />
-    </div>
+    <ProtectedPage title="Admin | Mentors" restrictions={["admin"]}>
+      <div className="w-11/12">
+        <title></title>
+        <Mentors />
+      </div>
+    </ProtectedPage>
   );
 };
 
-export default MentorPage;
+export default MentorsPage;
