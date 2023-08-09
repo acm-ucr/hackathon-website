@@ -1,8 +1,10 @@
-import React from "react";
+"use client";
+
 import Image from "next/image.js";
 import Title from "./Title.jsx";
 import { QRCodeSVG } from "qrcode.react";
 import LOGO from "../../public/LOGO.png";
+import { useState, useEffect } from "react";
 
 const mockuser = {
   name: "Big Chungus",
@@ -10,7 +12,18 @@ const mockuser = {
   pfp: LOGO,
   uid: 123456789,
 };
+
 const CheckinPage = () => {
+  const [date, setDate] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDate(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="flex w-full flex-col h-[calc(100vh-48px)]">
       <div className="pb-3 pt-4">
@@ -27,8 +40,8 @@ const CheckinPage = () => {
           <p className="text-base">{mockuser.email}</p>
         </div>
         <div className="bg-white w-2/3 h-1/3 lg:h-5/6 flex justify-center items-center flex-col rounded-lg m-auto">
-          <QRCodeSVG value={mockuser?.uid} className="w-2/3 h-2/3" />
-          <p className="text-2xl lg:text-xl">Show this to a lead</p>
+          <QRCodeSVG value={mockuser.email} className="w-2/3 h-2/3" />
+          {date.toLocaleTimeString("en-US", { hour12: true })}
         </div>
       </div>
     </div>
