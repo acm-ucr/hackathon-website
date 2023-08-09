@@ -125,6 +125,23 @@ const Teams = () => {
 
   const tags = [
     {
+      color: "green",
+      text: "qualified",
+      name: "Qualify",
+      onClick: (setToggle) => {
+        setToggle(false);
+        setFilteredTeams(
+          filteredTeams.map((a) => {
+            if (a.selected === true) {
+              a.status = "qualified";
+              a.selected = false;
+            }
+            return a;
+          })
+        );
+      },
+    },
+    {
       color: "purple",
       text: "winner",
       name: "Winner",
@@ -151,23 +168,6 @@ const Teams = () => {
           filteredTeams.map((a) => {
             if (a.selected === true) {
               a.status = "disqualified";
-              a.selected = false;
-            }
-            return a;
-          })
-        );
-      },
-    },
-    {
-      color: "green",
-      text: "qualified",
-      name: "Qualify",
-      onClick: (setToggle) => {
-        setToggle(false);
-        setFilteredTeams(
-          filteredTeams.map((a) => {
-            if (a.selected === true) {
-              a.status = "qualified";
               a.selected = false;
             }
             return a;
