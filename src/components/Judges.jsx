@@ -47,6 +47,23 @@ const Judges = () => {
 
   const tags = [
     {
+      color: "yellow",
+      text: "pending",
+      name: "Pending",
+      onClick: (setToggle) => {
+        setToggle(false);
+        setFilteredJudges(
+          filteredJudges.map((a) => {
+            if (a.selected === true) {
+              a.status = "pending";
+              a.selected = false;
+            }
+            return a;
+          })
+        );
+      },
+    },
+    {
       color: "green",
       text: "confirm",
       name: "Confirm",
@@ -63,10 +80,11 @@ const Judges = () => {
         );
       },
     },
+
     {
       color: "red",
-      text: "remove",
-      name: "Remove",
+      text: "not attending",
+      name: "Not Attending",
       onClick: (setToggle) => {
         setToggle(false);
         setFilteredJudges(
@@ -74,23 +92,6 @@ const Judges = () => {
             if (a.selected !== true) {
               return a;
             }
-          })
-        );
-      },
-    },
-    {
-      color: "yellow",
-      text: "pending",
-      name: "Pending",
-      onClick: (setToggle) => {
-        setToggle(false);
-        setFilteredJudges(
-          filteredJudges.map((a) => {
-            if (a.selected === true) {
-              a.status = "pending";
-              a.selected = false;
-            }
-            return a;
           })
         );
       },
