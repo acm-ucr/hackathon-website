@@ -5,6 +5,7 @@ import Image from "next/image.js";
 import Title from "./Title.jsx";
 import { QRCodeSVG } from "qrcode.react";
 import LOGO from "../../public/LOGO.png";
+import { useState } from "react";
 
 const mockuser = {
   name: "Big Chungus",
@@ -15,16 +16,14 @@ const mockuser = {
 
 const Timer = () => {
   const date = new Date();
-  const [currentTime, setCurrentTime] = React.useState("");
+  const [currentTime, setCurrentTime] = useState("date");
 
   React.useEffect(() => {
-    const letTime = date.toLocaleTimeString("en-US", { hour12: true });
-
-    const setTime = setInterval(() => {
-      setCurrentTime(letTime);
+    const letTime = setInterval(() => {
+      setCurrentTime(date.toLocaleTimeString("en-US", { hour12: true }));
     }, 1000);
 
-    return () => clearInterval(setTime);
+    return () => clearInterval(letTime);
   }, [currentTime]);
   return <> {currentTime} </>;
 };
