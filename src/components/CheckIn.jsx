@@ -10,6 +10,7 @@ const mockuser = {
   name: "Big Chungus",
   email: "big.chungus@email.com",
   pfp: LOGO,
+  uid: 123456789,
 };
 
 const Timer = () => {
@@ -39,6 +40,7 @@ const CheckinPage = () => {
           <Image
             src={mockuser.pfp}
             className="w-40 h-40 rounded-full overflow-hidden"
+            alt="Picture of user's profile"
           />
           <p className="text-2xl font-bold">{mockuser.name}</p>
           <p className="text-base">{mockuser.email}</p>
