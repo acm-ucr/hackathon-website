@@ -28,14 +28,9 @@ export const AdminTabs = [
     icon: <BsPeopleFill className={iconStyle} />,
   },
   {
-    name: "judging",
+    name: "judges",
     link: "/admin/judging",
     icon: <FaGavel className={iconStyle} />,
-  },
-  {
-    name: "statistics",
-    link: "/admin/statistics",
-    icon: <BsBarChartFill className={iconStyle} />,
   },
   {
     name: "volunteers",
@@ -46,6 +41,11 @@ export const AdminTabs = [
     name: "mentors",
     link: "/admin/mentors",
     icon: <BiSolidHelpCircle className={iconStyle} />,
+  },
+  {
+    name: "statistics",
+    link: "/admin/statistics",
+    icon: <BsBarChartFill className={iconStyle} />,
   },
   {
     name: "website",
