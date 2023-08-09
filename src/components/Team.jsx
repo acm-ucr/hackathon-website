@@ -87,13 +87,13 @@ const Teams = ({
           <Tag
             color={
               status === "pending"
-                ? "yellow"
+                ? "purple"
                 : status === "qualified"
                 ? "green"
                 : status === "disqualified"
                 ? "red"
                 : status === "winner"
-                ? "purple"
+                ? "yellow"
                 : "gray"
             }
             text={status}

@@ -5,7 +5,9 @@ import CheckinPage from "@/components/CheckIn";
 const Page = () => {
   return (
     <ProtectedPage title="User | CheckIn" restrictions={["hacker"]}>
-      <CheckinPage />
+      <div className="w-11/12">
+        <CheckinPage />
+      </div>
     </ProtectedPage>
   );
 };

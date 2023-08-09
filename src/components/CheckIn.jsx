@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image.js";
-// import Title from "../../../components/Title.jsx"
+import Title from "./Title.jsx";
 import { QRCodeSVG } from "qrcode.react";
 import LOGO from "../../public/LOGO.png";
 
@@ -32,9 +32,9 @@ const Timer = () => {
 const CheckinPage = () => {
   return (
     <div className="flex w-full flex-col h-[calc(100vh-48px)]">
-      <p className="hidden lg:block text-left text-3xl font-bold px-[1%] pt-[1%] m-0">
-        Check In
-      </p>
+      <div className="pb-3 pt-4">
+        <Title title="Check In" />
+      </div>
       <div className="flex flex-col h-full lg:flex-row">
         <div className="flex flex-col items-center m-auto">
           <Image
