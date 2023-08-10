@@ -1,7 +1,7 @@
 import React from "react";
 import Title from "@/components/Title";
 import Label from "@/components/Label.jsx";
-import PieChart from "@/components/PieChart";
+import PieChart from "@/components/Admin/PieChart";
 import ProtectedPage from "@/components/ProtectedPage";
 
 const StatisticsPage = () => {

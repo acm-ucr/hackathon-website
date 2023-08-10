@@ -1,4 +1,4 @@
-import Admin from "@/components/Admin";
+import Admin from "@/components/Forms/Admin";
 import React from "react";
 
 const Page = () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
-import Checkbox from "./Checkbox";
+import Checkbox from "../Checkbox";
 import Tag from "./Tag";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { IoIosArrowDown } from "react-icons/io";

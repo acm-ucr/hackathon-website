@@ -1,6 +1,6 @@
 import React from "react";
 // import ProtectedPage from "@/components/ProtectedPage";
-import Dashboard from "@/components/Dashboard";
+import Dashboard from "@/components/User/Dashboard";
 
 const Page = () => {
   return (

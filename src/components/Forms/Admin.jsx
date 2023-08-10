@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import User from "../data/User";
+import User from "../../data/User";
 import Radio from "@/components/Radio";
-import Checkbox from "./Checkbox";
-import Input from "./Input";
+import Checkbox from "../Checkbox";
+import Input from "../Input";
 import { Row, Col } from "react-bootstrap";
-import Button from "./Button";
+import Button from "../Button";
 
 const affiliations = [
   "ops",

@@ -3,10 +3,10 @@
 import React, { useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import SortIcon from "./SortIcon";
-import Filters from "@/components/Filters";
+import Filters from "@/components/Admin/Filters";
 import Participant from "./Participant";
-import Toolbar from "@/components/Toolbar";
-import Title from "./Title";
+import Toolbar from "@/components/Admin/Toolbar";
+import Title from "../Title";
 const participants = [
   {
     uid: "1",
