@@ -28,7 +28,7 @@ const Radio = ({ text, field, options, user, setUser, editable = false }) => {
       )}
       {editable && !edit && <div>{user[field]}</div>}
       {(!editable || (editable && edit)) && (
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap whitespace-nowrap">
           {options.map((option, index) => (
             <div
               className="flex items-center px-1 w-1/4 hover:cursor-pointer"

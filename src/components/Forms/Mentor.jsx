@@ -2,16 +2,16 @@
 
 import React, { useState } from "react";
 import Select from "@/components/Select";
-import { Majors, Grades, Genders, Shirts } from "../data/Register";
+import { Majors, Grades, Genders, Shirts } from "@/data/Register";
 import Radio from "@/components/Radio";
-import Checkbox from "./Checkbox";
-import Input from "./Input";
+import Checkbox from "@/components/Checkbox";
+import Input from "@/components/Input";
 import { Row, Col } from "react-bootstrap";
-import Button from "./Button";
-import { Helper } from "../data/User";
-import Text from "./Text";
+import Button from "@/components/Button";
+import { Helper } from "@/data/User";
+import Text from "@/components/Text";
 
-const Register = () => {
+const Mentor = () => {
   const [mentor, setMentor] = useState(Helper);
 
   const [requirements, setRequirements] = useState({
@@ -177,4 +177,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Mentor;

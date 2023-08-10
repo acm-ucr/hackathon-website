@@ -1,12 +1,12 @@
 import React from "react";
 import Title from "@/components/Title";
 
-const VolunteerPage = () => {
+const AdmissionsPage = () => {
   return (
     <div className="w-11/12">
-      <Title title="Volunteering" />
+      <Title title="Admissions" />
     </div>
   );
 };
 
-export default VolunteerPage;
+export default AdmissionsPage;

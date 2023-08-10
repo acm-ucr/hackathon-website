@@ -4,7 +4,7 @@ import Member from "./Member";
 import { RiVipCrown2Fill } from "react-icons/ri";
 import { SiGithub, SiDevpost } from "react-icons/si";
 import Tag from "./Tag";
-import Checkbox from "./Checkbox";
+import Checkbox from "../Checkbox";
 
 const Teams = ({
   uid,
@@ -87,13 +87,13 @@ const Teams = ({
           <Tag
             color={
               status === "pending"
-                ? "yellow"
+                ? "purple"
                 : status === "qualified"
                 ? "green"
                 : status === "disqualified"
                 ? "red"
                 : status === "winner"
-                ? "purple"
+                ? "yellow"
                 : "gray"
             }
             text={status}

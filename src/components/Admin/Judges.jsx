@@ -1,10 +1,16 @@
 "use client";
 import React, { useState } from "react";
 import Judge from "./Judge.jsx";
-import Title from "./Title.jsx";
+import Title from "../Title.jsx";
 import Filters from "./Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import SortIcon from "./SortIcon.jsx";
+import Radio from "../Radio.jsx";
+import User from "../../data/User.js";
+import { Col } from "react-bootstrap";
+
+const judgeType = ["student", "professor", "industry"];
+
 const judges = [
   {
     uid: 1,
@@ -35,6 +41,8 @@ const judges = [
 const Judges = () => {
   const [filteredJudges, setFilteredJudges] = useState(judges);
   const [input, setInput] = useState("");
+  const [user, setUser] = useState(User);
+
   const [filters, setFilters] = useState({
     pending: true,
     confirmed: true,
@@ -46,38 +54,6 @@ const Judges = () => {
   });
 
   const tags = [
-    {
-      color: "green",
-      text: "confirm",
-      name: "Confirm",
-      onClick: (setToggle) => {
-        setToggle(false);
-        setFilteredJudges(
-          filteredJudges.map((a) => {
-            if (a.selected === true) {
-              a.status = "confirmed";
-              a.selected = false;
-            }
-            return a;
-          })
-        );
-      },
-    },
-    {
-      color: "red",
-      text: "remove",
-      name: "Remove",
-      onClick: (setToggle) => {
-        setToggle(false);
-        setFilteredJudges(
-          filteredJudges.filter((a) => {
-            if (a.selected !== true) {
-              return a;
-            }
-          })
-        );
-      },
-    },
     {
       color: "yellow",
       text: "pending",
@@ -95,13 +71,46 @@ const Judges = () => {
         );
       },
     },
+    {
+      color: "green",
+      text: "confirm",
+      name: "Confirm",
+      onClick: (setToggle) => {
+        setToggle(false);
+        setFilteredJudges(
+          filteredJudges.map((a) => {
+            if (a.selected === true) {
+              a.status = "confirmed";
+              a.selected = false;
+            }
+            return a;
+          })
+        );
+      },
+    },
+
+    {
+      color: "red",
+      text: "not attending",
+      name: "Not Attending",
+      onClick: (setToggle) => {
+        setToggle(false);
+        setFilteredJudges(
+          filteredJudges.filter((a) => {
+            if (a.selected !== true) {
+              return a;
+            }
+          })
+        );
+      },
+    },
   ];
 
   const headers = [
     { name: "", size: "w-[7%]", icon: false },
     { name: "Name", size: "w-1/5", icon: true },
-    { name: "Email", size: "w-1/3", icon: false },
-    { name: "Type", size: "w-1/5", icon: false },
+    { name: "Email", size: "w-1/3", icon: true },
+    { name: "Type", size: "w-1/5", icon: true },
     { name: "Status", size: "", icon: true },
   ];
   return (
@@ -171,6 +180,30 @@ const Judges = () => {
             </p>
           )}
         </div>
+      </div>
+      <div className="flex flex-row items-center mx-10">
+        <div className="font-light text-sm mt-3">name</div>
+        <form>
+          <input className="w-3/5 bg-hackathon-gray rounded-full focus:outline-none mx-12 mt-3"></input>
+        </form>
+        <div className="font-light text-sm mt-3">email</div>
+        <form>
+          <input className="w-3/5 bg-hackathon-gray rounded-full focus:outline-none mx-12 mt-3"></input>
+        </form>
+        <Col xl={4} className="text-xs font-light">
+          <Radio
+            text=""
+            options={judgeType}
+            field="judgeType"
+            user={user}
+            setUser={setUser}
+          />
+        </Col>
+        {/* <Col xl={2}> */}
+        <button className="text-white whitespace-nowrap px-10 py-1 hover:opacity-50 text-xs font-semibold w-fit rounded-xl bg-hackathon-green-300 mt-3">
+          add judge
+        </button>
+        {/* </Col> */}
       </div>
     </div>
   );

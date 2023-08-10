@@ -1,16 +1,16 @@
 "use client";
-import Teams from "@/components/Admin/Teams";
+import Mentors from "@/components/Admin/Mentors";
 import React from "react";
 import ProtectedPage from "@/components/ProtectedPage";
-const TeamsPage = () => {
+const MentorsPage = () => {
   return (
-    <ProtectedPage title="Admin | Teams" restrictions={["admin"]}>
+    <ProtectedPage title="Admin | Mentors" restrictions={["admin"]}>
       <div className="w-11/12">
         <title></title>
-        <Teams />
+        <Mentors />
       </div>
     </ProtectedPage>
   );
 };
 
-export default TeamsPage;
+export default MentorsPage;
