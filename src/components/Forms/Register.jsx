@@ -1,16 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import User from "../data/User";
-import { Ages, Majors, Grades, Genders, Shirts } from "../data/Register";
-import { Schools } from "../data/Schools";
+import User from "../../data/User";
+import { Ages, Majors, Grades, Genders, Shirts } from "../../data/Register";
+import { Schools } from "../../data/Schools";
 import Select from "@/components/Select";
 import Radio from "@/components/Radio";
-import Upload from "@/components/Upload";
-import Checkbox from "./Checkbox";
-import Input from "./Input";
+import Upload from "@/components/Forms/Upload";
+import Checkbox from "../Checkbox";
+import Input from "../Input";
 import { Row, Col } from "react-bootstrap";
-import Button from "./Button";
+import Button from "../Button";
 
 const Register = () => {
   const [user, setUser] = useState(User);

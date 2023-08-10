@@ -2,13 +2,13 @@
 
 import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
-import { Volunteer } from "@/components/Volunteer";
-import Filters from "@/components/Filters";
+import Mentor from "@/components/Admin/Mentor";
+import Filters from "@/components/Admin/Filters";
 import SortIcon from "./SortIcon";
-import Toolbar from "@/components/Toolbar";
-import Title from "./Title";
+import Toolbar from "@/components/Admin/Toolbar";
+import Title from "../Title";
 
-const volunteers = [
+const mentors = [
   {
     uid: 1,
     name: "Raidah Fairooz",
@@ -51,8 +51,8 @@ const headers = [
   { name: "Status", size: "", icon: true },
 ];
 
-const Volunteers = () => {
-  const [filteredVolunteers, setFilteredVolunteers] = useState(volunteers);
+const Mentors = () => {
+  const [filteredMentors, setFilteredMentors] = useState(mentors);
   const [input, setInput] = useState("");
   const [filters, setFilters] = useState({
     online: true,
@@ -71,8 +71,8 @@ const Volunteers = () => {
       name: "Onsite",
       onClick: (setToggle) => {
         setToggle(false);
-        setFilteredVolunteers(
-          filteredVolunteers.map((a) => {
+        setFilteredMentors(
+          filteredMentors.map((a) => {
             if (a.selected === true) {
               a.status = "onsite";
               a.selected = false;
@@ -88,8 +88,8 @@ const Volunteers = () => {
       name: "Remove",
       onClick: (setToggle) => {
         setToggle(false);
-        setFilteredVolunteers(
-          filteredVolunteers.filter((a) => {
+        setFilteredMentors(
+          filteredMentors.filter((a) => {
             if (a.selected !== true) {
               return a;
             }
@@ -103,8 +103,8 @@ const Volunteers = () => {
       name: "Online",
       onClick: (setToggle) => {
         setToggle(false);
-        setFilteredVolunteers(
-          filteredVolunteers.map((a) => {
+        setFilteredMentors(
+          filteredMentors.map((a) => {
             if (a.selected === true) {
               a.status = "online";
               a.selected = false;
@@ -119,12 +119,12 @@ const Volunteers = () => {
   return (
     <div className="max-h-[80%] font-poppins">
       <div className="flex pb-3 pt-4">
-        <Title title="Volunteers" />
+        <Title title="Mentors" />
         <Filters
           filters={filters}
           setFilters={setFilters}
-          setfilteredObjects={setFilteredVolunteers}
-          objects={volunteers}
+          setfilteredObjects={setFilteredMentors}
+          objects={mentors}
           input={input}
         />
       </div>
@@ -132,10 +132,10 @@ const Volunteers = () => {
         input={input}
         setInput={setInput}
         tags={tags}
-        setFilteredObjects={setFilteredVolunteers}
-        objects={filteredVolunteers}
+        setFilteredObjects={setFilteredMentors}
+        objects={filteredMentors}
         filters={filters}
-        reset={volunteers}
+        reset={mentors}
       />
       <div className=" py-2 text-sm rounded-t-xl flex text-white bg-hackathon-blue-200">
         {headers.map((header, index) => (
@@ -149,8 +149,8 @@ const Volunteers = () => {
                 name={header.name.toLowerCase()}
                 sorts={sorts}
                 setSorts={setSorts}
-                setfilteredObjects={setFilteredVolunteers}
-                objects={filteredVolunteers}
+                setfilteredObjects={setFilteredMentors}
+                objects={filteredMentors}
                 reset={{
                   name: "off",
                   team: "off",
@@ -162,24 +162,24 @@ const Volunteers = () => {
         ))}
       </div>
       <Col className="bg-white last:rounded-b-2xl">
-        {filteredVolunteers.length != 0 ? (
-          filteredVolunteers.map((volunteer, index) => (
+        {filteredMentors.length != 0 ? (
+          filteredMentors.map((mentor, index) => (
             <Row key={index}>
-              <Volunteer
-                uid={volunteer.uid}
-                name={volunteer.name}
-                email={volunteer.email}
-                discord={volunteer.discord}
-                status={volunteer.status}
-                selected={volunteer.selected}
-                filteredVolunteers={filteredVolunteers}
-                setFilteredVolunteers={setFilteredVolunteers}
+              <Mentor
+                uid={mentor.uid}
+                name={mentor.name}
+                email={mentor.email}
+                discord={mentor.discord}
+                status={mentor.status}
+                selected={mentor.selected}
+                filteredMentors={filteredMentors}
+                setFilteredMentors={setFilteredMentors}
               />
             </Row>
           ))
         ) : (
           <p className=" text-hackathon-darkgray font-poppins bg-white p-4 text-center rounded-b-2xl w-full">
-            No Volunteers Available
+            No Mentors Signed Up
           </p>
         )}
       </Col>
@@ -187,4 +187,4 @@ const Volunteers = () => {
   );
 };
 
-export default Volunteers;
+export default Mentors;

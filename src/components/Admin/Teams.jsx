@@ -3,10 +3,10 @@
 import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import Team from "./Team";
-import Filters from "@/components/Filters";
+import Filters from "@/components/Admin/Filters";
 import SortIcon from "./SortIcon";
-import Toolbar from "@/components/Toolbar";
-import Title from "./Title";
+import Toolbar from "@/components/Admin/Toolbar";
+import Title from "../Title";
 const teams = [
   {
     uid: 1,

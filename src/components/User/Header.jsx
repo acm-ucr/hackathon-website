@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image.js";
 import LOGO from "../../public/LOGO.png";
 
-const ProfileHeader = ({ horizontal = true }) => {
+const Header = ({ horizontal = true }) => {
   const name = "Menthy Wu";
   const email = "menthyiscool@gmail.com";
   return (
@@ -23,4 +23,4 @@ const ProfileHeader = ({ horizontal = true }) => {
     </div>
   );
 };
-export default ProfileHeader;
+export default Header;

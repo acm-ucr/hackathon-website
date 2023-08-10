@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import Judge from "./Judge.jsx";
-import Title from "./Title.jsx";
+import Title from "../Title.jsx";
 import Filters from "./Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import SortIcon from "./SortIcon.jsx";
-import Radio from "./Radio.jsx";
-import User from "../data/User";
+import Radio from "../Radio.jsx";
+import User from "../../data/User.js";
 import { Col } from "react-bootstrap";
 
 const judgeType = ["student", "professor", "industry"];
