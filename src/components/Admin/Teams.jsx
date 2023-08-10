@@ -10,7 +10,7 @@ import Title from "../Title";
 const teams = [
   {
     uid: 1,
-    name: "The couple",
+    name: "The team",
     github: "https://github.com",
     devpost: "https://rose-hack-2021.devpost.com",
     status: "winner",
@@ -21,7 +21,7 @@ const teams = [
         email: "yhung022@ucr.edu",
       },
       {
-        name: "Divyank Shah",
+        name: "Mengxuan Wu",
         email: "yhung022@ucr.edu",
       },
     ],
@@ -54,7 +54,7 @@ const teams = [
   },
   {
     uid: 3,
-    name: "The couple",
+    name: "The team",
     github: "https://github.com",
     devpost: "https://rose-hack-2021.devpost.com",
     status: "qualified",
