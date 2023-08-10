@@ -3,7 +3,7 @@
 import Image from "next/image.js";
 import Title from "../Title.jsx";
 import { QRCodeSVG } from "qrcode.react";
-import LOGO from "../../public/LOGO.png";
+import LOGO from "../../../public/LOGO.png";
 import { useState, useEffect } from "react";
 
 const mockuser = {

@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image.js";
-import LOGO from "../../public/LOGO.png";
+import LOGO from "../../../public/LOGO.png";
 
 const Header = ({ horizontal = true }) => {
   const name = "Menthy Wu";
