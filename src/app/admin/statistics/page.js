@@ -5,18 +5,26 @@ import PieChart from "@/components/Admin/PieChart";
 import ProtectedPage from "@/components/ProtectedPage";
 
 const StatisticsPage = () => {
+  const rowsWithLabels = [
+    ["status", "major", "gender"],
+    ["grade", "food", "check-in"],
+    ["labelA", "labelB", "labelC"],
+  ];
+
   return (
     <ProtectedPage title="Admin | Statistics" restrictions={["admin"]}>
-      <div className="w-11/12">
-        <div className="flex pb-3 pt-4">
-          <Title title="Statistics" />
-        </div>
-        <div className="flex flex-row w-full">
-          <Label label="status" />
-          <PieChart />
-          <Label label="major" />
-          <PieChart />
-        </div>
+      <div className="h-screen w-full">
+        <Title title="Statistics" />
+        {rowsWithLabels.map((rowLabels, rowIndex) => (
+          <div className="flex flex-row" key={rowIndex}>
+            {rowLabels.map((label, columnIndex) => (
+              <div className="w-full " key={columnIndex}>
+                <Label label={label} />
+                <PieChart />
+              </div>
+            ))}
+          </div>
+        ))}
       </div>
     </ProtectedPage>
   );
