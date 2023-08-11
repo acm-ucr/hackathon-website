@@ -27,9 +27,9 @@ const mentors = [
   },
   {
     uid: 3,
-    name: "Menthy Divyank",
-    email: "couple002@ucr.edu",
-    discord: "disney#2033",
+    name: "Menthy Wu",
+    email: "mwu171@ucr.edu",
+    discord: "_wmx",
     status: "onsite",
     selected: false,
   },
