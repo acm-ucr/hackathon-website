@@ -76,7 +76,7 @@ const Admissions = () => {
       <div className="flex flex-col pb-3 pt-4 h-full items-stretch">
         <Title title="Admissions" />
         <div className="flex items-center my-1">
-          <p className="text-xl font-extrabold ml-10 mr-5 my-0">To</p>
+          <p className="text-lg font-extrabold ml-10 mr-5 my-0">To</p>
           <Filters
             filters={filters}
             setFilters={setFilters}
