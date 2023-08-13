@@ -1,12 +1,15 @@
 import React from "react";
-import Title from "@/components/Title";
+import ProtectedPage from "@/components/ProtectedPage";
+import Admissions from "@/components/Admin/Admissions";
 
-const AdmissionsPage = () => {
+const Page = () => {
   return (
-    <div className="w-11/12">
-      <Title title="Admissions" />
-    </div>
+    <ProtectedPage title="Admin | Judging" restrictions={["admin"]}>
+      <div className="w-11/12 h-full">
+        <Admissions />
+      </div>
+    </ProtectedPage>
   );
 };
 
-export default AdmissionsPage;
+export default Page;
