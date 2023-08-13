@@ -4,7 +4,7 @@ import Admissions from "@/components/Admin/Admissions";
 
 const Page = () => {
   return (
-    <ProtectedPage title="Admin | Judging" restrictions={["admin"]}>
+    <ProtectedPage title="Admin | Admission" restrictions={["admin"]}>
       <div className="w-11/12 h-full">
         <Admissions />
       </div>
