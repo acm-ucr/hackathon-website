@@ -36,7 +36,7 @@ const Filters = ({
       {Object.keys(filters).map((filter, index) => (
         <Col className="px-1" key={index} onClick={() => handleClick(filter)}>
           <div
-            className={`rounded ${
+            className={`rounded  ${
               filters[filter]
                 ? "text-white bg-hackathon-blue-100"
                 : "text-hackathon-blue-100 bg-white"
@@ -44,7 +44,7 @@ const Filters = ({
           >
             <p className="my-0 mx-1 px-2 py-[2px]">{filter}</p>
             <TiPlus
-              className={`mt-[2px] mr-2 hover:opacity-80 ${
+              className={`duration-300 mt-[2px] mr-2 hover:opacity-80 ${
                 filters[filter] ? "-rotate-45" : ""
               }`}
             />
