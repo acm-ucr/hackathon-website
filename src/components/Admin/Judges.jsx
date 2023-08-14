@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Judge from "./Judge.jsx";
-import Title from "../Title.jsx";
+import Title from "./Title.jsx";
 import Filters from "./Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import SortIcon from "./SortIcon.jsx";

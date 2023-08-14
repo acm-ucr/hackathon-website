@@ -10,7 +10,7 @@ import Upload from "@/components/Forms/Upload";
 import Checkbox from "../Checkbox";
 import Input from "../Input";
 import { Row, Col } from "react-bootstrap";
-import Button from "../Button";
+import Button from "./Button";
 
 const Register = () => {
   const [user, setUser] = useState(User);

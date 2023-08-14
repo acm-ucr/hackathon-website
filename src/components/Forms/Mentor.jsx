@@ -7,7 +7,7 @@ import Radio from "@/components/Radio";
 import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
 import { Row, Col } from "react-bootstrap";
-import Button from "@/components/Button";
+import Button from "@/components/Forms/Button";
 import { Helper } from "@/data/User";
 import Text from "@/components/Text";
 

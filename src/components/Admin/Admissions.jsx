@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Title from "../Title";
+import Title from "./Title";
 import Filters from "./Filters.jsx";
 import { FaTimes } from "react-icons/fa";
 import toast from "react-hot-toast";
