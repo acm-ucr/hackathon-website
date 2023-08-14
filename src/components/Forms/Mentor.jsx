@@ -9,7 +9,7 @@ import Input from "@/components/Input";
 import { Row, Col } from "react-bootstrap";
 import Button from "@/components/Forms/Button";
 import { Helper } from "@/data/User";
-import Text from "@/components/Text";
+import Text from "@/components/Forms/Text";
 
 const Mentor = () => {
   const [mentor, setMentor] = useState(Helper);
