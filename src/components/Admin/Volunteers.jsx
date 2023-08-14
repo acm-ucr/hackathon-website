@@ -6,7 +6,7 @@ import Volunteer from "@/components/Admin/Volunteer";
 import Filters from "@/components/Admin/Filters";
 import SortIcon from "./SortIcon";
 import Toolbar from "@/components/Admin/Toolbar";
-import Title from "../Title";
+import Title from "./Title";
 
 const volunteers = [
   {

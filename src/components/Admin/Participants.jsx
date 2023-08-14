@@ -6,7 +6,7 @@ import SortIcon from "./SortIcon";
 import Filters from "@/components/Admin/Filters";
 import Participant from "./Participant";
 import Toolbar from "@/components/Admin/Toolbar";
-import Title from "../Title";
+import Title from "./Title";
 const participants = [
   {
     uid: "1",

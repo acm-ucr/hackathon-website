@@ -1,5 +1,5 @@
 import React from "react";
-import Title from "@/components/Title";
+import Title from "@/components/Admin/Title";
 import Label from "@/components/Label.jsx";
 import PieChart from "@/components/Admin/PieChart";
 import ProtectedPage from "@/components/ProtectedPage";
