@@ -4,6 +4,7 @@ import Checkbox from "../Checkbox";
 import { HiSearch } from "react-icons/hi";
 import Tag from "./Tag.jsx";
 import { FaDownload, FaTrashAlt } from "react-icons/fa";
+import { CSVLink } from "react-csv";
 
 const Toolbar = ({
   input,
@@ -13,6 +14,8 @@ const Toolbar = ({
   objects,
   filters,
   reset,
+  download,
+  fileName,
 }) => {
   const [toggle, setToggle] = useState(false);
 
@@ -72,7 +75,58 @@ const Toolbar = ({
       );
     }
   };
+  const csvData = objects.map((download) => {
+    const rowData = {};
 
+    if (download.name) {
+      rowData.name = download.name;
+    }
+
+    if (download.members && download.members.length > 0) {
+      const memberNames = download.members
+        .map((member) => member.name)
+        .join(", ");
+      const memberEmails = download.members
+        .map((member) => member.email)
+        .join(", ");
+
+      rowData.members = `Names: ${memberNames}, Emails: ${memberEmails}`;
+    }
+
+    if (download.email) {
+      rowData.email = download.email;
+    }
+
+    if (download.team) {
+      rowData.team = download.team;
+    }
+
+    if (download.github) {
+      rowData.github = download.github;
+    }
+
+    if (download.devpost) {
+      rowData.devpost = download.devpost;
+    }
+
+    if (download.type) {
+      rowData.type = download.type;
+    }
+
+    if (download.discord) {
+      rowData.discord = download.discord;
+    }
+
+    if (download.major) {
+      rowData.major = download.major;
+    }
+
+    if (download.status) {
+      rowData.status = download.status;
+    }
+
+    return rowData;
+  });
   return (
     <div className="w-full flex items-center">
       <div className="my-2.5 w-2/3 flex items-center">
@@ -110,9 +164,13 @@ const Toolbar = ({
           Reset
         </button>
       </div>
-      <button>
+      <CSVLink
+        data={csvData}
+        filename={`${fileName}.csv`}
+        className="hover:cursor-pointer"
+      >
         <FaDownload size={22.5} className="ml-4 text-hackathon-darkgray" />
-      </button>
+      </CSVLink>
       <button>
         <FaTrashAlt size={22.5} className="ml-5 text-hackathon-darkgray" />
       </button>

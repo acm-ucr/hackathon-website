@@ -136,6 +136,8 @@ const Mentors = () => {
         objects={filteredMentors}
         filters={filters}
         reset={mentors}
+        download={mentors}
+        fileName="mentors"
       />
       <div className=" py-2 text-sm rounded-t-xl flex text-white bg-hackathon-blue-200">
         {headers.map((header, index) => (
