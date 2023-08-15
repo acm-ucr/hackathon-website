@@ -17,7 +17,7 @@ const Header = ({ horizontal = true }) => {
         width={125}
         height={125}
         alt="Picture of user's profile"
-        className="w-32 mr-4 rounded-full overflow-hidden"
+        className="mr-4 rounded-full overflow-hidden"
       />
       <div className="align-left">
         <p className="text-2xl font-bold mb-0">{session.user.name}</p>
