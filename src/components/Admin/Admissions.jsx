@@ -97,7 +97,7 @@ const Admissions = () => {
         <div className="w-full h-full bg-white rounded-2xl my-2 flex flex-col p-4 pt-2">
           <p className="text-lg font-extrabold mb-1">body:</p>
           <Textarea value={body} setValue={setBody} />
-          <div className="flex w-full justify-end">
+          <div className="flex w-full justify-end mt-3">
             <Button
               text="send email"
               onClick={sendEmail}
