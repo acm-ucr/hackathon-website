@@ -36,7 +36,7 @@ const Filters = ({
       {Object.keys(filters).map((filter, index) => (
         <Col className="px-1" key={index} onClick={() => handleClick(filter)}>
           <div
-            className={`rounded  ${
+            className={`rounded hover:opacity-70 duration-300 ${
               filters[filter]
                 ? "text-white bg-hackathon-blue-100"
                 : "text-hackathon-blue-100 bg-white"
