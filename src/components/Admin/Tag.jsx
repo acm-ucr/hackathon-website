@@ -18,7 +18,6 @@ const colors = {
     text: "text-hackathon-tags-green-text",
     hover: "hover:shadow-[inset_0px_0px_0px_2px_#00AFB9]",
   },
-
   gray: {
     background: "bg-hackathon-tags-gray-bg",
     text: "text-hackathon-tags-gray-text",

@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import Title from "./Title";
 import Filters from "./Filters.jsx";
 import toast from "react-hot-toast";
-import SubjectInput from "../SubjectInput";
-import BodyInput from "../BodyInput";
+import Input from "./Input";
+import Textarea from "./Textarea";
+import Button from "./Button";
 const participants = [
   {
     uid: "1",
@@ -63,9 +64,10 @@ const Admissions = () => {
       toast("❌ Please add a body!");
       return;
     }
+    const emails = filteredParticipants.map((user) => user.email);
 
     console.log({
-      sendto: filteredParticipants,
+      sendto: emails,
       subject: subject,
       body: body,
     });
@@ -76,7 +78,7 @@ const Admissions = () => {
       <div className="flex flex-col pb-3 pt-4 h-full items-stretch">
         <Title title="Admissions" />
         <div className="flex items-center my-1">
-          <p className="text-lg font-extrabold ml-10 mr-5 my-0">To</p>
+          <p className="text-lg font-extrabold mr-5 my-0">to:</p>
           <Filters
             filters={filters}
             setFilters={setFilters}
@@ -85,8 +87,25 @@ const Admissions = () => {
             input=""
           />
         </div>
-        <SubjectInput subject={subject} setSubject={setSubject} />
-        <BodyInput body={body} setBody={setBody} sendEmail={sendEmail} />
+        <Input
+          setValue={setSubject}
+          value={subject}
+          clear={true}
+          label="subject:"
+          placeholder="subject"
+        />
+        <div className="w-full h-full bg-white rounded-2xl my-2 flex flex-col p-4 pt-2">
+          <p className="text-lg font-extrabold mb-1">body:</p>
+          <Textarea value={body} setValue={setBody} />
+          <div className="flex w-full justify-end mt-3">
+            <Button
+              text="send email"
+              onClick={sendEmail}
+              color="green"
+              size="md"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
