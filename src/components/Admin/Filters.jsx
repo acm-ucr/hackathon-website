@@ -19,7 +19,7 @@ const Filters = ({
 
         Object.keys(filterValues).map((value) => {
           if (
-            a.status === value &&
+            (a.status === value || a.affiliation === value) &&
             filterValues[value] &&
             a.name.toLowerCase().match(input.toLowerCase())
           ) {

@@ -5,6 +5,7 @@ import Tag from "./Tag";
 
 const Admin = ({
   uid,
+  affiliation,
   status,
   name,
   email,
@@ -35,7 +36,20 @@ const Admin = ({
       <div className=" font-semibold text-xs md:text-sm w-1/5">{name}</div>
       <div className="text-xs md:text-sm w-1/3">{email}</div>
       <div className="text-xs md:text-sm w-1/5">
-        <Tag color={status} text={status} withHover={false} />
+        <Tag color={affiliation} text={affiliation} withHover={false} />
+      </div>
+      <div className="text-lg mr-4">
+        <Tag
+          color={
+            status === "pending"
+              ? "yellow"
+              : status === "accepted"
+              ? "green"
+              : "gray"
+          }
+          text={status}
+          withHover={false}
+        />
       </div>
     </div>
   );

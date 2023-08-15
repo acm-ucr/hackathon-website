@@ -11,28 +11,32 @@ const admins = [
     uid: 1,
     name: "a",
     email: "a@ucr.edu",
-    status: "marketing",
+    status: "accepted",
+    affiliation: "marketing",
     selected: false,
   },
   {
     uid: 2,
     name: "b",
     email: "b@ucr.edu",
-    status: "operations",
+    status: "accepted",
+    affiliation: "operations",
     selected: false,
   },
   {
     uid: 3,
     name: "c",
     email: "c@ucr.edu",
-    status: "sponsorship",
+    status: "accepted",
+    affiliation: "sponsorship",
     selected: false,
   },
   {
     uid: 4,
     name: "d",
     email: "d@ucr.edu",
-    status: "directors",
+    status: "accepted",
+    affiliation: "directors",
     selected: false,
   },
 ];
@@ -51,6 +55,7 @@ const Admins = () => {
 
   const [sorts, setSorts] = useState({
     name: "down",
+    affiliation: "off",
     status: "off",
   });
 
@@ -71,7 +76,7 @@ const Admins = () => {
         setToggle(false);
         setFilteredAdmins(
           filteredAdmins.filter((a) => {
-            if (!a.selected) {
+            if (a.selected !== true) {
               return a;
             }
           })
@@ -83,8 +88,9 @@ const Admins = () => {
   const headers = [
     { name: "", size: "w-[7%]", icon: false },
     { name: "Name", size: "w-1/5", icon: true },
-    { name: "Email", size: "w-1/5", icon: false },
+    { name: "Email", size: "w-1/3", icon: true },
     { name: "Affiliation", size: "w-1/5", icon: true },
+    { name: "Status", size: "", icon: true },
   ];
   return (
     <div className="max-h-[80%] font-poppins">
@@ -124,6 +130,8 @@ const Admins = () => {
                   objects={filteredAdmins}
                   reset={{
                     name: "off",
+                    affiliation: "off",
+                    email: "off",
                     status: "off",
                   }}
                 />
@@ -140,6 +148,7 @@ const Admins = () => {
                 filteredAdmins={filteredAdmins}
                 key={index}
                 name={admin.name}
+                affiliation={admin.affiliation}
                 status={admin.status}
                 email={admin.email}
                 selected={admin.selected}
