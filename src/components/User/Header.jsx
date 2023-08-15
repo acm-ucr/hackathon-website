@@ -4,7 +4,7 @@ import Image from "next/image.js";
 import { useSession } from "next-auth/react";
 
 const Header = ({ horizontal = true }) => {
-  const { data: session} = useSession();
+  const { data: session } = useSession();
 
   return (
     <div
@@ -13,7 +13,7 @@ const Header = ({ horizontal = true }) => {
       } items-center justify-center`}
     >
       <Image
-        src={session.user.image}  
+        src={session.user.image}
         width={125}
         height={125}
         alt="Picture of user's profile"

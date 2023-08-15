@@ -8,13 +8,13 @@ import { useSession } from "next-auth/react";
 
 const CheckinPage = () => {
   const [date, setDate] = useState(new Date());
-  const { data: session} = useSession();
+  const { data: session } = useSession();
 
   useEffect(() => {
     const timer = setInterval(() => {
       setDate(new Date());
     }, 1000);
-    
+
     return () => clearInterval(timer);
   }, []);
 
