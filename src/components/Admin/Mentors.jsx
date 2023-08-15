@@ -6,7 +6,7 @@ import Mentor from "@/components/Admin/Mentor";
 import Filters from "@/components/Admin/Filters";
 import SortIcon from "./SortIcon";
 import Toolbar from "@/components/Admin/Toolbar";
-import Title from "../Title";
+import Title from "./Title";
 
 const mentors = [
   {

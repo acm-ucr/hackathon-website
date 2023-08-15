@@ -4,7 +4,6 @@ import Checkbox from "../Checkbox";
 import Tag from "./Tag";
 
 const Judge = ({
-  uid,
   type,
   name,
   email,
@@ -16,7 +15,7 @@ const Judge = ({
   const handleSelect = () => {
     setFilteredJudges(
       filteredJudges.map((a) => {
-        if (a.uid === uid) {
+        if (a.email === email) {
           a.selected = !selected;
         }
         return a;
