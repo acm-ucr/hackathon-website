@@ -10,7 +10,23 @@ const StatisticsPage = () => {
     ["grade", "food", "check-in"],
     ["labelA", "labelB", "labelC"],
   ];
-
+  const data = [
+    {
+      id: "rejected",
+      label: "rejected",
+      value: 34,
+    },
+    {
+      id: "accepted",
+      label: "accepted",
+      value: 56,
+    },
+    {
+      id: "pending",
+      label: "pending",
+      value: 56,
+    },
+  ];
   return (
     <ProtectedPage title="Admin | Statistics" restrictions={["admin"]}>
       <div className="h-screen w-full">
@@ -20,7 +36,7 @@ const StatisticsPage = () => {
             {rowLabels.map((label, columnIndex) => (
               <div className="w-full " key={columnIndex}>
                 <Label label={label} />
-                <PieChart />
+                <PieChart data={data}/>
               </div>
             ))}
           </div>

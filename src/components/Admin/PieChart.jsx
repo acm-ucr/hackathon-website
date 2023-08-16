@@ -1,25 +1,8 @@
 "use client";
 import { ResponsivePie } from "@nivo/pie";
 
-const data = [
-  {
-    id: "rejected",
-    label: "rejected",
-    value: 34,
-  },
-  {
-    id: "accepted",
-    label: "accepted",
-    value: 56,
-  },
-  {
-    id: "pending",
-    label: "pending",
-    value: 56,
-  },
-];
 
-const MyResponsivePie = () => (
+const MyResponsivePie = ( {data} ) => (
   <div className="h-[82%] w-full">
     <ResponsivePie
       data={data}
