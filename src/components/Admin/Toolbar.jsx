@@ -44,10 +44,7 @@ const Toolbar = ({
         let boolean = false;
 
         Object.keys(filters).map((value) => {
-          if (
-            (a.status === value || a.affiliation === value) &&
-            filters[value]
-          ) {
+          if (a.status === value && filters[value]) {
             boolean = true;
           }
         });

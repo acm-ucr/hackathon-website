@@ -40,22 +40,6 @@ const colors = {
     background: "bg-hackathon-judge-student-bg",
     text: "text-hackathon-judge-student-text",
   },
-  marketing: {
-    background: "bg-hackathon-judge-professor-bg",
-    text: "text-hackathon-judge-professor-text",
-  },
-  operations: {
-    background: "bg-hackathon-judge-student-bg",
-    text: "text-hackathon-judge-student-text",
-  },
-  sponsorship: {
-    background: "bg-hackathon-judge-industry-bg",
-    text: "text-hackathon-judge-industry-text",
-  },
-  directors: {
-    background: "bg-hackathon-judge-industry-bg",
-    text: "text-hackathon-judge-industry-text",
-  },
 };
 
 const Tag = ({ color = "gray", text, name, onClick, withHover = true }) => {

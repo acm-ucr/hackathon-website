@@ -36,7 +36,17 @@ const Admin = ({
       <div className=" font-semibold text-xs md:text-sm w-1/5">{name}</div>
       <div className="text-xs md:text-sm w-1/3">{email}</div>
       <div className="text-xs md:text-sm w-1/5">
-        <Tag color={affiliation} text={affiliation} withHover={false} />
+        <Tag
+          color={
+            affiliation === "marketing"
+              ? "professor"
+              : affiliation === "operations"
+              ? "student"
+              : "industry"
+          }
+          text={affiliation}
+          withHover={false}
+        />
       </div>
       <div className="text-lg mr-4">
         <Tag
@@ -45,7 +55,7 @@ const Admin = ({
               ? "yellow"
               : status === "accepted"
               ? "green"
-              : "gray"
+              : "red"
           }
           text={status}
           withHover={false}

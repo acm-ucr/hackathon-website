@@ -47,10 +47,9 @@ const Admins = () => {
   const [input, setInput] = useState("");
 
   const [filters, setFilters] = useState({
-    marketing: true,
-    operations: true,
-    sponsorship: true,
-    directors: true,
+    accepted: true,
+    pending: true,
+    rejected: true,
   });
 
   const [sorts, setSorts] = useState({
@@ -64,21 +63,49 @@ const Admins = () => {
       color: "green",
       text: "accept",
       name: "Accept",
-      onClick: () => {
-        console.log("placeholder");
-      },
-    },
-    {
-      color: "red",
-      text: "remove",
-      name: "Remove",
       onClick: (setToggle) => {
         setToggle(false);
         setFilteredAdmins(
           filteredAdmins.filter((a) => {
-            if (a.selected !== true) {
-              return a;
+            if (a.selected === true) {
+              a.status = "accepted";
+              a.selected = false;
             }
+            return a;
+          })
+        );
+      },
+    },
+    {
+      color: "yellow",
+      text: "pending",
+      name: "Pending",
+      onClick: (setToggle) => {
+        setToggle(false);
+        setFilteredAdmins(
+          filteredAdmins.filter((a) => {
+            if (a.selected === true) {
+              a.status = "pending";
+              a.selected = false;
+            }
+            return a;
+          })
+        );
+      },
+    },
+    {
+      color: "red",
+      text: "rejected",
+      name: "reject",
+      onClick: (setToggle) => {
+        setToggle(false);
+        setFilteredAdmins(
+          filteredAdmins.filter((a) => {
+            if (a.selected === true) {
+              a.status = "rejected";
+              a.selected = false;
+            }
+            return a;
           })
         );
       },
@@ -129,10 +156,7 @@ const Admins = () => {
                   setfilteredObjects={setFilteredAdmins}
                   objects={filteredAdmins}
                   reset={{
-                    name: "off",
-                    affiliation: "off",
-                    email: "off",
-                    status: "off",
+                    sorts,
                   }}
                 />
               )}
