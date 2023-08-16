@@ -37,8 +37,8 @@ const colors = {
     text: "text-hackathon-judge-student-text",
   },
   industry: {
-    background: "bg-hackathon-judge-student-bg",
-    text: "text-hackathon-judge-student-text",
+    background: "bg-hackathon-judge-industry-bg",
+    text: "text-hackathon-judge-industry-text",
   },
 };
 
