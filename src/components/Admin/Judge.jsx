@@ -25,7 +25,7 @@ const Judge = ({
   return (
     <div
       className={
-        " py-2 first:border-0 border-t-[1px] border-hackathon-gray flex items-center w-full focus:!ring-0 focus:!bg-hackathon-green-100 " +
+        " last:rounded-b-2xl py-2 first:border-0 border-t-[1px] border-hackathon-gray flex items-center w-full focus:!ring-0 focus:!bg-hackathon-green-100 " +
         (selected ? "!bg-green-100" : "!bg-transparent")
       }
     >
