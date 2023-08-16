@@ -36,7 +36,7 @@ const StatisticsPage = () => {
             {rowLabels.map((label, columnIndex) => (
               <div className="w-full " key={columnIndex}>
                 <Label label={label} />
-                <PieChart data={data}/>
+                <PieChart data={data} />
               </div>
             ))}
           </div>

@@ -1,8 +1,7 @@
 "use client";
 import { ResponsivePie } from "@nivo/pie";
 
-
-const MyResponsivePie = ( {data} ) => (
+const MyResponsivePie = ({ data }) => (
   <div className="h-[82%] w-full">
     <ResponsivePie
       data={data}
