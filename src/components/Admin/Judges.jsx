@@ -57,7 +57,7 @@ const Judges = () => {
 
   const tags = [
     {
-      color: "yellow",
+      color: "gray",
       text: "pending",
       name: "Pending",
       onClick: (setToggle) => {

@@ -41,7 +41,7 @@ const Judge = ({
         <Tag
           color={
             status === "pending"
-              ? "yellow"
+              ? "gray"
               : status === "confirmed"
               ? "green"
               : "gray"
