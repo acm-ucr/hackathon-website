@@ -226,7 +226,7 @@ const Teams = () => {
         <Col className="bg-white max-h-full overflow-scroll w-full">
           {filteredTeams.length != 0 ? (
             filteredTeams.map((team, index) => (
-              <Row key={index} className="w-full">
+              <Row key={index} className="w-full m-0">
                 <Team
                   uid={team.uid}
                   teamName={team.name}
