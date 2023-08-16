@@ -6,6 +6,7 @@ const colors = {
   },
 };
 const sizes = {
+  xs: "text-xs",
   sm: "text-sm",
   md: "text-base",
   lg: "text-lg",
