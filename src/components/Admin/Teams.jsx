@@ -178,7 +178,7 @@ const Teams = () => {
   ];
 
   return (
-    <div className="max-h-[80%] font-poppins">
+    <div className="h-full font-poppins flex flex-col">
       <div className="flex pb-3 pt-4">
         <Title title="Teams" />
         <Filters
@@ -198,53 +198,55 @@ const Teams = () => {
         filters={filters}
         reset={teams}
       />
-      <div className=" py-2 text-sm rounded-t-xl flex text-white bg-hackathon-blue-200">
-        {headers.map((header, index) => (
-          <div
-            key={index}
-            className={`${header.size} font-semibold text-white flex items-center`}
-          >
-            {header.name}
-            {header.icon && (
-              <SortIcon
-                name={header.name.toLowerCase()}
-                sorts={sorts}
-                setSorts={setSorts}
-                setfilteredObjects={setFilteredTeams}
-                objects={filteredTeams}
-                reset={{
-                  name: "off",
-                  team: "off",
-                  status: "off",
-                }}
-              />
-            )}
-          </div>
-        ))}
+      <div className="w-full max-h-[83%] overflow-hidden rounded-xl">
+        <div className="py-2 text-sm flex text-white bg-hackathon-blue-200">
+          {headers.map((header, index) => (
+            <div
+              key={index}
+              className={`${header.size} font-semibold text-white flex items-center`}
+            >
+              {header.name}
+              {header.icon && (
+                <SortIcon
+                  name={header.name.toLowerCase()}
+                  sorts={sorts}
+                  setSorts={setSorts}
+                  setfilteredObjects={setFilteredTeams}
+                  objects={filteredTeams}
+                  reset={{
+                    name: "off",
+                    team: "off",
+                    status: "off",
+                  }}
+                />
+              )}
+            </div>
+          ))}
+        </div>
+        <Col className="bg-white max-h-full overflow-scroll w-full">
+          {filteredTeams.length != 0 ? (
+            filteredTeams.map((team, index) => (
+              <Row key={index} className="w-full">
+                <Team
+                  uid={team.uid}
+                  teamName={team.name}
+                  github={team.github}
+                  devpost={team.devpost}
+                  status={team.status}
+                  members={team.members}
+                  selected={team.selected}
+                  filteredTeams={filteredTeams}
+                  setFilteredTeams={setFilteredTeams}
+                />
+              </Row>
+            ))
+          ) : (
+            <p className=" text-hackathon-darkgray font-poppins bg-white p-4 text-center rounded-b-2xl w-full">
+              No team to display
+            </p>
+          )}
+        </Col>
       </div>
-      <Col className="bg-white last:rounded-b-2xl">
-        {filteredTeams.length != 0 ? (
-          filteredTeams.map((team, index) => (
-            <Row key={index}>
-              <Team
-                uid={team.uid}
-                teamName={team.name}
-                github={team.github}
-                devpost={team.devpost}
-                status={team.status}
-                members={team.members}
-                selected={team.selected}
-                filteredTeams={filteredTeams}
-                setFilteredTeams={setFilteredTeams}
-              />
-            </Row>
-          ))
-        ) : (
-          <p className=" text-hackathon-darkgray font-poppins bg-white p-4 text-center rounded-b-2xl w-full">
-            No team to display
-          </p>
-        )}
-      </Col>
     </div>
   );
 };

@@ -43,7 +43,7 @@ const Teams = ({
     <div className="w-full font-poppins">
       <Col
         className={
-          " last:rounded-b-2xl border-t-[1px]  border-hackathon-gray flex w-full focus:!ring-0 focus:!bg-hackathon-green-100 " +
+          "border-t-[1px]  border-hackathon-gray flex w-full focus:!ring-0 focus:!bg-hackathon-green-100 " +
           (selected ? "!bg-green-100" : "!bg-transparent")
         }
       >
