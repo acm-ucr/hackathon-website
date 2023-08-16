@@ -100,8 +100,11 @@ const Toolbar = ({
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
-          <button className=" text-hackathon-darkgray rounded focus:outline-none">
-            <HiSearch size={30} className="ml-2" />
+          <button className="focus:outline-none">
+            <HiSearch
+              size={30}
+              className="ml-2 text-hackathon-darkgray hover:opacity-70 duration-150"
+            />
           </button>
         </form>
         <button
@@ -114,10 +117,16 @@ const Toolbar = ({
         </button>
       </div>
       <button>
-        <FaDownload size={22.5} className="ml-4 text-hackathon-darkgray" />
+        <FaDownload
+          size={22.5}
+          className="ml-4 text-hackathon-darkgray hover:opacity-70 duration-150"
+        />
       </button>
       <button>
-        <FaTrashAlt size={22.5} className="ml-5 text-hackathon-darkgray" />
+        <FaTrashAlt
+          size={22.5}
+          className="ml-5 text-hackathon-darkgray hover:opacity-70 duration-150"
+        />
       </button>
     </div>
   );

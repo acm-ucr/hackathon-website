@@ -9,7 +9,7 @@ import Input from "@/components/Input";
 import { Row, Col } from "react-bootstrap";
 import Button from "@/components/Forms/Button";
 import { Helper } from "@/data/User";
-import Text from "@/components/Forms/Text";
+import Textarea from "@/components/Forms/Textarea";
 
 const Mentor = () => {
   const [mentor, setMentor] = useState(Helper);
@@ -146,7 +146,7 @@ const Mentor = () => {
             />
           </Col>
           <Col xl={12}>
-            <Text
+            <Textarea
               name="response"
               type="email"
               title="What skills and experience can you bring as a mentor?"

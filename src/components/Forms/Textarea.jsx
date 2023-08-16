@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaPencil, FaCheck } from "react-icons/fa6";
 
-const Text = ({
+const Textarea = ({
   name,
   type,
   title,
@@ -43,4 +43,4 @@ const Text = ({
   );
 };
 
-export default Text;
+export default Textarea;
