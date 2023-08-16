@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Title from "../Title";
+import Title from "./Title";
 import Filters from "@/components/Admin/Filters";
 import Toolbar from "@/components/Admin/Toolbar";
 import SortIcon from "./SortIcon.jsx";
