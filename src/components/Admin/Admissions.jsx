@@ -65,7 +65,10 @@ const Admissions = () => {
       return;
     }
     const emails = filteredParticipants.map((user) => user.email);
-
+    if (emails.length == 0) {
+      toast("❌ Please specify recipient!");
+      return;
+    }
     console.log({
       sendto: emails,
       subject: subject,
