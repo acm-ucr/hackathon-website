@@ -31,7 +31,7 @@ const participants = [
     email: "yhung022@ucr.edu",
     team: "d",
     major: "Computer Science",
-    status: "rejected",
+    status: "accepted",
     selected: false,
   },
   {
@@ -64,9 +64,13 @@ const Admissions = () => {
       toast("❌ Please add a body!");
       return;
     }
+    if (!filters.accepted && !filters.rejected) {
+      toast("❌ Please specify recipient!");
+      return;
+    }
     const emails = filteredParticipants.map((user) => user.email);
     if (emails.length == 0) {
-      toast("❌ Please specify recipient!");
+      toast("❌ There's no recipient in this filter!");
       return;
     }
     console.log({
