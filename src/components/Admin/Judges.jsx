@@ -7,6 +7,7 @@ import Toolbar from "./Toolbar.jsx";
 import SortIcon from "./SortIcon.jsx";
 import Radio from "../Radio.jsx";
 import { Col } from "react-bootstrap";
+import Button from "./Button";
 
 const judgeType = ["student", "professor", "industry"];
 
@@ -207,12 +208,13 @@ const Judges = () => {
             setUser={setJudge}
           />
         </Col>
-        <button
-          className="text-white whitespace-nowrap px-10 py-1 hover:opacity-50 text-xs font-semibold w-fit rounded-xl bg-hackathon-green-300 mt-3"
+
+        <Button
+          text="add judge"
           onClick={() => setFilteredJudges([...filteredJudges, judge])}
-        >
-          add judge
-        </button>
+          color="green"
+          size="xs"
+        />
       </div>
     </div>
   );
