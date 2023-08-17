@@ -3,19 +3,20 @@ import React from "react";
 import Checkbox from "../Checkbox";
 import Tag from "./Tag";
 
-const Judge = ({
-  type,
+const Admin = ({
+  uid,
+  affiliation,
+  status,
   name,
   email,
   selected,
-  filteredJudges,
-  setFilteredJudges,
-  status,
+  filteredAdmins,
+  setFilteredAdmins,
 }) => {
   const handleSelect = () => {
-    setFilteredJudges(
-      filteredJudges.map((a) => {
-        if (a.email === email) {
+    setFilteredAdmins(
+      filteredAdmins.map((a) => {
+        if (a.uid === uid) {
           a.selected = !selected;
         }
         return a;
@@ -25,7 +26,7 @@ const Judge = ({
   return (
     <div
       className={
-        " last:rounded-b-2xl py-2 first:border-0 border-t-[1px] border-hackathon-gray flex items-center w-full focus:!ring-0 focus:!bg-hackathon-green-100 " +
+        " py-2 first:border-0 border-t-[1px] border-hackathon-gray flex items-center w-full focus:!ring-0 focus:!bg-hackathon-green-100 " +
         (selected ? "!bg-green-100" : "!bg-transparent")
       }
     >
@@ -35,18 +36,26 @@ const Judge = ({
       <div className=" font-semibold text-xs md:text-sm w-1/5">{name}</div>
       <div className="text-xs md:text-sm w-1/3">{email}</div>
       <div className="text-xs md:text-sm w-1/5">
-        <Tag color={type} text={type} withHover={false} />
+        <Tag
+          color={
+            affiliation === "marketing"
+              ? "professor"
+              : affiliation === "operations"
+              ? "student"
+              : "industry"
+          }
+          text={affiliation}
+          withHover={false}
+        />
       </div>
       <div className="text-lg mr-4">
         <Tag
           color={
             status === "pending"
-              ? "gray"
-              : status === "confirmed"
+              ? "yellow"
+              : status === "accepted"
               ? "green"
-              : status === "not attending"
-              ? "red"
-              : "gray"
+              : "red"
           }
           text={status}
           withHover={false}
@@ -56,4 +65,4 @@ const Judge = ({
   );
 };
 
-export default Judge;
+export default Admin;

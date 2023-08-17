@@ -40,7 +40,7 @@ const Teams = ({
   };
 
   return (
-    <div className="w-full font-poppins">
+    <div className="w-full font-poppins p-0">
       <Col
         className={
           "border-t-[1px] border-hackathon-gray flex w-full focus:!ring-0 focus:!bg-hackathon-green-100 align-items-center " +
