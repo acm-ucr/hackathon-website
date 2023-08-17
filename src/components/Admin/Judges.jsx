@@ -50,7 +50,6 @@ const Judges = () => {
       color: "green",
       text: "confirm",
     },
-
     {
       color: "red",
       text: "not attending",

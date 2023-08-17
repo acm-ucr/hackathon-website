@@ -47,7 +47,7 @@ const participants = [
 
 const Admissions = () => {
   const [filters, setFilters] = useState({
-    rejected: true,
+    rejected: false,
     accepted: true,
   });
 
