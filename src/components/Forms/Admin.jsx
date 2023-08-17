@@ -1,28 +1,29 @@
 "use client";
 
 import React, { useState } from "react";
-import User from "../data/User";
-import { Ages, Majors, Grades, Genders, Shirts } from "../data/Register";
-import { Schools } from "../data/Schools";
-import Select from "@/components/Select";
+import User from "../../data/User";
 import Radio from "@/components/Radio";
-import Upload from "@/components/Upload";
-import Checkbox from "./Checkbox";
-import Input from "./Input";
+import Checkbox from "../Checkbox";
+import Input from "../Input";
 import { Row, Col } from "react-bootstrap";
 import Button from "./Button";
 
-const Register = () => {
+const affiliations = [
+  "ops",
+  "web dev",
+  "option 3",
+  "option 4",
+  "director",
+  "option 6",
+];
+
+const Admin = () => {
   const [user, setUser] = useState(User);
 
   const [requirements, setRequirements] = useState({
-    photography: {
+    violation: {
       state: false,
-      text: "I agree to photograph.",
-    },
-    inPerson: {
-      state: false,
-      text: "I understand that I will attend the event in person.",
+      text: "You will be given access to private data that cannot be shared anywhere. If you violate this, you will be reported.",
     },
   });
 
@@ -41,10 +42,15 @@ const Register = () => {
   return (
     <div className="w-full flex flex-col items-center font-poppins py-4">
       <div className="text-xl bg-hackathon-green-300 w-1/3 rounded-t-xl flex items-center justify-center p-3 font-semibold">
-        HACKER APPLICATION
+        ADMIN PORTAL REQUEST
       </div>
+
       <div className="flex flex-col w-1/3 p-3 bg-white rounded-b-xl">
         <Row className="flex justify-center p-0 m-0">
+          <Col xl={12}>
+            If you would like access to Rosehack&apos;s Admin Portal, please
+            submit the request form below!
+          </Col>
           <Col xl={6}>
             <Input
               name="first"
@@ -67,18 +73,7 @@ const Register = () => {
               setUser={setUser}
             />
           </Col>
-          <Col xl={6}>
-            <Input
-              name="phone"
-              type="phone"
-              title="Phone Number"
-              placeholder="123 456 7890"
-              value={user.phone}
-              user={user}
-              setUser={setUser}
-            />
-          </Col>
-          <Col xl={6}>
+          <Col xl={12}>
             <Input
               name="email"
               type="email"
@@ -89,62 +84,25 @@ const Register = () => {
               setUser={setUser}
             />
           </Col>
-          <Col xl={6}>
-            <Select
-              options={Ages}
-              field="age"
-              user={user}
-              setUser={setUser}
-              placeholder="Age"
-            />
-          </Col>
-          <Col xl={6}>
-            <Select
-              options={Majors}
-              field="major"
-              user={user}
-              setUser={setUser}
-              placeholder="Major"
-            />
-          </Col>
-          <Col xl={6}>
-            <Select
-              options={Schools}
-              field="school"
-              user={user}
-              setUser={setUser}
-              placeholder="School"
-            />
-          </Col>
-          <Col xl={6}>
-            <Select
-              options={Grades}
-              field="grade"
-              user={user}
-              setUser={setUser}
-              placeholder="Grade"
-            />
-          </Col>
           <Col xl={12}>
-            <Radio
-              text="Gender"
-              options={Genders}
-              field="gender"
+            <Input
+              name="discord"
+              type="discord"
+              title="Discord Username"
+              placeholder="john_doe#1234"
+              value={user.discord}
               user={user}
               setUser={setUser}
             />
           </Col>
           <Col xl={12}>
             <Radio
-              text="Shirt Size"
-              options={Shirts}
-              field="shirt"
+              text="Affiliations"
+              options={affiliations}
+              field="affiliations"
               user={user}
               setUser={setUser}
             />
-          </Col>
-          <Col xl={12}>
-            <Upload field="resume" user={user} setUser={setUser} />
           </Col>
           <Col xl={12}>
             {Object.entries(requirements).map(([key, value], index) => (
@@ -167,4 +125,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Admin;

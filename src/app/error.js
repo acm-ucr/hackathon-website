@@ -13,7 +13,7 @@ export default function Error({ error }) {
         500
       </p>
       <p className="text-center text-lg md:text-2xl font-bold text-black">
-        {error.message}
+        Internal Server Error. Please reach out to the web dev
       </p>
       <p className="text-center text-sm md:text-lg  text-hackathon-blue-200"></p>
     </div>

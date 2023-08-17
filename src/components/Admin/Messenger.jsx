@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Title from "./Title";
 
 const ADDRESSEES = ["volunteers", "mentors", "judges"];
 
@@ -27,10 +28,11 @@ const Message = () => {
         <div className="min-w-[6%] font-bold text-lg text-end ml-3">To:</div>
         <div>
           {allSelectorNames.map((name) => {
-            const nameSelected = selected.includes(name);
             const classes =
               allButtonClasses +
-              (nameSelected ? selectedButtonClasses : unselectedButtonClasses);
+              (selected.includes(name)
+                ? selectedButtonClasses
+                : unselectedButtonClasses);
             return (
               <button
                 className={classes}
@@ -63,6 +65,8 @@ const Message = () => {
   };
   return (
     <>
+      <Title title="Messenger" />
+
       <ToSelector
         selected={addressees}
         setSelected={setAddressee}

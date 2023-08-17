@@ -1,17 +1,19 @@
 "use client";
 
 import React, { useState } from "react";
+import User from "../../data/User";
+import { Ages, Majors, Grades, Genders, Shirts } from "../../data/Register";
+import { Schools } from "../../data/Schools";
 import Select from "@/components/Select";
-import { Majors, Grades, Genders, Shirts } from "../data/Register";
 import Radio from "@/components/Radio";
-import Checkbox from "./Checkbox";
-import Input from "./Input";
+import Upload from "@/components/Forms/Upload";
+import Checkbox from "../Checkbox";
+import Input from "../Input";
 import { Row, Col } from "react-bootstrap";
 import Button from "./Button";
-import { Helper } from "../data/User";
 
 const Register = () => {
-  const [volunteer, setVolunteer] = useState(Helper);
+  const [user, setUser] = useState(User);
 
   const [requirements, setRequirements] = useState({
     photography: {
@@ -25,7 +27,7 @@ const Register = () => {
   });
 
   const handleSubmit = () => {
-    console.log(volunteer);
+    console.log(user);
     console.log(requirements);
   };
 
@@ -39,36 +41,19 @@ const Register = () => {
   return (
     <div className="w-full flex flex-col items-center font-poppins py-4">
       <div className="text-xl bg-hackathon-green-300 w-1/3 rounded-t-xl flex items-center justify-center p-3 font-semibold">
-        VOLUNTEER APPLICATION
+        HACKER APPLICATION
       </div>
       <div className="flex flex-col w-1/3 p-3 bg-white rounded-b-xl">
         <Row className="flex justify-center p-0 m-0">
-          <Col xl={12}>
-            Hello! Rose Hack is coming January 14-15, 2023. Thank you for your
-            interest in Rose Hack, UC Riverside’s women-centric hackathon
-            founded by the female leaders of SWE and WINC!Volunteers are
-            essential to our hackathon in helping run the entire event.
-            Responsibilities include helping set up, tech support, clean up,
-            distributing swag, etc. Meals are also provided during breakfast,
-            lunch, and dinner times. If you are interested in joining the Rose
-            Hack Team as a volunteer, please fill out this quick interest form
-            below!
-            <br />
-            <br />
-            We also want to note that if you are volunteering at Rose Hack, you
-            are unable to participate as a hacker as well. If you have any other
-            questions please feel free to contact us on our socials or email us
-            at rosehackucr@gmail.com! :)
-          </Col>
           <Col xl={6}>
             <Input
               name="first"
               type="text"
               title="First Name"
               placeholder="John"
-              value={volunteer.first}
-              user={volunteer}
-              setUser={setVolunteer}
+              value={user.first}
+              user={user}
+              setUser={setUser}
             />
           </Col>
           <Col xl={6}>
@@ -77,9 +62,9 @@ const Register = () => {
               type="text"
               title="Last Name"
               placeholder="Doe"
-              value={volunteer.last}
-              user={volunteer}
-              setUser={setVolunteer}
+              value={user.last}
+              user={user}
+              setUser={setUser}
             />
           </Col>
           <Col xl={6}>
@@ -88,9 +73,9 @@ const Register = () => {
               type="phone"
               title="Phone Number"
               placeholder="123 456 7890"
-              value={volunteer.phone}
-              user={volunteer}
-              setUser={setVolunteer}
+              value={user.phone}
+              user={user}
+              setUser={setUser}
             />
           </Col>
           <Col xl={6}>
@@ -99,29 +84,45 @@ const Register = () => {
               type="email"
               title="Email Address"
               placeholder="john_doe@gmail.com"
-              value={volunteer.email}
-              user={volunteer}
-              setUser={setVolunteer}
+              value={user.email}
+              user={user}
+              setUser={setUser}
             />
           </Col>
-          <Col xl={12}>
+          <Col xl={6}>
             <Select
-              title="Major"
+              options={Ages}
+              field="age"
+              user={user}
+              setUser={setUser}
+              placeholder="Age"
+            />
+          </Col>
+          <Col xl={6}>
+            <Select
               options={Majors}
               field="major"
-              user={volunteer}
-              setUser={setVolunteer}
-              placeholder="Computer Science"
+              user={user}
+              setUser={setUser}
+              placeholder="Major"
             />
           </Col>
-          <Col xl={12}>
+          <Col xl={6}>
             <Select
-              title="Grade"
+              options={Schools}
+              field="school"
+              user={user}
+              setUser={setUser}
+              placeholder="School"
+            />
+          </Col>
+          <Col xl={6}>
+            <Select
               options={Grades}
               field="grade"
-              user={volunteer}
-              setUser={setVolunteer}
-              placeholder="Undergraduate"
+              user={user}
+              setUser={setUser}
+              placeholder="Grade"
             />
           </Col>
           <Col xl={12}>
@@ -129,8 +130,8 @@ const Register = () => {
               text="Gender"
               options={Genders}
               field="gender"
-              user={volunteer}
-              setUser={setVolunteer}
+              user={user}
+              setUser={setUser}
             />
           </Col>
           <Col xl={12}>
@@ -138,9 +139,12 @@ const Register = () => {
               text="Shirt Size"
               options={Shirts}
               field="shirt"
-              user={volunteer}
-              setUser={setVolunteer}
+              user={user}
+              setUser={setUser}
             />
+          </Col>
+          <Col xl={12}>
+            <Upload field="resume" user={user} setUser={setUser} />
           </Col>
           <Col xl={12}>
             {Object.entries(requirements).map(([key, value], index) => (

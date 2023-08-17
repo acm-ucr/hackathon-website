@@ -18,7 +18,6 @@ const colors = {
     text: "text-hackathon-tags-green-text",
     hover: "hover:shadow-[inset_0px_0px_0px_2px_#00AFB9]",
   },
-
   gray: {
     background: "bg-hackathon-tags-gray-bg",
     text: "text-hackathon-tags-gray-text",
@@ -48,7 +47,7 @@ const Tag = ({ color = "gray", text, name, onClick, withHover = true }) => {
   const pointCursor = withHover ? "hover:cursor-pointer" : "";
   return (
     <div
-      className={`${colors[color].background} ${colors[color].text} ${inToolbar} ${pointCursor} px-2 py-0.5 rounded-xl text-xs md:text-sm w-fit `}
+      className={`${colors[color].background} ${colors[color].text} ${inToolbar} ${pointCursor} whitespace-nowrap px-2 py-0.5 rounded-xl text-xs md:text-sm w-fit `}
       onClick={onClick}
     >
       {name ? name : text}

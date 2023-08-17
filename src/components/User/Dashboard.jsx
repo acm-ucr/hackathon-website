@@ -1,13 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import ProfileHeader from "./ProfileHeader";
-import Tag from "./Tag";
+import ProfileHeader from "./Header";
+import Tag from "../Admin/Tag";
 import { Col, Row } from "react-bootstrap";
 import { Genders, Grades, Majors } from "@/data/Register";
-import Select from "./Select";
+import Select from "../Select";
 import { Schools } from "@/data/Schools";
-import Radio from "./Radio";
-import Input from "./Input";
+import Radio from "../Radio";
+import Input from "../Input";
 
 const Dashboard = () => {
   const [user, setUser] = useState({

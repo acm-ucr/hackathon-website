@@ -3,14 +3,14 @@
 import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import Team from "./Team";
-import Filters from "@/components/Filters";
+import Filters from "@/components/Admin/Filters";
 import SortIcon from "./SortIcon";
-import Toolbar from "@/components/Toolbar";
+import Toolbar from "@/components/Admin/Toolbar";
 import Title from "./Title";
 const teams = [
   {
     uid: 1,
-    name: "The couple",
+    name: "The team",
     github: "https://github.com",
     devpost: "https://rose-hack-2021.devpost.com",
     status: "winner",
@@ -21,7 +21,7 @@ const teams = [
         email: "yhung022@ucr.edu",
       },
       {
-        name: "Divyank Shah",
+        name: "Mengxuan Wu",
         email: "yhung022@ucr.edu",
       },
     ],
@@ -54,7 +54,7 @@ const teams = [
   },
   {
     uid: 3,
-    name: "The couple",
+    name: "The team",
     github: "https://github.com",
     devpost: "https://rose-hack-2021.devpost.com",
     status: "qualified",
@@ -125,6 +125,23 @@ const Teams = () => {
 
   const tags = [
     {
+      color: "green",
+      text: "qualified",
+      name: "Qualify",
+      onClick: (setToggle) => {
+        setToggle(false);
+        setFilteredTeams(
+          filteredTeams.map((a) => {
+            if (a.selected === true) {
+              a.status = "qualified";
+              a.selected = false;
+            }
+            return a;
+          })
+        );
+      },
+    },
+    {
       color: "purple",
       text: "winner",
       name: "Winner",
@@ -151,23 +168,6 @@ const Teams = () => {
           filteredTeams.map((a) => {
             if (a.selected === true) {
               a.status = "disqualified";
-              a.selected = false;
-            }
-            return a;
-          })
-        );
-      },
-    },
-    {
-      color: "green",
-      text: "qualified",
-      name: "Qualify",
-      onClick: (setToggle) => {
-        setToggle(false);
-        setFilteredTeams(
-          filteredTeams.map((a) => {
-            if (a.selected === true) {
-              a.status = "qualified";
               a.selected = false;
             }
             return a;

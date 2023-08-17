@@ -2,17 +2,16 @@
 
 import React, { useState } from "react";
 import Select from "@/components/Select";
-import { Majors, Grades, Genders, Shirts } from "../data/Register";
+import { Majors, Grades, Genders, Shirts } from "@/data/Register";
 import Radio from "@/components/Radio";
-import Checkbox from "./Checkbox";
-import Input from "./Input";
+import Checkbox from "@/components/Checkbox";
+import Input from "@/components/Input";
 import { Row, Col } from "react-bootstrap";
-import Button from "./Button";
-import { Helper } from "../data/User";
-import Text from "./Text";
+import Button from "@/components/Forms/Button";
+import { Helper } from "@/data/User";
 
-const Register = () => {
-  const [mentor, setMentor] = useState(Helper);
+const Volunteer = () => {
+  const [volunteer, setVolunteer] = useState(Helper);
 
   const [requirements, setRequirements] = useState({
     photography: {
@@ -26,7 +25,7 @@ const Register = () => {
   });
 
   const handleSubmit = () => {
-    console.log(mentor);
+    console.log(volunteer);
     console.log(requirements);
   };
 
@@ -40,26 +39,24 @@ const Register = () => {
   return (
     <div className="w-full flex flex-col items-center font-poppins py-4">
       <div className="text-xl bg-hackathon-green-300 w-1/3 rounded-t-xl flex items-center justify-center p-3 font-semibold">
-        MENTOR APPLICATION
+        VOLUNTEER APPLICATION
       </div>
       <div className="flex flex-col w-1/3 p-3 bg-white rounded-b-xl">
         <Row className="flex justify-center p-0 m-0">
           <Col xl={12}>
             Hello! Rose Hack is coming January 14-15, 2023. Thank you for your
             interest in Rose Hack, UC Riverside’s women-centric hackathon
-            founded by the female leaders of SWE and WINC!Mentors are essential
-            to our hackathon in helping guide our hackers with their projects.
-            Your experience and knowledge is valuable to those who need
-            assistance during the event. You are welcome to join remotely and
-            mentor over Discord/Zoom if that is convenient, but our event is
-            purely in-person in terms of hacking. Meals are also provided during
-            breakfast, lunch, and dinner times in person. If you are interested
-            in joining the Rose Hack Team as a mentor, please fill out this
-            quick interest form below!
+            founded by the female leaders of SWE and WINC!Volunteers are
+            essential to our hackathon in helping run the entire event.
+            Responsibilities include helping set up, tech support, clean up,
+            distributing swag, etc. Meals are also provided during breakfast,
+            lunch, and dinner times. If you are interested in joining the Rose
+            Hack Team as a volunteer, please fill out this quick interest form
+            below!
             <br />
             <br />
-            We also want to note that if you are mentoring at Rose Hack, you are
-            unable to participate as a hacker as well. If you have any other
+            We also want to note that if you are volunteering at Rose Hack, you
+            are unable to participate as a hacker as well. If you have any other
             questions please feel free to contact us on our socials or email us
             at rosehackucr@gmail.com! :)
           </Col>
@@ -69,9 +66,9 @@ const Register = () => {
               type="text"
               title="First Name"
               placeholder="John"
-              value={mentor.first}
-              user={mentor}
-              setUser={setMentor}
+              value={volunteer.first}
+              user={volunteer}
+              setUser={setVolunteer}
             />
           </Col>
           <Col xl={6}>
@@ -80,9 +77,9 @@ const Register = () => {
               type="text"
               title="Last Name"
               placeholder="Doe"
-              value={mentor.last}
-              user={mentor}
-              setUser={setMentor}
+              value={volunteer.last}
+              user={volunteer}
+              setUser={setVolunteer}
             />
           </Col>
           <Col xl={6}>
@@ -91,9 +88,9 @@ const Register = () => {
               type="phone"
               title="Phone Number"
               placeholder="123 456 7890"
-              value={mentor.phone}
-              user={mentor}
-              setUser={setMentor}
+              value={volunteer.phone}
+              user={volunteer}
+              setUser={setVolunteer}
             />
           </Col>
           <Col xl={6}>
@@ -102,9 +99,9 @@ const Register = () => {
               type="email"
               title="Email Address"
               placeholder="john_doe@gmail.com"
-              value={mentor.email}
-              user={mentor}
-              setUser={setMentor}
+              value={volunteer.email}
+              user={volunteer}
+              setUser={setVolunteer}
             />
           </Col>
           <Col xl={12}>
@@ -112,8 +109,8 @@ const Register = () => {
               title="Major"
               options={Majors}
               field="major"
-              user={mentor}
-              setUser={setMentor}
+              user={volunteer}
+              setUser={setVolunteer}
               placeholder="Computer Science"
             />
           </Col>
@@ -122,8 +119,8 @@ const Register = () => {
               title="Grade"
               options={Grades}
               field="grade"
-              user={mentor}
-              setUser={setMentor}
+              user={volunteer}
+              setUser={setVolunteer}
               placeholder="Undergraduate"
             />
           </Col>
@@ -132,8 +129,8 @@ const Register = () => {
               text="Gender"
               options={Genders}
               field="gender"
-              user={mentor}
-              setUser={setMentor}
+              user={volunteer}
+              setUser={setVolunteer}
             />
           </Col>
           <Col xl={12}>
@@ -141,19 +138,8 @@ const Register = () => {
               text="Shirt Size"
               options={Shirts}
               field="shirt"
-              user={mentor}
-              setUser={setMentor}
-            />
-          </Col>
-          <Col xl={12}>
-            <Text
-              name="response"
-              type="email"
-              title="What skills and experience can you bring as a mentor?"
-              placeholder="I can bring..."
-              value={mentor.response}
-              user={mentor}
-              setUser={setMentor}
+              user={volunteer}
+              setUser={setVolunteer}
             />
           </Col>
           <Col xl={12}>
@@ -177,4 +163,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Volunteer;

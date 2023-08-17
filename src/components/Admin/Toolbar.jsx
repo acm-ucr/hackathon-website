@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import Checkbox from "./Checkbox";
+import Checkbox from "../Checkbox";
 import { HiSearch } from "react-icons/hi";
 import Tag from "./Tag.jsx";
-import { FaDownload } from "react-icons/fa";
+import { FaDownload, FaTrashAlt } from "react-icons/fa";
 
 const Toolbar = ({
   input,
@@ -74,7 +74,7 @@ const Toolbar = ({
   };
 
   return (
-    <div className="w-full flex justify-between items-center">
+    <div className="w-full flex items-center">
       <div className="my-2.5 w-2/3 flex items-center">
         <div className="mr-4">
           <Checkbox onClick={selectAll} toggle={toggle} />
@@ -97,8 +97,11 @@ const Toolbar = ({
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
-          <button className=" text-hackathon-darkgray rounded focus:outline-none">
-            <HiSearch size={30} className="ml-2" />
+          <button className="focus:outline-none">
+            <HiSearch
+              size={30}
+              className="ml-2 text-hackathon-darkgray hover:opacity-70 duration-150"
+            />
           </button>
         </form>
         <button
@@ -110,10 +113,18 @@ const Toolbar = ({
           Reset
         </button>
       </div>
-      <FaDownload
-        size={22.5}
-        className="ml-2 text-hackathon-darkgray hover:cursor-pointer"
-      />
+      <button>
+        <FaDownload
+          size={22.5}
+          className="ml-4 text-hackathon-darkgray hover:opacity-70 duration-150"
+        />
+      </button>
+      <button>
+        <FaTrashAlt
+          size={22.5}
+          className="ml-5 text-hackathon-darkgray hover:opacity-70 duration-150"
+        />
+      </button>
     </div>
   );
 };
