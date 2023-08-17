@@ -6,61 +6,17 @@ import Filters from "./Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import Table from "./Table.jsx";
 import AddJudgeForm from "./AddJudgeForm.jsx";
-
-const judges = [
-  {
-    name: "Big Chungus",
-    status: "confirm",
-    type: "professor",
-    email: "bigchungus101@email.com",
-    selected: false,
-  },
-  {
-    name: "Mario Kart",
-    status: "confirm",
-    type: "student",
-    email: "mariomoviegoated101@email.com",
-    selected: false,
-  },
-  {
-    name: "Ash Ketchum",
-    type: "industry",
-    status: "pending",
-    email: "ash.ketchum12@email.com",
-    selected: false,
-  },
-];
+import { judges } from "@/data/TableData.js";
+import { judgeFilters } from "@/data/Filters.js";
+import { judgeHeaders } from "@/data/Headers.js";
+import { judgeTags } from "@/data/Tags.js";
 
 const Judges = () => {
   const [filteredJudges, setFilteredJudges] = useState(judges);
   const [input, setInput] = useState("");
+  const [filters, setFilters] = useState(judgeFilters);
+  const [headers, setHeaders] = useState(judgeHeaders);
 
-  const [filters, setFilters] = useState({
-    pending: true,
-    confirm: true,
-    "not attending": true,
-  });
-
-  const tags = [
-    {
-      color: "gray",
-      text: "pending",
-    },
-    {
-      color: "green",
-      text: "confirm",
-    },
-    {
-      color: "red",
-      text: "not attending",
-    },
-  ];
-  const [headers, setHeaders] = useState({
-    Name: { size: "w-1/4", icon: true, sort: "off" },
-    Email: { size: "w-1/4", icon: false, sort: "off" },
-    Type: { size: "w-1/4", icon: false, sort: "off" },
-    Status: { size: "w-[10%]", icon: true, sort: "off" },
-  });
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <div className="flex">
@@ -80,7 +36,7 @@ const Judges = () => {
       <Toolbar
         input={input}
         setInput={setInput}
-        tags={tags}
+        tags={judgeTags}
         setFilteredObjects={setFilteredJudges}
         objects={filteredJudges}
         filters={filters}

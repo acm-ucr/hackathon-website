@@ -7,100 +7,17 @@ import Participant from "./Participant";
 import Toolbar from "@/components/Admin/Toolbar";
 import Title from "./Title";
 import Table from "./Table";
-const participants = [
-  {
-    uid: "1",
-    name: "Menthy Wu",
-    email: "yhung022@ucr.edu",
-    team: "b",
-    major: "Computer Science",
-    status: "pending",
-    selected: false,
-  },
-  {
-    uid: "2",
-    name: "Divyank Shah",
-    email: "yhung022@ucr.edu",
-    team: "c",
-    major: "Computer Science",
-    status: "accepted",
-    selected: false,
-  },
-  {
-    uid: "3",
-    name: "Shing Hung",
-    email: "yhung022@ucr.edu",
-    team: "d",
-    major: "Computer Science",
-    status: "rejected",
-    selected: false,
-  },
-  {
-    uid: "4",
-    name: "Sachin Chopra",
-    email: "yhung022@ucr.edu",
-    team: "a",
-    major: "Computer Science",
-    status: "accepted",
-    selected: false,
-  },
-];
+import { participants } from "@/data/TableData";
+import { participantFilters } from "@/data/Filters";
+import { participantHeader } from "@/data/Headers";
+import { participantTags } from "@/data/Tags";
 
 const Participants = () => {
   const [filteredParticipants, setfilteredParticipants] =
     useState(participants);
-
   const [input, setInput] = useState("");
-
-  const [filters, setFilters] = useState({
-    rejected: true,
-    accepted: true,
-    pending: true,
-  });
-
-  const [headers, setHeaders] = useState({
-    Name: { size: "w-1/5", icon: true, sort: "off" },
-    Email: { size: "w-1/5", icon: true, sort: "off" },
-    Team: { size: "w-1/5", icon: true, sort: "off" },
-    Major: { size: "w-1/5", icon: true, sort: "off" },
-    Status: { size: "w-[10%]", icon: true, sort: "off" },
-  });
-  const tags = [
-    {
-      color: "green",
-      text: "accepted",
-      name: "Accept",
-      onClick: (setToggle) => {
-        setToggle(false);
-        setfilteredParticipants(
-          filteredParticipants.map((a) => {
-            if (a.selected === true) {
-              a.status = "accepted";
-              a.selected = false;
-            }
-            return a;
-          })
-        );
-      },
-    },
-    {
-      color: "red",
-      text: "rejected",
-      name: "Reject",
-      onClick: (setToggle) => {
-        setToggle(false);
-        setfilteredParticipants(
-          filteredParticipants.map((a) => {
-            if (a.selected === true) {
-              a.status = "rejected";
-              a.selected = false;
-            }
-            return a;
-          })
-        );
-      },
-    },
-  ];
+  const [filters, setFilters] = useState(participantFilters);
+  const [headers, setHeaders] = useState(participantHeader);
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
@@ -117,7 +34,7 @@ const Participants = () => {
       <Toolbar
         input={input}
         setInput={setInput}
-        tags={tags}
+        tags={participantTags}
         setFilteredObjects={setfilteredParticipants}
         objects={filteredParticipants}
         filters={filters}

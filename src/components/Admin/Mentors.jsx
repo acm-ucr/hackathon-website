@@ -6,72 +6,16 @@ import Filters from "@/components/Admin/Filters";
 import Toolbar from "@/components/Admin/Toolbar";
 import Title from "./Title";
 import Table from "./Table";
-
-const mentors = [
-  {
-    uid: 1,
-    name: "Raidah Fairooz",
-    email: "rfair008@ucr.edu",
-    discord: "Raidah#2067",
-    status: "online",
-    selected: false,
-  },
-  {
-    uid: 2,
-    name: "Minsoo Kim",
-    email: "mkim001@ucr.edu",
-    discord: "Soup#2023",
-    status: "online",
-    selected: false,
-  },
-  {
-    uid: 3,
-    name: "Menthy Wu",
-    email: "mwu171@ucr.edu",
-    discord: "_wmx",
-    status: "onsite",
-    selected: false,
-  },
-  {
-    uid: 4,
-    name: "John Cena",
-    email: "cantseeme@ucr.edu",
-    discord: "babydonthurtme#2067",
-    status: "onsite",
-    selected: false,
-  },
-];
+import { mentors } from "@/data/TableData.js";
+import { mentorTags } from "@/data/Tags.js";
+import { mentorFilters } from "@/data/Filters.js";
+import { mentorHeaders } from "@/data/Headers.js";
 
 const Mentors = () => {
   const [filteredMentors, setFilteredMentors] = useState(mentors);
   const [input, setInput] = useState("");
-  const [filters, setFilters] = useState({
-    online: true,
-    onsite: true,
-    "not attending": true,
-  });
-
-  const [headers, setHeaders] = useState({
-    Name: { size: "w-1/4", icon: true, sort: "off" },
-    Email: { size: "w-1/4", icon: false, sort: "off" },
-    Discord: { size: "w-1/4", icon: false, sort: "off" },
-    Status: { size: "w-[10%]", icon: true, sort: "off" },
-  });
-
-  const tags = [
-    {
-      color: "purple",
-      text: "onsite",
-    },
-    {
-      color: "red",
-      text: "not attending",
-    },
-    {
-      color: "green",
-      text: "online",
-    },
-  ];
+  const [filters, setFilters] = useState(mentorFilters);
+  const [headers, setHeaders] = useState(mentorHeaders);
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
@@ -88,7 +32,7 @@ const Mentors = () => {
       <Toolbar
         input={input}
         setInput={setInput}
-        tags={tags}
+        tags={mentorTags}
         setFilteredObjects={setFilteredMentors}
         objects={filteredMentors}
         filters={filters}

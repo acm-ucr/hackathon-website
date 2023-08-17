@@ -6,70 +6,16 @@ import Filters from "@/components/Admin/Filters";
 import Toolbar from "@/components/Admin/Toolbar";
 import Title from "./Title";
 import Table from "./Table";
-
-const volunteers = [
-  {
-    uid: 1,
-    name: "Raidah Fairooz",
-    email: "rfair008@ucr.edu",
-    discord: "Raidah#2067",
-    status: "online",
-    selected: false,
-  },
-  {
-    uid: 2,
-    name: "Minsoo Kim",
-    email: "mkim001@ucr.edu",
-    discord: "Soup#2023",
-    status: "online",
-    selected: false,
-  },
-  {
-    uid: 3,
-    name: "Menthy Divyank",
-    email: "couple002@ucr.edu",
-    discord: "disney#2033",
-    status: "onsite",
-    selected: false,
-  },
-  {
-    uid: 4,
-    name: "John Cena",
-    email: "cantseeme@ucr.edu",
-    discord: "babydonthurtme#2067",
-    status: "onsite",
-    selected: false,
-  },
-];
+import { volunteers } from "@/data/TableData";
+import { volunteerFilters } from "@/data/Filters";
+import { volunteerHeaders } from "@/data/Headers";
+import { volunteerTags } from "@/data/Tags";
 
 const Volunteers = () => {
   const [filteredVolunteers, setFilteredVolunteers] = useState(volunteers);
   const [input, setInput] = useState("");
-  const [filters, setFilters] = useState({
-    online: true,
-    onsite: true,
-    "not attending": true,
-  });
-  const [headers, setHeaders] = useState({
-    Name: { size: "w-1/4", icon: true, sort: "off" },
-    Email: { size: "w-1/4", icon: false, sort: "off" },
-    Discord: { size: "w-1/4", icon: false, sort: "off" },
-    Status: { size: "w-[10%]", icon: true, sort: "off" },
-  });
-  const tags = [
-    {
-      color: "purple",
-      text: "onsite",
-    },
-    {
-      color: "red",
-      text: "not attending",
-    },
-    {
-      color: "green",
-      text: "online",
-    },
-  ];
+  const [filters, setFilters] = useState(volunteerFilters);
+  const [headers, setHeaders] = useState(volunteerHeaders);
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
@@ -86,7 +32,7 @@ const Volunteers = () => {
       <Toolbar
         input={input}
         setInput={setInput}
-        tags={tags}
+        tags={volunteerTags}
         setFilteredObjects={setFilteredVolunteers}
         objects={filteredVolunteers}
         filters={filters}
