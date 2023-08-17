@@ -65,7 +65,7 @@ const Admissions = () => {
       return;
     }
     console.log(Object.entries(filters));
-    if (Object.entries(filters).filter((filter) => filter[1]).length == 0) {
+    if (Object.entries(filters).filter(([key, value]) => value).length == 0) {
       toast("❌ Please specify recipient!");
       return;
     }
