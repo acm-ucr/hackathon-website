@@ -1,12 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { Row, Col } from "react-bootstrap";
 import Volunteer from "@/components/Admin/Volunteer";
 import Filters from "@/components/Admin/Filters";
-import SortIcon from "./SortIcon";
 import Toolbar from "@/components/Admin/Toolbar";
 import Title from "./Title";
+import Table from "./Table";
 
 const volunteers = [
   {
@@ -43,82 +42,38 @@ const volunteers = [
   },
 ];
 
-const headers = [
-  { name: "", size: "w-[7%]", icon: false },
-  { name: "Name", size: "w-1/4", icon: true },
-  { name: "Email", size: "w-1/4", icon: false },
-  { name: "Discord", size: "w-1/4", icon: false },
-  { name: "Status", size: "", icon: true },
-];
-
 const Volunteers = () => {
   const [filteredVolunteers, setFilteredVolunteers] = useState(volunteers);
   const [input, setInput] = useState("");
   const [filters, setFilters] = useState({
     online: true,
     onsite: true,
+    "not attending": true,
   });
-  const [sorts, setSorts] = useState({
-    name: "down",
-    team: "off",
-    status: "off",
+  const [headers, setHeaders] = useState({
+    Name: { size: "w-1/4", icon: true, sort: "off" },
+    Email: { size: "w-1/4", icon: false, sort: "off" },
+    Discord: { size: "w-1/4", icon: false, sort: "off" },
+    Status: { size: "w-[10%]", icon: true, sort: "off" },
   });
-
   const tags = [
     {
       color: "purple",
-      text: "Onsite",
-      name: "Onsite",
-      onClick: (setToggle) => {
-        setToggle(false);
-        setFilteredVolunteers(
-          filteredVolunteers.map((a) => {
-            if (a.selected === true) {
-              a.status = "onsite";
-              a.selected = false;
-            }
-            return a;
-          })
-        );
-      },
+      text: "onsite",
     },
     {
       color: "red",
-      text: "remove",
-      name: "Remove",
-      onClick: (setToggle) => {
-        setToggle(false);
-        setFilteredVolunteers(
-          filteredVolunteers.filter((a) => {
-            if (a.selected !== true) {
-              return a;
-            }
-          })
-        );
-      },
+      text: "not attending",
     },
     {
       color: "green",
       text: "online",
-      name: "Online",
-      onClick: (setToggle) => {
-        setToggle(false);
-        setFilteredVolunteers(
-          filteredVolunteers.map((a) => {
-            if (a.selected === true) {
-              a.status = "online";
-              a.selected = false;
-            }
-            return a;
-          })
-        );
-      },
     },
   ];
 
   return (
-    <div className="max-h-[80%] font-poppins">
-      <div className="flex pb-3 pt-4">
+    <div className="h-full font-poppins flex flex-col py-4 gap-3">
+      <div className="flex">
         <Title title="Volunteers" />
         <Filters
           filters={filters}
@@ -137,52 +92,27 @@ const Volunteers = () => {
         filters={filters}
         reset={volunteers}
       />
-      <div className=" py-2 text-sm rounded-t-xl flex text-white bg-hackathon-blue-200">
-        {headers.map((header, index) => (
-          <div
+      <Table
+        headers={headers}
+        empty="No Volunteers Available"
+        setHeaders={setHeaders}
+        setFilteredObjects={setFilteredVolunteers}
+        filteredObjects={filteredVolunteers}
+      >
+        {filteredVolunteers.map((volunteer, index) => (
+          <Volunteer
             key={index}
-            className={`${header.size} font-semibold text-white flex items-center`}
-          >
-            {header.name}
-            {header.icon && (
-              <SortIcon
-                name={header.name.toLowerCase()}
-                sorts={sorts}
-                setSorts={setSorts}
-                setfilteredObjects={setFilteredVolunteers}
-                objects={filteredVolunteers}
-                reset={{
-                  name: "off",
-                  team: "off",
-                  status: "off",
-                }}
-              />
-            )}
-          </div>
+            uid={volunteer.uid}
+            name={volunteer.name}
+            email={volunteer.email}
+            discord={volunteer.discord}
+            status={volunteer.status}
+            selected={volunteer.selected}
+            filteredVolunteers={filteredVolunteers}
+            setFilteredVolunteers={setFilteredVolunteers}
+          />
         ))}
-      </div>
-      <Col className="bg-white last:rounded-b-2xl">
-        {filteredVolunteers.length != 0 ? (
-          filteredVolunteers.map((volunteer, index) => (
-            <Row key={index}>
-              <Volunteer
-                uid={volunteer.uid}
-                name={volunteer.name}
-                email={volunteer.email}
-                discord={volunteer.discord}
-                status={volunteer.status}
-                selected={volunteer.selected}
-                filteredVolunteers={filteredVolunteers}
-                setFilteredVolunteers={setFilteredVolunteers}
-              />
-            </Row>
-          ))
-        ) : (
-          <p className=" text-hackathon-darkgray font-poppins bg-white p-4 text-center rounded-b-2xl w-full">
-            No Volunteers Available
-          </p>
-        )}
-      </Col>
+      </Table>
     </div>
   );
 };

@@ -42,7 +42,9 @@ const Filters = ({
                 : "text-hackathon-blue-100 bg-white"
             } cursor-pointer flex items-center w-fit m-0`}
           >
-            <p className="my-0 mx-1 px-2 py-[2px]">{filter}</p>
+            <p className="my-0 mx-1 px-2 py-[2px] whitespace-nowrap">
+              {filter}
+            </p>
             <TiPlus
               className={`duration-300 mt-[2px] mr-2 hover:opacity-80 ${
                 filters[filter] ? "-rotate-45" : ""

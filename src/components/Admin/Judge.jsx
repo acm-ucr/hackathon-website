@@ -42,8 +42,10 @@ const Judge = ({
           color={
             status === "pending"
               ? "gray"
-              : status === "confirmed"
+              : status === "confirm"
               ? "green"
+              : status === "not attending"
+              ? "red"
               : "gray"
           }
           text={status}

@@ -2,11 +2,11 @@
 
 import React, { useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
-import SortIcon from "./SortIcon";
 import Filters from "@/components/Admin/Filters";
 import Participant from "./Participant";
 import Toolbar from "@/components/Admin/Toolbar";
 import Title from "./Title";
+import Table from "./Table";
 const participants = [
   {
     uid: "1",
@@ -46,28 +46,11 @@ const participants = [
   },
 ];
 
-const headers = [
-  { name: "", size: "w-[6%]", icon: false },
-  { name: "Name", size: "w-1/6", icon: true },
-  { name: "Email", size: "w-1/5", icon: true },
-  { name: "Team", size: "w-1/5", icon: true },
-  { name: "Major", size: "w-[22%]", icon: true },
-  { name: "Status", size: "", icon: true },
-];
-
 const Participants = () => {
   const [filteredParticipants, setfilteredParticipants] =
     useState(participants);
 
   const [input, setInput] = useState("");
-
-  const [sorts, setSorts] = useState({
-    name: "down",
-    email: "off",
-    team: "off",
-    major: "off",
-    status: "off",
-  });
 
   const [filters, setFilters] = useState({
     rejected: true,
@@ -75,6 +58,13 @@ const Participants = () => {
     pending: true,
   });
 
+  const [headers, setHeaders] = useState({
+    Name: { size: "w-1/5", icon: true, sort: "off" },
+    Email: { size: "w-1/5", icon: true, sort: "off" },
+    Team: { size: "w-1/5", icon: true, sort: "off" },
+    Major: { size: "w-1/5", icon: true, sort: "off" },
+    Status: { size: "w-[10%]", icon: true, sort: "off" },
+  });
   const tags = [
     {
       color: "green",
@@ -113,8 +103,8 @@ const Participants = () => {
   ];
 
   return (
-    <div className="max-h-[80%] font-poppins">
-      <div className="flex pb-3 pt-4">
+    <div className="h-full font-poppins flex flex-col py-4 gap-3">
+      <div className="flex">
         <Title title="Participants" />
         <Filters
           filters={filters}
@@ -133,33 +123,13 @@ const Participants = () => {
         filters={filters}
         reset={participants}
       />
-      <div className="flex bg-hackathon-blue-200 py-2 rounded-t-xl !z-[1000]">
-        {headers.map((header, index) => (
-          <div
-            key={index}
-            className={`${header.size} font-semibold text-sm text-white flex items-center`}
-          >
-            {header.name}
-            {header.icon && (
-              <SortIcon
-                name={header.name.toLowerCase()}
-                sorts={sorts}
-                setSorts={setSorts}
-                setfilteredObjects={setfilteredParticipants}
-                objects={filteredParticipants}
-                reset={{
-                  name: "off",
-                  email: "off",
-                  team: "off",
-                  major: "off",
-                  status: "off",
-                }}
-              />
-            )}
-          </div>
-        ))}
-      </div>
-      {filteredParticipants.length != 0 ? (
+      <Table
+        headers={headers}
+        empty="No Participants Available"
+        setHeaders={setHeaders}
+        setFilteredObjects={setfilteredParticipants}
+        filteredObjects={filteredParticipants}
+      >
         <Accordion>
           {filteredParticipants.map((participant, index) => (
             <Participant
@@ -171,11 +141,7 @@ const Participants = () => {
             />
           ))}
         </Accordion>
-      ) : (
-        <p className=" text-hackathon-darkgray font-poppins bg-white p-4 text-center w-full rounded-b-2xl">
-          No participant to display
-        </p>
-      )}
+      </Table>
     </div>
   );
 };

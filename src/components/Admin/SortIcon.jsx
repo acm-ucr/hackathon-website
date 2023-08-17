@@ -5,21 +5,31 @@ import { TbTriangleFilled, TbTriangleInvertedFilled } from "react-icons/tb";
 
 const SortIcon = ({
   name,
-  sorts,
-  setSorts,
-  setfilteredObjects,
+  headers,
+  setHeaders,
+  setFilteredObjects,
   objects,
-  reset,
+  setCurrentSort,
+  currentSort,
 }) => {
   const handleClick = (state) => {
-    setSorts({ ...reset, [name]: state });
+    if (currentSort)
+      setHeaders({
+        ...headers,
+        [currentSort]: { ...headers[name], sort: "off" },
+      });
+    setHeaders({
+      ...headers,
+      [name]: { ...headers[name], sort: state },
+    });
 
-    setfilteredObjects(
+    setCurrentSort(name);
+    setFilteredObjects(
       objects.sort((a, b) => {
         if (state === "up") {
-          return a[name] > b[name] ? -1 : 1;
+          return a[name.toLowerCase()] > b[name.toLowerCase()] ? -1 : 1;
         } else if (state === "down") {
-          return b[name] > a[name] ? -1 : 1;
+          return b[name.toLowerCase()] > a[name.toLowerCase()] ? -1 : 1;
         }
       })
     );
@@ -29,14 +39,16 @@ const SortIcon = ({
     <div className="mx-2">
       <TbTriangleFilled
         className={`${
-          sorts[name] === "up" ? " text-hackathon-blue-100" : "hover:opacity-50"
+          headers[name].sort === "up"
+            ? " text-hackathon-blue-100"
+            : "hover:opacity-50"
         } text-[8px] hover:cursor-pointer`}
         onClick={() => handleClick("up")}
       />
       <TbTriangleInvertedFilled
         onClick={() => handleClick("down")}
         className={`${
-          sorts[name] === "down"
+          headers[name].sort === "down"
             ? " text-hackathon-blue-100"
             : "hover:opacity-50"
         } text-[8px] hover:cursor-pointer`}

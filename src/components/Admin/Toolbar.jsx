@@ -75,7 +75,7 @@ const Toolbar = ({
 
   return (
     <div className="w-full flex items-center">
-      <div className="my-2.5 w-2/3 flex items-center">
+      <div className="w-2/3 flex items-center">
         <div className="mr-4">
           <Checkbox onClick={selectAll} toggle={toggle} />
         </div>
@@ -87,6 +87,8 @@ const Toolbar = ({
               name={tag.name}
               onClick={() => tag.onClick(setToggle)}
               color={tag.color}
+              setFilteredObjects={setFilteredObjects}
+              filteredObjects={objects}
             />
           ))}
         </div>

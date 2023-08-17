@@ -42,15 +42,35 @@ const colors = {
   },
 };
 
-const Tag = ({ color = "gray", text, name, onClick, withHover = true }) => {
-  const inToolbar = withHover ? colors[color].hover : "";
-  const pointCursor = withHover ? "hover:cursor-pointer" : "";
+const Tag = ({
+  color = "gray",
+  text,
+  withHover = true,
+  setFilteredObjects,
+  filteredObjects,
+}) => {
+  const onClick = () => {
+    if (!withHover) return;
+    setFilteredObjects(
+      filteredObjects.map((a) => {
+        if (a.selected) {
+          a.status = text.toLowerCase();
+          a.selected = false;
+        }
+        return a;
+      })
+    );
+  };
   return (
-    <div
-      className={`${colors[color].background} ${colors[color].text} ${inToolbar} ${pointCursor} whitespace-nowrap px-2 py-0.5 rounded-xl text-xs md:text-sm w-fit `}
-      onClick={onClick}
-    >
-      {name ? name : text}
+    <div className="w-full">
+      <div
+        className={`${colors[color].background} ${colors[color].text} ${
+          withHover && `hover:cursor-pointer ${colors[color].hover}`
+        } whitespace-nowrap px-2 py-0.5 rounded-full text-xs md:text-sm w-fit`}
+        onClick={onClick}
+      >
+        {text}
+      </div>
     </div>
   );
 };

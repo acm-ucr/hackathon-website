@@ -1,12 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { Row, Col } from "react-bootstrap";
 import Team from "./Team";
 import Filters from "@/components/Admin/Filters";
-import SortIcon from "./SortIcon";
 import Toolbar from "@/components/Admin/Toolbar";
 import Title from "./Title";
+import Table from "./Table";
 const teams = [
   {
     uid: 1,
@@ -57,7 +56,7 @@ const teams = [
     name: "The team",
     github: "https://github.com",
     devpost: "https://rose-hack-2021.devpost.com",
-    status: "qualified",
+    status: "qualify",
     selected: false,
     members: [
       {
@@ -75,7 +74,7 @@ const teams = [
     name: "The deer",
     github: "https://github.com",
     devpost: "https://rose-hack-2021.devpost.com",
-    status: "disqualified",
+    status: "disqualify",
     selected: false,
     members: [
       {
@@ -98,27 +97,13 @@ const teams = [
   },
 ];
 
-const headers = [
-  { name: "", size: "w-[7%]", icon: false },
-  { name: "Name", size: "w-[18%]", icon: true },
-  { name: "Email", size: "w-1/5", icon: false },
-  { name: "Links", size: "w-[41%]", icon: false },
-  { name: "Status", size: "", icon: true },
-];
-
 const Teams = () => {
   const [filteredTeams, setFilteredTeams] = useState(teams);
   const [input, setInput] = useState("");
 
-  const [sorts, setSorts] = useState({
-    name: "down",
-    team: "off",
-    status: "off",
-  });
-
   const [filters, setFilters] = useState({
-    disqualified: true,
-    qualified: true,
+    disqualify: true,
+    qualify: true,
     pending: true,
     winner: true,
   });
@@ -126,60 +111,27 @@ const Teams = () => {
   const tags = [
     {
       color: "green",
-      text: "qualified",
-      name: "Qualify",
-      onClick: (setToggle) => {
-        setToggle(false);
-        setFilteredTeams(
-          filteredTeams.map((a) => {
-            if (a.selected === true) {
-              a.status = "qualified";
-              a.selected = false;
-            }
-            return a;
-          })
-        );
-      },
+      text: "qualify",
     },
     {
       color: "purple",
       text: "winner",
-      name: "Winner",
-      onClick: (setToggle) => {
-        setToggle(false);
-        setFilteredTeams(
-          filteredTeams.map((a) => {
-            if (a.selected === true) {
-              a.status = "winner";
-              a.selected = false;
-            }
-            return a;
-          })
-        );
-      },
     },
     {
       color: "red",
-      text: "disqualified",
-      name: "Disqualify",
-      onClick: (setToggle) => {
-        setToggle(false);
-        setFilteredTeams(
-          filteredTeams.map((a) => {
-            if (a.selected === true) {
-              a.status = "disqualified";
-              a.selected = false;
-            }
-            return a;
-          })
-        );
-      },
+      text: "disqualify",
     },
   ];
 
+  const [headers, setHeaders] = useState({
+    Name: { size: "w-1/5", icon: true, sort: "off" },
+    Email: { size: "w-1/5", icon: false, sort: "off" },
+    Links: { size: "w-[40%]", icon: false, sort: "off" },
+    Status: { size: "w-[10%]", icon: true, sort: "off" },
+  });
   return (
-    <div className="h-full font-poppins flex flex-col">
-      <div className="flex pb-3 pt-4">
+    <div className="h-full font-poppins flex flex-col py-4 gap-3">
+      <div className="flex">
         <Title title="Teams" />
         <Filters
           filters={filters}
@@ -198,55 +150,28 @@ const Teams = () => {
         filters={filters}
         reset={teams}
       />
-      <div className="w-full max-h-[83%] overflow-hidden rounded-xl">
-        <div className="py-2 text-sm flex text-white bg-hackathon-blue-200">
-          {headers.map((header, index) => (
-            <div
-              key={index}
-              className={`${header.size} font-semibold text-white flex items-center`}
-            >
-              {header.name}
-              {header.icon && (
-                <SortIcon
-                  name={header.name.toLowerCase()}
-                  sorts={sorts}
-                  setSorts={setSorts}
-                  setfilteredObjects={setFilteredTeams}
-                  objects={filteredTeams}
-                  reset={{
-                    name: "off",
-                    team: "off",
-                    status: "off",
-                  }}
-                />
-              )}
-            </div>
-          ))}
-        </div>
-        <Col className="bg-white max-h-full overflow-scroll w-full">
-          {filteredTeams.length != 0 ? (
-            filteredTeams.map((team, index) => (
-              <Row key={index} className="w-full m-0">
-                <Team
-                  uid={team.uid}
-                  teamName={team.name}
-                  github={team.github}
-                  devpost={team.devpost}
-                  status={team.status}
-                  members={team.members}
-                  selected={team.selected}
-                  filteredTeams={filteredTeams}
-                  setFilteredTeams={setFilteredTeams}
-                />
-              </Row>
-            ))
-          ) : (
-            <p className=" text-hackathon-darkgray font-poppins bg-white p-4 text-center rounded-b-2xl w-full">
-              No team to display
-            </p>
-          )}
-        </Col>
-      </div>
+      <Table
+        headers={headers}
+        empty="No Teams Available"
+        setHeaders={setHeaders}
+        setFilteredObjects={setFilteredTeams}
+        filteredObjects={filteredTeams}
+      >
+        {filteredTeams.map((team, index) => (
+          <Team
+            key={index}
+            uid={team.uid}
+            teamName={team.name}
+            github={team.github}
+            devpost={team.devpost}
+            status={team.status}
+            members={team.members}
+            selected={team.selected}
+            filteredTeams={filteredTeams}
+            setFilteredTeams={setFilteredTeams}
+          />
+        ))}
+      </Table>
     </div>
   );
 };

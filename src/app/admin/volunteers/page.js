@@ -5,7 +5,7 @@ import ProtectedPage from "@/components/ProtectedPage";
 const VolunteersPage = () => {
   return (
     <ProtectedPage title="Admin | Volunteers" restrictions={["admin"]}>
-      <div className="w-11/12">
+      <div className="w-11/12 h-full">
         <Volunteers />
       </div>
     </ProtectedPage>
