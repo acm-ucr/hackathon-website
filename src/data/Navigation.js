@@ -7,7 +7,7 @@ import {
 } from "react-icons/bs";
 import { MdVolunteerActivism } from "react-icons/md";
 import { BiSolidHelpCircle } from "react-icons/bi";
-import { FaGavel, FaCheckCircle, FaEnvelope } from "react-icons/fa";
+import { FaGavel, FaCheckCircle, FaEnvelope, FaLock } from "react-icons/fa";
 
 const iconStyle = "text-2xl mr-2 mt-2 mb-2";
 
@@ -51,6 +51,11 @@ export const AdminTabs = [
     name: "statistics",
     link: "/admin/statistics",
     icon: <BsBarChartFill className={iconStyle} />,
+  },
+  {
+    name: "admin",
+    link: "/admin/admin",
+    icon: <FaLock className={iconStyle} />,
   },
   {
     name: "website",

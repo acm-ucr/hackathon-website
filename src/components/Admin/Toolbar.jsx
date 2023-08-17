@@ -56,23 +56,13 @@ const Toolbar = ({
   };
 
   const selectAll = () => {
+    setFilteredObjects(
+      objects.map((a) => {
+        a.selected = !toggle;
+        return a;
+      })
+    );
     setToggle(!toggle);
-
-    if (!toggle === true) {
-      setFilteredObjects(
-        objects.map((a) => {
-          a.selected = true;
-          return a;
-        })
-      );
-    } else {
-      setFilteredObjects(
-        objects.map((a) => {
-          a.selected = false;
-          return a;
-        })
-      );
-    }
   };
   // const csvData = objects.entries(download).map(entry => rowData[entry[0]] = entry[1]);
   // const csvData = objects;
@@ -128,8 +118,11 @@ const Toolbar = ({
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
-          <button className=" text-hackathon-darkgray rounded focus:outline-none">
-            <HiSearch size={30} className="ml-2" />
+          <button className="focus:outline-none">
+            <HiSearch
+              size={30}
+              className="ml-2 text-hackathon-darkgray hover:opacity-70 duration-150"
+            />
           </button>
         </form>
         <button
@@ -141,6 +134,7 @@ const Toolbar = ({
           Reset
         </button>
       </div>
+
       <CSVLink
         data={csvData}
         filename={`${process.env.NEXT_PUBLIC_HACKATHON}_${formattedDate}_${formattedTime}_${file}`}
@@ -148,8 +142,12 @@ const Toolbar = ({
       >
         <FaDownload size={22.5} className="ml-4 text-hackathon-darkgray" />
       </CSVLink>
+      
       <button>
-        <FaTrashAlt size={22.5} className="ml-5 text-hackathon-darkgray" />
+        <FaTrashAlt
+          size={22.5}
+          className="ml-5 text-hackathon-darkgray hover:opacity-70 duration-150"
+        />
       </button>
     </div>
   );
