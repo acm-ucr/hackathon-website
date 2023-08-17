@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Checkbox from "../Checkbox";
 import { HiSearch } from "react-icons/hi";
 import Tag from "./Tag.jsx";
@@ -77,29 +77,33 @@ const Toolbar = ({
   // const csvData = objects.entries(download).map(entry => rowData[entry[0]] = entry[1]);
   // const csvData = objects;
   const csvData = objects.map((download) => {
-  const rowData = {};
+    const rowData = {};
 
-  Object.entries(download).forEach(([key, value]) => {
-    if (key === "members" && Array.isArray(value) && value.length > 0) {
-      const memberNames = value.map((member) => member.name).join(', ');
-      const memberEmails = value.map((member) => member.email).join(', ');
+    Object.entries(download).forEach(([key, value]) => {
+      if (key === "members" && Array.isArray(value) && value.length > 0) {
+        const memberNames = value.map((member) => member.name).join(", ");
+        const memberEmails = value.map((member) => member.email).join(", ");
 
-      rowData.members = `Names: ${memberNames}, Emails: ${memberEmails}`;
-    } else {
-      if (typeof value === "boolean") {
-        rowData[key] = value ? "Yes" : "No";
+        rowData.members = `Names: ${memberNames}, Emails: ${memberEmails}`;
       } else {
-        rowData[key] = value || '';
+        if (typeof value === "boolean") {
+          rowData[key] = value ? "Yes" : "No";
+        } else {
+          rowData[key] = value || "";
+        }
       }
-    }
+    });
+
+    return rowData;
   });
 
-  return rowData;
-});
-
   const currentDate = new Date();
-  const formattedDate = currentDate.toLocaleDateString('en-US').replace(/ /g, '_');
-  const formattedTime = currentDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }).replace(/ /g, '_');
+  const formattedDate = currentDate
+    .toLocaleDateString("en-US")
+    .replace(/ /g, "_");
+  const formattedTime = currentDate
+    .toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
+    .replace(/ /g, "_");
   return (
     <div className="w-full flex items-center">
       <div className="my-2.5 w-2/3 flex items-center">
