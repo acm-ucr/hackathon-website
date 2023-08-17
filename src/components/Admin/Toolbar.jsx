@@ -134,7 +134,6 @@ const Toolbar = ({
           Reset
         </button>
       </div>
-
       <CSVLink
         data={csvData}
         filename={`${process.env.NEXT_PUBLIC_HACKATHON}_${formattedDate}_${formattedTime}_${file}`}
@@ -142,7 +141,6 @@ const Toolbar = ({
       >
         <FaDownload size={22.5} className="ml-4 text-hackathon-darkgray" />
       </CSVLink>
-      
       <button>
         <FaTrashAlt
           size={22.5}
