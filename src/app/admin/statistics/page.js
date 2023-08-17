@@ -1,8 +1,8 @@
 import React from "react";
 import Title from "@/components/Admin/Title";
-import Label from "@/components/Label.jsx";
 import PieChart from "@/components/Admin/PieChart";
 import ProtectedPage from "@/components/ProtectedPage";
+import Tag from "@/components/Admin/Tag";
 
 const StatisticsPage = () => {
   const rowsWithLabels = [
@@ -35,7 +35,7 @@ const StatisticsPage = () => {
           <div className="flex flex-row" key={rowIndex}>
             {rowLabels.map((label, columnIndex) => (
               <div className="w-full " key={columnIndex}>
-                <Label label={label} />
+                <Tag text={label} withHover={false} color="gray" />
                 <PieChart data={data} />
               </div>
             ))}

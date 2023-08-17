@@ -54,23 +54,13 @@ const Toolbar = ({
   };
 
   const selectAll = () => {
+    setFilteredObjects(
+      objects.map((a) => {
+        a.selected = !toggle;
+        return a;
+      })
+    );
     setToggle(!toggle);
-
-    if (!toggle === true) {
-      setFilteredObjects(
-        objects.map((a) => {
-          a.selected = true;
-          return a;
-        })
-      );
-    } else {
-      setFilteredObjects(
-        objects.map((a) => {
-          a.selected = false;
-          return a;
-        })
-      );
-    }
   };
 
   return (
