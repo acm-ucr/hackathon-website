@@ -74,8 +74,6 @@ const Toolbar = ({
       );
     }
   };
-  // const csvData = objects.entries(download).map(entry => rowData[entry[0]] = entry[1]);
-  // const csvData = objects;
   const csvData = objects.map((download) => {
     const rowData = {};
 
