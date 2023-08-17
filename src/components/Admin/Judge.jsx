@@ -44,6 +44,8 @@ const Judge = ({
               ? "gray"
               : status === "confirmed"
               ? "green"
+              : status === "not attending"
+              ? "red"
               : "gray"
           }
           text={status}
