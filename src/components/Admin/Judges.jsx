@@ -91,7 +91,6 @@ const Judges = () => {
         );
       },
     },
-
     {
       color: "red",
       text: "not attending",
@@ -99,10 +98,12 @@ const Judges = () => {
       onClick: (setToggle) => {
         setToggle(false);
         setFilteredJudges(
-          filteredJudges.filter((a) => {
-            if (a.selected !== true) {
-              return a;
+          filteredJudges.map((a) => {
+            if (a.selected === true) {
+              a.status = "not attending";
+              a.selected = false;
             }
+            return a;
           })
         );
       },
