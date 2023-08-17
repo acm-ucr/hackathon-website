@@ -64,10 +64,7 @@ const Admissions = () => {
       toast("❌ Please add a body!");
       return;
     }
-    if (
-      Object.keys(filters).length ==
-      Object.keys(filters).map((filter) => !filters[filter].selected).length
-    ) {
+    if (Object.keys(filters).filter((filter) => filters[filter]).length == 0) {
       toast("❌ Please specify recipient!");
       return;
     }
