@@ -6,7 +6,6 @@ const VolunteersPage = () => {
   return (
     <ProtectedPage title="Admin | Volunteers" restrictions={["admin"]}>
       <div className="w-11/12 h-full">
-        <title>Admin | Volunteers</title>
         <Volunteers />
       </div>
     </ProtectedPage>
