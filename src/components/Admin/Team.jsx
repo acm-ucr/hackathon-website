@@ -46,7 +46,7 @@ const Teams = ({
       }
     >
       <Checkbox onClick={handleSelect} toggle={selected} />
-      <div className="w-[80%] flex flex-col">
+      <div className="w-[85%] flex flex-col">
         <p className="m-0 text-sm flex font-semibold">
           {teamName}
           {status == "winner" && (
