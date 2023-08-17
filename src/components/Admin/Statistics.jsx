@@ -3,7 +3,7 @@ import Title from "@/components/Admin/Title";
 import PieChart from "@/components/Admin/PieChart";
 import Tag from "@/components/Admin/Tag";
 import { Row, Col } from "react-bootstrap";
-import { charts } from "@/data/PieCharts";
+import { charts } from "@/data/mock/PieCharts";
 const Statistics = () => {
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
