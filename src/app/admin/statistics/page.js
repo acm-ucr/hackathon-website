@@ -35,7 +35,7 @@ const StatisticsPage = () => {
           <div className="flex flex-row" key={rowIndex}>
             {rowLabels.map((label, columnIndex) => (
               <div className="w-full " key={columnIndex}>
-                <Tag text={label} withHover={false} color="gray" />
+                <Tag text={label} withHover={false} color="student" />
                 <PieChart data={data} />
               </div>
             ))}
