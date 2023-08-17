@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Checkbox from "../Checkbox";
 import { HiSearch } from "react-icons/hi";
 import Tag from "./Tag.jsx";
@@ -15,10 +15,9 @@ const Toolbar = ({
   filters,
   reset,
   download,
-  fileName,
+  file,
 }) => {
   const [toggle, setToggle] = useState(false);
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -75,58 +74,32 @@ const Toolbar = ({
       );
     }
   };
+  // const csvData = objects.entries(download).map(entry => rowData[entry[0]] = entry[1]);
+  // const csvData = objects;
   const csvData = objects.map((download) => {
-    const rowData = {};
+  const rowData = {};
 
-    if (download.name) {
-      rowData.name = download.name;
-    }
-
-    if (download.members && download.members.length > 0) {
-      const memberNames = download.members
-        .map((member) => member.name)
-        .join(", ");
-      const memberEmails = download.members
-        .map((member) => member.email)
-        .join(", ");
+  Object.entries(download).forEach(([key, value]) => {
+    if (key === "members" && Array.isArray(value) && value.length > 0) {
+      const memberNames = value.map((member) => member.name).join(', ');
+      const memberEmails = value.map((member) => member.email).join(', ');
 
       rowData.members = `Names: ${memberNames}, Emails: ${memberEmails}`;
+    } else {
+      if (typeof value === "boolean") {
+        rowData[key] = value ? "Yes" : "No";
+      } else {
+        rowData[key] = value || '';
+      }
     }
-
-    if (download.email) {
-      rowData.email = download.email;
-    }
-
-    if (download.team) {
-      rowData.team = download.team;
-    }
-
-    if (download.github) {
-      rowData.github = download.github;
-    }
-
-    if (download.devpost) {
-      rowData.devpost = download.devpost;
-    }
-
-    if (download.type) {
-      rowData.type = download.type;
-    }
-
-    if (download.discord) {
-      rowData.discord = download.discord;
-    }
-
-    if (download.major) {
-      rowData.major = download.major;
-    }
-
-    if (download.status) {
-      rowData.status = download.status;
-    }
-
-    return rowData;
   });
+
+  return rowData;
+});
+
+  const currentDate = new Date();
+  const formattedDate = currentDate.toLocaleDateString('en-US').replace(/ /g, '_');
+  const formattedTime = currentDate.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }).replace(/ /g, '_');
   return (
     <div className="w-full flex items-center">
       <div className="my-2.5 w-2/3 flex items-center">
@@ -166,7 +139,7 @@ const Toolbar = ({
       </div>
       <CSVLink
         data={csvData}
-        filename={`${fileName}.csv`}
+        filename={`${process.env.NEXT_PUBLIC_HACKATHON}_${formattedDate}_${formattedTime}_${file}`}
         className="hover:cursor-pointer"
       >
         <FaDownload size={22.5} className="ml-4 text-hackathon-darkgray" />
