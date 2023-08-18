@@ -2,6 +2,8 @@
 import React from "react";
 import Checkbox from "../Checkbox";
 import Tag from "./Tag";
+import { judgeHeaders } from "@/data/Headers";
+import { Row, Col } from "react-bootstrap";
 
 const Judge = ({
   type,
@@ -29,27 +31,41 @@ const Judge = ({
         (selected ? "!bg-green-100" : "!bg-transparent")
       }
     >
-      <Checkbox onClick={handleSelect} toggle={selected} />
-      <div className=" font-semibold text-xs md:text-sm w-1/4">{name}</div>
-      <div className="text-xs md:text-sm w-1/4">{email}</div>
-      <div className="text-xs md:text-sm w-1/4">
-        <Tag color={type} text={type} withHover={false} />
-      </div>
-      <div className="text-lg mr-4 w-[10%]">
-        <Tag
-          color={
-            status === "pending"
-              ? "gray"
-              : status === "confirm"
-              ? "green"
-              : status === "not attending"
-              ? "red"
-              : "gray"
-          }
-          text={status}
-          withHover={false}
-        />
-      </div>
+      <Row className="w-full flex justify-between items-center p-0 m-0">
+        <Col className="font-semibold p-0 flex justify-center items-center">
+          <Checkbox onClick={handleSelect} toggle={selected} />
+        </Col>
+        <Col
+          md={judgeHeaders["name"].size}
+          className="font-semibold text-xs p-0 md:text-sm"
+        >
+          {name}
+        </Col>
+        <Col md={judgeHeaders["email"].size} className="text-xs p-0 md:text-sm">
+          {email}
+        </Col>
+        <Col md={judgeHeaders["type"].size} className="text-xs p-0 md:text-sm">
+          <Tag color={type} text={type} withHover={false} />
+        </Col>
+        <Col
+          md={judgeHeaders["status"].size}
+          className="text-xs p-0 md:text-sm"
+        >
+          <Tag
+            color={
+              status === "pending"
+                ? "gray"
+                : status === "confirm"
+                ? "green"
+                : status === "not attending"
+                ? "red"
+                : "gray"
+            }
+            text={status}
+            withHover={false}
+          />
+        </Col>
+      </Row>
     </div>
   );
 };

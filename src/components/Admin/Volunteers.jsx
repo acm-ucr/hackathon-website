@@ -24,7 +24,7 @@ const Volunteers = () => {
         <Filters
           filters={filters}
           setFilters={setFilters}
-          setfilteredObjects={setFilteredVolunteers}
+          setObjects={setFilteredVolunteers}
           objects={volunteers}
           input={input}
         />
@@ -33,7 +33,7 @@ const Volunteers = () => {
         input={input}
         setInput={setInput}
         tags={volunteerTags}
-        setFilteredObjects={setFilteredVolunteers}
+        setObjects={setFilteredVolunteers}
         objects={filteredVolunteers}
         filters={filters}
         reset={volunteers}
@@ -42,8 +42,8 @@ const Volunteers = () => {
         headers={headers}
         empty="No Volunteers Available"
         setHeaders={setHeaders}
-        setFilteredObjects={setFilteredVolunteers}
-        filteredObjects={filteredVolunteers}
+        setObjects={setFilteredVolunteers}
+        objects={filteredVolunteers}
       >
         {filteredVolunteers.map((volunteer, index) => (
           <Volunteer

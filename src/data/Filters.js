@@ -3,6 +3,7 @@ export const judgeFilters = {
   confirm: true,
   "not attending": true,
 };
+
 export const mentorFilters = {
   online: true,
   onsite: true,
@@ -14,12 +15,14 @@ export const participantFilters = {
   accepted: true,
   pending: true,
 };
+
 export const teamFilters = {
   disqualify: true,
   qualify: true,
   pending: true,
   winner: true,
 };
+
 export const volunteerFilters = {
   online: true,
   onsite: true,

@@ -9,10 +9,10 @@ const Statistics = () => {
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Title title="Statistics" />
       <Row className="w-full h-full">
-        {Object.keys(charts).map((chart, index) => (
-          <Col className="w-full" key={index} xs={charts[chart].size}>
+        {Object.entries(charts).map(([chart, value], index) => (
+          <Col className="w-full" key={index} xs={value.size}>
             <Tag text={chart} withHover={false} color="student" />
-            <PieChart data={charts[chart].data} />
+            <PieChart data={value.data} />
           </Col>
         ))}
       </Row>

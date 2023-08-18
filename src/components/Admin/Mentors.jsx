@@ -24,7 +24,7 @@ const Mentors = () => {
         <Filters
           filters={filters}
           setFilters={setFilters}
-          setfilteredObjects={setFilteredMentors}
+          setObjects={setFilteredMentors}
           objects={mentors}
           input={input}
         />
@@ -33,7 +33,7 @@ const Mentors = () => {
         input={input}
         setInput={setInput}
         tags={mentorTags}
-        setFilteredObjects={setFilteredMentors}
+        setObjects={setFilteredMentors}
         objects={filteredMentors}
         filters={filters}
         reset={mentors}
@@ -41,10 +41,10 @@ const Mentors = () => {
 
       <Table
         headers={headers}
-        empty="No Mentor Available"
+        empty="No Mentors Available"
         setHeaders={setHeaders}
-        setFilteredObjects={setFilteredMentors}
-        filteredObjects={filteredMentors}
+        setObjects={setFilteredMentors}
+        objects={filteredMentors}
       >
         {filteredMentors.map((mentor, index) => (
           <Mentor

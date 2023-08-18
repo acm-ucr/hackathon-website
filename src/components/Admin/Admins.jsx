@@ -126,7 +126,7 @@ const Admins = () => {
         <Filters
           filters={filters}
           setFilters={setFilters}
-          setfilteredObjects={setFilteredAdmins}
+          setObjects={setFilteredAdmins}
           objects={admins}
           input={input}
         />
@@ -135,7 +135,7 @@ const Admins = () => {
         input={input}
         setInput={setInput}
         tags={tags}
-        setFilteredObjects={setFilteredAdmins}
+        setObjects={setFilteredAdmins}
         objects={filteredAdmins}
         filters={filters}
         reset={admins}
@@ -153,7 +153,7 @@ const Admins = () => {
                   name={header.name.toLowerCase()}
                   sorts={sorts}
                   setSorts={setSorts}
-                  setfilteredObjects={setFilteredAdmins}
+                  setObjects={setFilteredAdmins}
                   objects={filteredAdmins}
                   reset={{
                     sorts,

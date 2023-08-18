@@ -5,7 +5,6 @@ import Title from "./Title.jsx";
 import Filters from "./Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import Table from "./Table.jsx";
-import AddJudgeForm from "./AddJudgeForm.jsx";
 import { judges } from "@/data/mock/TableData.js";
 import { judgeFilters } from "@/data/Filters.js";
 import { judgeHeaders } from "@/data/Headers.js";
@@ -24,20 +23,16 @@ const Judges = () => {
         <Filters
           filters={filters}
           setFilters={setFilters}
-          setfilteredObjects={setFilteredJudges}
+          setObjects={setFilteredJudges}
           objects={judges}
           input={input}
         />
       </div>
-      <AddJudgeForm
-        filteredJudges={filteredJudges}
-        setFilteredJudges={setFilteredJudges}
-      />
       <Toolbar
         input={input}
         setInput={setInput}
         tags={judgeTags}
-        setFilteredObjects={setFilteredJudges}
+        setObjects={setFilteredJudges}
         objects={filteredJudges}
         filters={filters}
         reset={judges}
@@ -46,8 +41,8 @@ const Judges = () => {
         headers={headers}
         empty="No Judges Available"
         setHeaders={setHeaders}
-        setFilteredObjects={setFilteredJudges}
-        filteredObjects={filteredJudges}
+        setObjects={setFilteredJudges}
+        objects={filteredJudges}
       >
         {filteredJudges.map((judge, index) => (
           <Judge
