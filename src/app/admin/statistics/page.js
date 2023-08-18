@@ -5,9 +5,7 @@ import Statistics from "@/components/Admin/Statistics";
 const StatisticsPage = () => {
   return (
     <ProtectedPage title="Admin | Statistics" restrictions={["admin"]}>
-      <div className="w-11/12">
-        <Statistics />
-      </div>
+      <Statistics />
     </ProtectedPage>
   );
 };

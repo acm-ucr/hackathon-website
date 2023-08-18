@@ -5,9 +5,7 @@ import ProtectedPage from "@/components/ProtectedPage";
 const MentorsPage = () => {
   return (
     <ProtectedPage title="Admin | Mentors" restrictions={["admin"]}>
-      <div className="w-11/12">
-        <Mentors />
-      </div>
+      <Mentors />
     </ProtectedPage>
   );
 };

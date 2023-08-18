@@ -3,7 +3,7 @@ import Radio from "../Radio.jsx";
 import { Col } from "react-bootstrap";
 
 const judgeType = ["student", "professor", "industry"];
-const AddJudgeForm = ({ filteredJudges, setFilteredJudges }) => {
+const AddJudge = ({ filteredJudges, setFilteredJudges }) => {
   const [judge, setJudge] = useState({
     name: "",
     type: "",
@@ -47,4 +47,4 @@ const AddJudgeForm = ({ filteredJudges, setFilteredJudges }) => {
   );
 };
 
-export default AddJudgeForm;
+export default AddJudge;

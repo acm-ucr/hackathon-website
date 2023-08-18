@@ -5,7 +5,7 @@ import Title from "./Title.jsx";
 import Filters from "./Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import Table from "./Table.jsx";
-import AddJudgeForm from "./AddJudgeForm.jsx";
+import AddJudgeForm from "./AddJudge.jsx";
 import { judges } from "@/data/mock/TableData.js";
 import { judgeFilters } from "@/data/Filters.js";
 import { judgeHeaders } from "@/data/Headers.js";

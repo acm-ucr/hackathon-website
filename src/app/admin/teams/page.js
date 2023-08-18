@@ -5,9 +5,7 @@ import ProtectedPage from "@/components/ProtectedPage";
 const TeamsPage = () => {
   return (
     <ProtectedPage title="Admin | Teams" restrictions={["admin"]}>
-      <div className="w-11/12 h-full">
-        <Teams />
-      </div>
+      <Teams />
     </ProtectedPage>
   );
 };
