@@ -51,33 +51,35 @@ const Participant = ({
   return (
     <div
       className={
-        "last:rounded-b-2xl text-sm py-2 px-3 first:border-0 border-t-[1px] border-hackathon-gray flex items-center w-full focus:!ring-0 focus:!bg-hackathon-green-100 " +
+        "last:rounded-b-2xl text-sm py-2 px-3 first:border-0 border-t-[1px] border-hackathon-gray flex flex-col items-center w-full focus:!ring-0 focus:!bg-hackathon-green-100 " +
         (!participant.selected ? "!bg-white" : "!bg-green-100")
       }
     >
-      <div className="flex items-center w-[4.5%]">
-        <Checkbox onClick={handleSelect} toggle={participant.selected} />
+      <div className="flex flex-row w-full">
+        <div className="flex items-center w-[4.5%]">
+          <Checkbox onClick={handleSelect} toggle={participant.selected} />
+        </div>
+        <div className="w-[17%] font-semibold">{participant.name}</div>
+        <div className="w-[21%]">{participant.email}</div>y
+        <div className="w-1/5">{participant.team}</div>
+        <div className="w-[22%]">{participant.major}</div>
+        <div className="w-[12%]">
+          <Tag
+            color={
+              participant.status === "pending"
+                ? "yellow"
+                : participant.status === "accepted"
+                ? "green"
+                : participant.status === "rejected"
+                ? "red"
+                : "gray"
+            }
+            text={participant.status}
+            withHover={false}
+          />
+        </div>
+        <Toggle eventKey={index} />
       </div>
-      <div className="w-[17%] font-semibold">{participant.name}</div>
-      <div className="w-[21%]">{participant.email}</div>y
-      <div className="w-1/5">{participant.team}</div>
-      <div className="w-[22%]">{participant.major}</div>
-      <div className="w-[12%]">
-        <Tag
-          color={
-            participant.status === "pending"
-              ? "yellow"
-              : participant.status === "accepted"
-              ? "green"
-              : participant.status === "rejected"
-              ? "red"
-              : "gray"
-          }
-          text={participant.status}
-          withHover={false}
-        />
-      </div>
-      <Toggle eventKey={index} />
       <Accordion.Collapse eventKey={index}>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
