@@ -1,6 +1,8 @@
 import React from "react";
 import Checkbox from "../Checkbox";
 import Tag from "./Tag";
+import { Row, Col } from "react-bootstrap";
+import { mentorHeaders } from "@/data/Headers";
 
 const Mentor = ({
   uid,
@@ -41,25 +43,47 @@ const Mentor = ({
         (selected ? "!bg-green-100" : "!bg-transparent")
       }
     >
-      <Checkbox onClick={handleSelect} toggle={selected} />
-      <div className="font-semibold text-xs md:text-sm w-1/4">{name}</div>
-      <div className="text-xs md:text-sm w-1/4">{email}</div>
-      <div className="text-xs md:text-sm w-1/4">{discord}</div>
-      <div className="text-lg mr-4 w-[10%]">
-        <Tag
-          color={
-            status === "onsite"
-              ? "purple"
-              : status === "online"
-              ? "green"
-              : status === "not attending"
-              ? "red"
-              : "gray"
-          }
-          text={status}
-          withHover={false}
-        />
-      </div>
+      <Row className="w-full flex justify-between items-center p-0 m-0">
+        <Col className="p-0 flex justify-center items-center">
+          <Checkbox onClick={handleSelect} toggle={selected} />
+        </Col>
+        <Col
+          md={mentorHeaders["name"].size}
+          className="font-semibold text-xs p-0 md:text-sm"
+        >
+          {name}
+        </Col>
+        <Col
+          md={mentorHeaders["email"].size}
+          className="text-xs p-0 md:text-sm"
+        >
+          {email}
+        </Col>
+        <Col
+          md={mentorHeaders["discord"].size}
+          className="text-xs p-0 md:text-sm"
+        >
+          {discord}
+        </Col>
+        <Col
+          md={mentorHeaders["status"].size}
+          className="text-xs p-0 md:text-sm"
+        >
+          <Tag
+            color={
+              status === "onsite"
+                ? "purple"
+                : status === "online"
+                ? "green"
+                : status === "not attending"
+                ? "red"
+                : "gray"
+            }
+            text={status}
+            withHover={false}
+          />
+        </Col>
+      </Row>
     </div>
   );
 };

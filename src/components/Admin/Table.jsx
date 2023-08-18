@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SortIcon from "./SortIcon";
+import { Row, Col } from "react-bootstrap";
 
 const Table = ({
   children,
@@ -12,12 +13,15 @@ const Table = ({
   const [currentSort, setCurrentSort] = useState(Object.keys(headers)[0]);
   return (
     <div className="w-full rounded-xl overflow-hidden flex flex-col">
-      <div className="py-2 text-sm flex text-white bg-hackathon-blue-200 justify-evenly">
-        <div className="w-4" />
+      <Row className="w-full py-2 text-sm flex text-white bg-hackathon-blue-200 justify-evenly px-0 m-0">
+        <Col className="p-0">
+          <div className="w-4" />
+        </Col>
         {Object.entries(headers).map(([header, value], index) => (
-          <div
+          <Col
+            xs={value.size}
             key={index}
-            className={`${value.size} font-semibold text-white flex items-center`}
+            className={`font-semibold text-white flex items-center p-0`}
           >
             {header}
             {value.icon && (
@@ -31,9 +35,9 @@ const Table = ({
                 objects={objects}
               />
             )}
-          </div>
+          </Col>
         ))}
-      </div>
+      </Row>
       <div className="bg-white w-full overflow-scroll">
         {children.length > 0 || children?.props?.children.length > 0 ? (
           children
