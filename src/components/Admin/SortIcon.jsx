@@ -7,29 +7,30 @@ const SortIcon = ({
   name,
   headers,
   setHeaders,
-  setFilteredObjects,
+  setObjects,
   objects,
   setCurrentSort,
   currentSort,
 }) => {
   const handleClick = (state) => {
-    if (currentSort)
+    if (currentSort == name)
       setHeaders({
         ...headers,
-        [currentSort]: { ...headers[name], sort: "off" },
+        [name]: { ...headers[name], sort: state },
       });
-    setHeaders({
-      ...headers,
-      [name]: { ...headers[name], sort: state },
-    });
-
+    else
+      setHeaders({
+        ...headers,
+        [currentSort]: { ...headers[currentSort], sort: "off" },
+        [name]: { ...headers[name], sort: state },
+      });
     setCurrentSort(name);
-    setFilteredObjects(
+    setObjects(
       objects.sort((a, b) => {
         if (state === "up") {
-          return a[name.toLowerCase()] > b[name.toLowerCase()] ? -1 : 1;
+          return a[name] > b[name] ? -1 : 1;
         } else if (state === "down") {
-          return b[name.toLowerCase()] > a[name.toLowerCase()] ? -1 : 1;
+          return b[name] > a[name] ? -1 : 1;
         }
       })
     );

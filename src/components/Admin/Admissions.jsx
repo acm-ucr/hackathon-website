@@ -82,7 +82,7 @@ const Admissions = () => {
           <Filters
             filters={filters}
             setFilters={setFilters}
-            setfilteredObjects={setfilteredParticipants}
+            setObjects={setfilteredParticipants}
             objects={participants}
             input=""
           />

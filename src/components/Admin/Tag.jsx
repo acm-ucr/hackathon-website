@@ -42,30 +42,12 @@ const colors = {
   },
 };
 
-const Tag = ({
-  color = "gray",
-  text,
-  withHover = true,
-  setFilteredObjects,
-  filteredObjects,
-}) => {
-  const onClick = () => {
-    if (!withHover) return;
-    setFilteredObjects(
-      filteredObjects.map((a) => {
-        if (a.selected) {
-          a.status = text.toLowerCase();
-          a.selected = false;
-        }
-        return a;
-      })
-    );
-  };
+const Tag = ({ color = "gray", text, onClick }) => {
   return (
     <div className="w-full">
       <div
         className={`${colors[color].background} ${colors[color].text} ${
-          withHover && `hover:cursor-pointer ${colors[color].hover}`
+          onClick && `hover:cursor-pointer ${colors[color].hover}`
         } whitespace-nowrap px-2 py-0.5 rounded-full text-xs md:text-sm w-fit`}
         onClick={onClick}
       >

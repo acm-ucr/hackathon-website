@@ -24,7 +24,7 @@ const Teams = () => {
         <Filters
           filters={filters}
           setFilters={setFilters}
-          setfilteredObjects={setFilteredTeams}
+          setObjects={setFilteredTeams}
           objects={teams}
           input={input}
         />
@@ -33,7 +33,7 @@ const Teams = () => {
         input={input}
         setInput={setInput}
         tags={teamTags}
-        setFilteredObjects={setFilteredTeams}
+        setObjects={setFilteredTeams}
         objects={filteredTeams}
         filters={filters}
         reset={teams}
@@ -42,8 +42,8 @@ const Teams = () => {
         headers={headers}
         empty="No Teams Available"
         setHeaders={setHeaders}
-        setFilteredObjects={setFilteredTeams}
-        filteredObjects={filteredTeams}
+        setObjects={setFilteredTeams}
+        objects={filteredTeams}
       >
         {filteredTeams.map((team, index) => (
           <Team

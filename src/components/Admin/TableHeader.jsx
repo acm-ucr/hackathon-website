@@ -1,31 +1,26 @@
 import React, { useState } from "react";
 import SortIcon from "./SortIcon";
 
-const TableHeader = ({
-  headers,
-  setHeaders,
-  setFilteredObjects,
-  filteredObjects,
-}) => {
+const TableHeader = ({ headers, setHeaders, setObjects, objects }) => {
   const [currentSort, setCurrentSort] = useState("Name");
   return (
     <div className="py-2 text-sm flex text-white bg-hackathon-blue-200 justify-evenly">
       <div className="w-4" />
-      {Object.keys(headers).map((header, index) => (
+      {Object.entries(headers).map(([header, value], index) => (
         <div
           key={index}
-          className={`${headers[header].size} font-semibold text-white flex items-center`}
+          className={`${value.size} font-semibold text-white flex items-center`}
         >
           {header}
-          {headers[header].icon && (
+          {value.icon && (
             <SortIcon
               currentSort={currentSort}
               setCurrentSort={setCurrentSort}
               name={header}
               headers={headers}
               setHeaders={setHeaders}
-              setFilteredObjects={setFilteredObjects}
-              objects={filteredObjects}
+              setObjects={setObjects}
+              objects={objects}
             />
           )}
         </div>

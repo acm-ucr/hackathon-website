@@ -26,7 +26,7 @@ const Participants = () => {
         <Filters
           filters={filters}
           setFilters={setFilters}
-          setfilteredObjects={setfilteredParticipants}
+          setObjects={setfilteredParticipants}
           objects={participants}
           input={input}
         />
@@ -35,7 +35,7 @@ const Participants = () => {
         input={input}
         setInput={setInput}
         tags={participantTags}
-        setFilteredObjects={setfilteredParticipants}
+        setObjects={setfilteredParticipants}
         objects={filteredParticipants}
         filters={filters}
         reset={participants}
@@ -44,8 +44,8 @@ const Participants = () => {
         headers={headers}
         empty="No Participants Available"
         setHeaders={setHeaders}
-        setFilteredObjects={setfilteredParticipants}
-        filteredObjects={filteredParticipants}
+        setObjects={setfilteredParticipants}
+        objects={filteredParticipants}
       >
         <Accordion>
           {filteredParticipants.map((participant, index) => (
