@@ -17,6 +17,7 @@ module.exports = {
           "green-100": "#E7F7E9",
           "green-200": "#80ED99",
           "green-300": "#57CC99",
+          "green-400": "#3CB97A",
           yellow: "#FFCF55",
           gray: "#E7E7E7",
           placeholder: "#9ea4af",
@@ -33,6 +34,7 @@ module.exports = {
             "gray-text": "#969696",
             "purple-bg": "#E6DFF6",
             "purple-text": "#825ED0",
+            white: "#fff",
           },
           judge: {
             "professor-bg": "#D3DDE4",
