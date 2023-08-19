@@ -2,108 +2,103 @@
 
 import React, { useState } from "react";
 import Title from "./Title";
+import Filters from "./Filters.jsx";
+import Input from "./Input";
+import Textarea from "./Textarea";
+import Button from "./Button";
+import toast from "react-hot-toast";
 
-const ADDRESSEES = ["volunteers", "mentors", "judges"];
+const ADDRESSEES = [
+  {
+    uid: "1",
+    name: "Menthy Wu",
+    email: "yhung022@ucr.edu",
+    team: "b",
+    major: "Computer Science",
+    status: "pending",
+    selected: false,
+  },
+  {
+    uid: "2",
+    name: "Divyank Shah",
+    email: "yhung022@ucr.edu",
+    team: "c",
+    major: "Computer Science",
+    status: "accepted",
+    selected: false,
+  },
+  {
+    uid: "3",
+    name: "Shing Hung",
+    email: "yhung022@ucr.edu",
+    team: "d",
+    major: "Computer Science",
+    status: "rejected",
+    selected: false,
+  },
+];
 
 const Message = () => {
-  const [addressees, setAddressee] = useState([]);
   const [subjectText, setSubjectText] = useState("");
   const [messageBody, setMessageBody] = useState("");
-
-  const ToSelector = ({ selected, setSelected, allSelectorNames }) => {
-    const allButtonClasses = "ml-5 rounded-md mr-15 px-8 py-0.5 ";
-    const unselectedButtonClasses =
-      "text-hackathon-tags-green-text bg-hackathon-tags-white";
-    const selectedButtonClasses = "bg-hackathon-tags-green-text text-white";
-    const clickHandler = (name) => {
-      setSelected(
-        selected.includes(name)
-          ? selected.filter((e) => e !== name)
-          : selected.concat([name])
-      );
-    };
-
-    return (
-      <div className="mt-2 flex flex-row">
-        <div className="min-w-[6%] font-bold text-lg text-end ml-3">To:</div>
-        <div>
-          {allSelectorNames.map((name) => {
-            const classes =
-              allButtonClasses +
-              (selected.includes(name)
-                ? selectedButtonClasses
-                : unselectedButtonClasses);
-            return (
-              <button
-                className={classes}
-                key={name}
-                onClick={() => clickHandler(name)}
-              >
-                {name}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-    );
-  };
-
-  const isValidInput = (addressees, subjectText, messageBody) => {
-    // TODO perform validation
-    console.log("All the stuff: ", addressees, subjectText, messageBody);
-  };
-
-  const sendMessage = (addressees, subjectText, messageBody) => {
-    // TODO perform message send
-  };
+  const [filters, setFilters] = useState({
+    volunteers: false,
+    mentors: false,
+    judges: false,
+  });
+  const [filteredParticipants, setfilteredParticipants] = useState(ADDRESSEES);
   const clickHandler = () => {
-    if (isValidInput(addressees, subjectText, messageBody)) {
-      sendMessage(addressees, subjectText, messageBody);
-    } else {
-      // TODO display error
+    if (subjectText === "") {
+      toast("❌ Please add a subject!");
+      return;
     }
+    if (messageBody === "") {
+      toast("❌ Please add a body!");
+      return;
+    }
+    const emails = filteredParticipants.map((user) => user.email);
+    console.log({
+      sendto: emails,
+      subject: subjectText,
+      body: messageBody,
+    });
+    toast(`✅ Email sent successfully!`);
   };
   return (
-    <>
-      <Title title="Messenger" />
-
-      <ToSelector
-        selected={addressees}
-        setSelected={setAddressee}
-        allSelectorNames={ADDRESSEES}
-      />
-
-      <div className="mt-4 flex flex-row">
-        <div className="min-w-[6%] font-bold text-lg text-end ml-3">
-          Subject:
+    <div className="w-full font-poppins h-full">
+      <div className="flex flex-col pb-3 pt-4 h-full items-stretch">
+        <Title title="Messenger" />
+        <div className="flex items-center my-1">
+          <p className="text-lg font-extrabold mr-5 my-0">to:</p>
+          <Filters
+            filters={filters}
+            setFilters={setFilters}
+            setfilteredObjects={setfilteredParticipants}
+            objects={ADDRESSEES}
+            input=""
+          />
         </div>
-        <input
-          className="px-2 py-1 w-full bg-hackathon-gray rounded-md focus:outline-none ml-5 w-9/12"
-          type="text"
-          onChange={(e) => setSubjectText(e.target.value)}
+        <Input
+          setValue={setSubjectText}
+          value={subjectText}
+          clear={true}
+          label="Subject:"
+          placeholder="subject"
         />
-      </div>
-
-      <div className="bg-white rounded-lg mt-4 relative flex flex-column justify-center h-fit">
-        <div className="flex flex-row mt-2">
-          <div className="min-w-[6%] font-bold text-lg text-end ml-3">
-            Body:
+        <div className="w-full h-full bg-white rounded-2xl my-2 flex flex-col p-4 pt-2">
+          <p className="text-lg font-extrabold mb-1">body:</p>
+          <Textarea value={messageBody} setValue={setMessageBody} />
+          <div className="flex w-full justify-end mt-3">
+            <Button
+              text="send"
+              onClick={clickHandler}
+              color="green"
+              size="md"
+            />
           </div>
         </div>
-        <textarea
-          className="mt-2 mb-5 m-auto w-11/12 p-2 border border-black rounded-lg sm:text-md focus:outline-none"
-          onChange={(e) => setMessageBody(e.target.value)}
-          rows={15}
-        />
       </div>
-
-      <button
-        onClick={clickHandler}
-        className="bg-green-400 rounded-2xl p-1 px-3 font-bold text-white float-right mt-4"
-      >
-        send email
-      </button>
-    </>
+    </div>
   );
 };
 
