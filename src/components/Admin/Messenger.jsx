@@ -38,7 +38,7 @@ const ADDRESSEES = [
   },
 ];
 
-const Message = () => {
+const Messenger = () => {
   const [subjectText, setSubjectText] = useState("");
   const [messageBody, setMessageBody] = useState("");
   const [filters, setFilters] = useState({
@@ -102,4 +102,4 @@ const Message = () => {
   );
 };
 
-export default Message;
+export default Messenger;
