@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Mentor from "@/components/Admin/Mentor";
 import Filters from "@/components/Admin/Filters";
 import Toolbar from "@/components/Admin/Toolbar";
 import Title from "./Title";
@@ -45,21 +44,7 @@ const Mentors = () => {
         setHeaders={setHeaders}
         setObjects={setFilteredMentors}
         objects={filteredMentors}
-      >
-        {filteredMentors.map((mentor, index) => (
-          <Mentor
-            key={index}
-            uid={mentor.uid}
-            name={mentor.name}
-            email={mentor.email}
-            discord={mentor.discord}
-            status={mentor.status}
-            selected={mentor.selected}
-            filteredMentors={filteredMentors}
-            setFilteredMentors={setFilteredMentors}
-          />
-        ))}
-      </Table>
+      />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import React from "react";
 import { TbTriangleFilled, TbTriangleInvertedFilled } from "react-icons/tb";
 
 const SortIcon = ({
+  index,
   name,
   headers,
   setHeaders,
@@ -40,7 +41,7 @@ const SortIcon = ({
     <div className="mx-2">
       <TbTriangleFilled
         className={`${
-          headers[name].sort === "up"
+          headers[index].sort === "up"
             ? " text-hackathon-blue-100"
             : "hover:opacity-50"
         } text-[8px] hover:cursor-pointer`}
@@ -49,7 +50,7 @@ const SortIcon = ({
       <TbTriangleInvertedFilled
         onClick={() => handleClick("down")}
         className={`${
-          headers[name].sort === "down"
+          headers[index].sort === "down"
             ? " text-hackathon-blue-100"
             : "hover:opacity-50"
         } text-[8px] hover:cursor-pointer`}

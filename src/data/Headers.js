@@ -1,34 +1,76 @@
-export const judgeHeaders = {
-  name: { size: 3, icon: true, sort: "off" },
-  email: { size: 4, icon: false, sort: "off" },
-  type: { size: 2, icon: true, sort: "off" },
-  status: { size: 2, icon: true, sort: "off" },
-};
+export const judgeHeaders = [
+  { text: "name", size: 3, icon: true, sort: "off" },
+  { text: "email", size: 4, icon: false, sort: "off" },
+  {
+    text: "type",
+    size: 2,
+    icon: true,
+    sort: "off",
+    hasTag: true,
+  },
+  {
+    text: "status",
+    size: 2,
+    icon: true,
+    sort: "off",
+    hasTag: true,
+  },
+];
 
-export const mentorHeaders = {
-  name: { size: 3, icon: true, sort: "off" },
-  email: { size: 4, icon: false, sort: "off" },
-  discord: { size: 3, icon: false, sort: "off" },
-  status: { size: 1, icon: true, sort: "off" },
-};
+export const mentorHeaders = [
+  { text: "name", size: 3, icon: true, sort: "off" },
+  { text: "email", size: 3, icon: false, sort: "off" },
+  { text: "discord", size: 3, icon: true, sort: "off" },
+  {
+    text: "status",
+    size: 2,
+    icon: true,
+    sort: "off",
+    hasTag: true,
+  },
+];
 
-export const participantHeader = {
-  name: { size: 2, icon: true, sort: "off" },
-  email: { size: 3, icon: true, sort: "off" },
-  team: { size: 2, icon: true, sort: "off" },
-  major: { size: 2, icon: true, sort: "off" },
-  status: { size: 1, icon: true, sort: "off" },
-  "": { size: 1, icon: false, sort: "off" },
-};
-export const teamHeaders = {
-  name: { size: 3, icon: true, sort: "off" },
-  email: { size: 3, icon: false, sort: "off" },
-  links: { size: 4, icon: false, sort: "off" },
-  status: { size: 1, icon: true, sort: "off" },
-};
-export const volunteerHeaders = {
-  name: { size: 3, icon: true, sort: "off" },
-  email: { size: 4, icon: false, sort: "off" },
-  discord: { size: 3, icon: false, sort: "off" },
-  status: { size: 1, icon: true, sort: "off" },
-};
+export const volunteerHeaders = [
+  { text: "name", size: 3, icon: true, sort: "off" },
+  { text: "email", size: 3, icon: false, sort: "off" },
+  { text: "discord", size: 3, icon: true, sort: "off" },
+  {
+    text: "status",
+    size: 2,
+    icon: true,
+    sort: "off",
+    hasTag: true,
+  },
+];
+
+export const teamHeaders = [
+  { text: "name", size: 1, icon: true, sort: "off" },
+  { text: "members", size: 2, icon: false, sort: "off" },
+  { text: "emails", size: 2, icon: true, sort: "off" },
+  { text: "links", size: 4, icon: true, sort: "off" },
+  {
+    text: "status",
+    size: 2,
+    icon: true,
+    sort: "off",
+    hasTag: true,
+  },
+];
+
+export const participantHeader = [
+  { text: "name", size: 2, icon: true, sort: "off" },
+  { text: "email", size: 3, icon: false, sort: "off" },
+  { text: "team", size: 2, icon: true, sort: "off" },
+  { text: "major", size: 2, icon: true, sort: "off" },
+  {
+    text: "status",
+    size: 1,
+    icon: true,
+    sort: "off",
+    hasTag: true,
+  },
+  {
+    text: "",
+    size: 1,
+  },
+];

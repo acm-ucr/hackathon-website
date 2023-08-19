@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Team from "./Team";
 import Filters from "@/components/Admin/Filters";
 import Toolbar from "@/components/Admin/Toolbar";
 import Title from "./Title";
@@ -44,22 +43,7 @@ const Teams = () => {
         setHeaders={setHeaders}
         setObjects={setFilteredTeams}
         objects={filteredTeams}
-      >
-        {filteredTeams.map((team, index) => (
-          <Team
-            key={index}
-            uid={team.uid}
-            teamName={team.name}
-            github={team.github}
-            devpost={team.devpost}
-            status={team.status}
-            members={team.members}
-            selected={team.selected}
-            filteredTeams={filteredTeams}
-            setFilteredTeams={setFilteredTeams}
-          />
-        ))}
-      </Table>
+      />
     </div>
   );
 };

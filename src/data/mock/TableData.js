@@ -1,5 +1,6 @@
 export const judges = [
   {
+    uid: 1,
     name: "Dewi Norton",
     status: "pending",
     type: "professor",
@@ -7,6 +8,7 @@ export const judges = [
     selected: false,
   },
   {
+    uid: 2,
     name: "Amie Nguyen",
     status: "not attending",
     type: "professor",
@@ -14,6 +16,7 @@ export const judges = [
     selected: false,
   },
   {
+    uid: 3,
     name: "Larry Larsen",
     status: "not attending",
     type: "professor",
@@ -21,6 +24,7 @@ export const judges = [
     selected: false,
   },
   {
+    uid: 4,
     name: "Big Chungus",
     status: "confirm",
     type: "professor",
@@ -28,6 +32,7 @@ export const judges = [
     selected: false,
   },
   {
+    uid: 5,
     name: "Mario Kart",
     status: "confirm",
     type: "student",
@@ -35,6 +40,7 @@ export const judges = [
     selected: false,
   },
   {
+    uid: 6,
     name: "Ash Ketchum",
     type: "industry",
     status: "pending",
@@ -86,6 +92,7 @@ export const participants = [
     major: "Computer Science",
     status: "pending",
     selected: false,
+    dropdown: true,
   },
   {
     uid: "2",
@@ -95,6 +102,7 @@ export const participants = [
     major: "Computer Science",
     status: "accepted",
     selected: false,
+    dropdown: true,
   },
   {
     uid: "3",
@@ -104,6 +112,7 @@ export const participants = [
     major: "Computer Science",
     status: "rejected",
     selected: false,
+    dropdown: true,
   },
   {
     uid: "4",
@@ -113,6 +122,7 @@ export const participants = [
     major: "Computer Science",
     status: "accepted",
     selected: false,
+    dropdown: true,
   },
 ];
 
@@ -120,92 +130,41 @@ export const teams = [
   {
     uid: 1,
     name: "The team",
-    github: "https://github.com",
-    devpost: "https://rose-hack-2021.devpost.com",
+    links: ["https://github.com", "https://rose-hack-2021.devpost.com"],
     status: "winner",
     selected: false,
-    members: [
-      {
-        name: "Menthy Wu",
-        email: "yhung022@ucr.edu",
-      },
-      {
-        name: "Mengxuan Wu",
-        email: "yhung022@ucr.edu",
-      },
-    ],
+    members: ["Menthy Wu", "Mengxuan Wu"],
+    emails: ["yhung022@ucr.edu", "yhung022@ucr.edu"],
   },
   {
     uid: 2,
     name: "The deer",
-    github: "https://github.com",
-    devpost: "https://rose-hack-2021.devpost.com",
+    links: ["https://github.com", "https://rose-hack-2021.devpost.com"],
     status: "pending",
     selected: false,
-    members: [
-      {
-        name: "Blip Gunnels",
-        email: "yhung022@ucr.edu",
-      },
-      {
-        name: "Bling Gunnels",
-        email: "yhung022@ucr.edu",
-      },
-      {
-        name: "Shing Hung",
-        email: "yhung022@ucr.edu",
-      },
-      {
-        name: "Cheuy Cheu",
-        email: "yhung022@ucr.edu",
-      },
-    ],
+    members: ["Menthy Wu", "Mengxuan Wu"],
+    emails: ["yhung022@ucr.edu", "yhung022@ucr.edu"],
   },
   {
     uid: 3,
     name: "The team",
-    github: "https://github.com",
-    devpost: "https://rose-hack-2021.devpost.com",
+    links: ["https://github.com", "https://rose-hack-2021.devpost.com"],
     status: "qualify",
     selected: false,
-    members: [
-      {
-        name: "Menthy Wu",
-        email: "yhung022@ucr.edu",
-      },
-      {
-        name: "Divyank Shah",
-        email: "yhung022@ucr.edu",
-      },
-    ],
+    members: ["Menthy Wu", "Mengxuan Wu"],
+    emails: ["yhung022@ucr.edu", "yhung022@ucr.edu"],
   },
   {
     uid: 4,
     name: "The deer",
-    github: "https://github.com",
-    devpost: "https://rose-hack-2021.devpost.com",
+    links: ["https://github.com", "https://rose-hack-2021.devpost.com"],
     status: "disqualify",
     selected: false,
-    members: [
-      {
-        name: "Blip Gunnels",
-        email: "yhung022@ucr.edu",
-      },
-      {
-        name: "Bling Gunnels",
-        email: "yhung022@ucr.edu",
-      },
-      {
-        name: "Shing Hung",
-        email: "yhung022@ucr.edu",
-      },
-      {
-        name: "Cheuy Cheu",
-        email: "yhung022@ucr.edu",
-      },
-    ],
+    members: ["Menthy Wu", "Mengxuan Wu"],
+    emails: ["yhung022@ucr.edu", "yhung022@ucr.edu"],
   },
 ];
+
 export const volunteers = [
   {
     uid: 1,

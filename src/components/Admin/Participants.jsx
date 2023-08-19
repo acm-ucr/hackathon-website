@@ -1,9 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Accordion from "react-bootstrap/Accordion";
 import Filters from "@/components/Admin/Filters";
-import Participant from "./Participant";
 import Toolbar from "@/components/Admin/Toolbar";
 import Title from "./Title";
 import Table from "./Table";
@@ -46,19 +44,7 @@ const Participants = () => {
         setHeaders={setHeaders}
         setObjects={setfilteredParticipants}
         objects={filteredParticipants}
-      >
-        <Accordion>
-          {filteredParticipants.map((participant, index) => (
-            <Participant
-              key={index}
-              participant={participant}
-              index={index}
-              setfilteredParticipants={setfilteredParticipants}
-              filteredParticipants={filteredParticipants}
-            />
-          ))}
-        </Accordion>
-      </Table>
+      />
     </div>
   );
 };

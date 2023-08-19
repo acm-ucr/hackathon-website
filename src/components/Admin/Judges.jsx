@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Judge from "./Judge.jsx";
 import Title from "./Title.jsx";
 import Filters from "./Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
@@ -43,20 +42,7 @@ const Judges = () => {
         setHeaders={setHeaders}
         setObjects={setFilteredJudges}
         objects={filteredJudges}
-      >
-        {filteredJudges.map((judge, index) => (
-          <Judge
-            setFilteredJudges={setFilteredJudges}
-            filteredJudges={filteredJudges}
-            key={index}
-            name={judge.name}
-            status={judge.status}
-            type={judge.type}
-            email={judge.email}
-            selected={judge.selected}
-          />
-        ))}
-      </Table>
+      />
     </div>
   );
 };

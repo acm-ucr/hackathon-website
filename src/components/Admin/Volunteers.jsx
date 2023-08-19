@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Volunteer from "@/components/Admin/Volunteer";
 import Filters from "@/components/Admin/Filters";
 import Toolbar from "@/components/Admin/Toolbar";
 import Title from "./Title";
@@ -44,21 +43,7 @@ const Volunteers = () => {
         setHeaders={setHeaders}
         setObjects={setFilteredVolunteers}
         objects={filteredVolunteers}
-      >
-        {filteredVolunteers.map((volunteer, index) => (
-          <Volunteer
-            key={index}
-            uid={volunteer.uid}
-            name={volunteer.name}
-            email={volunteer.email}
-            discord={volunteer.discord}
-            status={volunteer.status}
-            selected={volunteer.selected}
-            filteredVolunteers={filteredVolunteers}
-            setFilteredVolunteers={setFilteredVolunteers}
-          />
-        ))}
-      </Table>
+      />
     </div>
   );
 };
