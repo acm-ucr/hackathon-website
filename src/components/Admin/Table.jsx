@@ -71,7 +71,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
           </Col>
         ))}
       </Row>
-      <Accordion>
+      <Accordion className="h-full overflow-y-scroll w-full bg-white">
         {objects.map((object, index) => (
           <Row
             key={index}
