@@ -4,6 +4,7 @@ import Checkbox from "../Checkbox";
 import { HiSearch } from "react-icons/hi";
 import Tag from "./Tag.jsx";
 import { FaDownload, FaTrashAlt } from "react-icons/fa";
+import { tagColor } from "@/data/Tags";
 
 const Toolbar = ({
   input,
@@ -86,7 +87,7 @@ const Toolbar = ({
               text={tag.text}
               name={tag.name}
               onClick={() => onClick(tag.text)}
-              color={tag.color}
+              color={tagColor[tag.text]}
               setObjects={setObjects}
               objects={objects}
             />

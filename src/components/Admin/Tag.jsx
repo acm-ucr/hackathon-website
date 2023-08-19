@@ -44,15 +44,13 @@ const colors = {
 
 const Tag = ({ color = "gray", text, onClick }) => {
   return (
-    <div className="w-full">
-      <div
-        className={`${colors[color].background} ${colors[color].text} ${
-          onClick && `hover:cursor-pointer ${colors[color].hover}`
-        } whitespace-nowrap px-2 py-0.5 rounded-full text-xs md:text-sm w-fit m-0`}
-        onClick={onClick}
-      >
-        {text}
-      </div>
+    <div
+      className={`${colors[color].background} ${colors[color].text} ${
+        onClick && `hover:cursor-pointer ${colors[color].hover}`
+      } whitespace-nowrap px-2 py-0.5 rounded-full text-xs md:text-sm w-fit m-0`}
+      onClick={onClick}
+    >
+      {text}
     </div>
   );
 };
