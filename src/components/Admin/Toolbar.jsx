@@ -27,8 +27,8 @@ const Toolbar = ({
       reset.filter((a) => {
         let boolean = false;
 
-        Object.keys(filters).map((value) => {
-          if (a.status === value && filters[value]) {
+        Object.entries(filters).map(([key, value]) => {
+          if (a.status === key && value) {
             boolean = true;
           }
         });
@@ -43,8 +43,8 @@ const Toolbar = ({
       reset.filter((a) => {
         let boolean = false;
 
-        Object.keys(filters).map((value) => {
-          if (a.status === value && filters[value]) {
+        Object.entries(filters).map(([key, value]) => {
+          if (a.status === key && value === true) {
             boolean = true;
           }
         });
