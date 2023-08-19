@@ -4,7 +4,7 @@ import { BsCheckLg } from "react-icons/bs";
 const Checkbox = ({ toggle, onClick = () => {}, text = "", color }) => {
   return (
     <div
-      className={`flex items-center hover:cursor-pointer ${
+      className={`flex items-center hover:cursor-pointer w-fit ${
         text === "" ? "" : "mt-3"
       }`}
       onClick={onClick}
@@ -18,7 +18,7 @@ const Checkbox = ({ toggle, onClick = () => {}, text = "", color }) => {
       >
         {toggle && <BsCheckLg className="text-white text-lg" />}
       </div>
-      <p className="pl-2 mb-0">{text}</p>
+      {text && <p className="pl-2 mb-0">{text}</p>}
     </div>
   );
 };

@@ -39,7 +39,7 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       {status === "authenticated" && (
         <div className="w-full flex justify-center h-full">
           <title>{title}</title>
-          {children}
+          <div className="w-11/12 h-full">{children}</div>
         </div>
       )}
     </>

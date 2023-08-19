@@ -31,7 +31,7 @@ const participants = [
     email: "yhung022@ucr.edu",
     team: "d",
     major: "Computer Science",
-    status: "rejected",
+    status: "accepted",
     selected: false,
   },
   {
@@ -47,7 +47,7 @@ const participants = [
 
 const Admissions = () => {
   const [filters, setFilters] = useState({
-    rejected: true,
+    rejected: false,
     accepted: true,
   });
 
@@ -64,8 +64,19 @@ const Admissions = () => {
       toast("❌ Please add a body!");
       return;
     }
+    console.log(Object.entries(filters));
+    if (
+      Object.entries(filters).filter(([filter, selected]) => selected).length ==
+      0
+    ) {
+      toast("❌ Please specify recipient!");
+      return;
+    }
     const emails = filteredParticipants.map((user) => user.email);
-
+    if (emails.length == 0) {
+      toast("❌ There's no recipient in this filter!");
+      return;
+    }
     console.log({
       sendto: emails,
       subject: subject,
@@ -82,7 +93,7 @@ const Admissions = () => {
           <Filters
             filters={filters}
             setFilters={setFilters}
-            setfilteredObjects={setfilteredParticipants}
+            setObjects={setfilteredParticipants}
             objects={participants}
             input=""
           />

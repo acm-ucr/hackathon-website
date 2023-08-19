@@ -18,7 +18,7 @@ const Judges = () => {
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <div className="flex">
-        <Title title="Judges" />
+        <Title title="Admin" />
         <Filters
           filters={filters}
           setFilters={setFilters}

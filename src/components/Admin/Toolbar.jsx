@@ -4,18 +4,29 @@ import Checkbox from "../Checkbox";
 import { HiSearch } from "react-icons/hi";
 import Tag from "./Tag.jsx";
 import { FaDownload, FaTrashAlt } from "react-icons/fa";
+import { tagColor } from "@/data/Tags";
 
 const Toolbar = ({
   input,
   setInput,
   tags,
-  setFilteredObjects,
+  setObjects,
   objects,
   filters,
   reset,
 }) => {
   const [toggle, setToggle] = useState(false);
-
+  const onClick = (text) => {
+    setObjects(
+      objects.map((a) => {
+        if (a.selected) {
+          a.status = text.toLowerCase();
+          a.selected = false;
+        }
+        return a;
+      })
+    );
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -23,12 +34,12 @@ const Toolbar = ({
       handleReset();
       return;
     }
-    setFilteredObjects(
+    setObjects(
       reset.filter((a) => {
         let boolean = false;
 
-        Object.keys(filters).map((value) => {
-          if (a.status === value && filters[value]) {
+        Object.entries(filters).map(([filter, value]) => {
+          if (a.status === filter && value) {
             boolean = true;
           }
         });
@@ -39,12 +50,12 @@ const Toolbar = ({
 
   const handleReset = () => {
     setInput("");
-    setFilteredObjects(
+    setObjects(
       reset.filter((a) => {
         let boolean = false;
 
-        Object.keys(filters).map((value) => {
-          if (a.status === value && filters[value]) {
+        Object.entries(filters).map(([filter, value]) => {
+          if (a.status === filter && value) {
             boolean = true;
           }
         });
@@ -54,28 +65,18 @@ const Toolbar = ({
   };
 
   const selectAll = () => {
+    setObjects(
+      objects.map((a) => {
+        a.selected = !toggle;
+        return a;
+      })
+    );
     setToggle(!toggle);
-
-    if (!toggle === true) {
-      setFilteredObjects(
-        objects.map((a) => {
-          a.selected = true;
-          return a;
-        })
-      );
-    } else {
-      setFilteredObjects(
-        objects.map((a) => {
-          a.selected = false;
-          return a;
-        })
-      );
-    }
   };
 
   return (
     <div className="w-full flex items-center">
-      <div className="my-2.5 w-2/3 flex items-center">
+      <div className="w-2/3 flex items-center">
         <div className="mr-4">
           <Checkbox onClick={selectAll} toggle={toggle} />
         </div>
@@ -85,8 +86,10 @@ const Toolbar = ({
               key={index}
               text={tag.text}
               name={tag.name}
-              onClick={() => tag.onClick(setToggle)}
-              color={tag.color}
+              onClick={() => onClick(tag.text)}
+              color={tagColor[tag.text]}
+              setObjects={setObjects}
+              objects={objects}
             />
           ))}
         </div>
