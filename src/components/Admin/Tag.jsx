@@ -42,15 +42,15 @@ const colors = {
   },
 };
 
-const Tag = ({ color = "gray", text, name, onClick, withHover = true }) => {
-  const inToolbar = withHover ? colors[color].hover : "";
-  const pointCursor = withHover ? "hover:cursor-pointer" : "";
+const Tag = ({ color = "gray", text, onClick }) => {
   return (
     <div
-      className={`${colors[color].background} ${colors[color].text} ${inToolbar} ${pointCursor} whitespace-nowrap px-2 py-0.5 rounded-xl text-xs md:text-sm w-fit `}
+      className={`${colors[color].background} ${colors[color].text} ${
+        onClick && `hover:cursor-pointer ${colors[color].hover}`
+      } whitespace-nowrap px-2 py-0.5 rounded-full text-xs md:text-sm w-fit m-0`}
       onClick={onClick}
     >
-      {name ? name : text}
+      {text}
     </div>
   );
 };
