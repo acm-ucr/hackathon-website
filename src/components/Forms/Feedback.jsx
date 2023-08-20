@@ -1,18 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import Select from "@/components/Select";
-import { Majors, Grades } from "@/data/Register";
 import Input from "@/components/Input";
 import { Row, Col } from "react-bootstrap";
 import Button from "@/components/Forms/Button";
 import { Helper } from "@/data/User";
 
-const Mentor = () => {
-  const [mentor, setMentor] = useState(Helper);
+const Feedback = () => {
+  const [feedback, setFeedback] = useState(Helper);
 
   const handleSubmit = () => {
-    console.log(mentor);
+    console.log(feedback);
     console.log(requirements);
   };
 
@@ -30,86 +28,68 @@ const Mentor = () => {
           </Col>
           <Col xl={6}>
             <Input
-              name="feedback1"
+              name="question1"
               type="text"
               title="What was most helpful about the event?"
               placeholder="Workshops, team collaboration, mentorship..."
-              value={mentor.first}
-              user={mentor}
-              setUser={setMentor}
+              value={feedback.question1}
+              user={feedback}
+              setUser={setFeedback}
             />
           </Col>
           <Col xl={6}>
             <Input
-              name="last"
+              name="question2"
               type="text"
               title="Was there anything that you would have liked to see?"
               placeholder=""
-              value={mentor.last}
-              user={mentor}
-              setUser={setMentor}
+              value={feedback.question2}
+              user={feedback}
+              setUser={setFeedback}
             />
           </Col>
           <Col xl={6}>
             <Input
-              name="phone"
-              type="phone"
+              name="question3"
+              type="text"
               title="Was there anything that you did not find beneficial about the hackathon?"
               placeholder=""
-              value={mentor.phone}
-              user={mentor}
-              setUser={setMentor}
+              value={feedback.question3}
+              user={feedback}
+              setUser={setFeedback}
             />
           </Col>
           <Col xl={6}>
             <Input
-              name="email"
-              type="email"
+              name="question4"
+              type="text"
               title="How would you rate the hackathon?"
               placeholder="From 1 - 10"
-              value={mentor.email}
-              user={mentor}
-              setUser={setMentor}
+              value={feedback.question4}
+              user={feedback}
+              setUser={setFeedback}
             />
           </Col>
           <Col xl={6}>
             <Input
-              name="email"
-              type="email"
+              name="question5"
+              type="text"
               title="How did you find the event?"
               placeholder="Instagram, friends, etc"
-              value={mentor.email}
-              user={mentor}
-              setUser={setMentor}
+              value={feedback.question5}
+              user={feedback}
+              setUser={setFeedback}
             />
           </Col>
           <Col xl={6}>
             <Input
-              name="email"
-              type="email"
+              name="question6"
+              type="text"
               title="Is there anything else you'd like to let us know?"
               placeholder="Literally anything..."
-              value={mentor.email}
-              user={mentor}
-              setUser={setMentor}
-            />
-          </Col>
-          <Col xl={6}>
-            <Select
-              options={Majors}
-              field="major"
-              user={user}
-              setUser={setUser}
-              placeholder="Major"
-            />
-          </Col>
-          <Col xl={6}>
-            <Select
-              options={Grades}
-              field="grade"
-              user={user}
-              setUser={setUser}
-              placeholder="Grade"
+              value={feedback.question6}
+              user={feedback}
+              setUser={setFeedback}
             />
           </Col>
           <Col xl={12} className="flex justify-center">
@@ -121,4 +101,4 @@ const Mentor = () => {
   );
 };
 
-export default Mentor;
+export default Feedback;
