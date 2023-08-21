@@ -35,15 +35,19 @@ const Toolbar = ({
       return;
     }
     setObjects(
-      reset.filter((a) => {
+      objects.map((a) => {
         let boolean = false;
 
         Object.entries(filters).map(([filter, value]) => {
-          if (a.status === filter && value) {
+          if (
+            a.status === filter &&
+            value &&
+            a.name.toLowerCase().match(input.toLowerCase())
+          ) {
             boolean = true;
           }
         });
-        return boolean && a.name.toLowerCase().match(input.toLowerCase());
+        return { ...a, hidden: !boolean };
       })
     );
   };
@@ -51,7 +55,7 @@ const Toolbar = ({
   const handleReset = () => {
     setInput("");
     setObjects(
-      reset.filter((a) => {
+      reset.map((a) => {
         let boolean = false;
 
         Object.entries(filters).map(([filter, value]) => {
@@ -59,7 +63,7 @@ const Toolbar = ({
             boolean = true;
           }
         });
-        return boolean;
+        return { ...a, hidden: !boolean };
       })
     );
   };
