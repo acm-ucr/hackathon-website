@@ -5,13 +5,13 @@ import Filters from "@/components/Admin/Filters";
 import Toolbar from "@/components/Admin/Toolbar";
 import Title from "./Title";
 import Table from "./Table";
-import { teams } from "@/data/mock/TableData";
+import { teamList } from "@/data/mock/teams";
 import { teamFilters } from "@/data/Filters";
 import { teamTags } from "@/data/Tags";
 import { teamHeaders } from "@/data/Headers";
 
 const Teams = () => {
-  const [filteredTeams, setFilteredTeams] = useState(teams);
+  const [teams, setTeams] = useState(teamList);
   const [input, setInput] = useState("");
   const [filters, setFilters] = useState(teamFilters);
 
@@ -23,7 +23,7 @@ const Teams = () => {
         <Filters
           filters={filters}
           setFilters={setFilters}
-          setObjects={setFilteredTeams}
+          setObjects={setTeams}
           objects={teams}
           input={input}
         />
@@ -32,17 +32,16 @@ const Teams = () => {
         input={input}
         setInput={setInput}
         tags={teamTags}
-        setObjects={setFilteredTeams}
-        objects={filteredTeams}
+        setObjects={setTeams}
+        objects={teams}
         filters={filters}
-        reset={teams}
       />
       <Table
         headers={headers}
         empty="No Teams Available"
         setHeaders={setHeaders}
-        setObjects={setFilteredTeams}
-        objects={filteredTeams}
+        setObjects={setTeams}
+        objects={teams}
       />
     </div>
   );

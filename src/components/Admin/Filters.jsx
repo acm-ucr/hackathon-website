@@ -8,8 +8,8 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
     setFilters(filterValues);
 
     setObjects(
-      objects.filter((a) => {
-        let boolean = false;
+      objects.map((a) => {
+        let boolean = true;
 
         Object.entries(filterValues).map(([filter, value]) => {
           if (
@@ -17,10 +17,10 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
             value &&
             a.name.toLowerCase().match(input.toLowerCase())
           ) {
-            boolean = true;
+            boolean = false;
           }
         });
-        return boolean;
+        return { ...a, hidden: boolean };
       })
     );
   };

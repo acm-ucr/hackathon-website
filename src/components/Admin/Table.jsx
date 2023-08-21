@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SortIcon from "./SortIcon";
 import { Row, Col, Accordion } from "react-bootstrap";
 import Checkbox from "../Checkbox";
@@ -33,7 +33,6 @@ const Toggle = ({ eventKey }) => {
 
 const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
   const [currentSort, setCurrentSort] = useState("name");
-
   const handleSelect = (object) => {
     setObjects(
       objects.map((a) => {
@@ -44,7 +43,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
       })
     );
   };
-
+  useEffect(() => {}, [objects]);
   return (
     <div className="w-full rounded-xl overflow-hidden flex flex-col">
       <Row className="w-full py-2 text-sm flex text-white bg-hackathon-blue-200 justify-evenly px-0 m-0">
@@ -72,95 +71,99 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
         ))}
       </Row>
       <Accordion className="h-full overflow-y-scroll w-full bg-white">
-        {objects.map((object, index) => (
-          <Row
-            key={index}
-            className={`first:border-0 border-t-[1px] border-hackathon-gray w-full flex justify-between items-center p-0 m-0 py-2 bg-white ${
-              object.selected ? "bg-green-100" : ""
-            }`}
-          >
-            <Col className="p-0 flex justify-center items-center" xs>
-              <Checkbox
-                onClick={() => handleSelect(object)}
-                toggle={object.selected}
-              />
-            </Col>
-            {headers.map((header, index) => {
-              return (
-                header.text !== "" && (
-                  <Col
-                    key={index}
-                    md={header.size}
-                    className={`p-0 text-sm ${
-                      header.text === "name" && "font-bold"
-                    }`}
-                  >
-                    {header.hasTag && (
-                      <Tag
-                        text={object[header.text]}
-                        color={tagColor[object[header.text]]}
-                      />
-                    )}
+        {objects.map(
+          (object, index) =>
+            !object.hidden && (
+              <Row
+                key={index}
+                className={`first:border-0 border-t-[1px] border-hackathon-gray w-full flex justify-between items-center p-0 m-0 py-2 bg-white ${
+                  object.selected ? "bg-green-100" : ""
+                }`}
+              >
+                <Col className="p-0 flex justify-center items-center" xs>
+                  <Checkbox
+                    onClick={() => handleSelect(object)}
+                    toggle={object.selected}
+                  />
+                </Col>
+                {headers.map((header, index) => {
+                  return (
+                    header.text !== "" && (
+                      <Col
+                        key={index}
+                        md={header.size}
+                        className={`p-0 text-sm ${
+                          header.text === "name" && "font-bold"
+                        }`}
+                      >
+                        {header.hasTag && (
+                          <Tag
+                            text={object[header.text]}
+                            color={tagColor[object[header.text]]}
+                          />
+                        )}
 
-                    {Array.isArray(object[header.text]) &&
-                      object[header.text].map((element, index) => (
-                        <p
-                          className={`mb-0 text-sm ${
-                            header.text === "members"
-                              ? "font-bold text-hackathon-blue-100"
-                              : header.text === "emails"
-                              ? "text-hackathon-placeholder"
-                              : ""
-                          }`}
-                          key={index}
-                        >
-                          {header.text === "links" ? (
-                            <Link
-                              href={element.link}
-                              className="flex items-center m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-sm"
+                        {Array.isArray(object[header.text]) &&
+                          object[header.text].map((element, index) => (
+                            <p
+                              className={`mb-0 text-sm ${
+                                header.text === "members"
+                                  ? "font-bold text-hackathon-blue-100"
+                                  : header.text === "emails"
+                                  ? "text-hackathon-placeholder"
+                                  : ""
+                              }`}
+                              key={index}
                             >
-                              {icons[element.name]}
-                              {element.link}
-                            </Link>
-                          ) : (
-                            element
-                          )}
-                        </p>
-                      ))}
+                              {header.text === "links" ? (
+                                <Link
+                                  href={element.link}
+                                  className="flex items-center m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-sm"
+                                >
+                                  {icons[element.name]}
+                                  {element.link}
+                                </Link>
+                              ) : (
+                                element
+                              )}
+                            </p>
+                          ))}
 
-                    {!header.hasTag &&
-                      !Array.isArray(object[header.text]) &&
-                      object[header.text]}
+                        {!header.hasTag &&
+                          !Array.isArray(object[header.text]) &&
+                          object[header.text]}
+                      </Col>
+                    )
+                  );
+                })}
+
+                {object.dropdown && (
+                  <Col className="p-0 m-0 flex justify-center" xs>
+                    <Toggle eventKey={index} />
                   </Col>
-                )
-              );
-            })}
+                )}
+                {object.dropdown && (
+                  <Col className="p-0" xs={12}>
+                    <Accordion.Collapse eventKey={index}>
+                      <p className="mt-2 mb-1">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit
+                        anim id est laborum.
+                      </p>
+                    </Accordion.Collapse>
+                  </Col>
+                )}
+              </Row>
+            )
+        )}
 
-            {object.dropdown && (
-              <Col className="p-0 m-0 flex justify-center" xs>
-                <Toggle eventKey={index} />
-              </Col>
-            )}
-            {object.dropdown && (
-              <Col className="p-0" xs={12}>
-                <Accordion.Collapse eventKey={index}>
-                  <p className="mt-2 mb-1">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
-                  </p>
-                </Accordion.Collapse>
-              </Col>
-            )}
-          </Row>
-        ))}
-
-        {objects.length === 0 && (
+        {objects.filter((object) => !object.hidden).length === 0 && (
           <p className="text-hackathon-darkgray font-poppins pt-3 text-center rounded-b-2xl w-full">
             {empty}
           </p>

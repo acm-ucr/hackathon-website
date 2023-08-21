@@ -6,15 +6,7 @@ import Tag from "./Tag.jsx";
 import { FaDownload, FaTrashAlt } from "react-icons/fa";
 import { tagColor } from "@/data/Tags";
 
-const Toolbar = ({
-  input,
-  setInput,
-  tags,
-  setObjects,
-  objects,
-  filters,
-  reset,
-}) => {
+const Toolbar = ({ input, setInput, tags, setObjects, objects, filters }) => {
   const [toggle, setToggle] = useState(false);
   const onClick = (text) => {
     setObjects(
@@ -35,15 +27,19 @@ const Toolbar = ({
       return;
     }
     setObjects(
-      reset.filter((a) => {
+      objects.map((a) => {
         let boolean = false;
 
         Object.entries(filters).map(([filter, value]) => {
-          if (a.status === filter && value) {
+          if (
+            a.status === filter &&
+            value &&
+            a.name.toLowerCase().match(input.toLowerCase())
+          ) {
             boolean = true;
           }
         });
-        return boolean && a.name.toLowerCase().match(input.toLowerCase());
+        return { ...a, hidden: !boolean };
       })
     );
   };
@@ -51,7 +47,7 @@ const Toolbar = ({
   const handleReset = () => {
     setInput("");
     setObjects(
-      reset.filter((a) => {
+      objects.map((a) => {
         let boolean = false;
 
         Object.entries(filters).map(([filter, value]) => {
@@ -59,7 +55,7 @@ const Toolbar = ({
             boolean = true;
           }
         });
-        return boolean;
+        return { ...a, hidden: !boolean };
       })
     );
   };

@@ -17,6 +17,25 @@ export const judgeHeaders = [
   },
 ];
 
+export const adminHeaders = [
+  { text: "name", size: 3, icon: true, sort: "off" },
+  { text: "email", size: 4, icon: false, sort: "off" },
+  {
+    text: "type",
+    size: 2,
+    icon: true,
+    sort: "off",
+    hasTag: true,
+  },
+  {
+    text: "status",
+    size: 2,
+    icon: true,
+    sort: "off",
+    hasTag: true,
+  },
+];
+
 export const mentorHeaders = [
   { text: "name", size: 3, icon: true, sort: "off" },
   { text: "email", size: 3, icon: false, sort: "off" },

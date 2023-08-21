@@ -4,16 +4,16 @@ import Title from "./Title.jsx";
 import Filters from "./Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import Table from "./Table.jsx";
-import { judges } from "@/data/mock/TableData.js";
-import { judgeFilters } from "@/data/Filters.js";
-import { judgeHeaders } from "@/data/Headers.js";
-import { judgeTags } from "@/data/Tags.js";
+import { adminList } from "@/data/mock/admin.js";
+import { adminFilters } from "@/data/Filters.js";
+import { adminHeaders } from "@/data/Headers.js";
+import { adminTags } from "@/data/Tags.js";
 
-const Judges = () => {
-  const [filteredJudges, setFilteredJudges] = useState(judges);
+const Admin = () => {
+  const [admin, setAdmin] = useState(adminList);
   const [input, setInput] = useState("");
-  const [filters, setFilters] = useState(judgeFilters);
-  const [headers, setHeaders] = useState(judgeHeaders);
+  const [filters, setFilters] = useState(adminFilters);
+  const [headers, setHeaders] = useState(adminHeaders);
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
@@ -22,28 +22,27 @@ const Judges = () => {
         <Filters
           filters={filters}
           setFilters={setFilters}
-          setObjects={setFilteredJudges}
-          objects={judges}
+          setObjects={setAdmin}
+          objects={admin}
           input={input}
         />
       </div>
       <Toolbar
         input={input}
         setInput={setInput}
-        tags={judgeTags}
-        setObjects={setFilteredJudges}
-        objects={filteredJudges}
+        tags={adminTags}
+        setObjects={setAdmin}
+        objects={admin}
         filters={filters}
-        reset={judges}
       />
       <Table
         headers={headers}
-        empty="No Judges Available"
+        empty="No admin Available"
         setHeaders={setHeaders}
-        setObjects={setFilteredJudges}
-        objects={filteredJudges}
+        setObjects={setAdmin}
+        objects={admin}
       />
     </div>
   );
 };
-export default Judges;
+export default Admin;
