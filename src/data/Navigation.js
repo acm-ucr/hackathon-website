@@ -58,7 +58,7 @@ export const AdminTabs = [
     icon: null,
   },
   {
-    name: "Service",
+    name: "Services",
     link: null,
     icon: null,
   },
