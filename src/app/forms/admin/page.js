@@ -1,11 +1,12 @@
 import Admin from "@/components/Forms/Admin";
 import React from "react";
+import FormPage from "@/components/Form";
 
 const Page = () => {
   return (
-    <div className="w-11/12">
+    <FormPage title="Form | Admin">
       <Admin />
-    </div>
+    </FormPage>
   );
 };
 
