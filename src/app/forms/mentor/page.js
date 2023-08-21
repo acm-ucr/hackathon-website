@@ -1,6 +1,6 @@
 import Mentor from "@/components/Forms/Mentor";
 import React from "react";
-import FormPage from "@/components/FormPage";
+import FormPage from "@/components/Form";
 
 const Page = () => {
   return (

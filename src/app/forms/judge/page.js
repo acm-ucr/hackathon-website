@@ -1,6 +1,6 @@
 import Judge from "@/components/Forms/Judge";
 import React from "react";
-import FormPage from "@/components/FormPage";
+import FormPage from "@/components/Form";
 
 const Page = () => {
   return (

@@ -1,7 +1,4 @@
-"use client";
-import React from "react";
-
-const FormPage = ({ title, children, restrictions }) => {
+const Form = ({ title, children }) => {
   return (
     <div className="w-full flex justify-center h-full overflow-scroll">
       <title>{title}</title>
@@ -10,4 +7,4 @@ const FormPage = ({ title, children, restrictions }) => {
   );
 };
 
-export default FormPage;
+export default Form;
