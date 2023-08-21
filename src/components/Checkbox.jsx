@@ -20,7 +20,7 @@ const Checkbox = ({ toggle, onClick = () => {}, text = "", color }) => {
           className={`${toggle ? "text-white" : "text-hackathon-gray"} text-lg`}
         />
       </div>
-      {text && <p className="pl-3 mb-0 mt-0 pt-0">{text}</p>}
+      {text && <p className="pl-3 my-0 pt-0">{text}</p>}
     </div>
   );
 };
