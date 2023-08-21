@@ -7,7 +7,16 @@ import { FaDownload, FaTrashAlt } from "react-icons/fa";
 import { CSVLink } from "react-csv";
 import { tagColor } from "@/data/Tags";
 
-const Toolbar = ({ input, setInput, tags, setObjects, objects, filters, download, file }) => {
+const Toolbar = ({
+  input,
+  setInput,
+  tags,
+  setObjects,
+  objects,
+  filters,
+  download,
+  file,
+}) => {
   const [toggle, setToggle] = useState(false);
   const onClick = (text) => {
     setToggle(false);
