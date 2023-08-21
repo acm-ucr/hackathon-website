@@ -9,17 +9,19 @@ import { tagColor } from "@/data/Tags";
 
 function convert(input) {
   if (Array.isArray(input)) {
-      return input.map(convert).join(', ')
-  } else if (typeof input === 'boolean') {
-      return input ? "True" : "False"
-  } else if (typeof input === 'object') {
-      return Object.entries(input).map(([key, value]) => `${key}: ${convert(value)}`).join(', ')
-  } else if (typeof input === 'number') {
-      return input.toString()
+    return input.map(convert).join(", ");
+  } else if (typeof input === "boolean") {
+    return input ? "True" : "False";
+  } else if (typeof input === "object") {
+    return Object.entries(input)
+      .map(([key, value]) => `${key}: ${convert(value)}`)
+      .join(", ");
+  } else if (typeof input === "number") {
+    return input.toString();
   } else {
-      return input
+    return input;
   }
-};
+}
 
 const Toolbar = ({
   input,
@@ -94,13 +96,13 @@ const Toolbar = ({
     setToggle(!toggle);
   };
 
-  const data = objects.map(items => {
-    const rowData = {}
-    Object.entries(items).map(([key, value]) => rowData[key] = convert(value))
-    return rowData
+  const data = objects.map((items) => {
+    const rowData = {};
+    Object.entries(items).map(
+      ([key, value]) => (rowData[key] = convert(value))
+    );
+    return rowData;
   });
-  
-  
 
   const formattedDate = new Date()
     .toLocaleDateString("en-US")
