@@ -1,11 +1,12 @@
 import Judge from "@/components/Forms/Judge";
 import React from "react";
+import FormPage from "@/components/FormPage";
 
 const Page = () => {
   return (
-    <div className="w-11/12">
+    <FormPage title="Form | Judge">
       <Judge />
-    </div>
+    </FormPage>
   );
 };
 

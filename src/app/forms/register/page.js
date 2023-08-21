@@ -1,11 +1,12 @@
 import Register from "@/components/Forms/Register";
 import React from "react";
+import FormPage from "@/components/FormPage";
 
 const Page = () => {
   return (
-    <div className="w-11/12">
+    <FormPage title="Form | Register">
       <Register />
-    </div>
+    </FormPage>
   );
 };
 
