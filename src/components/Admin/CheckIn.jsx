@@ -15,6 +15,9 @@ const CheckIn = () => {
   };
   const [event, setEvent] = useState(events[0]);
   const [info, setInfo] = useState(null);
+  const onClick = () => {
+    setInfo({ ...info, [event]: true });
+  };
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Title title="Mentors" />
@@ -22,7 +25,12 @@ const CheckIn = () => {
         <Col xs={12} md={6} className="p-3 m-0 flex flex-col justify-around">
           <DropDown option={event} setOption={setEvent} options={events} />
           <ScanQRCode setResult={setResult} />
-          <Button text="Check In" color="green" onClick={null} size="text-xl" />
+          <Button
+            text="Check In"
+            color="green"
+            onClick={onClick}
+            size="text-xl"
+          />
         </Col>
         <Col xs={12} md={6} className="p-3 m-0 flex flex-col justify-around">
           <CheckInfo info={info} events={events} />

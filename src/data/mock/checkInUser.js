@@ -7,4 +7,14 @@ export const checkInUser = {
     Lunch: true,
     Dinner: true,
   },
+  user2: {
+    name: "Divyank Shah",
+    email: "dshah048@ucr.edu",
+    image:
+      "https://lh3.googleusercontent.com/a-/AD_cMMTj950lWbZ5OHnbEpNqxAdy4fCBo8G3NOSw8JDrkPwsSg=s48-p",
+    "Web Dev Workshop": true,
+    "Participents Check In": true,
+    "Career Workshop": true,
+    "Parjama Party": true,
+  },
 };
