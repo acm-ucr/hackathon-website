@@ -10,7 +10,7 @@ const error = () => {
         Page Not Found
       </p>
       <p className="text-center text-sm md:text-lg  text-hackathon-blue-200">
-        The page you are looking for does not seem to exist
+        The page you are looking for does not seem to exist.
       </p>
     </div>
   );
