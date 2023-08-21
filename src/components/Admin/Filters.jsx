@@ -2,50 +2,46 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import { TiPlus } from "react-icons/ti";
 
-const Filters = ({
-  filters,
-  setFilters,
-  setfilteredObjects,
-  objects,
-  input,
-}) => {
+const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
   const handleClick = (filter) => {
     const filterValues = { ...filters, [filter]: !filters[filter] };
     setFilters(filterValues);
 
-    setfilteredObjects(
-      objects.filter((a) => {
-        let boolean = false;
+    setObjects(
+      objects.map((a) => {
+        let boolean = true;
 
-        Object.keys(filterValues).map((value) => {
+        Object.entries(filterValues).map(([filter, value]) => {
           if (
-            a.status === value &&
-            filterValues[value] &&
+            a.status === filter &&
+            value &&
             a.name.toLowerCase().match(input.toLowerCase())
           ) {
-            boolean = true;
+            boolean = false;
           }
         });
-        return boolean;
+        return { ...a, hidden: boolean };
       })
     );
   };
 
   return (
     <Row className="w-fit">
-      {Object.keys(filters).map((filter, index) => (
+      {Object.entries(filters).map(([filter, value], index) => (
         <Col className="px-1" key={index} onClick={() => handleClick(filter)}>
           <div
-            className={`rounded  ${
-              filters[filter]
+            className={`rounded hover:opacity-70 duration-300 ${
+              value
                 ? "text-white bg-hackathon-blue-100"
                 : "text-hackathon-blue-100 bg-white"
             } cursor-pointer flex items-center w-fit m-0`}
           >
-            <p className="my-0 mx-1 px-2 py-[2px]">{filter}</p>
+            <p className="my-0 mx-1 px-2 py-[2px] whitespace-nowrap">
+              {filter}
+            </p>
             <TiPlus
               className={`duration-300 mt-[2px] mr-2 hover:opacity-80 ${
-                filters[filter] ? "-rotate-45" : ""
+                value ? "-rotate-45" : ""
               }`}
             />
           </div>

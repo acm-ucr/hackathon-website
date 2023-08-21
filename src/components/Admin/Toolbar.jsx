@@ -5,19 +5,22 @@ import { HiSearch } from "react-icons/hi";
 import Tag from "./Tag.jsx";
 import { FaDownload, FaTrashAlt } from "react-icons/fa";
 import { CSVLink } from "react-csv";
+import { tagColor } from "@/data/Tags";
 
-const Toolbar = ({
-  input,
-  setInput,
-  tags,
-  setFilteredObjects,
-  objects,
-  filters,
-  reset,
-  download,
-  file,
-}) => {
+const Toolbar = ({ input, setInput, tags, setObjects, objects, filters, download, file }) => {
   const [toggle, setToggle] = useState(false);
+  const onClick = (text) => {
+    setToggle(false);
+    setObjects(
+      objects.map((a) => {
+        if (a.selected) {
+          a.status = text.toLowerCase();
+          a.selected = false;
+        }
+        return a;
+      })
+    );
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -25,75 +28,49 @@ const Toolbar = ({
       handleReset();
       return;
     }
-    setFilteredObjects(
-      reset.filter((a) => {
+    setObjects(
+      objects.map((a) => {
         let boolean = false;
 
-        Object.keys(filters).map((value) => {
-          if (a.status === value && filters[value]) {
+        Object.entries(filters).map(([filter, value]) => {
+          if (
+            a.status === filter &&
+            value &&
+            a.name.toLowerCase().match(input.toLowerCase())
+          ) {
             boolean = true;
           }
         });
-        return boolean && a.name.toLowerCase().match(input.toLowerCase());
+        return { ...a, hidden: !boolean };
       })
     );
   };
 
   const handleReset = () => {
     setInput("");
-    setFilteredObjects(
-      reset.filter((a) => {
+    setObjects(
+      objects.map((a) => {
         let boolean = false;
 
-        Object.keys(filters).map((value) => {
-          if (a.status === value && filters[value]) {
+        Object.entries(filters).map(([filter, value]) => {
+          if (a.status === filter && value) {
             boolean = true;
           }
         });
-        return boolean;
+        return { ...a, hidden: !boolean };
       })
     );
   };
 
   const selectAll = () => {
+    setObjects(
+      objects.map((a) => {
+        a.selected = !toggle;
+        return a;
+      })
+    );
     setToggle(!toggle);
-
-    if (!toggle === true) {
-      setFilteredObjects(
-        objects.map((a) => {
-          a.selected = true;
-          return a;
-        })
-      );
-    } else {
-      setFilteredObjects(
-        objects.map((a) => {
-          a.selected = false;
-          return a;
-        })
-      );
-    }
   };
-  // const data = objects.map((download) => {
-  //   const rowData = {};
-
-  //   Object.entries(download).forEach(([key, value]) => {
-  //     if (key === "members" && Array.isArray(value) && value.length > 0) {
-  //       const memberNames = value.map((member) => member.name).join(", ");
-  //       const memberEmails = value.map((member) => member.email).join(", ");
-
-  //       rowData.members = `Names: ${memberNames}, Emails: ${memberEmails}`;
-  //     } else {
-  //       if (typeof value === "boolean") {
-  //         rowData[key] = value ? "Yes" : "No";
-  //       } else {
-  //         rowData[key] = value || "";
-  //       }
-  //     }
-  //   });
-
-  //   return rowData;
-  // });
   const data = objects.map((download) => {
     const rowData = {};
 
@@ -124,7 +101,7 @@ const Toolbar = ({
     .replace(/ /g, "_");
   return (
     <div className="w-full flex items-center">
-      <div className="my-2.5 w-2/3 flex items-center">
+      <div className="w-2/3 flex items-center">
         <div className="mr-4">
           <Checkbox onClick={selectAll} toggle={toggle} />
         </div>
@@ -134,8 +111,10 @@ const Toolbar = ({
               key={index}
               text={tag.text}
               name={tag.name}
-              onClick={() => tag.onClick(setToggle)}
-              color={tag.color}
+              onClick={() => onClick(tag.text)}
+              color={tagColor[tag.text]}
+              setObjects={setObjects}
+              objects={objects}
             />
           ))}
         </div>
@@ -146,8 +125,11 @@ const Toolbar = ({
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
-          <button className=" text-hackathon-darkgray rounded focus:outline-none">
-            <HiSearch size={30} className="ml-2" />
+          <button className="focus:outline-none">
+            <HiSearch
+              size={30}
+              className="ml-2 text-hackathon-darkgray hover:opacity-70 duration-150"
+            />
           </button>
         </form>
         <button
@@ -164,10 +146,16 @@ const Toolbar = ({
         filename={`${process.env.NEXT_PUBLIC_HACKATHON}_${formattedDate}_${formattedTime}_${file}.csv`}
         className="hover:cursor-pointer"
       >
-        <FaDownload size={22.5} className="ml-4 text-hackathon-darkgray" />
+        <FaDownload
+          size={22.5}
+          className="ml-4 text-hackathon-darkgray hover:opacity-70 duration-150"
+        />
       </CSVLink>
       <button>
-        <FaTrashAlt size={22.5} className="ml-5 text-hackathon-darkgray" />
+        <FaTrashAlt
+          size={22.5}
+          className="ml-5 text-hackathon-darkgray hover:opacity-70 duration-150"
+        />
       </button>
     </div>
   );

@@ -1,12 +1,14 @@
 "use client";
+
 import React, { useState } from "react";
 import Title from "./Title";
 import Filters from "./Filters.jsx";
-import toast from "react-hot-toast";
 import Input from "./Input";
 import Textarea from "./Textarea";
 import Button from "./Button";
-const participants = [
+import toast from "react-hot-toast";
+
+const ADDRESSEES = [
   {
     uid: "1",
     name: "Menthy Wu",
@@ -31,87 +33,67 @@ const participants = [
     email: "yhung022@ucr.edu",
     team: "d",
     major: "Computer Science",
-    status: "accepted",
-    selected: false,
-  },
-  {
-    uid: "4",
-    name: "Sachin Chopra",
-    email: "yhung022@ucr.edu",
-    team: "a",
-    major: "Computer Science",
-    status: "accepted",
+    status: "rejected",
     selected: false,
   },
 ];
 
-const Admissions = () => {
+const Messenger = () => {
+  const [subjectText, setSubjectText] = useState("");
+  const [messageBody, setMessageBody] = useState("");
   const [filters, setFilters] = useState({
+    accepted: false,
     rejected: false,
-    accepted: true,
+    pending: false,
+    volunteers: false,
+    mentors: false,
+    judges: false,
   });
-
-  const [filteredParticipants, setfilteredParticipants] =
-    useState(participants);
-  const [subject, setSubject] = useState("Rosehack Application Status Update");
-  const [body, setBody] = useState("");
-  const sendEmail = () => {
-    if (subject === "") {
+  const [filteredParticipants, setfilteredParticipants] = useState(ADDRESSEES);
+  const clickHandler = () => {
+    if (subjectText === "") {
       toast("❌ Please add a subject!");
       return;
     }
-    if (body === "") {
+    if (messageBody === "") {
       toast("❌ Please add a body!");
       return;
     }
-    console.log(Object.entries(filters));
-    if (
-      Object.entries(filters).filter(([filter, selected]) => selected).length ==
-      0
-    ) {
-      toast("❌ Please specify recipient!");
-      return;
-    }
     const emails = filteredParticipants.map((user) => user.email);
-    if (emails.length == 0) {
-      toast("❌ There's no recipient in this filter!");
-      return;
-    }
     console.log({
       sendto: emails,
-      subject: subject,
-      body: body,
+      subject: subjectText,
+      body: messageBody,
     });
     toast(`✅ Email sent successfully!`);
   };
   return (
     <div className="w-full font-poppins h-full">
       <div className="flex flex-col pb-3 pt-4 h-full items-stretch">
-        <Title title="Admissions" />
+        <Title title="Messenger" />
         <div className="flex items-center my-1">
           <p className="text-lg font-extrabold mr-5 my-0">to:</p>
           <Filters
             filters={filters}
             setFilters={setFilters}
             setObjects={setfilteredParticipants}
-            objects={participants}
-            input=""
+            objects={ADDRESSEES}
           />
         </div>
         <Input
-          setValue={setSubject}
-          value={subject}
+          setValue={setSubjectText}
+          value={subjectText}
           clear={true}
-          label="subject:"
+          label="Subject:"
           placeholder="subject"
         />
         <div className="w-full h-full bg-white rounded-2xl my-2 flex flex-col p-4 pt-2">
           <p className="text-lg font-extrabold mb-1">body:</p>
-          <Textarea value={body} setValue={setBody} />
+          <Textarea value={messageBody} setValue={setMessageBody} />
           <div className="flex w-full justify-end mt-3">
             <Button
-              text="send email"
-              onClick={sendEmail}
+              text="send"
+              onClick={clickHandler}
               color="green"
               size="md"
             />
@@ -121,4 +103,5 @@ const Admissions = () => {
     </div>
   );
 };
-export default Admissions;
+
+export default Messenger;

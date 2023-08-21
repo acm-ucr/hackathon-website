@@ -28,29 +28,29 @@ const colors = {
     text: "text-hackathon-tags-purple-text",
     hover: "hover:shadow-[inset_0px_0px_0px_2px_#825ED0]",
   },
-  professor: {
-    background: "bg-hackathon-judge-professor-bg",
-    text: "text-hackathon-judge-professor-text",
+  grayblue: {
+    background: "bg-hackathon-tags-grayblue-bg",
+    text: "text-hackathon-tags-grayblue-text",
   },
-  student: {
-    background: "bg-hackathon-judge-student-bg",
-    text: "text-hackathon-judge-student-text",
+  teal: {
+    background: "bg-hackathon-tags-teal-bg",
+    text: "text-hackathon-tags-teal-text",
   },
-  industry: {
-    background: "bg-hackathon-judge-student-bg",
-    text: "text-hackathon-judge-student-text",
+  lightgreen: {
+    background: "bg-hackathon-tags-lightgreen-bg",
+    text: "text-hackathon-tags-lightgreen-text",
   },
 };
 
-const Tag = ({ color = "gray", text, name, onClick, withHover = true }) => {
-  const inToolbar = withHover ? colors[color].hover : "";
-  const pointCursor = withHover ? "hover:cursor-pointer" : "";
+const Tag = ({ color = "gray", text, onClick }) => {
   return (
     <div
-      className={`${colors[color].background} ${colors[color].text} ${inToolbar} ${pointCursor} whitespace-nowrap px-2 py-0.5 rounded-xl text-xs md:text-sm w-fit `}
+      className={`${colors[color].background} ${colors[color].text} ${
+        onClick && `hover:cursor-pointer ${colors[color].hover}`
+      } whitespace-nowrap px-2 py-0.5 rounded-full text-xs md:text-sm w-fit m-0`}
       onClick={onClick}
     >
-      {name ? name : text}
+      {text}
     </div>
   );
 };

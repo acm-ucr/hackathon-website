@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BsUpload } from "react-icons/bs";
 import { FaFilePdf, FaTimes } from "react-icons/fa";
 
-const Upload = ({ field, user, setUser }) => {
+const Upload = ({ field, user, setUser, text }) => {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
 
@@ -25,7 +25,7 @@ const Upload = ({ field, user, setUser }) => {
 
   return (
     <div className="mt-3">
-      <p className="mb-0">Upload Resume</p>
+      <p className="mb-0">{text}</p>
       <div className="flex items-center w-full flex-col">
         {!file && (
           <label
