@@ -9,6 +9,7 @@ import { tagColor } from "@/data/Tags";
 const Toolbar = ({ input, setInput, tags, setObjects, objects, filters }) => {
   const [toggle, setToggle] = useState(false);
   const onClick = (text) => {
+    setToggle(false);
     setObjects(
       objects.map((a) => {
         if (a.selected) {
