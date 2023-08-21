@@ -77,7 +77,7 @@ export const AdminTabs = {
 };
 
 export const UserTabs = {
-  Pages: [
+  Portal: [
     {
       name: "dashboard",
       link: "/user/dashboard",
