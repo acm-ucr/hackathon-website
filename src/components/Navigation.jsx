@@ -53,22 +53,35 @@ const Navigation = () => {
               />
               <p className="text-white font-bold text-lg pr-2 m-0">ROSEHACK</p>
             </div>
-            <div className="mt-[30%] w-full">
-              {tabs.map((tab, index) => (
-                <Link key={index} href={tab.link} className=" no-underline">
-                  <div
-                    onClick={() => setExpand(false)}
-                    className={`w-full flex [&>*]:text-white items-center justify-start pl-[10%] py-1 m-0 ${
-                      pathName.endsWith(tab.link)
-                        ? "bg-hackathon-blue-100"
-                        : "[&>*]:hover:text-hackathon-blue-100"
-                    }`}
+            <div className="w-full">
+              {tabs.map((tab, index) =>
+                tab.link ? (
+                  <Link
+                    key={index}
+                    href={tab.link}
+                    className={`${tab.end && "justify-self-end"} no-underline`}
                   >
-                    {tab.icon}
-                    <p className="text-lg m-0 p-0">{tab.name}</p>
-                  </div>
-                </Link>
-              ))}
+                    <div
+                      onClick={() => setExpand(false)}
+                      className={`w-full flex [&>*]:text-white items-center justify-start pl-[10%] py-1 m-0 ${
+                        pathName.endsWith(tab.link)
+                          ? "bg-hackathon-blue-100"
+                          : "[&>*]:hover:text-hackathon-blue-100"
+                      }`}
+                    >
+                      {tab.icon}
+                      <p className="text-base m-0 p-0">{tab.name}</p>
+                    </div>
+                  </Link>
+                ) : (
+                  <p
+                    className="text-white text-xl m-0 font-poppin pl-2 pb-1 pt-4"
+                    key={index}
+                  >
+                    {tab.name}
+                  </p>
+                )
+              )}
             </div>
           </div>
         </div>

@@ -7,20 +7,20 @@ import {
 } from "react-icons/bs";
 import { MdVolunteerActivism } from "react-icons/md";
 import { BiSolidHelpCircle } from "react-icons/bi";
-import { FaGavel, FaCheckCircle, FaEnvelope, FaLock } from "react-icons/fa";
+import { FaGavel, FaEnvelope, FaLock } from "react-icons/fa";
 
 const iconStyle = "text-2xl mr-2 mt-2 mb-2";
 
 export const AdminTabs = [
   {
+    name: "Dashboards",
+    link: null,
+    icon: null,
+  },
+  {
     name: "participants",
     link: "/admin/participants",
     icon: <BsFillPersonFill className={iconStyle} />,
-  },
-  {
-    name: "admissions",
-    link: "/admin/admissions",
-    icon: <FaCheckCircle className={iconStyle} />,
   },
   {
     name: "teams",
@@ -43,6 +43,16 @@ export const AdminTabs = [
     icon: <BiSolidHelpCircle className={iconStyle} />,
   },
   {
+    name: "admin",
+    link: "/admin/admin",
+    icon: <FaLock className={iconStyle} />,
+  },
+  {
+    name: "Service",
+    link: null,
+    icon: null,
+  },
+  {
     name: "messenger",
     link: "/admin/messenger",
     icon: <FaEnvelope className={iconStyle} />,
@@ -53,19 +63,16 @@ export const AdminTabs = [
     icon: <BsBarChartFill className={iconStyle} />,
   },
   {
-    name: "admin",
-    link: "/admin/admin",
-    icon: <FaLock className={iconStyle} />,
-  },
-  {
     name: "website",
     link: "/",
     icon: <BsGlobe2 className={iconStyle} />,
+    end: true,
   },
   {
     name: "sign out",
     link: "sign out",
     icon: <BsBoxArrowInRight className={iconStyle} />,
+    end: true,
   },
 ];
 
