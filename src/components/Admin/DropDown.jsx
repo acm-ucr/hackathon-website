@@ -24,7 +24,7 @@ const Menu = ({ children, className, setOptions, options }) => {
           setValue(e.target.value);
           setOptions(
             options.filter(
-              (option) => !value || option.toLowerCase().startsWith(value)
+              (option) => !value || option.toLowerCase().includes(value)
             )
           );
         }}
