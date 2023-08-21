@@ -42,6 +42,9 @@ const Messenger = () => {
   const [subjectText, setSubjectText] = useState("");
   const [messageBody, setMessageBody] = useState("");
   const [filters, setFilters] = useState({
+    accepted: false,
+    rejected: false,
+    pending: false,
     volunteers: false,
     mentors: false,
     judges: false,
@@ -73,9 +76,8 @@ const Messenger = () => {
           <Filters
             filters={filters}
             setFilters={setFilters}
-            setfilteredObjects={setfilteredParticipants}
+            setObjects={setfilteredParticipants}
             objects={ADDRESSEES}
-            input=""
           />
         </div>
         <Input

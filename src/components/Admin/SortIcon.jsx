@@ -14,17 +14,28 @@ const SortIcon = ({
   currentSort,
 }) => {
   const handleClick = (state) => {
-    if (currentSort == name)
-      setHeaders({
-        ...headers,
-        [name]: { ...headers[name], sort: state },
-      });
-    else
-      setHeaders({
-        ...headers,
-        [currentSort]: { ...headers[currentSort], sort: "off" },
-        [name]: { ...headers[name], sort: state },
-      });
+    console.log(headers, setHeaders, state, name);
+    if (currentSort === name)
+      setHeaders(
+        headers.map((header) => {
+          if (header.text === name) {
+            header.sort = state;
+          }
+          return header;
+        })
+      );
+    else {
+      setHeaders(
+        headers.map((header) => {
+          if (header.text === currentSort) {
+            header.sort = "off";
+          } else if (header.text === name) {
+            header.sort = state;
+          }
+          return header;
+        })
+      );
+    }
     setCurrentSort(name);
     setObjects(
       objects.sort((a, b) => {

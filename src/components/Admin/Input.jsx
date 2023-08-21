@@ -10,7 +10,7 @@ const Input = ({ value, setValue, clear, label, placeholder }) => {
           value={value}
           placeholder={placeholder}
           type="text"
-          className="outline-0 w-full font-poppins text-base py-1 bg-transparent px-2"
+          className="outline-none w-full font-poppins text-base py-1 bg-transparent px-2"
           onChange={(e) => {
             setValue(e.target.value);
           }}

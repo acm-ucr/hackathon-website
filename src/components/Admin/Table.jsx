@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SortIcon from "./SortIcon";
 import { Row, Col, Accordion } from "react-bootstrap";
 import Checkbox from "../Checkbox";
@@ -43,7 +43,6 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
       })
     );
   };
-  useEffect(() => {}, [objects]);
   return (
     <div className="w-full rounded-xl overflow-hidden flex flex-col">
       <Row className="w-full py-2 text-sm flex text-white bg-hackathon-blue-200 justify-evenly px-0 m-0">
