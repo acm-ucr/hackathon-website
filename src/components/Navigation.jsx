@@ -20,7 +20,7 @@ const Navigation = () => {
   return (
     tabs && (
       <>
-        <div className="flex lg:hidden w-full bg-hackathon-blue-200 h-12 items-center sticky z-50">
+        <div className="flex lg:hidden w-full bg-hackathon-blue-200 h-12 items-center fixed z-50">
           <div
             className="flex items-center hover:cursor-pointer"
             onClick={() => {
@@ -44,7 +44,7 @@ const Navigation = () => {
               : `hidden lg:flex w-[12%] z-10`
           }
         >
-          <div className="bg-hackathon-blue-200 h-screen flex flex-col justify-start items-center w-full">
+          <div className="bg-hackathon-blue-200 h-screen flex flex-col justify-between items-center w-full">
             <div className="hidden lg:flex items-center my-3">
               <Image
                 src={LOGO}
@@ -53,21 +53,28 @@ const Navigation = () => {
               />
               <p className="text-white font-bold text-lg pr-2 m-0">ROSEHACK</p>
             </div>
-            <div className="mt-[30%] w-full">
-              {tabs.map((tab, index) => (
-                <Link key={index} href={tab.link} className=" no-underline">
-                  <div
-                    onClick={() => setExpand(false)}
-                    className={`w-full flex [&>*]:text-white items-center justify-start pl-[10%] py-1 m-0 ${
-                      pathName.endsWith(tab.link)
-                        ? "bg-hackathon-blue-100"
-                        : "[&>*]:hover:text-hackathon-blue-100"
-                    }`}
-                  >
-                    {tab.icon}
-                    <p className="text-lg m-0 p-0">{tab.name}</p>
-                  </div>
-                </Link>
+            <div className="mt-[20%] w-full h-full flex flex-col justify-between">
+              {Object.entries(tabs).map(([title, subTabs], index) => (
+                <div key={index} className="">
+                  <p className="text-white text-xl m-0 font-poppin pl-2 py-1 font-bold">
+                    {title}
+                  </p>
+                  {subTabs.map((tab, index) => (
+                    <Link key={index} href={tab.link} className="no-underline">
+                      <div
+                        onClick={() => setExpand(false)}
+                        className={`w-full flex [&>*]:text-white items-center justify-start pl-[10%] py-1 m-0 ${
+                          pathName.endsWith(tab.link)
+                            ? "bg-hackathon-blue-100"
+                            : "[&>*]:hover:text-hackathon-blue-100"
+                        }`}
+                      >
+                        {tab.icon}
+                        <p className="text-lg m-0 p-0">{tab.name}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
               ))}
             </div>
           </div>
