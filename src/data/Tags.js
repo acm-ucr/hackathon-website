@@ -12,13 +12,10 @@ export const judgeTags = [
 
 export const adminTags = [
   {
-    text: "pending",
+    text: "accept",
   },
   {
-    text: "confirm",
-  },
-  {
-    text: "not attending",
+    text: "reject",
   },
 ];
 
@@ -36,10 +33,10 @@ export const mentorTags = [
 
 export const participantTags = [
   {
-    text: "accepted",
+    text: "accept",
   },
   {
-    text: "rejected",
+    text: "reject",
   },
 ];
 
@@ -72,8 +69,8 @@ export const tagColor = {
   winner: "purple",
   disqualify: "red",
   pending: "yellow",
-  accepted: "green",
-  rejected: "red",
+  accept: "green",
+  reject: "red",
   confirm: "green",
   "not attending": "red",
   onsite: "purple",
@@ -81,4 +78,8 @@ export const tagColor = {
   professor: "grayblue",
   student: "teal",
   industry: "lightgreen",
+  director: "purple",
+  "web dev": "green",
+  ops: "red",
+  marketing: "pink",
 };
