@@ -7,6 +7,20 @@ import { FaDownload, FaTrashAlt } from "react-icons/fa";
 import { CSVLink } from "react-csv";
 import { tagColor } from "@/data/Tags";
 
+function convert(input) {
+  if (Array.isArray(input)) {
+      return input.map(convert).join(', ')
+  } else if (typeof input === 'boolean') {
+      return input ? "True" : "False"
+  } else if (typeof input === 'object') {
+      return Object.entries(input).map(([key, value]) => `${key}: ${convert(value)}`).join(', ')
+  } else if (typeof input === 'number') {
+      return input.toString()
+  } else {
+      return input
+  }
+};
+
 const Toolbar = ({
   input,
   setInput,
@@ -14,7 +28,6 @@ const Toolbar = ({
   setObjects,
   objects,
   filters,
-  download,
   file,
 }) => {
   const [toggle, setToggle] = useState(false);
@@ -80,27 +93,14 @@ const Toolbar = ({
     );
     setToggle(!toggle);
   };
-  const data = objects.map((download) => {
-    const rowData = {};
 
-    Object.entries(download).forEach(([key, value]) => {
-      if (Array.isArray(value) && value.length > 0) {
-        rowData[key] = value
-          .map((item) => {
-            return Object.keys(item)
-              .map((itemKey) => item[itemKey])
-              .join(" ");
-          })
-          .join(", ");
-      } else if (typeof value === "boolean") {
-        rowData[key] = value;
-      } else {
-        rowData[key] = value || "";
-      }
-    });
-
-    return rowData;
+  const data = objects.map(items => {
+    const rowData = {}
+    Object.entries(items).map(([key, value]) => rowData[key] = convert(value))
+    return rowData
   });
+  
+  
 
   const formattedDate = new Date()
     .toLocaleDateString("en-US")
