@@ -28,3 +28,9 @@ export const volunteerFilters = {
   onsite: true,
   "not attending": true,
 };
+
+export const adminFilters = {
+  pending: true,
+  confirm: true,
+  "not attending": true,
+};

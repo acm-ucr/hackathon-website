@@ -38,8 +38,8 @@ export const AdminTabs = [
     icon: <MdVolunteerActivism className={iconStyle} />,
   },
   {
-    name: "mentor",
-    link: "/admin/mentor",
+    name: "mentors",
+    link: "/admin/mentors",
     icon: <BiSolidHelpCircle className={iconStyle} />,
   },
   {

@@ -9,6 +9,19 @@ export const judgeTags = [
     text: "not attending",
   },
 ];
+
+export const adminTags = [
+  {
+    text: "pending",
+  },
+  {
+    text: "confirm",
+  },
+  {
+    text: "not attending",
+  },
+];
+
 export const mentorTags = [
   {
     text: "onsite",
@@ -20,6 +33,7 @@ export const mentorTags = [
     text: "online",
   },
 ];
+
 export const participantTags = [
   {
     text: "accepted",
@@ -28,6 +42,7 @@ export const participantTags = [
     text: "rejected",
   },
 ];
+
 export const teamTags = [
   {
     text: "qualify",
@@ -39,6 +54,7 @@ export const teamTags = [
     text: "disqualify",
   },
 ];
+
 export const volunteerTags = [
   {
     text: "onsite",

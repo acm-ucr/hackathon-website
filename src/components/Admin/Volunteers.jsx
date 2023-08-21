@@ -34,7 +34,6 @@ const Volunteers = () => {
         setObjects={setVolunteers}
         objects={volunteers}
         filters={filters}
-        reset={volunteers}
       />
       <Table
         headers={headers}

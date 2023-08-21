@@ -35,7 +35,6 @@ const Mentors = () => {
         setObjects={setMentors}
         objects={mentors}
         filters={filters}
-        reset={mentors}
       />
 
       <Table

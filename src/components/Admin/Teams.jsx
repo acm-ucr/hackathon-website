@@ -35,7 +35,6 @@ const Teams = () => {
         setObjects={setTeams}
         objects={teams}
         filters={filters}
-        reset={teams}
       />
       <Table
         headers={headers}
