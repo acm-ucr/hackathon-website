@@ -5,7 +5,7 @@ import Filters from "@/components/Admin/Filters";
 import Toolbar from "@/components/Admin/Toolbar";
 import Title from "./Title";
 import Table from "./Table";
-import { participants } from "@/data/mock/TableData";
+import { participants } from "@/data/mock/participants";
 import { participantFilters } from "@/data/Filters";
 import { participantHeader } from "@/data/Headers";
 import { participantTags } from "@/data/Tags";

@@ -4,8 +4,7 @@ import Filters from "@/components/Admin/Filters";
 import Toolbar from "@/components/Admin/Toolbar";
 import Title from "./Title";
 import Table from "./Table";
-
-import { volunteers } from "@/data/mock/TableData";
+import { volunteers } from "@/data/mock/volunteers";
 import { volunteerFilters } from "@/data/Filters";
 import { volunteerHeaders } from "@/data/Headers";
 import { volunteerTags } from "@/data/Tags";

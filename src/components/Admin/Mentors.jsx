@@ -5,7 +5,7 @@ import Filters from "@/components/Admin/Filters";
 import Toolbar from "@/components/Admin/Toolbar";
 import Title from "./Title";
 import Table from "./Table";
-import { mentors } from "@/data/mock/TableData.js";
+import { mentors } from "@/data/mock/mentors";
 import { mentorTags } from "@/data/Tags.js";
 import { mentorFilters } from "@/data/Filters.js";
 import { mentorHeaders } from "@/data/Headers.js";
