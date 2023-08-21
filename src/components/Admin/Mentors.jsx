@@ -5,13 +5,13 @@ import Filters from "@/components/Admin/Filters";
 import Toolbar from "@/components/Admin/Toolbar";
 import Title from "./Title";
 import Table from "./Table";
-import { mentors } from "@/data/mock/mentors";
+import { mentorList } from "@/data/mock/mentors";
 import { mentorTags } from "@/data/Tags.js";
 import { mentorFilters } from "@/data/Filters.js";
 import { mentorHeaders } from "@/data/Headers.js";
 
 const Mentors = () => {
-  const [filteredMentors, setFilteredMentors] = useState(mentors);
+  const [mentors, setMentors] = useState(mentorList);
   const [input, setInput] = useState("");
   const [filters, setFilters] = useState(mentorFilters);
   const [headers, setHeaders] = useState(mentorHeaders);
@@ -23,7 +23,7 @@ const Mentors = () => {
         <Filters
           filters={filters}
           setFilters={setFilters}
-          setObjects={setFilteredMentors}
+          setObjects={setMentors}
           objects={mentors}
           input={input}
         />
@@ -32,8 +32,8 @@ const Mentors = () => {
         input={input}
         setInput={setInput}
         tags={mentorTags}
-        setObjects={setFilteredMentors}
-        objects={filteredMentors}
+        setObjects={setMentors}
+        objects={mentors}
         filters={filters}
         reset={mentors}
       />
@@ -42,8 +42,8 @@ const Mentors = () => {
         headers={headers}
         empty="No Mentors Available"
         setHeaders={setHeaders}
-        setObjects={setFilteredMentors}
-        objects={filteredMentors}
+        setObjects={setMentors}
+        objects={mentors}
       />
     </div>
   );

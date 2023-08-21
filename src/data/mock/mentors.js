@@ -1,4 +1,4 @@
-export const mentors = [
+export const mentorList = [
   {
     uid: 1,
     name: "Raidah Fairooz",

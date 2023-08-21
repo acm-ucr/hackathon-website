@@ -4,13 +4,13 @@ import Filters from "@/components/Admin/Filters";
 import Toolbar from "@/components/Admin/Toolbar";
 import Title from "./Title";
 import Table from "./Table";
-import { volunteers } from "@/data/mock/volunteers";
+import { volunteerList } from "@/data/mock/volunteers";
 import { volunteerFilters } from "@/data/Filters";
 import { volunteerHeaders } from "@/data/Headers";
 import { volunteerTags } from "@/data/Tags";
 
 const Volunteers = () => {
-  const [filteredVolunteers, setFilteredVolunteers] = useState(volunteers);
+  const [volunteers, setVolunteers] = useState(volunteerList);
   const [input, setInput] = useState("");
   const [filters, setFilters] = useState(volunteerFilters);
   const [headers, setHeaders] = useState(volunteerHeaders);
@@ -22,7 +22,7 @@ const Volunteers = () => {
         <Filters
           filters={filters}
           setFilters={setFilters}
-          setObjects={setFilteredVolunteers}
+          setObjects={setVolunteers}
           objects={volunteers}
           input={input}
         />
@@ -31,8 +31,8 @@ const Volunteers = () => {
         input={input}
         setInput={setInput}
         tags={volunteerTags}
-        setObjects={setFilteredVolunteers}
-        objects={filteredVolunteers}
+        setObjects={setVolunteers}
+        objects={volunteers}
         filters={filters}
         reset={volunteers}
       />
@@ -40,8 +40,8 @@ const Volunteers = () => {
         headers={headers}
         empty="No Volunteers Available"
         setHeaders={setHeaders}
-        setObjects={setFilteredVolunteers}
-        objects={filteredVolunteers}
+        setObjects={setVolunteers}
+        objects={volunteers}
       />
     </div>
   );

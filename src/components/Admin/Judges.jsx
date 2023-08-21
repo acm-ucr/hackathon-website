@@ -4,13 +4,13 @@ import Title from "./Title.jsx";
 import Filters from "./Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import Table from "./Table.jsx";
-import { judges } from "@/data/mock/judges.js";
+import { judgeList } from "@/data/mock/judges.js";
 import { judgeFilters } from "@/data/Filters.js";
 import { judgeHeaders } from "@/data/Headers.js";
 import { judgeTags } from "@/data/Tags.js";
 
 const Judges = () => {
-  const [filteredJudges, setFilteredJudges] = useState(judges);
+  const [judges, setJudges] = useState(judgeList);
   const [input, setInput] = useState("");
   const [filters, setFilters] = useState(judgeFilters);
   const [headers, setHeaders] = useState(judgeHeaders);
@@ -22,7 +22,7 @@ const Judges = () => {
         <Filters
           filters={filters}
           setFilters={setFilters}
-          setObjects={setFilteredJudges}
+          setObjects={setJudges}
           objects={judges}
           input={input}
         />
@@ -31,8 +31,8 @@ const Judges = () => {
         input={input}
         setInput={setInput}
         tags={judgeTags}
-        setObjects={setFilteredJudges}
-        objects={filteredJudges}
+        setObjects={setJudges}
+        objects={judges}
         filters={filters}
         reset={judges}
       />
@@ -40,8 +40,8 @@ const Judges = () => {
         headers={headers}
         empty="No Judges Available"
         setHeaders={setHeaders}
-        setObjects={setFilteredJudges}
-        objects={filteredJudges}
+        setObjects={setJudges}
+        objects={judges}
       />
     </div>
   );

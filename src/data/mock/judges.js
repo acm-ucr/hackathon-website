@@ -1,4 +1,4 @@
-export const judges = [
+export const judgeList = [
   {
     uid: 1,
     name: "Dewi Norton",

@@ -1,4 +1,4 @@
-export const volunteers = [
+export const volunteerList = [
   {
     uid: 1,
     name: "Raidah Fairooz",

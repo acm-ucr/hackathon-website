@@ -1,4 +1,4 @@
-export const teams = [
+export const teamList = [
   {
     uid: 1,
     name: "The team",

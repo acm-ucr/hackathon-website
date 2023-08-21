@@ -1,4 +1,4 @@
-export const participants = [
+export const participantList = [
   {
     uid: "1",
     name: "Menthy Wu",
