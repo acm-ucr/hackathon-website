@@ -25,7 +25,7 @@ const DropDown = ({ options, setOption, option }) => {
           onChange={(e) => setValue(e.target.value)}
           value={value}
         />
-        {React.Children.toArray(children).filter(
+        {children.filter(
           (child) =>
             !value || child.props.children.toLowerCase().startsWith(value)
         )}
@@ -39,7 +39,6 @@ const DropDown = ({ options, setOption, option }) => {
         as={Menu}
         className="w-full bg-white border-none !rounded-b-xl !rounded-t-none border-2 border-black p-0 !z-10 !-mt-4 pt-4"
       >
-        {/* <Dropdown.Menu className="w-full bg-white border-none !rounded-b-xl !rounded-t-none border-2 border-black p-0 !z-10 !-mt-4 pt-4"> */}
         {options.map((currOoption, index) => (
           <Dropdown.Item
             className=" hover:!bg-hackathon-green-200 bg-transparent overflow-hidden px-3 py-1 last:rounded-b-xl"
