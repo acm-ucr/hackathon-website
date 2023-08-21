@@ -47,7 +47,7 @@ const Tag = ({ color = "gray", text, onClick }) => {
     <div
       className={`${colors[color].background} ${colors[color].text} ${
         onClick && `hover:cursor-pointer ${colors[color].hover}`
-      } whitespace-nowrap px-2 py-0.5 rounded-full text-xs md:text-sm w-fit m-0`}
+      } whitespace-nowrap px-2 py-0.5 rounded text-xs md:text-sm w-fit m-0`}
       onClick={onClick}
     >
       {text}
