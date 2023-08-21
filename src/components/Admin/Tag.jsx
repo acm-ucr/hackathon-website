@@ -40,6 +40,10 @@ const colors = {
     background: "bg-hackathon-tags-lightgreen-bg",
     text: "text-hackathon-tags-lightgreen-text",
   },
+  pink: {
+    background: "bg-hackathon-tags-pink-bg",
+    text: "text-hackathon-tags-pink-text",
+  },
 };
 
 const Tag = ({ color = "gray", text, onClick }) => {

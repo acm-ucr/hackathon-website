@@ -11,8 +11,8 @@ export const mentorFilters = {
 };
 
 export const participantFilters = {
-  rejected: true,
-  accepted: true,
+  reject: true,
+  accept: true,
   pending: true,
 };
 
@@ -31,6 +31,6 @@ export const volunteerFilters = {
 
 export const adminFilters = {
   pending: true,
-  confirm: true,
-  "not attending": true,
+  accept: true,
+  reject: true,
 };

@@ -21,7 +21,7 @@ export const adminHeaders = [
   { text: "name", size: 3, icon: true, sort: "off" },
   { text: "email", size: 4, icon: false, sort: "off" },
   {
-    text: "type",
+    text: "affiliation",
     size: 2,
     icon: true,
     sort: "off",
