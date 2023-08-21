@@ -4,7 +4,7 @@ import Admins from "@/components/Admin/Admins";
 
 const AdminPage = () => {
   return (
-    <ProtectedPage title="Admin" restrictions={["admin"]}>
+    <ProtectedPage title="Admin | Admin" restrictions={["admin"]}>
       <Admins />
     </ProtectedPage>
   );
