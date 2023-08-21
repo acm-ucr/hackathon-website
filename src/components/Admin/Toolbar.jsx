@@ -96,23 +96,25 @@ const Toolbar = ({
   // });
   const data = objects.map((download) => {
     const rowData = {};
-  
+
     Object.entries(download).forEach(([key, value]) => {
       if (Array.isArray(value) && value.length > 0) {
-        rowData[key] = value.map((item) => {
-          return Object.keys(item).map((itemKey) => item[itemKey]).join(' ');
-        }).join(', ');
+        rowData[key] = value
+          .map((item) => {
+            return Object.keys(item)
+              .map((itemKey) => item[itemKey])
+              .join(" ");
+          })
+          .join(", ");
       } else if (typeof value === "boolean") {
         rowData[key] = value;
-      } 
-      else {
-        rowData[key] = value || '';
+      } else {
+        rowData[key] = value || "";
       }
     });
-  
+
     return rowData;
   });
-  
 
   const formattedDate = new Date()
     .toLocaleDateString("en-US")
