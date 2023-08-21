@@ -1,4 +1,4 @@
-export const events = [
+export const mockEvents = [
   "Participents Check In",
   "Web Dev Workshop",
   "Unity Workshop",

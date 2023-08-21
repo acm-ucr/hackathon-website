@@ -3,7 +3,7 @@ import Title from "./Title";
 import ScanQRCode from "./ScanQRCode";
 import { useState } from "react";
 import DropDown from "./DropDown";
-import { events } from "@/data/mock/events";
+import { mockEvents } from "@/data/mock/events";
 import { Row, Col } from "react-bootstrap";
 import Button from "./Button";
 import CheckInfo from "./CheckInfo";
@@ -13,7 +13,8 @@ const CheckIn = () => {
   const setResult = (result) => {
     setInfo(checkInUser[result]);
   };
-  const [event, setEvent] = useState(events[0]);
+  const [event, setEvent] = useState(mockEvents[0]);
+  const [events, setEvents] = useState(mockEvents);
   const [info, setInfo] = useState(null);
   const onClick = () => {
     setInfo({ ...info, [event]: true });
@@ -23,7 +24,12 @@ const CheckIn = () => {
       <Title title="Mentors" />
       <Row className="p-0 m-0">
         <Col xs={12} md={6} className="p-3 m-0 flex flex-col justify-around">
-          <DropDown option={event} setOption={setEvent} options={events} />
+          <DropDown
+            option={event}
+            setOption={setEvent}
+            options={events}
+            setOptions={setEvents}
+          />
           <ScanQRCode setResult={setResult} />
           <Button
             text="Check In"
