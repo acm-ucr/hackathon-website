@@ -1,37 +1,36 @@
 import React, { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import { RiArrowDownSLine } from "react-icons/ri";
-
-const DropDown = ({ options, setOption, option }) => {
+const Toggle = ({ children, onClick }) => {
+  return (
+    <button
+      onClick={onClick}
+      className="relative z-50 bg-white text-black w-full border-2 rounded-full border-black justify-between flex items-center px-3 py-1"
+    >
+      {children}
+      <RiArrowDownSLine />
+    </button>
+  );
+};
+const Menu = ({ children, className }) => {
   const [value, setValue] = useState("");
-  const Toggle = ({ children, onClick }) => {
-    return (
-      <button
-        onClick={onClick}
-        className="relative z-50 bg-white text-black w-full border-2 rounded-full border-black justify-between flex items-center px-3 py-1"
-      >
-        {children}
-        <RiArrowDownSLine />
-      </button>
-    );
-  };
-  const Menu = ({ children, className }) => {
-    return (
-      <div className={className}>
-        <input
-          autoFocus
-          className="mx-3 my-2 w-fit ring-0 outline-none"
-          placeholder="Type to filter..."
-          onChange={(e) => setValue(e.target.value)}
-          value={value}
-        />
-        {children.filter(
-          (child) =>
-            !value || child.props.children.toLowerCase().startsWith(value)
-        )}
-      </div>
-    );
-  };
+  return (
+    <div className={className}>
+      <input
+        autoFocus
+        className="mx-3 my-2 w-fit ring-0 outline-none"
+        placeholder="Type to filter..."
+        onChange={(e) => setValue(e.target.value)}
+        value={value}
+      />
+      {children.filter(
+        (child) =>
+          !value || child.props.children.toLowerCase().startsWith(value)
+      )}
+    </div>
+  );
+};
+const DropDown = ({ options, setOption, option }) => {
   return (
     <Dropdown className="w-full m-0 bg-white rounded-3xl">
       <Dropdown.Toggle as={Toggle}>{option}</Dropdown.Toggle>
