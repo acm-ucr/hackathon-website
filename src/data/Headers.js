@@ -65,8 +65,8 @@ export const volunteerHeaders = [
 export const teamHeaders = [
   { text: "name", size: 1, icon: true, sort: "off" },
   { text: "members", size: 2, icon: false, sort: "off" },
-  { text: "emails", size: 2, icon: true, sort: "off" },
-  { text: "links", size: 4, icon: true, sort: "off" },
+  { text: "emails", size: 2, icon: false, sort: "off" },
+  { text: "links", size: 4, icon: false, sort: "off" },
   {
     text: "status",
     size: 2,
