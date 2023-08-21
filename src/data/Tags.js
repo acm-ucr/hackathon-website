@@ -62,7 +62,7 @@ export const tagColor = {
   "not attending": "red",
   onsite: "purple",
   online: "green",
-  professor: "professor",
-  student: "student",
-  industry: "industry",
+  professor: "grayblue",
+  student: "teal",
+  industry: "lightgreen",
 };

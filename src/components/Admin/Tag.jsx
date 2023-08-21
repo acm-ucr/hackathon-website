@@ -28,17 +28,17 @@ const colors = {
     text: "text-hackathon-tags-purple-text",
     hover: "hover:shadow-[inset_0px_0px_0px_2px_#825ED0]",
   },
-  professor: {
-    background: "bg-hackathon-judge-professor-bg",
-    text: "text-hackathon-judge-professor-text",
+  grayblue: {
+    background: "bg-hackathon-tags-grayblue-bg",
+    text: "text-hackathon-tags-grayblue-text",
   },
-  student: {
-    background: "bg-hackathon-judge-student-bg",
-    text: "text-hackathon-judge-student-text",
+  teal: {
+    background: "bg-hackathon-tags-teal-bg",
+    text: "text-hackathon-tags-teal-text",
   },
-  industry: {
-    background: "bg-hackathon-judge-industry-bg",
-    text: "text-hackathon-judge-industry-text",
+  lightgreen: {
+    background: "bg-hackathon-tags-lightgreen-bg",
+    text: "text-hackathon-tags-lightgreen-text",
   },
 };
 
