@@ -13,6 +13,11 @@ const iconStyle = "text-2xl mr-2 mt-2 mb-2";
 
 export const AdminTabs = [
   {
+    name: "",
+    link: null,
+    icon: null,
+  },
+  {
     name: "Dashboards",
     link: null,
     icon: null,
@@ -48,6 +53,11 @@ export const AdminTabs = [
     icon: <FaLock className={iconStyle} />,
   },
   {
+    name: "",
+    link: null,
+    icon: null,
+  },
+  {
     name: "Service",
     link: null,
     icon: null,
@@ -63,16 +73,19 @@ export const AdminTabs = [
     icon: <BsBarChartFill className={iconStyle} />,
   },
   {
+    name: "",
+    link: null,
+    icon: null,
+  },
+  {
     name: "website",
     link: "/",
     icon: <BsGlobe2 className={iconStyle} />,
-    end: true,
   },
   {
     name: "sign out",
     link: "sign out",
     icon: <BsBoxArrowInRight className={iconStyle} />,
-    end: true,
   },
 ];
 
