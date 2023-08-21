@@ -197,7 +197,7 @@ const Teams = () => {
         objects={filteredTeams}
         filters={filters}
         reset={teams}
-        file="TEAMS.csv"
+        file="TEAMS"
       />
       <div className=" py-2 text-sm rounded-t-xl flex text-white bg-hackathon-blue-200">
         {headers.map((header, index) => (

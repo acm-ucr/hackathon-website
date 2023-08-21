@@ -74,32 +74,50 @@ const Toolbar = ({
       );
     }
   };
-  const csvData = objects.map((download) => {
+  // const data = objects.map((download) => {
+  //   const rowData = {};
+
+  //   Object.entries(download).forEach(([key, value]) => {
+  //     if (key === "members" && Array.isArray(value) && value.length > 0) {
+  //       const memberNames = value.map((member) => member.name).join(", ");
+  //       const memberEmails = value.map((member) => member.email).join(", ");
+
+  //       rowData.members = `Names: ${memberNames}, Emails: ${memberEmails}`;
+  //     } else {
+  //       if (typeof value === "boolean") {
+  //         rowData[key] = value ? "Yes" : "No";
+  //       } else {
+  //         rowData[key] = value || "";
+  //       }
+  //     }
+  //   });
+
+  //   return rowData;
+  // });
+  const data = objects.map((download) => {
     const rowData = {};
-
+  
     Object.entries(download).forEach(([key, value]) => {
-      if (key === "members" && Array.isArray(value) && value.length > 0) {
-        const memberNames = value.map((member) => member.name).join(", ");
-        const memberEmails = value.map((member) => member.email).join(", ");
-
-        rowData.members = `Names: ${memberNames}, Emails: ${memberEmails}`;
-      } else {
-        if (typeof value === "boolean") {
-          rowData[key] = value ? "Yes" : "No";
-        } else {
-          rowData[key] = value || "";
-        }
+      if (Array.isArray(value) && value.length > 0) {
+        rowData[key] = value.map((item) => {
+          return Object.keys(item).map((itemKey) => item[itemKey]).join(' ');
+        }).join(', ');
+      } else if (typeof value === "boolean") {
+        rowData[key] = value;
+      } 
+      else {
+        rowData[key] = value || '';
       }
     });
-
+  
     return rowData;
   });
+  
 
-  const currentDate = new Date();
-  const formattedDate = currentDate
+  const formattedDate = new Date()
     .toLocaleDateString("en-US")
     .replace(/ /g, "_");
-  const formattedTime = currentDate
+  const formattedTime = new Date()
     .toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
     .replace(/ /g, "_");
   return (
@@ -140,8 +158,8 @@ const Toolbar = ({
         </button>
       </div>
       <CSVLink
-        data={csvData}
-        filename={`${process.env.NEXT_PUBLIC_HACKATHON}_${formattedDate}_${formattedTime}_${file}`}
+        data={data}
+        filename={`${process.env.NEXT_PUBLIC_HACKATHON}_${formattedDate}_${formattedTime}_${file}.csv`}
         className="hover:cursor-pointer"
       >
         <FaDownload size={22.5} className="ml-4 text-hackathon-darkgray" />

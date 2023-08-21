@@ -135,7 +135,7 @@ const Judges = () => {
         objects={filteredJudges}
         filters={filters}
         reset={judges}
-        file="JUDGES.csv"
+        file="JUDGES"
       />
       <div className="max-h-[80%] w-full flex bg-white rounded-2xl flex-col">
         <div className="w-full text-sm rounded-t-xl flex font-poppins text-white bg-hackathon-blue-200 py-2">

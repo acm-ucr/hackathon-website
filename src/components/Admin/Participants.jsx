@@ -132,7 +132,7 @@ const Participants = () => {
         objects={filteredParticipants}
         filters={filters}
         reset={participants}
-        file="PARTICIPANTS.csv"
+        file="PARTICIPANTS"
       />
       <div className="flex bg-hackathon-blue-200 py-2 rounded-t-xl !z-[1000]">
         {headers.map((header, index) => (
