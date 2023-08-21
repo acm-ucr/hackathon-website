@@ -11,7 +11,7 @@ export const checkInUser = {
     name: "Divyank Shah",
     email: "dshah048@ucr.edu",
     image:
-      "https://lh3.googleusercontent.com/a-/AD_cMMTj950lWbZ5OHnbEpNqxAdy4fCBo8G3NOSw8JDrkPwsSg=s48-p",
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
     "Web Dev Workshop": true,
     "Participents Check In": true,
     "Career Workshop": true,
