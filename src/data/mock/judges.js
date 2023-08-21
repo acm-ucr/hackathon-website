@@ -6,6 +6,7 @@ export const judges = [
     type: "professor",
     email: "dewinorton@email.com",
     selected: false,
+    hidden: false,
   },
   {
     uid: 2,
@@ -14,6 +15,7 @@ export const judges = [
     type: "professor",
     email: "amienguyenn@email.com",
     selected: false,
+    hidden: false,
   },
   {
     uid: 3,
@@ -22,6 +24,7 @@ export const judges = [
     type: "professor",
     email: "larrylarsen@email.com",
     selected: false,
+    hidden: false,
   },
   {
     uid: 4,
@@ -30,6 +33,7 @@ export const judges = [
     type: "professor",
     email: "bigchungus101@email.com",
     selected: false,
+    hidden: false,
   },
   {
     uid: 5,
@@ -38,6 +42,7 @@ export const judges = [
     type: "student",
     email: "mariomoviegoated101@email.com",
     selected: false,
+    hidden: false,
   },
   {
     uid: 6,
@@ -46,5 +51,6 @@ export const judges = [
     status: "pending",
     email: "ash.ketchum12@email.com",
     selected: false,
+    hidden: false,
   },
 ];

@@ -10,6 +10,7 @@ export const teams = [
     selected: false,
     members: ["Menthy Wu", "Mengxuan Wu"],
     emails: ["yhung022@ucr.edu", "yhung022@ucr.edu"],
+    hidden: false,
   },
   {
     uid: 2,
@@ -22,6 +23,7 @@ export const teams = [
     selected: false,
     members: ["Menthy Wu", "Mengxuan Wu"],
     emails: ["yhung022@ucr.edu", "yhung022@ucr.edu"],
+    hidden: false,
   },
   {
     uid: 3,
@@ -34,6 +36,7 @@ export const teams = [
     selected: false,
     members: ["Menthy Wu", "Mengxuan Wu"],
     emails: ["yhung022@ucr.edu", "yhung022@ucr.edu"],
+    hidden: false,
   },
   {
     uid: 4,
@@ -46,5 +49,6 @@ export const teams = [
     selected: false,
     members: ["Menthy Wu", "Mengxuan Wu"],
     emails: ["yhung022@ucr.edu", "yhung022@ucr.edu"],
+    hidden: false,
   },
 ];

@@ -7,6 +7,7 @@ export const participants = [
     major: "Computer Science",
     status: "pending",
     selected: false,
+    hidden: false,
     dropdown: true,
   },
   {
@@ -17,6 +18,7 @@ export const participants = [
     major: "Computer Science",
     status: "accepted",
     selected: false,
+    hidden: false,
     dropdown: true,
   },
   {
@@ -27,6 +29,7 @@ export const participants = [
     major: "Computer Science",
     status: "rejected",
     selected: false,
+    hidden: false,
     dropdown: true,
   },
   {
@@ -37,6 +40,7 @@ export const participants = [
     major: "Computer Science",
     status: "accepted",
     selected: false,
+    hidden: false,
     dropdown: true,
   },
 ];

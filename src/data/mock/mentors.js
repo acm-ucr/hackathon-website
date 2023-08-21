@@ -6,6 +6,7 @@ export const mentors = [
     discord: "Raidah#2067",
     status: "online",
     selected: false,
+    hidden: false,
   },
   {
     uid: 2,
@@ -14,6 +15,7 @@ export const mentors = [
     discord: "Soup#2023",
     status: "online",
     selected: false,
+    hidden: false,
   },
   {
     uid: 3,
@@ -22,6 +24,7 @@ export const mentors = [
     discord: "_wmx",
     status: "onsite",
     selected: false,
+    hidden: false,
   },
   {
     uid: 4,
@@ -30,5 +33,6 @@ export const mentors = [
     discord: "babydonthurtme#2067",
     status: "onsite",
     selected: false,
+    hidden: false,
   },
 ];
