@@ -70,7 +70,9 @@ const Toolbar = ({ input, setInput, tags, setObjects, objects, filters }) => {
     );
     setToggle(!toggle);
   };
-
+  const handleDelete = () => {
+    setObjects(objects.filter((object) => !object.selected));
+  };
   return (
     <div className="w-full flex items-center">
       <div className="w-2/3 flex items-center">
@@ -119,7 +121,7 @@ const Toolbar = ({ input, setInput, tags, setObjects, objects, filters }) => {
           className="ml-4 text-hackathon-darkgray hover:opacity-70 duration-150"
         />
       </button>
-      <button>
+      <button onClick={handleDelete}>
         <FaTrashAlt
           size={22.5}
           className="ml-5 text-hackathon-darkgray hover:opacity-70 duration-150"
