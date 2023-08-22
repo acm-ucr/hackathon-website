@@ -5,6 +5,7 @@ import { labels } from "@/data/Calendar";
 import Tag from "../Tag.jsx";
 
 const CustomToolbar = (event) => {
+  console.log(event);
   return (
     <Row className="p-0 m-0 pb-2">
       <Col xs={4} className="flex items-center p-0">
