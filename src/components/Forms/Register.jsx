@@ -52,7 +52,7 @@ const Register = () => {
               title="First Name"
               placeholder="John"
               value={user.first}
-              maxLength={35}
+              maxLength={50}
               user={user}
               setUser={setUser}
             />
@@ -64,7 +64,7 @@ const Register = () => {
               title="Last Name"
               placeholder="Doe"
               value={user.last}
-              maxLength={35}
+              maxLength={50}
               user={user}
               setUser={setUser}
             />
@@ -76,7 +76,7 @@ const Register = () => {
               title="Phone Number"
               placeholder="123 456 7890"
               value={user.phone}
-              maxLength={15}
+              maxLength={50}
               user={user}
               setUser={setUser}
             />
@@ -88,7 +88,7 @@ const Register = () => {
               title="Email Address"
               placeholder="john_doe@gmail.com"
               value={user.email}
-              maxLength={254}
+              maxLength={50}
               user={user}
               setUser={setUser}
             />

@@ -67,7 +67,7 @@ const Volunteer = () => {
               title="First Name"
               placeholder="John"
               value={volunteer.first}
-              maxLength={35}
+              maxLength={50}
               user={volunteer}
               setUser={setVolunteer}
             />
@@ -79,7 +79,7 @@ const Volunteer = () => {
               title="Last Name"
               placeholder="Doe"
               value={volunteer.last}
-              maxLength={35}
+              maxLength={50}
               user={volunteer}
               setUser={setVolunteer}
             />
@@ -91,7 +91,7 @@ const Volunteer = () => {
               title="Phone Number"
               placeholder="123 456 7890"
               value={volunteer.phone}
-              maxLength={15}
+              maxLength={50}
               user={volunteer}
               setUser={setVolunteer}
             />
@@ -103,7 +103,7 @@ const Volunteer = () => {
               title="Email Address"
               placeholder="john_doe@gmail.com"
               value={volunteer.email}
-              maxLength={254}
+              maxLength={50}
               user={volunteer}
               setUser={setVolunteer}
             />
