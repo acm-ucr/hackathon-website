@@ -1,4 +1,8 @@
 export const labels = {
+  all: {
+    color: "yellow",
+    background: "!bg-hackathon-green-200",
+  },
   operations: {
     color: "yellow",
     background: "!bg-hackathon-green-200",

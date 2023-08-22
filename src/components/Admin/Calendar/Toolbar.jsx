@@ -1,4 +1,3 @@
-import React from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { labels } from "@/data/Calendar";
@@ -14,19 +13,28 @@ const CustomToolbar = ({
   view,
 }) => {
   const onClick = (value) => {
-    setEvents(
-      events.map((event) => {
-        if (
-          event.description.split("\n")[1].split(": ")[1].toLowerCase() ===
-          value
-        ) {
+    if (value === "all") {
+      setEvents(
+        events.map((event) => {
           event.hidden = false;
-        } else {
-          event.hidden = true;
-        }
-        return event;
-      })
-    );
+          return event;
+        })
+      );
+    } else {
+      setEvents(
+        events.map((event) => {
+          if (
+            event.description.split("\n")[1].split(": ")[1].toLowerCase() ===
+            value
+          ) {
+            event.hidden = false;
+          } else {
+            event.hidden = true;
+          }
+          return event;
+        })
+      );
+    }
   };
 
   return (

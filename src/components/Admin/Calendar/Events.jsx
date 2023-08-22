@@ -32,7 +32,6 @@ const CalendarEvents = () => {
 
           return item;
         });
-        console.log(items);
         setEvents(items);
       });
   }, []);
