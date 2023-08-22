@@ -10,6 +10,7 @@ const Input = ({
   user,
   setUser,
   editable = false,
+  maxLength,
 }) => {
   const [edit, setEdit] = useState(false);
 
@@ -37,6 +38,7 @@ const Input = ({
         name={name}
         placeholder={placeholder}
         value={value}
+        maxLength={maxLength}
         onChange={(e) => setUser({ ...user, [name]: e.target.value })}
       />
     </div>
