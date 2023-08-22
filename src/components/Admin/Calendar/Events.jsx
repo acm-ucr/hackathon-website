@@ -38,7 +38,7 @@ const CalendarEvents = () => {
       {events && (
         <Calendar
           className="py-4"
-          events={events}
+          events={events.filter((event) => !event.hidden)}
           localizer={mLocalizer}
           defaultView="month"
           views={["month", "week"]}

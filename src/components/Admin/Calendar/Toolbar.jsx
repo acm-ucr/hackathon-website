@@ -13,10 +13,11 @@ const CustomToolbar = ({ onView, onNavigate, date, events, setEvents }) => {
           event.description.split("\n")[1].split(": ")[1].toLowerCase() ===
           value
         ) {
-          event.hidden = true;
-        } else {
           event.hidden = false;
+        } else {
+          event.hidden = true;
         }
+        return event;
       })
     );
   };
@@ -58,7 +59,7 @@ const CustomToolbar = ({ onView, onNavigate, date, events, setEvents }) => {
             text={label}
             color={value.color}
             classes="my-1"
-            onClick={onClick}
+            onClick={() => onClick(label)}
           />
         ))}
       </Col>
