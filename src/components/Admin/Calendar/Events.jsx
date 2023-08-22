@@ -43,7 +43,9 @@ const CalendarEvents = () => {
           views={["month", "week"]}
           components={{
             event: Event,
-            toolbar: (props) => <Toolbar {...props} events={events} />,
+            toolbar: (props) => (
+              <Toolbar {...props} events={events} setEvents={setEvents} />
+            ),
           }}
           eventPropGetter={(event) => {
             return { className: `${event.color}` };
