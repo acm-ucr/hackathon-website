@@ -9,7 +9,7 @@ import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { useContext } from "react";
 import { SiGithub, SiDevpost } from "react-icons/si";
 import Link from "next/link";
-import { tagColor } from "@/data/Tags";
+import { colors } from "@/data/Tags";
 import { IoIosRose } from "react-icons/io";
 import { FaCrown } from "react-icons/fa";
 const icons = {
@@ -102,7 +102,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                         {header.hasTag && (
                           <Tag
                             text={object[header.text]}
-                            color={tagColor[object[header.text]]}
+                            color={colors[object[header.text]]}
                           />
                         )}
 
