@@ -58,7 +58,7 @@ export const participantList = [
 
   {
     uid: "6",
-    name: "Menthy Wu",
+    name: "Alex Wu",
     email: "yhung022@ucr.edu",
     team: "baa",
     major: "Computer Science",
@@ -70,7 +70,7 @@ export const participantList = [
 
   {
     uid: "7",
-    name: "Menthy Wu",
+    name: "Cindy Jones",
     email: "yhung022@ucr.edu",
     team: "b_q",
     major: "Computer Science",
@@ -81,7 +81,7 @@ export const participantList = [
   },
   {
     uid: "8",
-    name: "Menthy Wu",
+    name: "AJ Hall",
     email: "yhung022@ucr.edu",
     team: "1234z",
     major: "Computer Science",
@@ -92,29 +92,29 @@ export const participantList = [
   },
   {
     uid: "9",
-    name: "Menthy Wu",
-    email: "twang022@ucr.edu",
-    team: "b",
-    major: "Business",
+    name: "Lucy Pan",
+    email: "yhung022@ucr.edu",
+    team: "1234z",
+    major: "Computer Science",
     status: "reject",
-    selected: false,
+    selected: true,
     hidden: false,
-    dropdown: false,
+    dropdown: true,
   },
   {
     uid: "10",
-    name: "Menthy Wu",
+    name: "Ben Du",
     email: "yhung987@ucr.edu",
     team: "b",
     major: "Computer Science",
     status: "pending",
     selected: false,
-    hidden: true,
+    hidden: false,
     dropdown: true,
   },
   {
     uid: "11",
-    name: "Menthy Wu",
+    name: "Wendy Mu",
     email: "yhung0465@ucr.edu",
     team: "b",
     major: "Computer Science",
@@ -125,7 +125,7 @@ export const participantList = [
   },
   {
     uid: "12",
-    name: "Menthy Wu",
+    name: "Monique Hun",
     email: "yhung012@ucr.edu",
     team: "b",
     major: "Computer Science",
@@ -136,7 +136,7 @@ export const participantList = [
   },
   {
     uid: "13",
-    name: "Menthy Wu",
+    name: "Eddie Shappun",
     email: "mzhun022@ucr.edu",
     team: "b",
     major: "Computer Science",
@@ -147,7 +147,7 @@ export const participantList = [
   },
   {
     uid: "14",
-    name: "Menthy Wu",
+    name: "Nancy Zun",
     email: "yhung022@ucr.edu",
     team: "b",
     major: "Computer Science",
@@ -158,7 +158,7 @@ export const participantList = [
   },
   {
     uid: "15",
-    name: "Menthy Wu",
+    name: "Jack xx",
     email: "yhung022@ucr.edu",
     team: "b",
     major: "Computer Science",
@@ -169,7 +169,7 @@ export const participantList = [
   },
   {
     uid: "16",
-    name: "Menthy Wu",
+    name: "Bellay Chappan",
     email: "yhung022@ucr.edu",
     team: "b",
     major: "Computer Science",
@@ -180,7 +180,7 @@ export const participantList = [
   },
   {
     uid: "17",
-    name: "Menthy Wu",
+    name: "Cathy Shannon",
     email: "yhung022@ucr.edu",
     team: "b",
     major: "Computer Science",
