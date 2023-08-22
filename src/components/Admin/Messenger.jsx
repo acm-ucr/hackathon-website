@@ -7,6 +7,7 @@ import Input from "./Input";
 import Textarea from "./Textarea";
 import Button from "./Button";
 import toast from "react-hot-toast";
+import Upload from "./Upload";
 
 const ADDRESSEES = [
   {
@@ -68,8 +69,8 @@ const Messenger = () => {
     toast(`✅ Email sent successfully!`);
   };
   return (
-    <div className="w-full font-poppins h-full">
-      <div className="flex flex-col pb-3 pt-4 h-full items-stretch">
+    <div className="w-full font-poppins h-full flex flex-col justify-between">
+      <div className="flex flex-col pb-3 pt-4 h-full items-stretch justify-between">
         <Title title="Messenger" />
         <div className="flex items-center my-1">
           <p className="text-lg font-extrabold mr-5 my-0">to:</p>
@@ -90,7 +91,8 @@ const Messenger = () => {
         <div className="w-full h-full bg-white rounded-2xl my-2 flex flex-col p-4 pt-2">
           <p className="text-lg font-extrabold mb-1">body:</p>
           <Textarea value={messageBody} setValue={setMessageBody} />
-          <div className="flex w-full justify-end mt-3">
+          <div className="flex w-full justify-between mt-3 items-end">
+            <Upload />
             <Button
               text="send"
               onClick={clickHandler}

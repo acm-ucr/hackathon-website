@@ -15,7 +15,7 @@ const sizes = {
 const Button = ({ color, text, onClick, size }) => {
   return (
     <button
-      className={`${colors[color].bg} ${colors[color].text} ${sizes[size]} py-1 hover:opacity-50 font-bold rounded-lg px-4`}
+      className={`${colors[color].bg} ${colors[color].text} ${sizes[size]} h-fit py-1 hover:opacity-50 font-bold rounded-lg px-4`}
       onClick={onClick}
     >
       {text}
