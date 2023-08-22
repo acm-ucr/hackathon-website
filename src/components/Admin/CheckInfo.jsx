@@ -32,7 +32,7 @@ const CheckInfo = ({ info, events }) => {
       </div>
     </div>
   ) : (
-    <p>No info</p>
+    <p className="w-full text-center">No info</p>
   );
 };
 

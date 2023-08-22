@@ -21,7 +21,7 @@ const CheckIn = () => {
   };
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
-      <Title title="Mentors" />
+      <Title title="Check In" />
       <Row className="p-0 m-0">
         <Col xs={12} md={6} className="p-3 m-0 flex flex-col justify-around">
           <DropDown
@@ -29,6 +29,7 @@ const CheckIn = () => {
             setOption={setEvent}
             options={events}
             setOptions={setEvents}
+            reset={mockEvents}
           />
           <ScanQRCode setResult={setResult} />
           <Button
