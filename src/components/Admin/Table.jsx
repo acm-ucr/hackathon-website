@@ -99,12 +99,21 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                           header.text === "name" && "font-bold flex"
                         }`}
                       >
-                        {header.hasTag && (
-                          <Tag
-                            text={object[header.text]}
-                            color={colors[object[header.text]]}
-                          />
-                        )}
+                        {header.hasTag &&
+                          (header.text === "image" ? (
+                            <Tag
+                              text="view"
+                              color="gray"
+                              onClick={() => {
+                                console.log("show image");
+                              }}
+                            />
+                          ) : (
+                            <Tag
+                              text={object[header.text]}
+                              color={colors[object[header.text]]}
+                            />
+                          ))}
 
                         {Array.isArray(object[header.text]) &&
                           object[header.text].map((element, index) => (

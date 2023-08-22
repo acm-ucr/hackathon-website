@@ -1,6 +1,6 @@
 export const judgeHeaders = [
   { text: "name", size: 3, icon: true, sort: "off" },
-  { text: "email", size: 4, icon: false, sort: "off" },
+  { text: "email", size: 3, icon: false, sort: "off" },
   {
     text: "type",
     size: 2,
@@ -12,6 +12,13 @@ export const judgeHeaders = [
     text: "status",
     size: 2,
     icon: true,
+    sort: "off",
+    hasTag: true,
+  },
+  {
+    text: "image",
+    size: 1,
+    icon: false,
     sort: "off",
     hasTag: true,
   },
