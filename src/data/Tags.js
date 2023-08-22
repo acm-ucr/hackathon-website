@@ -78,8 +78,11 @@ export const tagColor = {
   professor: "grayblue",
   student: "teal",
   industry: "lightgreen",
+
   director: "purple",
-  "web dev": "green",
-  ops: "red",
-  marketing: "pink",
+  marketing: "teal",
+  sponsorship: "red",
+  recruitment: "pink",
+  software: "lightgreen",
+  UIUX: "blue",
 };

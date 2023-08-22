@@ -1,11 +1,10 @@
 export const affiliations = [
-  "ops",
-  "web dev",
-  "option 3",
-  "option 4",
   "director",
-  "option 6",
   "marketing",
+  "sponsorship",
+  "recruitment",
+  "software",
+  "uiux",
 ];
 
 export const requirementsData = {
