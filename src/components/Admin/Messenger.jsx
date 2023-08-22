@@ -8,65 +8,41 @@ import Textarea from "./Textarea";
 import Button from "./Button";
 import toast from "react-hot-toast";
 import Upload from "./Upload";
-
-const ADDRESSEES = [
-  {
-    uid: "1",
-    name: "Menthy Wu",
-    email: "yhung022@ucr.edu",
-    team: "b",
-    major: "Computer Science",
-    status: "pending",
-    selected: false,
-  },
-  {
-    uid: "2",
-    name: "Divyank Shah",
-    email: "yhung022@ucr.edu",
-    team: "c",
-    major: "Computer Science",
-    status: "accepted",
-    selected: false,
-  },
-  {
-    uid: "3",
-    name: "Shing Hung",
-    email: "yhung022@ucr.edu",
-    team: "d",
-    major: "Computer Science",
-    status: "rejected",
-    selected: false,
-  },
-];
+import { userList } from "@/data/mock/messengerUsers";
+import { messengerFilters } from "@/data/Filters";
 
 const Messenger = () => {
-  const [subjectText, setSubjectText] = useState("");
-  const [messageBody, setMessageBody] = useState("");
-  const [filters, setFilters] = useState({
-    accepted: false,
-    rejected: false,
-    pending: false,
-    volunteers: false,
-    mentors: false,
-    judges: false,
+  const [email, setEmail] = useState({
+    sendto: [],
+    subject: "",
+    body: "",
+    files: [],
   });
-  const [filteredParticipants, setfilteredParticipants] = useState(ADDRESSEES);
+  const [filters, setFilters] = useState(messengerFilters);
+  const [user, setUser] = useState(userList);
   const clickHandler = () => {
-    if (subjectText === "") {
+    if (email.subject === "") {
       toast("❌ Please add a subject!");
       return;
     }
-    if (messageBody === "") {
+    if (email.body === "") {
       toast("❌ Please add a body!");
       return;
     }
-    const emails = filteredParticipants.map((user) => user.email);
-    console.log({
-      sendto: emails,
-      subject: subjectText,
-      body: messageBody,
+    const emails = user.filter((user) => {
+      let select = false;
+      Object.entries(filters).forEach(([filter, selected]) => {
+        if (selected && (user.status == filter || user.role == filter)) {
+          select = true;
+        }
+      });
+      if (select) return user.email;
+      return false;
     });
     toast(`✅ Email sent successfully!`);
+    setEmail({ ...email, sendto: emails });
+    console.log(email);
+    console.log(emails);
   };
   return (
     <div className="w-full font-poppins h-full flex flex-col justify-between">
@@ -77,22 +53,30 @@ const Messenger = () => {
           <Filters
             filters={filters}
             setFilters={setFilters}
-            setObjects={setfilteredParticipants}
-            objects={ADDRESSEES}
+            setObjects={setUser}
+            objects={user}
+            input=""
           />
         </div>
         <Input
-          setValue={setSubjectText}
-          value={subjectText}
+          setValue={(value) => setEmail({ ...email, subject: value })}
+          value={email.subject}
           clear={true}
-          label="Subject:"
+          label="subject:"
           placeholder="subject"
         />
         <div className="w-full h-full bg-white rounded-2xl my-2 flex flex-col p-4 pt-2">
           <p className="text-lg font-extrabold mb-1">body:</p>
-          <Textarea value={messageBody} setValue={setMessageBody} />
+          <Textarea
+            setValue={(value) => setEmail({ ...email, body: value })}
+            value={email.body}
+          />
           <div className="flex w-full justify-between mt-3 items-end">
-            <Upload />
+            <Upload
+              setObjects={(files) => {
+                setEmail({ ...email, files: files });
+              }}
+            />
             <Button
               text="send"
               onClick={clickHandler}
