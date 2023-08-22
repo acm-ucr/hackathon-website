@@ -7,6 +7,7 @@ import Toolbar from "./Toolbar";
 import Event from "./Event";
 import axios from "axios";
 import Modal from "./Modal";
+import { labels } from "@/data/Calendar";
 
 const mLocalizer = momentLocalizer(moment);
 
@@ -23,11 +24,15 @@ const CalendarEvents = () => {
         const items = response.data.items.map((item) => {
           item.start = new Date(item.start.dateTime);
           item.end = new Date(item.end.dateTime);
-          item.color = "!bg-hackathon-blue-100";
+          item.color =
+            labels[
+              item.description.split("\n")[1].split(": ")[1].toLowerCase()
+            ].background;
           item.hidden = false;
 
           return item;
         });
+        console.log(items);
         setEvents(items);
       });
   }, []);

@@ -5,7 +5,14 @@ import { labels } from "@/data/Calendar";
 import Tag from "../Tag.jsx";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
-const CustomToolbar = ({ onView, onNavigate, date, events, setEvents }) => {
+const CustomToolbar = ({
+  onView,
+  onNavigate,
+  date,
+  events,
+  setEvents,
+  view,
+}) => {
   const onClick = (value) => {
     setEvents(
       events.map((event) => {
@@ -28,13 +35,13 @@ const CustomToolbar = ({ onView, onNavigate, date, events, setEvents }) => {
         <Tag
           onClick={() => onView("month")}
           text="month"
-          color="green"
+          color={view === "month" ? "green" : "gray"}
           classes="mx-2"
         />
         <Tag
           onClick={() => onView("week")}
           text="week"
-          color="green"
+          color={view === "week" ? "green" : "gray"}
           classes="mx-2"
         />
       </Col>

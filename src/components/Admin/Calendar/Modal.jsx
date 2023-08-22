@@ -7,7 +7,12 @@ import { labels } from "@/data/Calendar";
 const CalendarModal = ({ event, setEvent }) => {
   return (
     <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-10 w-1/2 rounded-xl">
-      <div className="flex justify-between items-center p-3 bg-hackathon-blue-100 rounded-t-xl">
+      <div
+        className={`flex justify-between items-center p-3 rounded-t-xl ${event.color.replace(
+          "!",
+          ""
+        )}`}
+      >
         <span className="text-3xl text-white font-bold">{event.summary}</span>
         <FaTimes
           onClick={() => setEvent(null)}

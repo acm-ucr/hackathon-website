@@ -14,7 +14,6 @@ const SortIcon = ({
   currentSort,
 }) => {
   const handleClick = (state) => {
-    console.log(headers, setHeaders, state, name);
     if (currentSort === name)
       setHeaders(
         headers.map((header) => {
