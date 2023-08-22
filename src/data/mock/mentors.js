@@ -41,7 +41,7 @@ export const mentorList = [
     email: "twang123@ucr.edu",
     discord: "babydonthurtme#2067",
     status: "not attending",
-    selected: true,
+    selected: false,
     hidden: false,
   },
   {
@@ -50,7 +50,7 @@ export const mentorList = [
     email: "twu7680@ucr.edu",
     discord: "yuung#8376",
     status: "online",
-    selected: true,
+    selected: false,
     hidden: false,
   },
   {

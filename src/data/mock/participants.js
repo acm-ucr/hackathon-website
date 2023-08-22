@@ -86,7 +86,7 @@ export const participantList = [
     team: "1234z",
     major: "Computer Science",
     status: "accept",
-    selected: true,
+    selected: false,
     hidden: false,
     dropdown: true,
   },

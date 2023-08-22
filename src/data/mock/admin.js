@@ -65,7 +65,7 @@ export const adminList = [
     affiliation: "business",
     status: "reject",
     email: "twang777@email.com",
-    selected: true,
+    selected: false,
     hidden: false,
   },
   {
@@ -74,7 +74,7 @@ export const adminList = [
     affiliation: "ops",
     status: "pending",
     email: "benjjj@ucr.edu",
-    selected: true,
+    selected: false,
     hidden: false,
   },
   {
@@ -83,7 +83,7 @@ export const adminList = [
     affiliation: "ops",
     status: "accept",
     email: "ash.catty1278@email.com",
-    selected: true,
+    selected: false,
     hidden: false,
   },
   {
@@ -92,7 +92,7 @@ export const adminList = [
     affiliation: "industry",
     status: "accept",
     email: "kcindy@email.com",
-    selected: true,
+    selected: false,
     hidden: false,
   },
   {
@@ -101,7 +101,7 @@ export const adminList = [
     affiliation: "industry",
     status: "accept",
     email: "vteng666@email.com",
-    selected: true,
+    selected: false,
     hidden: false,
   },
   {
@@ -110,7 +110,7 @@ export const adminList = [
     affiliation: "marketing",
     status: "reject",
     email: "msuusse8966@email.com",
-    selected: true,
+    selected: false,
     hidden: false,
   },
   {
@@ -119,7 +119,7 @@ export const adminList = [
     affiliation: "industry",
     status: "pending",
     email: "akkkk74@email.com",
-    selected: true,
+    selected: false,
     hidden: false,
   },
   {

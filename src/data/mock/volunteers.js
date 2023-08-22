@@ -41,7 +41,7 @@ export const volunteerList = [
     email: "digdag@gmail.com",
     discord: "dorm#3333",
     status: "not attending",
-    selected: true,
+    selected: false,
     hidden: false,
   },
   {
@@ -50,7 +50,7 @@ export const volunteerList = [
     email: "john666@hotmail.com",
     discord: "kickkk#8906",
     status: "onsite",
-    selected: true,
+    selected: false,
     hidden: false,
   },
   {
@@ -59,7 +59,7 @@ export const volunteerList = [
     email: "cesss2938@ucr.edu",
     discord: "bnxgsw#000000",
     status: "onsite",
-    selected: true,
+    selected: false,
     hidden: false,
   },
   {
