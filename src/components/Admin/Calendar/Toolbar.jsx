@@ -27,8 +27,8 @@ const CustomToolbar = (event) => {
           classes="mx-2"
         />
         <Tag
-          onClick={() => event.onView("day")}
-          text="DAY"
+          onClick={() => event.onView("week")}
+          text="WEEK"
           color="green"
           classes="mx-2"
         />

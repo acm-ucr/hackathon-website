@@ -40,7 +40,7 @@ const CalendarEvents = () => {
           events={events}
           localizer={mLocalizer}
           defaultView="month"
-          views={["month", "week", "day"]}
+          views={["month", "week"]}
           components={{
             event: Event,
             toolbar: Toolbar,
