@@ -27,3 +27,18 @@ export const Majors = [
   "Chemical Engineering",
   "Other",
 ];
+
+export const Availability = [
+  "Friday Morning",
+  "Friday Afternoon",
+  "Friday Evening",
+  "Friday Night",
+  "Saturday Morning",
+  "Saturday Afternoon",
+  "Saturday Evening",
+  "Saturday Night",
+  "Sunday Morning",
+  "Sunday Afternoon",
+  "Sunday Evening",
+  "Sunday Night",
+];
