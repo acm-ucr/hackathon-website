@@ -64,7 +64,7 @@ export const volunteerTags = [
   },
 ];
 
-export const tagColor = {
+export const colors = {
   qualify: "green",
   winner: "purple",
   disqualify: "red",
