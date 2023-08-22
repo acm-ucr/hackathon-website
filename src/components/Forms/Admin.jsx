@@ -69,7 +69,7 @@ const Admin = () => {
               title="Email Address"
               placeholder="john_doe@gmail.com"
               value={user.email}
-              maxLength={254}
+              maxLength={50}
               user={user}
               setUser={setUser}
             />
