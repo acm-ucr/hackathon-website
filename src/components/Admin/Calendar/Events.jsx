@@ -24,6 +24,7 @@ const CalendarEvents = () => {
           item.start = new Date(item.start.dateTime);
           item.end = new Date(item.end.dateTime);
           item.color = "!bg-hackathon-blue-100";
+          item.hidden = false;
 
           return item;
         });
