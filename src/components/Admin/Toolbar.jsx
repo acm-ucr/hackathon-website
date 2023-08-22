@@ -95,17 +95,6 @@ const Toolbar = ({
     );
     setToggle(!toggle);
   };
-
-  // const blackListArray = ["uid", "selected", "hidden", "links"];
-  // const data = objects.map((items) => {
-  //   const rowData = {};
-  //   Object.entries(items).map(
-  //     if (!blackListArray.includes(key)){
-  //       ([key, value]) => (rowData[key] = convert(value))
-  //     }
-  //   );
-  //   return rowData;
-  // });
   const blacklistArray = ["uid", "selected", "hidden", "links", "dropdown"];
   const data = objects.map((items) => {
     const rowData = {};
