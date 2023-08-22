@@ -2,6 +2,7 @@ export const adminList = [
   {
     uid: 1,
     name: "Dewi Norton",
+    position: "lead",
     status: "pending",
     affiliation: "marketing",
     email: "dewinorton@email.com",
@@ -11,6 +12,7 @@ export const adminList = [
   {
     uid: 2,
     name: "Amie Nguyen",
+    position: "lead",
     status: "reject",
     affiliation: "director",
     email: "amienguyenn@email.com",
@@ -20,6 +22,7 @@ export const adminList = [
   {
     uid: 3,
     name: "Larry Larsen",
+    position: "",
     status: "reject",
     affiliation: "marketing",
     email: "larrylarsen@email.com",
@@ -29,6 +32,7 @@ export const adminList = [
   {
     uid: 4,
     name: "Big Chungus",
+    position: "",
     status: "accept",
     affiliation: "director",
     email: "bigchungus101@email.com",
@@ -38,6 +42,7 @@ export const adminList = [
   {
     uid: 5,
     name: "Mario Kart",
+    position: "",
     status: "accept",
     affiliation: "web dev",
     email: "mariomoviegoated101@email.com",
@@ -47,6 +52,7 @@ export const adminList = [
   {
     uid: 6,
     name: "Ash Ketchum",
+    position: "",
     affiliation: "ops",
     status: "pending",
     email: "ash.ketchum12@email.com",
