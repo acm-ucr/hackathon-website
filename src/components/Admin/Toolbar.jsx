@@ -5,7 +5,7 @@ import { HiSearch } from "react-icons/hi";
 import Tag from "./Tag.jsx";
 import { FaDownload, FaTrashAlt } from "react-icons/fa";
 import { CSVLink } from "react-csv";
-import { tagColor } from "@/data/Tags";
+import { colors } from "@/data/Tags";
 
 function convert(input) {
   if (Array.isArray(input)) {
@@ -105,7 +105,9 @@ const Toolbar = ({
     });
     return rowData;
   });
-
+  const handleDelete = () => {
+    setObjects(objects.filter((object) => !object.selected));
+  };
   const formattedDate = new Date()
     .toLocaleDateString("en-US")
     .replace(/ /g, "_");
@@ -125,7 +127,7 @@ const Toolbar = ({
               text={tag.text}
               name={tag.name}
               onClick={() => onClick(tag.text)}
-              color={tagColor[tag.text]}
+              color={colors[tag.text]}
               setObjects={setObjects}
               objects={objects}
             />
@@ -164,7 +166,7 @@ const Toolbar = ({
           className="ml-4 text-hackathon-darkgray hover:opacity-70 duration-150"
         />
       </CSVLink>
-      <button>
+      <button onClick={handleDelete}>
         <FaTrashAlt
           size={22.5}
           className="ml-5 text-hackathon-darkgray hover:opacity-70 duration-150"

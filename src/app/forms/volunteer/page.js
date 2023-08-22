@@ -1,11 +1,12 @@
 import Volunteer from "@/components/Forms/Volunteer";
 import React from "react";
+import FormPage from "@/components/Form";
 
 const Page = () => {
   return (
-    <div className="w-11/12">
+    <FormPage title="Form | Volunteer">
       <Volunteer />
-    </div>
+    </FormPage>
   );
 };
 

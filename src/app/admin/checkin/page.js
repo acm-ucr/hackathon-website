@@ -1,11 +1,12 @@
+"use client";
 import React from "react";
 import ProtectedPage from "@/components/ProtectedPage";
-import Admissions from "@/components/Admin/Admissions";
+import CheckIn from "@/components/Admin/CheckIn";
 
 const Page = () => {
   return (
-    <ProtectedPage title="Admin | Admission" restrictions={["admin"]}>
-      <Admissions />
+    <ProtectedPage title="Admin | Check In" restrictions={["admin"]}>
+      <CheckIn />
     </ProtectedPage>
   );
 };

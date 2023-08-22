@@ -33,6 +33,7 @@ const Feedback = () => {
               title="What was most helpful about the event?"
               placeholder="Workshops, team collaboration, mentorship..."
               value={feedback.question1}
+              maxLength={300}
               user={feedback}
               setUser={setFeedback}
             />
@@ -44,6 +45,7 @@ const Feedback = () => {
               title="Was there anything that you would have liked to see?"
               placeholder=""
               value={feedback.question2}
+              maxLength={300}
               user={feedback}
               setUser={setFeedback}
             />
@@ -55,6 +57,7 @@ const Feedback = () => {
               title="Was there anything that you did not find beneficial about the hackathon?"
               placeholder=""
               value={feedback.question3}
+              maxLength={300}
               user={feedback}
               setUser={setFeedback}
             />
@@ -66,6 +69,7 @@ const Feedback = () => {
               title="How would you rate the hackathon?"
               placeholder="From 1 - 10"
               value={feedback.question4}
+              maxLength={300}
               user={feedback}
               setUser={setFeedback}
             />
@@ -77,6 +81,7 @@ const Feedback = () => {
               title="How did you find the event?"
               placeholder="Instagram, friends, etc"
               value={feedback.question5}
+              maxLength={300}
               user={feedback}
               setUser={setFeedback}
             />
@@ -88,6 +93,7 @@ const Feedback = () => {
               title="Is there anything else you'd like to let us know?"
               placeholder="Literally anything..."
               value={feedback.question6}
+              maxLength={300}
               user={feedback}
               setUser={setFeedback}
             />

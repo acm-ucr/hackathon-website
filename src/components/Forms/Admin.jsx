@@ -7,25 +7,12 @@ import Checkbox from "../Checkbox";
 import Input from "../Input";
 import { Row, Col } from "react-bootstrap";
 import Button from "./Button";
-
-const affiliations = [
-  "ops",
-  "web dev",
-  "option 3",
-  "option 4",
-  "director",
-  "option 6",
-];
+import { affiliations } from "@/data/AdminForm";
+import { requirementsData } from "@/data/AdminForm";
 
 const Admin = () => {
   const [user, setUser] = useState(User);
-
-  const [requirements, setRequirements] = useState({
-    violation: {
-      state: false,
-      text: "You will be given access to private data that cannot be shared anywhere. If you violate this, you will be reported.",
-    },
-  });
+  const [requirements, setRequirements] = useState(requirementsData);
 
   const handleSubmit = () => {
     console.log(user);
@@ -57,6 +44,7 @@ const Admin = () => {
               type="text"
               title="First Name"
               placeholder="John"
+              maxLength={50}
               value={user.first}
               user={user}
               setUser={setUser}
@@ -69,6 +57,7 @@ const Admin = () => {
               title="Last Name"
               placeholder="Doe"
               value={user.last}
+              maxLength={50}
               user={user}
               setUser={setUser}
             />
@@ -80,6 +69,7 @@ const Admin = () => {
               title="Email Address"
               placeholder="john_doe@gmail.com"
               value={user.email}
+              maxLength={50}
               user={user}
               setUser={setUser}
             />
@@ -91,6 +81,7 @@ const Admin = () => {
               title="Discord Username"
               placeholder="john_doe#1234"
               value={user.discord}
+              maxLength={50}
               user={user}
               setUser={setUser}
             />

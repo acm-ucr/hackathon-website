@@ -18,10 +18,10 @@ export const judgeHeaders = [
 ];
 
 export const adminHeaders = [
-  { text: "name", size: 3, icon: true, sort: "off" },
+  { text: "name", size: 3, icon: true, sort: "off", symbol: "lead" },
   { text: "email", size: 4, icon: false, sort: "off" },
   {
-    text: "type",
+    text: "affiliation",
     size: 2,
     icon: true,
     sort: "off",
@@ -63,7 +63,7 @@ export const volunteerHeaders = [
 ];
 
 export const teamHeaders = [
-  { text: "name", size: 1, icon: true, sort: "off" },
+  { text: "name", size: 1, icon: true, sort: "off", symbol: "winner" },
   { text: "members", size: 2, icon: false, sort: "off" },
   { text: "emails", size: 2, icon: false, sort: "off" },
   { text: "links", size: 4, icon: false, sort: "off" },

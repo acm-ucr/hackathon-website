@@ -9,10 +9,14 @@ import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { useContext } from "react";
 import { SiGithub, SiDevpost } from "react-icons/si";
 import Link from "next/link";
-import { tagColor } from "@/data/Tags";
+import { colors } from "@/data/Tags";
+import { IoIosRose } from "react-icons/io";
+import { FaCrown } from "react-icons/fa";
 const icons = {
   github: <SiGithub className="mr-2" />,
   devpost: <SiDevpost className="mr-2" />,
+  lead: <IoIosRose className="ml-1 text-hackathon-blue-200 text-lg" />,
+  winner: <FaCrown className="ml-1 text-hackathon-yellow text-lg" />,
 };
 const Toggle = ({ eventKey }) => {
   const { activeEventKey } = useContext(AccordionContext);
@@ -75,8 +79,8 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
             !object.hidden && (
               <Row
                 key={index}
-                className={`first:border-0 border-t-[1px] border-hackathon-gray w-full flex justify-between items-center p-0 m-0 py-2 bg-white ${
-                  object.selected ? "bg-green-100" : ""
+                className={`first:border-0 border-t-[1px] border-hackathon-gray w-full flex justify-between items-center p-0 m-0 py-2 ${
+                  object.selected ? "bg-green-100" : "bg-white"
                 }`}
               >
                 <Col className="p-0 flex justify-center items-center" xs>
@@ -92,13 +96,13 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                         key={index}
                         md={header.size}
                         className={`p-0 text-sm ${
-                          header.text === "name" && "font-bold"
+                          header.text === "name" && "font-bold flex"
                         }`}
                       >
                         {header.hasTag && (
                           <Tag
                             text={object[header.text]}
-                            color={tagColor[object[header.text]]}
+                            color={colors[object[header.text]]}
                           />
                         )}
 
@@ -129,8 +133,14 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                           ))}
 
                         {!header.hasTag &&
-                          !Array.isArray(object[header.text]) &&
-                          object[header.text]}
+                          !Array.isArray(object[header.text]) && (
+                            <>
+                              {object[header.text]}
+                              {(object.position === header.symbol ||
+                                object.status === header.symbol) &&
+                                icons[header.symbol]}
+                            </>
+                          )}
                       </Col>
                     )
                   );
