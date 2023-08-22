@@ -7,7 +7,7 @@ import {
 } from "react-icons/bs";
 import { MdVolunteerActivism } from "react-icons/md";
 import { BiSolidHelpCircle } from "react-icons/bi";
-import { FaGavel, FaEnvelope, FaLock } from "react-icons/fa";
+import { FaGavel, FaEnvelope, FaLock, FaRegCalendar } from "react-icons/fa";
 import { AiOutlineQrcode } from "react-icons/ai";
 
 const iconStyle = "mr-2";
@@ -46,6 +46,11 @@ export const AdminTabs = {
     },
   ],
   Services: [
+    {
+      name: "calendar",
+      link: "/admin/calendar",
+      icon: <FaRegCalendar className={iconStyle} />,
+    },
     {
       name: "messenger",
       link: "/admin/messenger",
