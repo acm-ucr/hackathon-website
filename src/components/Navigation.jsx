@@ -58,10 +58,12 @@ const Navigation = () => {
                 ([title, subTabs], index) =>
                   title !== " " && (
                     <div key={index} className="w-full">
-                      <p className="text-white text-xl m-0 font-poppin font-bold mt-5 w-full pl-2 ">
+                      <p
+                        className={`text-white text-xl font-poppin font-bold w-full pl-2 ${subTabs.mt}`}
+                      >
                         {title}
                       </p>
-                      {subTabs.map((tab, index) => (
+                      {subTabs.tabs.map((tab, index) => (
                         <Link
                           key={index}
                           href={tab.link}
