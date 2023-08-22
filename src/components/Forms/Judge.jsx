@@ -74,6 +74,7 @@ const Judge = () => {
               title="First Name"
               placeholder="John"
               value={judge.first}
+              maxLength={35}
               user={judge}
               setUser={setJudge}
             />
@@ -85,6 +86,7 @@ const Judge = () => {
               title="Last Name"
               placeholder="Doe"
               value={judge.last}
+              maxLength={35}
               user={judge}
               setUser={setJudge}
             />
@@ -96,6 +98,7 @@ const Judge = () => {
               title="Phone Number"
               placeholder="123 456 7890"
               value={judge.phone}
+              maxLength={15}
               user={judge}
               setUser={setJudge}
             />
@@ -107,6 +110,7 @@ const Judge = () => {
               title="Email Address"
               placeholder="john_doe@gmail.com"
               value={judge.email}
+              maxLength={254}
               user={judge}
               setUser={setJudge}
             />

@@ -70,6 +70,7 @@ const Mentor = () => {
               title="First Name"
               placeholder="John"
               value={mentor.first}
+              maxLength={35}
               user={mentor}
               setUser={setMentor}
             />
@@ -81,6 +82,7 @@ const Mentor = () => {
               title="Last Name"
               placeholder="Doe"
               value={mentor.last}
+              maxLength={15}
               user={mentor}
               setUser={setMentor}
             />
@@ -92,6 +94,7 @@ const Mentor = () => {
               title="Phone Number"
               placeholder="123 456 7890"
               value={mentor.phone}
+              maxLength={15}
               user={mentor}
               setUser={setMentor}
             />
@@ -103,6 +106,7 @@ const Mentor = () => {
               title="Email Address"
               placeholder="john_doe@gmail.com"
               value={mentor.email}
+              maxLength={254}
               user={mentor}
               setUser={setMentor}
             />

@@ -44,6 +44,7 @@ const Admin = () => {
               type="text"
               title="First Name"
               placeholder="John"
+              maxLength={35}
               value={user.first}
               user={user}
               setUser={setUser}
@@ -56,6 +57,7 @@ const Admin = () => {
               title="Last Name"
               placeholder="Doe"
               value={user.last}
+              maxLength={35}
               user={user}
               setUser={setUser}
             />
@@ -67,6 +69,7 @@ const Admin = () => {
               title="Email Address"
               placeholder="john_doe@gmail.com"
               value={user.email}
+              maxLength={254}
               user={user}
               setUser={setUser}
             />
@@ -78,6 +81,7 @@ const Admin = () => {
               title="Discord Username"
               placeholder="john_doe#1234"
               value={user.discord}
+              maxLength={35}
               user={user}
               setUser={setUser}
             />
