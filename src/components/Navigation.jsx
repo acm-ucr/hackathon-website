@@ -56,7 +56,7 @@ const Navigation = () => {
             <div className="mt-[20%] w-full h-full flex flex-col justify-between">
               {Object.entries(tabs).map(([title, subTabs], index) => (
                 <div key={index} className="">
-                  <p className="text-white text-xl m-0 font-poppin pl-2 py-1 font-bold">
+                  <p className="text-white text-2xl m-0 font-poppin pl-2 py-1 font-bold">
                     {title}
                   </p>
                   {subTabs.map((tab, index) => (
@@ -70,7 +70,7 @@ const Navigation = () => {
                         }`}
                       >
                         {tab.icon}
-                        <p className="text-lg m-0 p-0">{tab.name}</p>
+                        <p className="text-xl m-0 p-0">{tab.name}</p>
                       </div>
                     </Link>
                   ))}

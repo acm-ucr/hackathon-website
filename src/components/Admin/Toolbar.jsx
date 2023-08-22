@@ -4,7 +4,7 @@ import Checkbox from "../Checkbox";
 import { HiSearch } from "react-icons/hi";
 import Tag from "./Tag.jsx";
 import { FaDownload, FaTrashAlt } from "react-icons/fa";
-import { tagColor } from "@/data/Tags";
+import { colors } from "@/data/Tags";
 
 const Toolbar = ({ input, setInput, tags, setObjects, objects, filters }) => {
   const [toggle, setToggle] = useState(false);
@@ -86,7 +86,7 @@ const Toolbar = ({ input, setInput, tags, setObjects, objects, filters }) => {
               text={tag.text}
               name={tag.name}
               onClick={() => onClick(tag.text)}
-              color={tagColor[tag.text]}
+              color={colors[tag.text]}
               setObjects={setObjects}
               objects={objects}
             />
