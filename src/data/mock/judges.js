@@ -90,7 +90,7 @@ export const judgeList = [
   {
     uid: 9,
     name: "Kim Alexander",
-    type: "master11",
+    type: "industry",
     status: "not attending",
     email: "kim5867@hotmai.com",
     selected: false,

@@ -21,6 +21,9 @@ export const judgeHeaders = [
     icon: false,
     sort: "off",
     hasTag: true,
+    onClick: (object) => {
+      console.log(object.image);
+    },
   },
 ];
 
