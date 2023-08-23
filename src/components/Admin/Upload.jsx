@@ -13,19 +13,26 @@ const Upload = ({ text, setObjects, objects, size, types }) => {
   const [uploading, setUploading] = useState(false);
 
   const handleInput = (e) => {
-    const fileList = [];
     setUploading(true);
     if (objects.files.length + e.target.files.length > 5) {
       toast("❌ Exceeds 5 objects!");
       setUploading(false);
       return;
     }
-    Object.entries(e.target.files).forEach(([ind, file]) => {
-      if (file.size > getSize(size)) {
-        toast(`❌ File too big, exceeds  ${size[0]} ${size[1]}`);
-      } else fileList.push(file);
+
+    setObjects({
+      ...objects,
+      files: [
+        ...objects.files,
+        ...Object.values(e.target.files).filter((file) => {
+          if (file.size > getSize(size)) {
+            toast(`❌ File too big, exceeds  ${size[0]} ${size[1]}`);
+            return false;
+          }
+          return true;
+        }),
+      ],
     });
-    setObjects({ ...objects, files: [...objects.files, ...fileList] });
     setUploading(false);
   };
 
