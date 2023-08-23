@@ -81,8 +81,9 @@ export const tagColor = {
 
   director: "purple",
   marketing: "teal",
-  sponsorship: "red",
+  operations: "grayblue",
+  sponsorship: "yellow",
   recruitment: "pink",
   software: "lightgreen",
-  UIUX: "blue",
+  UIUX: "red",
 };

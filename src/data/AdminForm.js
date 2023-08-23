@@ -4,7 +4,7 @@ export const affiliations = [
   "sponsorship",
   "recruitment",
   "software",
-  "uiux",
+  "UIUX",
 ];
 
 export const requirementsData = {

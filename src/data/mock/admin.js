@@ -57,7 +57,7 @@ export const adminList = [
     uid: 7,
     name: "Tiffany Wang",
     affiliation: "UIUX",
-    status: "reject",
+    status: "accept",
     email: "twang777@email.com",
     selected: true,
     hidden: false,
@@ -65,7 +65,7 @@ export const adminList = [
   {
     uid: 8,
     name: "Benjamin Wang",
-    affiliation: "ops",
+    affiliation: "sponsorship",
     status: "pending",
     email: "benjjj@ucr.edu",
     selected: true,
@@ -74,7 +74,7 @@ export const adminList = [
   {
     uid: 9,
     name: "Catty Sun",
-    affiliation: "ops",
+    affiliation: "operations",
     status: "accept",
     email: "ash.catty1278@email.com",
     selected: true,
