@@ -10,7 +10,6 @@ import Radio from "../Radio";
 import Input from "../Input";
 
 const Dashboard = () => {
-
   const [user, setUser] = useState({
     phone: "123 123 1234",
     grade: "undergraduate",
@@ -112,26 +111,20 @@ const Dashboard = () => {
 
           <p>TEAM MEMBER 4</p> */}
 
-
           {user.team !== "" ? (
             <>
               <p>TEAM MEMBER 1 </p>
-          {teamMembers[0]}
-          <p>TEAM MEMBER 2</p>
-          {teamMembers[1]}
-          <p>TEAM MEMBER 3</p>
-          {teamMembers[2]}
-          <p>TEAM MEMBER 4</p>
-          {teamMembers[3]}
-
+              {teamMembers[0]}
+              <p>TEAM MEMBER 2</p>
+              {teamMembers[1]}
+              <p>TEAM MEMBER 3</p>
+              {teamMembers[2]}
+              <p>TEAM MEMBER 4</p>
+              {teamMembers[3]}
             </>
           ) : (
-            <>
-            
-
-            </>
-
-              )}
+            <></>
+          )}
         </Col>
       </Row>
     </div>
