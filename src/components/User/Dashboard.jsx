@@ -8,6 +8,7 @@ import Select from "../Select";
 import { Schools } from "@/data/Schools";
 import Radio from "../Radio";
 import Input from "../Input";
+import { FaPencil, FaCheck } from "react-icons/fa6";
 
 const Dashboard = () => {
   const [user, setUser] = useState({
@@ -18,11 +19,32 @@ const Dashboard = () => {
     gender: "everythijg",
     team: "lololol",
   });
+  const [edit, setEdit] = useState(false);
+  const handleEdit = () => {
+    setEdit(!edit);
+  };
+
+  const handleSave = () => {
+    setEdit(false);
+  };
 
   return (
     <div className="w-full">
       <div className="flex justify-between items-center">
-        <ProfileHeader email="hello" name="hello" />
+        <div>
+          <ProfileHeader email="hello" name="hello" />
+          {edit ? (
+            <FaCheck
+              className="hover:cursor-pointer ml-2"
+              onClick={handleSave}
+            />
+          ) : (
+            <FaPencil
+              className="hover:cursor-pointer ml-2"
+              onClick={handleEdit}
+            />
+          )}
+        </div>
         <div className="text-right">
           <p className="text-xl font-bold mb-0">Status</p>
           <Tag color="yellow" text="pending" />
@@ -37,7 +59,7 @@ const Dashboard = () => {
             value={user.phone}
             user={user}
             setUser={setUser}
-            editable={true}
+            editable={edit}
           />
           <Select
             title="School"
@@ -45,7 +67,7 @@ const Dashboard = () => {
             field="school"
             user={user}
             setUser={setUser}
-            editable={true}
+            editable={edit}
           />
           <Select
             title="Major"
@@ -53,7 +75,7 @@ const Dashboard = () => {
             field="major"
             user={user}
             setUser={setUser}
-            editable={true}
+            editable={edit}
           />
           <Select
             title="Grade"
@@ -61,7 +83,7 @@ const Dashboard = () => {
             field="grade"
             user={user}
             setUser={setUser}
-            editable={true}
+            editable={edit}
           />
           <Radio
             text="Gender"
@@ -69,7 +91,7 @@ const Dashboard = () => {
             field="gender"
             user={user}
             setUser={setUser}
-            editable={true}
+            editable={edit}
           />
         </Col>
         <Col xl={6}>
@@ -80,7 +102,7 @@ const Dashboard = () => {
             value={user.team}
             user={user}
             setUser={setUser}
-            editable={true}
+            editable={edit}
           />
           <p>team id lolololololol</p>
           <Input
@@ -90,7 +112,7 @@ const Dashboard = () => {
             value={user.github}
             user={user}
             setUser={setUser}
-            editable={true}
+            editable={edit}
           />
           <Input
             name="devpost"
@@ -99,7 +121,7 @@ const Dashboard = () => {
             value={user.devpost}
             user={user}
             setUser={setUser}
-            editable={true}
+            editable={edit}
           />
           <p>TEAM MEMBER 1</p>
           <p>TEAM MEMBER 2</p>
