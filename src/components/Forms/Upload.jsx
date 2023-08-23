@@ -10,6 +10,7 @@ const bytes = {
 };
 const getSize = (maxSize) => bytes[maxSize[1]] * maxSize[0];
 const getType = (types) => "." + types.join(",.");
+
 const Upload = ({ field, user, setUser, text, maxSize, types }) => {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
