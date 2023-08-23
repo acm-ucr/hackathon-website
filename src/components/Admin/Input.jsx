@@ -2,6 +2,9 @@ import React from "react";
 import { MdCancel } from "react-icons/md";
 
 const Input = ({ object, setObject, clear, label, maxLength, placeholder }) => {
+  const handleInput = (e) => {
+    setObject({ ...object, [label]: e.target.value });
+  };
   return (
     <div className="flex items-center">
       <p className="text-lg font-extrabold mr-2 my-0">{label}:</p>
@@ -12,9 +15,7 @@ const Input = ({ object, setObject, clear, label, maxLength, placeholder }) => {
           placeholder={placeholder}
           type="text"
           className="outline-none w-full font-poppins text-base py-1 bg-transparent px-2"
-          onChange={(e) => {
-            setObject({ ...object, [label]: e.target.value });
-          }}
+          onChange={handleInput}
         />
         {clear && (
           <MdCancel

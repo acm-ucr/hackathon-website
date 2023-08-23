@@ -16,9 +16,7 @@ const CheckIn = () => {
   const [event, setEvent] = useState(mockEvents[0].name);
   const [events, setEvents] = useState(mockEvents);
   const [info, setInfo] = useState(null);
-  const onClick = () => {
-    info && setInfo({ ...info, [event]: true });
-  };
+  const onClick = () => etInfo({ ...info, [event]: true });
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Title title="Check In" />

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import { RiArrowDownSLine } from "react-icons/ri";
+
 const Toggle = ({ children, onClick, show }) => {
   return (
     <button
@@ -13,6 +14,15 @@ const Toggle = ({ children, onClick, show }) => {
   );
 };
 const Menu = ({ children, className, setOptions, options }) => {
+  const handleInput = (e) => {
+    setValue(e.target.value);
+    setOptions(
+      options.map((option) => ({
+        ...option,
+        hidden: !option.name.toLowerCase().includes(e.target.value),
+      }))
+    );
+  };
   const [value, setValue] = useState("");
   return (
     <div className={className}>
@@ -20,15 +30,7 @@ const Menu = ({ children, className, setOptions, options }) => {
         autoFocus
         className="mx-3 my-2 w-11/12 ring-0 !outline-0 border-gray-300 border-[1px] text-sm px-2 py-1"
         placeholder="Type to filter..."
-        onChange={(e) => {
-          setValue(e.target.value);
-          setOptions(
-            options.map((option) => ({
-              ...option,
-              hidden: !option.name.toLowerCase().includes(e.target.value),
-            }))
-          );
-        }}
+        onChange={handleInput}
         value={value}
       />
       {children}
@@ -53,16 +55,16 @@ const DropDown = ({ options, setOptions, option, setOption }) => {
         setOptions={setOptions}
         className="max-h-[50vh] overflow-scroll w-full bg-white border-none !rounded-b-xl !rounded-t-none border-2 border-black p-0 !z-10 !-mt-4 pt-4"
       >
-        {options.filter((opt, index) => !opt.hidden).length > 0 ? (
+        {options.filter((opt) => !opt.hidden).length > 0 ? (
           options.map(
-            (currOption, index) =>
-              !currOption.hidden && (
+            (current, index) =>
+              !current.hidden && (
                 <Dropdown.Item
                   className=" hover:!bg-hackathon-green-200 bg-transparent overflow-hidden px-3 py-1 last:rounded-b-xl"
                   key={index}
-                  onClick={() => setOption(currOption.name)}
+                  onClick={() => setOption(current.name)}
                 >
-                  {currOption.name}
+                  {current.name}
                 </Dropdown.Item>
               )
           )
