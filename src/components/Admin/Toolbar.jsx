@@ -8,7 +8,7 @@ import { colors } from "@/data/Tags";
 import Popup from "./Popup";
 
 const Toolbar = ({ input, setInput, tags, setObjects, objects, filters }) => {
-  const [popupText, setPopupText] = useState("");
+  const [popup, setPopup] = useState("");
   const [toggle, setToggle] = useState(false);
   const onClick = (text) => {
     setToggle(false);
@@ -124,21 +124,19 @@ const Toolbar = ({ input, setInput, tags, setObjects, objects, filters }) => {
         />
       </button>
       <button
-        onClick={() => {
-          setPopupText("Are you sure you want to delete these data");
-        }}
+        onClick={() =>
+          setPopup(
+            "Are you sure you want to delete these row(s)? This action is irreversible."
+          )
+        }
       >
         <FaTrashAlt
           size={22.5}
           className="ml-5 text-hackathon-darkgray hover:opacity-70 duration-150"
         />
       </button>
-      {popupText && (
-        <Popup
-          text={popupText}
-          callBack={handleDelete}
-          setText={setPopupText}
-        />
+      {popup && (
+        <Popup text={popup} callBack={handleDelete} setText={setPopup} />
       )}
     </div>
   );
