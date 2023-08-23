@@ -22,7 +22,7 @@ const Select = ({
         >
           {user[field] || placeholder}
         </Dropdown.Toggle>
-        {(editable || editable === false) && (
+        {editable && (
           <Dropdown.Menu className="w-full bg-hackathon-green-100 !border-none !rounded-none !p-0">
             {options.map((option, index) => (
               <Dropdown.Item
