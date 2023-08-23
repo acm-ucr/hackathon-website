@@ -8,21 +8,21 @@ const bytesArr = {
   MB: 1048576,
   GB: 1073741824,
 };
-const getSize = (sizeLimit) =>
-  sizeLimit.split(" ")[0] * bytesArr[sizeLimit.split(" ")[1]];
-const Upload = ({ field, user, setUser, text, sizeLimit, typeLimit }) => {
+const getSize = (maxSize) =>
+  maxSize.split(" ")[0] * bytesArr[maxSize.split(" ")[1]];
+const Upload = ({ field, user, setUser, text, maxSize, typeLimit }) => {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
 
   const handleInput = async (e) => {
-    const size = getSize(sizeLimit);
+    const size = getSize(maxSize);
     if (!size) {
-      console.error("invalid upload sizeLimit input");
+      console.error("invalid upload maxSize input");
       return;
     }
     setUploading(true);
     if (e.target.files[0].size > size) {
-      toast(`❌ File too big, exceeds ${sizeLimit}!`);
+      toast(`❌ File too big, exceeds ${maxSize}!`);
     } else setFile(e.target.files[0]);
     const base64 = await readFileAsBase64(e.target.files[0]);
     setUser({ ...user, [field]: base64 });

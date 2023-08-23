@@ -153,7 +153,7 @@ const Register = () => {
               user={user}
               setUser={setUser}
               text="Upload Resume"
-              sizeLimit="150 KB"
+              maxSize="150 KB"
               typeLimit=".pdf"
             />
           </Col>
