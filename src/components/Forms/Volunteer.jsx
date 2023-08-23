@@ -36,21 +36,9 @@ const Volunteer = () => {
       <div className="flex flex-col w-1/3 p-3 bg-white rounded-b-xl">
         <Row className="flex justify-center p-0 m-0">
           <Col xl={12}>
-            Hello! {Description.hackathon} is coming {Description.date}. Thank
-            you for your interest in {Description.hackathon}, UC Riverside’s{" "}
-            {Description.about}! {Description.role}s are essential to our
-            hackathon {Description.responsibilities}. Meals are also provided
-            during breakfast, lunch, and dinner times. If you are interested in
-            joining the {Description.hackathon} Team as a{" "}
-            {Description.role.toLowerCase()}, please fill out this quick
-            interest form below!
-            <br />
-            <br />
-            We also want to note that if you are{" "}
-            {Description.role.toLowerCase()}ing at {Description.hackathon}, you
-            are unable to participate as a hacker as well. If you have any other
-            questions please feel free to contact us on our socials or email us
-            at {Description.email}! :)
+            {Description.map((description, index) => (
+              <p key={index}>{description}</p>
+            ))}
           </Col>
           <Col xl={6}>
             <Input
