@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Select from "@/components/Select";
-import { Majors, Grades, Genders, Shirts } from "@/data/Register";
+import { Majors, Grades, Genders, Shirts, Availability } from "@/data/Register";
 import Radio from "@/components/Radio";
 import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
@@ -119,6 +119,16 @@ const Mentor = () => {
               user={mentor}
               setUser={setMentor}
               placeholder="Computer Science"
+            />
+          </Col>
+          <Col xl={12}>
+            <Select
+              title="Availability"
+              options={Availability}
+              field="Availability"
+              user={mentor}
+              setUser={setMentor}
+              multiple={true}
             />
           </Col>
           <Col xl={12}>
