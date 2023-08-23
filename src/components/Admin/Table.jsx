@@ -9,10 +9,14 @@ import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { useContext } from "react";
 import { SiGithub, SiDevpost } from "react-icons/si";
 import Link from "next/link";
-import { tagColor } from "@/data/Tags";
+import { colors } from "@/data/Tags";
+import { IoIosRose } from "react-icons/io";
+import { FaCrown } from "react-icons/fa";
 const icons = {
   github: <SiGithub className="mr-2" />,
   devpost: <SiDevpost className="mr-2" />,
+  lead: <IoIosRose className="ml-1 text-hackathon-blue-200 text-lg" />,
+  winner: <FaCrown className="ml-1 text-hackathon-yellow text-lg" />,
 };
 const Toggle = ({ eventKey }) => {
   const { activeEventKey } = useContext(AccordionContext);
@@ -92,13 +96,18 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                         key={index}
                         md={header.size}
                         className={`p-0 text-sm ${
-                          header.text === "name" && "font-bold"
+                          header.text === "name" && "font-bold flex"
                         }`}
                       >
                         {header.hasTag && (
                           <Tag
-                            text={object[header.text]}
-                            color={tagColor[object[header.text]]}
+                            text={
+                              object[header.text].includes("https://")
+                                ? "view"
+                                : object[header.text]
+                            }
+                            color={colors[object[header.text]]}
+                            onClick={() => header.onClick(object)}
                           />
                         )}
 
@@ -129,8 +138,14 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                           ))}
 
                         {!header.hasTag &&
-                          !Array.isArray(object[header.text]) &&
-                          object[header.text]}
+                          !Array.isArray(object[header.text]) && (
+                            <>
+                              {object[header.text]}
+                              {(object.position === header.symbol ||
+                                object.status === header.symbol) &&
+                                icons[header.symbol]}
+                            </>
+                          )}
                       </Col>
                     )
                   );

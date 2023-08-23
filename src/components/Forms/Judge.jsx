@@ -74,6 +74,7 @@ const Judge = () => {
               title="First Name"
               placeholder="John"
               value={judge.first}
+              maxLength={50}
               user={judge}
               setUser={setJudge}
             />
@@ -85,6 +86,7 @@ const Judge = () => {
               title="Last Name"
               placeholder="Doe"
               value={judge.last}
+              maxLength={50}
               user={judge}
               setUser={setJudge}
             />
@@ -96,6 +98,7 @@ const Judge = () => {
               title="Phone Number"
               placeholder="123 456 7890"
               value={judge.phone}
+              maxLength={50}
               user={judge}
               setUser={setJudge}
             />
@@ -107,6 +110,7 @@ const Judge = () => {
               title="Email Address"
               placeholder="john_doe@gmail.com"
               value={judge.email}
+              maxLength={50}
               user={judge}
               setUser={setJudge}
             />
@@ -147,6 +151,8 @@ const Judge = () => {
               user={judge}
               setUser={setJudge}
               text="Upload Photo"
+              maxSize={[1, "MB"]}
+              types={["png", "jpg", "jpeg"]}
             />
           </Col>
           <Col xl={12}>

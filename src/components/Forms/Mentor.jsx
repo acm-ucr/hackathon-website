@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Select from "@/components/Select";
-import { Majors, Grades, Genders, Shirts } from "@/data/Register";
+import { Majors, Grades, Genders, Shirts, Availability } from "@/data/Register";
 import Radio from "@/components/Radio";
 import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
@@ -70,6 +70,7 @@ const Mentor = () => {
               title="First Name"
               placeholder="John"
               value={mentor.first}
+              maxLength={50}
               user={mentor}
               setUser={setMentor}
             />
@@ -81,6 +82,7 @@ const Mentor = () => {
               title="Last Name"
               placeholder="Doe"
               value={mentor.last}
+              maxLength={50}
               user={mentor}
               setUser={setMentor}
             />
@@ -92,6 +94,7 @@ const Mentor = () => {
               title="Phone Number"
               placeholder="123 456 7890"
               value={mentor.phone}
+              maxLength={50}
               user={mentor}
               setUser={setMentor}
             />
@@ -103,6 +106,7 @@ const Mentor = () => {
               title="Email Address"
               placeholder="john_doe@gmail.com"
               value={mentor.email}
+              maxLength={50}
               user={mentor}
               setUser={setMentor}
             />
@@ -115,6 +119,16 @@ const Mentor = () => {
               user={mentor}
               setUser={setMentor}
               placeholder="Computer Science"
+            />
+          </Col>
+          <Col xl={12}>
+            <Select
+              title="Availability"
+              options={Availability}
+              field="Availability"
+              user={mentor}
+              setUser={setMentor}
+              multiple={true}
             />
           </Col>
           <Col xl={12}>

@@ -2,6 +2,7 @@ export const adminList = [
   {
     uid: 1,
     name: "Dewi Norton",
+    position: "lead",
     status: "pending",
     affiliation: "recruitment",
     email: "dewinorton@email.com",
@@ -11,6 +12,7 @@ export const adminList = [
   {
     uid: 2,
     name: "Amie Nguyen",
+    position: "lead",
     status: "reject",
     affiliation: "director",
     email: "amienguyenn@email.com",
@@ -20,6 +22,7 @@ export const adminList = [
   {
     uid: 3,
     name: "Larry Larsen",
+    position: "",
     status: "reject",
     affiliation: "marketing",
     email: "larrylarsen@email.com",
@@ -29,6 +32,7 @@ export const adminList = [
   {
     uid: 4,
     name: "Big Chungus",
+    position: "",
     status: "accept",
     affiliation: "operations",
     email: "bigchungus101@email.com",
@@ -38,6 +42,7 @@ export const adminList = [
   {
     uid: 5,
     name: "Mario Kart",
+    position: "",
     status: "accept",
     affiliation: "sponsorship",
     email: "mariomoviegoated101@email.com",
@@ -47,8 +52,9 @@ export const adminList = [
   {
     uid: 6,
     name: "Ash Ketchum",
-    affiliation: "software",
+    position: "",
     status: "pending",
+    affiliation: "software",
     email: "ash.ketchum12@email.com",
     selected: false,
     hidden: false,
@@ -56,10 +62,11 @@ export const adminList = [
   {
     uid: 7,
     name: "Tiffany Wang",
+    position: "",
     affiliation: "UIUX",
     status: "accept",
     email: "twang777@email.com",
-    selected: true,
+    selected: false,
     hidden: false,
   },
   {
@@ -68,7 +75,7 @@ export const adminList = [
     affiliation: "sponsorship",
     status: "pending",
     email: "benjjj@ucr.edu",
-    selected: true,
+    selected: false,
     hidden: false,
   },
   {
@@ -77,7 +84,7 @@ export const adminList = [
     affiliation: "operations",
     status: "accept",
     email: "ash.catty1278@email.com",
-    selected: true,
+    selected: false,
     hidden: false,
   },
   {
@@ -86,7 +93,7 @@ export const adminList = [
     affiliation: "industry",
     status: "accept",
     email: "kcindy@email.com",
-    selected: true,
+    selected: false,
     hidden: false,
   },
   {
@@ -95,7 +102,7 @@ export const adminList = [
     affiliation: "industry",
     status: "accept",
     email: "vteng666@email.com",
-    selected: true,
+    selected: false,
     hidden: false,
   },
   {
@@ -104,7 +111,7 @@ export const adminList = [
     affiliation: "marketing",
     status: "reject",
     email: "msuusse8966@email.com",
-    selected: true,
+    selected: false,
     hidden: false,
   },
   {
@@ -113,7 +120,7 @@ export const adminList = [
     affiliation: "industry",
     status: "pending",
     email: "akkkk74@email.com",
-    selected: true,
+    selected: false,
     hidden: false,
   },
   {

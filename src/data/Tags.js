@@ -64,7 +64,7 @@ export const volunteerTags = [
   },
 ];
 
-export const tagColor = {
+export const colors = {
   qualify: "green",
   winner: "purple",
   disqualify: "red",
@@ -86,4 +86,6 @@ export const tagColor = {
   recruitment: "pink",
   software: "lightgreen",
   UIUX: "red",
+
+  view: "gray",
 };
