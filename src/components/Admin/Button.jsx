@@ -1,4 +1,3 @@
-import React from "react";
 const colors = {
   green: {
     bg: "bg-hackathon-green-300",

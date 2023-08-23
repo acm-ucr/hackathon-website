@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import ProfileHeader from "./Header";
 import Tag from "../Admin/Tag";
 import { Col, Row } from "react-bootstrap";

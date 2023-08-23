@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import { AiOutlineCheck } from "react-icons/ai";
 const CheckInfo = ({ info, events }) => {

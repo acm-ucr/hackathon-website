@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import SortIcon from "./SortIcon";
 import { Row, Col, Accordion } from "react-bootstrap";
 import Checkbox from "../Checkbox";

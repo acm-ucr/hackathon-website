@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Select from "@/components/Select";
 import { Shirts } from "@/data/Register";
 import Radio from "@/components/Radio";

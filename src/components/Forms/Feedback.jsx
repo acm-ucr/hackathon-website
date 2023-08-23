@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Input from "@/components/Input";
 import { Row, Col } from "react-bootstrap";
 import Button from "@/components/Forms/Button";

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Title from "./Title";
 import Filters from "./Filters.jsx";
 import Input from "./Input";

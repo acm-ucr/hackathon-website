@@ -1,5 +1,3 @@
-import React from "react";
-
 const Member = ({ name, email }) => {
   return (
     <div className="py-[2px] text-[11px] flex">
