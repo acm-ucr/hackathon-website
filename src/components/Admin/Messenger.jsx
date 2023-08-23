@@ -55,7 +55,12 @@ const Messenger = () => {
           <p className="text-lg font-extrabold mb-1">body:</p>
           <Textarea setObject={setEmails} object={emails} label="body" />
           <div className="flex w-full justify-between mt-3 items-end">
-            <Upload setObjects={setEmails} objects={emails} />
+            <Upload
+              setObjects={setEmails}
+              objects={emails}
+              sizeLimit="1 MB"
+              typeLimit=""
+            />
             <Button
               text="send"
               onClick={clickHandler}

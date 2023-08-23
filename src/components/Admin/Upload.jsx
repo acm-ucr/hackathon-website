@@ -3,14 +3,28 @@ import { RiAttachment2 } from "react-icons/ri";
 import { FaTimes } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import { Row, Col } from "react-bootstrap";
-const FILELIMIT = 1048576;
+
+const bytesArr = {
+  B: 1,
+  KB: 1024,
+  MB: 1048576,
+  GB: 1073741824,
+};
+const getSize = (sizeLimit) =>
+  sizeLimit.split(" ")[0] * bytesArr[sizeLimit.split(" ")[1]];
+
 const displayFile = (file) =>
   `${file.name} (${Math.round(file.size / 10.24) / 100}KB)`;
 
-const Upload = ({ text, setObjects, objects }) => {
+const Upload = ({ text, setObjects, objects, sizeLimit, typeLimit }) => {
   const [uploading, setUploading] = useState(false);
   const fileList = [];
   const handleInput = (e) => {
+    const size = getSize(sizeLimit);
+    if (!size) {
+      console.error("invalid upload sizeLimit input");
+      return;
+    }
     setUploading(true);
     if (objects.files.length + e.target.files.length > 5) {
       toast("❌ Exceeds 5 objects!");
@@ -18,8 +32,8 @@ const Upload = ({ text, setObjects, objects }) => {
     }
 
     Object.entries(e.target.files).forEach(([ind, file]) => {
-      if (file.size > FILELIMIT) {
-        toast("❌ File too big, exceeds 1MB!");
+      if (file.size > size) {
+        toast(`❌ File too big, exceeds ${sizeLimit}`);
       } else fileList.push(file);
     });
     setObjects({ ...objects, files: [...objects.files, ...fileList] });
@@ -65,6 +79,7 @@ const Upload = ({ text, setObjects, objects }) => {
             className="hidden"
             multiple
             title="attatchment"
+            accept={typeLimit}
           />
         </label>
       </div>
