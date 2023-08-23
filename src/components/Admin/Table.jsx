@@ -106,7 +106,11 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                                 ? "view"
                                 : object[header.text]
                             }
-                            color={colors[object[header.text]]}
+                            color={
+                              object[header.text].includes("https://")
+                                ? colors[header.text]
+                                : colors[object[header.text]]
+                            }
                             onClick={() => header.onClick(object)}
                           />
                         )}
