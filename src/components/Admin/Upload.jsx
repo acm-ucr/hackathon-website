@@ -26,7 +26,7 @@ const Upload = ({ text, setObjects, objects, size, types }) => {
         ...objects.files,
         ...Object.values(e.target.files).filter((file) => {
           if (file.size > getSize(size)) {
-            toast(`❌ File too big, exceeds  ${size[0]} ${size[1]}`);
+            toast(`❌ ${file.name} exceeds  ${size[0]} ${size[1]}`);
             return false;
           }
           return true;
