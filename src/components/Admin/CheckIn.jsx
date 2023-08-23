@@ -13,10 +13,10 @@ const CheckIn = () => {
   const setResult = (result) => {
     setInfo(checkInUser[result]);
   };
-  const [event, setEvent] = useState(mockEvents[0].name);
+  const [event, setEvent] = useState("No Event Selected");
   const [events, setEvents] = useState(mockEvents);
   const [info, setInfo] = useState(null);
-  const onClick = () => etInfo({ ...info, [event]: true });
+  const onClick = () => setInfo({ ...info, [event]: true });
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Title title="Check In" />

@@ -11,7 +11,7 @@ import Upload from "./Upload";
 import { messengerFilters } from "@/data/Filters";
 
 const Messenger = () => {
-  const [emails, setEmails] = useState({
+  const [email, setEmail] = useState({
     sendto: [],
     subject: "",
     body: "",
@@ -19,16 +19,16 @@ const Messenger = () => {
   });
   const [filters, setFilters] = useState(messengerFilters);
   const clickHandler = () => {
-    if (emails.subject === "") {
+    if (email.subject === "") {
       toast("❌ Please add a subject!");
       return;
     }
-    if (emails.body === "") {
+    if (email.body === "") {
       toast("❌ Please add a body!");
       return;
     }
-    toast(`✅ Emails sent successfully!`);
-    console.log(emails);
+    toast(`✅ Email sent successfully!`);
+    console.log(email);
   };
   return (
     <div className="w-full font-poppins h-full flex flex-col justify-between">
@@ -45,21 +45,21 @@ const Messenger = () => {
           />
         </div>
         <Input
-          setObject={setEmails}
-          object={emails}
+          setObject={setEmail}
+          object={email}
           clear={true}
           label="subject"
           placeholder="subject"
         />
         <div className="w-full h-full bg-white rounded-2xl my-2 flex flex-col p-4 pt-2">
           <p className="text-lg font-extrabold mb-1">body:</p>
-          <Textarea setObject={setEmails} object={emails} label="body" />
+          <Textarea setObject={setEmail} object={email} label="body" />
           <div className="flex w-full justify-between mt-3 items-end">
             <Upload
-              setObjects={setEmails}
-              objects={emails}
-              sizeLimit="1 MB"
-              typeLimit=""
+              setObjects={setEmail}
+              objects={email}
+              size={[15, "MB"]}
+              types={["pdf", "jpg", "jpeg", "png"]}
             />
             <Button
               text="send"
