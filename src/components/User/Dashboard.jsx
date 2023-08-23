@@ -31,7 +31,7 @@ const Dashboard = () => {
   return (
     <div className="w-full">
       <div className="flex justify-between items-center">
-        <div>
+        <div className="flex items-center">
           <ProfileHeader email="hello" name="hello" />
           {edit ? (
             <FaCheck
