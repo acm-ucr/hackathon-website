@@ -151,6 +151,8 @@ const Judge = () => {
               user={judge}
               setUser={setJudge}
               text="Upload Photo"
+              sizeLimit="1 MB"
+              typeLimit=".png,.jpg"
             />
           </Col>
           <Col xl={12}>

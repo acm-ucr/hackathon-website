@@ -10,7 +10,7 @@ const bytesArr = {
 };
 const getSize = (sizeLimit) =>
   sizeLimit.split(" ")[0] * bytesArr[sizeLimit.split(" ")[1]];
-const Upload = ({ field, user, setUser, text, sizeLimit }) => {
+const Upload = ({ field, user, setUser, text, sizeLimit, typeLimit }) => {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
 
@@ -59,7 +59,7 @@ const Upload = ({ field, user, setUser, text, sizeLimit }) => {
                 onChange={handleInput}
                 type="file"
                 className="hidden"
-                accept=".pdf"
+                accept={typeLimit}
               />
             </div>
           </label>
