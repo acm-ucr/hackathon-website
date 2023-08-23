@@ -58,7 +58,7 @@ const Messenger = () => {
             <Upload
               setObjects={setEmail}
               objects={email}
-              size={[15, "MB"]}
+              size={[1, "MB"]}
               types={["pdf", "jpg", "jpeg", "png"]}
             />
             <Button

@@ -4,20 +4,16 @@ import { FaTimes } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import { Row, Col } from "react-bootstrap";
 
-const bytes = {
-  B: 1,
-  KB: 1024,
-  MB: 1048576,
-  GB: 1073741824,
-};
+import { bytes } from "@/data/bytes";
 const getSize = (maxSize) => bytes[maxSize[1]] * maxSize[0];
 const getType = (types) => "." + types.join(",.");
 const displayFile = (file) =>
   `${file.name} (${Math.round(file.size / 10.24) / 100}KB)`;
 const Upload = ({ text, setObjects, objects, size, types }) => {
   const [uploading, setUploading] = useState(false);
-  const fileList = [];
+
   const handleInput = (e) => {
+    const fileList = [];
     setUploading(true);
     if (objects.files.length + e.target.files.length > 5) {
       toast("❌ Exceeds 5 objects!");

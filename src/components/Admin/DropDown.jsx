@@ -36,18 +36,17 @@ const Menu = ({ setOption, className, setOptions, options }) => {
         value={value}
       />
       {options.filter((opt) => !opt.hidden).length > 0 ? (
-        options.map(
-          (option, index) =>
-            !option.hidden && (
-              <Dropdown.Item
-                className=" hover:!bg-hackathon-green-200 bg-transparent overflow-hidden px-3 py-1 last:rounded-b-xl"
-                key={index}
-                onClick={() => setOption(option.name)}
-              >
-                {option.name}
-              </Dropdown.Item>
-            )
-        )
+        options
+          .filter((opt) => !opt.hidden)
+          .map((option, index) => (
+            <Dropdown.Item
+              className=" hover:!bg-hackathon-green-200 bg-transparent overflow-hidden px-3 py-1 last:rounded-b-xl"
+              key={index}
+              onClick={() => setOption(option.name)}
+            >
+              {option.name}
+            </Dropdown.Item>
+          ))
       ) : (
         <p className="px-3 text-gray-400">no items</p>
       )}
