@@ -1,14 +1,29 @@
 import React, { useState } from "react";
 import { BsUpload } from "react-icons/bs";
 import { FaFilePdf, FaTimes } from "react-icons/fa";
-
-const Upload = ({ field, user, setUser, text }) => {
+import { toast } from "react-hot-toast";
+const bytesArr = {
+  B: 1,
+  KB: 1024,
+  MB: 1048576,
+  GB: 1073741824,
+};
+const getSize = (sizeLimit) =>
+  sizeLimit.split(" ")[0] * bytesArr[sizeLimit.split(" ")[1]];
+const Upload = ({ field, user, setUser, text, sizeLimit }) => {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
 
   const handleInput = async (e) => {
+    const size = getSize(sizeLimit);
+    if (!size) {
+      console.error("invalid upload sizeLimit input");
+      return;
+    }
     setUploading(true);
-    setFile(e.target.files[0]);
+    if (e.target.files[0].size > size) {
+      toast(`❌ File too big, exceeds ${sizeLimit}!`);
+    } else setFile(e.target.files[0]);
     const base64 = await readFileAsBase64(e.target.files[0]);
     setUser({ ...user, [field]: base64 });
     setUploading(false);
@@ -43,19 +58,20 @@ const Upload = ({ field, user, setUser, text }) => {
                 id="dropzone-file"
                 onChange={handleInput}
                 type="file"
-                className=" file:hidden text-hackathon-green-300"
+                className="hidden"
+                accept=".pdf"
               />
             </div>
           </label>
         )}
         {file && (
-          <div className="flex items-center justify-between w-full my-2">
+          <div className="flex items-center justify-between w-full my-2 bg-gray-200 px-2 py-2">
             <div className="flex items-center">
-              <FaFilePdf className="text-xl mx-2" />
+              <FaFilePdf className="text-xl mr-2" />
               {file.name}
             </div>
             <FaTimes
-              className="text-red-500 hover:cursor-pointer hover:text-red-600"
+              className="text-gray-500 hover:cursor-pointer hover:text-red-600"
               onClick={() => setFile(null)}
             />
           </div>
