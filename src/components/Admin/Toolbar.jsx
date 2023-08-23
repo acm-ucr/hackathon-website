@@ -137,10 +137,11 @@ const Toolbar = ({ input, setInput, tags, setObjects, objects, filters }) => {
       </button>
       {popup && (
         <Popup
+          buttonColor="red"
           text={popup}
           callBack={handleDelete}
           setText={setPopup}
-          title="Delete Confirm"
+          title="Delete Confirmation"
         />
       )}
     </div>

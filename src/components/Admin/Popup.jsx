@@ -2,7 +2,7 @@ import React from "react";
 import Button from "./Button";
 import { LiaTimesSolid } from "react-icons/lia";
 
-const Popup = ({ text, callBack, setText, title }) => {
+const Popup = ({ text, callBack, setText, title, buttonColor }) => {
   return (
     <div className="fixed inset-0 bg-black/40 w-screen h-screen flex items-center justify-center">
       <div className="bg-white flex flex-col items-center rounded-lg p-3 gap-3">
@@ -22,7 +22,7 @@ const Popup = ({ text, callBack, setText, title }) => {
             onClick={() => setText("")}
           />
           <Button
-            color="green"
+            color={buttonColor}
             text="confirm"
             size="text-lg"
             onClick={() => {

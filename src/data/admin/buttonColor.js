@@ -9,6 +9,11 @@ export const colors = {
     text: "text-gray-400",
     border: "border-gray-400 border-2",
   },
+  red: {
+    bg: "bg-hackathon-tags-red-text",
+    text: "text-white",
+    border: "border-0",
+  },
 };
 export const sizes = {
   xs: "text-xs",
