@@ -1,26 +1,26 @@
 import React from "react";
 import { MdCancel } from "react-icons/md";
 
-const Input = ({ value, setValue, clear, label, maxLength, placeholder }) => {
+const Input = ({ object, setObject, clear, label, maxLength, placeholder }) => {
   return (
     <div className="flex items-center">
-      <p className="text-lg font-extrabold mr-2 my-0">{label}</p>
+      <p className="text-lg font-extrabold mr-2 my-0">{label}:</p>
       <div className="flex items-center my-1 bg-hackathon-gray rounded-md w-full">
         <input
-          value={value}
+          value={object[label]}
           maxLength={maxLength}
           placeholder={placeholder}
           type="text"
           className="outline-none w-full font-poppins text-base py-1 bg-transparent px-2"
           onChange={(e) => {
-            setValue(e.target.value);
+            setObject({ ...object, [label]: e.target.value });
           }}
         />
         {clear && (
           <MdCancel
             className="hover:cursor-pointer text-xl text-hackathon-darkgray mr-2"
             onClick={() => {
-              setValue("");
+              setObject({ ...object, [label]: "" });
             }}
           />
         )}

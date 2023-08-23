@@ -13,11 +13,11 @@ const CheckIn = () => {
   const setResult = (result) => {
     setInfo(checkInUser[result]);
   };
-  const [event, setEvent] = useState(mockEvents[0]);
+  const [event, setEvent] = useState(mockEvents[0].name);
   const [events, setEvents] = useState(mockEvents);
   const [info, setInfo] = useState(null);
   const onClick = () => {
-    setInfo({ ...info, [event]: true });
+    info && setInfo({ ...info, [event]: true });
   };
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
@@ -29,7 +29,6 @@ const CheckIn = () => {
             setOption={setEvent}
             options={events}
             setOptions={setEvents}
-            reset={mockEvents}
           />
           <ScanQRCode setResult={setResult} />
           <Button

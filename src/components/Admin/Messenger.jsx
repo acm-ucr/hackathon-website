@@ -8,40 +8,26 @@ import Textarea from "./Textarea";
 import Button from "./Button";
 import toast from "react-hot-toast";
 import Upload from "./Upload";
-import { userList } from "@/data/mock/messengerUsers";
 import { messengerFilters } from "@/data/Filters";
 
 const Messenger = () => {
-  const [email, setEmail] = useState({
+  const [emails, setEmails] = useState({
     sendto: [],
     subject: "",
     body: "",
     files: [],
   });
   const [filters, setFilters] = useState(messengerFilters);
-  const [user, setUser] = useState(userList);
   const clickHandler = () => {
-    if (email.subject === "") {
+    if (emails.subject === "") {
       toast("❌ Please add a subject!");
       return;
     }
-    if (email.body === "") {
+    if (emails.body === "") {
       toast("❌ Please add a body!");
       return;
     }
-    const emails = user.filter((user) => {
-      let select = false;
-      Object.entries(filters).forEach(([filter, selected]) => {
-        if (selected && (user.status == filter || user.role == filter)) {
-          select = true;
-        }
-      });
-      if (select) return user.email;
-      return false;
-    });
-    toast(`✅ Email sent successfully!`);
-    setEmail({ ...email, sendto: emails });
-    console.log(email);
+    toast(`✅ Emails sent successfully!`);
     console.log(emails);
   };
   return (
@@ -53,30 +39,23 @@ const Messenger = () => {
           <Filters
             filters={filters}
             setFilters={setFilters}
-            setObjects={setUser}
-            objects={user}
+            setObjects={() => {}}
+            objects={[]}
             input=""
           />
         </div>
         <Input
-          setValue={(value) => setEmail({ ...email, subject: value })}
-          value={email.subject}
+          setObject={setEmails}
+          object={emails}
           clear={true}
-          label="subject:"
+          label="subject"
           placeholder="subject"
         />
         <div className="w-full h-full bg-white rounded-2xl my-2 flex flex-col p-4 pt-2">
           <p className="text-lg font-extrabold mb-1">body:</p>
-          <Textarea
-            setValue={(value) => setEmail({ ...email, body: value })}
-            value={email.body}
-          />
+          <Textarea setObject={setEmails} object={emails} label="body" />
           <div className="flex w-full justify-between mt-3 items-end">
-            <Upload
-              setObjects={(files) => {
-                setEmail({ ...email, files: files });
-              }}
-            />
+            <Upload setObjects={setEmails} objects={emails} />
             <Button
               text="send"
               onClick={clickHandler}
