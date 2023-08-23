@@ -2,27 +2,32 @@ import React, { useState } from "react";
 import { BsUpload } from "react-icons/bs";
 import { FaFilePdf, FaTimes } from "react-icons/fa";
 import { toast } from "react-hot-toast";
-const bytesArr = {
+const bytes = {
   B: 1,
   KB: 1024,
   MB: 1048576,
   GB: 1073741824,
 };
-const getSize = (maxSize) =>
-  maxSize.split(" ")[0] * bytesArr[maxSize.split(" ")[1]];
+const getSize = (maxSize) => {
+  let size = 0;
+  Object.entries(maxSize).forEach(([byte, num]) => (size += bytes[byte] * num));
+  return size;
+};
+const getType = (typeLimit) => {
+  let typeStr = "";
+  typeLimit.forEach((type) => (typeStr += `.${type},`));
+  return typeStr;
+};
 const Upload = ({ field, user, setUser, text, maxSize, typeLimit }) => {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
 
   const handleInput = async (e) => {
-    const size = getSize(maxSize);
-    if (!size) {
-      console.error("invalid upload maxSize input");
-      return;
-    }
     setUploading(true);
-    if (e.target.files[0].size > size) {
-      toast(`❌ File too big, exceeds ${maxSize}!`);
+    if (e.target.files[0].size > getSize(maxSize)) {
+      let size = "";
+      Object.entries(maxSize).forEach(([byte, num]) => (size += num + byte));
+      toast(`❌ File too big, exceeds ${size}!`);
     } else setFile(e.target.files[0]);
     const base64 = await readFileAsBase64(e.target.files[0]);
     setUser({ ...user, [field]: base64 });
@@ -59,7 +64,7 @@ const Upload = ({ field, user, setUser, text, maxSize, typeLimit }) => {
                 onChange={handleInput}
                 type="file"
                 className="hidden"
-                accept={typeLimit}
+                accept={getType(typeLimit)}
               />
             </div>
           </label>
