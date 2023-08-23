@@ -10,6 +10,7 @@ import Radio from "../Radio";
 import Input from "../Input";
 
 const Dashboard = () => {
+
   const [user, setUser] = useState({
     phone: "123 123 1234",
     grade: "undergraduate",
@@ -18,6 +19,8 @@ const Dashboard = () => {
     gender: "everythijg",
     team: "lololol",
   });
+
+  const teamMembers = ["thing 1", "thing 2", "thing 3", "thing 4"];
 
   return (
     <div className="w-full">
@@ -101,10 +104,34 @@ const Dashboard = () => {
             setUser={setUser}
             editable={true}
           />
-          <p>TEAM MEMBER 1</p>
+          {/* <p>TEAM MEMBER 1 </p>
+
           <p>TEAM MEMBER 2</p>
+
           <p>TEAM MEMBER 3</p>
+
+          <p>TEAM MEMBER 4</p> */}
+
+
+          {user.team !== "" ? (
+            <>
+              <p>TEAM MEMBER 1 </p>
+          {teamMembers[0]}
+          <p>TEAM MEMBER 2</p>
+          {teamMembers[1]}
+          <p>TEAM MEMBER 3</p>
+          {teamMembers[2]}
           <p>TEAM MEMBER 4</p>
+          {teamMembers[3]}
+
+            </>
+          ) : (
+            <>
+            
+
+            </>
+
+              )}
         </Col>
       </Row>
     </div>
