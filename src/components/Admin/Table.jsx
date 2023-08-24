@@ -107,11 +107,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                                 : object[header.text]
                             }
                             color={colors[object[header.text]]}
-                            onClick={
-                              header.onClick
-                                ? () => header.onClick(object)
-                                : null
-                            }
+                            onClick={header.onClick}
                           />
                         )}
 
