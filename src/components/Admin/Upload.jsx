@@ -9,6 +9,7 @@ const getSize = (maxSize) => bytes[maxSize[1]] * maxSize[0];
 const getType = (types) => "." + types.join(",.");
 const displayFile = (file) =>
   `${file.name} (${Math.round(file.size / 10.24) / 100}KB)`;
+
 const Upload = ({ text, setObjects, objects, size, types }) => {
   const [uploading, setUploading] = useState(false);
 
