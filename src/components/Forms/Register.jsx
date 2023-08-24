@@ -113,6 +113,7 @@ const Register = () => {
           </Col>
           <Col xl={6}>
             <Select
+              editable={true}
               options={Schools}
               field="school"
               user={user}
