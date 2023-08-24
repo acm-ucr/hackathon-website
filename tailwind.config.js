@@ -42,8 +42,6 @@ module.exports = {
             "lightgreen-text": "#57CC99",
             "pink-bg": "#FFE3FB",
             "pink-text": "#F583F1",
-            "blue-bg": "#D9EFFF",
-            "blue-text": "#729BEC",
             white: "#fff",
           },
         },
