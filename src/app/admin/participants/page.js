@@ -1,6 +1,5 @@
 "use client";
 import Participants from "@/components/Admin/Participants";
-import React from "react";
 import ProtectedPage from "@/components/ProtectedPage";
 
 const ParticipantsPage = () => {

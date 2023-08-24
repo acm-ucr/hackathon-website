@@ -1,4 +1,3 @@
-import React from "react";
 import Title from "@/components/Admin/Title";
 import PieChart from "@/components/Admin/PieChart";
 import Tag from "@/components/Admin/Tag";

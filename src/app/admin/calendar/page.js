@@ -1,4 +1,3 @@
-import React from "react";
 import ProtectedPage from "@/components/ProtectedPage";
 import Events from "@/components/Admin/Calendar/Events";
 

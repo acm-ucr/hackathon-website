@@ -1,6 +1,5 @@
 "use client";
 import Mentors from "@/components/Admin/Mentors";
-import React from "react";
 import ProtectedPage from "@/components/ProtectedPage";
 const MentorsPage = () => {
   return (

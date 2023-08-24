@@ -1,5 +1,4 @@
 import Volunteer from "@/components/Forms/Volunteer";
-import React from "react";
 import FormPage from "@/components/Form";
 
 const Page = () => {

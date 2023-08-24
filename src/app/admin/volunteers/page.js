@@ -1,6 +1,5 @@
 "use client";
 import Volunteers from "@/components/Admin/Volunteers";
-import React from "react";
 import ProtectedPage from "@/components/ProtectedPage";
 const VolunteersPage = () => {
   return (

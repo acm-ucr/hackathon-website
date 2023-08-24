@@ -1,6 +1,4 @@
-import React from "react";
 import Image from "next/image.js";
-
 import { useSession } from "next-auth/react";
 
 const Header = ({ horizontal = true }) => {
