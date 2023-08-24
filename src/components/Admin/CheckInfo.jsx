@@ -16,14 +16,14 @@ const CheckInfo = ({ info, events }) => {
           <p className="font-poppins text-lg m-0">{info.email}</p>
         </div>
       </div>
-      <div className="rounded-2xl bg-white p-4 w-full">
+      <div className="rounded-2xl bg-white p-4 w-full max-h-[70vh] overflow-scroll mt-3">
         {events.map((event, index) => (
           <div key={index} className="flex items-center justify-between w-full">
-            <p className="text-xl">{event}</p>
+            <p className="text-xl">{event.name}</p>
             <div className="aspect-square bg-white border-[1px] border-black">
               <AiOutlineCheck
                 className={`${
-                  info[event] ? "text-hackathon-blue-100" : "text-white"
+                  info[event.name] ? "text-hackathon-blue-100" : "text-white"
                 }`}
               />
             </div>
@@ -32,7 +32,7 @@ const CheckInfo = ({ info, events }) => {
       </div>
     </div>
   ) : (
-    <p>No info</p>
+    <p className="w-full text-center">No info</p>
   );
 };
 
