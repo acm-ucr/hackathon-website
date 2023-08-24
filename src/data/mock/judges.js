@@ -7,6 +7,8 @@ export const judgeList = [
     email: "dewinorton@email.com",
     selected: false,
     hidden: false,
+    image:
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
   },
   {
     uid: 2,
@@ -16,6 +18,8 @@ export const judgeList = [
     email: "amienguyenn@email.com",
     selected: false,
     hidden: false,
+    image:
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
   },
   {
     uid: 3,
@@ -25,6 +29,8 @@ export const judgeList = [
     email: "larrylarsen@email.com",
     selected: false,
     hidden: false,
+    image:
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
   },
   {
     uid: 4,
@@ -34,6 +40,8 @@ export const judgeList = [
     email: "bigchungus101@email.com",
     selected: false,
     hidden: false,
+    image:
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
   },
   {
     uid: 5,
@@ -43,6 +51,8 @@ export const judgeList = [
     email: "mariomoviegoated101@email.com",
     selected: false,
     hidden: false,
+    image:
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
   },
   {
     uid: 6,
@@ -52,5 +62,161 @@ export const judgeList = [
     email: "ash.ketchum12@email.com",
     selected: false,
     hidden: false,
+    image:
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
+  },
+  {
+    uid: 7,
+    name: "Tiffany",
+    type: "student",
+    status: "pending",
+    email: "twang123@email.com",
+    selected: false,
+    hidden: false,
+    image:
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
+  },
+  {
+    uid: 8,
+    name: "Amy Cheng",
+    type: "industry",
+    status: "confirm",
+    email: "chenamy490@email.com",
+    selected: false,
+    hidden: false,
+    image:
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
+  },
+  {
+    uid: 9,
+    name: "Kim Alexander",
+    type: "industry",
+    status: "not attending",
+    email: "kim5867@hotmai.com",
+    selected: false,
+    hidden: false,
+    image:
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
+  },
+  {
+    uid: 10,
+    name: "Tiffany",
+    type: "student",
+    status: "pending",
+    email: "twang123@email.com",
+    selected: false,
+    hidden: false,
+    image:
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
+  },
+  {
+    uid: 11,
+    name: "Tiffany",
+    type: "student",
+    status: "pending",
+    email: "twang123@email.com",
+    selected: false,
+    hidden: false,
+    image:
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
+  },
+  {
+    uid: 12,
+    name: "Tiffany",
+    type: "student",
+    status: "pending",
+    email: "twang123@email.com",
+    selected: false,
+    hidden: false,
+    image:
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
+  },
+  {
+    uid: 13,
+    name: "Tiffany",
+    type: "student",
+    status: "pending",
+    email: "twang123@email.com",
+    selected: false,
+    hidden: false,
+    image:
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
+  },
+  {
+    uid: 14,
+    name: "Tiffany",
+    type: "student",
+    status: "pending",
+    email: "twang123@email.com",
+    selected: false,
+    hidden: false,
+    image:
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
+  },
+  {
+    uid: 15,
+    name: "Tiffany",
+    type: "student",
+    status: "pending",
+    email: "twang123@email.com",
+    selected: false,
+    hidden: false,
+    image:
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
+  },
+  {
+    uid: 16,
+    name: "Tiffany",
+    type: "student",
+    status: "pending",
+    email: "twang123@email.com",
+    selected: false,
+    hidden: false,
+    image:
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
+  },
+  {
+    uid: 17,
+    name: "Tiffany",
+    type: "student",
+    status: "pending",
+    email: "twang123@email.com",
+    selected: false,
+    hidden: false,
+    image:
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
+  },
+  {
+    uid: 18,
+    name: "Tiffany",
+    type: "student",
+    status: "pending",
+    email: "twang123@email.com",
+    selected: false,
+    hidden: false,
+    image:
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
+  },
+  {
+    uid: 19,
+    name: "Tiffany",
+    type: "student",
+    status: "pending",
+    email: "twang123@email.com",
+    selected: false,
+    hidden: false,
+    image:
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
+  },
+  {
+    uid: 20,
+    name: "Tiffany",
+    type: "student",
+    status: "pending",
+    email: "twang123@email.com",
+    selected: false,
+    hidden: false,
+    image:
+      "https://lh3.googleusercontent.com/a/AAcHTtdDqygBXOmrnoQfN4LzUzTEI0g5y88-dO6jqCMSmJHvTQ=s96-c",
   },
 ];

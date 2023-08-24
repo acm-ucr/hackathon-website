@@ -82,4 +82,5 @@ export const colors = {
   "web dev": "green",
   ops: "red",
   marketing: "pink",
+  view: "gray",
 };
