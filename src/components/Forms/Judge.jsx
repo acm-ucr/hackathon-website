@@ -77,6 +77,7 @@ const Judge = () => {
               maxLength={50}
               user={judge}
               setUser={setJudge}
+              editable={true}
             />
           </Col>
           <Col xl={6}>
@@ -89,6 +90,7 @@ const Judge = () => {
               maxLength={50}
               user={judge}
               setUser={setJudge}
+              editable={true}
             />
           </Col>
           <Col xl={6}>
@@ -101,6 +103,7 @@ const Judge = () => {
               maxLength={50}
               user={judge}
               setUser={setJudge}
+              editable={true}
             />
           </Col>
           <Col xl={6}>
@@ -113,6 +116,7 @@ const Judge = () => {
               maxLength={50}
               user={judge}
               setUser={setJudge}
+              editable={true}
             />
           </Col>
           <Col xl={12}>
@@ -122,6 +126,7 @@ const Judge = () => {
               field="shirt"
               user={judge}
               setUser={setJudge}
+              editable={true}
             />
           </Col>
           <Col xl={12}>
@@ -132,6 +137,7 @@ const Judge = () => {
               user={judge}
               setUser={setJudge}
               placeholder="Student"
+              editable={true}
             />
           </Col>
           <Col xl={12}>
@@ -143,6 +149,7 @@ const Judge = () => {
               value={judge.title}
               user={judge}
               setUser={setJudge}
+              editable={true}
             />
           </Col>
           <Col xl={12}>
