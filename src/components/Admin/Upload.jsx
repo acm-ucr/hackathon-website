@@ -56,7 +56,7 @@ const Upload = ({ text, setObjects, objects, size, types }) => {
                 onClick={() => {
                   setObjects({
                     ...objects,
-                    files: objects.files.filter((file, idx) => index != idx),
+                    files: objects.files.filter((file, idx) => index !== idx),
                   });
                 }}
               />
