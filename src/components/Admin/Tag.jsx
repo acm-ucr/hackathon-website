@@ -44,7 +44,7 @@ const colors = {
   },
 };
 
-const Tag = ({ color = "gray", text, onClick, classes }) => {
+const Tag = ({ color = "gray", text, onClick = null, classes }) => {
   return (
     <div
       className={`${classes} ${colors[color].background} ${
