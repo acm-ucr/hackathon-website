@@ -78,9 +78,14 @@ export const colors = {
   professor: "grayblue",
   student: "teal",
   industry: "lightgreen",
+
   director: "purple",
-  "web dev": "green",
-  ops: "red",
-  marketing: "pink",
+  marketing: "teal",
+  operations: "grayblue",
+  sponsorship: "yellow",
+  recruitment: "pink",
+  software: "lightgreen",
+  UIUX: "red",
+
   view: "gray",
 };
