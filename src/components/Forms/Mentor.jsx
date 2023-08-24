@@ -10,12 +10,12 @@ import { Row, Col } from "react-bootstrap";
 import Button from "@/components/Forms/Button";
 import { Helper } from "@/data/User";
 import Textarea from "@/components/Forms/Textarea";
-import MENTOR_TEXT from "../../data/Mentors.jsx";
+import { Description, Requirements } from "../../data/Mentors.js";
 
 const Mentor = () => {
   const [mentor, setMentor] = useState(Helper);
 
-  const [requirements, setRequirements] = useState(MENTOR_TEXT.requirements);
+  const [requirements, setRequirements] = useState(Requirements);
 
   const handleSubmit = () => {
     console.log(mentor);
@@ -37,10 +37,9 @@ const Mentor = () => {
       <div className="flex flex-col w-1/3 p-3 bg-white rounded-b-xl">
         <Row className="flex justify-center p-0 m-0">
           <Col xl={12}>
-            {MENTOR_TEXT.welcome}
-            <br />
-            <br />
-            {MENTOR_TEXT.mentor_note}
+            {Description.map((description, index) => (
+              <p key={index}>{description}</p>
+            ))}
           </Col>
           <Col xl={6}>
             <Input
