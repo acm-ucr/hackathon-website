@@ -1,5 +1,3 @@
-import React from "react";
-
 const colors = {
   red: {
     background: "bg-hackathon-tags-red-bg",

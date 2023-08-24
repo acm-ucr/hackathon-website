@@ -1,4 +1,3 @@
-import React from "react";
 import { MdCancel } from "react-icons/md";
 
 const Input = ({ object, setObject, clear, label, maxLength, placeholder }) => {

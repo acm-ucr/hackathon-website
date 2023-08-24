@@ -1,5 +1,3 @@
-import React from "react";
-
 const Textarea = ({ object, setObject, label }) => {
   return (
     <textarea

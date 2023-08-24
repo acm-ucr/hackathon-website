@@ -1,4 +1,3 @@
-import React from "react";
 import { useZxing } from "react-zxing";
 
 const ScanQRCode = ({ result, setResult }) => {

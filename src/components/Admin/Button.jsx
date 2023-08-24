@@ -1,8 +1,5 @@
-import React from "react";
-
 import { sizes } from "@/data/admin/buttonColor";
 import { colors } from "@/data/admin/buttonColor";
-
 const Button = ({ color, text, onClick, size }) => {
   return (
     <button
