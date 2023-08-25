@@ -8,6 +8,7 @@ import Select from "../Select";
 import { Schools } from "@/data/Schools";
 import Radio from "../Radio";
 import Input from "../Input";
+import { teamList } from "@/data/mock/teams";
 
 const Dashboard = () => {
   const [user, setUser] = useState({
@@ -18,8 +19,6 @@ const Dashboard = () => {
     gender: "everythijg",
     team: "lololol",
   });
-
-  const teamMembers = ["thing 1", "thing 2", "thing 3", "thing 4"];
 
   return (
     <div className="w-full">
@@ -75,55 +74,46 @@ const Dashboard = () => {
           />
         </Col>
         <Col xl={6}>
-          <Input
-            name="team"
-            type="text"
-            title="Team Name"
-            value={user.team}
-            user={user}
-            setUser={setUser}
-            editable={true}
-          />
-          <p>team id lolololololol</p>
-          <Input
-            name="github"
-            type="text"
-            title="Github Link"
-            value={user.github}
-            user={user}
-            setUser={setUser}
-            editable={true}
-          />
-          <Input
-            name="devpost"
-            type="text"
-            title="Devpost Link"
-            value={user.devpost}
-            user={user}
-            setUser={setUser}
-            editable={true}
-          />
-          {/* <p>TEAM MEMBER 1 </p>
-
-          <p>TEAM MEMBER 2</p>
-
-          <p>TEAM MEMBER 3</p>
-
-          <p>TEAM MEMBER 4</p> */}
-
-          {user.team !== "" ? (
+          {user.team ? (
             <>
-              <p>TEAM MEMBER 1 </p>
-              {teamMembers[0]}
-              <p>TEAM MEMBER 2</p>
-              {teamMembers[1]}
-              <p>TEAM MEMBER 3</p>
-              {teamMembers[2]}
-              <p>TEAM MEMBER 4</p>
-              {teamMembers[3]}
+              <Input
+                name="team"
+                type="text"
+                title="Team Name"
+                value={user.team}
+                user={user}
+                setUser={setUser}
+                editable={true}
+              />
+              <p>team id lolololololol</p>
+              <Input
+                name="github"
+                type="text"
+                title="Github Link"
+                value={user.github}
+                user={user}
+                setUser={setUser}
+                editable={true}
+              />
+              <Input
+                name="devpost"
+                type="text"
+                title="Devpost Link"
+                value={user.devpost}
+                user={user}
+                setUser={setUser}
+                editable={true}
+              />
+
+              {teamList.slice(0, 4).map((member, index) => (
+                <div key={index}>
+                  <p>TEAM MEMBER {index + 1}</p>
+                  <p>{member.members[index]} </p>
+                </div>
+              ))}
             </>
           ) : (
-            <></>
+            <p> </p>
           )}
         </Col>
       </Row>
