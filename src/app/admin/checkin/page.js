@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import ProtectedPage from "@/components/ProtectedPage";
 import CheckIn from "@/components/Admin/CheckIn";
 

@@ -1,12 +1,10 @@
-import React from "react";
-
-const Textarea = ({ value, setValue }) => {
+const Textarea = ({ object, setObject, label }) => {
   return (
     <textarea
-      className="w-full h-full border-2 rounded-md p-2 resize outline-none"
-      value={value}
+      className="w-full h-full border-2 rounded-md p-2 outline-none"
+      value={object[label]}
       onChange={(e) => {
-        setValue(e.target.value);
+        setObject({ ...object, [label]: e.target.value });
       }}
     />
   );

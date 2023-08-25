@@ -1,4 +1,3 @@
-import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 
 const Select = ({
@@ -23,7 +22,7 @@ const Select = ({
           {user[field] || placeholder}
         </Dropdown.Toggle>
         {editable && (
-          <Dropdown.Menu className="w-full bg-hackathon-green-100 !border-none !rounded-none !p-0">
+          <Dropdown.Menu className="w-full bg-hackathon-green-100 !border-none !rounded-none !p-0 overflow-y-auto max-h-[35vh]">
             {options.map((option, index) => (
               <Dropdown.Item
                 className=" hover:!bg-hackathon-green-200 !bg-hackathon-green-100 overflow-hidden"

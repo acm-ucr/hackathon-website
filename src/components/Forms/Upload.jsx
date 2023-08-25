@@ -1,13 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { BsUpload } from "react-icons/bs";
 import { FaFilePdf, FaTimes } from "react-icons/fa";
 import { toast } from "react-hot-toast";
-const bytes = {
-  B: 1,
-  KB: 1024,
-  MB: 1048576,
-  GB: 1073741824,
-};
+import { bytes } from "@/data/bytes";
 const getSize = (maxSize) => bytes[maxSize[1]] * maxSize[0];
 const getType = (types) => "." + types.join(",.");
 
