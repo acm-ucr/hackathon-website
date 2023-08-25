@@ -22,7 +22,7 @@ module.exports = {
           "gray-100": "#E7E7E7",
           "gray-200": "#9ea4af",
           "gray-300": "#525252",
-          "page": "#F5F5F5",
+          page: "#F5F5F5",
           tags: {
             "red-bg": "#FFE9E2",
             "red-text": "#F07167",
