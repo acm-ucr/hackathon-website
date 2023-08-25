@@ -36,7 +36,6 @@ const Feedback = () => {
               maxLength={300}
               user={feedback}
               setUser={setFeedback}
-              editable={true}
             />
           </Col>
           <Col xl={6}>
@@ -49,7 +48,6 @@ const Feedback = () => {
               maxLength={300}
               user={feedback}
               setUser={setFeedback}
-              editable={true}
             />
           </Col>
           <Col xl={6}>
@@ -62,7 +60,6 @@ const Feedback = () => {
               maxLength={300}
               user={feedback}
               setUser={setFeedback}
-              editable={true}
             />
           </Col>
           <Col xl={6}>
@@ -75,7 +72,6 @@ const Feedback = () => {
               maxLength={300}
               user={feedback}
               setUser={setFeedback}
-              editable={true}
             />
           </Col>
           <Col xl={6}>
@@ -88,7 +84,6 @@ const Feedback = () => {
               maxLength={300}
               user={feedback}
               setUser={setFeedback}
-              editable={true}
             />
           </Col>
           <Col xl={6}>
@@ -101,7 +96,6 @@ const Feedback = () => {
               maxLength={300}
               user={feedback}
               setUser={setFeedback}
-              editable={true}
             />
           </Col>
           <Col xl={12} className="flex justify-center">

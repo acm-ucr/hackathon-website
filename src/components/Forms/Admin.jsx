@@ -48,7 +48,6 @@ const Admin = () => {
               value={user.first}
               user={user}
               setUser={setUser}
-              editable={true}
             />
           </Col>
           <Col xl={6}>
@@ -61,7 +60,6 @@ const Admin = () => {
               maxLength={50}
               user={user}
               setUser={setUser}
-              editable={true}
             />
           </Col>
           <Col xl={12}>
@@ -74,7 +72,6 @@ const Admin = () => {
               maxLength={50}
               user={user}
               setUser={setUser}
-              editable={true}
             />
           </Col>
           <Col xl={12}>
@@ -87,7 +84,6 @@ const Admin = () => {
               maxLength={50}
               user={user}
               setUser={setUser}
-              editable={true}
             />
           </Col>
           <Col xl={12}>
@@ -97,7 +93,6 @@ const Admin = () => {
               field="affiliations"
               user={user}
               setUser={setUser}
-              editable={true}
             />
           </Col>
           <Col xl={12}>

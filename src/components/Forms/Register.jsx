@@ -94,7 +94,6 @@ const Register = () => {
               maxLength={50}
               user={user}
               setUser={setUser}
-              editable={true}
             />
           </Col>
           <Col xl={6}>
@@ -104,7 +103,6 @@ const Register = () => {
               user={user}
               setUser={setUser}
               placeholder="Age"
-              editable={true}
             />
           </Col>
           <Col xl={6}>
@@ -114,12 +112,10 @@ const Register = () => {
               user={user}
               setUser={setUser}
               placeholder="Major"
-              editable={true}
             />
           </Col>
           <Col xl={6}>
             <Select
-              editable={true}
               options={Schools}
               field="school"
               user={user}
@@ -129,7 +125,6 @@ const Register = () => {
           </Col>
           <Col xl={6}>
             <Select
-              editable={true}
               options={Grades}
               field="grade"
               user={user}
@@ -144,7 +139,6 @@ const Register = () => {
               field="gender"
               user={user}
               setUser={setUser}
-              editable={true}
             />
           </Col>
           <Col xl={12}>
@@ -154,7 +148,6 @@ const Register = () => {
               field="shirt"
               user={user}
               setUser={setUser}
-              editable={true}
             />
           </Col>
           <Col xl={12}>

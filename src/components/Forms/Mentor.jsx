@@ -51,7 +51,6 @@ const Mentor = () => {
               maxLength={50}
               user={mentor}
               setUser={setMentor}
-              editable={true}
             />
           </Col>
           <Col xl={6}>
@@ -64,7 +63,6 @@ const Mentor = () => {
               maxLength={50}
               user={mentor}
               setUser={setMentor}
-              editable={true}
             />
           </Col>
           <Col xl={6}>
@@ -77,7 +75,6 @@ const Mentor = () => {
               maxLength={50}
               user={mentor}
               setUser={setMentor}
-              editable={true}
             />
           </Col>
           <Col xl={6}>
@@ -90,7 +87,6 @@ const Mentor = () => {
               maxLength={50}
               user={mentor}
               setUser={setMentor}
-              editable={true}
             />
           </Col>
           <Col xl={12}>
@@ -101,7 +97,6 @@ const Mentor = () => {
               user={mentor}
               setUser={setMentor}
               placeholder="Computer Science"
-              editable={true}
             />
           </Col>
           <Col xl={12}>
@@ -112,7 +107,6 @@ const Mentor = () => {
               user={mentor}
               setUser={setMentor}
               multiple={true}
-              editable={true}
             />
           </Col>
           <Col xl={12}>
@@ -123,7 +117,6 @@ const Mentor = () => {
               user={mentor}
               setUser={setMentor}
               placeholder="Undergraduate"
-              editable={true}
             />
           </Col>
           <Col xl={12}>
@@ -133,7 +126,6 @@ const Mentor = () => {
               field="gender"
               user={mentor}
               setUser={setMentor}
-              editable={true}
             />
           </Col>
           <Col xl={12}>
@@ -143,7 +135,6 @@ const Mentor = () => {
               field="shirt"
               user={mentor}
               setUser={setMentor}
-              editable={true}
             />
           </Col>
           <Col xl={12}>

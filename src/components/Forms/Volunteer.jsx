@@ -50,7 +50,6 @@ const Volunteer = () => {
               maxLength={50}
               user={volunteer}
               setUser={setVolunteer}
-              editable={true}
             />
           </Col>
           <Col xl={6}>
@@ -63,7 +62,6 @@ const Volunteer = () => {
               maxLength={50}
               user={volunteer}
               setUser={setVolunteer}
-              editable={true}
             />
           </Col>
           <Col xl={6}>
@@ -76,7 +74,6 @@ const Volunteer = () => {
               maxLength={50}
               user={volunteer}
               setUser={setVolunteer}
-              editable={true}
             />
           </Col>
           <Col xl={6}>
@@ -89,7 +86,6 @@ const Volunteer = () => {
               maxLength={50}
               user={volunteer}
               setUser={setVolunteer}
-              editable={true}
             />
           </Col>
           <Col xl={12}>
@@ -100,7 +96,6 @@ const Volunteer = () => {
               user={volunteer}
               setUser={setVolunteer}
               placeholder="Computer Science"
-              editable={true}
             />
           </Col>
           <Col xl={12}>
@@ -111,7 +106,6 @@ const Volunteer = () => {
               user={volunteer}
               setUser={setVolunteer}
               multiple={true}
-              editable={true}
             />
           </Col>
           <Col xl={12}>
@@ -122,7 +116,6 @@ const Volunteer = () => {
               user={volunteer}
               setUser={setVolunteer}
               placeholder="Undergraduate"
-              editable={true}
             />
           </Col>
           <Col xl={12}>
@@ -132,7 +125,6 @@ const Volunteer = () => {
               field="gender"
               user={volunteer}
               setUser={setVolunteer}
-              editable={true}
             />
           </Col>
           <Col xl={12}>
@@ -142,7 +134,6 @@ const Volunteer = () => {
               field="shirt"
               user={volunteer}
               setUser={setVolunteer}
-              editable={true}
             />
           </Col>
           <Col xl={12}>
