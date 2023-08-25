@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import User from "../../data/User";
 import { Ages, Majors, Grades, Genders, Shirts } from "../../data/Register";
 import { Schools } from "../../data/Schools";
@@ -113,6 +113,7 @@ const Register = () => {
           </Col>
           <Col xl={6}>
             <Select
+              editable={true}
               options={Schools}
               field="school"
               user={user}
@@ -153,6 +154,8 @@ const Register = () => {
               user={user}
               setUser={setUser}
               text="Upload Resume"
+              maxSize={[150, "KB"]}
+              types={["pdf"]}
             />
           </Col>
           <Col xl={12}>

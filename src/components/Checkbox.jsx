@@ -1,4 +1,3 @@
-import React from "react";
 import { BsCheckLg } from "react-icons/bs";
 
 const Checkbox = ({ toggle, onClick = () => {}, text = "", color }) => {

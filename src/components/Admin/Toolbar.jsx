@@ -1,12 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import Checkbox from "../Checkbox";
 import { HiSearch } from "react-icons/hi";
 import Tag from "./Tag.jsx";
 import { FaDownload, FaTrashAlt } from "react-icons/fa";
 import { colors } from "@/data/Tags";
+import Popup from "./Popup";
 
 const Toolbar = ({ input, setInput, tags, setObjects, objects, filters }) => {
+  const [popup, setPopup] = useState("");
   const [toggle, setToggle] = useState(false);
   const onClick = (text) => {
     setToggle(false);
@@ -121,12 +123,27 @@ const Toolbar = ({ input, setInput, tags, setObjects, objects, filters }) => {
           className="ml-4 text-hackathon-darkgray hover:opacity-70 duration-150"
         />
       </button>
-      <button onClick={handleDelete}>
+      <button
+        onClick={() =>
+          setPopup(
+            "Are you sure you want to delete these row(s)? This action is irreversible."
+          )
+        }
+      >
         <FaTrashAlt
           size={22.5}
           className="ml-5 text-hackathon-darkgray hover:opacity-70 duration-150"
         />
       </button>
+      {popup && (
+        <Popup
+          buttonColor="red"
+          text={popup}
+          callBack={handleDelete}
+          setText={setPopup}
+          title="Delete Confirmation"
+        />
+      )}
     </div>
   );
 };

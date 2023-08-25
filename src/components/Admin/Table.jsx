@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import SortIcon from "./SortIcon";
 import { Row, Col, Accordion } from "react-bootstrap";
 import Checkbox from "../Checkbox";
@@ -101,8 +101,13 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                       >
                         {header.hasTag && (
                           <Tag
-                            text={object[header.text]}
+                            text={
+                              object[header.text].includes("https://")
+                                ? "view"
+                                : object[header.text]
+                            }
                             color={colors[object[header.text]]}
+                            onClick={() => header.onClick(object)}
                           />
                         )}
 

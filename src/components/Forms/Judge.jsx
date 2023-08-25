@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Select from "@/components/Select";
 import { Shirts } from "@/data/Register";
 import Radio from "@/components/Radio";
@@ -151,6 +151,8 @@ const Judge = () => {
               user={judge}
               setUser={setJudge}
               text="Upload Photo"
+              maxSize={[1, "MB"]}
+              types={["png", "jpg", "jpeg"]}
             />
           </Col>
           <Col xl={12}>
