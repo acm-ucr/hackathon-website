@@ -10,7 +10,7 @@ const Statistics = () => {
       <Row className="w-full h-full">
         {Object.entries(charts).map(([chart, value], index) => (
           <Col className="w-full" key={index} xs={value.size}>
-            <Tag text={chart} withHover={false} color="student" />
+            <Tag text={chart} withHover={false} color="green" />
             <PieChart data={value.data} />
           </Col>
         ))}
