@@ -55,7 +55,6 @@ const Register = () => {
               maxLength={50}
               user={user}
               setUser={setUser}
-              editable={true}
             />
           </Col>
           <Col xl={6}>
@@ -68,7 +67,6 @@ const Register = () => {
               maxLength={50}
               user={user}
               setUser={setUser}
-              editable={true}
             />
           </Col>
           <Col xl={6}>
@@ -81,7 +79,6 @@ const Register = () => {
               maxLength={50}
               user={user}
               setUser={setUser}
-              editable={true}
             />
           </Col>
           <Col xl={6}>
