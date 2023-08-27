@@ -6,7 +6,7 @@ const Input = ({
   value,
   user,
   setUser,
-  editable = false,
+  editable = true,
   maxLength,
 }) => {
   return (

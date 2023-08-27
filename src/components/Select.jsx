@@ -7,7 +7,7 @@ const Select = ({
   setUser,
   placeholder,
   title,
-  editable = false,
+  editable = true,
 }) => {
   return (
     <div className="mt-3">
