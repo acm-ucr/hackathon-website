@@ -36,7 +36,8 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
             } cursor-pointer flex items-center w-fit m-0`}
           >
             <p className="my-0 mx-1 px-2 py-[2px] whitespace-nowrap">
-              {filter}
+              {filter +
+                (filter === "accept" || filter === "reject" ? "ed" : "")}
             </p>
             <TiPlus
               className={`duration-300 mt-[2px] mr-2 hover:opacity-80 ${
