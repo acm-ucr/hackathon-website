@@ -18,6 +18,10 @@ const CheckinPage = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const isoTime = new Date(
+    date.getTime() - date.getTimezoneOffset() * 60000
+  ).toISOString();
+
   return (
     <div className="flex w-full flex-col h-[calc(100vh-48px)]">
       <div className="pb-3 pt-4">
@@ -37,9 +41,7 @@ const CheckinPage = () => {
         </div>
         <div className="bg-white w-2/3 h-1/3 lg:h-5/6 flex justify-center items-center flex-col rounded-lg m-auto">
           <QRCodeSVG
-            value={`${session.user.id}&${date.toISOString("en-US", {
-              hour12: false,
-            })}`}
+            value={`${session.user.id}&${isoTime}`}
             className="w-2/3 h-2/3"
           />
         </div>
