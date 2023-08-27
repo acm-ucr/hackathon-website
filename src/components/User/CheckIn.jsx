@@ -37,7 +37,7 @@ const CheckinPage = () => {
         </div>
         <div className="bg-white w-2/3 h-1/3 lg:h-5/6 flex justify-center items-center flex-col rounded-lg m-auto">
           <QRCodeSVG
-            value={`${session.user.id}&${date.toLocaleTimeString("en-US", {
+            value={`${session.user.id}&${date.toISOString("en-US", {
               hour12: false,
             })}`}
             className="w-2/3 h-2/3"
