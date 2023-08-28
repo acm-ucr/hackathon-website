@@ -6,12 +6,14 @@ import Toolbar from "@/components/Admin/Toolbar";
 import Title from "./Title";
 import Table from "./Table";
 import { participantList } from "@/data/mock/participants";
+import { teamList } from "@/data/mock/teams";
 import { participantFilters } from "@/data/Filters";
 import { participantHeader } from "@/data/Headers";
 import { participantTags } from "@/data/Tags";
 
 const Participants = () => {
   const [participants, setParticipants] = useState(participantList);
+  const [teams, setTeams] = useState(teamList);
   const [input, setInput] = useState("");
   const [filters, setFilters] = useState(participantFilters);
   const [headers, setHeaders] = useState(participantHeader);
