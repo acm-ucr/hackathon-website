@@ -19,6 +19,7 @@
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
+    "d3-color": "^3.1.0",
     "eslint-config-next": "^13.4.6",
     "eslint-config-prettier": "^8.8.0",
     "firebase": "^10.0.0",
@@ -42,5 +43,8 @@
     "eslint-plugin-react": "^7.32.2",
     "husky": "^8.0.0",
     "prettier": "^2.8.8"
+  },
+  "overrides": {
+    "d3-color": "$d3-color"
   }
 }
