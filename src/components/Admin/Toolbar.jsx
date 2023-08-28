@@ -117,12 +117,6 @@ const Toolbar = ({ input, setInput, tags, setObjects, objects, filters }) => {
           Reset
         </button>
       </div>
-      <button>
-        <FaDownload
-          size={22.5}
-          className="ml-4 text-hackathon-darkgray hover:opacity-70 duration-150"
-        />
-      </button>
       <button
         onClick={() =>
           setPopup(
@@ -133,6 +127,12 @@ const Toolbar = ({ input, setInput, tags, setObjects, objects, filters }) => {
         <FaTrashAlt
           size={22.5}
           className="ml-5 text-hackathon-darkgray hover:opacity-70 duration-150"
+        />
+      </button>
+      <button>
+        <FaDownload
+          size={22.5}
+          className="ml-52 text-hackathon-darkgray hover:opacity-70 duration-150"
         />
       </button>
       {popup && (
