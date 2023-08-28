@@ -1,6 +1,6 @@
 import { BsCircleFill, BsCircle } from "react-icons/bs";
 
-const Radio = ({ text, field, options, user, setUser, editable = false }) => {
+const Radio = ({ text, field, options, user, setUser, editable = true }) => {
   const handleClick = (option) => {
     setUser({ ...user, [field]: option });
   };

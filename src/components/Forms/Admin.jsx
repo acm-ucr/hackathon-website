@@ -7,8 +7,8 @@ import Checkbox from "../Checkbox";
 import Input from "../Input";
 import { Row, Col } from "react-bootstrap";
 import Button from "./Button";
-import { affiliations } from "@/data/AdminForm";
-import { requirement } from "@/data/AdminForm";
+import { affiliations } from "@/data/AdminRequest";
+import { requirement } from "@/data/AdminRequest";
 
 const Admin = () => {
   const [user, setUser] = useState(User);
