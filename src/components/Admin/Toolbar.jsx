@@ -132,7 +132,7 @@ const Toolbar = ({ input, setInput, tags, setObjects, objects, filters }) => {
       <button>
         <FaDownload
           size={22.5}
-          className="ml-52 text-hackathon-darkgray hover:opacity-70 duration-150"
+          className="ml-[600px] text-hackathon-darkgray hover:opacity-70 duration-150"
         />
       </button>
       {popup && (
