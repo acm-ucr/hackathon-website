@@ -61,7 +61,7 @@ export const mentorHeaders = [
 
 export const volunteerHeaders = [
   { text: "name", size: 3, icon: true, sort: "off" },
-  { text: "email", size: 3, icon: false, sort: "off" },
+  { text: "email", size: 3, icon: true, sort: "off" },
   { text: "discord", size: 3, icon: true, sort: "off" },
   {
     text: "status",
