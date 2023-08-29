@@ -9,7 +9,8 @@ import Radio from "@/components/Radio";
 import Upload from "@/components/Forms/Upload";
 import Checkbox from "../Checkbox";
 import Input from "../Input";
-import { Row, Col } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import Button from "./Button";
 
 const Register = () => {

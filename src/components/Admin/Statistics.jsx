@@ -2,7 +2,8 @@ import React from "react";
 import Title from "@/components/Admin/Title";
 import PieChart from "@/components/Admin/PieChart";
 import Tag from "@/components/Admin/Tag";
-import { Row, Col } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import { charts } from "@/data/mock/PieCharts";
 const Statistics = () => {
   return (
