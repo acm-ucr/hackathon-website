@@ -13,7 +13,7 @@ const CheckinPage = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setDate(new Date());
-    }, 1000);
+    }, 5000);
 
     return () => clearInterval(timer);
   }, []);
@@ -36,8 +36,10 @@ const CheckinPage = () => {
           <p className="text-base">{session.user.email}</p>
         </div>
         <div className="bg-white w-2/3 h-1/3 lg:h-5/6 flex justify-center items-center flex-col rounded-lg m-auto">
-          <QRCodeSVG value={session.user.id} className="w-2/3 h-2/3" />
-          {date.toLocaleTimeString("en-US", { hour12: true })}
+          <QRCodeSVG
+            value={`${session.user.id}&${date.toISOString()}`}
+            className="w-2/3 h-2/3"
+          />
         </div>
       </div>
     </div>
