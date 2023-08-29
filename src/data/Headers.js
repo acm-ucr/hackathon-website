@@ -29,7 +29,7 @@ export const judgeHeaders = [
 
 export const adminHeaders = [
   { text: "name", size: 3, icon: true, sort: "off", symbol: "lead" },
-  { text: "email", size: 4, icon: false, sort: "off" },
+  { text: "email", size: 4, icon: true, sort: "off" },
   {
     text: "affiliation",
     size: 2,
