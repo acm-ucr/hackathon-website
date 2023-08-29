@@ -48,7 +48,7 @@ export const adminHeaders = [
 
 export const mentorHeaders = [
   { text: "name", size: 3, icon: true, sort: "off" },
-  { text: "email", size: 3, icon: false, sort: "off" },
+  { text: "email", size: 3, icon: true, sort: "off" },
   { text: "discord", size: 3, icon: true, sort: "off" },
   {
     text: "status",
