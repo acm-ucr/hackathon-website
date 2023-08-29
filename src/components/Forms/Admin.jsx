@@ -10,6 +10,7 @@ import Row from "react-bootstrap/Row";
 import Button from "./Button";
 import { affiliations } from "@/data/AdminRequest";
 import { requirement } from "@/data/AdminRequest";
+import { position } from "@/data/AdminRequest";
 
 const Admin = () => {
   const [user, setUser] = useState(User);
@@ -92,6 +93,15 @@ const Admin = () => {
               text="Affiliations"
               options={affiliations}
               field="affiliations"
+              user={user}
+              setUser={setUser}
+            />
+          </Col>
+          <Col xl={12}>
+            <Radio
+              text="Position"
+              options={position}
+              field="position"
               user={user}
               setUser={setUser}
             />
