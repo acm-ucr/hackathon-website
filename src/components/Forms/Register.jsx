@@ -2,7 +2,14 @@
 
 import { useState } from "react";
 import User from "../../data/User";
-import { Ages, Majors, Grades, Genders, Shirts } from "../../data/Register";
+import {
+  Ages,
+  Majors,
+  Grades,
+  Genders,
+  Shirts,
+  DietaryRestrictions,
+} from "../../data/Register";
 import { Schools } from "../../data/Schools";
 import Select from "@/components/Select";
 import Radio from "@/components/Radio";
@@ -140,9 +147,19 @@ const Register = () => {
           </Col>
           <Col xl={12}>
             <Radio
+              className="flex"
               text="Shirt Size"
               options={Shirts}
               field="shirt"
+              user={user}
+              setUser={setUser}
+            />
+          </Col>
+          <Col>
+            <Radio
+              text="Dietary Restrictions"
+              options={DietaryRestrictions}
+              field="dietary restrictions"
               user={user}
               setUser={setUser}
             />

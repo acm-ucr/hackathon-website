@@ -28,6 +28,16 @@ export const Majors = [
   "Other",
 ];
 
+export const DietaryRestrictions = [
+  "Vegan",
+  "Vegetarian",
+  "Lactose Intolerant",
+  "Nut Allergy",
+  "No Gluten",
+  "Other",
+  "None",
+];
+
 export const Availability = [
   "Friday Morning",
   "Friday Afternoon",
