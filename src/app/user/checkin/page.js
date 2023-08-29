@@ -1,4 +1,3 @@
-import React from "react";
 import ProtectedPage from "@/components/ProtectedPage";
 import CheckinPage from "@/components/User/CheckIn";
 
