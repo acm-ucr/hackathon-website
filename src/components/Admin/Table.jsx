@@ -1,6 +1,8 @@
 import { useState } from "react";
 import SortIcon from "./SortIcon";
-import { Row, Col, Accordion } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Accordion from "react-bootstrap/Accordion";
 import Checkbox from "../Checkbox";
 import Tag from "./Tag";
 import { IoIosArrowDown } from "react-icons/io";
