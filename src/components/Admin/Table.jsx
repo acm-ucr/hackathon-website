@@ -60,7 +60,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
             key={index}
             className="font-semibold text-white flex items-center p-0"
           >
-            {header.text && header.text}
+            {header.text}
             {header.icon && (
               <SortIcon
                 index={index}
