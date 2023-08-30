@@ -179,18 +179,22 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                       <Row className="pl-[8%]">
                         <div className="mt-2 flex text-xs">
                           {listInfos.map((listInfo, index) => {
-                            <p key={index}>{object[listInfo]}&nbsp;|&nbsp;</p>
+                            return (
+                              <p key={index}>{object[listInfo]}&nbsp;|&nbsp;</p>
+                            );
                           })}
                         </div>
                         <div className="flex flex-wrap">
                           {iconInfos.map((iconInfo, index) => {
-                            <div
-                              key={index}
-                              className=" items-center m-0 flex text-sm w-1/3"
-                            >
-                              {icons[iconInfo]}
-                              {object[iconInfo]}
-                            </div>
+                            return (
+                              <div
+                                key={index}
+                                className=" items-center m-0 flex text-sm w-1/3"
+                              >
+                                {icons[iconInfo]}
+                                {object[iconInfo]}
+                              </div>
+                            );
                           })}
                         </div>
                       </Row>
