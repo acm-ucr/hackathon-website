@@ -141,6 +141,7 @@ const Toolbar = ({ input, setInput, tags, setObjects, objects, filters }) => {
           />
         )}
       </div>
+
       <button>
         <FaDownload
           size={22.5}
