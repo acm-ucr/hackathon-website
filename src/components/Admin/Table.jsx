@@ -14,6 +14,7 @@ import Link from "next/link";
 import { colors } from "@/data/Tags";
 import { IoIosRose } from "react-icons/io";
 import { FaCrown } from "react-icons/fa";
+
 const icons = {
   github: <SiGithub className="mr-2" />,
   devpost: <SiDevpost className="mr-2" />,
@@ -135,7 +136,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                                   className="flex items-center m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-sm"
                                 >
                                   {icons[element.name]}
-                                  {element.link}
+                                  {element.link.replace("https://", "")}
                                 </Link>
                               ) : (
                                 element
