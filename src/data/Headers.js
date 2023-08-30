@@ -1,6 +1,6 @@
 export const judgeHeaders = [
   { text: "name", size: 3, icon: true, sort: "off" },
-  { text: "email", size: 4, icon: false, sort: "off" },
+  { text: "email", size: 3, icon: true, sort: "off" },
   {
     text: "type",
     size: 2,
@@ -15,11 +15,21 @@ export const judgeHeaders = [
     sort: "off",
     hasTag: true,
   },
+  {
+    text: "image",
+    size: 1,
+    icon: false,
+    sort: "off",
+    hasTag: true,
+    onClick: (object) => {
+      console.log(object.image);
+    },
+  },
 ];
 
 export const adminHeaders = [
   { text: "name", size: 3, icon: true, sort: "off", symbol: "lead" },
-  { text: "email", size: 4, icon: false, sort: "off" },
+  { text: "email", size: 4, icon: true, sort: "off" },
   {
     text: "affiliation",
     size: 2,
@@ -38,7 +48,7 @@ export const adminHeaders = [
 
 export const mentorHeaders = [
   { text: "name", size: 3, icon: true, sort: "off" },
-  { text: "email", size: 3, icon: false, sort: "off" },
+  { text: "email", size: 3, icon: true, sort: "off" },
   { text: "discord", size: 3, icon: true, sort: "off" },
   {
     text: "status",
@@ -51,7 +61,7 @@ export const mentorHeaders = [
 
 export const volunteerHeaders = [
   { text: "name", size: 3, icon: true, sort: "off" },
-  { text: "email", size: 3, icon: false, sort: "off" },
+  { text: "email", size: 3, icon: true, sort: "off" },
   { text: "discord", size: 3, icon: true, sort: "off" },
   {
     text: "status",
@@ -78,7 +88,7 @@ export const teamHeaders = [
 
 export const participantHeader = [
   { text: "name", size: 2, icon: true, sort: "off" },
-  { text: "email", size: 3, icon: false, sort: "off" },
+  { text: "email", size: 3, icon: true, sort: "off" },
   { text: "team", size: 2, icon: true, sort: "off" },
   { text: "major", size: 2, icon: true, sort: "off" },
   {

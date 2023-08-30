@@ -1,8 +1,8 @@
-import React from "react";
 import Title from "@/components/Admin/Title";
 import PieChart from "@/components/Admin/PieChart";
 import Tag from "@/components/Admin/Tag";
-import { Row, Col } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import { charts } from "@/data/mock/PieCharts";
 const Statistics = () => {
   return (
@@ -11,7 +11,7 @@ const Statistics = () => {
       <Row className="w-full h-full">
         {Object.entries(charts).map(([chart, value], index) => (
           <Col className="w-full" key={index} xs={value.size}>
-            <Tag text={chart} withHover={false} color="student" />
+            <Tag text={chart} withHover={false} color="green" />
             <PieChart data={value.data} />
           </Col>
         ))}

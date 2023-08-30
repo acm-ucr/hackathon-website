@@ -34,3 +34,12 @@ export const adminFilters = {
   accept: true,
   reject: true,
 };
+export const messengerFilters = {
+  accept: true,
+  reject: false,
+  pending: false,
+  volunteers: false,
+  mentors: false,
+  judges: false,
+  admin: false,
+};

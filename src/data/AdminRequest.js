@@ -1,14 +1,15 @@
 export const affiliations = [
-  "ops",
-  "web dev",
-  "option 3",
-  "option 4",
   "director",
-  "option 6",
   "marketing",
+  "sponsorship",
+  "recruitment",
+  "software",
+  "UIUX",
 ];
 
-export const requirementsData = {
+export const position = ["lead", "committee"];
+
+export const requirement = {
   violation: {
     state: false,
     text: "You will be given access to private data that cannot be shared anywhere. If you violate this, you will be reported.",

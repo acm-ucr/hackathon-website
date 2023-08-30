@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Select from "@/components/Select";
 import { Shirts } from "@/data/Register";
 import Radio from "@/components/Radio";
 import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
-import { Row, Col } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import Button from "@/components/Forms/Button";
 import Upload from "./Upload";
 
@@ -151,6 +152,8 @@ const Judge = () => {
               user={judge}
               setUser={setJudge}
               text="Upload Photo"
+              maxSize={[1, "MB"]}
+              types={["png", "jpg", "jpeg"]}
             />
           </Col>
           <Col xl={12}>

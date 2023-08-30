@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import SortIcon from "./SortIcon";
-import { Row, Col, Accordion } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Accordion from "react-bootstrap/Accordion";
 import Checkbox from "../Checkbox";
 import Tag from "./Tag";
 import { IoIosArrowDown } from "react-icons/io";
@@ -12,6 +14,7 @@ import Link from "next/link";
 import { colors } from "@/data/Tags";
 import { IoIosRose } from "react-icons/io";
 import { FaCrown } from "react-icons/fa";
+
 const icons = {
   github: <SiGithub className="mr-2" />,
   devpost: <SiDevpost className="mr-2" />,
@@ -101,8 +104,17 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                       >
                         {header.hasTag && (
                           <Tag
-                            text={object[header.text]}
+                            text={
+                              object[header.text].includes("https://")
+                                ? "view"
+                                : object[header.text]
+                            }
                             color={colors[object[header.text]]}
+                            onClick={
+                              header.onClick
+                                ? () => header.onClick(object)
+                                : null
+                            }
                           />
                         )}
 
@@ -124,7 +136,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                                   className="flex items-center m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-sm"
                                 >
                                   {icons[element.name]}
-                                  {element.link}
+                                  {element.link.replace("https://", "")}
                                 </Link>
                               ) : (
                                 element
