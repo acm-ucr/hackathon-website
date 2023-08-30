@@ -141,14 +141,12 @@ const Toolbar = ({ input, setInput, tags, setObjects, objects, filters }) => {
           />
         )}
       </div>
-      <div>
-        <button>
-          <FaDownload
-            size={22.5}
-            className=" text-hackathon-darkgray hover:opacity-70 duration-150 "
-          />
-        </button>
-      </div>
+      <button>
+        <FaDownload
+          size={22.5}
+          className="text-hackathon-darkgray hover:opacity-70 duration-150"
+        />
+      </button>
     </div>
   );
 };
