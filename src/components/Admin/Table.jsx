@@ -182,7 +182,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                             );
                           })}
                         </div>
-                        {iconInfos.map((iconInfo) => {
+                        {iconInfos.map((iconInfo, index) => {
                           return (
                             <div
                               key={index}
