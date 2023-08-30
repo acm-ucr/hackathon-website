@@ -2,7 +2,8 @@
 import { useState } from "react";
 import ProfileHeader from "./Header";
 import Tag from "../Admin/Tag";
-import { Col, Row } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import { Genders, Grades, Majors } from "@/data/Register";
 import Select from "../Select";
 import { Schools } from "@/data/Schools";

@@ -9,7 +9,8 @@ import Radio from "@/components/Radio";
 import Upload from "@/components/Forms/Upload";
 import Checkbox from "../Checkbox";
 import Input from "../Input";
-import { Row, Col } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import Button from "./Button";
 
 const Register = () => {
@@ -93,7 +94,7 @@ const Register = () => {
               setUser={setUser}
             />
           </Col>
-          <Col xl={6}>
+          <Col xl={12}>
             <Select
               options={Ages}
               field="age"
@@ -102,7 +103,7 @@ const Register = () => {
               placeholder="Age"
             />
           </Col>
-          <Col xl={6}>
+          <Col xl={12}>
             <Select
               options={Majors}
               field="major"
@@ -111,7 +112,7 @@ const Register = () => {
               placeholder="Major"
             />
           </Col>
-          <Col xl={6}>
+          <Col xl={12}>
             <Select
               options={Schools}
               field="school"
@@ -120,7 +121,7 @@ const Register = () => {
               placeholder="School"
             />
           </Col>
-          <Col xl={6}>
+          <Col xl={12}>
             <Select
               options={Grades}
               field="grade"
