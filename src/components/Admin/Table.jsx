@@ -23,9 +23,9 @@ const icons = {
   devpost: <SiDevpost className="mr-2" />,
   lead: <IoIosRose className="ml-1 text-hackathon-blue-200 text-lg" />,
   winner: <FaCrown className="ml-1 text-hackathon-yellow text-lg" />,
-  phone: <FaPhoneAlt className="text-hackathon-blue-200 mr-1 text-base" />,
-  email: <IoIosMail className="text-hackathon-blue-200 mr-1 text-base" />,
-  resume: <IoMdDocument className="text-hackathon-blue-200 mr-1 text-base" />,
+  phone: <FaPhoneAlt className="text-hackathon-blue-200 mx-1" />,
+  email: <IoIosMail className="text-hackathon-blue-200 mr-1 text-lg" />,
+  resume: <IoMdDocument className="text-hackathon-blue-200 mr-1 text-lg" />,
 };
 
 const listInfos = ["age", "gender", "grade", "major", "school", "size"];
@@ -184,17 +184,19 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                             );
                           })}
                         </div>
-                        {iconInfos.map((iconInfo, index) => {
-                          return (
-                            <div
-                              key={index}
-                              className=" items-center m-0 flex text-sm"
-                            >
-                              {icons[iconInfo]}
-                              {object[iconInfo]}
-                            </div>
-                          );
-                        })}
+                        <div className="flex flex-wrap">
+                          {iconInfos.map((iconInfo, index) => {
+                            return (
+                              <div
+                                key={index}
+                                className=" items-center m-0 flex text-sm w-1/3"
+                              >
+                                {icons[iconInfo]}
+                                {object[iconInfo]}
+                              </div>
+                            );
+                          })}
+                        </div>
                       </Row>
                     </Accordion.Collapse>
                   </Col>
