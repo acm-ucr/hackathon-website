@@ -10,14 +10,12 @@ import Popup from "./Popup";
 
 const convert = (input) => {
   if (Array.isArray(input)) {
-    return input.map(convert).join(", ");
+    return input.join(", ");
   } else if (typeof input === "object") {
-    return Object.values(input).map(convert).join(", ");
-  } else {
-    return input;
+    return Object.values(input).join(", ");
   }
+  return input;
 };
-
 const Toolbar = ({
   input,
   setInput,
@@ -94,18 +92,15 @@ const Toolbar = ({
   };
   const blacklist = ["uid", "selected", "hidden", "links", "dropdown"];
   const mapObjectsToCSVData = (objects, blacklist, headers) => {
-    const data = [];
     const columnNames = headers
-      .map((header) => header.text)
-      .filter((key) => key && !blacklist.includes(key));
-    data.push(columnNames);
+      .filter((header) => header.text && !blacklist.includes(header.text))
+      .map((header) => header.text);
+
+    const data = [columnNames];
+
     objects.forEach((item) => {
-      const rowData = {};
-      for (const key of columnNames) {
-        const value = item[key];
-        rowData[key] = convert(value);
-      }
-      data.push(Object.values(rowData));
+      const rowData = columnNames.map((key) => convert(item[key]));
+      data.push(rowData);
     });
 
     return data;
@@ -116,10 +111,16 @@ const Toolbar = ({
     setObjects(objects.filter((object) => !object.selected));
   };
   const date = new Date();
-  const formattedDate = date.toLocaleDateString("en-US").replace(/ /g, "_");
-  const formattedTime = date
-    .toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
-    .replace(/ /g, "_");
+  const formattedDateTime = date
+    .toLocaleString("en-US", {
+      month: "2-digit",
+      day: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    })
+    .replace(/\/|,|:|\s/g, "_");
 
   return (
     <div className="w-full flex items-center">
@@ -165,7 +166,7 @@ const Toolbar = ({
       </div>
       <CSVLink
         data={data}
-        filename={`${process.env.NEXT_PUBLIC_HACKATHON}_${formattedDate}_${formattedTime}_${file}.csv`}
+        filename={`${process.env.NEXT_PUBLIC_HACKATHON}_${formattedDateTime}_${file}.csv`}
         className="hover:cursor-pointer"
       >
         <FaDownload
