@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Accordion from "react-bootstrap/Accordion";
 import Checkbox from "../Checkbox";
 import Tag from "./Tag";
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowDown, IoIosMail, IoMdDocument } from "react-icons/io";
 import AccordionContext from "react-bootstrap/AccordionContext";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { useContext } from "react";
@@ -13,13 +13,20 @@ import { SiGithub, SiDevpost } from "react-icons/si";
 import Link from "next/link";
 import { colors } from "@/data/Tags";
 import { IoIosRose } from "react-icons/io";
-import { FaCrown } from "react-icons/fa";
+import { FaPhoneAlt, FaCrown } from "react-icons/fa";
 const icons = {
   github: <SiGithub className="mr-2" />,
   devpost: <SiDevpost className="mr-2" />,
   lead: <IoIosRose className="ml-1 text-hackathon-blue-200 text-lg" />,
   winner: <FaCrown className="ml-1 text-hackathon-yellow text-lg" />,
+  phone: <FaPhoneAlt className="text-hackathon-blue-200 mr-1" />,
+  email: <IoIosMail className="text-hackathon-blue-200 mr-1" />,
+  resume: <IoMdDocument className="text-hackathon-blue-200 mr-1" />,
 };
+
+const listInfos = ["age", "gender", "grade", "major", "school", "size"];
+
+const iconInfos = ["email", "phone", "resume"];
 const Toggle = ({ eventKey }) => {
   const { activeEventKey } = useContext(AccordionContext);
 
@@ -165,17 +172,28 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                 {object.dropdown && (
                   <Col className="p-0" xs={12}>
                     <Accordion.Collapse eventKey={index}>
-                      <p className="mt-2 mb-1">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat. Duis aute irure dolor in
-                        reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit
-                        anim id est laborum.
-                      </p>
+                      <Row className="pl-[8%]">
+                        <div className="mt-2 flex text-xs">
+                          {listInfos.map((listInfo, index) => {
+                            return (
+                              <p key={index}>
+                                {object[listInfo]} &nbsp;|&nbsp;
+                              </p>
+                            );
+                          })}
+                        </div>
+                        {iconInfos.map((iconInfo) => {
+                          return (
+                            <div
+                              key={index}
+                              className=" items-center m-0 flex text-sm"
+                            >
+                              {icons[iconInfo]}
+                              {object[iconInfo]}
+                            </div>
+                          );
+                        })}
+                      </Row>
                     </Accordion.Collapse>
                   </Col>
                 )}
