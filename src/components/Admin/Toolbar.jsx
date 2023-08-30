@@ -7,21 +7,15 @@ import { FaDownload, FaTrashAlt } from "react-icons/fa";
 import { CSVLink } from "react-csv";
 import { colors } from "@/data/Tags";
 
-function convert(input) {
+const convert = (input) => {
   if (Array.isArray(input)) {
     return input.map(convert).join(", ");
-  } else if (typeof input === "boolean") {
-    return input ? "True" : "False";
   } else if (typeof input === "object") {
-    return Object.entries(input)
-      .map(([key, value]) => `${key}: ${convert(value)}`)
-      .join(", ");
-  } else if (typeof input === "number") {
-    return input.toString();
+    return Object.values(input).map(convert).join(", ");
   } else {
     return input;
   }
-}
+};
 
 const Toolbar = ({
   input,
@@ -31,6 +25,7 @@ const Toolbar = ({
   objects,
   filters,
   file,
+  headers,
 }) => {
   const [toggle, setToggle] = useState(false);
   const onClick = (text) => {
@@ -95,25 +90,35 @@ const Toolbar = ({
     );
     setToggle(!toggle);
   };
-  const blacklistArray = ["uid", "selected", "hidden", "links", "dropdown"];
-  const data = objects.map((items) => {
-    const rowData = {};
-    Object.entries(items).map(([key, value]) => {
-      if (!blacklistArray.includes(key)) {
+  const blacklist = ["uid", "selected", "hidden", "links", "dropdown"];
+  const mapObjectsToCSVData = (objects, blacklist, headers) => {
+    const data = [];
+    const columnNames = headers
+      .map((header) => header.text)
+      .filter((key) => key && !blacklist.includes(key));
+    data.push(columnNames);
+    objects.forEach((item) => {
+      const rowData = {};
+      for (const key of columnNames) {
+        const value = item[key];
         rowData[key] = convert(value);
       }
+      data.push(Object.values(rowData));
     });
-    return rowData;
-  });
+
+    return data;
+  };
+
+  const data = mapObjectsToCSVData(objects, blacklist, headers);
   const handleDelete = () => {
     setObjects(objects.filter((object) => !object.selected));
   };
-  const formattedDate = new Date()
-    .toLocaleDateString("en-US")
-    .replace(/ /g, "_");
-  const formattedTime = new Date()
+  const date = new Date();
+  const formattedDate = date.toLocaleDateString("en-US").replace(/ /g, "_");
+  const formattedTime = date
     .toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })
     .replace(/ /g, "_");
+
   return (
     <div className="w-full flex items-center">
       <div className="w-2/3 flex items-center">

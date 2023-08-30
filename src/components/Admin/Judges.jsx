@@ -34,8 +34,8 @@ const Judges = () => {
         setObjects={setJudges}
         objects={judges}
         filters={filters}
-        reset={judges}
         file="JUDGES"
+        headers={headers}
       />
       <Table
         headers={headers}
