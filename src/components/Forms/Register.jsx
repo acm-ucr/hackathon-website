@@ -2,14 +2,7 @@
 
 import { useState } from "react";
 import User from "../../data/User";
-import {
-  Ages,
-  Majors,
-  Grades,
-  Genders,
-  Shirts,
-  DietaryRestrictions,
-} from "../../data/Register";
+import { Ages, Majors, Grades, Genders, Shirts } from "../../data/Register";
 import { Schools } from "../../data/Schools";
 import Select from "@/components/Select";
 import Radio from "@/components/Radio";
@@ -32,6 +25,44 @@ const Register = () => {
       text: "I understand that I will attend the event in person.",
     },
   });
+
+  const [dietRestrictions, setDietRestrictions] = useState({
+    vegan: {
+      state: false,
+      text: "Vegan",
+    },
+    vegetarian: {
+      state: false,
+      text: "Vegetarian",
+    },
+    lactoseIntolerant: {
+      state: false,
+      text: "Lactose Intolerant",
+    },
+    nutAllergy: {
+      state: false,
+      text: "Nut Allergy",
+    },
+    noGluten: {
+      state: false,
+      text: "No Gluten",
+    },
+    halal: {
+      state: false,
+      text: "Halal",
+    },
+    none: {
+      state: false,
+      text: "None",
+    },
+  });
+
+  const handleDietRestrictions = (key, value) => {
+    setDietRestrictions({
+      ...dietRestrictions,
+      [key]: { state: !value.state, text: value.text },
+    });
+  };
 
   const handleSubmit = () => {
     console.log(user);
@@ -156,13 +187,17 @@ const Register = () => {
             />
           </Col>
           <Col>
-            <Radio
-              text="Dietary Restrictions"
-              options={DietaryRestrictions}
-              field="dietary restrictions"
-              user={user}
-              setUser={setUser}
-            />
+            Dietary Restrictions
+            {Object.entries(dietRestrictions).map(([key, value], i) => (
+              <Checkbox
+                className="w-1/2"
+                key={i}
+                toggle={value.state}
+                text={value.text}
+                onClick={() => handleDietRestrictions(key, value)}
+                color="bg-hackathon-green-300"
+              />
+            ))}
           </Col>
           <Col xl={12}>
             <Upload
