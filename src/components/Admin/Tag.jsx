@@ -1,6 +1,6 @@
 import { colors } from "@/data/TagColors";
 
-const Tag = ({ color = "gray", text, onClick = null, classes }) => {
+const Tag = ({ color, text, onClick, classes }) => {
   return (
     <div
       className={`${classes} ${colors[color].background} ${
