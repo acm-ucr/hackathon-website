@@ -92,17 +92,20 @@ const Toolbar = ({
   };
   const blacklist = ["uid", "selected", "hidden", "links", "dropdown"];
   const mapObjectsToCSVData = (objects, blacklist, headers) => {
-    const columnNames = headers
+    const columns = headers
       .filter((header) => header.text && !blacklist.includes(header.text))
       .map((header) => header.text);
-
-    const data = [columnNames];
-
+    // divyank's code
+    // const columns = headers.filter((header) => {
+    //   if (header.text && !blacklist.includes(header.text)) {
+    //     return header.text;
+    //   }
+    // });
+    const data = [columns];
     objects.forEach((item) => {
-      const rowData = columnNames.map((key) => convert(item[key]));
+      const rowData = columns.map((key) => convert(item[key]));
       data.push(rowData);
     });
-
     return data;
   };
 
