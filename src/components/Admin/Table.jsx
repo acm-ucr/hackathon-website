@@ -23,9 +23,9 @@ const icons = {
   devpost: <SiDevpost className="mr-2" />,
   lead: <IoIosRose className="ml-1 text-hackathon-blue-200 text-lg" />,
   winner: <FaCrown className="ml-1 text-hackathon-yellow text-lg" />,
-  phone: <FaPhoneAlt className="text-hackathon-blue-200 mr-1" />,
-  email: <IoIosMail className="text-hackathon-blue-200 mr-1" />,
-  resume: <IoMdDocument className="text-hackathon-blue-200 mr-1" />,
+  phone: <FaPhoneAlt className="text-hackathon-blue-200 mr-1 text-base" />,
+  email: <IoIosMail className="text-hackathon-blue-200 mr-1 text-base" />,
+  resume: <IoMdDocument className="text-hackathon-blue-200 mr-1 text-base" />,
 };
 
 const listInfos = ["age", "gender", "grade", "major", "school", "size"];
@@ -180,9 +180,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                         <div className="mt-2 flex text-xs">
                           {listInfos.map((listInfo, index) => {
                             return (
-                              <p key={index}>
-                                {object[listInfo]} &nbsp;|&nbsp;
-                              </p>
+                              <p key={index}>{object[listInfo]}&nbsp;|&nbsp;</p>
                             );
                           })}
                         </div>
