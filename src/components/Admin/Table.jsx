@@ -102,8 +102,8 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                     toggle={object.selected}
                   />
                 </Col>
-                {headers.map((header, index) => {
-                  return (
+                {headers.map(
+                  (header, index) =>
                     header.text !== "" && (
                       <Col
                         key={index}
@@ -165,8 +165,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                           )}
                       </Col>
                     )
-                  );
-                })}
+                )}
 
                 {object.dropdown && (
                   <Col className="p-0 m-0 flex justify-center" xs>
@@ -178,24 +177,20 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                     <Accordion.Collapse eventKey={index}>
                       <Row className="pl-[8%]">
                         <div className="mt-2 flex text-xs">
-                          {listInfos.map((listInfo, index) => {
-                            return (
-                              <p key={index}>{object[listInfo]}&nbsp;|&nbsp;</p>
-                            );
-                          })}
+                          {listInfos.map((listInfo, index) => (
+                            <p key={index}>{object[listInfo]}&nbsp;|&nbsp;</p>
+                          ))}
                         </div>
                         <div className="flex flex-wrap">
-                          {iconInfos.map((iconInfo, index) => {
-                            return (
-                              <div
-                                key={index}
-                                className=" items-center m-0 flex text-sm w-1/3"
-                              >
-                                {icons[iconInfo]}
-                                {object[iconInfo]}
-                              </div>
-                            );
-                          })}
+                          {iconInfos.map((iconInfo, index) => (
+                            <div
+                              key={index}
+                              className=" items-center m-0 flex text-sm w-1/3"
+                            >
+                              {icons[iconInfo]}
+                              {object[iconInfo]}
+                            </div>
+                          ))}
                         </div>
                       </Row>
                     </Accordion.Collapse>
