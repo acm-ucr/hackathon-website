@@ -184,7 +184,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
         )}
 
         {objects.filter((object) => !object.hidden).length === 0 && (
-          <p className="text-hackathon-darkgray font-poppins pt-3 text-center rounded-b-2xl w-full">
+          <p className="text-hackathon-gray-300 font-poppins pt-3 text-center rounded-b-2xl w-full">
             {empty}
           </p>
         )}
