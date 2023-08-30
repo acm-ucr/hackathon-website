@@ -10,6 +10,7 @@ import Radio from "../Radio";
 import Input from "../Input";
 import { teamList } from "@/data/mock/teams";
 import { FaPencil, FaCheck } from "react-icons/fa6";
+import TeamInfo from "./TeamInfo";
 
 const Dashboard = () => {
   const [user, setUser] = useState({
@@ -18,8 +19,11 @@ const Dashboard = () => {
     school: "samepl scool",
     major: "nothing im useless",
     gender: "everythijg",
-    team: "lololol",
+    team: "The team ",
+    github: "www.github.com",
+    devpost: "www.devpost.com",
   });
+
   const [edit, setEdit] = useState(false);
   const handleEdit = () => {
     setEdit(!edit);
@@ -96,46 +100,20 @@ const Dashboard = () => {
           />
         </Col>
         <Col xl={6}>
-          {user.team ? (
-            <>
-              <Input
-                name="team"
-                type="text"
-                title="Team Name"
-                value={user.team}
-                user={user}
-                setUser={setUser}
-                editable={true}
-              />
-              <p>team id lolololololol</p>
-              <Input
-                name="github"
-                type="text"
-                title="Github Link"
-                value={user.github}
-                user={user}
-                setUser={setUser}
-                editable={true}
-              />
-              <Input
-                name="devpost"
-                type="text"
-                title="Devpost Link"
-                value={user.devpost}
-                user={user}
-                setUser={setUser}
-                editable={true}
-              />
+          <Input
+            name="team"
+            type="text"
+            title="Team Name"
+            value={user.team}
+            user={user}
+            setUser={setUser}
+            editable={true}
+          />
 
-              {teamList.slice(0, 4).map((member, index) => (
-                <div key={index}>
-                  <p>TEAM MEMBER {index + 1}</p>
-                  <p>{member.members[index]} </p>
-                </div>
-              ))}
-            </>
+          {user.team ? (
+            <TeamInfo user={user} team={teamList} />
           ) : (
-            <p>N/A </p>
+            <p>no team</p>
           )}
         </Col>
       </Row>
