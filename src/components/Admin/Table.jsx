@@ -5,7 +5,12 @@ import Row from "react-bootstrap/Row";
 import Accordion from "react-bootstrap/Accordion";
 import Checkbox from "../Checkbox";
 import Tag from "./Tag";
-import { IoIosArrowDown, IoIosMail, IoMdDocument, IoIosRose } from "react-icons/io";
+import {
+  IoIosArrowDown,
+  IoIosMail,
+  IoMdDocument,
+  IoIosRose,
+} from "react-icons/io";
 import AccordionContext from "react-bootstrap/AccordionContext";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { useContext } from "react";
