@@ -16,7 +16,9 @@ const Checkbox = ({ toggle, onClick = () => {}, text = "", color }) => {
         } flex items-center justify-center`}
       >
         <BsCheckLg
-          className={`${toggle ? "text-white" : "text-hackathon-gray-100"} text-lg`}
+          className={`${
+            toggle ? "text-white" : "text-hackathon-gray-100"
+          } text-lg`}
         />
       </div>
       {text && <p className="pl-3 my-0 pt-0">{text}</p>}
