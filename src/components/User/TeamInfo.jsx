@@ -1,7 +1,7 @@
 import Input from "../Input";
 
 const TeamInfo = ({ user, team }) => {
-  return user ? (
+  return (
     <div>
       <Input
         name="github"
@@ -21,16 +21,14 @@ const TeamInfo = ({ user, team }) => {
       />
 
       <div>
-        {team.map((member, memberIndex) => (
+        {team.members.map((member, memberIndex) => (
           <div key={memberIndex}>
             <p>TEAM MEMBER {memberIndex + 1}</p>
-            <p>{member.members[memberIndex]}</p>
+            <p>{member}</p>
           </div>
         ))}
       </div>
     </div>
-  ) : (
-    <p className="w-full text-center">No info</p>
   );
 };
 

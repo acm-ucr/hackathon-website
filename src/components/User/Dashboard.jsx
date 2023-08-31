@@ -107,7 +107,7 @@ const Dashboard = () => {
             value={user.team}
             user={user}
             setUser={setUser}
-            editable={true}
+            editable={edit}
           />
 
           {user.team ? (
