@@ -16,7 +16,7 @@ const Select = ({
         <Dropdown.Toggle
           id="dropdown-toggle"
           className={`!bg-white ${
-            user[field] ? "text-black" : "!text-hackathon-gray-200"
+            user[field] ? "text-black" : "!text-hackathon-placeholder"
           } w-full !text-left !border-x-0 !border-t-0 !border-b-2 !rounded-none !border-black`}
         >
           {user[field] || placeholder}
