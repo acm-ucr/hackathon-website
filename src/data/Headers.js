@@ -99,7 +99,7 @@ export const participantHeader = [
     hasTag: true,
   },
   {
-    text: null,
+    text: "",
     size: 1,
   },
 ];
