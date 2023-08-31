@@ -8,8 +8,9 @@ import Tag from "./Tag";
 import {
   IoIosArrowDown,
   IoIosMail,
-  IoMdDocument,
   IoIosRose,
+  IoIosShirt,
+  IoIosSchool,
 } from "react-icons/io";
 import AccordionContext from "react-bootstrap/AccordionContext";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
@@ -17,20 +18,41 @@ import { useContext } from "react";
 import { SiGithub, SiDevpost } from "react-icons/si";
 import Link from "next/link";
 import { colors } from "@/data/Tags";
-import { FaPhoneAlt, FaCrown } from "react-icons/fa";
+import {
+  FaAppleAlt,
+  FaPhoneAlt,
+  FaCrown,
+  FaSchool,
+  FaVenusMars,
+  FaBirthdayCake,
+  FaBook,
+} from "react-icons/fa";
 const icons = {
   github: <SiGithub className="mr-2" />,
   devpost: <SiDevpost className="mr-2" />,
   lead: <IoIosRose className="ml-1 text-hackathon-blue-200 text-lg" />,
   winner: <FaCrown className="ml-1 text-hackathon-yellow text-lg" />,
-  phone: <FaPhoneAlt className="text-hackathon-blue-200 mx-1" />,
-  email: <IoIosMail className="text-hackathon-blue-200 mr-1 text-lg" />,
-  resume: <IoMdDocument className="text-hackathon-blue-200 mr-1 text-lg" />,
+  phone: <FaPhoneAlt className="text-hackathon-blue-200 mr-2" />,
+  email: <IoIosMail className="text-hackathon-blue-200 mr-2 text-lg" />,
+  size: <IoIosShirt className="text-hackathon-blue-200 mr-2 text-lg" />,
+  restriction: <FaAppleAlt className="text-hackathon-blue-200 mr-2" />,
+  age: <FaBirthdayCake className="text-hackathon-blue-200 mr-2 text-lg" />,
+  gender: <FaVenusMars className="text-hackathon-blue-200 mr-2 text-lg" />,
+  grade: <IoIosSchool className="text-hackathon-blue-200 mr-2 text-lg" />,
+  major: <FaBook className="text-hackathon-blue-200 mr-2 text-lg" />,
+  school: <FaSchool className="text-hackathon-blue-200 mr-2 text-lg" />,
 };
-
-const listInfos = ["age", "gender", "grade", "major", "school", "size"];
-
-const iconInfos = ["email", "phone", "resume"];
+const iconInfos = [
+  "email",
+  "phone",
+  "size",
+  "restriction",
+  "age",
+  "gender",
+  "grade",
+  "major",
+  "school",
+];
 const Toggle = ({ eventKey }) => {
   const { activeEventKey } = useContext(AccordionContext);
 
@@ -175,20 +197,21 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                 {object.dropdown && (
                   <Col className="p-0" xs={12}>
                     <Accordion.Collapse eventKey={index}>
-                      <Row className="pl-[8%]">
-                        <div className="mt-2 flex text-xs">
-                          {listInfos.map((listInfo, index) => (
-                            <p key={index}>{object[listInfo]}&nbsp;|&nbsp;</p>
-                          ))}
-                        </div>
+                      <Row className="pl-[8%] pt-2">
                         <div className="flex flex-wrap">
                           {iconInfos.map((iconInfo, index) => (
                             <div
                               key={index}
-                              className=" items-center m-0 flex text-sm w-1/3"
+                              className=" items-center my-1 px-1 flex text-sm min-w-fit w-1/4"
                             >
                               {icons[iconInfo]}
-                              {object[iconInfo]}
+                              {Array.isArray(object[iconInfo])
+                                ? object[iconInfo].map((element, index) => (
+                                    <div key={index}>
+                                      {element} &#x2c;&nbsp;
+                                    </div>
+                                  ))
+                                : object[iconInfo]}
                             </div>
                           ))}
                         </div>
