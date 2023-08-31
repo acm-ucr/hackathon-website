@@ -18,7 +18,7 @@ const Input = ({ object, setObject, clear, label, maxLength, placeholder }) => {
         />
         {clear && (
           <MdCancel
-            className="hover:cursor-pointer text-xl text-hackathon-darkgray mr-2"
+            className="hover:cursor-pointer text-xl text-hackathon-gray-300 mr-2"
             onClick={() => setObject({ ...object, [label]: "" })}
           />
         )}
