@@ -81,7 +81,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
             !object.hidden && (
               <Row
                 key={index}
-                className={`first:border-0 border-t-[1px] border-hackathon-gray-100 w-full flex justify-between items-center p-0 m-0 py-2 ${
+                className={`first:border-0 border-t-[1px] border-hackathon-gray-100  w-full flex justify-between items-center p-0 m-0 py-2 ${
                   object.selected ? "bg-green-100" : "bg-white"
                 }`}
               >

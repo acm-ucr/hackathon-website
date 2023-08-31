@@ -7,7 +7,7 @@ const Input = ({ object, setObject, clear, label, maxLength, placeholder }) => {
   return (
     <div className="flex items-center">
       <p className="text-lg font-extrabold mr-2 my-0">{label}:</p>
-      <div className="flex items-center my-1 bg-hackathon-gray rounded-md w-full">
+      <div className="flex items-center my-1 bg-hackathon-gray-100 rounded-md w-full">
         <input
           value={object[label]}
           maxLength={maxLength}
@@ -18,7 +18,7 @@ const Input = ({ object, setObject, clear, label, maxLength, placeholder }) => {
         />
         {clear && (
           <MdCancel
-            className="hover:cursor-pointer text-xl text-hackathon-darkgray mr-2"
+            className="hover:cursor-pointer text-xl text-hackathon-gray-300 mr-2"
             onClick={() => setObject({ ...object, [label]: "" })}
           />
         )}
