@@ -12,19 +12,12 @@ import Input from "../Input";
 import { Row, Col } from "react-bootstrap";
 import Button from "./Button";
 
+import Registration from "../../Data/Register";
+
 const Register = () => {
   const [user, setUser] = useState(User);
 
-  const [requirements, setRequirements] = useState({
-    photography: {
-      state: false,
-      text: "I agree to photograph.",
-    },
-    inPerson: {
-      state: false,
-      text: "I understand that I will attend the event in person.",
-    },
-  });
+  const [requirements, setRequirements] = useState(Registration);
 
   const handleSubmit = () => {
     console.log(user);
