@@ -6,10 +6,8 @@ import { useSession } from "next-auth/react";
 const ProtectedPage = ({ title, children, restrictions }) => {
   const router = useRouter();
   const { data: session, status } = useSession();
-  const response = useSession();
 
   useEffect(() => {
-    console.log(response, JSON.stringify(response));
     if (status === "loading") return;
     if (status !== "authenticated") {
       console.log("Not signed in");
@@ -34,7 +32,7 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       router.push("/");
       return;
     }
-  }, [status, session]);
+  }, [status]);
 
   return (
     <>

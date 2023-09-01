@@ -1,5 +1,4 @@
 const Tag = ({ color, text, onClick, classes }) => {
-  console.log(color, text);
   return (
     <div
       className={`${classes} ${color.background} ${color.text} ${
