@@ -1,13 +1,13 @@
 {
   "user": {
     "name": {
-      "first": "NAME",
-      "last": "SURNAME"
+      "first": "ADMIN",
+      "last": "TEST"
     },
-    "email": "test@example.com",
+    "email": "admin@test.com",
     "image": "https://---.---",
     "role": "admin"
   },
   "expires": "3000-01-01T00:00:00.000Z",
-  "accessToken": "abcdefghijklmnopqrst"
+  "accessToken": "qwertyuiop"
 }

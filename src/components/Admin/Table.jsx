@@ -103,19 +103,26 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                         }`}
                       >
                         {header.hasTag && (
-                          <Tag
-                            text={
-                              object[header.text].includes("https://")
-                                ? "view"
-                                : object[header.text]
-                            }
-                            color={colors[object[header.text]]}
-                            onClick={
-                              header.onClick
-                                ? () => header.onClick(object)
-                                : null
-                            }
-                          />
+                          <>
+                            {console.log(header.text, object[header.text])}
+                            <Tag
+                              text={
+                                object[header.text].includes("https://")
+                                  ? "view"
+                                  : object[header.text]
+                              }
+                              color={
+                                object[header.text].includes("https://")
+                                  ? colors["view"]
+                                  : colors[object[header.text]]
+                              }
+                              onClick={
+                                header.onClick
+                                  ? () => header.onClick(object)
+                                  : null
+                              }
+                            />
+                          </>
                         )}
 
                         {Array.isArray(object[header.text]) &&
