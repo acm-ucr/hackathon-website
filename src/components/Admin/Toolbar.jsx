@@ -16,6 +16,7 @@ const convert = (input) => {
   }
   return input;
 };
+
 const Toolbar = ({
   input,
   setInput,
