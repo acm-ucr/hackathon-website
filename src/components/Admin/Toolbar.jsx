@@ -122,7 +122,8 @@ const Toolbar = ({
       year: "numeric",
       hour: "2-digit",
       minute: "2-digit",
-      hour12: true,
+      hour12: false,
+      timeZone: "UTC",
     })
     .replace(/\/|,|:|\s/g, "_");
 
