@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 const ProtectedPage = ({ title, children, restrictions }) => {
   const router = useRouter();
   const { data: session, status } = useSession();
+
   useEffect(() => {
     if (status === "loading") return;
     if (status !== "authenticated") {

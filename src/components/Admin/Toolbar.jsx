@@ -169,6 +169,29 @@ const Toolbar = ({
           Reset
         </button>
       </div>
+      <div className="flex w-1/3">
+        <button
+          onClick={() =>
+            setPopup(
+              "Are you sure you want to delete these row(s)? This action is irreversible."
+            )
+          }
+        >
+          <FaTrashAlt
+            size={22.5}
+            className="ml-5 text-hackathon-darkgray hover:opacity-70 duration-150"
+          />
+        </button>
+        {popup && (
+          <Popup
+            buttonColor="red"
+            text={popup}
+            callBack={handleDelete}
+            setText={setPopup}
+            title="Delete Confirmation"
+          />
+        )}
+      </div>
       <CSVLink
         data={data}
         filename={`${process.env.NEXT_PUBLIC_HACKATHON}_${formattedDateTime}_${file}.csv`}
@@ -179,27 +202,6 @@ const Toolbar = ({
           className="ml-4 text-hackathon-darkgray hover:opacity-70 duration-150"
         />
       </CSVLink>
-      <button
-        onClick={() =>
-          setPopup(
-            "Are you sure you want to delete these row(s)? This action is irreversible."
-          )
-        }
-      >
-        <FaTrashAlt
-          size={22.5}
-          className="ml-5 text-hackathon-darkgray hover:opacity-70 duration-150"
-        />
-      </button>
-      {popup && (
-        <Popup
-          buttonColor="red"
-          text={popup}
-          callBack={handleDelete}
-          setText={setPopup}
-          title="Delete Confirmation"
-        />
-      )}
     </div>
   );
 };
