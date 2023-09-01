@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { useSession } from "next-auth/react";
-import Loading from "@/app/loading";
+import Loading from "@/components/loading";
 
 const ProtectedPage = ({ title, children, restrictions }) => {
   const router = useRouter();
