@@ -13,7 +13,7 @@ const Radio = ({ text, field, options, user, setUser, editable = true }) => {
         <div className="flex flex-wrap whitespace-nowrap">
           {options.map((option, index) => (
             <div
-              className="flex items-center w-1/4 hover:cursor-pointer"
+              className="flex items-center px-1 w-1/4 hover:cursor-pointer"
               key={index}
               onClick={() => handleClick(option)}
             >
