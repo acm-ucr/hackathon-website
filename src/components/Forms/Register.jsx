@@ -21,7 +21,7 @@ import Button from "./Button";
 
 const Register = () => {
   const [user, setUser] = useState(User);
-  const [dietaryRestrictions, setDietRestrictions] = useState(dietRestrictions);
+  const [dietaryRestrictions, setDietRestrictions] = useState(DietRestrictions);
 
   const [requirements, setRequirements] = useState({
     photography: {
