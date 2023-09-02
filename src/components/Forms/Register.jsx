@@ -155,7 +155,6 @@ const Register = () => {
           </Col>
           <Col xl={12}>
             <Radio
-              className="flex"
               text="Shirt Size"
               options={Shirts}
               field="shirt"
