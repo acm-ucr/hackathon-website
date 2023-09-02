@@ -8,7 +8,7 @@ import {
   Grades,
   Genders,
   Shirts,
-  dietRestrictions,
+  DietRestrictions,
 } from "../../data/Register";
 import { Schools } from "../../data/Schools";
 import Select from "@/components/Select";
