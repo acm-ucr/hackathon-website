@@ -28,7 +28,7 @@ export const Majors = [
   "Other",
 ];
 
-export const dietRestrictions = {
+export const DietRestrictions = {
   vegan: {
     state: false,
     text: "Vegan",
