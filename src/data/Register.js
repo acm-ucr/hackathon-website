@@ -28,6 +28,37 @@ export const Majors = [
   "Other",
 ];
 
+export const dietRestrictions = {
+  vegan: {
+    state: false,
+    text: "Vegan",
+  },
+  vegetarian: {
+    state: false,
+    text: "Vegetarian",
+  },
+  lactoseIntolerant: {
+    state: false,
+    text: "Lactose Intolerant",
+  },
+  nutAllergy: {
+    state: false,
+    text: "Nut Allergy",
+  },
+  noGluten: {
+    state: false,
+    text: "No Gluten",
+  },
+  halal: {
+    state: false,
+    text: "Halal",
+  },
+  none: {
+    state: false,
+    text: "None",
+  },
+};
+
 export const Availability = [
   "Friday Morning",
   "Friday Afternoon",

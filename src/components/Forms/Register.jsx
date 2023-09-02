@@ -2,7 +2,14 @@
 
 import { useState } from "react";
 import User from "../../data/User";
-import { Ages, Majors, Grades, Genders, Shirts } from "../../data/Register";
+import {
+  Ages,
+  Majors,
+  Grades,
+  Genders,
+  Shirts,
+  dietRestrictions,
+} from "../../data/Register";
 import { Schools } from "../../data/Schools";
 import Select from "@/components/Select";
 import Radio from "@/components/Radio";
@@ -14,6 +21,7 @@ import Button from "./Button";
 
 const Register = () => {
   const [user, setUser] = useState(User);
+  const [dietaryRestrictions, setDietRestrictions] = useState(dietRestrictions);
 
   const [requirements, setRequirements] = useState({
     photography: {
@@ -26,40 +34,9 @@ const Register = () => {
     },
   });
 
-  const [dietRestrictions, setDietRestrictions] = useState({
-    vegan: {
-      state: false,
-      text: "Vegan",
-    },
-    vegetarian: {
-      state: false,
-      text: "Vegetarian",
-    },
-    lactoseIntolerant: {
-      state: false,
-      text: "Lactose Intolerant",
-    },
-    nutAllergy: {
-      state: false,
-      text: "Nut Allergy",
-    },
-    noGluten: {
-      state: false,
-      text: "No Gluten",
-    },
-    halal: {
-      state: false,
-      text: "Halal",
-    },
-    none: {
-      state: false,
-      text: "None",
-    },
-  });
-
   const handleDietRestrictions = (key, value) => {
     setDietRestrictions({
-      ...dietRestrictions,
+      ...dietaryRestrictions,
       [key]: { state: !value.state, text: value.text },
     });
   };
@@ -188,7 +165,7 @@ const Register = () => {
           </Col>
           <Col>
             Dietary Restrictions
-            {Object.entries(dietRestrictions).map(([key, value], i) => (
+            {Object.entries(dietaryRestrictions).map(([key, value], i) => (
               <Checkbox
                 className="w-1/2"
                 key={i}
