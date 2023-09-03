@@ -1,6 +1,6 @@
 export const judgeFilters = {
   pending: true,
-  confirm: true,
+  confirmed: true,
   "not attending": true,
 };
 
@@ -11,14 +11,14 @@ export const mentorFilters = {
 };
 
 export const participantFilters = {
-  reject: true,
-  accept: true,
+  rejected: true,
+  accepted: true,
   pending: true,
 };
 
 export const teamFilters = {
-  disqualify: true,
-  qualify: true,
+  disqualified: true,
+  qualified: true,
   pending: true,
   winner: true,
 };
@@ -35,8 +35,8 @@ export const adminFilters = {
   reject: true,
 };
 export const messengerFilters = {
-  accept: true,
-  reject: false,
+  accepted: true,
+  rejected: false,
   pending: false,
   volunteers: false,
   mentors: false,
