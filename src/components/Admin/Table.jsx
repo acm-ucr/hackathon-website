@@ -45,13 +45,13 @@ const icons = {
 const iconInfos = [
   "email",
   "phone",
-  "size",
-  "restriction",
   "age",
   "gender",
-  "grade",
-  "major",
   "school",
+  "major",
+  "grade",
+  "size",
+  "restriction",
 ];
 const Toggle = ({ eventKey }) => {
   const { activeEventKey } = useContext(AccordionContext);
@@ -206,7 +206,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                           {iconInfos.map((iconInfo, index) => (
                             <div
                               key={index}
-                              className=" items-center my-1 px-1 flex text-sm min-w-fit w-1/4"
+                              className="items-center my-1 px-1 flex text-sm min-w-fit w-1/4"
                             >
                               {icons[iconInfo]}
                               {Array.isArray(object[iconInfo])
