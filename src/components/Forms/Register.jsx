@@ -19,21 +19,13 @@ import Input from "../Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "./Button";
+import { Requirements } from "../../data/Register";
 
 const Register = () => {
   const [user, setUser] = useState(User);
   const [dietaryRestrictions, setDietRestrictions] = useState(DietRestrictions);
 
-  const [requirements, setRequirements] = useState({
-    photography: {
-      state: false,
-      text: "I agree to photograph.",
-    },
-    inPerson: {
-      state: false,
-      text: "I understand that I will attend the event in person.",
-    },
-  });
+  const [requirements, setRequirements] = useState(Requirements);
 
   const handleDietRestrictions = (key, value) => {
     setDietRestrictions({
