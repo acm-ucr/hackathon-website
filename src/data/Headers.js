@@ -88,7 +88,7 @@ export const teamHeaders = [
 
 export const participantHeader = [
   { text: "name", size: 2, icon: true, sort: "off" },
-  { text: "email", size: 3, icon: true, sort: "off" },
+  { text: "email", size: 2, icon: true, sort: "off" },
   { text: "team", size: 2, icon: true, sort: "off" },
   { text: "major", size: 2, icon: true, sort: "off" },
   {
@@ -99,7 +99,17 @@ export const participantHeader = [
     hasTag: true,
   },
   {
-    text: null,
+    text: "resume",
+    size: 1,
+    icon: false,
+    sort: "off",
+    hasTag: true,
+    onClick: (object) => {
+      console.log(object.image);
+    },
+  },
+  {
+    text: "",
     size: 1,
   },
 ];
