@@ -11,13 +11,12 @@ import Checkbox from "../Checkbox";
 import Input from "../Input";
 import { Row, Col } from "react-bootstrap";
 import Button from "./Button";
-
-import Registration from "../../Data/Register";
+import { Requirements } from "../../data/Register";
 
 const Register = () => {
   const [user, setUser] = useState(User);
 
-  const [requirements, setRequirements] = useState(Registration);
+  const [requirements, setRequirements] = useState(Requirements);
 
   const handleSubmit = () => {
     console.log(user);
