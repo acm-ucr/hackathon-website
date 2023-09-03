@@ -28,7 +28,7 @@ export const AdminTabs = {
       },
       {
         name: "judges",
-        link: "/admin/judging",
+        link: "/admin/judges",
         icon: <FaGavel className={iconStyle} />,
       },
       {
