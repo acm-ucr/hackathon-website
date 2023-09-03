@@ -139,7 +139,11 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                             text={
                               object[header.text].includes("https://")
                                 ? "view"
-                                : object[header.text]
+                                : object[header.text] +
+                                  (object[header.text] === "accept" ||
+                                  object[header.text] === "reject"
+                                    ? "ed"
+                                    : "")
                             }
                             color={
                               object[header.text].includes("https://")
