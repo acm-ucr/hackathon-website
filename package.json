@@ -10,6 +10,8 @@
     "format": "npx prettier --write .",
     "check": "npx prettier --check .",
     "eslint": "npx eslint . --ext js --ext jsx",
+    "cypress": "cypress open",
+    "test": "start-server-and-test dev 3000 cypress",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -19,8 +21,6 @@
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
-    "eslint-config-next": "^13.4.6",
-    "eslint-config-prettier": "^8.8.0",
     "firebase": "^10.0.0",
     "firebase-admin": "^11.10.1",
     "next": "^13.4.9",
@@ -33,14 +33,18 @@
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.10.1",
-    "react-zxing": "^2.0.0",
-    "tailwindcss": "3.3.2"
+    "react-zxing": "^2.0.0"
   },
   "devDependencies": {
+    "cypress": "^13.1.0",
     "eslint": "^8.42.0",
     "eslint-config-google": "^0.14.0",
+    "eslint-config-next": "^13.4.19",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-react": "^7.32.2",
     "husky": "^8.0.0",
-    "prettier": "^2.8.8"
+    "prettier": "^2.8.8",
+    "start-server-and-test": "^2.0.0",
+    "tailwindcss": "^3.3.3"
   }
 }
