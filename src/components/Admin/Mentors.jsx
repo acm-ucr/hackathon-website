@@ -35,6 +35,8 @@ const Mentors = () => {
         setObjects={setMentors}
         objects={mentors}
         filters={filters}
+        file="MENTORS"
+        headers={headers}
       />
 
       <Table

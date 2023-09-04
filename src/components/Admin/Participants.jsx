@@ -15,7 +15,6 @@ const Participants = () => {
   const [input, setInput] = useState("");
   const [filters, setFilters] = useState(participantFilters);
   const [headers, setHeaders] = useState(participantHeader);
-
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <div className="flex">
@@ -35,6 +34,8 @@ const Participants = () => {
         setObjects={setParticipants}
         objects={participants}
         filters={filters}
+        file="PARTICIPANTS"
+        headers={headers}
       />
       <Table
         headers={headers}
