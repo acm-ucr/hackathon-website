@@ -54,13 +54,13 @@ export const teamTags = [
 
 export const volunteerTags = [
   {
-    text: "onsite",
+    text: "pending",
   },
   {
     text: "not attending",
   },
   {
-    text: "online",
+    text: "confirm",
   },
 ];
 
