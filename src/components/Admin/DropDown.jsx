@@ -30,7 +30,7 @@ const Menu = ({ setOption, className, setOptions, options }) => {
     <div className={className}>
       <input
         autoFocus
-        className="mx-3 my-2 w-11/12 ring-0 outline-none border-gray-300 border-[1px] text-sm px-2 py-1"
+        className="mx-1.5 my-1 w-11/12 ring-0 outline-none border-transparent !rounded-b-xl !rounded-t-xl border-[1px] px-2 py-1"
         placeholder="Type to filter..."
         onChange={handleInput}
         value={value}
