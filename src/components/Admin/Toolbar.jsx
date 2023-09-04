@@ -29,6 +29,7 @@ const Toolbar = ({
 }) => {
   const [popup, setPopup] = useState("");
   const [toggle, setToggle] = useState(false);
+
   const onClick = (text) => {
     setToggle(false);
     setObjects(
@@ -41,6 +42,7 @@ const Toolbar = ({
       })
     );
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -91,8 +93,10 @@ const Toolbar = ({
     );
     setToggle(!toggle);
   };
+
   const blacklist = ["uid", "selected", "hidden", "links", "dropdown", ""];
-  const mapObjectsToCSVData = (objects, blacklist, headers) => {
+
+  const mapObjectsToCSVData = (objects = [], blacklist, headers = []) => {
     const columns = headers.reduce((res, header) => {
       if (!blacklist.includes(header.text)) {
         return res.concat(header.text);
@@ -108,9 +112,11 @@ const Toolbar = ({
   };
 
   const data = mapObjectsToCSVData(objects, blacklist, headers);
+
   const handleDelete = () => {
     setObjects(objects.filter((object) => !object.selected));
   };
+
   const date = new Date()
     .toLocaleString("en-US", {
       month: "2-digit",
