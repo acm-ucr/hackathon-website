@@ -16,7 +16,7 @@ const Upload = ({ text, setObjects, objects, size, types }) => {
   const handleInput = (e) => {
     setUploading(true);
     if (objects.files.length + e.target.files.length > 5) {
-      toast("❌ Exceeds 5 objects!");
+      toast("❌ Exceeds 5 files!");
       setUploading(false);
       return;
     }
