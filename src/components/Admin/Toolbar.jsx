@@ -91,21 +91,18 @@ const Toolbar = ({
     );
     setToggle(!toggle);
   };
-  const blacklist = ["uid", "selected", "hidden", "links", "dropdown"];
+  const blacklist = ["uid", "selected", "hidden", "links", "dropdown", ""];
   const mapObjectsToCSVData = (objects, blacklist, headers) => {
-    const columns = headers
-      .filter((header) => header.text && !blacklist.includes(header.text))
-      .map((header) => header.text);
-    // divyank's code
-    // const columns = headers.filter((header) => {
-    //   if (header.text && !blacklist.includes(header.text)) {
-    //     return header.text;
-    //   }
-    // });
+    const columns = headers.reduce((res, header) => {
+      if (!blacklist.includes(header.text)) {
+        return res.concat(header.text);
+      }
+      return res;
+    }, []);
     const data = [columns];
     objects.forEach((item) => {
-      const rowData = columns.map((key) => convert(item[key]));
-      data.push(rowData);
+      const row = columns.map((key) => convert(item[key]));
+      data.push(row);
     });
     return data;
   };
@@ -114,8 +111,7 @@ const Toolbar = ({
   const handleDelete = () => {
     setObjects(objects.filter((object) => !object.selected));
   };
-  const date = new Date();
-  const formattedDateTime = date
+  const date = new Date()
     .toLocaleString("en-US", {
       month: "2-digit",
       day: "2-digit",
@@ -123,9 +119,9 @@ const Toolbar = ({
       hour: "2-digit",
       minute: "2-digit",
       hour12: false,
-      timeZone: "UTC",
     })
-    .replace(/\/|,|:|\s/g, "_");
+    .replace(/,/g, "")
+    .replace(/\s+/g, "_");
 
   return (
     <div className="w-full flex items-center">
@@ -194,7 +190,7 @@ const Toolbar = ({
       </div>
       <CSVLink
         data={data}
-        filename={`${process.env.NEXT_PUBLIC_HACKATHON}_${formattedDateTime}_${file}.csv`}
+        filename={`${process.env.NEXT_PUBLIC_HACKATHON}_${date}_${file}.csv`}
         className="hover:cursor-pointer"
       >
         <FaDownload
