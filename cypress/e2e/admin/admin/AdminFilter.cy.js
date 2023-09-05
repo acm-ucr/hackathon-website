@@ -1,4 +1,4 @@
-import { adminList } from "../../src/data/mock/admin";
+import { adminList } from "../../../../src/data/mock/admin";
 describe("Admin Actions", () => {
   beforeEach(() => {
     cy.login("admin");
@@ -106,65 +106,5 @@ describe("Admin Actions", () => {
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
     });
-  });
-
-  it("Select All Click Action", () => {
-    cy.get('[data-cy="selectAll"]').click();
-    adminList.forEach((admin) => {
-      cy.get(`[data-cy="${admin.uid}"]`).should("have.class", "bg-green-100");
-    });
-  });
-  it("Accept First Five Entries Action", () => {
-    for (let i = 0; i < 5; i++)
-      cy.get(`[data-cy="${adminList[i].uid}"]`)
-        .find('[data-cy="checkbox"]')
-        .click();
-    cy.get('[data-cy="toolbar"]').find('[data-cy="acceptTag"]').click();
-    for (let i = 0; i < 5; i++)
-      cy.get(`[data-cy="${adminList[i].uid}"]`)
-        .find('[data-cy="acceptedTag"]')
-        .should("exist");
-  });
-
-  it("Reject First Five Entries Action", () => {
-    for (let i = 0; i < 5; i++)
-      cy.get(`[data-cy="${adminList[i].uid}"]`)
-        .find('[data-cy="checkbox"]')
-        .click();
-    cy.get('[data-cy="toolbar"]').find('[data-cy="rejectTag"]').click();
-    for (let i = 0; i < 5; i++)
-      cy.get(`[data-cy="${adminList[i].uid}"]`)
-        .find('[data-cy="rejectedTag"]')
-        .should("exist");
-  });
-
-  it("Input Not Exist Action", () => {
-    cy.get('[data-cy="toolbar"]').find("input").type("Meow");
-    cy.get('[data-cy="toolbar"]').find("form").submit();
-    cy.contains("No admin Available");
-  });
-
-  it("Search For The First Entry Action", () => {
-    cy.get('[data-cy="toolbar"]').find("input").type(adminList[0].name);
-    cy.get('[data-cy="toolbar"]').find("form").submit();
-    cy.get(`[data-cy="${adminList[0].uid}"]`).should("exist");
-  });
-  it("Reset Action", () => {
-    cy.get('[data-cy="toolbar"]').find("input").type(adminList[0].name);
-    cy.get('[data-cy="toolbar"]').find("form").submit();
-    cy.get('[data-cy="toolbar"]').find('[data-cy="resetTag"]').click();
-    adminList.forEach((admin) =>
-      cy.get(`[data-cy="${admin.uid}"]`).should("exist")
-    );
-  });
-  it("Delete First Five Action", () => {
-    for (let i = 0; i < 5; i++)
-      cy.get(`[data-cy="${adminList[i].uid}"]`)
-        .find('[data-cy="checkbox"]')
-        .click();
-    cy.get('[data-cy="toolbar"]').find('[data-cy="delete"]').click();
-    cy.get('[data-cy="confirmButton"]').click();
-    for (let i = 0; i < 5; i++)
-      cy.get(`[data-cy="${adminList[i].uid}"]`).should("not.exist");
   });
 });
