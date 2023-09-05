@@ -7,52 +7,52 @@ describe("Admin Actions", () => {
     cy.visit("/admin/admin");
   });
   it("Filter Default Color", () => {
-    cy.get('[data-cy="pendingFilter"]')
+    cy.get('[data-cy="pending_filter"]')
       .get("div")
       .should("have.class", "bg-hackathon-blue-100");
-    cy.get('[data-cy="pendingFilter"]')
+    cy.get('[data-cy="pending_filter"]')
       .get("div")
       .should("have.class", "text-white");
-    cy.get('[data-cy="rejectedFilter"]')
+    cy.get('[data-cy="rejected_filter"]')
       .get("div")
       .should("have.class", "bg-hackathon-blue-100");
-    cy.get('[data-cy="rejectedFilter"]')
+    cy.get('[data-cy="rejected_filter"]')
       .get("div")
       .should("have.class", "text-white");
-    cy.get('[data-cy="acceptedFilter"]')
+    cy.get('[data-cy="accepted_filter"]')
       .get("div")
       .should("have.class", "bg-hackathon-blue-100");
-    cy.get('[data-cy="acceptedFilter"]')
+    cy.get('[data-cy="accepted_filter"]')
       .get("div")
       .should("have.class", "text-white");
   });
 
   it("Filters Click Color", () => {
-    cy.get('[data-cy="pendingFilter"]').click();
-    cy.get('[data-cy="pendingFilter"]')
+    cy.get('[data-cy="pending_filter"]').click();
+    cy.get('[data-cy="pending_filter"]')
       .get("div")
       .should("have.class", "bg-white");
-    cy.get('[data-cy="pendingFilter"]')
+    cy.get('[data-cy="pending_filter"]')
       .get("div")
       .should("have.class", "text-hackathon-blue-100");
-    cy.get('[data-cy="rejectedFilter"]').click();
-    cy.get('[data-cy="rejectedFilter"]')
+    cy.get('[data-cy="rejected_filter"]').click();
+    cy.get('[data-cy="rejected_filter"]')
       .get("div")
       .should("have.class", "bg-white");
-    cy.get('[data-cy="rejectedFilter"]')
+    cy.get('[data-cy="rejected_filter"]')
       .get("div")
       .should("have.class", "text-hackathon-blue-100");
-    cy.get('[data-cy="acceptedFilter"]').click();
-    cy.get('[data-cy="acceptedFilter"]')
+    cy.get('[data-cy="accepted_filter"]').click();
+    cy.get('[data-cy="accepted_filter"]')
       .get("div")
       .should("have.class", "bg-white");
-    cy.get('[data-cy="acceptedFilter"]')
+    cy.get('[data-cy="accepted_filter"]')
       .get("div")
       .should("have.class", "text-hackathon-blue-100");
   });
 
   it("Pending Click Action", () => {
-    cy.get('[data-cy="pendingFilter"]').click();
+    cy.get('[data-cy="pending_filter"]').click();
     adminList.forEach((admin) => {
       if (admin.status === "pending")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
@@ -61,7 +61,7 @@ describe("Admin Actions", () => {
   });
 
   it("Rejected Click Action", () => {
-    cy.get('[data-cy="rejectedFilter"]').click();
+    cy.get('[data-cy="rejected_filter"]').click();
     adminList.forEach((admin) => {
       if (admin.status === "reject")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
@@ -70,7 +70,7 @@ describe("Admin Actions", () => {
   });
 
   it("Accepted Click Action", () => {
-    cy.get('[data-cy="acceptedFilter"]').click();
+    cy.get('[data-cy="accepted_filter"]').click();
     adminList.forEach((admin) => {
       if (admin.status === "accept")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
@@ -79,8 +79,8 @@ describe("Admin Actions", () => {
   });
 
   it("Pending Accepted Click Action", () => {
-    cy.get('[data-cy="acceptedFilter"]').click();
-    cy.get('[data-cy="pendingFilter"]').click();
+    cy.get('[data-cy="accepted_filter"]').click();
+    cy.get('[data-cy="pending_filter"]').click();
     adminList.forEach((admin) => {
       if (admin.status === "accept" || admin.status === "pending")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
@@ -89,8 +89,8 @@ describe("Admin Actions", () => {
   });
 
   it("Pending Rejected Click Action", () => {
-    cy.get('[data-cy="rejectedFilter"]').click();
-    cy.get('[data-cy="pendingFilter"]').click();
+    cy.get('[data-cy="rejected_filter"]').click();
+    cy.get('[data-cy="pending_filter"]').click();
     adminList.forEach((admin) => {
       if (admin.status === "reject" || admin.status === "pending")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
@@ -99,8 +99,8 @@ describe("Admin Actions", () => {
   });
 
   it("Accepted Rejected Click Action", () => {
-    cy.get('[data-cy="rejectedFilter"]').click();
-    cy.get('[data-cy="acceptedFilter"]').click();
+    cy.get('[data-cy="rejected_filter"]').click();
+    cy.get('[data-cy="accepted_filter"]').click();
     adminList.forEach((admin) => {
       if (admin.status === "reject" || admin.status === "accept")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");

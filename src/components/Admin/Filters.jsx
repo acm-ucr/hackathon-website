@@ -32,7 +32,7 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
           className="px-1"
           key={index}
           onClick={() => handleClick(filter)}
-          data-cy={filter + (filter.endsWith("t") ? "ed" : "") + "Filter"}
+          data-cy={filter + (filter.endsWith("t") ? "ed" : "") + "_filter"}
         >
           <div
             className={`rounded hover:opacity-70 duration-300 ${
