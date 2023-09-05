@@ -130,9 +130,9 @@ const Toolbar = ({
     .replace(/\s+/g, "_");
 
   return (
-    <div className="w-full flex items-center">
+    <div className="w-full flex items-center" data-cy="toolbar">
       <div className="w-2/3 flex items-center">
-        <div className="mr-4">
+        <div className="mr-4" data-cy="selectAll">
           <Checkbox onClick={selectAll} toggle={toggle} />
         </div>
         <div className="flex flex-row gap-2 ">
@@ -162,17 +162,11 @@ const Toolbar = ({
             />
           </button>
         </form>
-        <button
-          onClick={handleReset}
-          className={
-            "bg-hackathon-tags-gray-bg text-hackathon-tags-gray-text hover:shadow-[inset_0px_0px_0px_2px_#969696] px-2 rounded-full text-base w-fit hover:cursor-pointer"
-          }
-        >
-          Reset
-        </button>
+        <Tag text="reset" onClick={handleReset} color="gray" />
       </div>
       <div className="flex w-1/3">
         <button
+          data-cy="delete"
           onClick={() =>
             setPopup(
               "Are you sure you want to delete these row(s)? This action is irreversible."

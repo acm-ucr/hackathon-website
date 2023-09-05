@@ -28,7 +28,12 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
   return (
     <Row className="w-fit">
       {Object.entries(filters).map(([filter, value], index) => (
-        <Col className="px-1" key={index} onClick={() => handleClick(filter)}>
+        <Col
+          className="px-1"
+          key={index}
+          onClick={() => handleClick(filter)}
+          data-cy={filter + (filter.endsWith("t") ? "ed" : "") + "Filter"}
+        >
           <div
             className={`rounded hover:opacity-70 duration-300 ${
               value
