@@ -38,6 +38,9 @@ export const participantTags = [
   {
     text: "reject",
   },
+  {
+    text: "pending",
+  },
 ];
 
 export const teamTags = [
