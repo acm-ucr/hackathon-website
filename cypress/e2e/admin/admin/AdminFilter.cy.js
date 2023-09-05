@@ -1,5 +1,5 @@
 import { adminList } from "../../../../src/data/mock/admin";
-describe("Admin Actions", () => {
+describe("Admin Filter", () => {
   beforeEach(() => {
     cy.login("admin");
     cy.visit("/");
