@@ -17,6 +17,9 @@ export const adminTags = [
   {
     text: "reject",
   },
+  {
+    text: "pending",
+  },
 ];
 
 export const mentorTags = [
