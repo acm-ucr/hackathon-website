@@ -56,6 +56,9 @@ export const teamTags = [
   {
     text: "disqualify",
   },
+  {
+    text: "pending",
+  },
 ];
 
 export const volunteerTags = [
