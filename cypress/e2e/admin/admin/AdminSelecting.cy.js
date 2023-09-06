@@ -9,7 +9,7 @@ describe("Admin Selecting", () => {
   });
 
   it("Select All Click Action", () => {
-    cy.get('[data-cy="select_all"]').click();
+    cy.get('[data-cy="select-all"]').click();
     adminList.forEach((admin) => {
       cy.get(`[data-cy="${admin.uid}"]`).should("have.class", "bg-green-100");
     });

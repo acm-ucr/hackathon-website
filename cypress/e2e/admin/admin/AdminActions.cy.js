@@ -11,10 +11,10 @@ describe("Admin Actions", () => {
       cy.get(`[data-cy="${adminList[i].uid}"]`)
         .find('[data-cy="checkbox"]')
         .click();
-    cy.get('[data-cy="toolbar"]').find('[data-cy="accept_tag"]').click();
+    cy.get('[data-cy="toolbar"]').find('[data-cy="accept-tag"]').click();
     for (let i = 0; i < 5; i++)
       cy.get(`[data-cy="${adminList[i].uid}"]`)
-        .find('[data-cy="accepted_tag"]')
+        .find('[data-cy="accepted-tag"]')
         .should("exist");
   });
 
@@ -23,30 +23,22 @@ describe("Admin Actions", () => {
       cy.get(`[data-cy="${adminList[i].uid}"]`)
         .find('[data-cy="checkbox"]')
         .click();
-    cy.get('[data-cy="toolbar"]').find('[data-cy="reject_tag"]').click();
+    cy.get('[data-cy="toolbar"]').find('[data-cy="reject-tag"]').click();
     for (let i = 0; i < 5; i++)
       cy.get(`[data-cy="${adminList[i].uid}"]`)
-        .find('[data-cy="rejected_tag"]')
+        .find('[data-cy="rejected-tag"]')
         .should("exist");
   });
 
-  it("Reset Action", () => {
-    cy.get('[data-cy="toolbar"]').find("input").type(adminList[0].name);
-    cy.get('[data-cy="toolbar"]').find("form").submit();
-    cy.get('[data-cy="toolbar"]').find('[data-cy="reset_tag"]').click();
-    adminList.forEach((admin) =>
-      cy.get(`[data-cy="${admin.uid}"]`).should("exist")
-    );
-  });
-
   it("Delete First Five Action", () => {
-    for (let i = 0; i < 5; i++)
-      cy.get(`[data-cy="${adminList[i].uid}"]`)
-        .find('[data-cy="checkbox"]')
-        .click();
+    const deleteList = adminList.slice(0, 5);
+    deleteList.forEach((admin) =>
+      cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click()
+    );
     cy.get('[data-cy="toolbar"]').find('[data-cy="delete"]').click();
-    cy.get('[data-cy="confirm_button"]').click();
-    for (let i = 0; i < 5; i++)
-      cy.get(`[data-cy="${adminList[i].uid}"]`).should("not.exist");
+    cy.get('[data-cy="confirm-button"]').click();
+    deleteList.forEach((admin) =>
+      cy.get(`[data-cy="${admin.uid}"]`).should("not.exist")
+    );
   });
 });

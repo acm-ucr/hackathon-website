@@ -132,7 +132,7 @@ const Toolbar = ({
   return (
     <div className="w-full flex items-center" data-cy="toolbar">
       <div className="w-2/3 flex items-center">
-        <div className="mr-4" data-cy="select_all">
+        <div className="mr-4" data-cy="select-all">
           <Checkbox onClick={selectAll} toggle={toggle} />
         </div>
         <div className="flex flex-row gap-2 ">
