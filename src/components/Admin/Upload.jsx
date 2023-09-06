@@ -4,7 +4,7 @@ import { FaTimes } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import { Row, Col } from "react-bootstrap";
 
-import { bytes } from "@/data/bytes";
+import { bytes } from "@/data/Bytes";
 const getSize = (maxSize) => bytes[maxSize[1]] * maxSize[0];
 const getType = (types) => "." + types.join(",.");
 const displayFile = (file) =>
