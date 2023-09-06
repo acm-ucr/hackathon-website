@@ -99,7 +99,7 @@ export const UserTabs = {
       {
         name: "checkin",
         link: "/user/checkin",
-        icon: <BsPeopleFill className={iconStyle} />,
+        icon: <AiOutlineQrcode className={iconStyle} />,
       },
     ],
   },
