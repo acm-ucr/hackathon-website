@@ -24,13 +24,13 @@ export const adminTags = [
 
 export const mentorTags = [
   {
-    text: "onsite",
+    text: "pending",
+  },
+  {
+    text: "confirm",
   },
   {
     text: "not attending",
-  },
-  {
-    text: "online",
   },
 ];
 
