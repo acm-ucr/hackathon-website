@@ -1,4 +1,5 @@
 import { adminList } from "../../../../src/data/mock/Admin";
+
 const five = adminList.slice(0, 5);
 
 describe("Admin Actions", () => {
