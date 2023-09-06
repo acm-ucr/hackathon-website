@@ -36,13 +36,12 @@ describe("Admin Actions", () => {
   });
 
   it("Delete First 5 Entries", () => {
-    const deleteList = five.slice(0, 5);
-    deleteList.forEach((admin) =>
+    five.forEach((admin) =>
       cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click()
     );
     cy.get('[data-cy="toolbar"]').find('[data-cy="delete"]').click();
     cy.get('[data-cy="confirm-button"]').click();
-    deleteList.forEach((admin) =>
+    five.forEach((admin) =>
       cy.get(`[data-cy="${admin.uid}"]`).should("not.exist")
     );
   });
