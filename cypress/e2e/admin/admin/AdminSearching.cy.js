@@ -8,7 +8,7 @@ describe("Admin Searching", () => {
     cy.visit("/admin/admin");
   });
 
-    it("Input Not Exist Action", () => {
+  it("Input Not Exist Action", () => {
     cy.get('[data-cy="toolbar"]').find("input").type("Meow");
     cy.get('[data-cy="toolbar"]').find("form").submit();
     cy.contains("No admin Available");

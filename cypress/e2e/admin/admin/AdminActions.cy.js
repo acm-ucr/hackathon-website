@@ -38,7 +38,7 @@ describe("Admin Actions", () => {
       cy.get(`[data-cy="${admin.uid}"]`).should("exist")
     );
   });
-  
+
   it("Delete First Five Action", () => {
     for (let i = 0; i < 5; i++)
       cy.get(`[data-cy="${adminList[i].uid}"]`)
