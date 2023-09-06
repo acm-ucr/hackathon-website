@@ -7,6 +7,7 @@ describe("Admin Filter", () => {
     cy.wait("@session");
     cy.visit("/admin/admin");
   });
+
   it("Filter Default Color", () => {
     cy.get('[data-cy="pending_filter"]')
       .get("div")
