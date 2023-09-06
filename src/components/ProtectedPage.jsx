@@ -2,10 +2,12 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { useSession } from "next-auth/react";
+import Loading from "@/components/Loading";
 
 const ProtectedPage = ({ title, children, restrictions }) => {
   const router = useRouter();
   const { data: session, status } = useSession();
+
   useEffect(() => {
     if (status === "loading") return;
     if (status !== "authenticated") {
@@ -35,7 +37,7 @@ const ProtectedPage = ({ title, children, restrictions }) => {
 
   return (
     <>
-      {status === "loading" && <>LOADING</>}
+      {status === "loading" && <Loading />}
       {status === "authenticated" && (
         <div className="w-full flex justify-center h-full">
           <title>{title}</title>

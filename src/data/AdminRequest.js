@@ -7,6 +7,8 @@ export const affiliations = [
   "UIUX",
 ];
 
+export const position = ["lead", "committee"];
+
 export const requirement = {
   violation: {
     state: false,

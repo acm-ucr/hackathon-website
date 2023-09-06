@@ -28,7 +28,7 @@ export const AdminTabs = {
       },
       {
         name: "judges",
-        link: "/admin/judging",
+        link: "/admin/judges",
         icon: <FaGavel className={iconStyle} />,
       },
       {
@@ -99,7 +99,7 @@ export const UserTabs = {
       {
         name: "checkin",
         link: "/user/checkin",
-        icon: <BsPeopleFill className={iconStyle} />,
+        icon: <AiOutlineQrcode className={iconStyle} />,
       },
     ],
   },

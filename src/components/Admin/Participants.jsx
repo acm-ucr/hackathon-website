@@ -5,7 +5,7 @@ import Filters from "@/components/Admin/Filters";
 import Toolbar from "@/components/Admin/Toolbar";
 import Title from "./Title";
 import Table from "./Table";
-import { participantList } from "@/data/mock/participants";
+import { participantList } from "@/data/mock/Participants";
 import { participantFilters } from "@/data/Filters";
 import { participantHeader } from "@/data/Headers";
 import { participantTags } from "@/data/Tags";
@@ -15,7 +15,6 @@ const Participants = () => {
   const [input, setInput] = useState("");
   const [filters, setFilters] = useState(participantFilters);
   const [headers, setHeaders] = useState(participantHeader);
-
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <div className="flex">
@@ -35,6 +34,8 @@ const Participants = () => {
         setObjects={setParticipants}
         objects={participants}
         filters={filters}
+        file="PARTICIPANTS"
+        headers={headers}
       />
       <Table
         headers={headers}
