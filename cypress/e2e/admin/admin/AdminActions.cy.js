@@ -6,7 +6,7 @@ describe("Admin Actions", () => {
     cy.wait("@session");
     cy.visit("/admin/admin");
   });
-  it("Accept First Five Entries Action", () => {
+  it("Accept First Five Entries", () => {
     for (let i = 0; i < 5; i++)
       cy.get(`[data-cy="${adminList[i].uid}"]`)
         .find('[data-cy="checkbox"]')
