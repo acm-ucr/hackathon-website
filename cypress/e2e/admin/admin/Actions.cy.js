@@ -1,5 +1,5 @@
 import { adminList } from "../../../../src/data/mock/Admin";
-const first5Admin = adminList.slice(0, 5);
+const five = adminList.slice(0, 5);
 describe("Admin Actions", () => {
   beforeEach(() => {
     cy.login("admin");
@@ -9,12 +9,12 @@ describe("Admin Actions", () => {
   });
 
   it("Accept First 5 Entries", () => {
-    first5Admin.forEach((admin) =>
+    five.forEach((admin) =>
       cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click()
     );
 
     cy.get('[data-cy="toolbar"]').find('[data-cy="accept-tag"]').click();
-    first5Admin.forEach((admin) =>
+    five.forEach((admin) =>
       cy
         .get(`[data-cy="${admin.uid}"]`)
         .find('[data-cy="accepted-tag"]')
@@ -23,11 +23,11 @@ describe("Admin Actions", () => {
   });
 
   it("Reject First 5 Entries", () => {
-    first5Admin.forEach((admin) =>
+    five.forEach((admin) =>
       cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click()
     );
     cy.get('[data-cy="toolbar"]').find('[data-cy="reject-tag"]').click();
-    first5Admin.forEach((admin) =>
+    five.forEach((admin) =>
       cy
         .get(`[data-cy="${admin.uid}"]`)
         .find('[data-cy="rejected-tag"]')
@@ -36,7 +36,7 @@ describe("Admin Actions", () => {
   });
 
   it("Delete First 5 Entries", () => {
-    const deleteList = first5Admin.slice(0, 5);
+    const deleteList = five.slice(0, 5);
     deleteList.forEach((admin) =>
       cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click()
     );
