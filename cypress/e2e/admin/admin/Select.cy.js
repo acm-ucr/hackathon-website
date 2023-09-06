@@ -19,10 +19,7 @@ describe("Admin Select", () => {
     adminList
       .slice(0, 5)
       .map((admin) =>
-        cy
-          .get(`[data-cy="${adminList[i].uid}"]`)
-          .find('[data-cy="checkbox"]')
-          .click()
+        cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click()
       );
     adminList.forEach((admin, index) => {
       if (index < 5)
