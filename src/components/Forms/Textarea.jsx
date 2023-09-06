@@ -37,6 +37,7 @@ const Textarea = ({
         name={name}
         placeholder={placeholder}
         value={value}
+        style={{ resize: "none", height: "50px" }}
         onChange={(e) => setUser({ ...user, [name]: e.target.value })}
       />
     </div>
