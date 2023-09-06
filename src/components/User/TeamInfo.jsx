@@ -1,8 +1,17 @@
 import Input from "../Input";
 
-const TeamInfo = ({ user, team }) => {
+const TeamInfo = ({ user, team, setUser }) => {
   return user ? (
     <div>
+      <Input
+        name="team"
+        type="text"
+        title="Team Name"
+        value={user.team}
+        user={user}
+        setUser={setUser}
+        editable={true}
+      />
       <Input
         name="github"
         type="text"
@@ -21,11 +30,10 @@ const TeamInfo = ({ user, team }) => {
       />
 
       <div>
-        {team.map((member, memberIndex) => (
-          <div key={memberIndex}>
-            <p>TEAM MEMBER {memberIndex + 1}</p>
-            <p>{member.members[memberIndex]}</p>
-          </div>
+        {team.members.map((member, index) => (
+          <p className="m-0" key={index}>
+            {member}
+          </p>
         ))}
       </div>
     </div>
