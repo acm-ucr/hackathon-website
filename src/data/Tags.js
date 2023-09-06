@@ -17,6 +17,9 @@ export const adminTags = [
   {
     text: "reject",
   },
+  {
+    text: "pending",
+  },
 ];
 
 export const mentorTags = [
@@ -37,6 +40,9 @@ export const participantTags = [
   },
   {
     text: "reject",
+  },
+  {
+    text: "pending",
   },
 ];
 

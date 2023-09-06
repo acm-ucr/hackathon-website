@@ -48,7 +48,13 @@ const Dashboard = () => {
         </div>
         <div className="text-right">
           <p className="text-xl font-bold mb-0">Status</p>
-          <Tag color="yellow" text="pending" />
+          <Tag
+            color={{
+              text: "text-hackathon-tags-yellow-text",
+              background: "bg-hackathon-tags-yellow-bg",
+            }}
+            text="pending"
+          />
         </div>
       </div>
       <Row>
