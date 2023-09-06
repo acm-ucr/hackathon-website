@@ -169,7 +169,7 @@ export const participantList = [
     team: "Citrus",
     major: "Environmental Engineering",
     status: "reject",
-    selected: true,
+    selected: false,
     hidden: false,
     dropdown: true,
   },
