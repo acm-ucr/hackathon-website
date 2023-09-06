@@ -1,6 +1,6 @@
 import { adminList } from "../../../../src/data/mock/Admin";
 
-describe("Admin Selecting", () => {
+describe("Admin Select", () => {
   beforeEach(() => {
     cy.login("admin");
     cy.visit("/");
@@ -8,7 +8,7 @@ describe("Admin Selecting", () => {
     cy.visit("/admin/admin");
   });
 
-  it("Select All Click Action", () => {
+  it("Select All", () => {
     cy.get('[data-cy="select-all"]').click();
     adminList.forEach((admin) => {
       cy.get(`[data-cy="${admin.uid}"]`).should("have.class", "bg-green-100");

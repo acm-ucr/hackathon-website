@@ -1,6 +1,6 @@
 import { adminList } from "../../../../src/data/mock/Admin";
 
-describe("Admin Filter", () => {
+describe("Admin Filters", () => {
   beforeEach(() => {
     cy.login("admin");
     cy.visit("/");
@@ -8,7 +8,7 @@ describe("Admin Filter", () => {
     cy.visit("/admin/admin");
   });
 
-  it("Filter Default Color", () => {
+  it("Default Filters", () => {
     cy.get('[data-cy="pending-filter"]')
       .get("div")
       .should("have.class", "bg-hackathon-blue-100");
@@ -29,7 +29,7 @@ describe("Admin Filter", () => {
       .should("have.class", "text-white");
   });
 
-  it("Filters Click Color", () => {
+  it("Click Filters", () => {
     cy.get('[data-cy="pending-filter"]').click();
     cy.get('[data-cy="pending-filter"]')
       .get("div")
@@ -53,7 +53,7 @@ describe("Admin Filter", () => {
       .should("have.class", "text-hackathon-blue-100");
   });
 
-  it("Pending Click Action", () => {
+  it("Click Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
     adminList.forEach((admin) => {
       if (admin.status === "pending")
@@ -62,7 +62,7 @@ describe("Admin Filter", () => {
     });
   });
 
-  it("Rejected Click Action", () => {
+  it("Click Rejected", () => {
     cy.get('[data-cy="rejected-filter"]').click();
     adminList.forEach((admin) => {
       if (admin.status === "reject")
@@ -71,7 +71,7 @@ describe("Admin Filter", () => {
     });
   });
 
-  it("Accepted Click Action", () => {
+  it("Click Accepted", () => {
     cy.get('[data-cy="accepted-filter"]').click();
     adminList.forEach((admin) => {
       if (admin.status === "accept")
@@ -80,7 +80,7 @@ describe("Admin Filter", () => {
     });
   });
 
-  it("Pending Accepted Click Action", () => {
+  it("Click Pending and Accepted", () => {
     cy.get('[data-cy="accepted-filter"]').click();
     cy.get('[data-cy="pending-filter"]').click();
     adminList.forEach((admin) => {
@@ -90,7 +90,7 @@ describe("Admin Filter", () => {
     });
   });
 
-  it("Pending Rejected Click Action", () => {
+  it("Click Pending and Rejected", () => {
     cy.get('[data-cy="rejected-filter"]').click();
     cy.get('[data-cy="pending-filter"]').click();
     adminList.forEach((admin) => {
@@ -100,7 +100,7 @@ describe("Admin Filter", () => {
     });
   });
 
-  it("Accepted Rejected Click Action", () => {
+  it("Click Accepted and Rejected", () => {
     cy.get('[data-cy="rejected-filter"]').click();
     cy.get('[data-cy="accepted-filter"]').click();
     adminList.forEach((admin) => {

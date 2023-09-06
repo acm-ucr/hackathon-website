@@ -1,6 +1,6 @@
 import { adminList } from "../../../../src/data/mock/Admin";
 
-describe("Admin Searching", () => {
+describe("Admin Search", () => {
   beforeEach(() => {
     cy.login("admin");
     cy.visit("/");
@@ -8,13 +8,13 @@ describe("Admin Searching", () => {
     cy.visit("/admin/admin");
   });
 
-  it("Input Not Exist Action", () => {
+  it("No Search Results", () => {
     cy.get('[data-cy="toolbar"]').find("input").type("Meow");
     cy.get('[data-cy="toolbar"]').find("form").submit();
     cy.contains("No admin Available");
   });
 
-  it("Search For The First Entry Action", () => {
+  it("Search For First Entry", () => {
     cy.get('[data-cy="toolbar"]').find("input").type(adminList[0].name);
     cy.get('[data-cy="toolbar"]').find("form").submit();
     cy.get(`[data-cy="${adminList[0].uid}"]`).should("exist");

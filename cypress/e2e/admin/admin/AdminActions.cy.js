@@ -18,7 +18,7 @@ describe("Admin Actions", () => {
         .should("exist");
   });
 
-  it("Reject First Five Entries Action", () => {
+  it("Reject First Five Entries", () => {
     for (let i = 0; i < 5; i++)
       cy.get(`[data-cy="${adminList[i].uid}"]`)
         .find('[data-cy="checkbox"]')
@@ -30,7 +30,7 @@ describe("Admin Actions", () => {
         .should("exist");
   });
 
-  it("Delete First Five Action", () => {
+  it("Delete First Five", () => {
     const deleteList = adminList.slice(0, 5);
     deleteList.forEach((admin) =>
       cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click()
