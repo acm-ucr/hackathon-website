@@ -1,4 +1,4 @@
-import { adminList } from "../../../../src/data/mock/admin";
+import { adminList } from "../../../../src/data/mock/Admin";
 
 describe("Admin Filter", () => {
   beforeEach(() => {
