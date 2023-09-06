@@ -15,7 +15,7 @@ describe("Admin Select", () => {
     });
   });
 
-  it("Select First Five Entries", () => {
+  it("Select First 5 Entries", () => {
     for (let i = 0; i < 5; i++)
       cy.get(`[data-cy="${adminList[i].uid}"]`)
         .find('[data-cy="checkbox"]')

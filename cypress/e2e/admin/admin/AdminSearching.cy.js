@@ -14,7 +14,7 @@ describe("Admin Search", () => {
     cy.contains("No admin Available");
   });
 
-  it("Search For First Entry", () => {
+  it("Search For 1st Entry", () => {
     cy.get('[data-cy="toolbar"]').find("input").type(adminList[0].name);
     cy.get('[data-cy="toolbar"]').find("form").submit();
     cy.get(`[data-cy="${adminList[0].uid}"]`).should("exist");
