@@ -24,8 +24,8 @@ export const teamFilters = {
 };
 
 export const volunteerFilters = {
-  online: true,
-  onsite: true,
+  confirm: true,
+  pending: true,
   "not attending": true,
 };
 

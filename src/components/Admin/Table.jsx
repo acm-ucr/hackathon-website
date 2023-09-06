@@ -5,21 +5,54 @@ import Row from "react-bootstrap/Row";
 import Accordion from "react-bootstrap/Accordion";
 import Checkbox from "../Checkbox";
 import Tag from "./Tag";
-import { IoIosArrowDown } from "react-icons/io";
+import {
+  IoIosArrowDown,
+  IoIosMail,
+  IoIosRose,
+  IoIosShirt,
+  IoIosSchool,
+} from "react-icons/io";
 import AccordionContext from "react-bootstrap/AccordionContext";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { useContext } from "react";
 import { SiGithub, SiDevpost } from "react-icons/si";
 import Link from "next/link";
 import { colors } from "@/data/Tags";
-import { IoIosRose } from "react-icons/io";
-import { FaCrown } from "react-icons/fa";
+import {
+  FaAppleAlt,
+  FaPhoneAlt,
+  FaCrown,
+  FaSchool,
+  FaVenusMars,
+  FaBirthdayCake,
+  FaBook,
+} from "react-icons/fa";
 const icons = {
   github: <SiGithub className="mr-2" />,
   devpost: <SiDevpost className="mr-2" />,
   lead: <IoIosRose className="ml-1 text-hackathon-blue-200 text-lg" />,
   winner: <FaCrown className="ml-1 text-hackathon-yellow-100 text-lg" />,
+  phone: <FaPhoneAlt className="text-hackathon-blue-200 mr-2" />,
+  email: <IoIosMail className="text-hackathon-blue-200 mr-2 text-lg" />,
+  size: <IoIosShirt className="text-hackathon-blue-200 mr-2 text-lg" />,
+  restriction: <FaAppleAlt className="text-hackathon-blue-200 mr-2" />,
+  age: <FaBirthdayCake className="text-hackathon-blue-200 mr-2 text-lg" />,
+  gender: <FaVenusMars className="text-hackathon-blue-200 mr-2 text-lg" />,
+  grade: <IoIosSchool className="text-hackathon-blue-200 mr-2 text-lg" />,
+  major: <FaBook className="text-hackathon-blue-200 mr-2 text-lg" />,
+  school: <FaSchool className="text-hackathon-blue-200 mr-2 text-lg" />,
 };
+const iconInfos = [
+  "email",
+  "phone",
+  "age",
+  "gender",
+  "school",
+  "major",
+  "grade",
+  "size",
+  "restriction",
+];
 const Toggle = ({ eventKey }) => {
   const { activeEventKey } = useContext(AccordionContext);
 
@@ -91,8 +124,8 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                     toggle={object.selected}
                   />
                 </Col>
-                {headers.map((header, index) => {
-                  return (
+                {headers.map(
+                  (header, index) =>
                     header.text !== "" && (
                       <Col
                         key={index}
@@ -106,9 +139,17 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                             text={
                               object[header.text].includes("https://")
                                 ? "view"
-                                : object[header.text]
+                                : object[header.text] +
+                                  (object[header.text] === "accept" ||
+                                  object[header.text] === "reject"
+                                    ? "ed"
+                                    : "")
                             }
-                            color={colors[object[header.text]]}
+                            color={
+                              object[header.text].includes("https://")
+                                ? colors["view"]
+                                : colors[object[header.text]]
+                            }
                             onClick={
                               header.onClick
                                 ? () => header.onClick(object)
@@ -135,7 +176,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                                   className="flex items-center m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-sm"
                                 >
                                   {icons[element.name]}
-                                  {element.link}
+                                  {element.link.replace("https://", "")}
                                 </Link>
                               ) : (
                                 element
@@ -154,8 +195,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                           )}
                       </Col>
                     )
-                  );
-                })}
+                )}
 
                 {object.dropdown && (
                   <Col className="p-0 m-0 flex justify-center" xs>
@@ -165,17 +205,25 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                 {object.dropdown && (
                   <Col className="p-0" xs={12}>
                     <Accordion.Collapse eventKey={index}>
-                      <p className="mt-2 mb-1">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat. Duis aute irure dolor in
-                        reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit
-                        anim id est laborum.
-                      </p>
+                      <Row className="pl-[8%] pt-2">
+                        <div className="flex flex-wrap">
+                          {iconInfos.map((iconInfo, index) => (
+                            <div
+                              key={index}
+                              className="items-center my-1 px-1 flex text-sm min-w-fit w-1/4"
+                            >
+                              {icons[iconInfo]}
+                              {Array.isArray(object[iconInfo])
+                                ? object[iconInfo].map((element, index) => (
+                                    <div key={index}>
+                                      {element} &#x2c;&nbsp;
+                                    </div>
+                                  ))
+                                : object[iconInfo]}
+                            </div>
+                          ))}
+                        </div>
+                      </Row>
                     </Accordion.Collapse>
                   </Col>
                 )}

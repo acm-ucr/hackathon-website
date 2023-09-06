@@ -2,7 +2,14 @@
 
 import { useState } from "react";
 import User from "../../data/User";
-import { Ages, Majors, Grades, Genders, Shirts } from "../../data/Register";
+import {
+  Ages,
+  Majors,
+  Grades,
+  Genders,
+  Shirts,
+  DietRestrictions,
+} from "../../data/Register";
 import { Schools } from "../../data/Schools";
 import Select from "@/components/Select";
 import Radio from "@/components/Radio";
@@ -12,20 +19,20 @@ import Input from "../Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "./Button";
+import { Requirements } from "../../data/Register";
 
 const Register = () => {
   const [user, setUser] = useState(User);
+  const [dietaryRestrictions, setDietRestrictions] = useState(DietRestrictions);
 
-  const [requirements, setRequirements] = useState({
-    photography: {
-      state: false,
-      text: "I agree to photograph.",
-    },
-    inPerson: {
-      state: false,
-      text: "I understand that I will attend the event in person.",
-    },
-  });
+  const [requirements, setRequirements] = useState(Requirements);
+
+  const handleDietRestrictions = (key, value) => {
+    setDietRestrictions({
+      ...dietaryRestrictions,
+      [key]: { state: !value.state, text: value.text },
+    });
+  };
 
   const handleSubmit = () => {
     console.log(user);
@@ -147,6 +154,19 @@ const Register = () => {
               user={user}
               setUser={setUser}
             />
+          </Col>
+          <Col>
+            Dietary Restrictions
+            {Object.entries(dietaryRestrictions).map(([key, value], i) => (
+              <Checkbox
+                className="w-1/2"
+                key={i}
+                toggle={value.state}
+                text={value.text}
+                onClick={() => handleDietRestrictions(key, value)}
+                color="bg-hackathon-green-300"
+              />
+            ))}
           </Col>
           <Col xl={12}>
             <Upload
