@@ -5,7 +5,7 @@ import Filters from "@/components/Admin/Filters";
 import Toolbar from "@/components/Admin/Toolbar";
 import Title from "./Title";
 import Table from "./Table";
-import { teamList } from "@/data/mock/teams";
+import { teamList } from "@/data/mock/Teams.js";
 import { teamFilters } from "@/data/Filters";
 import { teamTags } from "@/data/Tags";
 import { teamHeaders } from "@/data/Headers";
