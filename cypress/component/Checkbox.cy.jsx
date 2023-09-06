@@ -1,8 +1,8 @@
 import Checkbox from "@/components/Checkbox";
 import { mount } from "cypress-react-unit-test";
 
-describe("Checkbox Component Test", () => {
-  it("toggle off", () => {
+describe("Checkbox", () => {
+  it("Toggle OFF", () => {
     const toggle = false;
 
     mount(<Checkbox toggle={toggle} />);
