@@ -9,7 +9,7 @@ import Select from "../Select";
 import { Schools } from "@/data/Schools";
 import Radio from "../Radio";
 import Input from "../Input";
-import { teamList } from "@/data/mock/teams";
+import { teamList } from "@/data/mock/Teams";
 import { FaPencil, FaCheck } from "react-icons/fa6";
 import TeamInfo from "./TeamInfo";
 
