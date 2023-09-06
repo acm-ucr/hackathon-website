@@ -1,7 +1,7 @@
 import Input from "../Input";
 
 const TeamInfo = ({ user, team, setUser }) => {
-  return user ? (
+  return (
     <div>
       <Input
         name="team"
@@ -37,8 +37,6 @@ const TeamInfo = ({ user, team, setUser }) => {
         ))}
       </div>
     </div>
-  ) : (
-    <p className="w-full text-center">No info</p>
   );
 };
 
