@@ -181,7 +181,7 @@ const Toolbar = ({
         >
           <FaTrashAlt
             size={22.5}
-            className="ml-5 text-hackathon-darkgray hover:opacity-70 duration-150"
+            className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150"
           />
         </button>
         {popup && (
@@ -203,28 +203,6 @@ const Toolbar = ({
           size={22.5}
           className="ml-4 text-hackathon-gray-300 hover:opacity-70 duration-150"
         />
-
-        <button
-          onClick={() =>
-            setPopup(
-              "Are you sure you want to delete these row(s)? This action is irreversible."
-            )
-          }
-        >
-          <FaTrashAlt
-            size={22.5}
-            className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150"
-          />
-        </button>
-        {popup && (
-          <Popup
-            buttonColor="red"
-            text={popup}
-            callBack={handleDelete}
-            setText={setPopup}
-            title="Delete Confirmation"
-          />
-        )}
       </CSVLink>
     </div>
   );
