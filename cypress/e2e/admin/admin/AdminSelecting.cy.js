@@ -13,7 +13,8 @@ describe("Admin Selecting", () => {
       cy.get(`[data-cy="${admin.uid}"]`).should("have.class", "bg-green-100");
     });
   });
-  it("Select First Five Entries Action", () => {
+
+ it("Select First Five Entries Action", () => {
     for (let i = 0; i < 5; i++)
       cy.get(`[data-cy="${adminList[i].uid}"]`)
         .find('[data-cy="checkbox"]')
