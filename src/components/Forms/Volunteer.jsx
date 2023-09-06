@@ -9,6 +9,7 @@ import Input from "@/components/Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "@/components/Forms/Button";
+import toast from "react-hot-toast";
 import { Helper } from "@/data/User";
 import { Description, Requirements } from "@/data/Volunteers";
 
@@ -18,6 +19,48 @@ const Volunteer = () => {
   const [requirements, setRequirements] = useState(Requirements);
 
   const handleSubmit = () => {
+    if (volunteer.first === "") {
+      toast("❌ Please include your first name!");
+      return;
+    }
+    if (volunteer.last === "") {
+      toast("❌ Please include last name!");
+      return;
+    }
+    if (volunteer.email == "") {
+      toast("❌ Please include your email!");
+      return;
+    }
+    if (volunteer.phone == "") {
+      toast("❌ Please include your phone number!");
+      return;
+    }
+    if (volunteer.major == "") {
+      toast("❌ Please include major!");
+      return;
+    }
+    if (volunteer.availability == null) {
+      toast("❌ Please select your availability!");
+      return;
+    }
+    if (volunteer.shirt == "") {
+      toast("❌ Please include shirt size!");
+      return;
+    }
+    if (volunteer.grade == "") {
+      toast("❌ Please complete all fields!");
+      return;
+    }
+    if (requirements.inPerson.state == false) {
+      toast("❌ Please check all fields!");
+      return;
+    }
+    if (requirements.photography.state == false) {
+      toast("❌ Please check all fields!");
+      return;
+    }
+    toast(`✅ Submitted successfully!`);
+
     console.log(volunteer);
     console.log(requirements);
   };
