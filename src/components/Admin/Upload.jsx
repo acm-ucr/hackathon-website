@@ -4,7 +4,7 @@ import { FaTimes } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import { Row, Col } from "react-bootstrap";
 
-import { bytes } from "@/data/bytes";
+import { bytes } from "@/data/Bytes";
 const getSize = (maxSize) => bytes[maxSize[1]] * maxSize[0];
 const getType = (types) => "." + types.join(",.");
 const displayFile = (file) =>
@@ -46,13 +46,13 @@ const Upload = ({ text, setObjects, objects, size, types }) => {
           {objects?.files.map((file, index) => (
             <Col
               key={index}
-              className="flex items-center bg-hackathon-gray px-2 py-1 mb-1 mr-1 !max-w-fit p-0"
+              className="flex items-center bg-hackathon-gray-100 px-2 py-1 mb-1 mr-1 !max-w-fit p-0"
             >
               <p className="text-sm m-0 whitespace-nowrap text-gray-500 font-semibold ">
                 {displayFile(file)}
               </p>
               <FaTimes
-                className="text-hackathon-darkgray text-sm ml-2 hover:cursor-pointer hover:text-red-600"
+                className="text-hackathon-gray-300 text-sm ml-2 hover:cursor-pointer hover:text-red-600"
                 onClick={() => {
                   setObjects({
                     ...objects,
