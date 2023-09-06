@@ -10,6 +10,7 @@ import { Schools } from "@/data/Schools";
 import Radio from "../Radio";
 import Input from "../Input";
 import { FaPencil, FaCheck } from "react-icons/fa6";
+import Title from "../Admin/Title.jsx";
 
 const Dashboard = () => {
   const [user, setUser] = useState({
@@ -32,6 +33,7 @@ const Dashboard = () => {
   return (
     <div className="w-full">
       <div className="flex justify-between items-center">
+        <Title title="Dash Board" />
         <div className="flex items-center">
           <ProfileHeader email="hello" name="hello" />
           {edit ? (
