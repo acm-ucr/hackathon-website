@@ -1,6 +1,6 @@
 import { participantList } from "../../../../src/data/mock/Participants";
 
-describe("Participants Searching", () => {
+describe("Participants Search", () => {
   beforeEach(() => {
     cy.login("admin");
     cy.visit("/");
