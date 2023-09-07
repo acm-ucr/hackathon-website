@@ -1,6 +1,6 @@
 import { teamList } from "../../../../src/data/mock/Teams";
 
-const firstFive = teamList.slice(0, 5);
+const five = teamList.slice(0, 5);
 
 describe("Teams Actions", () => {
   beforeEach(() => {
@@ -11,12 +11,12 @@ describe("Teams Actions", () => {
   });
 
   it("Qualify First Five Entries", () => {
-    firstFive.forEach((team) =>
+    five.forEach((team) =>
       cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
     );
     cy.get('[data-cy="toolbar"]').find('[data-cy="qualify-tag"]').click();
 
-    firstFive.forEach((team) =>
+    five.forEach((team) =>
       cy
         .get(`[data-cy="${team.uid}"]`)
         .find('[data-cy="qualify-tag"]')
@@ -25,12 +25,12 @@ describe("Teams Actions", () => {
   });
 
   it("Disqualify First Five Entries", () => {
-    firstFive.forEach((team) =>
+    five.forEach((team) =>
       cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
     );
     cy.get('[data-cy="toolbar"]').find('[data-cy="disqualify-tag"]').click();
 
-    firstFive.forEach((team) =>
+    five.forEach((team) =>
       cy
         .get(`[data-cy="${team.uid}"]`)
         .find('[data-cy="disqualify-tag"]')
@@ -39,12 +39,12 @@ describe("Teams Actions", () => {
   });
 
   it("Win First Five Entries", () => {
-    firstFive.forEach((team) =>
+    five.forEach((team) =>
       cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
     );
     cy.get('[data-cy="toolbar"]').find('[data-cy="winner-tag"]').click();
 
-    firstFive.forEach((team) =>
+    five.forEach((team) =>
       cy
         .get(`[data-cy="${team.uid}"]`)
         .find('[data-cy="winner-tag"]')
@@ -53,12 +53,12 @@ describe("Teams Actions", () => {
   });
 
   it("Pending First Five Entries", () => {
-    firstFive.forEach((team) =>
+    five.forEach((team) =>
       cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
     );
     cy.get('[data-cy="toolbar"]').find('[data-cy="pending-tag"]').click();
 
-    firstFive.forEach((team) =>
+    five.forEach((team) =>
       cy
         .get(`[data-cy="${team.uid}"]`)
         .find('[data-cy="pending-tag"]')
@@ -67,13 +67,13 @@ describe("Teams Actions", () => {
   });
 
   it("Delete First Five Entries", () => {
-    firstFive.forEach((team) =>
+    five.forEach((team) =>
       cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
     );
     cy.get('[data-cy="toolbar"]').find('[data-cy="delete"]').click();
     cy.get('[data-cy="confirm-button"]').click();
 
-    firstFive.forEach((team) =>
+    five.forEach((team) =>
       cy.get(`[data-cy="${team.uid}"]`).should("not.exist")
     );
   });
