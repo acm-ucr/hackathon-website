@@ -8,6 +8,7 @@ import { teamList } from "@/data/mock/Teams";
 import TeamInfo from "./TeamInfo";
 import UserInfo from "./UserInfo";
 import { mockUser } from "@/data/mock/User";
+import Title from "../Admin/Title.jsx";
 
 const Dashboard = () => {
   const [user, setUser] = useState(mockUser);
@@ -22,6 +23,7 @@ const Dashboard = () => {
 
   return (
     <div className="w-full">
+      <Title title="Dashboard" />
       <div className="flex justify-between items-center">
         <ProfileHeader email="hello" name="hello" />
         <div className="text-right">
