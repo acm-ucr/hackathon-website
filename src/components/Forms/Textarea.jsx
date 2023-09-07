@@ -32,7 +32,7 @@ const Textarea = ({
       )}
       <textarea
         disabled={editable && !edit}
-        className="pl-3 w-full focus:outline-none placeholder:text-hackathon-placeholder"
+        className="pl-3 w-full focus:outline-none placeholder:text-hackathon-gray-200"
         type={type}
         name={name}
         placeholder={placeholder}
