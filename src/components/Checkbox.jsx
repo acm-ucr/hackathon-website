@@ -7,6 +7,7 @@ const Checkbox = ({ toggle, onClick = () => {}, text = "", color }) => {
         text === "" ? "" : "mt-3"
       }`}
       onClick={onClick}
+      data-cy="checkbox"
     >
       <div
         data-cy="checkbox"
