@@ -3,15 +3,13 @@ import { FaLocationDot } from "react-icons/fa6";
 import { BsPersonFill } from "react-icons/bs";
 import Tag from "../Tag";
 import { labels } from "@/data/Calendar";
+import { colors } from "@/data/Tags";
 
 const CalendarModal = ({ event, setEvent }) => {
   return (
     <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-10 w-1/2 rounded-xl">
       <div
-        className={`flex justify-between items-center p-3 rounded-t-xl ${event.color.replace(
-          "!",
-          ""
-        )}`}
+        className={`flex justify-between items-center p-3 rounded-t-xl bg-hackathon-red-200 ${event.color}`}
       >
         <span className="text-3xl text-white font-bold">{event.summary}</span>
         <FaTimes
@@ -43,9 +41,14 @@ const CalendarModal = ({ event, setEvent }) => {
             <Tag
               text={event.description.split("\n")[1].split(": ")[1]}
               color={
-                labels[
-                  event.description.split("\n")[1].split(": ")[1].toLowerCase()
-                ].color
+                colors[
+                  labels[
+                    event.description
+                      .split("\n")[1]
+                      .split(": ")[1]
+                      .toLowerCase()
+                  ].color
+                ]
               }
             />
           </div>
