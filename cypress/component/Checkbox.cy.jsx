@@ -1,8 +1,9 @@
 import Checkbox from "@/components/Checkbox";
 import { mount } from "cypress-react-unit-test";
+import { useState } from "react";
 
-describe("Checkbox Component Test", () => {
-  it("toggle off", () => {
+describe("Checkbox", () => {
+  it("Toggle OFF", () => {
     const toggle = false;
 
     mount(<Checkbox toggle={toggle} />);
@@ -13,14 +14,18 @@ describe("Checkbox Component Test", () => {
     cy.get('[data-cy="checkbox"]').should("have.class", "bg-hackathon-gray");
   });
 
-  it("toggle on", () => {
-    let toggle = false;
+  it("Toggle ON", () => {
+    const Parent = () => {
+      const [toggle, setToggle] = useState(false);
 
-    const onClick = () => {
-      toggle = !toggle;
+      const onClick = () => {
+        setToggle(!toggle);
+      };
+
+      return <Checkbox toggle={toggle} onClick={onClick} />;
     };
 
-    mount(<Checkbox toggle={toggle} onClick={onClick} />);
+    mount(<Parent />);
 
     cy.get('[data-cy="checkbox"]').click();
     cy.get('[data-cy="checkbox"]').should(
