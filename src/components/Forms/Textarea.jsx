@@ -32,12 +32,11 @@ const Textarea = ({
       )}
       <textarea
         disabled={editable && !edit}
-        className="pl-3 w-full focus:outline-none placeholder:text-hackathon-placeholder"
+        className="pl-3 w-full focus:outline-none placeholder:text-hackathon-gray-200 resize-none"
         type={type}
         name={name}
         placeholder={placeholder}
         value={value}
-        style={{ resize: "none", height: "50px" }}
         onChange={(e) => setUser({ ...user, [name]: e.target.value })}
       />
     </div>

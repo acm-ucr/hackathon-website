@@ -11,8 +11,8 @@ describe("Textarea", () => {
     };
 
     cy.mount(<Parent />);
-    cy.get(".textarea").type("John Doe");
-    cy.get(".textarea").contains("John Doe");
+    cy.get('[data-cy="name-textarea"]').type("John Doe");
+    cy.get('[data-cy="name-textarea"]').contains("John Doe");
   });
 
   it("Clear", () => {
@@ -24,9 +24,9 @@ describe("Textarea", () => {
     };
 
     cy.mount(<Parent />);
-    cy.get(".textarea").type("John Doe");
-    cy.get(".textarea").clear();
-    cy.get(".textarea").should("be.empty");
+    cy.get('[data-cy="name-textarea"]').type("John Doe");
+    cy.get('[data-cy="name-textarea"]').clear();
+    cy.get('[data-cy="name-textarea"]').should("be.empty");
   });
 
   it("Backspace", () => {
@@ -38,8 +38,8 @@ describe("Textarea", () => {
     };
 
     cy.mount(<Parent />);
-    cy.get(".textarea").type("John Doe");
-    cy.get(".textarea").type("{backspace}");
-    cy.get(".textarea").contains("John Do");
+    cy.get('[data-cy="name-textarea"]').type("John Doe");
+    cy.get('[data-cy="name-textarea"]').type("{backspace}");
+    cy.get('[data-cy="name-textarea"]').contains("John Do");
   });
 });
