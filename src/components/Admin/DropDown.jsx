@@ -14,6 +14,7 @@ const Toggle = ({ option, onClick, show }) => {
   );
 };
 const Menu = ({ setOption, className, setOptions, options }) => {
+  const [value, setValue] = useState("");
   const handleInput = (e) => {
     setValue(e.target.value);
     setOptions(
@@ -25,7 +26,6 @@ const Menu = ({ setOption, className, setOptions, options }) => {
       }))
     );
   };
-  const [value, setValue] = useState("");
   return (
     <div className={className}>
       <input
