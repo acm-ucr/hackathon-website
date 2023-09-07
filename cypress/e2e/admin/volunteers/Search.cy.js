@@ -1,5 +1,7 @@
 import { volunteerList } from "../../../../src/data/mock/Volunteers";
 
+const multiple = volunteerList.slice(3);
+
 describe("Volunteers Search", () => {
   beforeEach(() => {
     cy.login("admin");
@@ -18,5 +20,16 @@ describe("Volunteers Search", () => {
     cy.get('[data-cy="toolbar"]').find("input").type(volunteerList[0].name);
     cy.get('[data-cy="toolbar"]').find("form").submit();
     cy.get(`[data-cy="${volunteerList[0].uid}"]`).should("exist");
+  });
+
+  it("Search Partial Results", () => {
+    cy.get('[data-cy="toolbar"]')
+      .find("input")
+      .type(multiple[0].name.split(" ")[0]);
+    cy.get('[data-cy="toolbar"]').find("form").submit();
+
+    multiple.forEach((particpant) =>
+      cy.get(`[data-cy="${particpant.uid}"]`).should("exist")
+    );
   });
 });
