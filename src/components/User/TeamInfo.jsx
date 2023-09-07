@@ -2,7 +2,7 @@ import Input from "../Input";
 
 const TeamInfo = ({ user, team, setUser }) => {
   return (
-    <div>
+    <>
       <Input
         name="team"
         type="text"
@@ -29,14 +29,12 @@ const TeamInfo = ({ user, team, setUser }) => {
         editable={true}
       />
 
-      <div>
-        {team.members.map((member, index) => (
-          <p className="m-0" key={index}>
-            {member}
-          </p>
-        ))}
-      </div>
-    </div>
+      {team.members.map((member, index) => (
+        <p className="m-0" key={index}>
+          {member}
+        </p>
+      ))}
+    </>
   );
 };
 

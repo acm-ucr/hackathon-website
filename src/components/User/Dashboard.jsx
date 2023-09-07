@@ -13,13 +13,6 @@ import Title from "../Admin/Title.jsx";
 const Dashboard = () => {
   const [user, setUser] = useState(mockUser);
   const [edit, setEdit] = useState(false);
-  const handleEdit = () => {
-    setEdit(!edit);
-  };
-
-  const handleSave = () => {
-    setEdit(false);
-  };
 
   return (
     <div className="w-full">
@@ -40,8 +33,8 @@ const Dashboard = () => {
       <Row>
         <Col xl={6}>
           <UserInfo
-            handleEdit={handleEdit}
-            handleSave={handleSave}
+            handleEdit={() => setEdit(true)}
+            handleSave={() => setEdit(false)}
             user={user}
             setUser={setUser}
             edit={edit}

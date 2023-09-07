@@ -8,7 +8,7 @@ import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Button from "@/components/Forms/Button";
+import Button from "@/components/Button.jsx";
 import { Helper } from "@/data/User";
 import Textarea from "@/components/Forms/Textarea";
 import { Description, Requirements } from "../../data/Mentors.js";

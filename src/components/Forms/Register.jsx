@@ -18,7 +18,7 @@ import Checkbox from "../Checkbox";
 import Input from "../Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Button from "./Button";
+import Button from "../Button";
 import { Requirements } from "../../data/Register";
 
 const Register = () => {

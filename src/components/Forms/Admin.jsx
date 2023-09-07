@@ -7,7 +7,7 @@ import Checkbox from "../Checkbox";
 import Input from "../Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Button from "./Button";
+import Button from "../Button";
 import { affiliations } from "@/data/AdminRequest";
 import { requirement } from "@/data/AdminRequest";
 import { position } from "@/data/AdminRequest";

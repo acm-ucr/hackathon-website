@@ -3,11 +3,11 @@ import { Schools } from "@/data/Schools";
 import Input from "../Input";
 import Radio from "../Radio";
 import Select from "../Select";
-import Button from "../Forms/Button";
+import Button from "../Button";
 
 const UserInfo = ({ handleEdit, handleSave, user, setUser, edit }) => {
   return (
-    <div>
+    <>
       <Input
         name="phone"
         type="phone"
@@ -54,7 +54,7 @@ const UserInfo = ({ handleEdit, handleSave, user, setUser, edit }) => {
       ) : (
         <Button text="edit" onClick={handleEdit} />
       )}
-    </div>
+    </>
   );
 };
 
