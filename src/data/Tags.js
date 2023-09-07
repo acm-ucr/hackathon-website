@@ -140,4 +140,13 @@ export const colors = {
   software: mappings["lightgreen"],
   UIUX: mappings["red"],
   view: mappings["gray"],
+  green: mappings["green"],
+  gray: mappings["gray"],
+  yellow: mappings["yellow"],
+  red: mappings["red"],
+  lightgreen: mappings["lightgreen"],
+  purple: mappings["purple"],
+  teal: mappings["teal"],
+  grayblue: mappings["grayblue"],
+  pink: mappings["pink"],
 };
