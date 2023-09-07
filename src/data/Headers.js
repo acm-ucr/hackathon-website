@@ -21,8 +21,8 @@ export const judgeHeaders = [
     icon: false,
     sort: "off",
     hasTag: true,
-    onClick: (object) => {
-      console.log(object.image);
+    onClick: (object, setModal) => {
+      setModal({ src: object.image, title: object.name + "'s Image" });
     },
   },
 ];
@@ -104,8 +104,8 @@ export const participantHeader = [
     icon: false,
     sort: "off",
     hasTag: true,
-    onClick: (object) => {
-      console.log(object.image);
+    onClick: (object, setModal) => {
+      setModal({ src: object.resume, title: object.name + "'s Resume" });
     },
   },
   {

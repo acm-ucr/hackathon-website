@@ -27,6 +27,7 @@ import {
   FaBirthdayCake,
   FaBook,
 } from "react-icons/fa";
+import Modal from "./Modal";
 const icons = {
   github: <SiGithub className="mr-2" />,
   devpost: <SiDevpost className="mr-2" />,
@@ -72,6 +73,7 @@ const Toggle = ({ eventKey }) => {
 
 const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
   const [currentSort, setCurrentSort] = useState("name");
+  const [modal, setModal] = useState(null);
   const handleSelect = (object) => {
     setObjects(
       objects.map((a) => {
@@ -84,6 +86,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
   };
   return (
     <div className="w-full rounded-xl overflow-hidden flex flex-col">
+      {modal && <Modal data={modal} setModal={setModal} />}
       <Row className="w-full py-2 text-sm flex text-white bg-hackathon-blue-200 justify-evenly px-0 m-0">
         <Col />
         {headers.map((header, index) => (
@@ -153,7 +156,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                             }
                             onClick={
                               header.onClick
-                                ? () => header.onClick(object)
+                                ? () => header.onClick(object, setModal)
                                 : null
                             }
                           />
