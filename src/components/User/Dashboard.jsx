@@ -32,8 +32,8 @@ const Dashboard = () => {
 
   return (
     <div className="w-full">
+      <Title title="Dashboard" />
       <div className="flex justify-between items-center">
-        <Title title="Dash Board" />
         <div className="flex items-center">
           <ProfileHeader email="hello" name="hello" />
           {edit ? (
