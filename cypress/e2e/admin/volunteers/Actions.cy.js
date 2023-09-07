@@ -1,6 +1,6 @@
 import { volunteerList } from "../../../../src/data/mock/Volunteers";
 
-const firstFive = volunteerList.slice(0, 5);
+const five = volunteerList.slice(0, 5);
 
 describe("Volunteers Actions", () => {
   beforeEach(() => {
@@ -11,7 +11,7 @@ describe("Volunteers Actions", () => {
   });
 
   it("Confirm First Five Entries", () => {
-    firstFive.forEach((volunteer) =>
+    five.forEach((volunteer) =>
       cy
         .get(`[data-cy="${volunteer.uid}"]`)
         .find('[data-cy="checkbox"]')
@@ -19,7 +19,7 @@ describe("Volunteers Actions", () => {
     );
     cy.get('[data-cy="toolbar"]').find('[data-cy="confirm-tag"]').click();
 
-    firstFive.forEach((volunteer) =>
+    five.forEach((volunteer) =>
       cy
         .get(`[data-cy="${volunteer.uid}"]`)
         .find('[data-cy="confirm-tag"]')
@@ -28,7 +28,7 @@ describe("Volunteers Actions", () => {
   });
 
   it("Not Attending First Five Entries", () => {
-    firstFive.forEach((volunteer) =>
+    five.forEach((volunteer) =>
       cy
         .get(`[data-cy="${volunteer.uid}"]`)
         .find('[data-cy="checkbox"]')
@@ -36,7 +36,7 @@ describe("Volunteers Actions", () => {
     );
     cy.get('[data-cy="toolbar"]').find('[data-cy="not attending-tag"]').click();
 
-    firstFive.forEach((volunteer) =>
+    five.forEach((volunteer) =>
       cy
         .get(`[data-cy="${volunteer.uid}"]`)
         .find('[data-cy="not attending-tag"]')
@@ -45,7 +45,7 @@ describe("Volunteers Actions", () => {
   });
 
   it("Pending First Five Entries", () => {
-    firstFive.forEach((volunteer) =>
+    five.forEach((volunteer) =>
       cy
         .get(`[data-cy="${volunteer.uid}"]`)
         .find('[data-cy="checkbox"]')
@@ -53,7 +53,7 @@ describe("Volunteers Actions", () => {
     );
     cy.get('[data-cy="toolbar"]').find('[data-cy="pending-tag"]').click();
 
-    firstFive.forEach((volunteer) =>
+    five.forEach((volunteer) =>
       cy
         .get(`[data-cy="${volunteer.uid}"]`)
         .find('[data-cy="pending-tag"]')
@@ -62,7 +62,7 @@ describe("Volunteers Actions", () => {
   });
 
   it("Delete First Five Entries", () => {
-    firstFive.forEach((volunteer) =>
+    five.forEach((volunteer) =>
       cy
         .get(`[data-cy="${volunteer.uid}"]`)
         .find('[data-cy="checkbox"]')
@@ -71,7 +71,7 @@ describe("Volunteers Actions", () => {
     cy.get('[data-cy="toolbar"]').find('[data-cy="delete"]').click();
     cy.get('[data-cy="confirm-button"]').click();
 
-    firstFive.forEach((volunteer) =>
+    five.forEach((volunteer) =>
       cy.get(`[data-cy="${volunteer.uid}"]`).should("not.exist")
     );
   });
