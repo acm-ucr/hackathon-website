@@ -151,14 +151,14 @@ const Toolbar = ({
         <form className="flex ml-2 w-full items-center" onSubmit={handleSubmit}>
           <input
             type="text"
-            className="px-2 py-1 w-full bg-hackathon-gray rounded-full focus:outline-none"
+            className="px-2 py-1 w-full bg-hackathon-gray-100 rounded-full focus:outline-none"
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
           <button className="focus:outline-none">
             <HiSearch
               size={30}
-              className="ml-2 text-hackathon-darkgray hover:opacity-70 duration-150"
+              className="ml-2 text-hackathon-gray-300 hover:opacity-70 duration-150"
             />
           </button>
         </form>
@@ -181,7 +181,7 @@ const Toolbar = ({
         >
           <FaTrashAlt
             size={22.5}
-            className="ml-5 text-hackathon-darkgray hover:opacity-70 duration-150"
+            className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150"
           />
         </button>
         {popup && (
@@ -201,7 +201,7 @@ const Toolbar = ({
       >
         <FaDownload
           size={22.5}
-          className="ml-4 text-hackathon-darkgray hover:opacity-70 duration-150"
+          className="ml-4 text-hackathon-gray-300 hover:opacity-70 duration-150"
         />
       </CSVLink>
     </div>

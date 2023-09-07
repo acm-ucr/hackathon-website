@@ -1,5 +1,5 @@
 export const charts = {
-  label1: {
+  Status: {
     size: 4,
     data: [
       {
@@ -19,7 +19,7 @@ export const charts = {
       },
     ],
   },
-  label2: {
+  Majors: {
     size: 4,
     data: [
       {
@@ -39,7 +39,7 @@ export const charts = {
       },
     ],
   },
-  label3: {
+  Age: {
     size: 4,
     data: [
       {
@@ -59,7 +59,7 @@ export const charts = {
       },
     ],
   },
-  status: {
+  School: {
     size: 6,
     data: [
       {
@@ -79,7 +79,7 @@ export const charts = {
       },
     ],
   },
-  major: {
+  Grade: {
     size: 6,
     data: [
       {
@@ -99,7 +99,7 @@ export const charts = {
       },
     ],
   },
-  gender: {
+  Gender: {
     size: 4,
     data: [
       {
@@ -119,7 +119,7 @@ export const charts = {
       },
     ],
   },
-  food: {
+  "Shirt Size": {
     size: 4,
     data: [
       {
@@ -139,7 +139,7 @@ export const charts = {
       },
     ],
   },
-  SVGRadialGradientElement: {
+  "Dietary Restrictions": {
     size: 4,
     data: [
       {
