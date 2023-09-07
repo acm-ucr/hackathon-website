@@ -32,7 +32,7 @@ describe("Checkbox", () => {
 
     cy.mount(<Parent />);
 
-    cy.get('[data-cy="checkbox"]').click();
+    cy.get('[data-cy="checkbox"]').click({ multiple: true });
     cy.get('[data-cy="checkbox"]').should(
       "have.class",
       "bg-hackathon-blue-100"
