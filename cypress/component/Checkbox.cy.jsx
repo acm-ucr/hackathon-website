@@ -7,13 +7,13 @@ describe("Checkbox", () => {
 
     cy.mount(<Checkbox toggle={toggle} />);
 
-    cy.get('[data-cy="checkbox"]').should("exist");
+    cy.get('[data-cy="checkbox-blue"]').should("exist");
     cy.get('[data-cy="checkmark"]').should("exist");
     cy.get('[data-cy="checkmark"]').should(
       "have.class",
       "text-hackathon-gray-100"
     );
-    cy.get('[data-cy="checkbox"]').should(
+    cy.get('[data-cy="checkbox-blue"]').should(
       "have.class",
       "bg-hackathon-gray-100"
     );
@@ -32,8 +32,8 @@ describe("Checkbox", () => {
 
     cy.mount(<Parent />);
 
-    cy.get('[data-cy="checkbox"]').click({ multiple: true });
-    cy.get('[data-cy="checkbox"]').should(
+    cy.get('[data-cy="checkbox-blue"]').click({ multiple: true });
+    cy.get('[data-cy="checkbox-blue"]').should(
       "have.class",
       "bg-hackathon-blue-100"
     );
