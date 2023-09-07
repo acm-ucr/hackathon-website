@@ -4,6 +4,7 @@ import Input from "../Input";
 import Radio from "../Radio";
 import Select from "../Select";
 import Button from "../Forms/Button";
+
 const UserInfo = ({ handleEdit, handleSave, user, setUser, edit }) => {
   return (
     <div>
