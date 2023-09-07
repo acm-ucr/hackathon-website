@@ -1,6 +1,6 @@
 import { mentorList } from "../../../../src/data/mock/Mentors";
 
-describe("Mentor Search", () => {
+describe("Mentors Search", () => {
   beforeEach(() => {
     cy.login("admin");
     cy.visit("/");
