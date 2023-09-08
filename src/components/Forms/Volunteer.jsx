@@ -15,52 +15,20 @@ import { Description, Requirements } from "@/data/Volunteers";
 
 const Volunteer = () => {
   const [volunteer, setVolunteer] = useState(Helper);
-
   const [requirements, setRequirements] = useState(Requirements);
-
   const handleSubmit = () => {
-    if (volunteer.first === "") {
-      toast("❌ Please include your first name!");
-      return;
-    }
-    if (volunteer.last === "") {
-      toast("❌ Please include last name!");
-      return;
-    }
-    if (volunteer.email == "") {
-      toast("❌ Please include your email!");
-      return;
-    }
-    if (volunteer.phone == "") {
-      toast("❌ Please include your phone number!");
-      return;
-    }
-    if (volunteer.major == "") {
-      toast("❌ Please include major!");
-      return;
-    }
-    if (volunteer.availability == null) {
-      toast("❌ Please select your availability!");
-      return;
-    }
-    if (volunteer.shirt == "") {
-      toast("❌ Please include shirt size!");
-      return;
-    }
-    if (volunteer.grade == "") {
+    const incompleteFields = Object.values(volunteer).some(
+      (value) => value === ""
+    );
+    const invalidRequirements = Object.values(requirements).some(
+      (check) => check.state === false
+    );
+
+    if (incompleteFields || invalidRequirements) {
       toast("❌ Please complete all fields!");
       return;
     }
-    if (requirements.inPerson.state == false) {
-      toast("❌ Please check all fields!");
-      return;
-    }
-    if (requirements.photography.state == false) {
-      toast("❌ Please check all fields!");
-      return;
-    }
     toast(`✅ Submitted successfully!`);
-
     console.log(volunteer);
     console.log(requirements);
   };
