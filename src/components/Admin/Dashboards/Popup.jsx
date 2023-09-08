@@ -1,4 +1,4 @@
-import Button from "./Button";
+import Button from "../Button";
 import { LiaTimesSolid } from "react-icons/lia";
 
 const Popup = ({ text, callBack, setText, title, buttonColor }) => {
