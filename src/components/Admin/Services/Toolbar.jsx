@@ -5,10 +5,18 @@ import Button from "../Button";
 import Tag from "../Tag";
 import { colors } from "@/data/Tags";
 import { HiSearch } from "react-icons/hi";
+import Popup from "../Popup";
+import { toast } from "react-hot-toast";
 
 const tags = ["professor", "industry", "student"];
 
-const Toolbar = ({ data, setData }) => {
+const Toolbar = ({ data, setData, judges }) => {
+  const [popup, setPopup] = useState({
+    title: "",
+    text: "",
+    color: "green",
+    visible: false,
+  });
   const [input, setInput] = useState({
     rotations: "",
     search: "",
@@ -31,21 +39,83 @@ const Toolbar = ({ data, setData }) => {
   };
 
   const generate = () => {
-    const round = ["p_allan knight", "s_menthy wu", "i_max verstappen"];
+    if (input.rotations === "") {
+      toast("❌ Please enter a valid integer value");
+      return;
+    }
 
-    const rounds = new Array(parseInt(input.rotations)).fill(round);
-
-    setData(
-      data.map((group) => {
-        group.rounds = rounds;
-
-        return group;
-      })
+    // Filter Professors vs Students + Industry
+    const professors = judges.filter((judge) => judge.type === "professor");
+    const studentsAndIndustry = judges.filter(
+      (judge) => judge.type !== "professor"
     );
+
+    const teams = [...data];
+
+    // Reset Rounds
+    teams.forEach((team, index) => {
+      team.rounds = Array.from(Array(parseInt(input.rotations)), () => []);
+      team.table = index + 1;
+    });
+
+    let judge = 0;
+    let round = 0;
+
+    // Assign Professors
+    for (let i = 0; i < teams.length; i += 1) {
+      if (round === parseInt(input.rotations)) continue;
+      teams[i].rounds[round].push(professors[judge].name);
+      if (judge < professors.length - 1) {
+        judge += 1;
+      } else {
+        judge = 0;
+        round += 1;
+      }
+    }
+
+    judge = 0;
+    round = 0;
+
+    // Assign Students + Industry
+    for (let i = teams.length - 1; i > -1; i -= 1) {
+      if (round === parseInt(input.rotations)) continue;
+      teams[i].rounds[round].push(studentsAndIndustry[judge].name);
+      if (judge < studentsAndIndustry.length - 1) {
+        judge += 1;
+      } else {
+        judge = 0;
+        round += 1;
+      }
+    }
+
+    if (professors.length * input.rotations < teams.length) {
+      setPopup({
+        title: "Insufficient Professors",
+        text: "There are not enough professors to go around to each team. Please consider adding more professors via the judge dashboard. ",
+        color: "green",
+        visible: true,
+      });
+    }
+
+    if (
+      professors.length * input.rotations +
+        studentsAndIndustry.length * input.rotations <
+      teams.length
+    ) {
+      setPopup({
+        title: "Insufficient Judges",
+        text: "There are not enough judges, causing one or more teams to have no judges. Please consider adding more judges via the judges dashboard.",
+        color: "green",
+        visible: true,
+      });
+    }
+
+    setData(teams);
   };
 
   return (
     <>
+      {popup.visible && <Popup setPopup={setPopup} popup={popup} />}
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center">
           <Input

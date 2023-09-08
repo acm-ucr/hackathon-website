@@ -5,13 +5,14 @@ import { colors } from "@/data/Tags";
 
 const Table = ({ data }) => {
   return (
-    <Row>
+    <Row className="overflow-y-scroll">
       {data
         .filter((group) => !group.hidden)
         .map((group, index) => (
           <Col
+            xl={3}
             key={index}
-            className="flex justify-between items-start p-2 !max-w-fit"
+            className="flex justify-between items-start p-2"
           >
             <div className="bg-white w-full p-3 rounded-xl">
               <div className="flex justify-between items-center">

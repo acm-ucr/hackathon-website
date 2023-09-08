@@ -3,41 +3,15 @@ import { useState } from "react";
 import Title from "../Title.jsx";
 import Table from "./Table.jsx";
 import Toolbar from "./Toolbar.jsx";
-
-const groups = [
-  {
-    hidden: false,
-    name: "Citrus Hack",
-    table: "1",
-    rounds: [],
-  },
-  {
-    hidden: false,
-    name: "Rosehack",
-    table: "2",
-    rounds: [],
-  },
-  {
-    hidden: false,
-    name: "BearHack",
-    table: "3",
-    rounds: [],
-  },
-  {
-    hidden: false,
-    name: "Designathon",
-    table: "4",
-    rounds: [],
-  },
-];
+import { teamsCopy, judges } from "@/data/mock/Judging.js";
 
 const Judging = () => {
-  const [data, setData] = useState(groups);
+  const [data, setData] = useState(teamsCopy);
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Title title="Judging" />
-      <Toolbar data={data} setData={setData} />
+      <Toolbar data={data} setData={setData} judges={judges} />
       <Table data={data} />
     </div>
   );
