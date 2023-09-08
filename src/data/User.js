@@ -26,5 +26,4 @@ export const Helper = {
   grade: "",
   gender: "",
   shirt: "",
-  availability: "",
 };

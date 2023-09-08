@@ -25,8 +25,11 @@ const Volunteer = () => {
     const invalidRequirements = Object.values(requirements).some(
       (check) => check.state === false
     );
+    const atLeastOneAvailability = Object.values(availability).some(
+      (time) => time.state === true
+    );
 
-    if (incompleteFields || invalidRequirements) {
+    if (incompleteFields || invalidRequirements || !atLeastOneAvailability) {
       toast("❌ Please complete all fields!");
       return;
     }
