@@ -1,5 +1,5 @@
 "use client";
-import Volunteers from "@/components/Admin/Volunteers";
+import Volunteers from "@/components/Admin/Dashboards/Volunteers";
 import ProtectedPage from "@/components/ProtectedPage";
 const VolunteersPage = () => {
   return (

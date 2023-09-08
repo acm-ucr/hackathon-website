@@ -18,14 +18,24 @@ const Mentor = () => {
 
   const [requirements, setRequirements] = useState(Requirements);
 
+  const [availability, setAvailability] = useState(Availability);
+
   const handleSubmit = () => {
     console.log(mentor);
     console.log(requirements);
+    console.log(availability);
   };
 
   const handleRequirementsCheckbox = (key, value) => {
     setRequirements({
       ...requirements,
+      [key]: { state: !value.state, text: value.text },
+    });
+  };
+
+  const handleAvailabilityCheckbox = (key, value) => {
+    setAvailability({
+      ...availability,
       [key]: { state: !value.state, text: value.text },
     });
   };
@@ -102,16 +112,6 @@ const Mentor = () => {
           </Col>
           <Col xl={12}>
             <Select
-              title="Availability"
-              options={Availability}
-              field="Availability"
-              user={mentor}
-              setUser={setMentor}
-              multiple={true}
-            />
-          </Col>
-          <Col xl={12}>
-            <Select
               title="Grade"
               options={Grades}
               field="grade"
@@ -119,6 +119,19 @@ const Mentor = () => {
               setUser={setMentor}
               placeholder="Undergraduate"
             />
+          </Col>
+          <Col xl={12} className="flext mt-3">
+            Availability
+            {Object.entries(availability).map(([key, value], i) => (
+              <Checkbox
+                className="w-1/2"
+                key={i}
+                toggle={value.state}
+                text={value.text}
+                onClick={() => handleAvailabilityCheckbox(key, value)}
+                color="bg-hackathon-green-300"
+              />
+            ))}
           </Col>
           <Col xl={12}>
             <Radio

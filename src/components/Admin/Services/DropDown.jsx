@@ -14,6 +14,7 @@ const Toggle = ({ option, onClick, show }) => {
   );
 };
 const Menu = ({ setOption, className, setOptions, options }) => {
+  const [value, setValue] = useState("");
   const handleInput = (e) => {
     setValue(e.target.value);
     setOptions(
@@ -25,12 +26,11 @@ const Menu = ({ setOption, className, setOptions, options }) => {
       }))
     );
   };
-  const [value, setValue] = useState("");
   return (
     <div className={className}>
       <input
         autoFocus
-        className="mx-3 my-2 w-11/12 ring-0 outline-none border-gray-300 border-[1px] text-sm px-2 py-1"
+        className="mx-1.5 my-1 w-11/12 ring-0 outline-none rounded-y-xl px-2 py-1"
         placeholder="Type to filter..."
         onChange={handleInput}
         value={value}

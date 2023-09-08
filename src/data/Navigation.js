@@ -57,6 +57,11 @@ export const AdminTabs = {
         icon: <FaCalendarDay className={iconStyle} />,
       },
       {
+        name: "judging",
+        link: "/admin/judging",
+        icon: <FaGavel className={iconStyle} />,
+      },
+      {
         name: "messenger",
         link: "/admin/messenger",
         icon: <FaEnvelope className={iconStyle} />,
@@ -99,7 +104,7 @@ export const UserTabs = {
       {
         name: "checkin",
         link: "/user/checkin",
-        icon: <BsPeopleFill className={iconStyle} />,
+        icon: <AiOutlineQrcode className={iconStyle} />,
       },
     ],
   },

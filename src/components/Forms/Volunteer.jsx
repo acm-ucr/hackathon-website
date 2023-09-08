@@ -16,6 +16,8 @@ import { Description, Requirements } from "@/data/Volunteers";
 const Volunteer = () => {
   const [volunteer, setVolunteer] = useState(Helper);
   const [requirements, setRequirements] = useState(Requirements);
+  const [availability, setAvailability] = useState(Availability);
+
   const handleSubmit = () => {
     const incompleteFields = Object.values(volunteer).some(
       (value) => value === ""
@@ -31,11 +33,19 @@ const Volunteer = () => {
     toast(`✅ Submitted successfully!`);
     console.log(volunteer);
     console.log(requirements);
+    console.log(availability);
   };
 
   const handleRequirementsCheckbox = (key, value) => {
     setRequirements({
       ...requirements,
+      [key]: { state: !value.state, text: value.text },
+    });
+  };
+
+  const handleAvailabilityCheckbox = (key, value) => {
+    setAvailability({
+      ...availability,
       [key]: { state: !value.state, text: value.text },
     });
   };
@@ -110,15 +120,18 @@ const Volunteer = () => {
               placeholder="Computer Science"
             />
           </Col>
-          <Col xl={12}>
-            <Select
-              title="Availability"
-              options={Availability}
-              field="availability"
-              user={volunteer}
-              setUser={setVolunteer}
-              multiple={true}
-            />
+          <Col xl={12} className="flext mt-3">
+            Availability
+            {Object.entries(availability).map(([key, value], i) => (
+              <Checkbox
+                className="w-1/2"
+                key={i}
+                toggle={value.state}
+                text={value.text}
+                onClick={() => handleAvailabilityCheckbox(key, value)}
+                color="bg-hackathon-green-300"
+              />
+            ))}
           </Col>
           <Col xl={12}>
             <Select

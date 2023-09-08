@@ -1,5 +1,5 @@
 import Title from "@/components/Admin/Title";
-import PieChart from "@/components/Admin/PieChart";
+import PieChart from "@/components/Admin/Services/PieChart";
 import Tag from "@/components/Admin/Tag";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
