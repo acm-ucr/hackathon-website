@@ -9,42 +9,25 @@ const groups = [
     hidden: false,
     name: "Citrus Hack",
     table: "1",
-    rounds: [
-      ["p_allan knight", "s_menthy wu", "i_max verstappen"],
-      ["p_allan knight", "s_menthy wu", "i_max verstappen"],
-      ["p_allan knight", "s_menthy wu", "i_max verstappen"],
-    ],
+    rounds: [],
   },
   {
     hidden: false,
     name: "Rosehack",
     table: "2",
-    rounds: [
-      ["p_allan knight", "s_menthy wu", "i_max verstappen"],
-      ["p_allan knight", "s_menthy wu", "i_max verstappen"],
-      ["p_allan knight", "s_menthy wu", "i_max verstappen"],
-    ],
+    rounds: [],
   },
   {
     hidden: false,
     name: "BearHack",
     table: "3",
-    rounds: [
-      ["p_allan knight", "s_menthy wu", "i_max verstappen"],
-      ["p_allan knight", "s_menthy wu", "i_max verstappen"],
-      ["p_allan knight", "s_menthy wu", "i_max verstappen"],
-    ],
+    rounds: [],
   },
   {
     hidden: false,
     name: "Designathon",
     table: "4",
-    rounds: [
-      ["p_allan knight", "s_menthy wu", "i_max verstappen"],
-      ["p_allan knight", "s_menthy wu", "i_max verstappen"],
-      ["p_allan knight", "s_menthy wu", "i_max verstappen"],
-      ["p_allan knight", "s_menthy wu", "i_max verstappen"],
-    ],
+    rounds: [],
   },
 ];
 
