@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import Title from "./Title.jsx";
-import Filters from "./Filters.jsx";
+import Title from "../Title.jsx";
+import Filters from "../Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import Table from "./Table.jsx";
 import { judgeList } from "@/data/mock/Judges.js";
