@@ -1,7 +1,7 @@
 import { FaTimes } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { BsPersonFill } from "react-icons/bs";
-import Tag from "../Tag";
+import Tag from "../../Tag";
 import { labels } from "@/data/Calendar";
 import { colors } from "@/data/Tags";
 
