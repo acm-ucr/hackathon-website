@@ -10,7 +10,7 @@ describe("Teams Actions", () => {
     cy.visit("/admin/teams");
   });
 
-  it("Qualify First Five Entries", () => {
+  it("Qualify First 5 Entries", () => {
     five.forEach((team) =>
       cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
     );
@@ -24,7 +24,7 @@ describe("Teams Actions", () => {
     );
   });
 
-  it("Disqualify First Five Entries", () => {
+  it("Disqualify First 5 Entries", () => {
     five.forEach((team) =>
       cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
     );
@@ -38,7 +38,7 @@ describe("Teams Actions", () => {
     );
   });
 
-  it("Win First Five Entries", () => {
+  it("Win First 5 Entries", () => {
     five.forEach((team) =>
       cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
     );
@@ -52,7 +52,7 @@ describe("Teams Actions", () => {
     );
   });
 
-  it("Pending First Five Entries", () => {
+  it("Pending First 5 Entries", () => {
     five.forEach((team) =>
       cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
     );
@@ -66,7 +66,7 @@ describe("Teams Actions", () => {
     );
   });
 
-  it("Delete First Five Entries", () => {
+  it("Delete First 5 Entries", () => {
     five.forEach((team) =>
       cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
     );
