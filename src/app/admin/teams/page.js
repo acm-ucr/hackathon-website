@@ -1,5 +1,5 @@
 "use client";
-import Teams from "@/components/Admin/Teams";
+import Teams from "@/components/Admin/Dashboards/Teams";
 import ProtectedPage from "@/components/ProtectedPage";
 const TeamsPage = () => {
   return (

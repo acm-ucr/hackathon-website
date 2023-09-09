@@ -1,5 +1,5 @@
 "use client";
-import Participants from "@/components/Admin/Participants";
+import Participants from "@/components/Admin/Dashboards/Participants";
 import ProtectedPage from "@/components/ProtectedPage";
 
 const ParticipantsPage = () => {
