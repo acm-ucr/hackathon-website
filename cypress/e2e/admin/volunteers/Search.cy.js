@@ -28,8 +28,8 @@ describe("Volunteers Search", () => {
       .type(multiple[0].name.split(" ")[0]);
     cy.get('[data-cy="toolbar"]').find("form").submit();
 
-    multiple.forEach((particpant) =>
-      cy.get(`[data-cy="${particpant.uid}"]`).should("exist")
+    multiple.forEach((volunteer) =>
+      cy.get(`[data-cy="${volunteer.uid}"]`).should("exist")
     );
   });
 });
