@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Filters from "@/components/Admin/Filters";
-import Toolbar from "@/components/Admin/Toolbar";
-import Title from "./Title";
+import Toolbar from "@/components/Admin/Dashboards/Toolbar";
+import Title from "../Title";
 import Table from "./Table";
 import { mentorList } from "@/data/mock/Mentors";
 import { mentorTags } from "@/data/Tags.js";

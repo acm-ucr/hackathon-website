@@ -1,12 +1,22 @@
 import { MdCancel } from "react-icons/md";
 
-const Input = ({ object, setObject, clear, label, maxLength, placeholder }) => {
+const Input = ({
+  object,
+  setObject,
+  clear,
+  label,
+  showLabel = true,
+  maxLength,
+  placeholder,
+  classes,
+}) => {
   const handleInput = (e) => {
     setObject({ ...object, [label]: e.target.value });
   };
   return (
-    <div className="flex items-center">
-      <p className="text-lg font-extrabold mr-2 my-0">{label}:</p>
+    <div className={`flex items-center ${classes}`}>
+      {showLabel && <p className="text-lg font-extrabold mr-2 my-0">{label}</p>}
+
       <div className="flex items-center my-1 bg-hackathon-gray-100 rounded-md w-full">
         <input
           value={object[label]}

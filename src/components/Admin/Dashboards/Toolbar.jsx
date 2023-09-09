@@ -1,12 +1,12 @@
 "use client";
 import { useState } from "react";
-import Checkbox from "../Checkbox";
+import Checkbox from "../../Checkbox";
 import { HiSearch } from "react-icons/hi";
-import Tag from "./Tag.jsx";
+import Tag from "../Tag.jsx";
 import { FaDownload, FaTrashAlt } from "react-icons/fa";
 import { CSVLink } from "react-csv";
 import { colors } from "@/data/Tags";
-import Popup from "./Popup";
+import Popup from "../Popup";
 
 const convert = (input) => {
   if (Array.isArray(input)) {
@@ -27,7 +27,12 @@ const Toolbar = ({
   file,
   headers,
 }) => {
-  const [popup, setPopup] = useState("");
+  const [popup, setPopup] = useState({
+    title: "Delete Confirmation",
+    text: "Are you sure you want to delete these row(s)? This action is irreversible.",
+    color: "red",
+    visible: false,
+  });
   const [toggle, setToggle] = useState(false);
 
   const onClick = (text) => {
@@ -168,9 +173,10 @@ const Toolbar = ({
         <button
           data-cy="delete"
           onClick={() =>
-            setPopup(
-              "Are you sure you want to delete these row(s)? This action is irreversible."
-            )
+            setPopup({
+              ...popup,
+              visible: true,
+            })
           }
         >
           <FaTrashAlt
@@ -178,14 +184,8 @@ const Toolbar = ({
             className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150"
           />
         </button>
-        {popup && (
-          <Popup
-            buttonColor="red"
-            text={popup}
-            callBack={handleDelete}
-            setText={setPopup}
-            title="Delete Confirmation"
-          />
+        {popup.visible && (
+          <Popup popup={popup} onClick={handleDelete} setPopup={setPopup} />
         )}
       </div>
       <CSVLink
