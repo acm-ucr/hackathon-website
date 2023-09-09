@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import Filters from "@/components/Admin/Filters";
-import Toolbar from "@/components/Admin/Toolbar";
-import Title from "./Title";
+import Toolbar from "@/components/Admin/Dashboards/Toolbar";
+import Title from "../Title";
 import Table from "./Table";
 import { volunteerList } from "@/data/mock/Volunteers";
 import { volunteerFilters } from "@/data/Filters";

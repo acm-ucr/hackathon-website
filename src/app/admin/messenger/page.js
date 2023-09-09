@@ -1,4 +1,4 @@
-import Messenger from "@/components/Admin/Messenger";
+import Messenger from "@/components/Admin/Services/Messenger";
 import ProtectedPage from "@/components/ProtectedPage";
 
 const MessengerPage = () => {

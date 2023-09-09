@@ -1,5 +1,6 @@
 import { sizes } from "@/data/admin/ButtonColor";
 import { colors } from "@/data/admin/ButtonColor";
+
 const Button = ({ color, text, onClick, size }) => {
   return (
     <button

@@ -53,7 +53,7 @@ const CalendarEvents = () => {
             ),
           }}
           eventPropGetter={(event) => {
-            return { className: `${event.color}` };
+            return { className: event.color };
           }}
           dayPropGetter={(event) => {
             const bg =
@@ -62,16 +62,14 @@ const CalendarEvents = () => {
                 ? "!bg-hackathon-green-100"
                 : "!bg-white";
             return {
-              className: `${bg}`,
+              className: bg,
               style: {
                 margin: 0,
                 padding: 0,
               },
             };
           }}
-          onSelectEvent={(event) => {
-            setEvent(event);
-          }}
+          onSelectEvent={(event) => setEvent(event)}
         />
       )}
     </div>
