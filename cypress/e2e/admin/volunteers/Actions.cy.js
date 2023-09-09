@@ -10,7 +10,7 @@ describe("Volunteers Actions", () => {
     cy.visit("/admin/volunteers");
   });
 
-  it("Confirm First Five Entries", () => {
+  it("Confirm First 5 Entries", () => {
     five.forEach((volunteer) =>
       cy
         .get(`[data-cy="${volunteer.uid}"]`)
@@ -27,7 +27,7 @@ describe("Volunteers Actions", () => {
     );
   });
 
-  it("Not Attending First Five Entries", () => {
+  it("Not Attending First 5 Entries", () => {
     five.forEach((volunteer) =>
       cy
         .get(`[data-cy="${volunteer.uid}"]`)
@@ -44,7 +44,7 @@ describe("Volunteers Actions", () => {
     );
   });
 
-  it("Pending First Five Entries", () => {
+  it("Pending First 5 Entries", () => {
     five.forEach((volunteer) =>
       cy
         .get(`[data-cy="${volunteer.uid}"]`)
@@ -61,7 +61,7 @@ describe("Volunteers Actions", () => {
     );
   });
 
-  it("Delete First Five Entries", () => {
+  it("Delete First 5 Entries", () => {
     five.forEach((volunteer) =>
       cy
         .get(`[data-cy="${volunteer.uid}"]`)
