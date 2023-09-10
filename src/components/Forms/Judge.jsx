@@ -9,6 +9,7 @@ import Input from "@/components/Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "@/components/Forms/Button";
+import toast from "react-hot-toast";
 import Upload from "./Upload";
 
 const Judge = () => {
@@ -19,6 +20,8 @@ const Judge = () => {
     phone: "",
     shirt: "",
     title: "",
+    major: "",
+    photo: null,
   });
 
   const [requirements, setRequirements] = useState({
@@ -33,6 +36,18 @@ const Judge = () => {
   });
 
   const handleSubmit = () => {
+    const incompleteFields = Object.values(judge).some(
+      (value) => value === "" || value === null
+    );
+    const invalidRequirements = Object.values(requirements).some(
+      (check) => check.state === false
+    );
+    if (incompleteFields || invalidRequirements) {
+      toast("❌ Please complete all fields!");
+      return;
+    }
+    toast(`✅ Submitted successfully!`);
+
     console.log(judge);
     console.log(requirements);
   };
