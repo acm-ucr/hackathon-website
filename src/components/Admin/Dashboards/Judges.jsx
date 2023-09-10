@@ -4,7 +4,7 @@ import Title from "../Title.jsx";
 import Filters from "../Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import Table from "./Table.jsx";
-import { judgeList } from "@/data/mock/Judges.js";
+import judgeList from "../../../../cypress/fixtures/JudgeList.json";
 import { judgeFilters } from "@/data/Filters.js";
 import { judgeHeaders } from "@/data/Headers.js";
 import { judgeTags } from "@/data/Tags.js";

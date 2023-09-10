@@ -1,4 +1,4 @@
-import { adminList } from "../../../../src/data/mock/Admin";
+import adminList from "../../../fixtures/Admin.json";
 
 describe("Admin Filters", () => {
   beforeEach(() => {
