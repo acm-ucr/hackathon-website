@@ -1,6 +1,6 @@
 import { FaTimes } from "react-icons/fa";
 
-const CalendarModal = ({ data, setModal, title }) => {
+const Modal = ({ data, setModal }) => {
   return (
     <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-10 w-1/2 rounded-xl">
       <div className="flex justify-between items-center p-3 rounded-t-xl bg-hackathon-green-200">
@@ -17,4 +17,4 @@ const CalendarModal = ({ data, setModal, title }) => {
   );
 };
 
-export default CalendarModal;
+export default Modal;

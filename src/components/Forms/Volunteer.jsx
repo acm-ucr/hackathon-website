@@ -9,17 +9,31 @@ import Input from "@/components/Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "@/components/Forms/Button";
+import toast from "react-hot-toast";
 import { Helper } from "@/data/User";
 import { Description, Requirements } from "@/data/Volunteers";
 
 const Volunteer = () => {
   const [volunteer, setVolunteer] = useState(Helper);
-
   const [requirements, setRequirements] = useState(Requirements);
-
   const [availability, setAvailability] = useState(Availability);
 
   const handleSubmit = () => {
+    const incompleteFields = Object.values(volunteer).some(
+      (value) => value === ""
+    );
+    const invalidRequirements = Object.values(requirements).some(
+      (check) => check.state === false
+    );
+    const atLeastOneAvailability = Object.values(availability).some(
+      (time) => time.state === true
+    );
+
+    if (incompleteFields || invalidRequirements || !atLeastOneAvailability) {
+      toast("❌ Please complete all fields!");
+      return;
+    }
+    toast(`✅ Submitted successfully!`);
     console.log(volunteer);
     console.log(requirements);
     console.log(availability);

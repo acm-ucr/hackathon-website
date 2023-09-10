@@ -20,10 +20,8 @@ export default User;
 export const Helper = {
   first: "",
   last: "",
-  age: "",
   phone: "",
   email: "",
-  school: "",
   major: "",
   grade: "",
   gender: "",

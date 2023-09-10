@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Title from "./Title";
-import Filters from "./Filters.jsx";
+import Title from "../Title";
+import Filters from "../Filters.jsx";
 import Input from "./Input";
 import Textarea from "./Textarea";
-import Button from "./Button";
+import Button from "../Button";
 import toast from "react-hot-toast";
 import Upload from "./Upload";
 import { messengerFilters } from "@/data/Filters";
@@ -48,8 +48,9 @@ const Messenger = () => {
           setObject={setEmail}
           object={email}
           clear={true}
-          label="subject"
+          label="subject:"
           placeholder="subject"
+          maxLength={100}
         />
         <div className="w-full h-full bg-white rounded-2xl my-2 flex flex-col p-4 pt-2">
           <p className="text-lg font-extrabold mb-1">body:</p>
