@@ -1,7 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/data/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -19,10 +18,10 @@ module.exports = {
           "green-200": "#80ED99",
           "green-300": "#57CC99",
           "green-400": "#3CB97A",
-          yellow: "#FFCF55",
-          gray: "#E7E7E7",
-          placeholder: "#9ea4af",
-          darkgray: "#525252",
+          "yellow-100": "#FFCF55",
+          "gray-100": "#E7E7E7",
+          "gray-200": "#9ea4af",
+          "gray-300": "#525252",
           page: "#F5F5F5",
           tags: {
             "red-bg": "#FFE9E2",

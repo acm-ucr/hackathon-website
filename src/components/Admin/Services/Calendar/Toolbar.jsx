@@ -1,7 +1,8 @@
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { labels } from "@/data/Calendar";
-import Tag from "../Tag.jsx";
+import Tag from "../../Tag.jsx";
+import { colors } from "@/data/Tags.js";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
 const CustomToolbar = ({
@@ -43,13 +44,13 @@ const CustomToolbar = ({
         <Tag
           onClick={() => onView("month")}
           text="month"
-          color={view === "month" ? "green" : "gray"}
+          color={view === "month" ? colors["green"] : colors["gray"]}
           classes="mx-2"
         />
         <Tag
           onClick={() => onView("week")}
           text="week"
-          color={view === "week" ? "green" : "gray"}
+          color={view === "week" ? colors["green"] : colors["gray"]}
           classes="mx-2"
         />
       </Col>
@@ -72,7 +73,7 @@ const CustomToolbar = ({
           <Tag
             key={index}
             text={label}
-            color={value.color}
+            color={colors[value.color]}
             classes="my-1"
             onClick={() => onClick(label)}
           />

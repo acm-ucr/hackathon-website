@@ -3,8 +3,8 @@ import SortIcon from "./SortIcon";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Accordion from "react-bootstrap/Accordion";
-import Checkbox from "../Checkbox";
-import Tag from "./Tag";
+import Checkbox from "../../Checkbox";
+import Tag from "../Tag";
 import {
   IoIosArrowDown,
   IoIosMail,
@@ -27,11 +27,12 @@ import {
   FaBirthdayCake,
   FaBook,
 } from "react-icons/fa";
+import Modal from "./Modal";
 const icons = {
   github: <SiGithub className="mr-2" />,
   devpost: <SiDevpost className="mr-2" />,
   lead: <IoIosRose className="ml-1 text-hackathon-blue-200 text-lg" />,
-  winner: <FaCrown className="ml-1 text-hackathon-yellow text-lg" />,
+  winner: <FaCrown className="ml-1 text-hackathon-yellow-100 text-lg" />,
   phone: <FaPhoneAlt className="text-hackathon-blue-200 mr-2" />,
   email: <IoIosMail className="text-hackathon-blue-200 mr-2 text-lg" />,
   size: <IoIosShirt className="text-hackathon-blue-200 mr-2 text-lg" />,
@@ -72,6 +73,7 @@ const Toggle = ({ eventKey }) => {
 
 const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
   const [currentSort, setCurrentSort] = useState("name");
+  const [modal, setModal] = useState(null);
   const handleSelect = (object) => {
     setObjects(
       objects.map((a) => {
@@ -84,6 +86,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
   };
   return (
     <div className="w-full rounded-xl overflow-hidden flex flex-col">
+      {modal && <Modal data={modal} setModal={setModal} />}
       <Row className="w-full py-2 text-sm flex text-white bg-hackathon-blue-200 justify-evenly px-0 m-0">
         <Col />
         {headers.map((header, index) => (
@@ -113,8 +116,9 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
           (object, index) =>
             !object.hidden && (
               <Row
+                data-cy={object.uid}
                 key={index}
-                className={`first:border-0 border-t-[1px] border-hackathon-gray w-full flex justify-between items-center p-0 m-0 py-2 ${
+                className={`first:border-0 border-t-[1px] border-hackathon-gray-100  w-full flex justify-between items-center p-0 m-0 py-2 ${
                   object.selected ? "bg-green-100" : "bg-white"
                 }`}
               >
@@ -152,7 +156,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                             }
                             onClick={
                               header.onClick
-                                ? () => header.onClick(object)
+                                ? () => header.onClick(object, setModal)
                                 : null
                             }
                           />
@@ -165,7 +169,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                                 header.text === "members"
                                   ? "font-bold text-hackathon-blue-100"
                                   : header.text === "emails"
-                                  ? "text-hackathon-placeholder"
+                                  ? "text-hackathon-gray-200"
                                   : ""
                               }`}
                               key={index}
@@ -232,7 +236,7 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
         )}
 
         {objects.filter((object) => !object.hidden).length === 0 && (
-          <p className="text-hackathon-darkgray font-poppins pt-3 text-center rounded-b-2xl w-full">
+          <p className="text-hackathon-gray-300 font-poppins pt-3 text-center rounded-b-2xl w-full">
             {empty}
           </p>
         )}

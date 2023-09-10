@@ -1,12 +1,12 @@
 "use client";
 import { useState } from "react";
-import Checkbox from "../Checkbox";
+import Checkbox from "../../Checkbox";
 import { HiSearch } from "react-icons/hi";
-import Tag from "./Tag.jsx";
+import Tag from "../Tag.jsx";
 import { FaDownload, FaTrashAlt } from "react-icons/fa";
 import { CSVLink } from "react-csv";
 import { colors } from "@/data/Tags";
-import Popup from "./Popup";
+import Popup from "../Popup";
 
 const convert = (input) => {
   if (Array.isArray(input)) {
@@ -27,7 +27,12 @@ const Toolbar = ({
   file,
   headers,
 }) => {
-  const [popup, setPopup] = useState("");
+  const [popup, setPopup] = useState({
+    title: "Delete Confirmation",
+    text: "Are you sure you want to delete these row(s)? This action is irreversible.",
+    color: "red",
+    visible: false,
+  });
   const [toggle, setToggle] = useState(false);
 
   const onClick = (text) => {
@@ -130,9 +135,9 @@ const Toolbar = ({
     .replace(/\s+/g, "_");
 
   return (
-    <div className="w-full flex items-center">
+    <div className="w-full flex items-center" data-cy="toolbar">
       <div className="w-2/3 flex items-center">
-        <div className="mr-4">
+        <div className="mr-4" data-cy="select-all">
           <Checkbox onClick={selectAll} toggle={toggle} />
         </div>
         <div className="flex flex-row gap-2 ">
@@ -151,47 +156,36 @@ const Toolbar = ({
         <form className="flex ml-2 w-full items-center" onSubmit={handleSubmit}>
           <input
             type="text"
-            className="px-2 py-1 w-full bg-hackathon-gray rounded-full focus:outline-none"
+            className="px-2 py-1 w-full bg-hackathon-gray-100 rounded-full focus:outline-none"
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
           <button className="focus:outline-none">
             <HiSearch
               size={30}
-              className="ml-2 text-hackathon-darkgray hover:opacity-70 duration-150"
+              className="ml-2 text-hackathon-gray-300 hover:opacity-70 duration-150"
             />
           </button>
         </form>
-        <button
-          onClick={handleReset}
-          className={
-            "bg-hackathon-tags-gray-bg text-hackathon-tags-gray-text hover:shadow-[inset_0px_0px_0px_2px_#969696] px-2 rounded-full text-base w-fit hover:cursor-pointer"
-          }
-        >
-          Reset
-        </button>
+        <Tag text="reset" onClick={handleReset} color="gray" />
       </div>
       <div className="flex w-1/3">
         <button
+          data-cy="delete"
           onClick={() =>
-            setPopup(
-              "Are you sure you want to delete these row(s)? This action is irreversible."
-            )
+            setPopup({
+              ...popup,
+              visible: true,
+            })
           }
         >
           <FaTrashAlt
             size={22.5}
-            className="ml-5 text-hackathon-darkgray hover:opacity-70 duration-150"
+            className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150"
           />
         </button>
-        {popup && (
-          <Popup
-            buttonColor="red"
-            text={popup}
-            callBack={handleDelete}
-            setText={setPopup}
-            title="Delete Confirmation"
-          />
+        {popup.visible && (
+          <Popup popup={popup} onClick={handleDelete} setPopup={setPopup} />
         )}
       </div>
       <CSVLink
@@ -201,7 +195,7 @@ const Toolbar = ({
       >
         <FaDownload
           size={22.5}
-          className="ml-4 text-hackathon-darkgray hover:opacity-70 duration-150"
+          className="ml-4 text-hackathon-gray-300 hover:opacity-70 duration-150"
         />
       </CSVLink>
     </div>

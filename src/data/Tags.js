@@ -24,13 +24,13 @@ export const adminTags = [
 
 export const mentorTags = [
   {
-    text: "onsite",
+    text: "pending",
+  },
+  {
+    text: "confirm",
   },
   {
     text: "not attending",
-  },
-  {
-    text: "online",
   },
 ];
 
@@ -55,6 +55,9 @@ export const teamTags = [
   },
   {
     text: "disqualify",
+  },
+  {
+    text: "pending",
   },
 ];
 
@@ -137,4 +140,13 @@ export const colors = {
   software: mappings["lightgreen"],
   UIUX: mappings["red"],
   view: mappings["gray"],
+  green: mappings["green"],
+  gray: mappings["gray"],
+  yellow: mappings["yellow"],
+  red: mappings["red"],
+  lightgreen: mappings["lightgreen"],
+  purple: mappings["purple"],
+  teal: mappings["teal"],
+  grayblue: mappings["grayblue"],
+  pink: mappings["pink"],
 };
