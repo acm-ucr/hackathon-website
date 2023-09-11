@@ -9,6 +9,7 @@ import { MdVolunteerActivism } from "react-icons/md";
 import { BiSolidHelpCircle } from "react-icons/bi";
 import { FaGavel, FaEnvelope, FaLock, FaCalendarDay } from "react-icons/fa";
 import { AiOutlineQrcode } from "react-icons/ai";
+import { signOut } from "next-auth/react";
 
 const iconStyle = "mr-2";
 
@@ -86,7 +87,8 @@ export const AdminTabs = {
     },
     {
       name: "sign out",
-      link: "sign out",
+      link: "/",
+      onClick: () => signOut({ callbackUrl: "/", redirect: true }),
       icon: <BsBoxArrowInRight className={iconStyle} />,
     },
   ],
@@ -116,7 +118,8 @@ export const UserTabs = {
     },
     {
       name: "sign out",
-      link: "sign out",
+      link: "/",
+      onClick: () => signOut({ callbackUrl: "/", redirect: true }),
       icon: <BsBoxArrowInRight className={iconStyle} />,
     },
   ],
