@@ -1,4 +1,4 @@
-export const colors = {
+export const COLORS = {
   green: {
     bg: "bg-hackathon-green-300",
     text: "text-white",
@@ -15,7 +15,7 @@ export const colors = {
     border: "border-0",
   },
 };
-export const sizes = {
+export const SIZES = {
   xs: "text-xs",
   sm: "text-sm",
   md: "text-base",

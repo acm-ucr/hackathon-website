@@ -1,4 +1,4 @@
-export const bytes = {
+export const BYTES = {
   B: 1,
   KB: 1024,
   MB: 1048576,

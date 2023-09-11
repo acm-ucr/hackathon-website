@@ -7,7 +7,7 @@ import Toolbar from "./Toolbar";
 import Event from "./Event";
 import axios from "axios";
 import Modal from "./Modal";
-import { labels } from "@/data/Calendar";
+import { LABELS } from "@/data/Admin/Calendar";
 
 const mLocalizer = momentLocalizer(moment);
 
@@ -25,7 +25,7 @@ const CalendarEvents = () => {
           item.start = new Date(item.start.dateTime);
           item.end = new Date(item.end.dateTime);
           item.color =
-            labels[
+            LABELS[
               item.description.split("\n")[1].split(": ")[1].toLowerCase()
             ].background;
           item.hidden = false;

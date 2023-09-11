@@ -3,10 +3,11 @@ import { RiAttachment2 } from "react-icons/ri";
 import { FaTimes } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import { Row, Col } from "react-bootstrap";
+import { BYTES } from "@/data/Bytes";
 
-import { bytes } from "@/data/Bytes";
-const getSize = (maxSize) => bytes[maxSize[1]] * maxSize[0];
+const getSize = (maxSize) => BYTES[maxSize[1]] * maxSize[0];
 const getType = (types) => "." + types.join(",.");
+
 const displayFile = (file) =>
   `${file.name} (${Math.round(file.size / 10.24) / 100}KB)`;
 

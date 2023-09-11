@@ -6,15 +6,13 @@ import Toolbar from "@/components/Admin/Dashboards/Toolbar";
 import Title from "../Title";
 import Table from "./Table";
 import mentorList from "../../../../cypress/fixtures/Mentors.json";
-import { mentorTags } from "@/data/Tags.js";
-import { mentorFilters } from "@/data/Filters.js";
-import { mentorHeaders } from "@/data/Headers.js";
+import { FILTERS, HEADERS, TAGS } from "@/data/Admin/Mentors.js";
 
 const Mentors = () => {
   const [mentors, setMentors] = useState(mentorList);
   const [input, setInput] = useState("");
-  const [filters, setFilters] = useState(mentorFilters);
-  const [headers, setHeaders] = useState(mentorHeaders);
+  const [filters, setFilters] = useState(FILTERS);
+  const [headers, setHeaders] = useState(HEADERS);
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
@@ -31,7 +29,7 @@ const Mentors = () => {
       <Toolbar
         input={input}
         setInput={setInput}
-        tags={mentorTags}
+        tags={TAGS}
         setObjects={setMentors}
         objects={mentors}
         filters={filters}
