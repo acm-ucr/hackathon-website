@@ -1,20 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import User from "../../data/User";
+import { USER } from "../../data/Forms/User";
 import Radio from "@/components/Radio";
 import Checkbox from "../Checkbox";
 import Input from "../Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "./Button";
-import { affiliations } from "@/data/AdminRequest";
-import { requirement } from "@/data/AdminRequest";
-import { position } from "@/data/AdminRequest";
+import { AFFILIATIONS, POSITIONS, REQUIREMENTS } from "@/data/Forms/Admin";
 
 const Admin = () => {
-  const [user, setUser] = useState(User);
-  const [requirements, setRequirements] = useState(requirement);
+  const [user, setUser] = useState(USER);
+  const [requirements, setRequirements] = useState(REQUIREMENTS);
 
   const handleSubmit = () => {
     console.log(user);
@@ -91,7 +89,7 @@ const Admin = () => {
           <Col xl={12}>
             <Radio
               text="Affiliations"
-              options={affiliations}
+              options={AFFILIATIONS}
               field="affiliations"
               user={user}
               setUser={setUser}
@@ -100,7 +98,7 @@ const Admin = () => {
           <Col xl={12}>
             <Radio
               text="Position"
-              options={position}
+              options={POSITIONS}
               field="position"
               user={user}
               setUser={setUser}
