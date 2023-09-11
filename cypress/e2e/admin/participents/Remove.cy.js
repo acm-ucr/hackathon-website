@@ -57,4 +57,3 @@ describe("Unselected Participants Data", () => {
     );
   });
 });
-
