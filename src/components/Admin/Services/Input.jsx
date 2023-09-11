@@ -20,6 +20,7 @@ const Input = ({
 
       <div className="flex items-center my-1 bg-hackathon-gray-100 rounded-md w-full">
         <input
+          data-cy={`${label}-input`}
           value={object[label]}
           maxLength={maxLength}
           placeholder={placeholder}
@@ -31,6 +32,7 @@ const Input = ({
           <MdCancel
             className="hover:cursor-pointer text-xl text-hackathon-gray-300 mr-2"
             onClick={() => setObject({ ...object, [label]: "" })}
+            data-cy={`${label}-clear-input`}
           />
         )}
       </div>
