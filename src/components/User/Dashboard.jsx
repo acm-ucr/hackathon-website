@@ -4,10 +4,10 @@ import ProfileHeader from "./Header";
 import Tag from "../Admin/Tag";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { teamList } from "@/data/mock/Teams";
+import teamList from "../../../cypress/fixtures/Teams.json";
 import TeamInfo from "./TeamInfo";
 import UserInfo from "./UserInfo";
-import { mockUser } from "@/data/mock/User";
+import mockUser from "../../../cypress/fixtures/User.json";
 import Title from "../Admin/Title.jsx";
 
 const Dashboard = () => {
