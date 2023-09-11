@@ -37,13 +37,12 @@ describe("Filters Component", () => {
         accepted: true,
         pending: true,
       });
-      const setObjects = cy.stub();
-      const input = "";
-      const objects = [
+      const [objects, setObjects] = useState([
         { name: "pending" },
         { name: "rejected" },
         { name: "accepted" },
-      ];
+      ]);
+      const input = "";
 
       const onClick = (filter) => {
         const filterValues = { ...filters, [filter]: !filters[filter] };
