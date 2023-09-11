@@ -12,22 +12,13 @@ describe("Filters Component", () => {
     cy.mount(<Filters filters={filters} />);
     cy.get('[data-cy="pending-filter"]')
       .get("div")
-      .should("have.class", "bg-hackathon-blue-100");
-    cy.get('[data-cy="pending-filter"]')
-      .get("div")
-      .should("have.class", "text-white");
+      .should("have.class", "bg-hackathon-blue-100", "text white");
     cy.get('[data-cy="rejected-filter"]')
       .get("div")
-      .should("have.class", "bg-hackathon-blue-100");
-    cy.get('[data-cy="rejected-filter"]')
-      .get("div")
-      .should("have.class", "text-white");
+      .should("have.class", "bg-hackathon-blue-100", "text white");
     cy.get('[data-cy="accepted-filter"]')
       .get("div")
-      .should("have.class", "bg-hackathon-blue-100");
-    cy.get('[data-cy="accepted-filter"]')
-      .get("div")
-      .should("have.class", "text-white");
+      .should("have.class", "bg-hackathon-blue-100", "text white");
   });
 
   it("Click Filters", () => {
@@ -66,23 +57,14 @@ describe("Filters Component", () => {
     cy.get('[data-cy="pending-filter"]').click();
     cy.get('[data-cy="pending-filter"]')
       .get("div")
-      .should("have.class", "bg-white");
-    cy.get('[data-cy="pending-filter"]')
-      .get("div")
-      .should("have.class", "text-hackathon-blue-100");
+      .should("have.class", "bg-white", "text-hackathon-blue-100");
     cy.get('[data-cy="rejected-filter"]').click();
     cy.get('[data-cy="rejected-filter"]')
       .get("div")
-      .should("have.class", "bg-white");
-    cy.get('[data-cy="rejected-filter"]')
-      .get("div")
-      .should("have.class", "text-hackathon-blue-100");
+      .should("have.class", "bg-white", "text-hackathon-blue-100");
     cy.get('[data-cy="accepted-filter"]').click();
     cy.get('[data-cy="accepted-filter"]')
       .get("div")
-      .should("have.class", "bg-white");
-    cy.get('[data-cy="accepted-filter"]')
-      .get("div")
-      .should("have.class", "text-hackathon-blue-100");
+      .should("have.class", "bg-white", "text-hackathon-blue-100");
   });
 });
