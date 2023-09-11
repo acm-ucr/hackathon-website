@@ -1,11 +1,11 @@
 import Judge from "@/components/Forms/Judge";
-import FormPage from "@/components/Form";
+import ProtectedPage from "@/components/ProtectedPage";
 
 const Page = () => {
   return (
-    <FormPage title="Form | Judge">
+    <ProtectedPage title="Form | Judge" restrictions={[]}>
       <Judge />
-    </FormPage>
+    </ProtectedPage>
   );
 };
 

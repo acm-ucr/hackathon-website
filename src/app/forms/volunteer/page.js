@@ -1,11 +1,11 @@
 import Volunteer from "@/components/Forms/Volunteer";
-import FormPage from "@/components/Form";
+import ProtectedPage from "@/components/ProtectedPage";
 
 const Page = () => {
   return (
-    <FormPage title="Form | Volunteer">
+    <ProtectedPage title="Form | Volunteer" restrictions={[]}>
       <Volunteer />
-    </FormPage>
+    </ProtectedPage>
   );
 };
 
