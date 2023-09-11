@@ -1,4 +1,4 @@
-import teamsList from "../../../fixtures/teams.json";
+import teamList from "../../../fixtures/Teams.json";
 
 describe("Admin Filters", () => {
   beforeEach(() => {
@@ -68,7 +68,7 @@ describe("Admin Filters", () => {
 
   it("Click Disqualify", () => {
     cy.get('[data-cy="disqualify-filter"]').click();
-    teamsList.forEach((admin) => {
+    teamList.forEach((admin) => {
       if (admin.status === "disqualify")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
@@ -77,7 +77,7 @@ describe("Admin Filters", () => {
 
   it("Click Qualify", () => {
     cy.get('[data-cy="qualify-filter"]').click();
-    teamsList.forEach((admin) => {
+    teamList.forEach((admin) => {
       if (admin.status === "qualify")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
@@ -86,7 +86,7 @@ describe("Admin Filters", () => {
 
   it("Click Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
-    teamsList.forEach((admin) => {
+    teamList.forEach((admin) => {
       if (admin.status === "pending")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
@@ -95,7 +95,7 @@ describe("Admin Filters", () => {
 
   it("Click Winner", () => {
     cy.get('[data-cy="winner-filter"]').click();
-    teamsList.forEach((admin) => {
+    teamList.forEach((admin) => {
       if (admin.status === "winner")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
@@ -105,7 +105,7 @@ describe("Admin Filters", () => {
   it("Click Disqualify and Qualify", () => {
     cy.get('[data-cy="disqualify-filter"]').click();
     cy.get('[data-cy="qualify-filter"]').click();
-    teamsList.forEach((admin) => {
+    teamList.forEach((admin) => {
       if (admin.status === "disqualify" || admin.status === "qualify")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
@@ -115,7 +115,7 @@ describe("Admin Filters", () => {
   it("Click Disqualify and Pending", () => {
     cy.get('[data-cy="disqualify-filter"]').click();
     cy.get('[data-cy="pending-filter"]').click();
-    teamsList.forEach((admin) => {
+    teamList.forEach((admin) => {
       if (admin.status === "disqualify" || admin.status === "pending")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
@@ -125,7 +125,7 @@ describe("Admin Filters", () => {
   it("Click Disqualify and Winner", () => {
     cy.get('[data-cy="disqualify-filter"]').click();
     cy.get('[data-cy="winner-filter"]').click();
-    teamsList.forEach((admin) => {
+    teamList.forEach((admin) => {
       if (admin.status === "disqualify" || admin.status === "winner")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
@@ -135,7 +135,7 @@ describe("Admin Filters", () => {
   it("Click Qualify and Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
     cy.get('[data-cy="qualify-filter"]').click();
-    teamsList.forEach((admin) => {
+    teamList.forEach((admin) => {
       if (admin.status === "pending" || admin.status === "qualify")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
@@ -145,7 +145,7 @@ describe("Admin Filters", () => {
   it("Click Qualify and Winner", () => {
     cy.get('[data-cy="winner-filter"]').click();
     cy.get('[data-cy="qualify-filter"]').click();
-    teamsList.forEach((admin) => {
+    teamList.forEach((admin) => {
       if (admin.status === "winner" || admin.status === "qualify")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
@@ -155,7 +155,7 @@ describe("Admin Filters", () => {
   it("Click Winner and Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
     cy.get('[data-cy="winner-filter"]').click();
-    teamsList.forEach((admin) => {
+    teamList.forEach((admin) => {
       if (admin.status === "pending" || admin.status === "winner")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
