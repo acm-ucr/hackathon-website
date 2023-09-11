@@ -20,6 +20,7 @@ import Input from "../Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "./Button";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [user, setUser] = useState(USER);
@@ -35,6 +36,22 @@ const Register = () => {
   };
 
   const handleSubmit = () => {
+    const incompleteFields = Object.values(user).some(
+      (value) => value === "" || !value
+    );
+    const invalidRequirements = Object.values(requirements).some(
+      (check) => !check.state
+    );
+    const atLeastOneDiet = Object.values(dietaryRestrictions).some(
+      (diet) => diet.state
+    );
+
+    if (incompleteFields || invalidRequirements || !atLeastOneDiet) {
+      toast("❌ Please complete all fields!");
+      return;
+    }
+    toast(`✅ Submitted successfully!`);
+
     console.log(user);
     console.log(requirements);
   };
