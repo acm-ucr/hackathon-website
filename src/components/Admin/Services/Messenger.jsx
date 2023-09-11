@@ -8,7 +8,7 @@ import Textarea from "./Textarea";
 import Button from "../Button";
 import toast from "react-hot-toast";
 import Upload from "./Upload";
-import { messengerFilters } from "@/data/Filters";
+import { FILTERS } from "@/data/Admin/Messenger";
 
 const Messenger = () => {
   const [email, setEmail] = useState({
@@ -17,7 +17,7 @@ const Messenger = () => {
     body: "Hello! \n\nWe've got good news! Your application to participate in Rose Hack 2024 has been accepted!\n\nStay tuned for more updates from us via email.\n\nIn the meantime, join our discord, the main platform that we will use on the day of the hackathon. Please don't share this invite with anyone else who wasn't approved. Thank you!\n\nThe Rose Hack Team",
     files: [],
   });
-  const [filters, setFilters] = useState(messengerFilters);
+  const [filters, setFilters] = useState(FILTERS);
   const clickHandler = () => {
     if (email.subject === "") {
       toast("❌ Please add a subject!");

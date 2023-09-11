@@ -5,10 +5,10 @@ import Input from "@/components/Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "@/components/Forms/Button";
-import { Helper } from "@/data/User";
+import { HELPER } from "@/data/Forms/Helper";
 
 const Feedback = () => {
-  const [feedback, setFeedback] = useState(Helper);
+  const [feedback, setFeedback] = useState(HELPER);
 
   const handleSubmit = () => {
     console.log(feedback);

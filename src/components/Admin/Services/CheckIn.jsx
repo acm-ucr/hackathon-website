@@ -1,22 +1,23 @@
+import { useState } from "react";
 import Title from "../Title";
 import ScanQRCode from "./ScanQRCode";
-import { useState } from "react";
 import DropDown from "./DropDown";
-import mockEvents from "../../../../cypress/fixtures/Events.json";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "../Button";
 import CheckInfo from "./CheckInfo";
 import checkInUser from "../../../../cypress/fixtures/CheckInUser.json";
+import mockEvents from "../../../../cypress/fixtures/Events.json";
 
 const CheckIn = () => {
-  const setResult = (result) => {
-    setInfo(checkInUser[result]);
-  };
   const [event, setEvent] = useState("No Event Selected");
   const [events, setEvents] = useState(mockEvents);
   const [info, setInfo] = useState(null);
-  const onClick = () => setInfo({ ...info, [event]: true });
+
+  const setResult = (result) => {
+    setInfo(checkInUser[result]);
+  };
+
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Title title="Check In" />
@@ -32,7 +33,7 @@ const CheckIn = () => {
           <Button
             text="Check In"
             color="green"
-            onClick={onClick}
+            onClick={() => setInfo({ ...info, [event]: true })}
             size="text-xl"
           />
         </Col>

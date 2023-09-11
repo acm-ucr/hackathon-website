@@ -1,7 +1,7 @@
 "use client";
 import { Col, Row } from "react-bootstrap";
 import Tag from "../Tag";
-import { colors } from "@/data/Tags";
+import { COLORS } from "@/data/Admin/Tags";
 
 const Table = ({ data }) => {
   return (
@@ -16,7 +16,7 @@ const Table = ({ data }) => {
           >
             <div className="bg-white w-full p-3 rounded-xl">
               <div className="flex justify-between items-center">
-                <Tag color={colors["grayblue"]} text={group.name} />
+                <Tag color={COLORS["grayblue"]} text={group.name} />
                 <p className="mb-0 text-hackathon-green-300 font-semibold">
                   table {group.table}
                 </p>
@@ -29,7 +29,7 @@ const Table = ({ data }) => {
                       <Tag
                         classes="mx-1"
                         color={
-                          colors[
+                          COLORS[
                             judge.split("_")[0] === "p"
                               ? "professor"
                               : judge.split("_")[0] === "i"

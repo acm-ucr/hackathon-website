@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { AiOutlineCheck } from "react-icons/ai";
+
 const CheckInfo = ({ info, events }) => {
   return info ? (
     <div className="flex flex-col items-center w-full justify-between h-full">
