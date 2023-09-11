@@ -1,4 +1,4 @@
-import { teamList } from "../../../../src/data/mock/Teams";
+import teamList from "../../../fixtures/Teams.json";
 
 describe("Team Search", () => {
   beforeEach(() => {
@@ -18,5 +18,15 @@ describe("Team Search", () => {
     cy.get('[data-cy="toolbar"]').find("input").type(teamList[0].name);
     cy.get('[data-cy="toolbar"]').find("form").submit();
     cy.get(`[data-cy="${teamList[0].uid}"]`).should("exist");
+  });
+
+  it("Search For multiple Entry", () => {
+    cy.get('[data-cy="toolbar"]').find("input").type("team");
+    cy.get('[data-cy="toolbar"]').find("form").submit();
+    teamList.forEach((team) => {
+      if (team.name.toLowerCase().includes("team"))
+        cy.get(`[data-cy="${team.uid}"]`).should("exist");
+      else cy.get(`[data-cy="${team.uid}"]`).should("not.exist");
+    });
   });
 });
