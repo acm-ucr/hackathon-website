@@ -5,7 +5,7 @@ import Filters from "@/components/Admin/Filters";
 import Toolbar from "@/components/Admin/Dashboards/Toolbar";
 import Title from "../Title";
 import Table from "./Table";
-import { participantList } from "@/data/mock/Participants";
+import participantList from "../../../../cypress/fixtures/Participants.json";
 import { participantFilters } from "@/data/Filters";
 import { participantHeader } from "@/data/Headers";
 import { participantTags } from "@/data/Tags";

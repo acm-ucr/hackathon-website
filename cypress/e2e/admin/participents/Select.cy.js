@@ -1,4 +1,4 @@
-import { participantList } from "../../../../src/data/mock/Participants";
+import participantList from "../../../fixtures/Participants.json";
 
 const five = participantList.slice(0, 5);
 

@@ -7,10 +7,13 @@ import { colors } from "@/data/Tags";
 import { HiSearch } from "react-icons/hi";
 import Popup from "../Popup";
 import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const tags = ["professor", "industry", "student"];
 
 const Toolbar = ({ data, setData, judges }) => {
+  const router = useRouter();
+
   const [popup, setPopup] = useState({
     title: "",
     text: "",
@@ -115,7 +118,14 @@ const Toolbar = ({ data, setData, judges }) => {
 
   return (
     <>
-      {popup.visible && <Popup setPopup={setPopup} popup={popup} />}
+      {popup.visible && (
+        <Popup
+          setPopup={setPopup}
+          popup={popup}
+          onClick={() => router.push("/admin/judges")}
+          text="add judges"
+        />
+      )}
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center">
           <Input
