@@ -5,8 +5,8 @@ import Tag from "../Admin/Tag";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import teamList from "../../../cypress/fixtures/Teams.json";
-import TeamInfo from "./TeamInfo";
-import UserInfo from "./UserInfo";
+import TeamInfo from "./Team";
+import UserInfo from "./User";
 import mockUser from "../../../cypress/fixtures/User.json";
 import Title from "../Admin/Title.jsx";
 
