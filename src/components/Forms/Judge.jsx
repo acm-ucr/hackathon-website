@@ -37,11 +37,13 @@ const Judge = () => {
 
   const handleSubmit = () => {
     const incompleteFields = Object.values(judge).some(
-      (value) => value === "" || value === null
+      (value) => value === "" || !value
     );
+
     const invalidRequirements = Object.values(requirements).some(
-      (check) => check.state === false
+      (check) => !check.state
     );
+
     if (incompleteFields || invalidRequirements) {
       toast("❌ Please complete all fields!");
       return;
