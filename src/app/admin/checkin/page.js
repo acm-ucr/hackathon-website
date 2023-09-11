@@ -1,6 +1,6 @@
 "use client";
 import ProtectedPage from "@/components/ProtectedPage";
-import CheckIn from "@/components/Admin/CheckIn";
+import CheckIn from "@/components/Admin/Services/CheckIn";
 
 const Page = () => {
   return (
