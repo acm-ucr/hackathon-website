@@ -185,7 +185,12 @@ const Toolbar = ({
           />
         </button>
         {popup.visible && (
-          <Popup popup={popup} onClick={handleDelete} setPopup={setPopup} />
+          <Popup
+            popup={popup}
+            onClick={handleDelete}
+            setPopup={setPopup}
+            text="confirm"
+          />
         )}
       </div>
       <CSVLink

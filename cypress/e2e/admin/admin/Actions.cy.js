@@ -1,4 +1,4 @@
-import { adminList } from "../../../../src/data/mock/Admin";
+import adminList from "../../../fixtures/Admin.json";
 
 const five = adminList.slice(0, 5);
 
