@@ -1,9 +1,9 @@
 import Title from "@/components/Admin/Title";
-import PieChart from "@/components/Admin/PieChart";
+import PieChart from "@/components/Admin/Services/PieChart";
 import Tag from "@/components/Admin/Tag";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { charts } from "@/data/mock/PieCharts";
+import charts from "../../../../cypress/fixtures/PieCharts.json";
 const Statistics = () => {
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">

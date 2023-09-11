@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
-import Title from "./Title.jsx";
-import Filters from "./Filters.jsx";
+import Title from "../Title.jsx";
+import Filters from "../Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import Table from "./Table.jsx";
-import { adminList } from "@/data/mock/Admin.js";
+import adminList from "../../../../cypress/fixtures/Admin.json";
 import { adminFilters } from "@/data/Filters.js";
 import { adminHeaders } from "@/data/Headers.js";
 import { adminTags } from "@/data/Tags.js";

@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import Filters from "@/components/Admin/Filters";
-import Toolbar from "@/components/Admin/Toolbar";
-import Title from "./Title";
+import Toolbar from "@/components/Admin/Dashboards/Toolbar";
+import Title from "../Title";
 import Table from "./Table";
-import { mentorList } from "@/data/mock/Mentors";
+import mentorList from "../../../../cypress/fixtures/Mentors.json";
 import { mentorTags } from "@/data/Tags.js";
 import { mentorFilters } from "@/data/Filters.js";
 import { mentorHeaders } from "@/data/Headers.js";

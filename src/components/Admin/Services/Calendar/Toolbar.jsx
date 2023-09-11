@@ -1,7 +1,7 @@
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { labels } from "@/data/Calendar";
-import Tag from "../Tag.jsx";
+import Tag from "../../Tag.jsx";
 import { colors } from "@/data/Tags.js";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 

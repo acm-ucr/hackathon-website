@@ -3,8 +3,8 @@ import SortIcon from "./SortIcon";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Accordion from "react-bootstrap/Accordion";
-import Checkbox from "../Checkbox";
-import Tag from "./Tag";
+import Checkbox from "../../Checkbox";
+import Tag from "../Tag";
 import {
   IoIosArrowDown,
   IoIosMail,
