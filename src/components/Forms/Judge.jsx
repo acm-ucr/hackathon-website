@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Select from "@/components/Select";
-import { Shirts } from "@/data/Register";
+import { SHIRTS } from "@/data/Forms/Information";
 import Radio from "@/components/Radio";
 import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
@@ -119,7 +119,7 @@ const Judge = () => {
           <Col xl={12}>
             <Radio
               text="Shirt Size"
-              options={Shirts}
+              options={SHIRTS}
               field="shirt"
               user={judge}
               setUser={setJudge}

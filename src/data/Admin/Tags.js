@@ -1,91 +1,14 @@
-export const judgeTags = [
-  {
-    text: "pending",
-  },
-  {
-    text: "confirm",
-  },
-  {
-    text: "not attending",
-  },
-];
-
-export const adminTags = [
-  {
-    text: "accept",
-  },
-  {
-    text: "reject",
-  },
-  {
-    text: "pending",
-  },
-];
-
-export const mentorTags = [
-  {
-    text: "pending",
-  },
-  {
-    text: "confirm",
-  },
-  {
-    text: "not attending",
-  },
-];
-
-export const participantTags = [
-  {
-    text: "accept",
-  },
-  {
-    text: "reject",
-  },
-  {
-    text: "pending",
-  },
-];
-
-export const teamTags = [
-  {
-    text: "qualify",
-  },
-  {
-    text: "winner",
-  },
-  {
-    text: "disqualify",
-  },
-  {
-    text: "pending",
-  },
-];
-
-export const volunteerTags = [
-  {
-    text: "pending",
-  },
-  {
-    text: "not attending",
-  },
-  {
-    text: "confirm",
-  },
-];
-
 const mappings = {
   red: {
     background: "bg-hackathon-tags-red-bg",
     text: "text-hackathon-tags-red-text",
     hover: "hover:shadow-[inset_0px_0px_0px_2px_#F07167]",
   },
-
   yellow: {
     background: "bg-hackathon-tags-yellow-bg",
     text: "text-hackathon-tags-yellow-text",
     hover: "hover:shadow-[inset_0px_0px_0px_2px_#FFB81C]",
   },
-
   green: {
     background: "bg-hackathon-tags-green-bg",
     text: "text-hackathon-tags-green-text",
@@ -118,7 +41,8 @@ const mappings = {
     text: "text-hackathon-tags-pink-text",
   },
 };
-export const colors = {
+
+export const COLORS = {
   qualify: mappings["green"],
   winner: mappings["purple"],
   disqualify: mappings["red"],

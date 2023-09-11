@@ -13,6 +13,7 @@ const Input = ({
   const handleInput = (e) => {
     setObject({ ...object, [label]: e.target.value });
   };
+
   return (
     <div className={`flex items-center ${classes}`}>
       {showLabel && <p className="text-lg font-extrabold mr-2 my-0">{label}</p>}

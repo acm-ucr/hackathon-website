@@ -5,15 +5,13 @@ import Toolbar from "@/components/Admin/Dashboards/Toolbar";
 import Title from "../Title";
 import Table from "./Table";
 import volunteerList from "../../../../cypress/fixtures/Volunteers.json";
-import { volunteerFilters } from "@/data/Filters";
-import { volunteerHeaders } from "@/data/Headers";
-import { volunteerTags } from "@/data/Tags";
+import { FILTERS, HEADERS, TAGS } from "@/data/Admin/Volunteers";
 
 const Volunteers = () => {
   const [volunteers, setVolunteers] = useState(volunteerList);
   const [input, setInput] = useState("");
-  const [filters, setFilters] = useState(volunteerFilters);
-  const [headers, setHeaders] = useState(volunteerHeaders);
+  const [filters, setFilters] = useState(FILTERS);
+  const [headers, setHeaders] = useState(HEADERS);
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
@@ -30,7 +28,7 @@ const Volunteers = () => {
       <Toolbar
         input={input}
         setInput={setInput}
-        tags={volunteerTags}
+        tags={TAGS}
         setObjects={setVolunteers}
         objects={volunteers}
         filters={filters}
