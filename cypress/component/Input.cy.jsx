@@ -24,6 +24,7 @@ describe("Input", () => {
       "subject"
     );
   });
+
   it("Typing...", () => {
     const Parent = () => {
       const [object, setObject] = useState({
@@ -39,6 +40,7 @@ describe("Input", () => {
     cy.get('[data-cy="name-input"]').type("John Doe");
     cy.get('[data-cy="name-input"]').should("have.value", "John Doe");
   });
+
   it("Backspace", () => {
     const Parent = () => {
       const [object, setObject] = useState({
@@ -70,9 +72,10 @@ describe("Input", () => {
 
     cy.mount(<Parent />);
     cy.get('[data-cy="name-input"]').type("John Doe");
-    cy.get('[data-cy="name-clearInput"]').click();
+    cy.get('[data-cy="name-clear-input"]').click();
     cy.get('[data-cy="name-input"]').should("be.empty");
   });
+
   it("Select All Clear", () => {
     const Parent = () => {
       const [object, setObject] = useState({

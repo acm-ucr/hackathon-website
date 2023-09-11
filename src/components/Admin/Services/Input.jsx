@@ -31,7 +31,7 @@ const Input = ({
           <MdCancel
             className="hover:cursor-pointer text-xl text-hackathon-gray-300 mr-2"
             onClick={() => setObject({ ...object, [label]: "" })}
-            data-cy={`${label}-clearInput`}
+            data-cy={`${label}-clear-input`}
           />
         )}
       </div>
