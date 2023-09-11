@@ -9,18 +9,34 @@ import Input from "@/components/Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "@/components/Forms/Button";
-import { Helper } from "@/data/User";
+import toast from "react-hot-toast";
+import { MentorHelper } from "@/data/User";
 import Textarea from "@/components/Forms/Textarea";
 import { Description, Requirements } from "../../data/Mentors.js";
 
 const Mentor = () => {
-  const [mentor, setMentor] = useState(Helper);
+  const [mentor, setMentor] = useState(MentorHelper);
 
   const [requirements, setRequirements] = useState(Requirements);
 
   const [availability, setAvailability] = useState(Availability);
 
   const handleSubmit = () => {
+    const incompleteFields = Object.values(mentor).some(
+      (value) => value === "" || !value
+    );
+    const invalidRequirements = Object.values(requirements).some(
+      (check) => !check.state
+    );
+    const atLeastOneAvailability = Object.values(availability).some(
+      (time) => time.state
+    );
+
+    if (incompleteFields || invalidRequirements || !atLeastOneAvailability) {
+      toast("❌ Please complete all fields!");
+      return;
+    }
+    toast(`✅ Submitted successfully!`);
     console.log(mentor);
     console.log(requirements);
     console.log(availability);

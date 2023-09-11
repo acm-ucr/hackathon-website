@@ -27,3 +27,14 @@ export const Helper = {
   gender: "",
   shirt: "",
 };
+export const MentorHelper = {
+  first: "",
+  last: "",
+  phone: "",
+  email: "",
+  major: "",
+  grade: "",
+  gender: "",
+  shirt: "",
+  response: "",
+};
