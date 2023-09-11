@@ -132,7 +132,7 @@ const Judge = () => {
               field="major"
               user={judge}
               setUser={setJudge}
-              placeholder="Student"
+              placeholder="ie. Student"
             />
           </Col>
           <Col xl={12}>
@@ -140,7 +140,7 @@ const Judge = () => {
               name="title"
               type="text"
               title="Title"
-              placeholder="Graduate Student"
+              placeholder="ie. Graduate Student"
               value={judge.title}
               user={judge}
               setUser={setJudge}
