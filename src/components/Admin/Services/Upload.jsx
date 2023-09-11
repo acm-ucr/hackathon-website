@@ -31,6 +31,10 @@ const Upload = ({ text, setObjects, objects, size, types }) => {
             toast(`❌ ${file.name} exceeds ${size[0]} ${size[1]}`);
             return false;
           }
+          if (objects.files.map((file) => file.name).includes(file.name)) {
+            toast(`❌ ${file.name} is already uploaded`);
+            return false;
+          }
           return true;
         }),
       ],
