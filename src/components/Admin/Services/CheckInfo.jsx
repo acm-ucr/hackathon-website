@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 
 const CheckInfo = ({ info, events }) => {
   if (!info) {
-    toast("❌ Not a Valid QR Code!");
+    toast("❌ Invalid QR Code!");
   }
   return info ? (
     <div className="flex flex-col items-center w-full justify-between h-full">
