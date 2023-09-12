@@ -1,6 +1,6 @@
 import teamList from "../../../fixtures/Teams.json";
 
-describe("Admin Filters", () => {
+describe("Teams Filters", () => {
   beforeEach(() => {
     cy.login("admin");
     cy.visit("/");
