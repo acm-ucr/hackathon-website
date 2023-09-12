@@ -53,10 +53,6 @@ export const DIETS = {
     state: false,
     text: "Halal",
   },
-  none: {
-    state: false,
-    text: "None",
-  },
 };
 
 export const REQUIREMENTS = {
