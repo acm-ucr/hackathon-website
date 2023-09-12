@@ -39,7 +39,7 @@ const Upload = ({ field, user, setUser, text, maxSize, types }) => {
             className="flex flex-col items-center justify-center w-full h-fit border-2 border-gray-300 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100"
           >
             <div className="flex flex-col items-center justify-center pt-4">
-              <BsUpload className=" text-5xl mb-4 text-hackathon-green-300" />
+              <BsUpload className=" text-3xl mb-2 text-hackathon-green-300 " />
               <p className="text-sm text-gray-500 font-semibold">
                 Upload from my computer
               </p>
