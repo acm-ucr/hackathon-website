@@ -10,7 +10,4 @@ export const USER = {
   gender: "",
   shirt: "",
   resume: "",
-  dietary: "",
-  requirements: "",
-  team: "",
 };
