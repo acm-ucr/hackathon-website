@@ -1,4 +1,4 @@
-import { volunteerList } from "../../../../src/data/mock/Volunteers";
+import volunteerList from "../../../fixtures/Volunteers.json";
 
 describe("Volunteers Filters", () => {
   beforeEach(() => {
