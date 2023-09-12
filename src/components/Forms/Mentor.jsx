@@ -2,23 +2,21 @@
 
 import { useState } from "react";
 import Select from "@/components/Select";
-import { Majors, Grades, Genders, Shirts, Availability } from "@/data/Register";
 import Radio from "@/components/Radio";
 import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Button from "@/components/Button.jsx";
-import { Helper } from "@/data/User";
+import Button from "@/components/Forms/Button";
 import Textarea from "@/components/Forms/Textarea";
-import { Description, Requirements } from "../../data/Mentors.js";
+import { MAJORS, GRADES, GENDERS, SHIRTS } from "@/data/Forms/Information.js";
+import { HELPER, AVAILABILITY } from "@/data/Forms/Helper.js";
+import { DESCRIPTIONS, REQUIREMENTS } from "../../data/Forms/Mentors.js";
 
 const Mentor = () => {
-  const [mentor, setMentor] = useState(Helper);
-
-  const [requirements, setRequirements] = useState(Requirements);
-
-  const [availability, setAvailability] = useState(Availability);
+  const [mentor, setMentor] = useState(HELPER);
+  const [requirements, setRequirements] = useState(REQUIREMENTS);
+  const [availability, setAvailability] = useState(AVAILABILITY);
 
   const handleSubmit = () => {
     console.log(mentor);
@@ -48,7 +46,7 @@ const Mentor = () => {
       <div className="flex flex-col w-1/3 p-3 bg-white rounded-b-xl">
         <Row className="flex justify-center p-0 m-0">
           <Col xl={12}>
-            {Description.map((description, index) => (
+            {DESCRIPTIONS.map((description, index) => (
               <p key={index}>{description}</p>
             ))}
           </Col>
@@ -103,7 +101,7 @@ const Mentor = () => {
           <Col xl={12}>
             <Select
               title="Major"
-              options={Majors}
+              options={MAJORS}
               field="major"
               user={mentor}
               setUser={setMentor}
@@ -113,7 +111,7 @@ const Mentor = () => {
           <Col xl={12}>
             <Select
               title="Grade"
-              options={Grades}
+              options={GRADES}
               field="grade"
               user={mentor}
               setUser={setMentor}
@@ -136,7 +134,7 @@ const Mentor = () => {
           <Col xl={12}>
             <Radio
               text="Gender"
-              options={Genders}
+              options={GENDERS}
               field="gender"
               user={mentor}
               setUser={setMentor}
@@ -145,7 +143,7 @@ const Mentor = () => {
           <Col xl={12}>
             <Radio
               text="Shirt Size"
-              options={Shirts}
+              options={SHIRTS}
               field="shirt"
               user={mentor}
               setUser={setMentor}

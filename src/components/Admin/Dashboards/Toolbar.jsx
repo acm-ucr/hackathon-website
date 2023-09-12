@@ -5,7 +5,7 @@ import { HiSearch } from "react-icons/hi";
 import Tag from "../Tag.jsx";
 import { FaDownload, FaTrashAlt } from "react-icons/fa";
 import { CSVLink } from "react-csv";
-import { colors } from "@/data/Tags";
+import { COLORS } from "@/data/Admin/Tags";
 import Popup from "../Popup";
 
 const convert = (input) => {
@@ -119,6 +119,7 @@ const Toolbar = ({
   const data = mapObjectsToCSVData(objects, blacklist, headers);
 
   const handleDelete = () => {
+    setToggle(false);
     setObjects(objects.filter((object) => !object.selected));
   };
 
@@ -147,7 +148,7 @@ const Toolbar = ({
               text={tag.text}
               name={tag.name}
               onClick={() => onClick(tag.text)}
-              color={colors[tag.text]}
+              color={COLORS[tag.text]}
               setObjects={setObjects}
               objects={objects}
             />

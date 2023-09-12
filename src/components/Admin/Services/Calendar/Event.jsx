@@ -1,4 +1,4 @@
-const CustomEvent = ({ event }) => {
+const Event = ({ event }) => {
   return (
     <div className="p-1">
       <p className="inline whitespace-nowrap">
@@ -13,4 +13,4 @@ const CustomEvent = ({ event }) => {
   );
 };
 
-export default CustomEvent;
+export default Event;

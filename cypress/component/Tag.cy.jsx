@@ -1,9 +1,9 @@
 import Tag from "@/components/Admin/Tag";
-import { colors } from "@/data/Tags";
+import { COLORS } from "@/data/Admin/Tags";
 
 describe("Tag", () => {
   it("Accepted", () => {
-    const color = colors["accept"];
+    const color = COLORS["accept"];
     const onClick = cy.stub();
     const text = "Accepted";
 
@@ -28,7 +28,7 @@ describe("Tag", () => {
   });
 
   it("Pending", () => {
-    const color = colors["pending"];
+    const color = COLORS["pending"];
     const onClick = cy.stub();
     const text = "Pending";
 
@@ -53,7 +53,7 @@ describe("Tag", () => {
   });
 
   it("Rejected", () => {
-    const color = colors["reject"];
+    const color = COLORS["reject"];
     const onClick = cy.stub();
     const text = "Rejected";
 
@@ -78,7 +78,7 @@ describe("Tag", () => {
   });
 
   it("Custom Classes", () => {
-    const color = colors["accept"];
+    const color = COLORS["accept"];
     const onClick = cy.stub();
     const text = "Accepted";
 
@@ -114,7 +114,7 @@ describe("Tag", () => {
   });
 
   it("No onClick", () => {
-    const color = colors["accept"];
+    const color = COLORS["accept"];
     const text = "Accepted";
 
     cy.mount(<Tag color={color} text={text} />);

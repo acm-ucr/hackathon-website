@@ -1,6 +1,6 @@
 import Input from "../Input";
 
-const TeamInfo = ({ user, team, setUser }) => {
+const Team = ({ user, team, setUser }) => {
   return (
     <>
       <Input
@@ -38,4 +38,4 @@ const TeamInfo = ({ user, team, setUser }) => {
   );
 };
 
-export default TeamInfo;
+export default Team;

@@ -4,11 +4,15 @@ import ProfileHeader from "./Header";
 import Tag from "../Admin/Tag";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import { GENDERS, GRADES, MAJORS } from "@/data/Forms/Information";
+import Select from "../Select";
+import { SCHOOLS } from "@/data/Forms/Schools";
+import Radio from "../Radio";
+import Title from "../Admin/Title.jsx";
 import teamList from "../../../cypress/fixtures/Teams.json";
 import TeamInfo from "./Team";
 import UserInfo from "./User";
 import mockUser from "../../../cypress/fixtures/User.json";
-import Title from "../Admin/Title.jsx";
 
 const Dashboard = () => {
   const [user, setUser] = useState(mockUser);
@@ -37,7 +41,39 @@ const Dashboard = () => {
             handleSave={() => setEdit(false)}
             user={user}
             setUser={setUser}
-            edit={edit}
+            editable={edit}
+          />
+          <Select
+            title="School"
+            options={SCHOOLS}
+            field="school"
+            user={user}
+            setUser={setUser}
+            editable={edit}
+          />
+          <Select
+            title="Major"
+            options={MAJORS}
+            field="major"
+            user={user}
+            setUser={setUser}
+            editable={edit}
+          />
+          <Select
+            title="Grade"
+            options={GRADES}
+            field="grade"
+            user={user}
+            setUser={setUser}
+            editable={edit}
+          />
+          <Radio
+            text="Gender"
+            options={GENDERS}
+            field="gender"
+            user={user}
+            setUser={setUser}
+            editable={edit}
           />
         </Col>
         <Col xl={6}>

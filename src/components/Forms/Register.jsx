@@ -1,16 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import User from "../../data/User";
+import { USER } from "../../data/Forms/User";
 import {
-  Ages,
-  Majors,
-  Grades,
-  Genders,
-  Shirts,
-  DietRestrictions,
-} from "../../data/Register";
-import { Schools } from "../../data/Schools";
+  AGES,
+  MAJORS,
+  GRADES,
+  GENDERS,
+  SHIRTS,
+  DIETS,
+  REQUIREMENTS,
+} from "../../data/Forms/Information";
+import { SCHOOLS } from "../../data/Forms/Schools";
 import Select from "@/components/Select";
 import Radio from "@/components/Radio";
 import Upload from "@/components/Forms/Upload";
@@ -18,14 +19,13 @@ import Checkbox from "../Checkbox";
 import Input from "../Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Button from "../Button";
-import { Requirements } from "../../data/Register";
+import Button from "./Button";
 
 const Register = () => {
-  const [user, setUser] = useState(User);
-  const [dietaryRestrictions, setDietRestrictions] = useState(DietRestrictions);
+  const [user, setUser] = useState(USER);
+  const [dietaryRestrictions, setDietRestrictions] = useState(DIETS);
 
-  const [requirements, setRequirements] = useState(Requirements);
+  const [requirements, setRequirements] = useState(REQUIREMENTS);
 
   const handleDietRestrictions = (key, value) => {
     setDietRestrictions({
@@ -103,7 +103,7 @@ const Register = () => {
           </Col>
           <Col xl={12}>
             <Select
-              options={Ages}
+              options={AGES}
               field="age"
               user={user}
               setUser={setUser}
@@ -112,7 +112,7 @@ const Register = () => {
           </Col>
           <Col xl={12}>
             <Select
-              options={Majors}
+              options={MAJORS}
               field="major"
               user={user}
               setUser={setUser}
@@ -121,7 +121,7 @@ const Register = () => {
           </Col>
           <Col xl={12}>
             <Select
-              options={Schools}
+              options={SCHOOLS}
               field="school"
               user={user}
               setUser={setUser}
@@ -130,7 +130,7 @@ const Register = () => {
           </Col>
           <Col xl={12}>
             <Select
-              options={Grades}
+              options={GRADES}
               field="grade"
               user={user}
               setUser={setUser}
@@ -140,7 +140,7 @@ const Register = () => {
           <Col xl={12}>
             <Radio
               text="Gender"
-              options={Genders}
+              options={GENDERS}
               field="gender"
               user={user}
               setUser={setUser}
@@ -149,7 +149,7 @@ const Register = () => {
           <Col xl={12}>
             <Radio
               text="Shirt Size"
-              options={Shirts}
+              options={SHIRTS}
               field="shirt"
               user={user}
               setUser={setUser}

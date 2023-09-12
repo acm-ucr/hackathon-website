@@ -13,7 +13,7 @@ import { signOut } from "next-auth/react";
 
 const iconStyle = "mr-2";
 
-export const AdminTabs = {
+export const ADMIN = {
   Dashboards: {
     mt: "mt-3",
     tabs: [
@@ -94,7 +94,7 @@ export const AdminTabs = {
   ],
 };
 
-export const UserTabs = {
+export const USER = {
   Portal: {
     mt: "mt-0",
     tabs: [

@@ -1,4 +1,4 @@
-export const Schools = [
+export const SCHOOLS = [
   "Aalto University",
   "Aarhus University",
   "Abbey Park High School",

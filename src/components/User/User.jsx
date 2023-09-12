@@ -1,11 +1,11 @@
-import { Genders, Grades, Majors } from "@/data/Register";
-import { Schools } from "@/data/Schools";
+import { GENDERS, GRADES, MAJORS } from "@/data/Forms/Information";
+import { SCHOOLS } from "@/data/Forms/Schools";
 import Input from "../Input";
 import Radio from "../Radio";
 import Select from "../Select";
 import Button from "../Button";
 
-const UserInfo = ({ handleEdit, handleSave, user, setUser, edit }) => {
+const User = ({ handleEdit, handleSave, user, setUser, edit }) => {
   return (
     <>
       <Input
@@ -19,7 +19,7 @@ const UserInfo = ({ handleEdit, handleSave, user, setUser, edit }) => {
       />
       <Select
         title="School"
-        options={Schools}
+        options={SCHOOLS}
         field="school"
         user={user}
         setUser={setUser}
@@ -27,7 +27,7 @@ const UserInfo = ({ handleEdit, handleSave, user, setUser, edit }) => {
       />
       <Select
         title="Major"
-        options={Majors}
+        options={MAJORS}
         field="major"
         user={user}
         setUser={setUser}
@@ -35,7 +35,7 @@ const UserInfo = ({ handleEdit, handleSave, user, setUser, edit }) => {
       />
       <Select
         title="Grade"
-        options={Grades}
+        options={GRADES}
         field="grade"
         user={user}
         setUser={setUser}
@@ -43,7 +43,7 @@ const UserInfo = ({ handleEdit, handleSave, user, setUser, edit }) => {
       />
       <Radio
         text="Gender"
-        options={Genders}
+        options={GENDERS}
         field="gender"
         user={user}
         setUser={setUser}
@@ -58,4 +58,4 @@ const UserInfo = ({ handleEdit, handleSave, user, setUser, edit }) => {
   );
 };
 
-export default UserInfo;
+export default User;

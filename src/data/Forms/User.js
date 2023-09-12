@@ -1,4 +1,4 @@
-export const User = {
+export const USER = {
   first: "",
   last: "",
   age: "",
@@ -13,17 +13,4 @@ export const User = {
   dietary: "",
   requirements: "",
   team: "",
-};
-
-export default User;
-
-export const Helper = {
-  first: "",
-  last: "",
-  phone: "",
-  email: "",
-  major: "",
-  grade: "",
-  gender: "",
-  shirt: "",
 };

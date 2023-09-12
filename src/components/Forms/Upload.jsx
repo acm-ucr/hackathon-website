@@ -2,8 +2,8 @@ import { useState } from "react";
 import { BsUpload } from "react-icons/bs";
 import { FaFilePdf, FaTimes } from "react-icons/fa";
 import { toast } from "react-hot-toast";
-import { bytes } from "@/data/Bytes";
-const getSize = (maxSize) => bytes[maxSize[1]] * maxSize[0];
+import { BYTES } from "@/data/Bytes";
+const getSize = (maxSize) => BYTES[maxSize[1]] * maxSize[0];
 const getType = (types) => "." + types.join(",.");
 
 const Upload = ({ field, user, setUser, text, maxSize, types }) => {

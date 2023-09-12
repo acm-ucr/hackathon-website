@@ -5,15 +5,13 @@ import Filters from "../Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import Table from "./Table.jsx";
 import judgeList from "../../../../cypress/fixtures/JudgeList.json";
-import { judgeFilters } from "@/data/Filters.js";
-import { judgeHeaders } from "@/data/Headers.js";
-import { judgeTags } from "@/data/Tags.js";
+import { FILTERS, HEADERS, TAGS } from "@/data/Admin/Judges.js";
 
 const Judges = () => {
   const [judges, setJudges] = useState(judgeList);
   const [input, setInput] = useState("");
-  const [filters, setFilters] = useState(judgeFilters);
-  const [headers, setHeaders] = useState(judgeHeaders);
+  const [filters, setFilters] = useState(FILTERS);
+  const [headers, setHeaders] = useState(HEADERS);
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
@@ -30,7 +28,7 @@ const Judges = () => {
       <Toolbar
         input={input}
         setInput={setInput}
-        tags={judgeTags}
+        tags={TAGS}
         setObjects={setJudges}
         objects={judges}
         filters={filters}

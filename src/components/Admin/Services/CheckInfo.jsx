@@ -1,6 +1,11 @@
 import Image from "next/image";
 import { AiOutlineCheck } from "react-icons/ai";
+import toast from "react-hot-toast";
+
 const CheckInfo = ({ info, events }) => {
+  if (!info) {
+    toast("❌ Invalid QR Code!");
+  }
   return info ? (
     <div className="flex flex-col items-center w-full justify-between h-full">
       <div className="flex items-center">

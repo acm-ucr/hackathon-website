@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import Select from "@/components/Select";
-import { Shirts } from "@/data/Register";
+import { SHIRTS } from "@/data/Forms/Information";
 import Radio from "@/components/Radio";
 import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Button from "@/components/Button";
+import Button from "@/components/Forms/Button";
+import toast from "react-hot-toast";
 import Upload from "./Upload";
 
 const Judge = () => {
@@ -19,6 +20,8 @@ const Judge = () => {
     phone: "",
     shirt: "",
     title: "",
+    major: "",
+    photo: null,
   });
 
   const [requirements, setRequirements] = useState({
@@ -33,6 +36,20 @@ const Judge = () => {
   });
 
   const handleSubmit = () => {
+    const incompleteFields = Object.values(judge).some(
+      (value) => value === "" || !value
+    );
+
+    const invalidRequirements = Object.values(requirements).some(
+      (check) => !check.state
+    );
+
+    if (incompleteFields || invalidRequirements) {
+      toast("❌ Please complete all fields!");
+      return;
+    }
+    toast(`✅ Submitted successfully!`);
+
     console.log(judge);
     console.log(requirements);
   };
@@ -119,7 +136,7 @@ const Judge = () => {
           <Col xl={12}>
             <Radio
               text="Shirt Size"
-              options={Shirts}
+              options={SHIRTS}
               field="shirt"
               user={judge}
               setUser={setJudge}
@@ -132,7 +149,7 @@ const Judge = () => {
               field="major"
               user={judge}
               setUser={setJudge}
-              placeholder="Student"
+              placeholder="ie. Student"
             />
           </Col>
           <Col xl={12}>
@@ -140,7 +157,7 @@ const Judge = () => {
               name="title"
               type="text"
               title="Title"
-              placeholder="Graduate Student"
+              placeholder="ie. Graduate Student"
               value={judge.title}
               user={judge}
               setUser={setJudge}
