@@ -51,10 +51,6 @@ const Toolbar = ({
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (input === "") {
-      handleReset();
-      return;
-    }
     setObjects(
       objects.map((a) => {
         let boolean = false;
@@ -65,22 +61,6 @@ const Toolbar = ({
             value &&
             a.name.toLowerCase().match(input.toLowerCase())
           ) {
-            boolean = true;
-          }
-        });
-        return { ...a, hidden: !boolean };
-      })
-    );
-  };
-
-  const handleReset = () => {
-    setInput("");
-    setObjects(
-      objects.map((a) => {
-        let boolean = false;
-
-        Object.entries(filters).map(([filter, value]) => {
-          if (a.status === filter && value) {
             boolean = true;
           }
         });
@@ -168,7 +148,6 @@ const Toolbar = ({
             />
           </button>
         </form>
-        <Tag text="reset" onClick={handleReset} color="gray" />
       </div>
       <div className="flex w-1/3">
         <button
