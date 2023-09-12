@@ -19,7 +19,7 @@ import Checkbox from "../Checkbox";
 import Input from "../Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Button from "./Button";
+import Button from "../Button";
 
 const Register = () => {
   const [user, setUser] = useState(USER);

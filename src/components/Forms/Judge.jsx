@@ -8,7 +8,7 @@ import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Button from "@/components/Forms/Button";
+import Button from "@../Button";
 import toast from "react-hot-toast";
 import Upload from "./Upload";
 
