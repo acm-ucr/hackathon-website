@@ -42,11 +42,8 @@ const Register = () => {
     const invalidRequirements = Object.values(requirements).some(
       (check) => !check.state
     );
-    const atLeastOneDiet = Object.values(dietaryRestrictions).some(
-      (diet) => diet.state
-    );
 
-    if (incompleteFields || invalidRequirements || !atLeastOneDiet) {
+    if (incompleteFields || invalidRequirements) {
       toast("❌ Please complete all fields!");
       return;
     }
@@ -173,7 +170,7 @@ const Register = () => {
             />
           </Col>
           <Col>
-            Dietary Restrictions
+            Dietary Restrictions (optional)
             {Object.entries(dietaryRestrictions).map(([key, value], i) => (
               <Checkbox
                 className="w-1/2"
