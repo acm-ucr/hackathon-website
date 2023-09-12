@@ -119,6 +119,7 @@ const Toolbar = ({
   const data = mapObjectsToCSVData(objects, blacklist, headers);
 
   const handleDelete = () => {
+    setToggle(false);
     setObjects(objects.filter((object) => !object.selected));
   };
 
