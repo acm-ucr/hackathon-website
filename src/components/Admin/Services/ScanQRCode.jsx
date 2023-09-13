@@ -7,7 +7,7 @@ const ScanQRCode = ({ setResult }) => {
     },
   });
 
-  return <video ref={ref} className="w-full aspect-square" />;
+  return <video ref={ref} className="w-full mt-1.5" />;
 };
 
 export default ScanQRCode;

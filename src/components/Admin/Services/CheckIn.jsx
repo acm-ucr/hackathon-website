@@ -22,7 +22,7 @@ const CheckIn = () => {
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Title title="Check In" />
       <Row className="p-0 m-0">
-        <Col xs={12} md={6} className="p-3 m-0 flex flex-col justify-around">
+        <Col xs={12} md={6} className="p-3 m-0 flex flex-col gap-16">
           <DropDown
             option={event}
             setOption={setEvent}
@@ -37,7 +37,7 @@ const CheckIn = () => {
             size="text-xl"
           />
         </Col>
-        <Col xs={12} md={6} className="p-3 m-0 flex flex-col justify-around">
+        <Col xs={12} md={6} className="p-3 m-0 flex flex-col">
           <CheckInfo info={info} events={events} />
         </Col>
       </Row>
