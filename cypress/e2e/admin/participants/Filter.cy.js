@@ -1,11 +1,11 @@
-import admins from "../../../fixtures/Admin.json";
+import participants from "../../../fixtures/Participants.json";
 
-describe("Admin Filters", () => {
+describe("Participant Filters", () => {
   beforeEach(() => {
     cy.login("admin");
     cy.visit("/");
     cy.wait("@session");
-    cy.visit("/admin/admin");
+    cy.visit("/admin/participants");
   });
 
   it("Default Filters", () => {
@@ -37,38 +37,38 @@ describe("Admin Filters", () => {
 
   it("Click Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
-    admins.forEach((admin) => {
-      if (admin.status === "pending")
-        cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
+    participants.forEach((participant) => {
+      if (participant.status === "pending")
+        cy.get(`[data-cy="${participant.uid}"]`).should("not.exist");
+      else cy.get(`[data-cy="${participant.uid}"]`).should("exist");
     });
   });
 
   it("Click Rejected", () => {
     cy.get('[data-cy="rejected-filter"]').click();
-    admins.forEach((admin) => {
-      if (admin.status === "reject")
-        cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
+    participants.forEach((participant) => {
+      if (participant.status === "reject")
+        cy.get(`[data-cy="${participant.uid}"]`).should("not.exist");
+      else cy.get(`[data-cy="${participant.uid}"]`).should("exist");
     });
   });
 
   it("Click Accepted", () => {
     cy.get('[data-cy="accepted-filter"]').click();
-    admins.forEach((admin) => {
-      if (admin.status === "accept")
-        cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
+    participants.forEach((participant) => {
+      if (participant.status === "accept")
+        cy.get(`[data-cy="${participant.uid}"]`).should("not.exist");
+      else cy.get(`[data-cy="${participant.uid}"]`).should("exist");
     });
   });
 
   it("Click 2 Filters", () => {
     cy.get('[data-cy="accepted-filter"]').click();
     cy.get('[data-cy="pending-filter"]').click();
-    admins.forEach((admin) => {
-      if (admin.status === "accept" || admin.status === "pending")
-        cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
+    participants.forEach((participant) => {
+      if (participant.status === "accept" || participant.status === "pending")
+        cy.get(`[data-cy="${participant.uid}"]`).should("not.exist");
+      else cy.get(`[data-cy="${participant.uid}"]`).should("exist");
     });
   });
 });

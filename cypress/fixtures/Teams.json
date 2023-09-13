@@ -283,5 +283,62 @@
     "members": ["Tiffany Wang", "Tiffany Wu"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
     "hidden": false
+  },
+  {
+    "uid": 16,
+    "name": "Citrus",
+    "links": [
+      {
+        "name": "github",
+        "link": "https://github.com"
+      },
+      {
+        "name": "devpost",
+        "link": "https://rose-hack-2021.devpost.com"
+      }
+    ],
+    "status": "disqualify",
+    "selected": false,
+    "members": ["Tiffany Wang", "Tiffany Wu"],
+    "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
+    "hidden": false
+  },
+  {
+    "uid": 17,
+    "name": "Citrus",
+    "links": [
+      {
+        "name": "github",
+        "link": "https://github.com"
+      },
+      {
+        "name": "devpost",
+        "link": "https://rose-hack-2021.devpost.com"
+      }
+    ],
+    "status": "disqualify",
+    "selected": false,
+    "members": ["Tiffany Wang", "Tiffany Wu"],
+    "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
+    "hidden": false
+  },
+  {
+    "uid": 18,
+    "name": "Citrus",
+    "links": [
+      {
+        "name": "github",
+        "link": "https://github.com"
+      },
+      {
+        "name": "devpost",
+        "link": "https://rose-hack-2021.devpost.com"
+      }
+    ],
+    "status": "disqualify",
+    "selected": false,
+    "members": ["Tiffany Wang", "Tiffany Wu"],
+    "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
+    "hidden": false
   }
 ]

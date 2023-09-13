@@ -1,11 +1,11 @@
-import volunteers from "../../../fixtures/Volunteers.json";
+import mentors from "../../../fixtures/Mentors.json";
 
-describe("Volunteers Filters", () => {
+describe("Mentors Filters", () => {
   beforeEach(() => {
     cy.login("admin");
     cy.visit("/");
     cy.wait("@session");
-    cy.visit("/admin/volunteers");
+    cy.visit("/admin/mentors");
   });
 
   it("Default Filters", () => {
@@ -37,41 +37,38 @@ describe("Volunteers Filters", () => {
 
   it("Click Confirm", () => {
     cy.get('[data-cy="confirm-filter"]').click();
-    volunteers.forEach((volunteer) => {
-      if (volunteer.status === "confirm")
-        cy.get(`[data-cy="${volunteer.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${volunteer.uid}"]`).should("exist");
+    mentors.forEach((mentor) => {
+      if (mentor.status === "confirm")
+        cy.get(`[data-cy="${mentor.uid}"]`).should("not.exist");
+      else cy.get(`[data-cy="${mentor.uid}"]`).should("exist");
     });
   });
 
   it("Click Not Attending", () => {
     cy.get('[data-cy="not attending-filter"]').click();
-    volunteers.forEach((volunteer) => {
-      if (volunteer.status === "not attending")
-        cy.get(`[data-cy="${volunteer.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${volunteer.uid}"]`).should("exist");
+    mentors.forEach((mentor) => {
+      if (mentor.status === "not attending")
+        cy.get(`[data-cy="${mentor.uid}"]`).should("not.exist");
+      else cy.get(`[data-cy="${mentor.uid}"]`).should("exist");
     });
   });
 
   it("Click Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
-    volunteers.forEach((volunteer) => {
-      if (volunteer.status === "pending")
-        cy.get(`[data-cy="${volunteer.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${volunteer.uid}"]`).should("exist");
+    mentors.forEach((mentor) => {
+      if (mentor.status === "pending")
+        cy.get(`[data-cy="${mentor.uid}"]`).should("not.exist");
+      else cy.get(`[data-cy="${mentor.uid}"]`).should("exist");
     });
   });
 
   it("Click 2 Filters", () => {
     cy.get('[data-cy="confirm-filter"]').click();
     cy.get('[data-cy="not attending-filter"]').click();
-    volunteers.forEach((volunteer) => {
-      if (
-        volunteer.status === "confirm" ||
-        volunteer.status === "not attending"
-      )
-        cy.get(`[data-cy="${volunteer.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${volunteer.uid}"]`).should("exist");
+    mentors.forEach((mentor) => {
+      if (mentor.status === "confirm" || mentor.status === "not attending")
+        cy.get(`[data-cy="${mentor.uid}"]`).should("not.exist");
+      else cy.get(`[data-cy="${mentor.uid}"]`).should("exist");
     });
   });
 });

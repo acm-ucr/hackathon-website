@@ -1,6 +1,6 @@
 export const FILTERS = {
-  online: true,
-  onsite: true,
+  confirm: true,
+  pending: true,
   "not attending": true,
 };
 

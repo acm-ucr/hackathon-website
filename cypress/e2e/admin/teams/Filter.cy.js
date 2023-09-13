@@ -1,4 +1,4 @@
-import teamList from "../../../fixtures/Teams.json";
+import teams from "../../../fixtures/Teams.json";
 
 describe("Teams Filters", () => {
   beforeEach(() => {
@@ -11,154 +11,81 @@ describe("Teams Filters", () => {
   it("Default Filters", () => {
     cy.get('[data-cy="disqualify-filter"]')
       .get("div")
-      .should("have.class", "bg-hackathon-blue-100");
-    cy.get('[data-cy="disqualify-filter"]')
-      .get("div")
-      .should("have.class", "text-white");
+      .should("have.class", "bg-hackathon-blue-100", "text-white");
     cy.get('[data-cy="qualify-filter"]')
       .get("div")
-      .should("have.class", "bg-hackathon-blue-100");
-    cy.get('[data-cy="qualify-filter"]')
-      .get("div")
-      .should("have.class", "text-white");
+      .should("have.class", "bg-hackathon-blue-100", "text-white");
     cy.get('[data-cy="pending-filter"]')
       .get("div")
-      .should("have.class", "bg-hackathon-blue-100");
-    cy.get('[data-cy="pending-filter"]')
-      .get("div")
-      .should("have.class", "text-white");
+      .should("have.class", "bg-hackathon-blue-100", "text-white");
     cy.get('[data-cy="winner-filter"]')
       .get("div")
-      .should("have.class", "bg-hackathon-blue-100");
-    cy.get('[data-cy="winner-filter"]')
-      .get("div")
-      .should("have.class", "text-white");
+      .should("have.class", "bg-hackathon-blue-100", "text-white");
   });
 
   it("Click Filters", () => {
     cy.get('[data-cy="disqualify-filter"]').click();
     cy.get('[data-cy="disqualify-filter"]')
       .get("div")
-      .should("have.class", "bg-white");
-    cy.get('[data-cy="disqualify-filter"]')
-      .get("div")
-      .should("have.class", "text-hackathon-blue-100");
+      .should("have.class", "text-hackathon-blue-100", "bg-white");
     cy.get('[data-cy="qualify-filter"]').click();
     cy.get('[data-cy="qualify-filter"]')
       .get("div")
-      .should("have.class", "bg-white");
-    cy.get('[data-cy="qualify-filter"]')
-      .get("div")
-      .should("have.class", "text-hackathon-blue-100");
+      .should("have.class", "text-hackathon-blue-100", "bg-white");
     cy.get('[data-cy="pending-filter"]').click();
     cy.get('[data-cy="pending-filter"]')
       .get("div")
-      .should("have.class", "bg-white");
-    cy.get('[data-cy="pending-filter"]')
-      .get("div")
-      .should("have.class", "text-hackathon-blue-100");
+      .should("have.class", "text-hackathon-blue-100", "bg-white");
     cy.get('[data-cy="winner-filter"]').click();
     cy.get('[data-cy="winner-filter"]')
       .get("div")
-      .should("have.class", "bg-white");
-    cy.get('[data-cy="winner-filter"]')
-      .get("div")
-      .should("have.class", "text-hackathon-blue-100");
+      .should("have.class", "text-hackathon-blue-100", "bg-white");
   });
 
   it("Click Disqualify", () => {
     cy.get('[data-cy="disqualify-filter"]').click();
-    teamList.forEach((admin) => {
-      if (admin.status === "disqualify")
-        cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
+    teams.forEach((team) => {
+      if (team.status === "disqualify")
+        cy.get(`[data-cy="${team.uid}"]`).should("not.exist");
+      else cy.get(`[data-cy="${team.uid}"]`).should("exist");
     });
   });
 
   it("Click Qualify", () => {
     cy.get('[data-cy="qualify-filter"]').click();
-    teamList.forEach((admin) => {
-      if (admin.status === "qualify")
-        cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
+    teams.forEach((team) => {
+      if (team.status === "qualify")
+        cy.get(`[data-cy="${team.uid}"]`).should("not.exist");
+      else cy.get(`[data-cy="${team.uid}"]`).should("exist");
     });
   });
 
   it("Click Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
-    teamList.forEach((admin) => {
-      if (admin.status === "pending")
-        cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
+    teams.forEach((team) => {
+      if (team.status === "pending")
+        cy.get(`[data-cy="${team.uid}"]`).should("not.exist");
+      else cy.get(`[data-cy="${team.uid}"]`).should("exist");
     });
   });
 
   it("Click Winner", () => {
     cy.get('[data-cy="winner-filter"]').click();
-    teamList.forEach((admin) => {
-      if (admin.status === "winner")
-        cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
+    cy.log(teams);
+    teams.forEach((team) => {
+      if (team.status === "winner")
+        cy.get(`[data-cy="${team.uid}"]`).should("not.exist");
+      else cy.get(`[data-cy="${team.uid}"]`).should("exist");
     });
   });
 
-  it("Click Disqualify and Qualify", () => {
-    cy.get('[data-cy="disqualify-filter"]').click();
+  it("Click 2 Filters", () => {
     cy.get('[data-cy="qualify-filter"]').click();
-    teamList.forEach((admin) => {
-      if (admin.status === "disqualify" || admin.status === "qualify")
-        cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
-    });
-  });
-
-  it("Click Disqualify and Pending", () => {
     cy.get('[data-cy="disqualify-filter"]').click();
-    cy.get('[data-cy="pending-filter"]').click();
-    teamList.forEach((admin) => {
-      if (admin.status === "disqualify" || admin.status === "pending")
-        cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
-    });
-  });
-
-  it("Click Disqualify and Winner", () => {
-    cy.get('[data-cy="disqualify-filter"]').click();
-    cy.get('[data-cy="winner-filter"]').click();
-    teamList.forEach((admin) => {
-      if (admin.status === "disqualify" || admin.status === "winner")
-        cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
-    });
-  });
-
-  it("Click Qualify and Pending", () => {
-    cy.get('[data-cy="pending-filter"]').click();
-    cy.get('[data-cy="qualify-filter"]').click();
-    teamList.forEach((admin) => {
-      if (admin.status === "pending" || admin.status === "qualify")
-        cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
-    });
-  });
-
-  it("Click Qualify and Winner", () => {
-    cy.get('[data-cy="winner-filter"]').click();
-    cy.get('[data-cy="qualify-filter"]').click();
-    teamList.forEach((admin) => {
-      if (admin.status === "winner" || admin.status === "qualify")
-        cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
-    });
-  });
-
-  it("Click Winner and Pending", () => {
-    cy.get('[data-cy="pending-filter"]').click();
-    cy.get('[data-cy="winner-filter"]').click();
-    teamList.forEach((admin) => {
-      if (admin.status === "pending" || admin.status === "winner")
-        cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
+    teams.forEach((team) => {
+      if (team.status === "qualify" || team.status === "disqualify")
+        cy.get(`[data-cy="${team.uid}"]`).should("not.exist");
+      else cy.get(`[data-cy="${team.uid}"]`).should("exist");
     });
   });
 });
