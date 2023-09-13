@@ -1,6 +1,6 @@
-import { mentorList } from "../../../../src/data/mock/Mentors";
+import mentors from "../../../fixtures/Mentors.json";
 
-describe("Mentors Search", () => {
+describe("Mentor Search", () => {
   beforeEach(() => {
     cy.login("admin");
     cy.visit("/");
@@ -15,8 +15,18 @@ describe("Mentors Search", () => {
   });
 
   it("Search For 1st Entry", () => {
-    cy.get('[data-cy="toolbar"]').find("input").type(mentorList[0].name);
+    cy.get('[data-cy="toolbar"]').find("input").type(mentors[0].name);
     cy.get('[data-cy="toolbar"]').find("form").submit();
-    cy.get(`[data-cy="${mentorList[0].uid}"]`).should("exist");
+    cy.get(`[data-cy="${mentors[0].uid}"]`).should("exist");
+  });
+
+  it("Search For Multiple Entries", () => {
+    cy.get('[data-cy="toolbar"]').find("input").type("John Cena");
+    cy.get('[data-cy="toolbar"]').find("form").submit();
+    mentors.forEach((mentor) => {
+      if (mentor.name.toLowerCase().includes("john cena"))
+        cy.get(`[data-cy="${mentor.uid}"]`).should("exist");
+      else cy.get(`[data-cy="${mentor.uid}"]`).should("not.exist");
+    });
   });
 });

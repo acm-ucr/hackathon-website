@@ -35,7 +35,7 @@ const Admin = () => {
       />
       <Table
         headers={headers}
-        empty="No admin Available"
+        empty="No Admin Available"
         setHeaders={setHeaders}
         setObjects={setAdmin}
         objects={admin}

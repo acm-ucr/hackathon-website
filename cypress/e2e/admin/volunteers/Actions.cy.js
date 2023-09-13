@@ -1,6 +1,6 @@
-import { volunteerList } from "../../../../src/data/mock/Volunteers";
+import vounteers from "../../../fixtures/Volunteers.json";
 
-const five = volunteerList.slice(0, 5);
+const five = vounteers.slice(0, 5);
 
 describe("Volunteers Actions", () => {
   beforeEach(() => {
