@@ -1,5 +1,5 @@
 import ProtectedPage from "@/components/ProtectedPage";
-import Events from "@/components/admin/services/Calendar/Events";
+import Events from "@/components/admin/services/calendar/Events";
 
 const Page = () => {
   return (
