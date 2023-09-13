@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { USER } from "../../data/Forms/User";
+import { USER } from "../../data/forms/User";
 import {
   AGES,
   MAJORS,
@@ -10,11 +10,11 @@ import {
   SHIRTS,
   DIETS,
   REQUIREMENTS,
-} from "../../data/Forms/Information";
-import { SCHOOLS } from "../../data/Forms/Schools";
+} from "../../data/forms/Information";
+import { SCHOOLS } from "../../data/forms/Schools";
 import Select from "@/components/Select";
 import Radio from "@/components/Radio";
-import Upload from "@/components/Forms/Upload";
+import Upload from "@/components/forms/Upload";
 import Checkbox from "../Checkbox";
 import Input from "../Input";
 import Col from "react-bootstrap/Col";

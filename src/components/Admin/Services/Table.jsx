@@ -1,7 +1,7 @@
 "use client";
 import { Col, Row } from "react-bootstrap";
 import Tag from "../Tag";
-import { COLORS } from "@/data/Admin/Tags";
+import { COLORS } from "@/data/admin/Tags";
 
 const Table = ({ data }) => {
   return (

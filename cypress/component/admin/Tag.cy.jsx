@@ -1,5 +1,5 @@
-import Tag from "@/components/Admin/Tag";
-import { COLORS } from "@/data/Admin/Tags";
+import Tag from "@/components/admin/Tag";
+import { COLORS } from "@/data/admin/Tags";
 
 describe("Tag", () => {
   it("Accepted", () => {
@@ -11,17 +11,10 @@ describe("Tag", () => {
     cy.get('[data-cy="Accepted-tag"]').contains("Accepted");
     cy.get('[data-cy="Accepted-tag"]').should(
       "have.class",
-      "bg-hackathon-tags-green-bg"
-    );
-    cy.get('[data-cy="Accepted-tag"]').should(
-      "have.class",
-      "text-hackathon-tags-green-text"
-    );
-    cy.get('[data-cy="Accepted-tag"]').should(
-      "have.class",
+      "bg-hackathon-tags-green-bg",
+      "text-hackathon-tags-green-text",
       "hover:shadow-[inset_0px_0px_0px_2px_#00AFB9]"
     );
-
     cy.get('[data-cy="Accepted-tag"]')
       .click()
       .then(() => expect(onClick).to.be.called);
@@ -36,17 +29,10 @@ describe("Tag", () => {
     cy.get('[data-cy="Pending-tag"]').contains("Pending");
     cy.get('[data-cy="Pending-tag"]').should(
       "have.class",
-      "bg-hackathon-tags-yellow-bg"
-    );
-    cy.get('[data-cy="Pending-tag"]').should(
-      "have.class",
-      "text-hackathon-tags-yellow-text"
-    );
-    cy.get('[data-cy="Pending-tag"]').should(
-      "have.class",
+      "bg-hackathon-tags-yellow-bg",
+      "text-hackathon-tags-yellow-text",
       "hover:shadow-[inset_0px_0px_0px_2px_#FFB81C]"
     );
-
     cy.get('[data-cy="Pending-tag"]')
       .click()
       .then(() => expect(onClick).to.be.called);
@@ -61,17 +47,10 @@ describe("Tag", () => {
     cy.get('[data-cy="Rejected-tag"]').contains("Rejected");
     cy.get('[data-cy="Rejected-tag"]').should(
       "have.class",
-      "bg-hackathon-tags-red-bg"
-    );
-    cy.get('[data-cy="Rejected-tag"]').should(
-      "have.class",
-      "text-hackathon-tags-red-text"
-    );
-    cy.get('[data-cy="Rejected-tag"]').should(
-      "have.class",
+      "bg-hackathon-tags-red-bg",
+      "text-hackathon-tags-red-text",
       "hover:shadow-[inset_0px_0px_0px_2px_#F07167]"
     );
-
     cy.get('[data-cy="Rejected-tag"]')
       .click()
       .then(() => expect(onClick).to.be.called);
@@ -93,21 +72,12 @@ describe("Tag", () => {
     cy.get('[data-cy="Accepted-tag"]').contains("Accepted");
     cy.get('[data-cy="Accepted-tag"]').should(
       "have.class",
-      "bg-hackathon-tags-green-bg"
-    );
-    cy.get('[data-cy="Accepted-tag"]').should(
-      "have.class",
-      "text-hackathon-tags-green-text"
-    );
-    cy.get('[data-cy="Accepted-tag"]').should(
-      "have.class",
-      "border-2 border-black"
-    );
-    cy.get('[data-cy="Accepted-tag"]').should(
-      "have.class",
+      "bg-hackathon-tags-green-bg",
+      "text-hackathon-tags-green-text",
+      "border-2",
+      "border-black",
       "hover:shadow-[inset_0px_0px_0px_2px_#00AFB9]"
     );
-
     cy.get('[data-cy="Accepted-tag"]')
       .click()
       .then(() => expect(onClick).to.be.called);
@@ -121,10 +91,7 @@ describe("Tag", () => {
     cy.get('[data-cy="Accepted-tag"]').contains("Accepted");
     cy.get('[data-cy="Accepted-tag"]').should(
       "have.class",
-      "bg-hackathon-tags-green-bg"
-    );
-    cy.get('[data-cy="Accepted-tag"]').should(
-      "have.class",
+      "bg-hackathon-tags-green-bg",
       "text-hackathon-tags-green-text"
     );
     cy.get('[data-cy="Accepted-tag"]').should(

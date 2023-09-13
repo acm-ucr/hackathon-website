@@ -1,4 +1,4 @@
-import Textarea from "@/components/Admin/Services/Textarea";
+import Textarea from "@/components/admin/services/Textarea";
 import { useState } from "react";
 
 describe("Textarea", () => {

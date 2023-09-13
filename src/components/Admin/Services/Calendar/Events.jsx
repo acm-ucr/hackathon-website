@@ -7,7 +7,7 @@ import Toolbar from "./Toolbar";
 import Event from "./Event";
 import axios from "axios";
 import Modal from "./Modal";
-import { LABELS } from "@/data/Admin/Calendar";
+import { LABELS } from "@/data/admin/Calendar";
 
 const mLocalizer = momentLocalizer(moment);
 

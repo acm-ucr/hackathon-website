@@ -8,7 +8,7 @@ import Textarea from "./Textarea";
 import Button from "../Button";
 import toast from "react-hot-toast";
 import Upload from "./Upload";
-import { FILTERS } from "@/data/Admin/Messenger";
+import { FILTERS } from "@/data/admin/Messenger";
 
 const Messenger = () => {
   const [email, setEmail] = useState({

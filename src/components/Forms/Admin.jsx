@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { USER } from "../../data/Forms/User";
+import { USER } from "../../data/forms/User";
 import Radio from "@/components/Radio";
 import Checkbox from "../Checkbox";
 import Input from "../Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "./Button";
-import { AFFILIATIONS, POSITIONS, REQUIREMENTS } from "@/data/Forms/Admin";
+import { AFFILIATIONS, POSITIONS, REQUIREMENTS } from "@/data/forms/Admin";
 
 const Admin = () => {
   const [user, setUser] = useState(USER);

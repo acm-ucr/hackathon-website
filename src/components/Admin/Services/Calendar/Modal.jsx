@@ -2,8 +2,8 @@ import { FaTimes } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { BsPersonFill } from "react-icons/bs";
 import Tag from "../../Tag";
-import { LABELS } from "@/data/Admin/Calendar";
-import { COLORS } from "@/data/Admin/Tags";
+import { LABELS } from "@/data/admin/Calendar";
+import { COLORS } from "@/data/admin/Tags";
 
 const CalendarModal = ({ event, setEvent }) => {
   return (

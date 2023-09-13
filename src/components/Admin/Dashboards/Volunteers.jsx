@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
-import Filters from "@/components/Admin/Filters";
-import Toolbar from "@/components/Admin/Dashboards/Toolbar";
+import Filters from "@/components/admin/Filters";
+import Toolbar from "@/components/admin/dashboards/Toolbar";
 import Title from "../Title";
 import Table from "./Table";
 import volunteerList from "../../../../cypress/fixtures/Volunteers.json";
-import { FILTERS, HEADERS, TAGS } from "@/data/Admin/Volunteers";
+import { FILTERS, HEADERS, TAGS } from "@/data/admin/Volunteers";
 
 const Volunteers = () => {
   const [volunteers, setVolunteers] = useState(volunteerList);

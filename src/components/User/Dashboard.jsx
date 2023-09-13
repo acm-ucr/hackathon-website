@@ -1,16 +1,16 @@
 "use client";
 import { useState } from "react";
 import ProfileHeader from "./Header";
-import Tag from "../Admin/Tag";
+import Tag from "../admin/Tag";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { GENDERS, GRADES, MAJORS } from "@/data/Forms/Information";
+import { GENDERS, GRADES, MAJORS } from "@/data/forms/Information";
 import Select from "../Select";
-import { SCHOOLS } from "@/data/Forms/Schools";
+import { SCHOOLS } from "@/data/forms/Schools";
 import Radio from "../Radio";
 import Input from "../Input";
 import { FaPencil, FaCheck } from "react-icons/fa6";
-import Title from "../Admin/Title.jsx";
+import Title from "../admin/Title.jsx";
 
 const Dashboard = () => {
   const [user, setUser] = useState({

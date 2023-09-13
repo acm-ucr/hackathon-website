@@ -3,7 +3,7 @@ import { useState } from "react";
 import Input from "./Input";
 import Button from "../Button";
 import Tag from "../Tag";
-import { COLORS } from "@/data/Admin/Tags";
+import { COLORS } from "@/data/admin/Tags";
 import { HiSearch } from "react-icons/hi";
 import Popup from "../Popup";
 import { toast } from "react-hot-toast";

@@ -5,7 +5,7 @@ import Filters from "../Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import Table from "./Table.jsx";
 import judgeList from "../../../../cypress/fixtures/JudgeList.json";
-import { FILTERS, HEADERS, TAGS } from "@/data/Admin/Judges.js";
+import { FILTERS, HEADERS, TAGS } from "@/data/admin/Judges.js";
 
 const Judges = () => {
   const [judges, setJudges] = useState(judgeList);

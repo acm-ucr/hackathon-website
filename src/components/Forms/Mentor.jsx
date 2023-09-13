@@ -7,11 +7,11 @@ import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Button from "@/components/Forms/Button";
-import Textarea from "@/components/Forms/Textarea";
-import { MAJORS, GRADES, GENDERS, SHIRTS } from "@/data/Forms/Information.js";
-import { HELPER, AVAILABILITY } from "@/data/Forms/Helper.js";
-import { DESCRIPTIONS, REQUIREMENTS } from "../../data/Forms/Mentors.js";
+import Button from "@/components/forms/Button.jsx";
+import Textarea from "@/components/forms/Textarea.jsx";
+import { MAJORS, GRADES, GENDERS, SHIRTS } from "@/data/forms/Information.js";
+import { HELPER, AVAILABILITY } from "@/data/forms/Helper.js";
+import { DESCRIPTIONS, REQUIREMENTS } from "../../data/forms/Mentors.js";
 
 const Mentor = () => {
   const [mentor, setMentor] = useState(HELPER);

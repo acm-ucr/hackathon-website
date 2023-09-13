@@ -5,7 +5,7 @@ import { HiSearch } from "react-icons/hi";
 import Tag from "../Tag.jsx";
 import { FaDownload, FaTrashAlt } from "react-icons/fa";
 import { CSVLink } from "react-csv";
-import { COLORS } from "@/data/Admin/Tags";
+import { COLORS } from "@/data/admin/Tags";
 import Popup from "../Popup";
 
 const convert = (input) => {

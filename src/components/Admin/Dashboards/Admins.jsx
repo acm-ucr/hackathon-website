@@ -5,7 +5,7 @@ import Filters from "../Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import Table from "./Table.jsx";
 import adminList from "../../../../cypress/fixtures/Admin.json";
-import { FILTERS, HEADERS, TAGS } from "@/data/Admin/Admin.js";
+import { FILTERS, HEADERS, TAGS } from "@/data/admin/Admin.js";
 
 const Admin = () => {
   const [admin, setAdmin] = useState(adminList);

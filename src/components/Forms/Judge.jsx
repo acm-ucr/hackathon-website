@@ -2,13 +2,13 @@
 
 import { useState } from "react";
 import Select from "@/components/Select";
-import { SHIRTS } from "@/data/Forms/Information";
+import { SHIRTS } from "@/data/forms/Information";
 import Radio from "@/components/Radio";
 import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Button from "@/components/Forms/Button";
+import Button from "@/components/forms/Button";
 import toast from "react-hot-toast";
 import Upload from "./Upload";
 

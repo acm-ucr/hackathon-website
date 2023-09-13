@@ -7,11 +7,11 @@ import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Button from "@/components/Forms/Button";
+import Button from "@/components/forms/Button";
 import toast from "react-hot-toast";
-import { MAJORS, GRADES, GENDERS, SHIRTS } from "@/data/Forms/Information";
-import { HELPER, AVAILABILITY } from "@/data/Forms/Helper";
-import { DESCRIPTIONS, REQUIREMENTS } from "@/data/Forms/Volunteers";
+import { MAJORS, GRADES, GENDERS, SHIRTS } from "@/data/forms/Information";
+import { HELPER, AVAILABILITY } from "@/data/forms/Helper";
+import { DESCRIPTIONS, REQUIREMENTS } from "@/data/forms/Volunteers";
 
 const Volunteer = () => {
   const [volunteer, setVolunteer] = useState(HELPER);
