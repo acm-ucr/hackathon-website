@@ -1,4 +1,4 @@
-import Mentor from "@/components/Forms/Mentor";
+import Mentor from "@/components/forms/Mentor";
 import FormPage from "@/components/Form";
 
 const Page = () => {

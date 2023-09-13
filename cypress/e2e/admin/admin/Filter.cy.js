@@ -1,4 +1,4 @@
-import adminList from "../../../fixtures/Admin.json";
+import admins from "../../../fixtures/Admin.json";
 
 describe("Admin Filters", () => {
   beforeEach(() => {
@@ -11,51 +11,33 @@ describe("Admin Filters", () => {
   it("Default Filters", () => {
     cy.get('[data-cy="pending-filter"]')
       .get("div")
-      .should("have.class", "bg-hackathon-blue-100");
-    cy.get('[data-cy="pending-filter"]')
-      .get("div")
-      .should("have.class", "text-white");
+      .should("have.class", "bg-hackathon-blue-100", "text-white");
     cy.get('[data-cy="rejected-filter"]')
       .get("div")
-      .should("have.class", "bg-hackathon-blue-100");
-    cy.get('[data-cy="rejected-filter"]')
-      .get("div")
-      .should("have.class", "text-white");
+      .should("have.class", "bg-hackathon-blue-100", "text-white");
     cy.get('[data-cy="accepted-filter"]')
       .get("div")
-      .should("have.class", "bg-hackathon-blue-100");
-    cy.get('[data-cy="accepted-filter"]')
-      .get("div")
-      .should("have.class", "text-white");
+      .should("have.class", "bg-hackathon-blue-100", "text-white");
   });
 
   it("Click Filters", () => {
     cy.get('[data-cy="pending-filter"]').click();
     cy.get('[data-cy="pending-filter"]')
       .get("div")
-      .should("have.class", "bg-white");
-    cy.get('[data-cy="pending-filter"]')
-      .get("div")
-      .should("have.class", "text-hackathon-blue-100");
+      .should("have.class", "text-hackathon-blue-100", "bg-white");
     cy.get('[data-cy="rejected-filter"]').click();
     cy.get('[data-cy="rejected-filter"]')
       .get("div")
-      .should("have.class", "bg-white");
-    cy.get('[data-cy="rejected-filter"]')
-      .get("div")
-      .should("have.class", "text-hackathon-blue-100");
+      .should("have.class", "text-hackathon-blue-100", "bg-white");
     cy.get('[data-cy="accepted-filter"]').click();
     cy.get('[data-cy="accepted-filter"]')
       .get("div")
-      .should("have.class", "bg-white");
-    cy.get('[data-cy="accepted-filter"]')
-      .get("div")
-      .should("have.class", "text-hackathon-blue-100");
+      .should("have.class", "text-hackathon-blue-100", "bg-white");
   });
 
   it("Click Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
-    adminList.forEach((admin) => {
+    admins.forEach((admin) => {
       if (admin.status === "pending")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
@@ -64,7 +46,7 @@ describe("Admin Filters", () => {
 
   it("Click Rejected", () => {
     cy.get('[data-cy="rejected-filter"]').click();
-    adminList.forEach((admin) => {
+    admins.forEach((admin) => {
       if (admin.status === "reject")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
@@ -73,38 +55,18 @@ describe("Admin Filters", () => {
 
   it("Click Accepted", () => {
     cy.get('[data-cy="accepted-filter"]').click();
-    adminList.forEach((admin) => {
+    admins.forEach((admin) => {
       if (admin.status === "accept")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
     });
   });
 
-  it("Click Pending and Accepted", () => {
+  it("Click 2 Filters", () => {
     cy.get('[data-cy="accepted-filter"]').click();
     cy.get('[data-cy="pending-filter"]').click();
-    adminList.forEach((admin) => {
+    admins.forEach((admin) => {
       if (admin.status === "accept" || admin.status === "pending")
-        cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
-    });
-  });
-
-  it("Click Pending and Rejected", () => {
-    cy.get('[data-cy="rejected-filter"]').click();
-    cy.get('[data-cy="pending-filter"]').click();
-    adminList.forEach((admin) => {
-      if (admin.status === "reject" || admin.status === "pending")
-        cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
-    });
-  });
-
-  it("Click Accepted and Rejected", () => {
-    cy.get('[data-cy="rejected-filter"]').click();
-    cy.get('[data-cy="accepted-filter"]').click();
-    adminList.forEach((admin) => {
-      if (admin.status === "reject" || admin.status === "accept")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
     });
