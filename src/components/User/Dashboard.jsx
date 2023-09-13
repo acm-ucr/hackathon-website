@@ -4,9 +4,9 @@ import ProfileHeader from "./Header";
 import Tag from "../Admin/Tag";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { Genders, Grades, Majors } from "@/data/Register";
+import { GENDERS, GRADES, MAJORS } from "@/data/Forms/Information";
 import Select from "../Select";
-import { Schools } from "@/data/Schools";
+import { SCHOOLS } from "@/data/Forms/Schools";
 import Radio from "../Radio";
 import Input from "../Input";
 import { FaPencil, FaCheck } from "react-icons/fa6";
@@ -72,7 +72,7 @@ const Dashboard = () => {
           />
           <Select
             title="School"
-            options={Schools}
+            options={SCHOOLS}
             field="school"
             user={user}
             setUser={setUser}
@@ -80,7 +80,7 @@ const Dashboard = () => {
           />
           <Select
             title="Major"
-            options={Majors}
+            options={MAJORS}
             field="major"
             user={user}
             setUser={setUser}
@@ -88,7 +88,7 @@ const Dashboard = () => {
           />
           <Select
             title="Grade"
-            options={Grades}
+            options={GRADES}
             field="grade"
             user={user}
             setUser={setUser}
@@ -96,7 +96,7 @@ const Dashboard = () => {
           />
           <Radio
             text="Gender"
-            options={Genders}
+            options={GENDERS}
             field="gender"
             user={user}
             setUser={setUser}

@@ -2,24 +2,38 @@
 
 import { useState } from "react";
 import Select from "@/components/Select";
-import { Majors, Grades, Genders, Shirts, Availability } from "@/data/Register";
 import Radio from "@/components/Radio";
 import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "@/components/Forms/Button";
-import { Helper } from "@/data/User";
-import { Description, Requirements } from "@/data/Volunteers";
+import toast from "react-hot-toast";
+import { MAJORS, GRADES, GENDERS, SHIRTS } from "@/data/Forms/Information";
+import { HELPER, AVAILABILITY } from "@/data/Forms/Helper";
+import { DESCRIPTIONS, REQUIREMENTS } from "@/data/Forms/Volunteers";
 
 const Volunteer = () => {
-  const [volunteer, setVolunteer] = useState(Helper);
-
-  const [requirements, setRequirements] = useState(Requirements);
-
-  const [availability, setAvailability] = useState(Availability);
+  const [volunteer, setVolunteer] = useState(HELPER);
+  const [requirements, setRequirements] = useState(REQUIREMENTS);
+  const [availability, setAvailability] = useState(AVAILABILITY);
 
   const handleSubmit = () => {
+    const incompleteFields = Object.values(volunteer).some(
+      (value) => value === ""
+    );
+    const invalidRequirements = Object.values(requirements).some(
+      (check) => check.state === false
+    );
+    const atLeastOneAvailability = Object.values(availability).some(
+      (time) => time.state === true
+    );
+
+    if (incompleteFields || invalidRequirements || !atLeastOneAvailability) {
+      toast("❌ Please complete all fields!");
+      return;
+    }
+    toast(`✅ Submitted successfully!`);
     console.log(volunteer);
     console.log(requirements);
     console.log(availability);
@@ -47,7 +61,7 @@ const Volunteer = () => {
       <div className="flex flex-col w-1/3 p-3 bg-white rounded-b-xl">
         <Row className="flex justify-center p-0 m-0">
           <Col xl={12}>
-            {Description.map((description, index) => (
+            {DESCRIPTIONS.map((description, index) => (
               <p key={index}>{description}</p>
             ))}
           </Col>
@@ -102,7 +116,7 @@ const Volunteer = () => {
           <Col xl={12}>
             <Select
               title="Major"
-              options={Majors}
+              options={MAJORS}
               field="major"
               user={volunteer}
               setUser={setVolunteer}
@@ -125,7 +139,7 @@ const Volunteer = () => {
           <Col xl={12}>
             <Select
               title="Grade"
-              options={Grades}
+              options={GRADES}
               field="grade"
               user={volunteer}
               setUser={setVolunteer}
@@ -135,7 +149,7 @@ const Volunteer = () => {
           <Col xl={12}>
             <Radio
               text="Gender"
-              options={Genders}
+              options={GENDERS}
               field="gender"
               user={volunteer}
               setUser={setVolunteer}
@@ -144,7 +158,7 @@ const Volunteer = () => {
           <Col xl={12}>
             <Radio
               text="Shirt Size"
-              options={Shirts}
+              options={SHIRTS}
               field="shirt"
               user={volunteer}
               setUser={setVolunteer}

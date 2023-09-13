@@ -4,19 +4,18 @@ import { useState } from "react";
 import LOGO from "../../public/LOGO.png";
 import Image from "next/image";
 import Link from "next/link";
-import { AdminTabs, UserTabs } from "@/data/Navigation";
+import { ADMIN, USER } from "@/data/Navigation";
 import { usePathname } from "next/navigation";
 
 const Navigation = () => {
+  const [expand, setExpand] = useState(false);
   const pathName = usePathname();
-
   const tabs = pathName.startsWith("/admin")
-    ? AdminTabs
+    ? ADMIN
     : pathName.startsWith("/user")
-    ? UserTabs
+    ? USER
     : null;
 
-  const [expand, setExpand] = useState(false);
   return (
     tabs && (
       <>
@@ -91,6 +90,7 @@ const Navigation = () => {
                 <Link
                   key={index}
                   href={tab.link}
+                  onClick={() => tab.onClick()}
                   className="no-underline w-full"
                 >
                   <div
