@@ -137,7 +137,7 @@ const Toolbar = ({
         <form className="flex ml-2 w-full items-center" onSubmit={handleSubmit}>
           <input
             type="text"
-            className="px-2 py-1 w-full bg-hackathon-gray-100 rounded-full focus:outline-none"
+            className="px-3 py-1 w-full bg-hackathon-gray-100 rounded-full focus:outline-none"
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
