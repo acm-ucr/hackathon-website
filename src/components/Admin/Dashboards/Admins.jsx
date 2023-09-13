@@ -4,11 +4,11 @@ import Title from "../Title.jsx";
 import Filters from "../Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import Table from "./Table.jsx";
-import adminList from "../../../../cypress/fixtures/Admin.json";
+import admins from "../../../../cypress/fixtures/Admin.json";
 import { FILTERS, HEADERS, TAGS } from "@/data/admin/Admin.js";
 
 const Admin = () => {
-  const [admin, setAdmin] = useState(adminList);
+  const [admin, setAdmin] = useState(admins);
   const [input, setInput] = useState("");
   const [filters, setFilters] = useState(FILTERS);
   const [headers, setHeaders] = useState(HEADERS);
