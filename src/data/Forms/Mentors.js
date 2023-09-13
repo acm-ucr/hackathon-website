@@ -5,7 +5,7 @@ export const DESCRIPTIONS = [
 export const REQUIREMENTS = {
   photography: {
     state: false,
-    text: "I agree to photograph.",
+    text: "I agree to photograph. Thank you",
   },
   inPerson: {
     state: false,
