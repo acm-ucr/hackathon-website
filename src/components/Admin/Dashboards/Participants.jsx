@@ -5,16 +5,14 @@ import Filters from "@/components/Admin/Filters";
 import Toolbar from "@/components/Admin/Dashboards/Toolbar";
 import Title from "../Title";
 import Table from "./Table";
-import { participantList } from "@/data/mock/Participants";
-import { participantFilters } from "@/data/Filters";
-import { participantHeader } from "@/data/Headers";
-import { participantTags } from "@/data/Tags";
+import participantList from "../../../../cypress/fixtures/Participants.json";
+import { FILTERS, HEADERS, TAGS } from "@/data/Admin/Participants";
 
 const Participants = () => {
   const [participants, setParticipants] = useState(participantList);
   const [input, setInput] = useState("");
-  const [filters, setFilters] = useState(participantFilters);
-  const [headers, setHeaders] = useState(participantHeader);
+  const [filters, setFilters] = useState(FILTERS);
+  const [headers, setHeaders] = useState(HEADERS);
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <div className="flex">
@@ -30,7 +28,7 @@ const Participants = () => {
       <Toolbar
         input={input}
         setInput={setInput}
-        tags={participantTags}
+        tags={TAGS}
         setObjects={setParticipants}
         objects={participants}
         filters={filters}

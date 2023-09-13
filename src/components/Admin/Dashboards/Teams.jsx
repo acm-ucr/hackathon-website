@@ -5,17 +5,15 @@ import Filters from "@/components/Admin/Filters";
 import Toolbar from "@/components/Admin/Dashboards/Toolbar";
 import Title from "../Title";
 import Table from "./Table";
-import { teamList } from "@/data/mock/Teams.js";
-import { teamFilters } from "@/data/Filters";
-import { teamTags } from "@/data/Tags";
-import { teamHeaders } from "@/data/Headers";
+import teamList from "../../../../cypress/fixtures/Teams.json";
+import { FILTERS, HEADERS, TAGS } from "@/data/Admin/Teams";
 
 const Teams = () => {
   const [teams, setTeams] = useState(teamList);
   const [input, setInput] = useState("");
-  const [filters, setFilters] = useState(teamFilters);
+  const [filters, setFilters] = useState(FILTERS);
+  const [headers, setHeaders] = useState(HEADERS);
 
-  const [headers, setHeaders] = useState(teamHeaders);
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <div className="flex">
@@ -31,7 +29,7 @@ const Teams = () => {
       <Toolbar
         input={input}
         setInput={setInput}
-        tags={teamTags}
+        tags={TAGS}
         setObjects={setTeams}
         objects={teams}
         filters={filters}

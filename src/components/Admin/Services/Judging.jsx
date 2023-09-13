@@ -3,7 +3,8 @@ import { useState } from "react";
 import Title from "../Title.jsx";
 import Table from "./Table.jsx";
 import Toolbar from "./Toolbar.jsx";
-import { teamsCopy, judges } from "@/data/mock/Judging.js";
+import teamsCopy from "../../../../cypress/fixtures/TeamsCopy.json";
+import judges from "../../../../cypress/fixtures/Judges.json";
 
 const Judging = () => {
   const [data, setData] = useState(teamsCopy);

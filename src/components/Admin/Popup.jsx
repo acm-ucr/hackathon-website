@@ -1,7 +1,7 @@
 import Button from "./Button";
 import { LiaTimesSolid } from "react-icons/lia";
 
-const Popup = ({ popup, onClick = () => {}, setPopup }) => {
+const Popup = ({ popup, onClick, setPopup, text }) => {
   console.log(popup);
   return (
     <div
@@ -26,7 +26,7 @@ const Popup = ({ popup, onClick = () => {}, setPopup }) => {
           />
           <Button
             color={popup.color}
-            text="confirm"
+            text={text}
             size="text-lg"
             onClick={() => {
               onClick();

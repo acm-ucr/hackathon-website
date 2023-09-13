@@ -4,16 +4,14 @@ import Title from "../Title.jsx";
 import Filters from "../Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import Table from "./Table.jsx";
-import { adminList } from "@/data/mock/Admin.js";
-import { adminFilters } from "@/data/Filters.js";
-import { adminHeaders } from "@/data/Headers.js";
-import { adminTags } from "@/data/Tags.js";
+import adminList from "../../../../cypress/fixtures/Admin.json";
+import { FILTERS, HEADERS, TAGS } from "@/data/Admin/Admin.js";
 
 const Admin = () => {
   const [admin, setAdmin] = useState(adminList);
   const [input, setInput] = useState("");
-  const [filters, setFilters] = useState(adminFilters);
-  const [headers, setHeaders] = useState(adminHeaders);
+  const [filters, setFilters] = useState(FILTERS);
+  const [headers, setHeaders] = useState(HEADERS);
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
@@ -30,7 +28,7 @@ const Admin = () => {
       <Toolbar
         input={input}
         setInput={setInput}
-        tags={adminTags}
+        tags={TAGS}
         setObjects={setAdmin}
         objects={admin}
         filters={filters}
