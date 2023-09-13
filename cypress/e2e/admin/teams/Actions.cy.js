@@ -1,6 +1,6 @@
-import { teamList } from "../../../../src/data/mock/Teams";
+import teams from "../../../fixtures/Teams.json";
 
-const five = teamList.slice(0, 5);
+const five = teams.slice(0, 5);
 
 describe("Teams Actions", () => {
   beforeEach(() => {
