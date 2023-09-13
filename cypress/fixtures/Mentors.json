@@ -4,7 +4,7 @@
     "name": "Raidah Fairooz",
     "email": "rfair008@ucr.edu",
     "discord": "Raidah#2067",
-    "status": "online",
+    "status": "pending",
     "selected": false,
     "hidden": false
   },
@@ -13,7 +13,7 @@
     "name": "Minsoo Kim",
     "email": "mkim001@ucr.edu",
     "discord": "Soup#2023",
-    "status": "online",
+    "status": "confirm",
     "selected": false,
     "hidden": false
   },
@@ -22,7 +22,7 @@
     "name": "Menthy Wu",
     "email": "mwu171@ucr.edu",
     "discord": "_wmx",
-    "status": "onsite",
+    "status": "confirm",
     "selected": false,
     "hidden": false
   },
@@ -31,7 +31,7 @@
     "name": "John Cena",
     "email": "cantseeme@ucr.edu",
     "discord": "yiyii#1111",
-    "status": "onsite",
+    "status": "confirm",
     "selected": false,
     "hidden": false
   },
@@ -49,7 +49,7 @@
     "name": "Tiffany Wu",
     "email": "twu7680@ucr.edu",
     "discord": "yuung#8376",
-    "status": "online",
+    "status": "confirm",
     "selected": false,
     "hidden": false
   },
@@ -58,7 +58,7 @@
     "name": "Celine Don",
     "email": "cdon@hotmai.com",
     "discord": "duuknh#0298",
-    "status": "online",
+    "status": "pending",
     "selected": false,
     "hidden": false
   },
@@ -67,7 +67,7 @@
     "name": "AJ Cena",
     "email": "ajmm@gmail.com",
     "discord": "zzz_11#2067",
-    "status": "onsite",
+    "status": "pending",
     "selected": false,
     "hidden": false
   },
@@ -76,7 +76,7 @@
     "name": "John Cena",
     "email": "cantseeme@ucr.edu",
     "discord": "babydonthurtme#2067",
-    "status": "onsite",
+    "status": "pending",
     "selected": false,
     "hidden": false
   },
@@ -130,7 +130,7 @@
     "name": "John Cena",
     "email": "cantseeme@ucr.edu",
     "discord": "babydonthurtme#2067",
-    "status": "online",
+    "status": "pending",
     "selected": false,
     "hidden": false
   },
