@@ -1,8 +1,8 @@
-import participantList from "../../../fixtures/Participants.json";
+import participants from "../../../fixtures/Participants.json";
 
-const five = participantList.slice(0, 5);
+const five = participants.slice(0, 5);
 
-describe("Participants Select", () => {
+describe("Participant Select", () => {
   beforeEach(() => {
     cy.login("admin");
     cy.visit("/");
@@ -12,7 +12,7 @@ describe("Participants Select", () => {
 
   it("Select All", () => {
     cy.get('[data-cy="select-all"]').click();
-    participantList.forEach((participant) => {
+    participants.forEach((participant) => {
       cy.get(`[data-cy="${participant.uid}"]`).should(
         "have.class",
         "bg-green-100"
@@ -27,7 +27,7 @@ describe("Participants Select", () => {
         .find('[data-cy="checkbox"]')
         .click()
     );
-    participantList.forEach((participant, index) => {
+    participants.forEach((participant, index) => {
       if (index < 5)
         cy.get(`[data-cy="${participant.uid}"]`).should(
           "have.class",
