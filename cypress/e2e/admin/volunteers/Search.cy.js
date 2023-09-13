@@ -1,4 +1,4 @@
-import { volunteerList } from "../../../../src/data/mock/Volunteers";
+import volunteerList from "../../../fixtures/Volunteers.json";
 
 const multiple = volunteerList.slice(3);
 
