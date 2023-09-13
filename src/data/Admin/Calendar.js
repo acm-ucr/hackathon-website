@@ -1,4 +1,4 @@
-export const labels = {
+export const LABELS = {
   all: {
     color: "red",
     background: "!bg-hackathon-tags-red-bg",

@@ -2,8 +2,8 @@ import { FaTimes } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { BsPersonFill } from "react-icons/bs";
 import Tag from "../../Tag";
-import { labels } from "@/data/Calendar";
-import { colors } from "@/data/Tags";
+import { LABELS } from "@/data/Admin/Calendar";
+import { COLORS } from "@/data/Admin/Tags";
 
 const CalendarModal = ({ event, setEvent }) => {
   return (
@@ -41,8 +41,8 @@ const CalendarModal = ({ event, setEvent }) => {
             <Tag
               text={event.description.split("\n")[1].split(": ")[1]}
               color={
-                colors[
-                  labels[
+                COLORS[
+                  LABELS[
                     event.description
                       .split("\n")[1]
                       .split(": ")[1]

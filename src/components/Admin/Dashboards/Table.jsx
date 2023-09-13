@@ -17,7 +17,7 @@ import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { useContext } from "react";
 import { SiGithub, SiDevpost } from "react-icons/si";
 import Link from "next/link";
-import { colors } from "@/data/Tags";
+import { COLORS } from "@/data/Admin/Tags";
 import {
   FaAppleAlt,
   FaPhoneAlt,
@@ -151,8 +151,8 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                             }
                             color={
                               object[header.text].includes("https://")
-                                ? colors["view"]
-                                : colors[object[header.text]]
+                                ? COLORS["view"]
+                                : COLORS[object[header.text]]
                             }
                             onClick={
                               header.onClick
