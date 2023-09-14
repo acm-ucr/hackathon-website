@@ -13,7 +13,7 @@ const Modal = ({ data, setModal }) => {
       <div className="bg-white px-3 rounded-b-xl py-2 border-x-2 border-b-2 border-hackathon-darkgray h-full">
         <iframe
           className="w-full h-full"
-          src={data.src + "#toolbar=0&navpanes=0"}
+          src={data.src}
         />
       </div>
     </div>
