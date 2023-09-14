@@ -1,12 +1,12 @@
 "use client";
 import { useState } from "react";
 import Checkbox from "../../Checkbox";
-import { HiSearch } from "react-icons/hi";
 import Tag from "../Tag.jsx";
 import { FaDownload, FaTrashAlt } from "react-icons/fa";
 import { CSVLink } from "react-csv";
 import { COLORS } from "@/data/Tags";
 import Popup from "../Popup";
+import Input from "../Input";
 
 const convert = (input) => {
   if (Array.isArray(input)) {
@@ -59,7 +59,7 @@ const Toolbar = ({
           if (
             a.status === filter &&
             value &&
-            a.name.toLowerCase().match(input.toLowerCase())
+            a.name.toLowerCase().match(input.input.toLowerCase())
           ) {
             boolean = true;
           }
@@ -135,19 +135,16 @@ const Toolbar = ({
           ))}
         </div>
         <form className="flex ml-2 w-full items-center" onSubmit={handleSubmit}>
-          <input
-            data-cy="searchBar"
-            type="text"
-            className="px-3 py-1 w-full bg-hackathon-gray-100 rounded-full focus:outline-none"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
+          <Input
+            classes="w-full"
+            object={input}
+            setObject={setInput}
+            clear={true}
+            label="input"
+            maxLength={60}
+            placeholder="search"
+            showLabel={false}
           />
-          <button className="focus:outline-none">
-            <HiSearch
-              size={30}
-              className="ml-2 text-hackathon-gray-300 hover:opacity-70 duration-150"
-            />
-          </button>
         </form>
       </div>
       <div className="flex w-1/3">

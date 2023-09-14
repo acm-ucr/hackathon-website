@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Input from "./Input";
+import Input from "../Input";
 import Button from "../Button";
 import Tag from "../Tag";
 import { COLORS } from "@/data/Tags";

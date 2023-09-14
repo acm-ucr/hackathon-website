@@ -9,7 +9,9 @@ import { FILTERS, HEADERS, TAGS } from "@/data/admin/Judges";
 
 const Judges = () => {
   const [judges, setJudges] = useState(judgeList);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState({
+    input: "",
+  });
   const [filters, setFilters] = useState(FILTERS);
   const [headers, setHeaders] = useState(HEADERS);
 
@@ -22,7 +24,7 @@ const Judges = () => {
           setFilters={setFilters}
           setObjects={setJudges}
           objects={judges}
-          input={input}
+          input={input.input}
         />
       </div>
       <Toolbar

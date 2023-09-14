@@ -10,7 +10,9 @@ import { FILTERS, HEADERS, TAGS } from "@/data/admin/Teams";
 
 const Teams = () => {
   const [teams, setTeams] = useState(teamList);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState({
+    input: "",
+  });
   const [filters, setFilters] = useState(FILTERS);
   const [headers, setHeaders] = useState(HEADERS);
 
@@ -23,7 +25,7 @@ const Teams = () => {
           setFilters={setFilters}
           setObjects={setTeams}
           objects={teams}
-          input={input}
+          input={input.input}
         />
       </div>
       <Toolbar
