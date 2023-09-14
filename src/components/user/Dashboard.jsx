@@ -9,10 +9,10 @@ import Select from "../Select";
 import { SCHOOLS } from "@/data/forms/Schools";
 import Radio from "../Radio";
 import Title from "../admin/Title.jsx";
-import teamList from "../../../cypress/fixtures/Teams.json";
 import TeamInfo from "./Team";
 import UserInfo from "./User";
 import mockUser from "../../../cypress/fixtures/User.json";
+import { COLORS } from "@/data/Tags";
 
 const Dashboard = () => {
   const [user, setUser] = useState(mockUser);
@@ -22,16 +22,10 @@ const Dashboard = () => {
     <div className="w-full">
       <Title title="Dashboard" />
       <div className="flex justify-between items-center">
-        <ProfileHeader email="hello" name="hello" />
+        <ProfileHeader email={user.email} name={user.name} />
         <div className="text-right">
           <p className="text-xl font-bold mb-0">Status</p>
-          <Tag
-            color={{
-              text: "text-hackathon-tags-yellow-text",
-              background: "bg-hackathon-tags-yellow-bg",
-            }}
-            text="pending"
-          />
+          <Tag color={COLORS[user.status]} text={user.status} />
         </div>
       </div>
       <Row>
@@ -78,7 +72,7 @@ const Dashboard = () => {
         </Col>
         <Col xl={6}>
           {user.team ? (
-            <TeamInfo user={user} team={teamList[0]} />
+            <TeamInfo user={user} team={user.team} />
           ) : (
             <p>no team</p>
           )}

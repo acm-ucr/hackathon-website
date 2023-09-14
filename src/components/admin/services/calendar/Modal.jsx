@@ -3,7 +3,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { BsPersonFill } from "react-icons/bs";
 import Tag from "../../Tag";
 import { LABELS } from "@/data/admin/Calendar";
-import { COLORS } from "@/data/admin/Tags";
+import { COLORS } from "@/data/Tags";
 
 const CalendarModal = ({ event, setEvent }) => {
   return (

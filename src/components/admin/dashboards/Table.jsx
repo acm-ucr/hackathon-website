@@ -17,7 +17,7 @@ import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { useContext } from "react";
 import { SiGithub, SiDevpost } from "react-icons/si";
 import Link from "next/link";
-import { COLORS } from "@/data/admin/Tags";
+import { COLORS } from "@/data/Tags";
 import {
   FaAppleAlt,
   FaPhoneAlt,
