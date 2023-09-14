@@ -7,7 +7,7 @@ import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Button from "@/components/forms/Button.jsx";
+import Button from "@/components/Button.jsx";
 import Textarea from "@/components/forms/Textarea.jsx";
 import { MAJORS, GRADES, GENDERS, SHIRTS } from "@/data/forms/Information.js";
 import { HELPER, AVAILABILITY } from "@/data/forms/Helper.js";
