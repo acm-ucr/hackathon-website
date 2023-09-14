@@ -11,10 +11,7 @@ const Modal = ({ data, setModal }) => {
         />
       </div>
       <div className="bg-white px-3 rounded-b-xl py-2 border-x-2 border-b-2 border-hackathon-darkgray h-full">
-        <iframe
-          className="w-full h-full"
-          src={data.src}
-        />
+        <iframe className="w-full h-full" src={data.src} />
       </div>
     </div>
   );
