@@ -24,7 +24,7 @@ const Judges = () => {
           setFilters={setFilters}
           setObjects={setJudges}
           objects={judges}
-          input={input}
+          input={input.input}
         />
       </div>
       <Toolbar

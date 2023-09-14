@@ -24,7 +24,7 @@ const Volunteers = () => {
           setFilters={setFilters}
           setObjects={setVolunteers}
           objects={volunteers}
-          input={input}
+          input={input.input}
         />
       </div>
       <Toolbar

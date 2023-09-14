@@ -25,7 +25,7 @@ const Mentors = () => {
           setFilters={setFilters}
           setObjects={setMentors}
           objects={mentors}
-          input={input}
+          input={input.input}
         />
       </div>
       <Toolbar
