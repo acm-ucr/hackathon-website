@@ -2,7 +2,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { LABELS } from "@/data/admin/Calendar.js";
 import Tag from "../../Tag.jsx";
-import { COLORS } from "@/data/admin/Tags.js";
+import { COLORS } from "@/data/Tags.js";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
 const CustomToolbar = ({

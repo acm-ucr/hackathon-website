@@ -4,7 +4,7 @@ import { useState } from "react";
 import Input from "@/components/Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Button from "@/components/forms/Button";
+import Button from "@/components/Button";
 import { HELPER } from "@/data/forms/Helper";
 
 const Feedback = () => {
