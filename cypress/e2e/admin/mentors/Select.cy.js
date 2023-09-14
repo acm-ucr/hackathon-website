@@ -1,8 +1,8 @@
-import mentorList from "../../../fixtures/Mentors.json";
+import mentors from "../../../fixtures/Mentors.json";
 
-const five = mentorList.slice(0, 5);
+const five = mentors.slice(0, 5);
 
-describe("Mentors Select", () => {
+describe("Mentor Select", () => {
   beforeEach(() => {
     cy.login("admin");
     cy.visit("/");
@@ -12,7 +12,7 @@ describe("Mentors Select", () => {
 
   it("Select All", () => {
     cy.get('[data-cy="select-all"]').click();
-    mentorList.forEach((mentor) => {
+    mentors.forEach((mentor) => {
       cy.get(`[data-cy="${mentor.uid}"]`).should("have.class", "bg-green-100");
     });
   });
@@ -21,7 +21,7 @@ describe("Mentors Select", () => {
     five.map((mentor) =>
       cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="checkbox"]').click()
     );
-    mentorList.forEach((mentor, index) => {
+    mentors.forEach((mentor, index) => {
       if (index < 5)
         cy.get(`[data-cy="${mentor.uid}"]`).should(
           "have.class",
