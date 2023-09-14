@@ -1,5 +1,5 @@
 import ProtectedPage from "@/components/ProtectedPage";
-import Judging from "@/components/Admin/Services/Judging";
+import Judging from "@/components/admin/services/Judging";
 
 const Page = () => {
   return (
