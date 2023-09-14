@@ -1,25 +1,27 @@
 import Button from "@/components/Forms/Button";
 
-describe("Button.cy.jsx", () => {
+describe("Forms Button", () => {
   it("text", () => {
-    const text = "Hello, world";
+    const text = "Hello world";
     cy.mount(<Button text={text} />);
-    cy.get('[data-cy="Hello, world-button"]').should(
+    cy.get('[data-cy="Hello world-button"]').should(
       "contains.text",
-      "Hello, world"
+      "Hello world"
     );
   });
 
-  it("no text", () => {
+  it("Empty", () => {
     const text = "";
     cy.mount(<Button text={text} />);
     cy.get('[data-cy="-button"]').should("not.contain.text");
   });
 
-  it("clickable", () => {
-    const text = "clickable";
+  it("onClick", () => {
+    const text = "CLICKME";
     const onClick = cy.stub();
     cy.mount(<Button onClick={onClick} text={text} />);
-    cy.get('[data-cy="clickable-button"]').click();
+    cy.get('[data-cy="CLICKME-button"]')
+      .click()
+      .then(() => expect(onClick).to.be.called());
   });
 });
