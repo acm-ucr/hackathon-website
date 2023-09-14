@@ -1,5 +1,5 @@
 import ProtectedPage from "@/components/ProtectedPage";
-import CheckinPage from "@/components/User/CheckIn";
+import CheckinPage from "@/components/user/CheckIn";
 
 const Page = () => {
   return (
