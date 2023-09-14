@@ -1,4 +1,4 @@
-import Input from "@/components/admin/services/Input";
+import Input from "@/components/admin/Input";
 import { useState } from "react";
 
 describe("Input", () => {

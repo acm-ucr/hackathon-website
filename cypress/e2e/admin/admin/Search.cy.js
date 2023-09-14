@@ -9,19 +9,21 @@ describe("Admin Search", () => {
   });
 
   it("No Search Results", () => {
-    cy.get('[data-cy="toolbar"]').find("input").type("Meow");
+    cy.get('[data-cy="toolbar"]').find('[data-cy="input-input"]').type("Meow");
     cy.get('[data-cy="toolbar"]').find("form").submit();
     cy.contains("No Admin Available");
   });
 
   it("Search For 1st Entry", () => {
-    cy.get('[data-cy="toolbar"]').find("input").type(admins[0].name);
+    cy.get('[data-cy="toolbar"]')
+      .find('[data-cy="input-input"]')
+      .type(admins[0].name);
     cy.get('[data-cy="toolbar"]').find("form").submit();
     cy.get(`[data-cy="${admins[0].uid}"]`).should("exist");
   });
 
   it("Search For Multiple Entries", () => {
-    cy.get('[data-cy="toolbar"]').find("input").type("Mario");
+    cy.get('[data-cy="toolbar"]').find('[data-cy="input-input"]').type("Mario");
     cy.get('[data-cy="toolbar"]').find("form").submit();
     admins.forEach((admin) => {
       if (admin.name.toLowerCase().includes("mario"))
