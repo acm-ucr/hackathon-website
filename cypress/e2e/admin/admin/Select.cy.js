@@ -1,6 +1,6 @@
-import { adminList } from "../../../../src/data/mock/Admin";
+import admins from "../../../fixtures/Admin.json";
 
-const five = adminList.slice(0, 5);
+const five = admins.slice(0, 5);
 
 describe("Admin Select", () => {
   beforeEach(() => {
@@ -12,7 +12,7 @@ describe("Admin Select", () => {
 
   it("Select All", () => {
     cy.get('[data-cy="select-all"]').click();
-    adminList.forEach((admin) => {
+    admins.forEach((admin) => {
       cy.get(`[data-cy="${admin.uid}"]`).should("have.class", "bg-green-100");
     });
   });
@@ -21,7 +21,7 @@ describe("Admin Select", () => {
     five.map((admin) =>
       cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click()
     );
-    adminList.forEach((admin, index) => {
+    admins.forEach((admin, index) => {
       if (index < 5)
         cy.get(`[data-cy="${admin.uid}"]`).should("have.class", "bg-green-100");
       else cy.get(`[data-cy="${admin.uid}"]`).should("have.class", "bg-white");
