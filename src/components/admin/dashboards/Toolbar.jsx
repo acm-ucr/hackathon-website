@@ -7,7 +7,6 @@ import { FaDownload, FaTrashAlt } from "react-icons/fa";
 import { CSVLink } from "react-csv";
 import { COLORS } from "@/data/admin/Tags";
 import Popup from "../Popup";
-import Input from "../../Input.jsx";
 
 const convert = (input) => {
   if (Array.isArray(input)) {
@@ -136,10 +135,9 @@ const Toolbar = ({
           ))}
         </div>
         <form className="flex ml-2 w-full items-center" onSubmit={handleSubmit}>
-          <Input
+          <input
             type="text"
-            parentClassNames="w-full"
-            inputClassNames="px-2 py-1 w-full bg-hackathon-gray-100 rounded-full focus:outline-none"
+            className="px-2 py-1 w-full bg-hackathon-gray-100 rounded-full focus:outline-none"
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
