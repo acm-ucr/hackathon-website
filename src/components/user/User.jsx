@@ -1,5 +1,5 @@
-import { GENDERS, GRADES, MAJORS } from "@/data/Forms/Information";
-import { SCHOOLS } from "@/data/Forms/Schools";
+import { GENDERS, GRADES, MAJORS } from "@/data/forms/Information";
+import { SCHOOLS } from "@/data/forms/Schools";
 import Input from "../Input";
 import Radio from "../Radio";
 import Select from "../Select";

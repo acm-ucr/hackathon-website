@@ -8,7 +8,7 @@ import { GENDERS, GRADES, MAJORS } from "@/data/forms/Information";
 import Select from "../Select";
 import { SCHOOLS } from "@/data/forms/Schools";
 import Radio from "../Radio";
-import Title from "../Admin/Title.jsx";
+import Title from "../admin/Title.jsx";
 import teamList from "../../../cypress/fixtures/Teams.json";
 import TeamInfo from "./Team";
 import UserInfo from "./User";
