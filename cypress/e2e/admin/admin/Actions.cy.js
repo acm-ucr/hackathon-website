@@ -1,6 +1,6 @@
-import adminList from "../../../fixtures/Admin.json";
+import admins from "../../../fixtures/Admin.json";
 
-const five = adminList.slice(0, 5);
+const five = admins.slice(0, 5);
 
 describe("Admin Actions", () => {
   beforeEach(() => {
@@ -20,6 +20,20 @@ describe("Admin Actions", () => {
       cy
         .get(`[data-cy="${admin.uid}"]`)
         .find('[data-cy="accepted-tag"]')
+        .should("exist")
+    );
+  });
+
+  it("Pending First 5 Entries", () => {
+    five.forEach((admin) =>
+      cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click()
+    );
+
+    cy.get('[data-cy="toolbar"]').find('[data-cy="pending-tag"]').click();
+    five.forEach((admin) =>
+      cy
+        .get(`[data-cy="${admin.uid}"]`)
+        .find('[data-cy="pending-tag"]')
         .should("exist")
     );
   });
