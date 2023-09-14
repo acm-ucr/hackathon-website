@@ -152,7 +152,7 @@ const Mentor = () => {
           <Col xl={12}>
             <Textarea
               name="response"
-              type="email"
+              rows={4}
               title="What skills and experience can you bring as a mentor?"
               placeholder="I can bring..."
               value={mentor.response}

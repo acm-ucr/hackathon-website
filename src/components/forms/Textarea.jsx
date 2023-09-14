@@ -3,7 +3,7 @@ import { FaPencil, FaCheck } from "react-icons/fa6";
 
 const Textarea = ({
   name,
-  type,
+  rows,
   title,
   placeholder,
   value,
@@ -32,12 +32,12 @@ const Textarea = ({
       )}
       <textarea
         disabled={editable && !edit}
-        className="pl-3 w-full focus:outline-none placeholder:text-hackathon-gray-200 resize-none h-auto"
+        className="pl-3 w-full focus:outline-none placeholder:text-hackathon-gray-200 resize-none"
         name={name}
         placeholder={placeholder}
         value={value}
         onChange={(e) => setUser({ ...user, [name]: e.target.value })}
-        rows="4"
+        rows={rows}
       />
     </div>
   );
