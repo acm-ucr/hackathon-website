@@ -1,7 +1,6 @@
 import { FaTimes } from "react-icons/fa";
 
 const Modal = ({ data, setModal }) => {
-  // const resumeURL = data.src + '#toolbar=0&navpanes=0';
   return (
     <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-10 w-1/2 h-2/3 rounded-xl">
       <div className="flex justify-between items-center p-3 rounded-t-xl bg-hackathon-green-200">
