@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BsUpload } from "react-icons/bs";
-import { FaFilePdf, FaImage, FaTimes } from "react-icons/fa";
+import { FaFilePdf, FaTimes } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import { bytes } from "@/data/Bytes";
 const getSize = (maxSize) => bytes[maxSize[1]] * maxSize[0];
@@ -58,11 +58,7 @@ const Upload = ({ field, user, setUser, text, maxSize, types }) => {
         {file && (
           <div className="flex items-center justify-between w-full my-2 bg-gray-200 px-2 py-2">
             <div className="flex items-center">
-              {file.type.split("/")[0] === "image" ? (
-                <FaImage className="text-xl mr-2" />
-              ) : (
-                <FaFilePdf className="text-xl mr-2" />
-              )}
+              <FaFilePdf className="text-xl mr-2" />
               {file.name}
             </div>
             <FaTimes
