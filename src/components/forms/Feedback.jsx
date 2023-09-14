@@ -12,7 +12,6 @@ const Feedback = () => {
 
   const handleSubmit = () => {
     console.log(feedback);
-    console.log(requirements);
   };
 
   return (
