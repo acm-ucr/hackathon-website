@@ -9,7 +9,9 @@ import { FILTERS, HEADERS, TAGS } from "@/data/admin/Admin.js";
 
 const Admin = () => {
   const [admin, setAdmin] = useState(admins);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState({
+    input: "",
+  });
   const [filters, setFilters] = useState(FILTERS);
   const [headers, setHeaders] = useState(HEADERS);
 
@@ -22,7 +24,7 @@ const Admin = () => {
           setFilters={setFilters}
           setObjects={setAdmin}
           objects={admin}
-          input={input}
+          input={input.input}
         />
       </div>
       <Toolbar

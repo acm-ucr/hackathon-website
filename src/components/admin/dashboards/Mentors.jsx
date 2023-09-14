@@ -10,7 +10,9 @@ import { FILTERS, HEADERS, TAGS } from "@/data/admin/Mentors.js";
 
 const Mentors = () => {
   const [mentors, setMentors] = useState(mentorList);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState({
+    input: "",
+  });
   const [filters, setFilters] = useState(FILTERS);
   const [headers, setHeaders] = useState(HEADERS);
 

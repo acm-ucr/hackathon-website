@@ -10,7 +10,9 @@ import { FILTERS, HEADERS, TAGS } from "@/data/admin/Teams";
 
 const Teams = () => {
   const [teams, setTeams] = useState(teamList);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState({
+    input: "",
+  });
   const [filters, setFilters] = useState(FILTERS);
   const [headers, setHeaders] = useState(HEADERS);
 

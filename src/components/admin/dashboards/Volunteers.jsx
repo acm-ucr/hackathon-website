@@ -9,7 +9,9 @@ import { FILTERS, HEADERS, TAGS } from "@/data/admin/Volunteers";
 
 const Volunteers = () => {
   const [volunteers, setVolunteers] = useState(volunteerList);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState({
+    input: "",
+  });
   const [filters, setFilters] = useState(FILTERS);
   const [headers, setHeaders] = useState(HEADERS);
 

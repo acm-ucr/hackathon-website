@@ -34,9 +34,6 @@ const Toolbar = ({
     visible: false,
   });
   const [toggle, setToggle] = useState(false);
-  const [search, setSearch] = useState({
-    search: input,
-  });
 
   const onClick = (text) => {
     setToggle(false);
@@ -62,7 +59,7 @@ const Toolbar = ({
           if (
             a.status === filter &&
             value &&
-            a.name.toLowerCase().match(search.search.toLowerCase())
+            a.name.toLowerCase().match(input.input.toLowerCase())
           ) {
             boolean = true;
           }
@@ -140,8 +137,8 @@ const Toolbar = ({
         <form className="flex ml-2 w-full items-center" onSubmit={handleSubmit}>
           <Input
             classes="w-full"
-            object={search}
-            setObject={setSearch}
+            object={input}
+            setObject={setInput}
             clear={true}
             label="search"
             maxLength={60}
