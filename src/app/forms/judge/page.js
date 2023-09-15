@@ -1,4 +1,4 @@
-import Judge from "@/components/Forms/Judge";
+import Judge from "@/components/form/Judge";
 import ProtectedPage from "@/components/ProtectedPage";
 
 const Page = () => {

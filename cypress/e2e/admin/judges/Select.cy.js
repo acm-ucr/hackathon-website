@@ -1,8 +1,8 @@
-import judgeList from "../../../fixtures/JudgeList.json";
+import judges from "../../../fixtures/Judges.json";
 
-const five = judgeList.slice(0, 5);
+const five = judges.slice(0, 5);
 
-describe("Judges Select", () => {
+describe("Mentor Select", () => {
   beforeEach(() => {
     cy.login("admin");
     cy.visit("/");
@@ -12,7 +12,7 @@ describe("Judges Select", () => {
 
   it("Select All", () => {
     cy.get('[data-cy="select-all"]').click();
-    judgeList.forEach((judge) => {
+    judges.forEach((judge) => {
       cy.get(`[data-cy="${judge.uid}"]`).should("have.class", "bg-green-100");
     });
   });
@@ -21,7 +21,7 @@ describe("Judges Select", () => {
     five.map((judge) =>
       cy.get(`[data-cy="${judge.uid}"]`).find('[data-cy="checkbox"]').click()
     );
-    judgeList.forEach((judge, index) => {
+    judges.forEach((judge, index) => {
       if (index < 5)
         cy.get(`[data-cy="${judge.uid}"]`).should("have.class", "bg-green-100");
       else cy.get(`[data-cy="${judge.uid}"]`).should("have.class", "bg-white");

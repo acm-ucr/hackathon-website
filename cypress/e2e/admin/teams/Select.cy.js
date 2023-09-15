@@ -1,8 +1,8 @@
-import teamList from "../../../fixtures/Teams.json";
+import teams from "../../../fixtures/Teams.json";
 
-const five = teamList.slice(0, 5);
+const five = teams.slice(0, 5);
 
-describe("Teams Select", () => {
+describe("Participant Select", () => {
   beforeEach(() => {
     cy.login("admin");
     cy.visit("/");
@@ -12,7 +12,7 @@ describe("Teams Select", () => {
 
   it("Select All", () => {
     cy.get('[data-cy="select-all"]').click();
-    teamList.forEach((team) => {
+    teams.forEach((team) => {
       cy.get(`[data-cy="${team.uid}"]`).should("have.class", "bg-green-100");
     });
   });
@@ -21,7 +21,7 @@ describe("Teams Select", () => {
     five.map((team) =>
       cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
     );
-    teamList.forEach((team, index) => {
+    teams.forEach((team, index) => {
       if (index < 5)
         cy.get(`[data-cy="${team.uid}"]`).should("have.class", "bg-green-100");
       else cy.get(`[data-cy="${team.uid}"]`).should("have.class", "bg-white");

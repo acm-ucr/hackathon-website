@@ -1,4 +1,4 @@
-import adminList from "../../../fixtures/Admin.json";
+import admins from "../../../fixtures/admin.json";
 
 describe("Admin Search", () => {
   beforeEach(() => {
@@ -9,14 +9,26 @@ describe("Admin Search", () => {
   });
 
   it("No Search Results", () => {
-    cy.get('[data-cy="toolbar"]').find("input").type("Meow");
+    cy.get('[data-cy="toolbar"]').find('[data-cy="input-input"]').type("Meow");
     cy.get('[data-cy="toolbar"]').find("form").submit();
-    cy.contains("No admin Available");
+    cy.contains("No Admin Available");
   });
 
   it("Search For 1st Entry", () => {
-    cy.get('[data-cy="toolbar"]').find("input").type(adminList[0].name);
+    cy.get('[data-cy="toolbar"]')
+      .find('[data-cy="input-input"]')
+      .type(admins[0].name);
     cy.get('[data-cy="toolbar"]').find("form").submit();
-    cy.get(`[data-cy="${adminList[0].uid}"]`).should("exist");
+    cy.get(`[data-cy="${admins[0].uid}"]`).should("exist");
+  });
+
+  it("Search For Multiple Entries", () => {
+    cy.get('[data-cy="toolbar"]').find('[data-cy="input-input"]').type("Mario");
+    cy.get('[data-cy="toolbar"]').find("form").submit();
+    admins.forEach((admin) => {
+      if (admin.name.toLowerCase().includes("mario"))
+        cy.get(`[data-cy="${admin.uid}"]`).should("exist");
+      else cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
+    });
   });
 });
