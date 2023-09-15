@@ -4,7 +4,6 @@ import Input from "../../Input";
 import Button from "../../Button";
 import Tag from "../../Tag";
 import { COLORS } from "@/data/Tags";
-import { HiSearch } from "react-icons/hi";
 import Popup from "../../Popup";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -146,17 +145,14 @@ const Toolbar = ({ data, setData, judges }) => {
       </div>
       <form className="flex items-center" onSubmit={handleSearch}>
         <Input
+          classes="w-full"
           object={input}
           setObject={setInput}
-          maxLength={100}
-          label="search"
+          clear={true}
+          label="input"
+          maxLength={60}
+          placeholder="search"
           showLabel={false}
-          classes="w-full"
-        />
-        <HiSearch
-          onClick={handleSearch}
-          size={30}
-          className="mx-2 text-hackathon-gray-300 hover:cursor-pointer hover:opacity-70 duration-150"
         />
       </form>
     </>

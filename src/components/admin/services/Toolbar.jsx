@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import Input from "../Input";
-import { HiSearch } from "react-icons/hi";
 import Button from "../Button";
 import DropDown from "./DropDown";
 import Checkbox from "@/components/Checkbox";
@@ -19,7 +18,7 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
   const [prize, setPrize] = useState(reset);
   const [edit, setEdit] = useState(false);
   const [input, setInput] = useState({
-    search: "",
+    input: "",
   });
 
   const handleSearch = (e) => {
@@ -110,17 +109,14 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
       <form className="flex items-center" onSubmit={handleSearch}>
         <Checkbox onClick={selectAll} toggle={toggle} />
         <Input
+          classes="w-full"
           object={input}
           setObject={setInput}
-          maxLength={100}
-          label="search"
+          clear={true}
+          label="input"
+          maxLength={60}
+          placeholder="search"
           showLabel={false}
-          classes="w-full"
-        />
-        <HiSearch
-          onClick={handleSearch}
-          size={30}
-          className="mx-2 text-hackathon-gray-300 hover:cursor-pointer hover:opacity-70 duration-150"
         />
         <FaTrashAlt
           onClick={handleDelete}
