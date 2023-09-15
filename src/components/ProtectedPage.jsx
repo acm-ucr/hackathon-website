@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Loading from "@/components/Loading";
 
 const ProtectedPage = ({ title, children, restrictions }) => {
@@ -11,8 +11,7 @@ const ProtectedPage = ({ title, children, restrictions }) => {
   useEffect(() => {
     if (status === "loading") return;
     if (status !== "authenticated") {
-      console.log("Not signed in");
-      router.push("/");
+      void signIn("google");
       return;
     }
     if (
