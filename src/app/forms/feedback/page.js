@@ -1,11 +1,11 @@
 import Feedback from "@/components/forms/Feedback";
-import FormPage from "@/components/Form";
+import ProtectedPage from "@/components/ProtectedPage";
 
 const Page = () => {
   return (
-    <FormPage title="Form | Feedback">
+    <ProtectedPage title="Form | Feedback">
       <Feedback />
-    </FormPage>
+    </ProtectedPage>
   );
 };
 
