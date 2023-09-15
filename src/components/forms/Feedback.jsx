@@ -26,7 +26,7 @@ const Feedback = () => {
             enjoyed and learned some things from this event. Please fill out
             this anonymous feedback form below!
           </Col>
-          <Col xl={6}>
+          <Col xl={12}>
             <Input
               name="question1"
               type="text"
@@ -38,7 +38,7 @@ const Feedback = () => {
               setUser={setFeedback}
             />
           </Col>
-          <Col xl={6}>
+          <Col xl={12}>
             <Input
               name="question2"
               type="text"
@@ -50,7 +50,7 @@ const Feedback = () => {
               setUser={setFeedback}
             />
           </Col>
-          <Col xl={6}>
+          <Col xl={12}>
             <Input
               name="question3"
               type="text"
@@ -62,7 +62,7 @@ const Feedback = () => {
               setUser={setFeedback}
             />
           </Col>
-          <Col xl={6}>
+          <Col xl={12}>
             <Input
               name="question4"
               type="text"
@@ -74,7 +74,7 @@ const Feedback = () => {
               setUser={setFeedback}
             />
           </Col>
-          <Col xl={6}>
+          <Col xl={12}>
             <Input
               name="question5"
               type="text"
@@ -86,7 +86,7 @@ const Feedback = () => {
               setUser={setFeedback}
             />
           </Col>
-          <Col xl={6}>
+          <Col xl={12}>
             <Input
               name="question6"
               type="text"
