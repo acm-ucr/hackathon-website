@@ -3,7 +3,7 @@ import { useState } from "react";
 import Filters from "@/components/admin/Filters";
 import Toolbar from "@/components/admin/dashboards/Toolbar";
 import Title from "../Title";
-import Table from "./Table";
+import Table from "../Table";
 import volunteerList from "../../../../cypress/fixtures/Volunteers.json";
 import { FILTERS, HEADERS, TAGS } from "@/data/admin/Volunteers";
 

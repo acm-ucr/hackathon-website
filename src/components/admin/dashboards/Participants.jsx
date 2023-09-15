@@ -4,7 +4,7 @@ import { useState } from "react";
 import Filters from "@/components/admin/Filters";
 import Toolbar from "@/components/admin/dashboards/Toolbar";
 import Title from "../Title";
-import Table from "./Table";
+import Table from "../Table";
 import participantList from "../../../../cypress/fixtures/Participants.json";
 import { FILTERS, HEADERS, TAGS } from "@/data/admin/Participants";
 

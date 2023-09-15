@@ -1,10 +1,10 @@
 import { useState } from "react";
-import SortIcon from "./SortIcon";
+import SortIcon from "./dashboards/SortIcon";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Accordion from "react-bootstrap/Accordion";
-import Checkbox from "../../Checkbox";
-import Tag from "../Tag";
+import Checkbox from "../Checkbox";
+import Tag from "./Tag";
 import {
   IoIosArrowDown,
   IoIosMail,
@@ -27,7 +27,7 @@ import {
   FaBirthdayCake,
   FaBook,
 } from "react-icons/fa";
-import Modal from "./Modal";
+import Modal from "./dashboards/Modal";
 const icons = {
   github: <SiGithub className="mr-2" />,
   devpost: <SiDevpost className="mr-2" />,

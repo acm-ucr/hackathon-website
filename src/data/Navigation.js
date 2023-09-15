@@ -7,7 +7,13 @@ import {
 } from "react-icons/bs";
 import { MdVolunteerActivism } from "react-icons/md";
 import { BiSolidHelpCircle } from "react-icons/bi";
-import { FaGavel, FaEnvelope, FaLock, FaCalendarDay } from "react-icons/fa";
+import {
+  FaGavel,
+  FaEnvelope,
+  FaLock,
+  FaCalendarDay,
+  FaMedal,
+} from "react-icons/fa";
 import { AiOutlineQrcode } from "react-icons/ai";
 import { signOut } from "next-auth/react";
 
@@ -58,11 +64,6 @@ export const ADMIN = {
         icon: <FaCalendarDay className={iconStyle} />,
       },
       {
-        name: "judging",
-        link: "/admin/judging",
-        icon: <FaGavel className={iconStyle} />,
-      },
-      {
         name: "messenger",
         link: "/admin/messenger",
         icon: <FaEnvelope className={iconStyle} />,
@@ -71,6 +72,16 @@ export const ADMIN = {
         name: "check in",
         link: "/admin/checkin",
         icon: <AiOutlineQrcode className={iconStyle} />,
+      },
+      {
+        name: "judging",
+        link: "/admin/judging",
+        icon: <FaGavel className={iconStyle} />,
+      },
+      {
+        name: "prizes",
+        link: "/admin/prizes",
+        icon: <FaMedal className={iconStyle} />,
       },
       {
         name: "statistics",

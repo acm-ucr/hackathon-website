@@ -1,0 +1,26 @@
+[
+  {
+    "uid": "1",
+    "category": "First Place",
+    "name": "iPad Pro",
+    "team": "Citrushack",
+    "selected": false,
+    "hidden": false
+  },
+  {
+    "uid": "2",
+    "category": "Second Place",
+    "name": "iPhone 15 Pro Max",
+    "team": "Rosehack",
+    "selected": false,
+    "hidden": false
+  },
+  {
+    "uid": "3",
+    "category": "Third Place",
+    "name": "Speaker",
+    "team": "Cutie Hack",
+    "selected": false,
+    "hidden": false
+  }
+]
