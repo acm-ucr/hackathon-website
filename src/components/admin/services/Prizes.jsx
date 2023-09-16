@@ -2,7 +2,7 @@ import { useState } from "react";
 import Title from "../Title";
 import Toolbar from "./Toolbar";
 import teamsData from "../../../../cypress/fixtures/Teams.json";
-import prizesData from "../../../../cypress/fixtures/Prizes.json";
+import prizesData from "../../../../cypress/fixtures/prizes.json";
 import Table from "../Table";
 import { HEADERS } from "@/data/admin/Prizes";
 
