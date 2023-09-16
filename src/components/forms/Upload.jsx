@@ -32,7 +32,7 @@ const Upload = ({ field, user, setUser, text, maxSize, types }) => {
   return (
     <div className="mt-3">
       <p className="mb-0">{text}</p>
-      <div className="flex items-center w-full flex-col">
+      <div className="flex items-center w-full flex-col" data-cy="upload">
         {!file && (
           <label
             htmlFor="dropzone-file"
@@ -44,7 +44,7 @@ const Upload = ({ field, user, setUser, text, maxSize, types }) => {
                 Upload from my computer
               </p>
             </div>
-            <div className="w-full">
+            <div className="w-full" data-cy="upload-input">
               <input
                 id="dropzone-file"
                 onChange={handleInput}
@@ -56,7 +56,10 @@ const Upload = ({ field, user, setUser, text, maxSize, types }) => {
           </label>
         )}
         {file && (
-          <div className="flex items-center justify-between w-full my-2 bg-gray-200 px-2 py-2">
+          <div
+            className="flex items-center justify-between w-full my-2 bg-gray-200 px-2 py-2"
+            data-cy="upload-success"
+          >
             <div className="flex items-center">
               {file.type.split("/")[0] === "image" ? (
                 <FaImage className="text-xl mr-2" />
@@ -68,6 +71,7 @@ const Upload = ({ field, user, setUser, text, maxSize, types }) => {
             <FaTimes
               className="text-gray-500 hover:cursor-pointer hover:text-red-600"
               onClick={() => setFile(null)}
+              data-cy="upload-cancel"
             />
           </div>
         )}
