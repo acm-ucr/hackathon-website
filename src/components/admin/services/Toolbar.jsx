@@ -60,7 +60,6 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
 
   const handleEdit = () => {
     const prize = objects.filter((a) => a.selected)[0];
-    console.log(prize);
     setPrize(prize);
     setTeam(prize.team);
     setEdit(true);
