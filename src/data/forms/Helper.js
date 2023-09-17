@@ -1,8 +1,5 @@
 export const HELPER = {
-  first: "",
-  last: "",
   phone: "",
-  email: "",
   major: "",
   grade: "",
   gender: "",
