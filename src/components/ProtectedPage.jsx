@@ -8,12 +8,17 @@ const ProtectedPage = ({ title, children, restrictions }) => {
   const router = useRouter();
   const pathName = usePathname();
   const { data: session, status } = useSession();
-  const [error, setError] = useState(null);
+  const [unauthorizedError, setUnauthorizedError] = useState("");
 
   useEffect(() => {
     if (status === "loading") return;
     if (status !== "authenticated") {
       void signIn("google");
+      return;
+    }
+    if (!session.user.role) {
+      console.log("No Role Assigned");
+      router.push("/");
       return;
     }
     if (
@@ -22,11 +27,7 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       !session.user.role
     ) {
       console.log("Have not register");
-      setError({
-        code: 401,
-        error: "Unauthenticated User",
-        message: "You need login to access this page",
-      });
+      setUnauthorizedError("You need login to access this page.");
       return;
     }
     if (
@@ -41,14 +42,10 @@ const ProtectedPage = ({ title, children, restrictions }) => {
     if (
       status === "authenticated" &&
       restrictions.includes("admin") &&
-      session.user.role !== "admin"
+      !session.user.role.includes("admin")
     ) {
       console.log("Dont have admin permissions");
-      setError({
-        code: 403,
-        error: "Unauthorized",
-        message: "You do not have access this page",
-      });
+      setUnauthorizedError("You do not have access this page.");
       return;
     }
   }, [status]);
@@ -56,12 +53,8 @@ const ProtectedPage = ({ title, children, restrictions }) => {
   return (
     <>
       {status === "loading" && <Loading />}
-      {error && (
-        <Error code={error.code} error={error.error} message={error.message} />
-      )}
-      {status === "authenticated" && !error && (
-        <>
-          <Navigation />
+      {status === "authenticated" && (
+        <div className="w-full flex justify-center h-full">
           <title>{title}</title>
           <div
             className={`${!pathName.startsWith("/forms") && "w-11/12"} h-full`}
