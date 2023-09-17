@@ -2,7 +2,14 @@
   {
     "uid": 1,
     "name": "Dewi Norton",
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "type": "professor",
     "email": "dewinorton@email.com",
     "selected": false,
@@ -12,7 +19,14 @@
   {
     "uid": 2,
     "name": "Amie Nguyen",
-    "status": "not attending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "type": "professor",
     "email": "amienguyenn@email.com",
     "selected": false,
@@ -22,7 +36,14 @@
   {
     "uid": 3,
     "name": "Larry Larsen",
-    "status": "not attending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "type": "professor",
     "email": "larrylarsen@email.com",
     "selected": false,
@@ -32,7 +53,14 @@
   {
     "uid": 4,
     "name": "Big Chungus",
-    "status": "confirm",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "type": "professor",
     "email": "bigchungus101@email.com",
     "selected": false,
@@ -42,7 +70,14 @@
   {
     "uid": 5,
     "name": "Mario Kart",
-    "status": "confirm",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "type": "student",
     "email": "mariomoviegoated101@email.com",
     "selected": false,
@@ -53,7 +88,14 @@
     "uid": 6,
     "name": "Ash Ketchum",
     "type": "industry",
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "email": "ash.ketchum12@email.com",
     "selected": false,
     "hidden": false,
@@ -63,7 +105,14 @@
     "uid": 7,
     "name": "Tiffany",
     "type": "student",
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "email": "twang123@email.com",
     "selected": false,
     "hidden": false,
@@ -73,7 +122,14 @@
     "uid": 8,
     "name": "Amy Cheng",
     "type": "industry",
-    "status": "confirm",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "email": "chenamy490@email.com",
     "selected": false,
     "hidden": false,
@@ -83,7 +139,14 @@
     "uid": 9,
     "name": "Kim Alexander",
     "type": "industry",
-    "status": "not attending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "email": "kim5867@hotmai.com",
     "selected": false,
     "hidden": false,
@@ -93,7 +156,14 @@
     "uid": 10,
     "name": "Tiffany",
     "type": "student",
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "email": "twang123@email.com",
     "selected": false,
     "hidden": false,
@@ -103,7 +173,14 @@
     "uid": 11,
     "name": "Tiffany",
     "type": "student",
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "email": "twang123@email.com",
     "selected": false,
     "hidden": false,
@@ -113,7 +190,14 @@
     "uid": 12,
     "name": "Tiffany",
     "type": "student",
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "email": "twang123@email.com",
     "selected": false,
     "hidden": false,
@@ -123,7 +207,14 @@
     "uid": 13,
     "name": "Tiffany",
     "type": "student",
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "email": "twang123@email.com",
     "selected": false,
     "hidden": false,
@@ -133,7 +224,14 @@
     "uid": 14,
     "name": "Tiffany",
     "type": "student",
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "email": "twang123@email.com",
     "selected": false,
     "hidden": false,
@@ -143,7 +241,14 @@
     "uid": 15,
     "name": "Tiffany",
     "type": "student",
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "email": "twang123@email.com",
     "selected": false,
     "hidden": false,
@@ -153,7 +258,14 @@
     "uid": 16,
     "name": "Tiffany",
     "type": "student",
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "email": "twang123@email.com",
     "selected": false,
     "hidden": false,
@@ -163,7 +275,14 @@
     "uid": 17,
     "name": "Tiffany",
     "type": "student",
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "email": "twang123@email.com",
     "selected": false,
     "hidden": false,
@@ -173,7 +292,14 @@
     "uid": 18,
     "name": "Tiffany",
     "type": "student",
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "email": "twang123@email.com",
     "selected": false,
     "hidden": false,
@@ -183,7 +309,14 @@
     "uid": 19,
     "name": "Tiffany",
     "type": "student",
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "email": "twang123@email.com",
     "selected": false,
     "hidden": false,
@@ -193,7 +326,14 @@
     "uid": 20,
     "name": "Tiffany",
     "type": "student",
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "email": "twang123@email.com",
     "selected": false,
     "hidden": false,

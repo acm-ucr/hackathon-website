@@ -85,7 +85,7 @@ const Volunteer = () => {
               editable={false}
             />
           </Col>
-          <Col xl={12}>
+          <Col xl={6}>
             <Input
               name="phone"
               type="phone"
@@ -97,7 +97,18 @@ const Volunteer = () => {
               setUser={setVolunteer}
             />
           </Col>
-
+          <Col xl={6}>
+            <Input
+              name="discord"
+              type="text"
+              title="Discord"
+              placeholder="ie. john123"
+              value={volunteer.discord}
+              maxLength={30}
+              user={volunteer}
+              setUser={setVolunteer}
+            />
+          </Col>
           <Col xl={12}>
             <Select
               title="Major"

@@ -17,6 +17,11 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       void signIn("google");
       return;
     }
+    if (!session.user.role) {
+      console.log("No Role Assigned");
+      router.push("/");
+      return;
+    }
     if (
       status === "authenticated" &&
       restrictions.includes("hacker") &&
@@ -28,8 +33,8 @@ const ProtectedPage = ({ title, children, restrictions }) => {
     }
     if (
       status === "authenticated" &&
-      restrictions.length > 0 &&
-      !restrictions.includes(session.user.role)
+      restrictions.includes("admin") &&
+      !session.user.role.includes("admin")
     ) {
       setUnauthorizedError("You do not have access this page.");
       return;

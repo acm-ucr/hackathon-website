@@ -46,6 +46,7 @@ const Mentors = () => {
         setObjects={setMentors}
         objects={mentors}
         Dropdown={DROPDOWN}
+        dashboard="mentor"
       />
     </div>
   );
