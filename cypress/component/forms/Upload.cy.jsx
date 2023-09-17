@@ -1,11 +1,12 @@
 import Upload from "@/components/forms/Upload";
+import { USER } from "@/data/forms/User";
+import { JUDGES } from "@/data/forms/Judges";
 import { useState } from "react";
 
 describe("Forms Upload", () => {
   it("Upload valid PDF", () => {
     const file = "sample.pdf";
     const Parent = () => {
-      const USER = { resume: "" };
       const field = "resume";
       const [user, setUser] = useState(USER);
       const text = "Upload Resume";
@@ -37,7 +38,6 @@ describe("Forms Upload", () => {
   it("Upload invalid PDF (file size)", () => {
     const file = "sample.pdf";
     const Parent = () => {
-      const USER = { resume: "" };
       const field = "resume";
       const [user, setUser] = useState(USER);
       const text = "Upload Resume";
@@ -71,18 +71,17 @@ describe("Forms Upload", () => {
   it("Upload valid PNG", () => {
     const file = "sample.png";
     const Parent = () => {
-      const USER = { photo: "" };
-      const field = "photo";
-      const [user, setUser] = useState(USER);
-      const text = "Upload Photo";
+      const field = "resume";
+      const [judge, setJudge] = useState(JUDGES);
+      const text = "Upload Resume";
       const maxSize = [1, "MB"];
       const types = ["png", "jpg", "jpeg"];
 
       return (
         <Upload
           field={field}
-          user={user}
-          setUser={setUser}
+          user={judge}
+          setUser={setJudge}
           text={text}
           maxSize={maxSize}
           types={types}
@@ -92,7 +91,7 @@ describe("Forms Upload", () => {
 
     cy.mount(<Parent />);
 
-    cy.contains("Upload Photo");
+    cy.contains("Upload Resume");
     cy.get('[data-cy="upload"]').contains("Upload from my computer");
     cy.get('[data-cy="upload-input"]')
       .find("input[type=file]")
@@ -103,18 +102,17 @@ describe("Forms Upload", () => {
   it("Upload invalid PNG (file size)", () => {
     const file = "sample.png";
     const Parent = () => {
-      const USER = { photo: "" };
-      const field = "photo";
-      const [user, setUser] = useState(USER);
-      const text = "Upload Photo";
+      const field = "resume";
+      const [judge, setJudge] = useState(JUDGES);
+      const text = "Upload Resume";
       const maxSize = [1, "KB"];
       const types = ["png", "jpg", "jpeg"];
 
       return (
         <Upload
           field={field}
-          user={user}
-          setUser={setUser}
+          user={judge}
+          setUser={setJudge}
           text={text}
           maxSize={maxSize}
           types={types}
@@ -124,7 +122,7 @@ describe("Forms Upload", () => {
 
     cy.mount(<Parent />);
 
-    cy.contains("Upload Photo");
+    cy.contains("Upload Resume");
     cy.get('[data-cy="upload"]').contains("Upload from my computer");
     cy.get('[data-cy="upload-input"]')
       .find("input[type=file]")
@@ -137,18 +135,17 @@ describe("Forms Upload", () => {
   it("Upload valid JPEG", () => {
     const file = "sample.jpeg";
     const Parent = () => {
-      const USER = { photo: "" };
-      const field = "photo";
-      const [user, setUser] = useState(USER);
-      const text = "Upload Photo";
+      const field = "resume";
+      const [judge, setJudge] = useState(JUDGES);
+      const text = "Upload Resume";
       const maxSize = [1, "MB"];
       const types = ["png", "jpg", "jpeg"];
 
       return (
         <Upload
           field={field}
-          user={user}
-          setUser={setUser}
+          user={judge}
+          setUser={setJudge}
           text={text}
           maxSize={maxSize}
           types={types}
@@ -158,7 +155,7 @@ describe("Forms Upload", () => {
 
     cy.mount(<Parent />);
 
-    cy.contains("Upload Photo");
+    cy.contains("Upload Resume");
     cy.get('[data-cy="upload"]').contains("Upload from my computer");
     cy.get('[data-cy="upload-input"]')
       .find("input[type=file]")
@@ -169,18 +166,17 @@ describe("Forms Upload", () => {
   it("Upload invalid JPEG (file size)", () => {
     const file = "sample.jpeg";
     const Parent = () => {
-      const USER = { photo: "" };
-      const field = "photo";
-      const [user, setUser] = useState(USER);
-      const text = "Upload Photo";
+      const field = "resume";
+      const [judge, setJudge] = useState(JUDGES);
+      const text = "Upload Resume";
       const maxSize = [1, "KB"];
       const types = ["png", "jpg", "jpeg"];
 
       return (
         <Upload
           field={field}
-          user={user}
-          setUser={setUser}
+          user={judge}
+          setUser={setJudge}
           text={text}
           maxSize={maxSize}
           types={types}
@@ -190,7 +186,7 @@ describe("Forms Upload", () => {
 
     cy.mount(<Parent />);
 
-    cy.contains("Upload Photo");
+    cy.contains("Upload Resume");
     cy.get('[data-cy="upload"]').contains("Upload from my computer");
     cy.get('[data-cy="upload-input"]')
       .find("input[type=file]")
@@ -203,18 +199,17 @@ describe("Forms Upload", () => {
   it("Remove file", () => {
     const file = "sample.jpeg";
     const Parent = () => {
-      const USER = { photo: "" };
-      const field = "photo";
-      const [user, setUser] = useState(USER);
-      const text = "Upload Photo";
+      const field = "resume";
+      const [judge, setJudge] = useState(JUDGES);
+      const text = "Upload Resume";
       const maxSize = [1, "MB"];
       const types = ["png", "jpg", "jpeg"];
 
       return (
         <Upload
           field={field}
-          user={user}
-          setUser={setUser}
+          user={judge}
+          setUser={setJudge}
           text={text}
           maxSize={maxSize}
           types={types}
@@ -224,7 +219,7 @@ describe("Forms Upload", () => {
 
     cy.mount(<Parent />);
 
-    cy.contains("Upload Photo");
+    cy.contains("Upload Resume");
     cy.get('[data-cy="upload"]').contains("Upload from my computer");
     cy.get('[data-cy="upload-input"]')
       .find("input[type=file]")
