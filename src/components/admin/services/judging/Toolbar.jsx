@@ -133,7 +133,7 @@ const Toolbar = ({ data, setData, judges }) => {
             label="rotations"
             showLabel={false}
             maxLength={2}
-            placeholder="ie.5"
+            placeholder="ie. 5"
             clear={true}
           />
           <p className="mb-0 font-semibold mx-2"># of rotations</p>
