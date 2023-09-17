@@ -121,6 +121,7 @@ const Table = ({
               >
                 <Col className="p-0 flex justify-center items-center" xs>
                   <Checkbox
+                    data-cy="select"
                     onClick={() => handleSelect(object)}
                     toggle={object.selected}
                   />
