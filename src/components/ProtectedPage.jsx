@@ -2,17 +2,11 @@
 import React, { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import Loading from "@/components/Loading";
-import UnauthorizedError from "./UnauthorizedError";
-<<<<<<< HEAD
 import { usePathname } from "next/navigation";
-import Navigation from "./Navigation";
 
 const ProtectedPage = ({ title, children, restrictions }) => {
+  const router = useRouter();
   const pathName = usePathname();
-=======
-
-const ProtectedPage = ({ title, children, restrictions }) => {
->>>>>>> e5ed0aa (add 401 error")
   const { data: session, status } = useSession();
   const [unauthorizedError, setUnauthorizedError] = useState("");
 
@@ -38,6 +32,15 @@ const ProtectedPage = ({ title, children, restrictions }) => {
     }
     if (
       status === "authenticated" &&
+      restrictions.includes("committee") &&
+      session.user.role !== "committee"
+    ) {
+      console.log("Dont have permissions");
+      router.push("/");
+      return;
+    }
+    if (
+      status === "authenticated" &&
       restrictions.includes("admin") &&
       !session.user.role.includes("admin")
     ) {
@@ -49,17 +52,16 @@ const ProtectedPage = ({ title, children, restrictions }) => {
 
   return (
     <>
-      {status === "loading" ? (
-        <Loading />
-      ) : unauthorizedError ? (
-        <UnauthorizedError message={unauthorizedError} />
-      ) : (
-        status === "authenticated" && (
-          <div className="w-full flex justify-center h-full">
-            <title>{title}</title>
-            <div className="w-11/12 h-full">{children}</div>
+      {status === "loading" && <Loading />}
+      {status === "authenticated" && (
+        <div className="w-full flex justify-center h-full">
+          <title>{title}</title>
+          <div
+            className={`${!pathName.startsWith("/forms") && "w-11/12"} h-full`}
+          >
+            {children}
           </div>
-        )
+        </div>
       )}
     </>
   );
