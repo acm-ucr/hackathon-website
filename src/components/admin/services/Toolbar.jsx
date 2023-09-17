@@ -2,34 +2,30 @@
 import { useState } from "react";
 import Input from "../Input";
 import Button from "../Button";
-import Tag from "../Tag";
-import { COLORS } from "@/data/Tags";
-import { HiSearch } from "react-icons/hi";
-import Popup from "../Popup";
-import { toast } from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import DropDown from "./DropDown";
+import Checkbox from "@/components/Checkbox";
+import { FaTrashAlt } from "react-icons/fa";
+import { v4 as uuid } from "uuid";
 
-const tags = ["professor", "industry", "student"];
+const reset = {
+  category: "",
+  name: "",
+};
 
-const Toolbar = ({ data, setData, judges }) => {
-  const router = useRouter();
-
-  const [popup, setPopup] = useState({
-    title: "",
-    text: "",
-    color: "green",
-    visible: false,
-  });
+const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
+  const [team, setTeam] = useState("No Team Selected");
+  const [toggle, setToggle] = useState(false);
+  const [prize, setPrize] = useState(reset);
+  const [edit, setEdit] = useState(false);
   const [input, setInput] = useState({
-    rotations: "",
-    search: "",
+    input: "",
   });
 
   const handleSearch = (e) => {
     e.preventDefault();
 
-    setData(
-      data.map((group) => {
+    setObjects(
+      objects.map((group) => {
         let boolean = false;
 
         if (group.name.toLowerCase().match(input.search.toLowerCase())) {
@@ -41,122 +37,90 @@ const Toolbar = ({ data, setData, judges }) => {
     );
   };
 
-  const generate = () => {
-    if (input.rotations === "") {
-      toast("❌ Please enter a valid integer value");
-      return;
-    }
-
-    // Filter Professors vs Students + Industry
-    const professors = judges.filter((judge) => judge.type === "professor");
-    const studentsAndIndustry = judges.filter(
-      (judge) => judge.type !== "professor"
+  const selectAll = () => {
+    setObjects(
+      objects.map((a) => {
+        a.selected = !toggle;
+        return a;
+      })
     );
+    setToggle(!toggle);
+  };
 
-    const teams = [...data];
+  const handleDelete = () => {
+    setToggle(false);
+    setObjects(objects.filter((object) => !object.selected));
+  };
 
-    // Reset Rounds
-    teams.forEach((team, index) => {
-      team.rounds = Array.from(Array(parseInt(input.rotations)), () => []);
-      team.table = index + 1;
-    });
+  const handleAdd = () => {
+    setObjects([...objects, { ...prize, team, uid: uuid() }]);
+    setPrize(reset);
+    setTeam("No Team Selected");
+  };
 
-    let judge = 0;
-    let round = 0;
+  const handleEdit = () => {
+    const prize = objects.filter((a) => a.selected)[0];
+    setPrize(prize);
+    setTeam(prize.team);
+    setEdit(true);
+  };
 
-    // Assign Professors
-    for (let i = 0; i < teams.length; i += 1) {
-      if (round === parseInt(input.rotations)) continue;
-      teams[i].rounds[round].push(professors[judge].name);
-      if (judge < professors.length - 1) {
-        judge += 1;
-      } else {
-        judge = 0;
-        round += 1;
-      }
-    }
-
-    judge = 0;
-    round = 0;
-
-    // Assign Students + Industry
-    for (let i = teams.length - 1; i > -1; i -= 1) {
-      if (round === parseInt(input.rotations)) continue;
-      teams[i].rounds[round].push(studentsAndIndustry[judge].name);
-      if (judge < studentsAndIndustry.length - 1) {
-        judge += 1;
-      } else {
-        judge = 0;
-        round += 1;
-      }
-    }
-
-    if (professors.length * input.rotations < teams.length) {
-      setPopup({
-        title: "Insufficient Professors",
-        text: "There are not enough professors to go around to each team. Please consider adding more professors via the judge dashboard. ",
-        color: "green",
-        visible: true,
-      });
-    }
-
-    if (
-      professors.length * input.rotations +
-        studentsAndIndustry.length * input.rotations <
-      teams.length
-    ) {
-      setPopup({
-        title: "Insufficient Judges",
-        text: "There are not enough judges, causing one or more teams to have no judges. Please consider adding more judges via the judges dashboard.",
-        color: "green",
-        visible: true,
-      });
-    }
-
-    setData(teams);
+  const handleSave = () => {
+    setObjects(
+      objects.map((a) => {
+        if (a.uid === prize.uid) {
+          a = { ...prize, team };
+          a.selected = false;
+        }
+        return a;
+      })
+    );
+    setPrize(reset);
+    setTeam("No Team Selected");
   };
 
   return (
     <>
-      {popup.visible && (
-        <Popup
-          setPopup={setPopup}
-          popup={popup}
-          onClick={() => router.push("/admin/judges")}
-          text="add judges"
+      <div className="flex items-center justify-between w-full"></div>
+      <div className="flex">
+        <Input
+          setObject={setPrize}
+          object={prize}
+          label="category"
+          maxLength={30}
         />
-      )}
-      <div className="flex items-center justify-between w-full">
-        <div className="flex items-center">
-          <Input
-            setObject={setInput}
-            object={input}
-            label="rotations"
-            showLabel={false}
-            maxLength={2}
-          />
-          <p className="mb-0 font-semibold mx-2"># of rotations</p>
-          <Button color="green" text="generate" onClick={generate} />
-        </div>
-        <div className="flex">
-          {tags.map((tag, index) => (
-            <Tag key={index} color={COLORS[tag]} text={tag} classes="mx-2" />
-          ))}
-        </div>
+        <Input
+          setObject={setPrize}
+          object={prize}
+          label="name"
+          maxLength={30}
+        />
+        <DropDown
+          option={team}
+          setOption={setTeam}
+          options={teams}
+          setOptions={setTeams}
+        />
+        <Button color="green" text="add" onClick={handleAdd} />
+        {!edit && <Button color="green" text="edit" onClick={handleEdit} />}
+        {edit && <Button color="green" text="save" onClick={handleSave} />}
       </div>
       <form className="flex items-center" onSubmit={handleSearch}>
+        <Checkbox onClick={selectAll} toggle={toggle} />
         <Input
+          classes="w-full"
           object={input}
           setObject={setInput}
-          maxLength={100}
-          label="search"
+          clear={true}
+          label="input"
+          maxLength={60}
+          placeholder="search"
           showLabel={false}
-          classes="w-full"
         />
-        <HiSearch
-          onClick={handleSearch}
-          size={30}
-          className="mx-2 text-hackathon-gray-300 hover:cursor-pointer hover:opacity-70 duration-150"
+        <FaTrashAlt
+          onClick={handleDelete}
+          size={22.5}
+          className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150"
         />
       </form>
     </>
