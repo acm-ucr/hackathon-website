@@ -28,6 +28,7 @@ import {
   FaBook,
 } from "react-icons/fa";
 import Modal from "./dashboards/Modal";
+import Loading from "../Loading";
 const icons = {
   github: <SiGithub className="mr-2" />,
   devpost: <SiDevpost className="mr-2" />,
@@ -68,6 +69,7 @@ const Table = ({
   setObjects,
   objects,
   Dropdown,
+  dashboard,
 }) => {
   const [currentSort, setCurrentSort] = useState("name");
   const [modal, setModal] = useState(null);
@@ -81,7 +83,9 @@ const Table = ({
       })
     );
   };
-  return (
+  return objects === null ? (
+    <Loading />
+  ) : (
     <div className="w-full rounded-xl overflow-hidden flex flex-col">
       {modal && <Modal data={modal} setModal={setModal} />}
       <Row className="w-full py-2 text-sm flex text-white bg-hackathon-blue-200 justify-evenly px-0 m-0">
@@ -142,18 +146,23 @@ const Table = ({
                         {header.hasTag && (
                           <Tag
                             text={
-                              object[header.text].includes("https://")
+                              object[header.text][dashboard].includes(
+                                "https://"
+                              )
                                 ? "view"
-                                : object[header.text] +
-                                  (object[header.text] === "accept" ||
-                                  object[header.text] === "reject"
+                                : object[header.text][dashboard] +
+                                  (object[header.text][dashboard] ===
+                                    "accept" ||
+                                  object[header.text][dashboard] === "reject"
                                     ? "ed"
                                     : "")
                             }
                             color={
-                              object[header.text].includes("https://")
+                              object[header.text][dashboard].includes(
+                                "https://"
+                              )
                                 ? COLORS["view"]
-                                : COLORS[object[header.text]]
+                                : COLORS[object[header.text][dashboard]]
                             }
                             onClick={
                               header.onClick

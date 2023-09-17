@@ -4,6 +4,7 @@ export const HELPER = {
   grade: "",
   gender: "",
   shirt: "",
+  discord: "",
 };
 
 export const AVAILABILITY = {
