@@ -3,12 +3,10 @@ import React, { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import Loading from "@/components/Loading";
 import UnauthorizedError from "./UnauthorizedError";
-
-const ProtectedPage = ({ title, children, restrictions }) => {
 import { usePathname } from "next/navigation";
+import Navigation from "./Navigation";
 
 const ProtectedPage = ({ title, children, restrictions }) => {
-  const router = useRouter();
   const pathName = usePathname();
   const { data: session, status } = useSession();
   const [unauthorizedError, setUnauthorizedError] = useState("");
@@ -30,19 +28,9 @@ const ProtectedPage = ({ title, children, restrictions }) => {
     }
     if (
       status === "authenticated" &&
-      restrictions.includes("committee") &&
-      session.user.role !== "committee"
+      restrictions.length > 0 &&
+      !restrictions.includes(session.user.role)
     ) {
-      console.log("Dont have permissions");
-      router.push("/");
-      return;
-    }
-    if (
-      status === "authenticated" &&
-      restrictions.includes("admin") &&
-      session.user.role !== "admin"
-    ) {
-      console.log("Dont have admin permissions");
       setUnauthorizedError("You do not have access this page.");
       return;
     }
@@ -56,14 +44,19 @@ const ProtectedPage = ({ title, children, restrictions }) => {
         <UnauthorizedError message={unauthorizedError} />
       ) : (
         status === "authenticated" && (
-          <div className="w-full flex justify-center h-full">
+          <>
+            <Navigation />
             <title>{title}</title>
-           <div
-            className={`${!pathName.startsWith("/forms") && "w-11/12"} h-full`}
-          >
-            {children}
-          </div>
-          </div>
+            <div className="flex justify-center items-start w-full bg-hackathon-page z-0 h-screen pt-12 lg:pt-0">
+              <div
+                className={`${
+                  !pathName.startsWith("/forms") && "w-11/12"
+                } h-full`}
+              >
+                {children}
+              </div>
+            </div>
+          </>
         )
       )}
     </>
