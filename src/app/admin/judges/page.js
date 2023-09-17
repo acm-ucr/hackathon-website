@@ -3,7 +3,7 @@ import Judges from "@/components/admin/dashboards/Judges";
 
 const Page = () => {
   return (
-    <ProtectedPage title="Admin | Judges" restrictions={["admin"]}>
+    <ProtectedPage title="Admin | Judges" restrictions={["admin", "committee"]}>
       <Judges />
     </ProtectedPage>
   );
