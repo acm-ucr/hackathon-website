@@ -5,6 +5,7 @@
     "email": "rfair008@ucr.edu",
     "discord": "Raidah#2067",
     "status": "pending",
+    "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
   },
@@ -14,6 +15,7 @@
     "email": "mkim001@ucr.edu",
     "discord": "Soup#2023",
     "status": "confirm",
+    "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
   },
@@ -23,6 +25,7 @@
     "email": "mwu171@ucr.edu",
     "discord": "_wmx",
     "status": "confirm",
+    "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
   },
@@ -32,6 +35,7 @@
     "email": "cantseeme@ucr.edu",
     "discord": "yiyii#1111",
     "status": "confirm",
+    "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
   },
@@ -41,6 +45,7 @@
     "email": "twang123@ucr.edu",
     "discord": "babydonthurtme#2067",
     "status": "not attending",
+    "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
   },
@@ -50,6 +55,7 @@
     "email": "twu7680@ucr.edu",
     "discord": "yuung#8376",
     "status": "confirm",
+    "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
   },
@@ -59,6 +65,7 @@
     "email": "cdon@hotmai.com",
     "discord": "duuknh#0298",
     "status": "pending",
+    "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
   },
@@ -68,6 +75,7 @@
     "email": "ajmm@gmail.com",
     "discord": "zzz_11#2067",
     "status": "pending",
+    "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
   },
@@ -77,6 +85,7 @@
     "email": "cantseeme@ucr.edu",
     "discord": "babydonthurtme#2067",
     "status": "pending",
+    "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
   },
@@ -86,6 +95,7 @@
     "email": "cantseeme@ucr.edu",
     "discord": "babydonthurtme#2067",
     "status": "not attending",
+    "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
   },
@@ -95,6 +105,7 @@
     "email": "cantseeme@ucr.edu",
     "discord": "babydonthurtme#2067",
     "status": "not attending",
+    "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
   },
@@ -104,6 +115,7 @@
     "email": "cantseeme@ucr.edu",
     "discord": "babydonthurtme#2067",
     "status": "not attending",
+    "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
   },
@@ -113,6 +125,7 @@
     "email": "cantseeme@ucr.edu",
     "discord": "babydonthurtme#2067",
     "status": "not attending",
+    "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
   },
@@ -122,6 +135,7 @@
     "email": "cantseeme@ucr.edu",
     "discord": "babydonthurtme#2067",
     "status": "not attending",
+    "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
   },
@@ -131,6 +145,7 @@
     "email": "cantseeme@ucr.edu",
     "discord": "babydonthurtme#2067",
     "status": "pending",
+    "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
   },
@@ -140,6 +155,7 @@
     "email": "cantseeme@ucr.edu",
     "discord": "babydonthurtme#2067",
     "status": "not attending",
+    "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
   }
