@@ -134,7 +134,7 @@ const Toolbar = ({
       </div>
       <TbReload onClick={handleReload} />
       <div className="flex w-1/3">
-        <button
+        <FaTrashAlt
           data-cy="delete"
           onClick={() =>
             setPopup({
@@ -142,12 +142,9 @@ const Toolbar = ({
               visible: true,
             })
           }
-        >
-          <FaTrashAlt
-            size={22.5}
-            className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150"
-          />
-        </button>
+          size={22.5}
+          className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
+        />
         {popup.visible && (
           <Popup
             popup={popup}
