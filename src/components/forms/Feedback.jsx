@@ -33,7 +33,7 @@ const Feedback = () => {
           </Col>
           <Col xl={12}>
             <Input
-              name="question1"
+              name="helpful"
               type="text"
               title="What was most helpful about the event?"
               placeholder="Workshops, team collaboration, mentorship..."
@@ -45,7 +45,7 @@ const Feedback = () => {
           </Col>
           <Col xl={12}>
             <Input
-              name="question2"
+              name="likedToSee"
               type="text"
               title="Was there anything that you would have liked to see?"
               placeholder=""
@@ -57,7 +57,7 @@ const Feedback = () => {
           </Col>
           <Col xl={12}>
             <Input
-              name="question3"
+              name="notBeneficial"
               type="text"
               title="Was there anything that you did not find beneficial about the hackathon?"
               placeholder=""
@@ -69,7 +69,7 @@ const Feedback = () => {
           </Col>
           <Col xl={12}>
             <Input
-              name="question4"
+              name="rate"
               type="text"
               title="How would you rate the hackathon?"
               placeholder="From 1 - 10"
@@ -81,7 +81,7 @@ const Feedback = () => {
           </Col>
           <Col xl={12}>
             <Input
-              name="question5"
+              name="howToFind"
               type="text"
               title="How did you find the event?"
               placeholder="Instagram, friends, etc"
@@ -93,7 +93,7 @@ const Feedback = () => {
           </Col>
           <Col xl={12}>
             <Input
-              name="question6"
+              name="others"
               type="text"
               title="Is there anything else you'd like to let us know?"
               placeholder="Literally anything..."

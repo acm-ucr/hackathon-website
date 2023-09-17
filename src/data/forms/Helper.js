@@ -60,10 +60,10 @@ export const AVAILABILITY = {
   },
 };
 export const feedbackInfo = {
-  question1: "",
-  question2: "",
-  question3: "",
-  question4: "",
-  question5: "",
-  question6: "",
+  helpful: "",
+  likedToSee: "",
+  notBeneficial: "",
+  rate: "",
+  howToFind: "",
+  others: "",
 };
