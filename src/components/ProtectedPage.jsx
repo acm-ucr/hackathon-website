@@ -3,9 +3,11 @@ import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { signIn, useSession } from "next-auth/react";
 import Loading from "@/components/Loading";
+import { usePathname } from "next/navigation";
 
 const ProtectedPage = ({ title, children, restrictions }) => {
   const router = useRouter();
+  const pathName = usePathname();
   const { data: session, status } = useSession();
 
   useEffect(() => {
@@ -20,6 +22,15 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       !session.user.role
     ) {
       console.log("Have not register");
+      router.push("/");
+      return;
+    }
+    if (
+      status === "authenticated" &&
+      restrictions.includes("committee") &&
+      session.user.role !== "committee"
+    ) {
+      console.log("Dont have permissions");
       router.push("/");
       return;
     }
@@ -40,7 +51,11 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       {status === "authenticated" && (
         <div className="w-full flex justify-center h-full">
           <title>{title}</title>
-          <div className="w-11/12 h-full">{children}</div>
+          <div
+            className={`${!pathName.startsWith("/forms") && "w-11/12"} h-full`}
+          >
+            {children}
+          </div>
         </div>
       )}
     </>
