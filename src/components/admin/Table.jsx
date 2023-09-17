@@ -1,10 +1,10 @@
 import { useState } from "react";
-import SortIcon from "./SortIcon";
+import SortIcon from "./dashboards/SortIcon";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Accordion from "react-bootstrap/Accordion";
-import Checkbox from "../../Checkbox";
-import Tag from "../Tag";
+import Checkbox from "../Checkbox";
+import Tag from "./Tag";
 import {
   IoIosArrowDown,
   IoIosMail,
@@ -27,7 +27,7 @@ import {
   FaBirthdayCake,
   FaBook,
 } from "react-icons/fa";
-import Modal from "./Modal";
+import Modal from "./dashboards/Modal";
 const icons = {
   github: <SiGithub className="mr-2" />,
   devpost: <SiDevpost className="mr-2" />,
@@ -43,17 +43,7 @@ const icons = {
   major: <FaBook className="text-hackathon-blue-200 mr-2 text-lg" />,
   school: <FaSchool className="text-hackathon-blue-200 mr-2 text-lg" />,
 };
-const iconInfos = [
-  "email",
-  "phone",
-  "age",
-  "gender",
-  "school",
-  "major",
-  "grade",
-  "size",
-  "restriction",
-];
+
 const Toggle = ({ eventKey }) => {
   const { activeEventKey } = useContext(AccordionContext);
 
@@ -63,7 +53,7 @@ const Toggle = ({ eventKey }) => {
     <div className="w-fit">
       <IoIosArrowDown
         onClick={decoratedOnClick}
-        className={`hover:text-hackathon-blue-100 transition text-xl cursor-pointer duration-300 ease-in-out${
+        className={`hover:text-hackathon-blue-100 transition text-xl cursor-pointer duration-300 ease-in-out ${
           activeEventKey === eventKey && "rotate-180"
         }`}
       />
@@ -71,7 +61,14 @@ const Toggle = ({ eventKey }) => {
   );
 };
 
-const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
+const Table = ({
+  headers,
+  setHeaders,
+  empty,
+  setObjects,
+  objects,
+  Dropdown,
+}) => {
   const [currentSort, setCurrentSort] = useState("name");
   const [modal, setModal] = useState(null);
   const handleSelect = (object) => {
@@ -122,7 +119,11 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                   object.selected ? "bg-green-100" : "bg-white"
                 }`}
               >
-                <Col className="p-0 flex justify-center items-center" xs>
+                <Col
+                  className="p-0 flex justify-center items-center"
+                  data-cy="select"
+                  xs
+                >
                   <Checkbox
                     onClick={() => handleSelect(object)}
                     toggle={object.selected}
@@ -201,35 +202,19 @@ const Table = ({ headers, setHeaders, empty, setObjects, objects }) => {
                     )
                 )}
 
-                {object.dropdown && (
-                  <Col className="p-0 m-0 flex justify-center" xs>
-                    <Toggle eventKey={index} />
-                  </Col>
-                )}
-                {object.dropdown && (
-                  <Col className="p-0" xs={12}>
-                    <Accordion.Collapse eventKey={index}>
-                      <Row className="pl-[8%] pt-2">
-                        <div className="flex flex-wrap">
-                          {iconInfos.map((iconInfo, index) => (
-                            <div
-                              key={index}
-                              className="items-center my-1 px-1 flex text-sm min-w-fit w-1/4"
-                            >
-                              {icons[iconInfo]}
-                              {Array.isArray(object[iconInfo])
-                                ? object[iconInfo].map((element, index) => (
-                                    <div key={index}>
-                                      {element} &#x2c;&nbsp;
-                                    </div>
-                                  ))
-                                : object[iconInfo]}
-                            </div>
-                          ))}
-                        </div>
-                      </Row>
-                    </Accordion.Collapse>
-                  </Col>
+                {Dropdown && (
+                  <>
+                    <Col className="p-0 m-0 flex justify-center" xs>
+                      <Toggle eventKey={index} />
+                    </Col>
+                    <Col className="p-0" xs={12}>
+                      <Accordion.Collapse eventKey={index}>
+                        <Row className="pl-[8%] pt-2">
+                          <Dropdown object={object} icons={icons} />
+                        </Row>
+                      </Accordion.Collapse>
+                    </Col>
+                  </>
                 )}
               </Row>
             )

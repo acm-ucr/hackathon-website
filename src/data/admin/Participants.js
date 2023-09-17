@@ -43,3 +43,35 @@ export const HEADERS = [
     size: 1,
   },
 ];
+
+const attributes = [
+  "email",
+  "phone",
+  "age",
+  "gender",
+  "school",
+  "major",
+  "grade",
+  "size",
+  "restriction",
+];
+
+export const DROPDOWN = ({ object, icons }) => {
+  return (
+    <div className="flex flex-wrap">
+      {attributes.map((attribute, index) => (
+        <div
+          key={index}
+          className="items-center my-1 px-1 flex text-sm min-w-fit w-1/4"
+        >
+          {icons[attribute]}
+          {Array.isArray(object[attribute])
+            ? object[attribute].map((element, index) => (
+                <div key={index}>{element} &#x2c;&nbsp;</div>
+              ))
+            : object[attribute]}
+        </div>
+      ))}
+    </div>
+  );
+};

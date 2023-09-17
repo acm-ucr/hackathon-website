@@ -1,13 +1,13 @@
 import { useState } from "react";
-import Title from "../Title";
+import Title from "../../Title";
 import ScanQRCode from "./ScanQRCode";
-import DropDown from "./DropDown";
+import DropDown from "../DropDown";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Button from "../Button";
+import Button from "../../Button";
 import CheckInfo from "./CheckInfo";
-import checkInUser from "../../../../cypress/fixtures/CheckInUser.json";
-import mockEvents from "../../../../cypress/fixtures/Events.json";
+import checkInUser from "../../../../../cypress/fixtures/CheckInUser.json";
+import mockEvents from "../../../../../cypress/fixtures/Events.json";
 
 const CheckIn = () => {
   const [event, setEvent] = useState("No Event Selected");
