@@ -1,14 +1,17 @@
 "use client";
-import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import Loading from "@/components/Loading";
+import UnauthorizedError from "./UnauthorizedError";
+
+const ProtectedPage = ({ title, children, restrictions }) => {
 import { usePathname } from "next/navigation";
 
 const ProtectedPage = ({ title, children, restrictions }) => {
   const router = useRouter();
   const pathName = usePathname();
   const { data: session, status } = useSession();
+  const [unauthorizedError, setUnauthorizedError] = useState("");
 
   useEffect(() => {
     if (status === "loading") return;
@@ -22,7 +25,7 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       !session.user.role
     ) {
       console.log("Have not register");
-      router.push("/");
+      setUnauthorizedError("You need login to access this page.");
       return;
     }
     if (
@@ -40,23 +43,28 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       session.user.role !== "admin"
     ) {
       console.log("Dont have admin permissions");
-      router.push("/");
+      setUnauthorizedError("You do not have access this page.");
       return;
     }
   }, [status]);
 
   return (
     <>
-      {status === "loading" && <Loading />}
-      {status === "authenticated" && (
-        <div className="w-full flex justify-center h-full">
-          <title>{title}</title>
-          <div
+      {status === "loading" ? (
+        <Loading />
+      ) : unauthorizedError ? (
+        <UnauthorizedError message={unauthorizedError} />
+      ) : (
+        status === "authenticated" && (
+          <div className="w-full flex justify-center h-full">
+            <title>{title}</title>
+           <div
             className={`${!pathName.startsWith("/forms") && "w-11/12"} h-full`}
           >
             {children}
           </div>
-        </div>
+          </div>
+        )
       )}
     </>
   );
