@@ -1,5 +1,5 @@
-import { IoIosMail, IoIosRose, IoIosShirt, IoIosSchool } from "react-ICONS/io";
-import { SiGithub, SiDevpost } from "react-ICONS/si";
+import { IoIosMail, IoIosRose, IoIosShirt, IoIosSchool } from "react-icons/io";
+import { SiGithub, SiDevpost } from "react-icons/si";
 import {
   FaAppleAlt,
   FaPhoneAlt,
