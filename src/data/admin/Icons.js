@@ -9,6 +9,7 @@ import {
   FaBirthdayCake,
   FaBook,
 } from "react-icons/fa";
+
 export const ICONS = {
   github: <SiGithub className="mr-2" />,
   devpost: <SiDevpost className="mr-2" />,
