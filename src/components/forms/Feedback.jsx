@@ -5,12 +5,17 @@ import Input from "@/components/Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "@/components/Button";
-import { HELPER } from "@/data/forms/Helper";
+import { feedbackInfo } from "@/data/forms/Helper";
+import toast from "react-hot-toast";
 
 const Feedback = () => {
-  const [feedback, setFeedback] = useState(HELPER);
+  const [feedback, setFeedback] = useState(feedbackInfo);
 
   const handleSubmit = () => {
+    if (Object.values(feedback).some((value) => value === "")) {
+      toast("❌ Please complete all fields!");
+      return;
+    }
     console.log(feedback);
   };
 
