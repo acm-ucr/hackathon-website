@@ -3,7 +3,7 @@ import { useState } from "react";
 
 describe("Forms Upload", () => {
   it("Upload valid PDF", () => {
-    const file = "samplePDF.pdf";
+    const file = "sample.pdf";
     const Parent = () => {
       const USER = { resume: "" };
       const field = "resume";
@@ -30,12 +30,12 @@ describe("Forms Upload", () => {
     cy.get('[data-cy="upload"]').contains("Upload from my computer");
     cy.get('[data-cy="upload-input"]')
       .find("input[type=file]")
-      .selectFile("cypress/fixtures/fileFormats/" + file, { force: true });
+      .selectFile("cypress/fixtures/files/" + file, { force: true });
     cy.get('[data-cy="upload-success"]').should("exist");
   });
 
   it("Upload invalid PDF (file size)", () => {
-    const file = "samplePDF.pdf";
+    const file = "sample.pdf";
     const Parent = () => {
       const USER = { resume: "" };
       const field = "resume";
@@ -62,14 +62,14 @@ describe("Forms Upload", () => {
     cy.get('[data-cy="upload"]').contains("Upload from my computer");
     cy.get('[data-cy="upload-input"]')
       .find("input[type=file]")
-      .selectFile("cypress/fixtures/fileFormats/" + file, { force: true });
+      .selectFile("cypress/fixtures/files/" + file, { force: true });
     cy.get('[data-cy="upload"]')
       .find('[data-cy="upload-success"]')
       .should("not.exist");
   });
 
   it("Upload valid PNG", () => {
-    const file = "samplePNG.png";
+    const file = "sample.png";
     const Parent = () => {
       const USER = { photo: "" };
       const field = "photo";
@@ -96,12 +96,12 @@ describe("Forms Upload", () => {
     cy.get('[data-cy="upload"]').contains("Upload from my computer");
     cy.get('[data-cy="upload-input"]')
       .find("input[type=file]")
-      .selectFile("cypress/fixtures/fileFormats/" + file, { force: true });
+      .selectFile("cypress/fixtures/files/" + file, { force: true });
     cy.get('[data-cy="upload-success"]').should("exist");
   });
 
   it("Upload invalid PNG (file size)", () => {
-    const file = "samplePNG.png";
+    const file = "sample.png";
     const Parent = () => {
       const USER = { photo: "" };
       const field = "photo";
@@ -128,14 +128,14 @@ describe("Forms Upload", () => {
     cy.get('[data-cy="upload"]').contains("Upload from my computer");
     cy.get('[data-cy="upload-input"]')
       .find("input[type=file]")
-      .selectFile("cypress/fixtures/fileFormats/" + file, { force: true });
+      .selectFile("cypress/fixtures/files/" + file, { force: true });
     cy.get('[data-cy="upload"]')
       .find('[data-cy="upload-success"]')
       .should("not.exist");
   });
 
   it("Upload valid JPEG", () => {
-    const file = "sampleJPEG.jpeg";
+    const file = "sample.jpeg";
     const Parent = () => {
       const USER = { photo: "" };
       const field = "photo";
@@ -162,12 +162,12 @@ describe("Forms Upload", () => {
     cy.get('[data-cy="upload"]').contains("Upload from my computer");
     cy.get('[data-cy="upload-input"]')
       .find("input[type=file]")
-      .selectFile("cypress/fixtures/fileFormats/" + file, { force: true });
+      .selectFile("cypress/fixtures/files/" + file, { force: true });
     cy.get('[data-cy="upload-success"]').should("exist");
   });
 
   it("Upload invalid JPEG (file size)", () => {
-    const file = "sampleJPEG.jpeg";
+    const file = "sample.jpeg";
     const Parent = () => {
       const USER = { photo: "" };
       const field = "photo";
@@ -194,14 +194,14 @@ describe("Forms Upload", () => {
     cy.get('[data-cy="upload"]').contains("Upload from my computer");
     cy.get('[data-cy="upload-input"]')
       .find("input[type=file]")
-      .selectFile("cypress/fixtures/fileFormats/" + file, { force: true });
+      .selectFile("cypress/fixtures/files/" + file, { force: true });
     cy.get('[data-cy="upload"]')
       .find('[data-cy="upload-success"]')
       .should("not.exist");
   });
 
   it("Remove file", () => {
-    const file = "sampleJPEG.jpeg";
+    const file = "sample.jpeg";
     const Parent = () => {
       const USER = { photo: "" };
       const field = "photo";
@@ -228,7 +228,7 @@ describe("Forms Upload", () => {
     cy.get('[data-cy="upload"]').contains("Upload from my computer");
     cy.get('[data-cy="upload-input"]')
       .find("input[type=file]")
-      .selectFile("cypress/fixtures/fileFormats/" + file, { force: true });
+      .selectFile("cypress/fixtures/files/" + file, { force: true });
     cy.get('[data-cy="upload-success"]').should("exist");
     cy.get('[data-cy="upload-success"]')
       .find('[data-cy="upload-cancel"]')
