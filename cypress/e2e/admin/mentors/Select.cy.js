@@ -19,7 +19,7 @@ describe("Mentor Select", () => {
 
   it("Select First 5 Entries", () => {
     five.map((mentor) =>
-      cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="checkbox"]').click()
+      cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="select"]').click()
     );
     mentors.forEach((mentor, index) => {
       if (index < 5)

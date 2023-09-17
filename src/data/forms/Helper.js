@@ -11,45 +11,45 @@ export const AVAILABILITY = {
     state: false,
     text: "Friday Morning",
   },
-  fridayAfternoon: {
-    state: false,
-    text: "Friday Afternoon",
-  },
-  fridayEvening: {
-    state: false,
-    text: "Friday Evening",
-  },
-  fridayNight: {
-    state: false,
-    text: "Friday Night",
-  },
   saturdayMorning: {
     state: false,
     text: "Saturday Morning",
-  },
-  saturdayAfternoon: {
-    state: false,
-    text: "Saturday Afternoon",
-  },
-  saturdayEvening: {
-    state: false,
-    text: "Saturday Evening",
-  },
-  saturdayNight: {
-    state: false,
-    text: "Saturday Night",
   },
   sundayMorning: {
     state: false,
     text: "Sunday Morning",
   },
+  fridayAfternoon: {
+    state: false,
+    text: "Friday Afternoon",
+  },
+  saturdayAfternoon: {
+    state: false,
+    text: "Saturday Afternoon",
+  },
   sundayAfternoon: {
     state: false,
     text: "Sunday Afternoon",
   },
+  fridayEvening: {
+    state: false,
+    text: "Friday Evening",
+  },
+  saturdayEvening: {
+    state: false,
+    text: "Saturday Evening",
+  },
   sundayEvening: {
     state: false,
     text: "Sunday Evening",
+  },
+  fridayNight: {
+    state: false,
+    text: "Friday Night",
+  },
+  saturdayNight: {
+    state: false,
+    text: "Saturday Night",
   },
   sundayNight: {
     state: false,

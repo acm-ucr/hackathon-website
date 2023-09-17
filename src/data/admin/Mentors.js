@@ -1,3 +1,7 @@
+import Checkbox from "@/components/Checkbox";
+import Col from "react-bootstrap/Col";
+import { AVAILABILITY } from "../forms/Helper";
+
 export const FILTERS = {
   confirm: true,
   pending: true,
@@ -28,3 +32,18 @@ export const HEADERS = [
     hasTag: true,
   },
 ];
+
+export const DROPDOWN = ({ object }) => {
+  return (
+    <>
+      {Object.entries(AVAILABILITY).map(([key, value], index) => (
+        <Col key={index} xs={4}>
+          <Checkbox
+            toggle={object.availability.includes(key)}
+            text={value.text}
+          />
+        </Col>
+      ))}
+    </>
+  );
+};
