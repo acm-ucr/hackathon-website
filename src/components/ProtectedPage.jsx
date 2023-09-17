@@ -2,10 +2,11 @@
 import React, { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import Loading from "@/components/Loading";
-import Error from "./Error";
-import Navigation from "./Navigation";
+import { usePathname } from "next/navigation";
 
 const ProtectedPage = ({ title, children, restrictions }) => {
+  const router = useRouter();
+  const pathName = usePathname();
   const { data: session, status } = useSession();
   const [error, setError] = useState(null);
 
@@ -30,8 +31,17 @@ const ProtectedPage = ({ title, children, restrictions }) => {
     }
     if (
       status === "authenticated" &&
-      restrictions.length > 0 &&
-      !restrictions.includes(session.user.role)
+      restrictions.includes("committee") &&
+      session.user.role !== "committee"
+    ) {
+      console.log("Dont have permissions");
+      router.push("/");
+      return;
+    }
+    if (
+      status === "authenticated" &&
+      restrictions.includes("admin") &&
+      session.user.role !== "admin"
     ) {
       console.log("Dont have admin permissions");
       setError({
@@ -53,10 +63,12 @@ const ProtectedPage = ({ title, children, restrictions }) => {
         <>
           <Navigation />
           <title>{title}</title>
-          <div className="flex justify-center items-start w-full bg-hackathon-page z-0 h-screen pt-12 lg:pt-0">
-            <div className="w-11/12 h-full">{children}</div>
+          <div
+            className={`${!pathName.startsWith("/forms") && "w-11/12"} h-full`}
+          >
+            {children}
           </div>
-        </>
+        </div>
       )}
     </>
   );
