@@ -119,9 +119,12 @@ const Table = ({
                   object.selected ? "bg-green-100" : "bg-white"
                 }`}
               >
-                <Col className="p-0 flex justify-center items-center" xs>
+                <Col
+                  className="p-0 flex justify-center items-center"
+                  data-cy="select"
+                  xs
+                >
                   <Checkbox
-                    data-cy="select"
                     onClick={() => handleSelect(object)}
                     toggle={object.selected}
                   />
