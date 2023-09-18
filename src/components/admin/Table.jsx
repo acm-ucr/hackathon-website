@@ -116,7 +116,8 @@ const Table = ({
                         {header.hasTag && (
                           <Tag
                             text={
-                              object[header.text][page].includes("https://")
+                              !object[header.text][page] &&
+                              object[header.text].includes("https://")
                                 ? "view"
                                 : object[header.text][page] +
                                   (object[header.text][page] === "accept" ||
@@ -125,7 +126,8 @@ const Table = ({
                                     : "")
                             }
                             color={
-                              object[header.text][page].includes("https://")
+                              !object[header.text][page] &&
+                              object[header.text].includes("https://")
                                 ? COLORS["view"]
                                 : COLORS[object[header.text][page]]
                             }

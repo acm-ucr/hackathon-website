@@ -8,7 +8,6 @@ import Navigation from "./Navigation";
 const ProtectedPage = ({ title, children, restrictions }) => {
   const { data: session, status } = useSession();
   const [error, setError] = useState(null);
-
   useEffect(() => {
     if (status === "loading") return;
     if (status !== "authenticated") {
@@ -17,7 +16,11 @@ const ProtectedPage = ({ title, children, restrictions }) => {
     }
     if (!session.user.role) {
       console.log("No Role Assigned");
-      router.push("/");
+      setError({
+        code: 403,
+        error: "Unauthorized",
+        message: "Please Register First",
+      });
       return;
     }
     if (
@@ -33,19 +36,44 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       });
       return;
     }
-    if (
-      status === "authenticated" &&
-      restrictions.length > 0 &&
-      !restrictions.includes(session.user.role)
-    ) {
-      console.log("Dont have admin permissions");
-      setError({
-        code: 403,
-        error: "Unauthorized",
-        message: "You do not have access this page",
-      });
-      return;
-    }
+    // single string role
+    if (typeof session?.user.role == "string")
+      if (
+        status === "authenticated" &&
+        restrictions.length > 0 &&
+        !restrictions.includes(session.user.role)
+      ) {
+        console.log("Dont have admin permissions");
+
+        setError({
+          code: 403,
+          error: "Unauthorized",
+          message: "You do not have access this page",
+        });
+        return;
+      }
+      // array  role
+      else {
+        let authorized = false;
+        if (restrictions.length > 0) {
+          session.user.role.every((role) => {
+            if (restrictions.includes(role)) {
+              authorized = true;
+              return false;
+            }
+            return true;
+          });
+        } else authorized = true;
+        if (!authorized) {
+          console.log("Dont have admin permissions");
+          setError({
+            code: 403,
+            error: "Unauthorized",
+            message: "You do not have access this page",
+          });
+          return;
+        }
+      }
   }, [status]);
 
   return (
