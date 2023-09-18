@@ -52,7 +52,7 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       {status === "authenticated" && !error && (
         <>
           <Navigation />
-          <div className="w-full flex justify-center h-full">
+          <div className="flex justify-center items-start w-full bg-hackathon-page z-0 h-screen pt-12 lg:pt-0">
             <title>{title}</title>
             <div className="w-11/12 h-full">{children}</div>
           </div>
