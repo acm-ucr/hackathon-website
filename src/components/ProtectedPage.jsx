@@ -14,7 +14,7 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       void signIn("google");
       return;
     }
-    if (!session.user.role) {
+    if (!session.user.role || session.user.role.length < 1) {
       console.log("No Role Assigned");
       setError({
         code: 403,
@@ -36,44 +36,18 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       });
       return;
     }
-    // single string role
-    if (typeof session?.user.role == "string")
-      if (
-        status === "authenticated" &&
-        restrictions.length > 0 &&
-        !restrictions.includes(session.user.role)
-      ) {
-        console.log("Dont have admin permissions");
-
-        setError({
-          code: 403,
-          error: "Unauthorized",
-          message: "You do not have access this page",
-        });
-        return;
-      }
-      // array  role
-      else {
-        let authorized = false;
-        if (restrictions.length > 0) {
-          session.user.role.every((role) => {
-            if (restrictions.includes(role)) {
-              authorized = true;
-              return false;
-            }
-            return true;
-          });
-        } else authorized = true;
-        if (!authorized) {
-          console.log("Dont have admin permissions");
-          setError({
-            code: 403,
-            error: "Unauthorized",
-            message: "You do not have access this page",
-          });
-          return;
-        }
-      }
+    const authorized =
+      !restrictions.length > 0 ||
+      session.user.role.some((role) => restrictions.includes(role));
+    if (!authorized) {
+      console.log("Dont have admin permissions");
+      setError({
+        code: 403,
+        error: "Unauthorized",
+        message: "You do not have access this page",
+      });
+      return;
+    }
   }, [status]);
 
   return (
