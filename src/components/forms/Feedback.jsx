@@ -4,7 +4,7 @@ import { useState } from "react";
 import Input from "@/components/Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Button from "@/components/forms/Button";
+import Button from "@/components/Button";
 import { HELPER } from "@/data/forms/Helper";
 
 const Feedback = () => {
@@ -12,7 +12,6 @@ const Feedback = () => {
 
   const handleSubmit = () => {
     console.log(feedback);
-    console.log(requirements);
   };
 
   return (
@@ -27,7 +26,7 @@ const Feedback = () => {
             enjoyed and learned some things from this event. Please fill out
             this anonymous feedback form below!
           </Col>
-          <Col xl={6}>
+          <Col xl={12}>
             <Input
               name="question1"
               type="text"
@@ -39,7 +38,7 @@ const Feedback = () => {
               setUser={setFeedback}
             />
           </Col>
-          <Col xl={6}>
+          <Col xl={12}>
             <Input
               name="question2"
               type="text"
@@ -51,7 +50,7 @@ const Feedback = () => {
               setUser={setFeedback}
             />
           </Col>
-          <Col xl={6}>
+          <Col xl={12}>
             <Input
               name="question3"
               type="text"
@@ -63,7 +62,7 @@ const Feedback = () => {
               setUser={setFeedback}
             />
           </Col>
-          <Col xl={6}>
+          <Col xl={12}>
             <Input
               name="question4"
               type="text"
@@ -75,7 +74,7 @@ const Feedback = () => {
               setUser={setFeedback}
             />
           </Col>
-          <Col xl={6}>
+          <Col xl={12}>
             <Input
               name="question5"
               type="text"
@@ -87,7 +86,7 @@ const Feedback = () => {
               setUser={setFeedback}
             />
           </Col>
-          <Col xl={6}>
+          <Col xl={12}>
             <Input
               name="question6"
               type="text"

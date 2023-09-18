@@ -7,11 +7,12 @@ import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Button from "@/components/forms/Button.jsx";
+import Button from "@/components/Button.jsx";
 import Textarea from "@/components/forms/Textarea.jsx";
 import { MAJORS, GRADES, GENDERS, SHIRTS } from "@/data/forms/Information.js";
 import { HELPER, AVAILABILITY } from "@/data/forms/Helper.js";
 import { DESCRIPTIONS, REQUIREMENTS } from "../../data/forms/Mentors.js";
+import toast from "react-hot-toast";
 
 const Mentor = () => {
   const [mentor, setMentor] = useState(HELPER);
@@ -19,6 +20,21 @@ const Mentor = () => {
   const [availability, setAvailability] = useState(AVAILABILITY);
 
   const handleSubmit = () => {
+    const incompleteFields = Object.values(mentor).some(
+      (value) => value === "" || !value
+    );
+    const invalidRequirements = Object.values(requirements).some(
+      (check) => !check.state
+    );
+    const atLeastOneAvailability = Object.values(availability).some(
+      (time) => time.state
+    );
+
+    if (incompleteFields || invalidRequirements || !atLeastOneAvailability) {
+      toast("❌ Please complete all fields!");
+      return;
+    }
+    toast(`✅ Submitted successfully!`);
     console.log(mentor);
     console.log(requirements);
     console.log(availability);
@@ -152,7 +168,7 @@ const Mentor = () => {
           <Col xl={12}>
             <Textarea
               name="response"
-              type="email"
+              rows={4}
               title="What skills and experience can you bring as a mentor?"
               placeholder="I can bring..."
               value={mentor.response}

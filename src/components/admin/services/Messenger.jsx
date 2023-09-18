@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Title from "../Title";
 import Filters from "../Filters.jsx";
-import Input from "./Input";
+import Input from "../Input";
 import Textarea from "./Textarea";
 import Button from "../Button";
 import toast from "react-hot-toast";

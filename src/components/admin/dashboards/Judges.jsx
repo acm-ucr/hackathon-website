@@ -3,13 +3,15 @@ import { useState } from "react";
 import Title from "../Title.jsx";
 import Filters from "../Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
-import Table from "./Table.jsx";
+import Table from "../Table.jsx";
 import judgeList from "../../../../cypress/fixtures/Judges.json";
-import { FILTERS, HEADERS, TAGS } from "@/data/admin/Judges.js";
+import { FILTERS, HEADERS, TAGS } from "@/data/admin/Judges";
 
 const Judges = () => {
   const [judges, setJudges] = useState(judgeList);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState({
+    input: "",
+  });
   const [filters, setFilters] = useState(FILTERS);
   const [headers, setHeaders] = useState(HEADERS);
 
@@ -22,7 +24,7 @@ const Judges = () => {
           setFilters={setFilters}
           setObjects={setJudges}
           objects={judges}
-          input={input}
+          input={input.input}
         />
       </div>
       <Toolbar

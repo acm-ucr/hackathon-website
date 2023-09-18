@@ -3,26 +3,18 @@
 import { useState } from "react";
 import Select from "@/components/Select";
 import { SHIRTS } from "@/data/forms/Information";
+import { JUDGES } from "@/data/forms/Judges";
 import Radio from "@/components/Radio";
 import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Button from "@/components/forms/Button";
+import Button from "@/components/Button";
 import toast from "react-hot-toast";
 import Upload from "./Upload";
 
 const Judge = () => {
-  const [judge, setJudge] = useState({
-    first: "",
-    last: "",
-    email: "",
-    phone: "",
-    shirt: "",
-    title: "",
-    major: "",
-    photo: null,
-  });
+  const [judge, setJudge] = useState(JUDGES);
 
   const [requirements, setRequirements] = useState({
     photography: {

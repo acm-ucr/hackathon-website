@@ -1,11 +1,11 @@
 import Mentor from "@/components/forms/Mentor";
-import FormPage from "@/components/Form";
+import ProtectedPage from "@/components/ProtectedPage";
 
 const Page = () => {
   return (
-    <FormPage title="Form | Mentor">
+    <ProtectedPage title="Form | Mentor" restrictions={[]}>
       <Mentor />
-    </FormPage>
+    </ProtectedPage>
   );
 };
 

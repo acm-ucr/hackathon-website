@@ -8,64 +8,31 @@ import { GENDERS, GRADES, MAJORS } from "@/data/forms/Information";
 import Select from "../Select";
 import { SCHOOLS } from "@/data/forms/Schools";
 import Radio from "../Radio";
-import Input from "../Input";
-import { FaPencil, FaCheck } from "react-icons/fa6";
 import Title from "../admin/Title.jsx";
+import TeamInfo from "./Team";
+import UserInfo from "./User";
+import mockUser from "../../../cypress/fixtures/User.json";
+import { COLORS } from "@/data/Tags";
 
 const Dashboard = () => {
-  const [user, setUser] = useState({
-    phone: "123 123 1234",
-    grade: "undergraduate",
-    school: "samepl scool",
-    major: "nothing im useless",
-    gender: "everythijg",
-    team: "lololol",
-  });
+  const [user, setUser] = useState(mockUser);
   const [edit, setEdit] = useState(false);
-  const handleEdit = () => {
-    setEdit(!edit);
-  };
-
-  const handleSave = () => {
-    setEdit(false);
-  };
 
   return (
     <div className="w-full">
       <Title title="Dashboard" />
       <div className="flex justify-between items-center">
-        <div className="flex items-center">
-          <ProfileHeader email="hello" name="hello" />
-          {edit ? (
-            <FaCheck
-              className="hover:cursor-pointer ml-2"
-              onClick={handleSave}
-            />
-          ) : (
-            <FaPencil
-              className="hover:cursor-pointer ml-2"
-              onClick={handleEdit}
-            />
-          )}
-        </div>
+        <ProfileHeader email={user.email} name={user.name} />
         <div className="text-right">
           <p className="text-xl font-bold mb-0">Status</p>
-          <Tag
-            color={{
-              text: "text-hackathon-tags-yellow-text",
-              background: "bg-hackathon-tags-yellow-bg",
-            }}
-            text="pending"
-          />
+          <Tag color={COLORS[user.status]} text={user.status} />
         </div>
       </div>
       <Row>
         <Col xl={6}>
-          <Input
-            name="phone"
-            type="phone"
-            title="Phone Number"
-            value={user.phone}
+          <UserInfo
+            handleEdit={() => setEdit(true)}
+            handleSave={() => setEdit(false)}
             user={user}
             setUser={setUser}
             editable={edit}
@@ -104,38 +71,11 @@ const Dashboard = () => {
           />
         </Col>
         <Col xl={6}>
-          <Input
-            name="team"
-            type="text"
-            title="Team Name"
-            value={user.team}
-            user={user}
-            setUser={setUser}
-            editable={edit}
-          />
-          <p>team id lolololololol</p>
-          <Input
-            name="github"
-            type="text"
-            title="Github Link"
-            value={user.github}
-            user={user}
-            setUser={setUser}
-            editable={edit}
-          />
-          <Input
-            name="devpost"
-            type="text"
-            title="Devpost Link"
-            value={user.devpost}
-            user={user}
-            setUser={setUser}
-            editable={edit}
-          />
-          <p>TEAM MEMBER 1</p>
-          <p>TEAM MEMBER 2</p>
-          <p>TEAM MEMBER 3</p>
-          <p>TEAM MEMBER 4</p>
+          {user.team ? (
+            <TeamInfo user={user} team={user.team} />
+          ) : (
+            <p>no team</p>
+          )}
         </Col>
       </Row>
     </div>

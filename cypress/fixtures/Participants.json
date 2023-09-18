@@ -15,8 +15,7 @@
     "major": "Computer Science",
     "status": "pending",
     "selected": false,
-    "hidden": false,
-    "dropdown": true
+    "hidden": false
   },
   {
     "uid": "2",
@@ -34,8 +33,7 @@
     "major": "Computer Science with Business Applications",
     "status": "accept",
     "selected": false,
-    "hidden": false,
-    "dropdown": true
+    "hidden": false
   },
   {
     "uid": "3",
@@ -53,8 +51,7 @@
     "major": "Data Science",
     "status": "reject",
     "selected": false,
-    "hidden": false,
-    "dropdown": true
+    "hidden": false
   },
   {
     "uid": "4",
@@ -72,8 +69,7 @@
     "major": "Environmental Engineering",
     "status": "accept",
     "selected": false,
-    "hidden": false,
-    "dropdown": true
+    "hidden": false
   },
   {
     "uid": "5",
@@ -91,8 +87,7 @@
     "major": "Chemical Engineering",
     "status": "pending",
     "selected": false,
-    "hidden": false,
-    "dropdown": true
+    "hidden": false
   },
   {
     "uid": "6",
@@ -110,8 +105,7 @@
     "major": "Computer Engineering",
     "status": "pending",
     "selected": false,
-    "hidden": false,
-    "dropdown": true
+    "hidden": false
   },
   {
     "uid": "7",
@@ -129,8 +123,7 @@
     "major": "Computer Science",
     "status": "pending",
     "selected": false,
-    "hidden": false,
-    "dropdown": true
+    "hidden": false
   },
   {
     "uid": "8",
@@ -148,8 +141,7 @@
     "major": "Mechanical Engineering",
     "status": "accept",
     "selected": false,
-    "hidden": false,
-    "dropdown": true
+    "hidden": false
   },
   {
     "uid": "9",
@@ -167,8 +159,7 @@
     "major": "Environmental Engineering",
     "status": "reject",
     "selected": false,
-    "hidden": false,
-    "dropdown": true
+    "hidden": false
   },
   {
     "uid": "10",
@@ -186,8 +177,7 @@
     "major": "Computer Science",
     "status": "pending",
     "selected": false,
-    "hidden": false,
-    "dropdown": true
+    "hidden": false
   },
   {
     "uid": "11",
@@ -205,8 +195,7 @@
     "major": "Computer Science",
     "status": "pending",
     "selected": false,
-    "hidden": false,
-    "dropdown": true
+    "hidden": false
   },
   {
     "uid": "12",
@@ -224,8 +213,7 @@
     "major": "Computer Science with Business Applications",
     "status": "pending",
     "selected": false,
-    "hidden": false,
-    "dropdown": true
+    "hidden": false
   },
   {
     "uid": "13",
@@ -243,8 +231,7 @@
     "major": "Computer Science",
     "status": "pending",
     "selected": false,
-    "hidden": false,
-    "dropdown": true
+    "hidden": false
   },
   {
     "uid": "14",
@@ -262,8 +249,7 @@
     "major": "Computer Science",
     "status": "pending",
     "selected": false,
-    "hidden": false,
-    "dropdown": true
+    "hidden": false
   },
   {
     "uid": "15",
@@ -281,8 +267,7 @@
     "major": "Electrical Engineering",
     "status": "pending",
     "selected": false,
-    "hidden": false,
-    "dropdown": true
+    "hidden": false
   },
   {
     "uid": "16",
@@ -300,8 +285,7 @@
     "major": "Computer Engineering",
     "status": "pending",
     "selected": false,
-    "hidden": false,
-    "dropdown": true
+    "hidden": false
   },
   {
     "uid": "17",
@@ -319,8 +303,7 @@
     "major": "Computer Science",
     "status": "pending",
     "selected": false,
-    "hidden": false,
-    "dropdown": true
+    "hidden": false
   },
   {
     "uid": "18",
@@ -338,8 +321,7 @@
     "major": "Mechanical Engineering",
     "status": "pending",
     "selected": false,
-    "hidden": false,
-    "dropdown": true
+    "hidden": false
   },
   {
     "uid": "19",
@@ -357,8 +339,7 @@
     "major": "Data Science",
     "status": "pending",
     "selected": false,
-    "hidden": false,
-    "dropdown": true
+    "hidden": false
   },
   {
     "uid": "20",
@@ -376,7 +357,6 @@
     "major": "Computer Science",
     "status": "pending",
     "selected": false,
-    "hidden": false,
-    "dropdown": true
+    "hidden": false
   }
 ]

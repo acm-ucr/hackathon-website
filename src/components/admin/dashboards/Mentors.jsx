@@ -4,13 +4,15 @@ import { useState } from "react";
 import Filters from "@/components/admin/Filters";
 import Toolbar from "@/components/admin/dashboards/Toolbar";
 import Title from "../Title";
-import Table from "./Table";
+import Table from "../Table";
 import mentorList from "../../../../cypress/fixtures/Mentors.json";
-import { FILTERS, HEADERS, TAGS } from "@/data/admin/Mentors.js";
+import { FILTERS, HEADERS, TAGS, DROPDOWN } from "@/data/admin/Mentors.js";
 
 const Mentors = () => {
   const [mentors, setMentors] = useState(mentorList);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState({
+    input: "",
+  });
   const [filters, setFilters] = useState(FILTERS);
   const [headers, setHeaders] = useState(HEADERS);
 
@@ -23,7 +25,7 @@ const Mentors = () => {
           setFilters={setFilters}
           setObjects={setMentors}
           objects={mentors}
-          input={input}
+          input={input.input}
         />
       </div>
       <Toolbar
@@ -43,6 +45,7 @@ const Mentors = () => {
         setHeaders={setHeaders}
         setObjects={setMentors}
         objects={mentors}
+        Dropdown={DROPDOWN}
       />
     </div>
   );

@@ -4,15 +4,18 @@ import { useState } from "react";
 import Filters from "@/components/admin/Filters";
 import Toolbar from "@/components/admin/dashboards/Toolbar";
 import Title from "../Title";
-import Table from "./Table";
+import Table from "../Table";
 import participantList from "../../../../cypress/fixtures/Participants.json";
-import { FILTERS, HEADERS, TAGS } from "@/data/admin/Participants";
+import { FILTERS, HEADERS, TAGS, DROPDOWN } from "@/data/admin/Participants";
 
 const Participants = () => {
   const [participants, setParticipants] = useState(participantList);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState({
+    input: "",
+  });
   const [filters, setFilters] = useState(FILTERS);
   const [headers, setHeaders] = useState(HEADERS);
+
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <div className="flex">
@@ -22,7 +25,7 @@ const Participants = () => {
           setFilters={setFilters}
           setObjects={setParticipants}
           objects={participants}
-          input={input}
+          input={input.input}
         />
       </div>
       <Toolbar
@@ -41,6 +44,7 @@ const Participants = () => {
         setHeaders={setHeaders}
         setObjects={setParticipants}
         objects={participants}
+        Dropdown={DROPDOWN}
       />
     </div>
   );

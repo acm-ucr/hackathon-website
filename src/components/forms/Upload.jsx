@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BsUpload } from "react-icons/bs";
-import { FaFilePdf, FaTimes } from "react-icons/fa";
+import { FaFilePdf, FaImage, FaTimes } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import { BYTES } from "@/data/Bytes";
 const getSize = (maxSize) => BYTES[maxSize[1]] * maxSize[0];
@@ -32,7 +32,7 @@ const Upload = ({ field, user, setUser, text, maxSize, types }) => {
   return (
     <div className="mt-3">
       <p className="mb-0">{text}</p>
-      <div className="flex items-center w-full flex-col">
+      <div className="flex items-center w-full flex-col" data-cy="upload">
         {!file && (
           <label
             htmlFor="dropzone-file"
@@ -44,7 +44,7 @@ const Upload = ({ field, user, setUser, text, maxSize, types }) => {
                 Upload from my computer
               </p>
             </div>
-            <div className="w-full">
+            <div className="w-full" data-cy="upload-input">
               <input
                 id="dropzone-file"
                 onChange={handleInput}
@@ -56,14 +56,22 @@ const Upload = ({ field, user, setUser, text, maxSize, types }) => {
           </label>
         )}
         {file && (
-          <div className="flex items-center justify-between w-full my-2 bg-gray-200 px-2 py-2">
+          <div
+            className="flex items-center justify-between w-full my-2 bg-gray-200 px-2 py-2"
+            data-cy="upload-success"
+          >
             <div className="flex items-center">
-              <FaFilePdf className="text-xl mr-2" />
+              {file.type.split("/")[0] === "image" ? (
+                <FaImage className="text-xl mr-2" />
+              ) : (
+                <FaFilePdf className="text-xl mr-2" />
+              )}
               {file.name}
             </div>
             <FaTimes
               className="text-gray-500 hover:cursor-pointer hover:text-red-600"
               onClick={() => setFile(null)}
+              data-cy="upload-cancel"
             />
           </div>
         )}

@@ -4,13 +4,15 @@ import { useState } from "react";
 import Filters from "@/components/admin/Filters";
 import Toolbar from "@/components/admin/dashboards/Toolbar";
 import Title from "../Title";
-import Table from "./Table";
+import Table from "../Table";
 import teamList from "../../../../cypress/fixtures/Teams.json";
 import { FILTERS, HEADERS, TAGS } from "@/data/admin/Teams";
 
 const Teams = () => {
   const [teams, setTeams] = useState(teamList);
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState({
+    input: "",
+  });
   const [filters, setFilters] = useState(FILTERS);
   const [headers, setHeaders] = useState(HEADERS);
 
@@ -23,7 +25,7 @@ const Teams = () => {
           setFilters={setFilters}
           setObjects={setTeams}
           objects={teams}
-          input={input}
+          input={input.input}
         />
       </div>
       <Toolbar
