@@ -37,6 +37,7 @@ const Participants = () => {
         filters={filters}
         file="PARTICIPANTS"
         headers={headers}
+        page="participant"
       />
       <Table
         headers={headers}
@@ -45,6 +46,7 @@ const Participants = () => {
         setObjects={setParticipants}
         objects={participants}
         Dropdown={DROPDOWN}
+        page="participant"
       />
     </div>
   );

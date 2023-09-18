@@ -39,7 +39,7 @@ const Table = ({
   setObjects,
   objects,
   Dropdown,
-  dashboard,
+  page,
 }) => {
   const [currentSort, setCurrentSort] = useState("name");
   const [modal, setModal] = useState(null);
@@ -116,23 +116,18 @@ const Table = ({
                         {header.hasTag && (
                           <Tag
                             text={
-                              object[header.text][dashboard].includes(
-                                "https://"
-                              )
+                              object[header.text][page].includes("https://")
                                 ? "view"
-                                : object[header.text][dashboard] +
-                                  (object[header.text][dashboard] ===
-                                    "accept" ||
-                                  object[header.text][dashboard] === "reject"
+                                : object[header.text][page] +
+                                  (object[header.text][page] === "accept" ||
+                                  object[header.text][page] === "reject"
                                     ? "ed"
                                     : "")
                             }
                             color={
-                              object[header.text][dashboard].includes(
-                                "https://"
-                              )
+                              object[header.text][page].includes("https://")
                                 ? COLORS["view"]
-                                : COLORS[object[header.text][dashboard]]
+                                : COLORS[object[header.text][page]]
                             }
                             onClick={
                               header.onClick

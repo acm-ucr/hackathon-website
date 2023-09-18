@@ -18,6 +18,7 @@ const Toolbar = ({
   objects,
   filters,
   api,
+  page,
 }) => {
   const [popup, setPopup] = useState({
     title: "Delete Confirmation",
@@ -38,7 +39,7 @@ const Toolbar = ({
     setObjects(
       objects.map((a) => {
         if (a.selected) {
-          a.status = text;
+          a.status[page] = text;
           a.selected = false;
         }
         return a;
