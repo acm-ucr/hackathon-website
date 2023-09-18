@@ -1,4 +1,8 @@
-import { MAJORS, GRADES, GENDERS, SHIRTS } from "./Information";
+import { AGES, DIETS, MAJORS } from "./Information";
+import { GRADES } from "./Information";
+import { GENDERS } from "./Information";
+import { SHIRTS } from "./Information";
+import { SCHOOLS } from "./Schools";
 
 export const FIELDS = {
   description: {
@@ -48,6 +52,24 @@ export const FIELDS = {
     width: 12,
     required: true,
   },
+  age: {
+    input: "select",
+    title: "Age",
+    options: AGES,
+    field: "age",
+    placeholder: "Age",
+    width: 12,
+    required: true,
+  },
+  school: {
+    input: "select",
+    title: "School",
+    options: SCHOOLS,
+    field: "school",
+    placeholder: "School",
+    width: 12,
+    required: true,
+  },
   grade: {
     input: "select",
     title: "Grade",
@@ -56,27 +78,6 @@ export const FIELDS = {
     placeholder: "ie. Undergraduate",
     width: 12,
     required: true,
-  },
-  availability: {
-    input: "checkboxes",
-    width: 12,
-    field: "availability",
-    text: "Availability",
-    required: true,
-    options: [
-      "Friday Morning",
-      "Saturday Morning",
-      "Sunday Morning",
-      "Friday Afternoon",
-      "Saturday Afternoon",
-      "Sunday Afternoon",
-      "Friday Evening",
-      "Saturday Evening",
-      "Sunday Evening",
-      "Friday Night",
-      "Saturday Night",
-      "Sunday Night",
-    ],
   },
   gender: {
     input: "radio",
@@ -94,13 +95,20 @@ export const FIELDS = {
     width: 12,
     required: true,
   },
-  response: {
-    input: "textarea",
-    name: "response",
-    rows: 4,
-    title: "What skills and experience can you bring as a mentor?",
-    placeholder: "I can bring...",
+  diet: {
+    input: "checkboxes",
     width: 12,
+    field: "diet",
+    options: DIETS,
+  },
+
+  resume: {
+    input: "upload",
+    field: "resume",
+    text: "Upload  Resume",
+    width: 12,
+    types: ["pdf"],
+    maxSize: [150, "KB"],
     required: true,
   },
   requirements: {
@@ -109,7 +117,7 @@ export const FIELDS = {
     field: "requirements",
     required: true,
     options: [
-      "I agree to photograph. Thank you",
+      "I agree to photograph.",
       "I understand that I will attend the event in person.",
     ],
   },

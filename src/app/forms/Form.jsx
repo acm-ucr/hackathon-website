@@ -7,27 +7,35 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "@/components/Button.jsx";
 import Textarea from "@/components/forms/Textarea.jsx";
+import Upload from "@/components/forms/Upload";
 import toast from "react-hot-toast";
-
-const Form = ({ object, setObject, header, fields }) => {
+const Form = ({ object, setObject, header, fields, submit }) => {
   const handleSubmit = () => {
-    if (Object.values(object).some((value) => value === "" || !value)) {
-      toast("❌ Please complete all fields!");
+    if (
+      Object.entries(fields).some(
+        ([key, value]) => value.required && (!object[key] || object[key] === "")
+      )
+    ) {
+      toast("❌ Please complete all required fields!");
       return;
     }
-    if (Object.values(object.requirements).some((check) => !check)) {
+    if (
+      fields.requirements &&
+      fields.requirements.options.some(
+        (requirement) => !object.requirements[requirement]
+      )
+    ) {
       toast("❌ Please agree to all the terms!");
       return;
     }
     if (
-      object.availability &&
+      fields.availability &&
       !Object.values(object.availability).some((time) => time)
     ) {
       toast("❌ Please select at least one available time!");
       return;
     }
-    toast(`✅ Submitted successfully!`);
-    console.log(object);
+    submit();
   };
   return (
     <div className="w-full h-full overflow-scroll flex flex-col items-center font-poppins">
@@ -37,7 +45,7 @@ const Form = ({ object, setObject, header, fields }) => {
         </p>
         <div className="rounded-b-xl bg-white p-3">
           <Row className="flex justify-center p-0 m-0">
-            {fields.map((field, index) => (
+            {Object.values(fields).map((field, index) => (
               <Col key={index} md={field.width}>
                 {field.input === "description" ? (
                   field.texts.map((description, index) => (
@@ -67,26 +75,28 @@ const Form = ({ object, setObject, header, fields }) => {
                 ) : field.input === "checkboxes" ? (
                   <>
                     <p className="mb-1 mt-3">{field.text}</p>
-                    {Object.entries(object[field.field]).map(
-                      ([key, value], i) => (
-                        <Checkbox
-                          className="w-1/2"
-                          key={i}
-                          toggle={value}
-                          text={key}
-                          onClick={() =>
-                            setObject({
-                              ...object,
-                              [field.field]: {
-                                ...object[field.field],
-                                [key]: !value,
-                              },
-                            })
-                          }
-                          color="bg-hackathon-green-300"
-                        />
-                      )
-                    )}
+                    {field.options.map((option, i) => (
+                      <Checkbox
+                        className="w-1/2"
+                        key={i}
+                        toggle={
+                          object[field.field] && object[field.field][option]
+                        }
+                        text={option}
+                        onClick={() =>
+                          setObject({
+                            ...object,
+                            [field.field]: {
+                              ...object[field.field],
+                              [option]: object[field.field]
+                                ? !object[field.field][option]
+                                : true,
+                            },
+                          })
+                        }
+                        color="bg-hackathon-green-300"
+                      />
+                    ))}
                   </>
                 ) : field.input === "radio" ? (
                   <Radio
@@ -103,6 +113,15 @@ const Form = ({ object, setObject, header, fields }) => {
                     title={field.title}
                     placeholder={field.placeholder}
                     value={object[field.name]}
+                    user={object}
+                    setUser={setObject}
+                  />
+                ) : field.input === "upload" ? (
+                  <Upload
+                    field={field.field}
+                    text={field.text}
+                    maxSize={field.maxSize}
+                    types={field.types}
                     user={object}
                     setUser={setObject}
                   />

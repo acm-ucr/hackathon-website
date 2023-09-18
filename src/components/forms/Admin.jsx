@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { HELPER } from "../../data/forms/Admin.js";
 import Form from "@/app/forms/Form.jsx";
 import { FIELDS } from "../../data/forms/Admin.js";
 import { useSession } from "next-auth/react";
@@ -11,7 +10,6 @@ const Admin = () => {
   const [admin, setAdmin] = useState({
     name: session.user.name,
     email: session.user.email,
-    ...HELPER,
   });
   console.log(admin);
   return (
