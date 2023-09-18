@@ -22,9 +22,9 @@ const ProtectedPage = ({ title, children, restrictions }) => {
     ) {
       console.log("Have not register");
       setError({
-        errorCode: 401,
-        error: "Not log in",
-        message: "You need login to access this page.",
+        code: 401,
+        error: "Unauthenticated User",
+        message: "You need login to access this page",
       });
       return;
     }
@@ -35,9 +35,9 @@ const ProtectedPage = ({ title, children, restrictions }) => {
     ) {
       console.log("Dont have admin permissions");
       setError({
-        errorCode: 403,
+        code: 403,
         error: "Unauthorized",
-        message: "You do not have access this page.",
+        message: "You do not have access this page",
       });
       return;
     }
@@ -48,11 +48,7 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       {status === "loading" ? (
         <Loading />
       ) : error ? (
-        <Error
-          errorCode={error.errorCode}
-          error={error.error}
-          message={error.message}
-        />
+        <Error code={error.code} error={error.error} message={error.message} />
       ) : (
         status === "authenticated" && (
           <>
