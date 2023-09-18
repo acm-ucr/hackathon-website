@@ -19,10 +19,7 @@ export default function RootLayout({ children, session }) {
       <SessionProvider session={session} refetchInterval={5 * 60}>
         <body className={`${poppins.variable} flex flex-col lg:flex-row`}>
           <Toaster />
-
-          <div className="flex justify-center items-start w-full bg-hackathon-page z-0 h-screen pt-12 lg:pt-0">
-            {children}
-          </div>
+          {children}
         </body>
       </SessionProvider>
     </html>
