@@ -34,6 +34,7 @@ const Admin = () => {
         setObjects={setAdmin}
         objects={admin}
         filters={filters}
+        page="admin"
       />
       <Table
         headers={headers}
@@ -41,6 +42,7 @@ const Admin = () => {
         setHeaders={setHeaders}
         setObjects={setAdmin}
         objects={admin}
+        page="admin"
       />
     </div>
   );

@@ -1,12 +1,10 @@
 export const HELPER = {
-  first: "",
-  last: "",
   phone: "",
-  email: "",
   major: "",
   grade: "",
   gender: "",
   shirt: "",
+  discord: "",
 };
 
 export const AVAILABILITY = {

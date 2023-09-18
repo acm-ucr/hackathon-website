@@ -4,7 +4,14 @@
     "name": "Raidah Fairooz",
     "email": "rfair008@ucr.edu",
     "discord": "Raidah#2067",
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
@@ -14,7 +21,14 @@
     "name": "Minsoo Kim",
     "email": "mkim001@ucr.edu",
     "discord": "Soup#2023",
-    "status": "confirm",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
@@ -24,7 +38,14 @@
     "name": "Menthy Wu",
     "email": "mwu171@ucr.edu",
     "discord": "_wmx",
-    "status": "confirm",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
@@ -34,7 +55,14 @@
     "name": "John Cena",
     "email": "cantseeme@ucr.edu",
     "discord": "yiyii#1111",
-    "status": "confirm",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
@@ -44,7 +72,14 @@
     "name": "Tiffany Wang",
     "email": "twang123@ucr.edu",
     "discord": "babydonthurtme#2067",
-    "status": "not attending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
@@ -54,7 +89,14 @@
     "name": "Tiffany Wu",
     "email": "twu7680@ucr.edu",
     "discord": "yuung#8376",
-    "status": "confirm",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
@@ -64,7 +106,14 @@
     "name": "Celine Don",
     "email": "cdon@hotmai.com",
     "discord": "duuknh#0298",
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
@@ -74,7 +123,14 @@
     "name": "AJ Cena",
     "email": "ajmm@gmail.com",
     "discord": "zzz_11#2067",
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
@@ -84,7 +140,14 @@
     "name": "John Cena",
     "email": "cantseeme@ucr.edu",
     "discord": "babydonthurtme#2067",
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
@@ -94,7 +157,14 @@
     "name": "John Cena",
     "email": "cantseeme@ucr.edu",
     "discord": "babydonthurtme#2067",
-    "status": "not attending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
@@ -104,7 +174,14 @@
     "name": "John Cena",
     "email": "cantseeme@ucr.edu",
     "discord": "babydonthurtme#2067",
-    "status": "not attending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
@@ -114,7 +191,14 @@
     "name": "John Cena",
     "email": "cantseeme@ucr.edu",
     "discord": "babydonthurtme#2067",
-    "status": "not attending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
@@ -124,7 +208,14 @@
     "name": "John Cena",
     "email": "cantseeme@ucr.edu",
     "discord": "babydonthurtme#2067",
-    "status": "not attending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
@@ -134,7 +225,14 @@
     "name": "John Cena",
     "email": "cantseeme@ucr.edu",
     "discord": "babydonthurtme#2067",
-    "status": "not attending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
@@ -144,7 +242,14 @@
     "name": "John Cena",
     "email": "cantseeme@ucr.edu",
     "discord": "babydonthurtme#2067",
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false
@@ -154,7 +259,14 @@
     "name": "John Cena",
     "email": "cantseeme@ucr.edu",
     "discord": "babydonthurtme#2067",
-    "status": "not attending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "availability": ["fridayAfternoon", "sundayMorning"],
     "selected": false,
     "hidden": false

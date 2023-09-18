@@ -12,8 +12,11 @@ import toast from "react-hot-toast";
 import { MAJORS, GRADES, GENDERS, SHIRTS } from "@/data/forms/Information";
 import { HELPER, AVAILABILITY } from "@/data/forms/Helper";
 import { DESCRIPTIONS, REQUIREMENTS } from "@/data/forms/Volunteers";
+import { useSession } from "next-auth/react";
+import axios from "axios";
 
 const Volunteer = () => {
+  const { data: session } = useSession();
   const [volunteer, setVolunteer] = useState(HELPER);
   const [requirements, setRequirements] = useState(REQUIREMENTS);
   const [availability, setAvailability] = useState(AVAILABILITY);
@@ -33,10 +36,17 @@ const Volunteer = () => {
       toast("❌ Please complete all fields!");
       return;
     }
-    toast(`✅ Submitted successfully!`);
-    console.log(volunteer);
-    console.log(requirements);
-    console.log(availability);
+
+    const data = {
+      ...volunteer,
+      availability: Object.entries(availability)
+        .filter(([_, value]) => value.state === true)
+        .map(([key]) => key),
+    };
+
+    axios
+      .post("/api/forms/volunteer", data)
+      .then(() => toast(`✅ Submitted successfully!`));
   };
 
   const handleRequirementsCheckbox = (key, value) => {
@@ -66,27 +76,13 @@ const Volunteer = () => {
             ))}
           </Col>
           <Col xl={6}>
-            <Input
-              name="first"
-              type="text"
-              title="First Name"
-              placeholder="John"
-              value={volunteer.first}
-              maxLength={50}
-              user={volunteer}
-              setUser={setVolunteer}
-            />
+            <Input title="Name" value={session.user.name} editable={false} />
           </Col>
           <Col xl={6}>
             <Input
-              name="last"
-              type="text"
-              title="Last Name"
-              placeholder="Doe"
-              value={volunteer.last}
-              maxLength={50}
-              user={volunteer}
-              setUser={setVolunteer}
+              title="Email Address"
+              value={session.user.email}
+              editable={false}
             />
           </Col>
           <Col xl={6}>
@@ -103,12 +99,12 @@ const Volunteer = () => {
           </Col>
           <Col xl={6}>
             <Input
-              name="email"
-              type="email"
-              title="Email Address"
-              placeholder="john_doe@gmail.com"
-              value={volunteer.email}
-              maxLength={50}
+              name="discord"
+              type="text"
+              title="Discord"
+              placeholder="ie. john123"
+              value={volunteer.discord}
+              maxLength={30}
               user={volunteer}
               setUser={setVolunteer}
             />
@@ -120,7 +116,7 @@ const Volunteer = () => {
               field="major"
               user={volunteer}
               setUser={setVolunteer}
-              placeholder="Computer Science"
+              placeholder="ie. Computer Science"
             />
           </Col>
           <Col xl={12} className="flext mt-3">
@@ -143,7 +139,7 @@ const Volunteer = () => {
               field="grade"
               user={volunteer}
               setUser={setVolunteer}
-              placeholder="Undergraduate"
+              placeholder="ie. Undergraduate"
             />
           </Col>
           <Col xl={12}>

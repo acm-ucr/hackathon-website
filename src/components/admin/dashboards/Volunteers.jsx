@@ -4,11 +4,11 @@ import Filters from "@/components/admin/Filters";
 import Toolbar from "@/components/admin/dashboards/Toolbar";
 import Title from "../Title";
 import Table from "../Table";
-import volunteerList from "../../../../cypress/fixtures/Volunteers.json";
+// import volunteerList from "../../../../cypress/fixtures/Volunteers.json";
 import { FILTERS, HEADERS, TAGS, DROPDOWN } from "@/data/admin/Volunteers";
 
 const Volunteers = () => {
-  const [volunteers, setVolunteers] = useState(volunteerList);
+  const [volunteers, setVolunteers] = useState(null);
   const [input, setInput] = useState({
     input: "",
   });
@@ -36,6 +36,8 @@ const Volunteers = () => {
         filters={filters}
         file="VOLUNTEERS"
         headers={headers}
+        api="forms/volunteer"
+        page="volunteer"
       />
       <Table
         headers={headers}
@@ -44,6 +46,7 @@ const Volunteers = () => {
         setObjects={setVolunteers}
         objects={volunteers}
         Dropdown={DROPDOWN}
+        page="volunteer"
       />
     </div>
   );
