@@ -45,20 +45,18 @@ const ProtectedPage = ({ title, children, restrictions }) => {
 
   return (
     <>
-      {status === "loading" ? (
-        <Loading />
-      ) : error ? (
+      {status === "loading" && <Loading />}
+      {error && (
         <Error code={error.code} error={error.error} message={error.message} />
-      ) : (
-        status === "authenticated" && (
-          <>
-            <Navigation />
-            <div className="w-full flex justify-center h-full">
-              <title>{title}</title>
-              <div className="w-11/12 h-full">{children}</div>
-            </div>
-          </>
-        )
+      )}
+      {status === "authenticated" && !error && (
+        <>
+          <Navigation />
+          <div className="w-full flex justify-center h-full">
+            <title>{title}</title>
+            <div className="w-11/12 h-full">{children}</div>
+          </div>
+        </>
       )}
     </>
   );
