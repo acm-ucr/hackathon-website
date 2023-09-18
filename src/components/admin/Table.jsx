@@ -5,45 +5,15 @@ import Row from "react-bootstrap/Row";
 import Accordion from "react-bootstrap/Accordion";
 import Checkbox from "../Checkbox";
 import Tag from "./Tag";
-import {
-  IoIosArrowDown,
-  IoIosMail,
-  IoIosRose,
-  IoIosShirt,
-  IoIosSchool,
-} from "react-icons/io";
+import { IoIosArrowDown } from "react-icons/io";
 import AccordionContext from "react-bootstrap/AccordionContext";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { useContext } from "react";
-import { SiGithub, SiDevpost } from "react-icons/si";
 import Link from "next/link";
 import { COLORS } from "@/data/Tags";
-import {
-  FaAppleAlt,
-  FaPhoneAlt,
-  FaCrown,
-  FaSchool,
-  FaVenusMars,
-  FaBirthdayCake,
-  FaBook,
-} from "react-icons/fa";
 import Modal from "./dashboards/Modal";
+import { ICONS } from "@/data/admin/Icons";
 import Loading from "../Loading";
-const icons = {
-  github: <SiGithub className="mr-2" />,
-  devpost: <SiDevpost className="mr-2" />,
-  lead: <IoIosRose className="ml-1 text-hackathon-blue-200 text-lg" />,
-  winner: <FaCrown className="ml-1 text-hackathon-yellow-100 text-lg" />,
-  phone: <FaPhoneAlt className="text-hackathon-blue-200 mr-2" />,
-  email: <IoIosMail className="text-hackathon-blue-200 mr-2 text-lg" />,
-  size: <IoIosShirt className="text-hackathon-blue-200 mr-2 text-lg" />,
-  restriction: <FaAppleAlt className="text-hackathon-blue-200 mr-2" />,
-  age: <FaBirthdayCake className="text-hackathon-blue-200 mr-2 text-lg" />,
-  gender: <FaVenusMars className="text-hackathon-blue-200 mr-2 text-lg" />,
-  grade: <IoIosSchool className="text-hackathon-blue-200 mr-2 text-lg" />,
-  major: <FaBook className="text-hackathon-blue-200 mr-2 text-lg" />,
-  school: <FaSchool className="text-hackathon-blue-200 mr-2 text-lg" />,
-};
 
 const Toggle = ({ eventKey }) => {
   const { activeEventKey } = useContext(AccordionContext);
@@ -184,7 +154,7 @@ const Table = ({
                                   href={element.link}
                                   className="flex items-center m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-sm"
                                 >
-                                  {icons[element.name]}
+                                  {ICONS[element.name]}
                                   {element.link.replace("https://", "")}
                                 </Link>
                               ) : (
@@ -199,7 +169,7 @@ const Table = ({
                               {object[header.text]}
                               {(object.position === header.symbol ||
                                 object.status === header.symbol) &&
-                                icons[header.symbol]}
+                                ICONS[header.symbol]}
                             </>
                           )}
                       </Col>
@@ -214,7 +184,7 @@ const Table = ({
                     <Col className="p-0" xs={12}>
                       <Accordion.Collapse eventKey={index}>
                         <Row className="pl-[8%] pt-2">
-                          <Dropdown object={object} icons={icons} />
+                          <Dropdown object={object} icons={ICONS} />
                         </Row>
                       </Accordion.Collapse>
                     </Col>
