@@ -61,6 +61,7 @@ const Form = ({ object, setObject, header, fields, submit }) => {
                     maxLength={field.maxLength}
                     user={object}
                     setUser={setObject}
+                    required={field.required}
                     editable={field.editable}
                   />
                 )}
@@ -72,6 +73,7 @@ const Form = ({ object, setObject, header, fields, submit }) => {
                     placeholder={field.placeholder}
                     user={object}
                     setUser={setObject}
+                    required={field.required}
                   />
                 )}
                 {field.input === "checkboxes" && (
@@ -108,6 +110,7 @@ const Form = ({ object, setObject, header, fields, submit }) => {
                     field={field.field}
                     user={object}
                     setUser={setObject}
+                    required={field.required}
                   />
                 )}
                 {field.input === "textarea" && (
@@ -119,6 +122,7 @@ const Form = ({ object, setObject, header, fields, submit }) => {
                     value={object[field.name]}
                     user={object}
                     setUser={setObject}
+                    required={field.required}
                   />
                 )}
                 {field.input === "upload" && (
@@ -129,9 +133,9 @@ const Form = ({ object, setObject, header, fields, submit }) => {
                     types={field.types}
                     user={object}
                     setUser={setObject}
+                    required={field.required}
                   />
                 )}
-                {field.input}
               </Col>
             ))}
             <Col xl={12} className="flex justify-center">
