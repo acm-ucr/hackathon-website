@@ -6,8 +6,8 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "../../Button";
 import CheckInfo from "./CheckInfo";
-import checkInUser from "../../../../../cypress/fixtures/CheckInUser.json";
-import mockEvents from "../../../../../cypress/fixtures/Events.json";
+import checkInUser from "../../../../../cypress/fixtures/checkin_user.json";
+import mockEvents from "../../../../../cypress/fixtures/events.json";
 
 const CheckIn = () => {
   const [event, setEvent] = useState("No Event Selected");

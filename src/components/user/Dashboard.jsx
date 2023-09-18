@@ -11,7 +11,7 @@ import Radio from "../Radio";
 import Title from "../admin/Title.jsx";
 import TeamInfo from "./Team";
 import UserInfo from "./User";
-import mockUser from "../../../cypress/fixtures/User.json";
+import mockUser from "../../../cypress/fixtures/user.json";
 import { COLORS } from "@/data/Tags";
 
 const Dashboard = () => {
