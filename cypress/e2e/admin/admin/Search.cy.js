@@ -1,4 +1,4 @@
-import admins from "../../../fixtures/admin.json";
+import admins from "../../../fixtures/Admin.json";
 
 describe("Admin Search", () => {
   beforeEach(() => {
