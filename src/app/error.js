@@ -1,7 +1,6 @@
 "use client";
 
 export default function Error({ error }) {
-  console.log(error);
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center fixed">
       <p className="text-center text-9xl font-extrabold text-hackathon-blue-100 m-0">
