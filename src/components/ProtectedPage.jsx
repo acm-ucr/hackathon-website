@@ -15,6 +15,11 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       void signIn("google");
       return;
     }
+    if (!session.user.role) {
+      console.log("No Role Assigned");
+      router.push("/");
+      return;
+    }
     if (
       status === "authenticated" &&
       restrictions.includes("hacker") &&

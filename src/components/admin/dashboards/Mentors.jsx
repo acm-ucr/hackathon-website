@@ -37,6 +37,7 @@ const Mentors = () => {
         filters={filters}
         file="MENTORS"
         headers={headers}
+        page="mentor"
       />
 
       <Table
@@ -46,6 +47,7 @@ const Mentors = () => {
         setObjects={setMentors}
         objects={mentors}
         Dropdown={DROPDOWN}
+        page="mentor"
       />
     </div>
   );

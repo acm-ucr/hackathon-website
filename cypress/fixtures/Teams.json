@@ -12,7 +12,14 @@
         "link": "https://rose-hack-2021.devpost.com"
       }
     ],
-    "status": "winner",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "selected": false,
     "members": ["Menthy Wu", "Mengxuan Wu"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
@@ -31,7 +38,14 @@
         "link": "https://rose-hack-2021.devpost.com"
       }
     ],
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "selected": false,
     "members": ["Menthy Wu", "Mengxuan Wu"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
@@ -50,7 +64,14 @@
         "link": "https://rose-hack-2021.devpost.com"
       }
     ],
-    "status": "qualify",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "selected": false,
     "members": ["Menthy Wu", "Mengxuan Wu"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
@@ -69,7 +90,14 @@
         "link": "https://rose-hack-2021.devpost.com"
       }
     ],
-    "status": "disqualify",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "selected": false,
     "members": ["Menthy Wu", "Mengxuan Wu"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
@@ -88,7 +116,14 @@
         "link": "https://rose-hack-2021.devpost.com"
       }
     ],
-    "status": "winner",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "selected": false,
     "members": ["Tiffany Wang", "Tiffany Wu"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
@@ -107,7 +142,14 @@
         "link": "https://rose-hack-2021.devpost.com"
       }
     ],
-    "status": "winner",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "selected": false,
     "members": ["Tiffany Wang", "Tiffany Wu"],
     "emails": ["twang022@ucr.edu", "twu278@ucr.edu"],
@@ -126,7 +168,14 @@
         "link": "https://rose-hack-2021.devpost.com"
       }
     ],
-    "status": "winner",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "selected": false,
     "members": ["Tiffany Wang", "Tiffany Wu"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
@@ -145,7 +194,14 @@
         "link": "https://rose-hack-2021.devpost.com"
       }
     ],
-    "status": "winner",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "selected": false,
     "members": ["Tiffany Wang", "Tiffany Wu"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
@@ -164,7 +220,14 @@
         "link": "https://rose-hack-2021.devpost.com"
       }
     ],
-    "status": "disqualify",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "selected": false,
     "members": ["Tiffany Wang", "Tiffany Wu"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
@@ -183,7 +246,14 @@
         "link": "https://rose-hack-2021.devpost.com"
       }
     ],
-    "status": "disqualify",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "selected": false,
     "members": ["Tiffany Wang", "Tiffany Wu"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
@@ -202,7 +272,14 @@
         "link": "https://rose-hack-2021.devpost.com"
       }
     ],
-    "status": "pending",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "selected": false,
     "members": ["Tiffany Wang", "Tiffany Wu"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
@@ -221,7 +298,14 @@
         "link": "https://rose-hack-2021.devpost.com"
       }
     ],
-    "status": "disqualify",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "selected": false,
     "members": ["Tiffany Wang", "Tiffany Wu"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
@@ -240,7 +324,14 @@
         "link": "https://rose-hack-2021.devpost.com"
       }
     ],
-    "status": "disqualify",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "selected": false,
     "members": ["Tiffany Wang", "Tiffany Wu"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
@@ -259,7 +350,14 @@
         "link": "https://rose-hack-2021.devpost.com"
       }
     ],
-    "status": "disqualify",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "selected": false,
     "members": ["Tiffany Wang", "Tiffany Wu"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
@@ -278,7 +376,14 @@
         "link": "https://rose-hack-2021.devpost.com"
       }
     ],
-    "status": "disqualify",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "selected": false,
     "members": ["Tiffany Wang", "Tiffany Wu"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
@@ -297,7 +402,14 @@
         "link": "https://rose-hack-2021.devpost.com"
       }
     ],
-    "status": "disqualify",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "selected": false,
     "members": ["Tiffany Wang", "Tiffany Wu"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
@@ -316,7 +428,14 @@
         "link": "https://rose-hack-2021.devpost.com"
       }
     ],
-    "status": "disqualify",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "selected": false,
     "members": ["Tiffany Wang", "Tiffany Wu"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
@@ -335,7 +454,14 @@
         "link": "https://rose-hack-2021.devpost.com"
       }
     ],
-    "status": "disqualify",
+    "status": {
+      "admin": "pending",
+      "participant": "pending",
+      "team": "pending",
+      "judge": "pending",
+      "mentor": "pending",
+      "volunteer": "pending"
+    },
     "selected": false,
     "members": ["Tiffany Wang", "Tiffany Wu"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],

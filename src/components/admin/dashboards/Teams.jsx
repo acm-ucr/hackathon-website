@@ -37,6 +37,7 @@ const Teams = () => {
         filters={filters}
         file="TEAMS"
         headers={headers}
+        page="team"
       />
       <Table
         headers={headers}
@@ -44,6 +45,7 @@ const Teams = () => {
         setHeaders={setHeaders}
         setObjects={setTeams}
         objects={teams}
+        page="team"
       />
     </div>
   );
