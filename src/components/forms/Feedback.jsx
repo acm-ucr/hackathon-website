@@ -5,12 +5,17 @@ import Input from "@/components/Input";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "@/components/Button";
-import { HELPER } from "@/data/forms/Helper";
+import { FEEDBACK } from "@/data/forms/Helper";
+import toast from "react-hot-toast";
 
 const Feedback = () => {
-  const [feedback, setFeedback] = useState(HELPER);
+  const [feedback, setFeedback] = useState(FEEDBACK);
 
   const handleSubmit = () => {
+    if (Object.values(feedback).some((value) => value === "")) {
+      toast("❌ Please complete all fields!");
+      return;
+    }
     console.log(feedback);
   };
 
@@ -28,7 +33,7 @@ const Feedback = () => {
           </Col>
           <Col xl={12}>
             <Input
-              name="question1"
+              name="What was most helpful about the event?"
               type="text"
               title="What was most helpful about the event?"
               placeholder="Workshops, team collaboration, mentorship..."
@@ -40,7 +45,7 @@ const Feedback = () => {
           </Col>
           <Col xl={12}>
             <Input
-              name="question2"
+              name="Was there anything that you would have liked to see?"
               type="text"
               title="Was there anything that you would have liked to see?"
               placeholder=""
@@ -52,7 +57,7 @@ const Feedback = () => {
           </Col>
           <Col xl={12}>
             <Input
-              name="question3"
+              name="Was there anything that you did not find beneficial about the hackathon?"
               type="text"
               title="Was there anything that you did not find beneficial about the hackathon?"
               placeholder=""
@@ -64,7 +69,7 @@ const Feedback = () => {
           </Col>
           <Col xl={12}>
             <Input
-              name="question4"
+              name="How would you rate the hackathon?"
               type="text"
               title="How would you rate the hackathon?"
               placeholder="From 1 - 10"
@@ -76,7 +81,7 @@ const Feedback = () => {
           </Col>
           <Col xl={12}>
             <Input
-              name="question5"
+              name="How did you find the event?"
               type="text"
               title="How did you find the event?"
               placeholder="Instagram, friends, etc"
@@ -88,7 +93,7 @@ const Feedback = () => {
           </Col>
           <Col xl={12}>
             <Input
-              name="question6"
+              name="Is there anything else you'd like to let us know?"
               type="text"
               title="Is there anything else you'd like to let us know?"
               placeholder="Literally anything..."
