@@ -52,8 +52,12 @@ const Upload = ({ text, setObjects, objects, size, types }) => {
             <Col
               key={index}
               className="flex items-center bg-hackathon-gray-100 px-2 py-1 mb-1 mr-1 !max-w-fit p-0"
+              data-cy="upload-list"
             >
-              <p className="text-sm m-0 whitespace-nowrap text-gray-500 font-semibold ">
+              <p
+                className="text-sm m-0 whitespace-nowrap text-gray-500 font-semibold "
+                data-cy={file.name}
+              >
                 {displayFile(file)}
               </p>
               <FaTimes
@@ -64,6 +68,7 @@ const Upload = ({ text, setObjects, objects, size, types }) => {
                     files: objects.files.filter((file, idx) => index !== idx),
                   });
                 }}
+                data-cy={`${file.name}-delete`}
               />
             </Col>
           ))}
@@ -71,6 +76,7 @@ const Upload = ({ text, setObjects, objects, size, types }) => {
         <label
           htmlFor="dropzone-file"
           className="flex items-center justify-center w-git border-2 border-gray-300 rounded cursor-pointer bg-gray-50 hover:bg-gray-100 px-2 py-1 m-0"
+          data-cy="upload-input"
         >
           <RiAttachment2 className="text-xl text-gray-500 mr-1" />
           <p className="text-sm text-gray-500 font-semibold m-0">attach</p>
