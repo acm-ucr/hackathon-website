@@ -11,10 +11,10 @@ describe("Forms Upload", () => {
 
       return (
         <Upload
-          field={"resume"}
+          field="resume"
           user={user}
           setUser={setUser}
-          text={"Upload Resume"}
+          text="Upload Resume"
           maxSize={[150, "KB"]}
           types={["pdf"]}
         />
@@ -38,10 +38,10 @@ describe("Forms Upload", () => {
 
       return (
         <Upload
-          field={"resume"}
+          field="resume"
           user={user}
           setUser={setUser}
-          text={"Upload Resume"}
+          text="Upload Resume"
           maxSize={[1, "KB"]}
           types={["pdf"]}
         />
@@ -67,10 +67,10 @@ describe("Forms Upload", () => {
 
       return (
         <Upload
-          field={"photo"}
+          field="photo"
           user={judge}
           setUser={setJudge}
-          text={"Upload Photo"}
+          text="Upload Photo"
           maxSize={[1, "MB"]}
           types={["png", "jpg", "jpeg"]}
         />
@@ -94,10 +94,10 @@ describe("Forms Upload", () => {
 
       return (
         <Upload
-          field={"photo"}
+          field="photo"
           user={judge}
           setUser={setJudge}
-          text={"Upload Photo"}
+          text="Upload Photo"
           maxSize={[1, "KB"]}
           types={["png", "jpg", "jpeg"]}
         />
@@ -123,10 +123,10 @@ describe("Forms Upload", () => {
 
       return (
         <Upload
-          field={"photo"}
+          field="photo"
           user={judge}
           setUser={setJudge}
-          text={"Upload Photo"}
+          text="Upload Photo"
           maxSize={[1, "MB"]}
           types={["png", "jpg", "jpeg"]}
         />
@@ -150,10 +150,10 @@ describe("Forms Upload", () => {
 
       return (
         <Upload
-          field={"photo"}
+          field="photo"
           user={judge}
           setUser={setJudge}
-          text={"Upload Photo"}
+          text="Upload Photo"
           maxSize={[1, "KB"]}
           types={["png", "jpg", "jpeg"]}
         />
@@ -179,10 +179,10 @@ describe("Forms Upload", () => {
 
       return (
         <Upload
-          field={"photo"}
+          field="photo"
           user={judge}
           setUser={setJudge}
-          text={"Upload Photo"}
+          text="Upload Photo"
           maxSize={[1, "MB"]}
           types={["png", "jpg", "jpeg"]}
         />
