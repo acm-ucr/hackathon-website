@@ -47,11 +47,11 @@ const Form = ({ object, setObject, header, fields, submit }) => {
           <Row className="flex justify-center p-0 m-0">
             {Object.values(fields).map((field, index) => (
               <Col key={index} md={field.width}>
-                {field.input === "description" ? (
+                {field.input === "description" &&
                   field.texts.map((description, index) => (
                     <p key={index}>{description}</p>
-                  ))
-                ) : field.input === "input" ? (
+                  ))}
+                {field.input === "input" && (
                   <Input
                     name={field.name}
                     type={field.type}
@@ -63,7 +63,8 @@ const Form = ({ object, setObject, header, fields, submit }) => {
                     setUser={setObject}
                     editable={field.editable}
                   />
-                ) : field.input === "select" ? (
+                )}
+                {field.input === "select" && (
                   <Select
                     title={field.title}
                     options={field.options}
@@ -72,7 +73,8 @@ const Form = ({ object, setObject, header, fields, submit }) => {
                     user={object}
                     setUser={setObject}
                   />
-                ) : field.input === "checkboxes" ? (
+                )}
+                {field.input === "checkboxes" && (
                   <>
                     <p className="mb-1 mt-3">{field.text}</p>
                     {field.options.map((option, i) => (
@@ -98,7 +100,8 @@ const Form = ({ object, setObject, header, fields, submit }) => {
                       />
                     ))}
                   </>
-                ) : field.input === "radio" ? (
+                )}
+                {field.input === "radio" && (
                   <Radio
                     text={field.text}
                     options={field.options}
@@ -106,7 +109,8 @@ const Form = ({ object, setObject, header, fields, submit }) => {
                     user={object}
                     setUser={setObject}
                   />
-                ) : field.input === "textarea" ? (
+                )}
+                {field.input === "textarea" && (
                   <Textarea
                     name={field.name}
                     rows={field.rows}
@@ -116,7 +120,8 @@ const Form = ({ object, setObject, header, fields, submit }) => {
                     user={object}
                     setUser={setObject}
                   />
-                ) : field.input === "upload" ? (
+                )}
+                {field.input === "upload" && (
                   <Upload
                     field={field.field}
                     text={field.text}
@@ -125,9 +130,8 @@ const Form = ({ object, setObject, header, fields, submit }) => {
                     user={object}
                     setUser={setObject}
                   />
-                ) : (
-                  field.input
                 )}
+                {field.input}
               </Col>
             ))}
             <Col xl={12} className="flex justify-center">
