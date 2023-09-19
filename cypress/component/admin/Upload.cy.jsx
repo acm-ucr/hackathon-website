@@ -96,7 +96,7 @@ describe("Upload", () => {
     cy.get(`[data-cy="${file}"]`).should("not.exist");
   });
 
-  it("Upload invalid same file", () => {
+  it("Upload Invalid File", () => {
     const file = "sample.png";
     const Parent = () => {
       const [email, setEmail] = useState({
@@ -125,7 +125,7 @@ describe("Upload", () => {
     cy.get('[data-cy="upload-list"]').should("have.length", 1);
   });
 
-  it("Remove a file", () => {
+  it("Remove File", () => {
     const files = ["sample.pdf", "sample.jpeg", "sample.jpg", "sample.png"];
     const Parent = () => {
       const [email, setEmail] = useState({
