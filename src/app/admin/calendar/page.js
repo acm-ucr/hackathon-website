@@ -3,7 +3,10 @@ import Events from "@/components/admin/services/calendar/Events";
 
 const Page = () => {
   return (
-    <ProtectedPage title="Admin | Calendar" restrictions={["admin"]}>
+    <ProtectedPage
+      title="Admin | Calendar"
+      restrictions={["admin", "committee"]}
+    >
       <Events />
     </ProtectedPage>
   );

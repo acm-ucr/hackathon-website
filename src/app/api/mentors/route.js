@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth/next";
 import { NextResponse } from "next/server";
-import { authOptions } from "../../auth/[...nextauth]/route";
-import { db } from "../../../../../firebase";
+import { authOptions } from "../auth/[...nextauth]/route";
+import { db } from "../../../../firebase";
 import {
   doc,
   updateDoc,
@@ -16,20 +16,31 @@ import {
 
 export async function POST(req) {
   const res = NextResponse;
-  const { phone, major, grade, gender, shirt, availability } = await req.json();
+  const {
+    phone,
+    discord,
+    major,
+    grade,
+    gender,
+    shirt,
+    availability,
+    response,
+  } = await req.json();
   const session = await getServerSession(authOptions);
 
   if (session) {
     try {
       await updateDoc(doc(db, "users", session.user.id), {
         phone: phone,
+        discord: discord,
         major: major,
         grade: grade,
         gender: gender,
         shirt: shirt,
-        "status.volunteer": "pending",
+        response: response,
+        "status.mentors": "pending",
         availability: availability,
-        role: arrayUnion("volunteer"),
+        role: arrayUnion("mentor"),
       });
       return res.json({ message: "OK" }, { status: 200 });
     } catch (err) {
@@ -57,7 +68,7 @@ export async function GET() {
         const snapshot = await getDocs(
           query(
             collection(db, "users"),
-            where("role", "array-contains", "volunteer")
+            where("role", "array-contains", "mentor")
           )
         );
         snapshot.forEach((doc) => {
@@ -97,12 +108,12 @@ export async function PUT(req) {
         objects.forEach(async (object) => {
           if (attribute === "role") {
             await updateDoc(doc(db, "users", object.uid), {
-              role: arrayRemove("volunteer"),
-              "status.volunteer": deleteField(),
+              role: arrayRemove("mentor"),
+              "status.mentors": deleteField(),
             });
           } else if (attribute === "status") {
             await updateDoc(doc(db, "users", object.uid), {
-              "status.volunteer": status,
+              "status.mentors": status,
             });
           }
         });

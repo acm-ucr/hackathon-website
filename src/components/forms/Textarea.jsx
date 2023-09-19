@@ -22,7 +22,7 @@ const Textarea = ({
   };
 
   return (
-    <div className="mt-3 border-b-2 border-black">
+    <div className="mt-3">
       <p className="mb-1">{title}</p>
       {editable && !edit && (
         <FaPencil className="hover:cursor-pointer" onClick={handleEdit} />
@@ -32,7 +32,7 @@ const Textarea = ({
       )}
       <textarea
         disabled={editable && !edit}
-        className="pl-3 w-full focus:outline-none placeholder:text-hackathon-gray-200 resize-none"
+        className="border-2 border-black pl-3 w-full focus:outline-none placeholder:text-hackathon-gray-200 resize-none"
         name={name}
         placeholder={placeholder}
         value={value}

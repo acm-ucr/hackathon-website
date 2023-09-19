@@ -118,29 +118,29 @@ const Table = ({
                         }`}
                       >
                         {header.hasTag && (
-                          <div data-cy={`${header.text}`}>
-                            <Tag
-                              text={
-                                object[header.text].includes("https://")
-                                  ? "view"
-                                  : object[header.text] +
-                                    (object[header.text] === "accept" ||
-                                    object[header.text] === "reject"
-                                      ? "ed"
-                                      : "")
-                              }
-                              color={
-                                object[header.text].includes("https://")
-                                  ? COLORS["view"]
-                                  : COLORS[object[header.text]]
-                              }
-                              onClick={
-                                header.onClick
-                                  ? () => header.onClick(object, setModal)
-                                  : null
-                              }
-                            />
-                          </div>
+                          <Tag
+                            text={
+                              !object[header.text][page] &&
+                              object[header.text].includes("https://")
+                                ? "view"
+                                : object[header.text][page] +
+                                  (object[header.text][page] === "accept" ||
+                                  object[header.text][page] === "reject"
+                                    ? "ed"
+                                    : "")
+                            }
+                            color={
+                              !object[header.text][page] &&
+                              object[header.text].includes("https://")
+                                ? COLORS["view"]
+                                : COLORS[object[header.text][page]]
+                            }
+                            onClick={
+                              header.onClick
+                                ? () => header.onClick(object, setModal)
+                                : null
+                            }
+                          />
                         )}
 
                         {Array.isArray(object[header.text]) &&

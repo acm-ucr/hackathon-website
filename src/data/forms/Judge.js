@@ -1,4 +1,6 @@
-import { MAJORS, GRADES, GENDERS, SHIRTS } from "./Information";
+import { GENDERS } from "./Information";
+import { SHIRTS } from "./Information";
+import { JUDGE_AFFILIATION } from "./Information";
 
 export const FIELDS = {
   description: {
@@ -6,7 +8,7 @@ export const FIELDS = {
     width: 12,
     texts: [
       "Hello! Rose Hack is coming January 14-15, 2023. Thank you for your interest in Rose Hack, UC Riverside’s women-centric hackathon founded by the female leaders of SWE and WINC!Volunteers are essential to our hackathon in helping run the entire event. Responsibilities include helping set up, tech support, clean up, distributing swag, etc. Meals are also provided during breakfast, lunch, and dinner times. If you are interested in joining the Rose Hack Team as a volunteer, please fill out this quick interest form below!",
-      "We also want to note that if you are volunteering at Rose Hack, you are unable to participate as a hacker as well. If you have any other questions please feel free to contact us on our socials or email us at rosehackucr@gmail.com! :)",
+      "We also want to note that if you are volunteering at Rose Hack, you are unable to participate as a hacker as well. If you have any other questions please feel free to contact us on our socials or email us at rosehackucr@gmail.com!",
     ],
   },
   name: {
@@ -39,56 +41,6 @@ export const FIELDS = {
     width: 12,
     required: true,
   },
-
-  discord: {
-    input: "input",
-    name: "discord",
-    type: "discord",
-    title: "Discord Username",
-    placeholder: "ie. john123",
-    maxLength: 30,
-    width: 12,
-    required: true,
-  },
-  major: {
-    input: "select",
-    title: "Major",
-    options: MAJORS,
-    field: "major",
-    placeholder: "ie. Computer Science",
-    width: 12,
-    required: true,
-  },
-  grade: {
-    input: "select",
-    title: "Grade",
-    options: GRADES,
-    field: "grade",
-    placeholder: "ie. Undergraduate",
-    width: 12,
-    required: true,
-  },
-  availability: {
-    input: "checkboxes",
-    width: 12,
-    field: "availability",
-    text: "Availability",
-    required: true,
-    options: [
-      "Friday Morning",
-      "Saturday Morning",
-      "Sunday Morning",
-      "Friday Afternoon",
-      "Saturday Afternoon",
-      "Sunday Afternoon",
-      "Friday Evening",
-      "Saturday Evening",
-      "Sunday Evening",
-      "Friday Night",
-      "Saturday Night",
-      "Sunday Night",
-    ],
-  },
   gender: {
     input: "radio",
     text: "Gender",
@@ -105,14 +57,41 @@ export const FIELDS = {
     width: 12,
     required: true,
   },
+
+  affiliation: {
+    input: "select",
+    title: "Affiliation",
+    options: JUDGE_AFFILIATION,
+    field: "affiliation",
+    placeholder: "ie. Student",
+    width: 12,
+    required: true,
+  },
+
+  title: {
+    input: "input",
+    name: "title",
+    type: "text",
+    title: "Title",
+    placeholder: "ie. Graduate Student",
+    maxLength: 50,
+    width: 12,
+    required: true,
+  },
+  photo: {
+    input: "upload",
+    field: "photo",
+    text: "Upload Photo",
+    width: 12,
+    types: ["png", "jpg", "jpeg"],
+    maxSize: [1, "MB"],
+    required: true,
+  },
   requirements: {
     input: "checkboxes",
     width: 12,
     field: "requirements",
     required: true,
-    options: [
-      "I agree to photograph. Thank you",
-      "I understand that I will attend the event in person.",
-    ],
+    options: ["I agree to photograph."],
   },
 };
