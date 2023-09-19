@@ -1,4 +1,4 @@
-import admins from "../../../fixtures/admin.json";
+import admins from "../../../fixtures/admins.json";
 
 const five = admins.slice(0, 5);
 

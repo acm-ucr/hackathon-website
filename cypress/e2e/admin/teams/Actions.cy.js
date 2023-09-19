@@ -1,6 +1,6 @@
-import data from "../../../fixtures/teams.json";
+import DATA from "../../../fixtures/teams.json";
 
-const teams = data.teams;
+const teams = DATA.teams;
 const five = teams.slice(0, 5);
 
 describe("Teams Actions", () => {

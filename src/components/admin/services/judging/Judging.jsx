@@ -3,10 +3,10 @@ import { useState } from "react";
 import Title from "../../Title.jsx";
 import Table from "./Table.jsx";
 import Toolbar from "./Toolbar.jsx";
-import data from "../../../../../cypress/fixtures/teams.json";
+import DATA from "../../../../../cypress/fixtures/teams.json";
 import judges from "../../../../../cypress/fixtures/judges_list.json";
 
-const teamsCopy = data.teamsCopy;
+const teamsCopy = DATA.teamsCopy;
 const Judging = () => {
   const [data, setData] = useState(teamsCopy);
 
