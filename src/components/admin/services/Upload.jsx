@@ -55,7 +55,7 @@ const Upload = ({ text, setObjects, objects, size, types }) => {
               data-cy="upload-list"
             >
               <p
-                className="text-sm m-0 whitespace-nowrap text-gray-500 font-semibold "
+                className="text-sm m-0 whitespace-nowrap text-gray-500 font-semibold"
                 data-cy={file.name}
               >
                 {displayFile(file)}
