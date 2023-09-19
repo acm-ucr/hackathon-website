@@ -37,8 +37,7 @@ const Volunteers = () => {
         filters={filters}
         file="VOLUNTEERS"
         headers={headers}
-        api="forms/volunteer"
-        page="volunteer"
+        page="volunteers"
       />
       <Table
         headers={headers}
@@ -47,7 +46,7 @@ const Volunteers = () => {
         setObjects={setVolunteers}
         objects={volunteers}
         Dropdown={DROPDOWN}
-        page="volunteer"
+        page="volunteers"
       />
     </div>
   );
