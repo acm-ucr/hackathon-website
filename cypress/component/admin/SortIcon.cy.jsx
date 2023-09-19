@@ -1,6 +1,4 @@
 import SortIcon from "../../../src/components/admin/dashboards/SortIcon.jsx";
-import { TbTriangleFilled, TbTriangleInvertedFilled } from "react-icons/tb";
-import { useState } from "react";
 
 describe("SortIcon", () => {
   let setHeadersStub;
