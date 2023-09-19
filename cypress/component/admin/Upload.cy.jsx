@@ -6,9 +6,6 @@ describe("Upload", () => {
     const files = ["sample.pdf", "sample.jpeg", "sample.jpg", "sample.png"];
     const Parent = () => {
       const [email, setEmail] = useState({
-        sendto: [],
-        subject: "Rosehack Application Status Update",
-        body: "Hello! \n\nWe've got good news! Your application to participate in Rose Hack 2024 has been accepted!\n\nStay tuned for more updates from us via email.\n\nIn the meantime, join our discord, the main platform that we will use on the day of the hackathon. Please don't share this invite with anyone else who wasn't approved. Thank you!\n\nThe Rose Hack Team",
         files: [],
       });
 
@@ -46,9 +43,6 @@ describe("Upload", () => {
     ];
     const Parent = () => {
       const [email, setEmail] = useState({
-        sendto: [],
-        subject: "Rosehack Application Status Update",
-        body: "Hello! \n\nWe've got good news! Your application to participate in Rose Hack 2024 has been accepted!\n\nStay tuned for more updates from us via email.\n\nIn the meantime, join our discord, the main platform that we will use on the day of the hackathon. Please don't share this invite with anyone else who wasn't approved. Thank you!\n\nThe Rose Hack Team",
         files: [],
       });
 
@@ -81,9 +75,6 @@ describe("Upload", () => {
     const file = "sample.png";
     const Parent = () => {
       const [email, setEmail] = useState({
-        sendto: [],
-        subject: "Rosehack Application Status Update",
-        body: "Hello! \n\nWe've got good news! Your application to participate in Rose Hack 2024 has been accepted!\n\nStay tuned for more updates from us via email.\n\nIn the meantime, join our discord, the main platform that we will use on the day of the hackathon. Please don't share this invite with anyone else who wasn't approved. Thank you!\n\nThe Rose Hack Team",
         files: [],
       });
 
@@ -109,9 +100,6 @@ describe("Upload", () => {
     const file = "sample.png";
     const Parent = () => {
       const [email, setEmail] = useState({
-        sendto: [],
-        subject: "Rosehack Application Status Update",
-        body: "Hello! \n\nWe've got good news! Your application to participate in Rose Hack 2024 has been accepted!\n\nStay tuned for more updates from us via email.\n\nIn the meantime, join our discord, the main platform that we will use on the day of the hackathon. Please don't share this invite with anyone else who wasn't approved. Thank you!\n\nThe Rose Hack Team",
         files: [],
       });
 
@@ -141,9 +129,6 @@ describe("Upload", () => {
     const files = ["sample.pdf", "sample.jpeg", "sample.jpg", "sample.png"];
     const Parent = () => {
       const [email, setEmail] = useState({
-        sendto: [],
-        subject: "Rosehack Application Status Update",
-        body: "Hello! \n\nWe've got good news! Your application to participate in Rose Hack 2024 has been accepted!\n\nStay tuned for more updates from us via email.\n\nIn the meantime, join our discord, the main platform that we will use on the day of the hackathon. Please don't share this invite with anyone else who wasn't approved. Thank you!\n\nThe Rose Hack Team",
         files: [],
       });
 
