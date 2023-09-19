@@ -32,7 +32,7 @@ describe("Upload", () => {
     });
   });
 
-  it("Upload invalid exceeding files", () => {
+  it("Upload Excess Files", () => {
     const files = [
       "sample.pdf",
       "sample.jpeg",
