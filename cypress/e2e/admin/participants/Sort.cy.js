@@ -1,4 +1,4 @@
-import participants from "../../../fixtures/Participants.json";
+import participants from "../../../fixtures/participants.json";
 
 describe("Participant Sort", () => {
   beforeEach(() => {

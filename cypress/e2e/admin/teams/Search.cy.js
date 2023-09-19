@@ -1,5 +1,6 @@
-import teams from "../../../fixtures/Teams.json";
+import DATA from "../../../fixtures/teams.json";
 
+const teams = DATA.teams;
 describe("Team Search", () => {
   beforeEach(() => {
     cy.login("admin");
