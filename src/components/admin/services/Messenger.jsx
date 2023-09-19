@@ -54,7 +54,12 @@ const Messenger = () => {
         />
         <div className="w-full h-full bg-white rounded-2xl my-2 flex flex-col p-4 pt-2">
           <p className="text-lg font-extrabold mb-1">body:</p>
-          <Textarea setObject={setEmail} object={email} label="body" />
+          <Textarea
+            setObject={setEmail}
+            object={email}
+            label="body"
+            maxLength={1000}
+          />
           <div className="flex w-full justify-between mt-3 items-end">
             <Upload
               setObjects={setEmail}

@@ -174,6 +174,7 @@ const Mentor = () => {
               value={mentor.response}
               user={mentor}
               setUser={setMentor}
+              maxLength={300}
             />
           </Col>
           <Col xl={12}>
