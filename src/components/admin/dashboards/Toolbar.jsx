@@ -17,7 +17,6 @@ const Toolbar = ({
   setObjects,
   objects,
   filters,
-  api,
   page,
 }) => {
   const [popup, setPopup] = useState({
@@ -31,7 +30,7 @@ const Toolbar = ({
   const onClick = (text) => {
     setToggle(false);
     const items = objects.filter((object) => object.selected);
-    axios.put(`/api/${api}`, {
+    axios.put(`/api/${page}`, {
       objects: items,
       status: text,
       attribute: "status",
@@ -84,14 +83,14 @@ const Toolbar = ({
     const keep = objects.filter((object) => !object.selected);
     setObjects(keep);
     axios
-      .put(`/api/${api}`, { objects: remove, attribute: "role" })
+      .put(`/api/${page}`, { objects: remove, attribute: "role" })
       .then(() => {
         toast("✅ Successfully Deleted");
       });
   };
 
   const handleReload = () => {
-    axios.get(`/api/${api}`).then((response) => {
+    axios.get(`/api/${page}`).then((response) => {
       setObjects(response.data.items);
     });
   };

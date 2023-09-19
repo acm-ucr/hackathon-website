@@ -39,6 +39,16 @@ export const FIELDS = {
     width: 12,
     required: true,
   },
+  discord: {
+    input: "input",
+    name: "discord",
+    type: "discord",
+    title: "Discord Username",
+    placeholder: "john_doe#1234",
+    maxLength: 50,
+    width: 12,
+    required: true,
+  },
   major: {
     input: "select",
     title: "Major",

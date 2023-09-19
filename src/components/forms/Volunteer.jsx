@@ -14,7 +14,7 @@ const volunteer = () => {
     email: session.user.email,
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log(volunteer);
     const data = {
       ...volunteer,
@@ -23,8 +23,8 @@ const volunteer = () => {
         .map(([key]) => key),
     };
 
-    axios
-      .post("/api/forms/volunteer", data)
+    await axios
+      .post("/api/volunteers", data)
       .then(() => toast(`✅ Submitted successfully!`));
   };
   return (

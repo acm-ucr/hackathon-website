@@ -10,7 +10,7 @@ import Textarea from "@/components/forms/Textarea.jsx";
 import Upload from "@/components/forms/Upload";
 import toast from "react-hot-toast";
 const Form = ({ object, setObject, header, fields, submit }) => {
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (
       Object.entries(fields).some(
         ([key, value]) => value.required && (!object[key] || object[key] === "")
@@ -35,7 +35,7 @@ const Form = ({ object, setObject, header, fields, submit }) => {
       toast("❌ Please select at least one available time!");
       return;
     }
-    submit();
+    await submit();
   };
   return (
     <div className="w-full h-full overflow-scroll flex flex-col items-center font-poppins">

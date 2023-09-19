@@ -105,15 +105,6 @@ export const FIELDS = {
     width: 12,
     required: true,
   },
-  response: {
-    input: "textarea",
-    name: "response",
-    rows: 4,
-    title: "What skills and experience can you bring as a mentor?",
-    placeholder: "I can bring...",
-    width: 12,
-    required: true,
-  },
   requirements: {
     input: "checkboxes",
     width: 12,
