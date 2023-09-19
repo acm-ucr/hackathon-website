@@ -12,6 +12,7 @@ const Popup = ({ popup, onClick, setPopup, text }) => {
         <div className="flex justify-between items-center w-full">
           <p className="text-lg font-bold m-0">{popup.title}</p>
           <LiaTimesSolid
+            data-cy="confirm-button" // Ensure this attribute is present
             className="hover:cursor-pointer text-lg"
             onClick={() => setPopup({ ...popup, visible: false })}
           />
