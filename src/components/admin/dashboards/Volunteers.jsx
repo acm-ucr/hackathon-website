@@ -4,7 +4,6 @@ import Filters from "@/components/admin/Filters";
 import Toolbar from "@/components/admin/dashboards/Toolbar";
 import Title from "../Title";
 import Table from "../Table";
-// import volunteerList from "../../../../cypress/fixtures/Volunteers.json";
 import { FILTERS, HEADERS, TAGS, DROPDOWN } from "@/data/admin/Volunteers";
 
 const Volunteers = () => {
@@ -25,7 +24,7 @@ const Volunteers = () => {
           setObjects={setVolunteers}
           objects={volunteers}
           input={input.input}
-          page="volunteer"
+          page="volunteers"
         />
       </div>
       <Toolbar

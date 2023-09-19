@@ -1,11 +1,14 @@
-import volunteers from "../../../fixtures/Volunteers.json";
+import response from "../../../fixtures/Volunteers.json";
+
+const volunteers = response.items;
 
 describe("Volunteer Search", () => {
   beforeEach(() => {
-    cy.login("admin");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/volunteers");
+    cy.fetch({
+      role: "admin",
+      portal: "admin",
+      page: "volunteers",
+    });
   });
 
   it("No Search Results", () => {
