@@ -2,7 +2,7 @@ import Upload from "@/components/admin/services/Upload";
 import { useState } from "react";
 
 describe("Upload", () => {
-  it("Upload valid mutliple files", () => {
+  it("Upload Multiple Valid files", () => {
     const files = ["sample.pdf", "sample.jpeg", "sample.jpg", "sample.png"];
     const Parent = () => {
       const [email, setEmail] = useState({
