@@ -5,7 +5,8 @@ describe("Volunteers Filters", () => {
     cy.login("admin");
     cy.visit("/");
     cy.wait("@session");
-    cy.visit("/admin/volunteers");
+
+    cy.fetch("admin", "volunteers");
   });
 
   it("Default Filters", () => {
@@ -38,7 +39,8 @@ describe("Volunteers Filters", () => {
   it("Click Confirm", () => {
     cy.get('[data-cy="confirm-filter"]').click();
     volunteers.forEach((volunteer) => {
-      if (volunteer.status === "confirm")
+      cy.log(volunteer.status.volunteer);
+      if (volunteer.status.volunteer === "confirm")
         cy.get(`[data-cy="${volunteer.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${volunteer.uid}"]`).should("exist");
     });
@@ -47,7 +49,7 @@ describe("Volunteers Filters", () => {
   it("Click Not Attending", () => {
     cy.get('[data-cy="not attending-filter"]').click();
     volunteers.forEach((volunteer) => {
-      if (volunteer.status === "not attending")
+      if (volunteer.status.volunteer === "not attending")
         cy.get(`[data-cy="${volunteer.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${volunteer.uid}"]`).should("exist");
     });
@@ -56,7 +58,7 @@ describe("Volunteers Filters", () => {
   it("Click Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
     volunteers.forEach((volunteer) => {
-      if (volunteer.status === "pending")
+      if (volunteer.status.volunteer === "pending")
         cy.get(`[data-cy="${volunteer.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${volunteer.uid}"]`).should("exist");
     });
@@ -67,8 +69,8 @@ describe("Volunteers Filters", () => {
     cy.get('[data-cy="not attending-filter"]').click();
     volunteers.forEach((volunteer) => {
       if (
-        volunteer.status === "confirm" ||
-        volunteer.status === "not attending"
+        volunteer.status.volunteer === "confirm" ||
+        volunteer.status.volunteer === "not attending"
       )
         cy.get(`[data-cy="${volunteer.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${volunteer.uid}"]`).should("exist");

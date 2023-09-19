@@ -56,7 +56,7 @@ const Toolbar = ({
 
         Object.entries(filters).map(([filter, value]) => {
           if (
-            a.status === filter &&
+            a.status[page] === filter &&
             value &&
             a.name.toLowerCase().match(input.input.toLowerCase())
           ) {

@@ -2,7 +2,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { TiPlus } from "react-icons/ti";
 
-const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
+const Filters = ({ filters, setFilters, setObjects, objects, input, page }) => {
   const handleClick = (filter) => {
     const filterValues = { ...filters, [filter]: !filters[filter] };
     setFilters(filterValues);
@@ -13,7 +13,7 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
 
         Object.entries(filterValues).map(([filter, value]) => {
           if (
-            a.status === filter &&
+            a.status[page] === filter &&
             value &&
             a.name.toLowerCase().match(input.toLowerCase())
           ) {

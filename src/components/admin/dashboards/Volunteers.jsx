@@ -25,6 +25,7 @@ const Volunteers = () => {
           setObjects={setVolunteers}
           objects={volunteers}
           input={input.input}
+          page="volunteer"
         />
       </div>
       <Toolbar

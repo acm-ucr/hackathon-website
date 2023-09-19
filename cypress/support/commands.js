@@ -3,3 +3,11 @@ Cypress.Commands.add("login", (user) => {
     "session"
   );
 });
+
+Cypress.Commands.add("fetch", (portal, page) => {
+  cy.intercept("GET", `/api/${page}`, {
+    fixture: `${page}.json`,
+  }).as("get");
+  cy.visit(`/${portal}/${page}`);
+  cy.wait("@get");
+});
