@@ -85,7 +85,7 @@ const Navigation = () => {
                   )
               )}
             </div>
-            <div className="w-full flex flex-col items-center">
+            <div className="w-full flex flex-col items-center mb-3">
               {tabs[" "].map((tab, index) => (
                 <Link
                   key={index}
