@@ -82,7 +82,10 @@ const Table = ({
           </Col>
         ))}
       </Row>
-      <Accordion className="h-full overflow-y-scroll w-full bg-white">
+      <Accordion
+        data-cy="table"
+        className="h-full overflow-y-scroll w-full bg-white"
+      >
         {objects.map(
           (object, index) =>
             !object.hidden && (
@@ -107,6 +110,7 @@ const Table = ({
                   (header, index) =>
                     header.text !== "" && (
                       <Col
+                        data-cy="element"
                         key={index}
                         md={header.size}
                         className={`p-0 text-sm ${
@@ -167,12 +171,12 @@ const Table = ({
 
                         {!header.hasTag &&
                           !Array.isArray(object[header.text]) && (
-                            <>
+                            <div data-cy={`${header.text}`}>
                               {object[header.text]}
                               {(object.position === header.symbol ||
                                 object.status === header.symbol) &&
                                 ICONS[header.symbol]}
-                            </>
+                            </div>
                           )}
                       </Col>
                     )
