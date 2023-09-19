@@ -12,13 +12,13 @@ Cypress.Commands.add("fetch", ({ role, portal, page }) => {
 });
 
 Cypress.Commands.add("action", ({ tag, page }) => {
-  cy.intercept("PUT", `/api/${page}`, {}).as("PUT");
+  cy.intercept("PUT", `/api/${page}`, { message: "OK", status: 200 }).as("PUT");
   cy.get('[data-cy="toolbar"]').find(`[data-cy="${tag}-tag"]`).click();
   cy.wait("@PUT");
 });
 
 Cypress.Commands.add("delete", ({ page }) => {
-  cy.intercept("PUT", `/api/${page}`, {}).as("PUT");
+  cy.intercept("PUT", `/api/${page}`, { message: "OK", status: 200 }).as("PUT");
   cy.get('[data-cy="toolbar"]').find('[data-cy="delete"]').click();
   cy.get('[data-cy="confirm-button"]').click();
   cy.wait("@PUT");
