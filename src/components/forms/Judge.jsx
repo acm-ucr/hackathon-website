@@ -11,7 +11,7 @@ const judge = () => {
     name: session.user.name,
     email: session.user.email,
   });
-  console.log(judge);
+
   return (
     <Form
       fields={FIELDS}

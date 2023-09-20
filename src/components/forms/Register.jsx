@@ -12,7 +12,7 @@ const Register = () => {
     name: session.user.name,
     email: session.user.email,
   });
-  console.log(register);
+
   return (
     <Form
       fields={FIELDS}

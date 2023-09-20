@@ -8,7 +8,7 @@ const Toggle = ({ option, onClick, show }) => {
       onClick={onClick}
       className="relative z-50 bg-white text-black w-full border-2 rounded-lg border-black justify-between flex items-center px-3 py-1"
     >
-      {option}
+      {option.name}
       <RiArrowDownSLine className={`${show && "rotate-180"} duration-300`} />
     </button>
   );
@@ -45,7 +45,7 @@ const Menu = ({ setOption, className, setOptions, options }) => {
             <Dropdown.Item
               className=" hover:!bg-hackathon-green-200 bg-transparent overflow-hidden px-3 py-1 last:rounded-b-lg"
               key={index}
-              onClick={() => setOption(option.name)}
+              onClick={() => setOption(option)}
             >
               {option.name}
             </Dropdown.Item>

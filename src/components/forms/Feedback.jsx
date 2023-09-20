@@ -6,8 +6,7 @@ import { FIELDS } from "../../data/forms/Feedback.js";
 
 const Feedback = () => {
   const [feedback, setfeedback] = useState({});
-  console.log(feedback);
-  console.log(feedback);
+
   return (
     <Form
       fields={FIELDS}
