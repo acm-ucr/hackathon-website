@@ -16,6 +16,7 @@ const Select = ({
         {editable ? (
           <Dropdown.Toggle
             id="dropdown-toggle"
+            data-cy="toggle"
             className={`!bg-white ${
               user[field] ? "text-black" : "!text-hackathon-gray-200"
             } w-full !text-left !border-x-0 !border-t-0 !border-b-2 !rounded-none !border-black`}
@@ -25,6 +26,7 @@ const Select = ({
         ) : (
           <div
             id="dropdown-toggle"
+            data-cy="toggle"
             className={`placeholder:text-hackathon-gray-200 ${
               user[field] ? "text-black" : "!text-hackathon-placeholder"
             } w-full pl-3 !border-x-0 !border-t-0 !border-b-2 !rounded-none !border-black`}
@@ -33,7 +35,10 @@ const Select = ({
           </div>
         )}
         {editable && (
-          <Dropdown.Menu className="w-full bg-hackathon-green-100 !border-none !rounded-none !p-0 overflow-y-auto max-h-[35vh]">
+          <Dropdown.Menu
+            data-cy="menu"
+            className="w-full bg-hackathon-green-100 !border-none !rounded-none !p-0 overflow-y-auto max-h-[35vh]"
+          >
             {options.map((option, index) => (
               <Dropdown.Item
                 className=" hover:!bg-hackathon-green-200 !bg-hackathon-green-100 overflow-hidden"
