@@ -1,22 +1,22 @@
 import Select from "@/components/Select";
+import { useState } from "react";
+
 describe("Select", () => {
   const options = ["Option 1", "Option 2", "Option 3"];
   const field = "field";
   const placeholder = "Select an option";
-  const title = "Select an option";
+  const title = "Title";
 
   it("Renders", () => {
-    const setUserStub = cy.stub();
-
     const Parent = () => {
-      const user = { [field]: "" };
+      const [user, setUser] = useState({ [field]: "" });
 
       return (
         <Select
           options={options}
           user={user}
           field={field}
-          setUser={setUserStub}
+          setUser={setUser}
           placeholder={placeholder}
           title={title}
         />
@@ -30,17 +30,15 @@ describe("Select", () => {
   });
 
   it("Show dropdown menu", () => {
-    const setUserStub = cy.stub();
-
     const Parent = () => {
-      const user = { [field]: "" };
+      const [user, setUser] = useState({ [field]: "" });
 
       return (
         <Select
           options={options}
           user={user}
           field={field}
-          setUser={setUserStub}
+          setUser={setUser}
           placeholder={placeholder}
           title={title}
         />
