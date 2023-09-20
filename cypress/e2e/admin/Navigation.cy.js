@@ -37,7 +37,7 @@ describe("Admin Portal Navigation", () => {
 
   it("Visit Feedback Page", () => {
     cy.visit("/admin/feedback");
-    cy.get(".text-xl").contains("FEEDBACK FORM");
+    cy.get(".text-2xl").contains("Feedback");
   });
 
   it("Visit Admin Page", () => {
