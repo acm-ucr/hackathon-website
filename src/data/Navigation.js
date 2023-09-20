@@ -13,6 +13,7 @@ import {
   FaLock,
   FaCalendarDay,
   FaMedal,
+  FaWpforms,
 } from "react-icons/fa";
 import { AiOutlineQrcode } from "react-icons/ai";
 import { signOut } from "next-auth/react";
@@ -52,6 +53,11 @@ export const ADMIN = {
         name: "admin",
         link: "/admin/admin",
         icon: <FaLock className={iconStyle} />,
+      },
+      {
+        name: "feedback",
+        link: "/admin/feedback",
+        icon: <FaWpforms className={iconStyle} />,
       },
     ],
   },
