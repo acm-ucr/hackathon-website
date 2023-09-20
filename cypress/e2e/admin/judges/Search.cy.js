@@ -1,4 +1,4 @@
-import judges from "../../../fixtures/Judges.json";
+import judges from "../../../fixtures/judges.json";
 
 describe("Judge Search", () => {
   beforeEach(() => {

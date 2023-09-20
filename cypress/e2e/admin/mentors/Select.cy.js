@@ -1,4 +1,4 @@
-import mentors from "../../../fixtures/Mentors.json";
+import mentors from "../../../fixtures/mentors.json";
 
 const five = mentors.slice(0, 5);
 

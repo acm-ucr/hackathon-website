@@ -1,4 +1,4 @@
-import participants from "../../../fixtures/Participants.json";
+import participants from "../../../fixtures/participants.json";
 
 const five = participants.slice(0, 5);
 
