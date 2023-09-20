@@ -22,8 +22,6 @@
     "bootstrap": "^5.3.0",
     "firebase": "^10.0.0",
     "firebase-admin": "^11.10.1",
-    "install": "^0.13.0",
-    "kit": "^0.1.2",
     "next": "^13.4.9",
     "next-auth": "^4.22.1",
     "qrcode.react": "^3.1.0",
