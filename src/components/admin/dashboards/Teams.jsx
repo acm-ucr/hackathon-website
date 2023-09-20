@@ -5,9 +5,10 @@ import Filters from "@/components/admin/Filters";
 import Toolbar from "@/components/admin/dashboards/Toolbar";
 import Title from "../Title";
 import Table from "../Table";
-import teamList from "../../../../cypress/fixtures/Teams.json";
+import DATA from "../../../../cypress/fixtures/teams.json";
 import { FILTERS, HEADERS, TAGS } from "@/data/admin/Teams";
 
+const teamList = DATA.teams;
 const Teams = () => {
   const [teams, setTeams] = useState(teamList);
   const [input, setInput] = useState({

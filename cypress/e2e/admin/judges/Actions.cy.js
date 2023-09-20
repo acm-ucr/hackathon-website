@@ -1,4 +1,4 @@
-import judges from "../../../fixtures/Judges.json";
+import judges from "../../../fixtures/judges.json";
 
 const five = judges.slice(0, 5);
 

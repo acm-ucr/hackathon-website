@@ -9,6 +9,7 @@ const Textarea = ({
   value,
   user,
   setUser,
+  maxLength,
   editable = false,
 }) => {
   const [edit, setEdit] = useState(false);
@@ -36,6 +37,7 @@ const Textarea = ({
         name={name}
         placeholder={placeholder}
         value={value}
+        maxLength={maxLength}
         onChange={(e) => setUser({ ...user, [name]: e.target.value })}
         rows={rows}
       />
