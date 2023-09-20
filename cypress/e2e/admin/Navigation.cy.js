@@ -37,12 +37,12 @@ describe("Admin Portal Navigation", () => {
 
   it("Visit Feedback Page", () => {
     cy.visit("/admin/feedback");
-    cy.get(".text-2xl").contains("Feedback");
+    cy.get(".text-2xl").contains("FEEDBACK FORM");
   });
 
   it("Visit Admin Page", () => {
     cy.visit("/admin/admin");
-    cy.get(".text-2xl").contains("Admin");
+    cy.get(".text-xl").contains("Admin");
   });
 
   it("Visit Messenger Page", () => {
