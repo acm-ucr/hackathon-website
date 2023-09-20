@@ -1,6 +1,7 @@
 import DATA from "../../../fixtures/teams.json";
 
-const teams = DATA.teams;
+const teams = DATA;
+
 const five = teams.slice(0, 5);
 
 describe("Participant Select", () => {
