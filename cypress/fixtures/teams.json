@@ -66,7 +66,7 @@
     ],
     "status": "qualify",
     "selected": false,
-    "members": ["Menthy Wu", "Mengxuan Wu"],
+    "members": ["Menthy Wu", "Mengxuan Wu", "Tiffany Tran", "Alan Xi"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
     "hidden": false
   },
@@ -85,7 +85,7 @@
     ],
     "status": "disqualify",
     "selected": false,
-    "members": ["Menthy Wu", "Mengxuan Wu"],
+    "members": ["Menthy Wu", "Mengxuan Wu", "Tiffany Tran", "Alan Xi"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
     "hidden": false
   },
@@ -104,7 +104,7 @@
     ],
     "status": "winner",
     "selected": false,
-    "members": ["Tiffany Wang", "Tiffany Wu"],
+    "members": ["Tiffany Wang", "Tiffany Wu", "Tiffany Tran", "Alan Xi"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
     "hidden": false
   },
@@ -123,7 +123,7 @@
     ],
     "status": "winner",
     "selected": false,
-    "members": ["Tiffany Wang", "Tiffany Wu"],
+    "members": ["Tiffany Wang", "Tiffany Wu", "Tiffany Tran", "Alan Xi"],
     "emails": ["twang022@ucr.edu", "twu278@ucr.edu"],
     "hidden": false
   },
@@ -142,7 +142,7 @@
     ],
     "status": "winner",
     "selected": false,
-    "members": ["Tiffany Wang", "Tiffany Wu"],
+    "members": ["Tiffany Wang", "Tiffany Wu", "Tiffany Tran", "Alan Xi"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
     "hidden": false
   },
@@ -161,7 +161,7 @@
     ],
     "status": "winner",
     "selected": false,
-    "members": ["Tiffany Wang", "Tiffany Wu"],
+    "members": ["Tiffany Wang", "Tiffany Wu", "Tiffany Tran", "Alan Xi"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
     "hidden": false
   },
@@ -180,7 +180,7 @@
     ],
     "status": "disqualify",
     "selected": false,
-    "members": ["Tiffany Wang", "Tiffany Wu"],
+    "members": ["Tiffany Wang", "Tiffany Wu", "Tiffany Tran", "Alan Xi"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
     "hidden": false
   },
@@ -199,7 +199,7 @@
     ],
     "status": "disqualify",
     "selected": false,
-    "members": ["Tiffany Wang", "Tiffany Wu"],
+    "members": ["Tiffany Wang", "Tiffany Wu", "Tiffany Tran", "Alan Xi"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
     "hidden": false
   },
@@ -218,7 +218,7 @@
     ],
     "status": "pending",
     "selected": false,
-    "members": ["Tiffany Wang", "Tiffany Wu"],
+    "members": ["Tiffany Wang", "Tiffany Wu", "Tiffany Tran", "Alan Xi"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
     "hidden": false
   },
@@ -237,7 +237,7 @@
     ],
     "status": "disqualify",
     "selected": false,
-    "members": ["Tiffany Wang", "Tiffany Wu"],
+    "members": ["Tiffany Wang", "Tiffany Wu", "Tiffany Tran", "Alan Xi"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
     "hidden": false
   },
@@ -256,7 +256,7 @@
     ],
     "status": "disqualify",
     "selected": false,
-    "members": ["Tiffany Wang", "Tiffany Wu"],
+    "members": ["Tiffany Wang", "Tiffany Wu", "Tiffany Tran", "Alan Xi"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
     "hidden": false
   },
@@ -275,7 +275,7 @@
     ],
     "status": "disqualify",
     "selected": false,
-    "members": ["Tiffany Wang", "Tiffany Wu"],
+    "members": ["Tiffany Wang", "Tiffany Wu", "Tiffany Tran", "Alan Xi"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
     "hidden": false
   },
@@ -294,7 +294,7 @@
     ],
     "status": "disqualify",
     "selected": false,
-    "members": ["Tiffany Wang", "Tiffany Wu"],
+    "members": ["Tiffany Wang", "Tiffany Wu", "Tiffany Tran", "Alan Xi"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
     "hidden": false
   },
@@ -313,7 +313,7 @@
     ],
     "status": "disqualify",
     "selected": false,
-    "members": ["Tiffany Wang", "Tiffany Wu"],
+    "members": ["Tiffany Wang", "Tiffany Wu", "Tiffany Tran", "Alan Xi"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
     "hidden": false
   },
@@ -332,7 +332,7 @@
     ],
     "status": "disqualify",
     "selected": false,
-    "members": ["Tiffany Wang", "Tiffany Wu"],
+    "members": ["Tiffany Wang", "Tiffany Wu", "Tiffany Tran", "Alan Xi"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
     "hidden": false
   },
@@ -351,7 +351,7 @@
     ],
     "status": "disqualify",
     "selected": false,
-    "members": ["Tiffany Wang", "Tiffany Wu"],
+    "members": ["Tiffany Wang", "Tiffany Wu", "Tiffany Tran", "Alan Xi"],
     "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
     "hidden": false
   }
