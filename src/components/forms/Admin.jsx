@@ -11,7 +11,7 @@ const Admin = () => {
     name: session.user.name,
     email: session.user.email,
   });
-  console.log(admin);
+
   return (
     <Form
       fields={FIELDS}

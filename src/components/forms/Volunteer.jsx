@@ -15,7 +15,6 @@ const volunteer = () => {
   });
 
   const handleSubmit = async () => {
-    console.log(volunteer);
     const data = {
       ...volunteer,
       availability: Object.entries(volunteer.availability)
