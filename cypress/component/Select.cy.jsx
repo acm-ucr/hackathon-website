@@ -2,7 +2,7 @@ import Select from "@/components/Select";
 import { useState } from "react";
 
 describe("Select", () => {
-  const options = ["Option 1", "Option 2", "Option 3"];
+  const options = ["Option A", "Option B", "Option C"];
   const field = "field";
   const placeholder = "Select an option";
   const title = "Title";
