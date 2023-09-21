@@ -16,8 +16,8 @@ const Feedback = () => {
 
   return (
     <div className="w-full flex flex-col items-center font-poppins py-4">
-      <div className="text-xl bg-hackathon-green-300 w-1/3 rounded-t-xl flex items-center justify-center p-3 font-semibold">
-        FEEDBACK FORM
+      <div className="text-2xl bg-hackathon-green-300 w-1/3 rounded-t-xl flex items-center justify-center p-3 font-semibold">
+        Feedback
       </div>
       <div className="flex flex-col w-1/3 p-3 bg-white rounded-b-xl">
         <Row className="flex justify-center p-0 m-0">
