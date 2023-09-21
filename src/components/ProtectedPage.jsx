@@ -47,7 +47,7 @@ const ProtectedPage = ({ title, children, restrictions }) => {
           session.user.status.admins === "confirm")
       )
     ) {
-      console.log("Do not have permission");
+      console.log("Pending Permissions");
       setError({
         code: 401,
         error: "Unauthorized",
