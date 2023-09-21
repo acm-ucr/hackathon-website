@@ -11,6 +11,7 @@ import {
   where,
   arrayRemove,
   deleteField,
+  arrayUnion,
 } from "firebase/firestore";
 
 export async function POST(req) {
@@ -20,12 +21,21 @@ export async function POST(req) {
 
   if (session) {
     try {
-      await updateDoc(doc(db, "users", session.user.id), {
-        discord: discord,
-        affiliations: affiliations,
-        position: position,
-        "status.admins": "pending",
-      });
+      position === "committees"
+        ? await updateDoc(doc(db, "users", session.user.id), {
+            discord: discord,
+            affiliations: affiliations,
+            position: position,
+            "status.committees": "pending",
+            role: arrayUnion("committees"),
+          })
+        : await updateDoc(doc(db, "users", session.user.id), {
+            discord: discord,
+            affiliations: affiliations,
+            position: position,
+            "status.admins": "pending",
+            role: arrayUnion("admins"),
+          });
       return res.json({ message: "OK" }, { status: 200 });
     } catch (err) {
       return res.json(
