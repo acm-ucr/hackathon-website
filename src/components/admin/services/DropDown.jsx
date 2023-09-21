@@ -2,11 +2,15 @@ import { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import { RiArrowDownSLine } from "react-icons/ri";
 
-const Toggle = ({ option, onClick, show }) => {
+const Toggle = ({ option, onClick, show, color }) => {
   return (
     <button
       onClick={onClick}
-      className="relative z-50 bg-white text-black w-full border-2 rounded-lg border-black justify-between flex items-center px-3 py-1"
+      className={`${
+        color === "gray"
+          ? "my-1 bg-hackathon-gray-100 rounded-md"
+          : "bg-white text-black border-black border-2 rounded-lg"
+      } relative z-50 w-full justify-between flex items-center px-3 py-1`}
       data-cy="dropdown-selected"
     >
       {option.name}
@@ -63,7 +67,7 @@ const Menu = ({ setOption, className, setOptions, options }) => {
   );
 };
 
-const DropDown = ({ options, setOptions, option, setOption }) => {
+const DropDown = ({ options, setOptions, option, setOption, color }) => {
   const [show, setShow] = useState(false);
 
   return (
@@ -71,16 +75,20 @@ const DropDown = ({ options, setOptions, option, setOption }) => {
       onToggle={() => setShow(!show)}
       show={show}
       autoClose={true}
-      className="w-full m-0 bg-white rounded-3xl"
+      className="w-full m-0"
       data-cy="dropdown"
     >
-      <Dropdown.Toggle show={show} as={Toggle} option={option} />
+      <Dropdown.Toggle show={show} as={Toggle} option={option} color={color} />
       <Dropdown.Menu
         as={Menu}
         setOption={setOption}
         options={options}
         setOptions={setOptions}
-        className="max-h-[50vh] overflow-scroll w-full bg-white border-none !rounded-b-lg !rounded-t-none border-2 border-black p-0 !z-10 !-mt-4 pt-4"
+        className={`${
+          color === "gray"
+            ? "rounded-md"
+            : "bg-white text-black border-black border-2 rounded-lg"
+        } max-h-[50vh] overflow-scroll w-full !rounded-b-lg !rounded-t-none p-0 !z-10 !-mt-4 pt-4`}
       />
     </Dropdown>
   );

@@ -127,7 +127,7 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
   return (
     <>
       <div className="flex items-center justify-between w-full"></div>
-      <div className="flex">
+      <div className="flex gap-2">
         <Input
           setObject={setPrize}
           object={prize}
@@ -145,6 +145,7 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
           setOption={setTeam}
           options={teams}
           setOptions={setTeams}
+          color="gray"
         />
         <Button color="green" text="add" onClick={handleAdd} />
         {!edit && <Button color="green" text="edit" onClick={handleEdit} />}
