@@ -35,26 +35,17 @@ const SortIcon = ({
       );
     }
     setCurrentSort(name);
-    if (name === "status")
-      setObjects(
-        objects.sort((a, b) => {
-          if (state === "up") {
-            return a[name][page] > b[name][page] ? -1 : 1;
-          } else if (state === "down") {
-            return b[name][page] > a[name][page] ? -1 : 1;
-          }
-        })
-      );
-    else
-      setObjects(
-        objects.sort((a, b) => {
-          if (state === "up") {
-            return a[name] > b[name] ? -1 : 1;
-          } else if (state === "down") {
-            return b[name] > a[name] ? -1 : 1;
-          }
-        })
-      );
+    setObjects(
+      objects.sort((a, b) => {
+        if (state === "up") {
+          if (name === "status") return a[name][page] > b[name][page] ? -1 : 1;
+          else return a[name] > b[name] ? -1 : 1;
+        } else if (state === "down") {
+          if (name === "status") return b[name][page] > a[name][page] ? -1 : 1;
+          else return b[name] > a[name] ? -1 : 1;
+        }
+      })
+    );
   };
 
   return (
