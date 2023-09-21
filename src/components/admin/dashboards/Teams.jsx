@@ -8,7 +8,8 @@ import Table from "../Table";
 import DATA from "../../../../cypress/fixtures/teams.json";
 import { FILTERS, HEADERS, TAGS } from "@/data/admin/Teams";
 
-const teamList = DATA.teams;
+const teamList = DATA;
+
 const Teams = () => {
   const [teams, setTeams] = useState(teamList);
   const [input, setInput] = useState({
