@@ -1,4 +1,4 @@
-import response from "../../../fixtures/Volunteers.json";
+import response from "../../../fixtures/volunteers.json";
 
 const volunteers = response.items;
 const five = volunteers.slice(0, 5);

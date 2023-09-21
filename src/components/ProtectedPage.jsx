@@ -42,9 +42,9 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       restrictions.includes("committee") &&
       !(
         (session.user.role.includes("committee") &&
-          session.user.status.committee === "confirmed") ||
+          session.user.status.committee === "confirm") ||
         (session.user.role.includes("admin") &&
-          session.user.status.admins === "confirmed")
+          session.user.status.admins === "confirm")
       )
     ) {
       console.log("Do not have permission");

@@ -1,13 +1,15 @@
-import admins from "../../../fixtures/admins.json";
+import response from "../../../fixtures/admins.json";
 
+const admins = response.items;
 const five = admins.slice(0, 5);
 
 describe("Admin Select", () => {
   beforeEach(() => {
-    cy.login("admin");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/admin");
+    cy.fetch({
+      role: "admin",
+      portal: "admin",
+      page: "admins",
+    });
   });
 
   it("Select All", () => {

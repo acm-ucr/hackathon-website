@@ -6,7 +6,10 @@
     },
     "email": "user@test.com",
     "image": "https://---.---",
-    "role": ["admin"]
+    "role": ["admin"],
+    "status": {
+      "admins": "confirm"
+    }
   },
   "expires": "3000-01-01T00:00:00.000Z",
   "accessToken": "qwertyuiop"
