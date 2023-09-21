@@ -1,11 +1,14 @@
-import mentors from "../../../fixtures/mentors.json";
+import response from "../../../fixtures/mentors.json";
+
+const mentors = response.items;
 
 describe("Mentor Search", () => {
   beforeEach(() => {
-    cy.login("admins");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/mentors");
+    cy.fetch({
+      role: "admin",
+      portal: "admin",
+      page: "mentors",
+    });
   });
 
   it("No Search Results", () => {

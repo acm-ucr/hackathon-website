@@ -1,11 +1,14 @@
-import mentors from "../../../fixtures/mentors.json";
+import response from "../../../fixtures/mentors.json";
+
+const mentors = response.items;
 
 describe("Mentors Filters", () => {
   beforeEach(() => {
-    cy.login("admins");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/mentors");
+    cy.fetch({
+      role: "admin",
+      portal: "admin",
+      page: "mentors",
+    });
   });
 
   it("Default Filters", () => {
@@ -38,7 +41,7 @@ describe("Mentors Filters", () => {
   it("Click Confirm", () => {
     cy.get('[data-cy="confirm-filter"]').click();
     mentors.forEach((mentor) => {
-      if (mentor.status === "confirm")
+      if (mentor.status.mentors === "confirm")
         cy.get(`[data-cy="${mentor.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${mentor.uid}"]`).should("exist");
     });
@@ -47,7 +50,7 @@ describe("Mentors Filters", () => {
   it("Click Not Attending", () => {
     cy.get('[data-cy="not attending-filter"]').click();
     mentors.forEach((mentor) => {
-      if (mentor.status === "not attending")
+      if (mentor.status.mentors === "not attending")
         cy.get(`[data-cy="${mentor.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${mentor.uid}"]`).should("exist");
     });
@@ -56,7 +59,7 @@ describe("Mentors Filters", () => {
   it("Click Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
     mentors.forEach((mentor) => {
-      if (mentor.status === "pending")
+      if (mentor.status.mentors === "pending")
         cy.get(`[data-cy="${mentor.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${mentor.uid}"]`).should("exist");
     });
@@ -66,7 +69,10 @@ describe("Mentors Filters", () => {
     cy.get('[data-cy="confirm-filter"]').click();
     cy.get('[data-cy="not attending-filter"]').click();
     mentors.forEach((mentor) => {
-      if (mentor.status === "confirm" || mentor.status === "not attending")
+      if (
+        mentor.status.mentors === "confirm" ||
+        mentor.status.mentors === "not attending"
+      )
         cy.get(`[data-cy="${mentor.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${mentor.uid}"]`).should("exist");
     });

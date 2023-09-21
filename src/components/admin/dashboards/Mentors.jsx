@@ -25,6 +25,7 @@ const Mentors = () => {
           setObjects={setMentors}
           objects={mentors}
           input={input.input}
+          page="mentors"
         />
       </div>
       <Toolbar

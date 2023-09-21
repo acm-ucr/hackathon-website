@@ -1,13 +1,15 @@
-import mentors from "../../../fixtures/mentors.json";
+import response from "../../../fixtures/mentors.json";
 
+const mentors = response.items;
 const five = mentors.slice(0, 5);
 
 describe("Mentor Select", () => {
   beforeEach(() => {
-    cy.login("admins");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/mentors");
+    cy.fetch({
+      role: "admin",
+      portal: "admin",
+      page: "mentors",
+    });
   });
 
   it("Select All", () => {
