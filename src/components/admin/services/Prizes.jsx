@@ -2,14 +2,14 @@ import { useState } from "react";
 import Title from "../Title";
 import Toolbar from "./Toolbar";
 import DATA from "../../../../cypress/fixtures/teams.json";
-import prizesData from "../../../../cypress/fixtures/prizes.json";
 import Table from "../Table";
 import { HEADERS } from "@/data/admin/Prizes";
 
-const teamsData = DATA.teams;
+const teamsData = DATA.items;
+
 const Prizes = () => {
   const [teams, setTeams] = useState(teamsData);
-  const [prizes, setPrizes] = useState(prizesData);
+  const [prizes, setPrizes] = useState(null);
   const [headers, setHeaders] = useState(HEADERS);
 
   return (
