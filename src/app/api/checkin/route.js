@@ -10,7 +10,7 @@ export async function GET(req) {
   const session = await getServerSession(authOptions);
 
   if (session) {
-    if (session.user.role.includes("admin")) {
+    if (session.user.role.includes("admins")) {
       try {
         const docSnap = await getDoc(doc(db, "users", uid));
         const data = docSnap.data().events;
@@ -38,7 +38,7 @@ export async function PUT(req) {
   const session = await getServerSession(authOptions);
 
   if (session) {
-    if (session.user.role.includes("admin")) {
+    if (session.user.role.includes("admins")) {
       try {
         await updateDoc(doc(db, "users", uid), {
           events: arrayUnion(event),

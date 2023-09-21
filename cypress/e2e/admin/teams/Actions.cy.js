@@ -5,7 +5,7 @@ const five = teams.slice(0, 5);
 
 describe("Teams Actions", () => {
   beforeEach(() => {
-    cy.login("admin");
+    cy.login("admins");
     cy.visit("/");
     cy.wait("@session");
     cy.visit("/admin/teams");

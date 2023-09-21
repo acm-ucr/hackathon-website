@@ -4,7 +4,7 @@ import ProtectedPage from "@/components/ProtectedPage";
 
 const ParticipantsPage = () => {
   return (
-    <ProtectedPage title="Admin | Participants" restrictions={["admin"]}>
+    <ProtectedPage title="Admin | Participants" restrictions={["admins"]}>
       <Participants />
     </ProtectedPage>
   );

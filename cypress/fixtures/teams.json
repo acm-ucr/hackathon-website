@@ -1,7 +1,7 @@
 [
   {
     "uid": 1,
-    "name": "The team",
+    "name": "The teams",
     "links": [
       {
         "name": "github",
@@ -43,7 +43,7 @@
   },
   {
     "uid": 3,
-    "name": "The team",
+    "name": "The teams",
     "links": [
       {
         "name": "github",

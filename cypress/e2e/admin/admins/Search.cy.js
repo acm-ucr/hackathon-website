@@ -5,8 +5,8 @@ const admins = response.items;
 describe("Admin Search", () => {
   beforeEach(() => {
     cy.fetch({
-      role: "admin",
-      portal: "admin",
+      role: "admins",
+      portal: "admins",
       page: "admins",
     });
   });

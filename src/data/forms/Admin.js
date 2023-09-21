@@ -7,7 +7,7 @@ export const AFFILIATIONS = [
   "UIUX",
 ];
 
-export const POSITIONS = ["lead", "committee"];
+export const POSITIONS = ["lead", "committees"];
 
 export const FIELDS = {
   description: {

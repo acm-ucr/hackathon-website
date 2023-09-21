@@ -6,8 +6,8 @@ const five = admins.slice(0, 5);
 describe("Admin Select", () => {
   beforeEach(() => {
     cy.fetch({
-      role: "admin",
-      portal: "admin",
+      role: "admins",
+      portal: "admins",
       page: "admins",
     });
   });

@@ -17,7 +17,7 @@ const Admin = () => {
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <div className="flex">
-        <Title title="Admin" />
+        <Title title="admins" />
         <Filters
           filters={filters}
           setFilters={setFilters}

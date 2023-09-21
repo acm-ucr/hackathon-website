@@ -7,10 +7,10 @@
       "position": "lead",
       "status": {
         "admins": "pending",
-        "participant": "pending",
-        "team": "pending",
-        "judge": "pending",
-        "mentor": "pending",
+        "participants": "pending",
+        "teams": "pending",
+        "judges": "pending",
+        "mentors": "pending",
         "volunteers": "pending"
       },
       "affiliation": "recruitment",
@@ -24,10 +24,10 @@
       "position": "lead",
       "status": {
         "admins": "pending",
-        "participant": "pending",
-        "team": "pending",
-        "judge": "pending",
-        "mentor": "pending",
+        "participants": "pending",
+        "teams": "pending",
+        "judges": "pending",
+        "mentors": "pending",
         "volunteers": "pending"
       },
       "affiliation": "director",
@@ -41,10 +41,10 @@
       "position": "",
       "status": {
         "admins": "pending",
-        "participant": "pending",
-        "team": "pending",
-        "judge": "pending",
-        "mentor": "pending",
+        "participants": "pending",
+        "teams": "pending",
+        "judges": "pending",
+        "mentors": "pending",
         "volunteers": "pending"
       },
       "affiliation": "marketing",
@@ -58,10 +58,10 @@
       "position": "",
       "status": {
         "admins": "pending",
-        "participant": "pending",
-        "team": "pending",
-        "judge": "pending",
-        "mentor": "pending",
+        "participants": "pending",
+        "teams": "pending",
+        "judges": "pending",
+        "mentors": "pending",
         "volunteers": "pending"
       },
       "affiliation": "operations",
@@ -75,10 +75,10 @@
       "position": "",
       "status": {
         "admins": "pending",
-        "participant": "pending",
-        "team": "pending",
-        "judge": "pending",
-        "mentor": "pending",
+        "participants": "pending",
+        "teams": "pending",
+        "judges": "pending",
+        "mentors": "pending",
         "volunteers": "pending"
       },
       "affiliation": "sponsorship",
@@ -92,10 +92,10 @@
       "position": "",
       "status": {
         "admins": "pending",
-        "participant": "pending",
-        "team": "pending",
-        "judge": "pending",
-        "mentor": "pending",
+        "participants": "pending",
+        "teams": "pending",
+        "judges": "pending",
+        "mentors": "pending",
         "volunteers": "pending"
       },
       "affiliation": "software",
@@ -110,10 +110,10 @@
       "affiliation": "UIUX",
       "status": {
         "admins": "pending",
-        "participant": "pending",
-        "team": "pending",
-        "judge": "pending",
-        "mentor": "pending",
+        "participants": "pending",
+        "teams": "pending",
+        "judges": "pending",
+        "mentors": "pending",
         "volunteers": "pending"
       },
       "email": "twang777@email.com",
@@ -126,10 +126,10 @@
       "affiliation": "sponsorship",
       "status": {
         "admins": "pending",
-        "participant": "pending",
-        "team": "pending",
-        "judge": "pending",
-        "mentor": "pending",
+        "participants": "pending",
+        "teams": "pending",
+        "judges": "pending",
+        "mentors": "pending",
         "volunteers": "pending"
       },
       "email": "benjjj@ucr.edu",
@@ -142,10 +142,10 @@
       "affiliation": "operations",
       "status": {
         "admins": "pending",
-        "participant": "pending",
-        "team": "pending",
-        "judge": "pending",
-        "mentor": "pending",
+        "participants": "pending",
+        "teams": "pending",
+        "judges": "pending",
+        "mentors": "pending",
         "volunteers": "pending"
       },
       "email": "ash.catty1278@email.com",
@@ -158,10 +158,10 @@
       "affiliation": "industry",
       "status": {
         "admins": "pending",
-        "participant": "pending",
-        "team": "pending",
-        "judge": "pending",
-        "mentor": "pending",
+        "participants": "pending",
+        "teams": "pending",
+        "judges": "pending",
+        "mentors": "pending",
         "volunteers": "pending"
       },
       "email": "kcindy@email.com",
@@ -174,10 +174,10 @@
       "affiliation": "industry",
       "status": {
         "admins": "pending",
-        "participant": "pending",
-        "team": "pending",
-        "judge": "pending",
-        "mentor": "pending",
+        "participants": "pending",
+        "teams": "pending",
+        "judges": "pending",
+        "mentors": "pending",
         "volunteers": "pending"
       },
       "email": "vteng666@email.com",
@@ -190,10 +190,10 @@
       "affiliation": "marketing",
       "status": {
         "admins": "pending",
-        "participant": "pending",
-        "team": "pending",
-        "judge": "pending",
-        "mentor": "pending",
+        "participants": "pending",
+        "teams": "pending",
+        "judges": "pending",
+        "mentors": "pending",
         "volunteers": "pending"
       },
       "email": "msuusse8966@email.com",
@@ -206,10 +206,10 @@
       "affiliation": "industry",
       "status": {
         "admins": "pending",
-        "participant": "pending",
-        "team": "pending",
-        "judge": "pending",
-        "mentor": "pending",
+        "participants": "pending",
+        "teams": "pending",
+        "judges": "pending",
+        "mentors": "pending",
         "volunteers": "pending"
       },
       "email": "akkkk74@email.com",
@@ -222,10 +222,10 @@
       "affiliation": "industry",
       "status": {
         "admins": "pending",
-        "participant": "pending",
-        "team": "pending",
-        "judge": "pending",
-        "mentor": "pending",
+        "participants": "pending",
+        "teams": "pending",
+        "judges": "pending",
+        "mentors": "pending",
         "volunteers": "pending"
       },
       "email": "Lqy17837@hotmail.com",

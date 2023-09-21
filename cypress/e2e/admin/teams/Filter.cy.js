@@ -4,7 +4,7 @@ const teams = DATA;
 
 describe("Teams Filters", () => {
   beforeEach(() => {
-    cy.login("admin");
+    cy.login("admins");
     cy.visit("/");
     cy.wait("@session");
     cy.visit("/admin/teams");

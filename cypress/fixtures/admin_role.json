@@ -6,7 +6,7 @@
     },
     "email": "user@test.com",
     "image": "https://---.---",
-    "role": ["admin"],
+    "role": ["admins"],
     "status": {
       "admins": "confirm"
     }

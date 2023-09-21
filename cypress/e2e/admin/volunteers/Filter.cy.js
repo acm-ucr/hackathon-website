@@ -5,8 +5,8 @@ const volunteers = response.items;
 describe("Volunteers Filters", () => {
   beforeEach(() => {
     cy.fetch({
-      role: "admin",
-      portal: "admin",
+      role: "admins",
+      portal: "admins",
       page: "volunteers",
     });
   });

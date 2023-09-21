@@ -2,7 +2,7 @@ import mentors from "../../../fixtures/mentors.json";
 
 describe("Mentor Sort", () => {
   beforeEach(() => {
-    cy.login("admin");
+    cy.login("admins");
     cy.visit("/");
     cy.wait("@session");
     cy.visit("/admin/mentors");

@@ -1,9 +1,9 @@
-import Admin from "@/components/forms/Admin";
+import Admin from "@/components/forms/admins";
 import ProtectedPage from "@/components/ProtectedPage";
 
 const Page = () => {
   return (
-    <ProtectedPage title="Form | Admin" restrictions={[]}>
+    <ProtectedPage title="Form | admins" restrictions={[]}>
       <Admin />
     </ProtectedPage>
   );

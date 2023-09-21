@@ -39,11 +39,11 @@ const ProtectedPage = ({ title, children, restrictions }) => {
 
     if (
       status === "authenticated" &&
-      restrictions.includes("committee") &&
+      restrictions.includes("committees") &&
       !(
-        (session.user.role.includes("committee") &&
+        (session.user.role.includes("committees") &&
           session.user.status.committee === "confirm") ||
-        (session.user.role.includes("admin") &&
+        (session.user.role.includes("admins") &&
           session.user.status.admins === "confirm")
       )
     ) {
@@ -58,9 +58,9 @@ const ProtectedPage = ({ title, children, restrictions }) => {
 
     if (
       status === "authenticated" &&
-      restrictions.includes("admin") &&
+      restrictions.includes("admins") &&
       !(
-        session.user.role.includes("admin") &&
+        session.user.role.includes("admins") &&
         session.user.status.admins === "confirm"
       )
     ) {

@@ -5,8 +5,8 @@ const volunteers = response.items;
 describe("Volunteer Sort", () => {
   beforeEach(() => {
     cy.fetch({
-      role: "admin",
-      portal: "admin",
+      role: "admins",
+      portal: "admins",
       page: "volunteers",
     });
   });
