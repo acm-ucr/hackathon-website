@@ -77,6 +77,7 @@ const Table = ({
                 setHeaders={setHeaders}
                 setObjects={setObjects}
                 objects={objects}
+                page={page}
               />
             )}
           </Col>
