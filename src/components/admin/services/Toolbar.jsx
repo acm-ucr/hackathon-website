@@ -145,7 +145,6 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
           setOption={setTeam}
           options={teams}
           setOptions={setTeams}
-          color="gray"
         />
         <Button color="green" text="add" onClick={handleAdd} />
         {!edit && <Button color="green" text="edit" onClick={handleEdit} />}
