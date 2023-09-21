@@ -13,7 +13,7 @@ describe("Popup Component", () => {
 
     const onClick = cy.stub();
     const setPopup = cy.stub();
-    const text = "close";
+    const text = "confirm";
 
     cy.mount(
       <Popup popup={popup} onClick={onClick} setPopup={setPopup} text={text} />
@@ -28,7 +28,7 @@ describe("Popup Component", () => {
     // Verify the content inside the popup
     cy.contains("Sample Popup").should("be.visible");
     cy.contains("This is a test popup.").should("be.visible");
-  });
+  }); // it 1
 
   it("closes the popup when the close button is clicked", () => {
     const popup = {
@@ -40,73 +40,27 @@ describe("Popup Component", () => {
 
     const onClick = cy.stub();
     const setPopup = cy.stub();
-    const text = "close";
+    const text = "confirm";
 
     cy.mount(
       <Popup popup={popup} onClick={onClick} setPopup={setPopup} text={text} />
     );
 
-    // cy.mount(<Popup popup={popupContent} />);
+    cy.get('[data-cy="confirm-button"]')
+      .click()
+      .then(() => expect(onClick).to.be.calledOnce)
+      .then(() => expect(setPopup).to.be.calledWithMatch({ visible: false }));
 
-    cy.get('[data-cy="close-button"]').click();
+    // Ensure the callback was called.
+    // expect(onClick).to.be.calledOnce;
+    // Check that setPopup was called with the correct visibility flag
+    // expect(setPopup).to.be.calledWithMatch({ visible: false });
+  }); // it 2
+}); // describe
 
-    // Verify that the popup is no longer visible
-    cy.get('[data-cy="popup"]').should("not.exist");
-  });
-  // Add other test cases for Popup component as needed
-});
-
-// describe("Popup", () => {
-//   it("renders with the correct title and text", () => {
-//     const popup = {
-//       title: "Sample Popup",
-//       text: "This is a sample popup message.",
-//       visible: true,
-//       color: "green",
-//     };
-//     const onClick = cy.stub();
-//     const setPopup = cy.stub();
-//     const text = "Confirm";
-
-//     cy.mount(
-//       <Popup
-//         popup={popup}
-//         onClick={onClick}
-//         setPopup={setPopup}
-//         text={text}
-//       />
-//     );
-
-//     cy.get('[data-cy="popup"]').should("exist");
-//     cy.get("p").should("contain", popup.title);
-//     cy.get("p").should("contain", popup.text);
-//   });
-
+//     // Ensure that onClick and setPopup were called with the correct arguments
+//     cy.wrap(onClick).should("be.called");
 //   it("closes the popup when the close icon is clicked", () => {
-//     const popup = {
-//       title: "Sample Popup",
-//       text: "This is a sample popup message.",
-//       visible: true,
-//       color: "blue", // Replace with your desired color
-//     };
-//     const onClick = cy.stub();
-//     const setPopup = cy.stub();
-//     const text = "Confirm";
-
-//     mount(
-//       <Popup
-//         popup={popup}
-//         onClick={onClick}
-//         setPopup={setPopup}
-//         text={text}
-//       />
-//     );
-
-//     cy.get('[data-cy="popup"]').should("exist");
-//     cy.get("p").should("contain", popup.title);
-
-//     // Click the close icon
-//     cy.get("svg").click();
 
 //     // Ensure that setPopup was called with the correct arguments to close the popup
 //     cy.wrap(setPopup).should("be.calledWith", { ...popup, visible: false });
