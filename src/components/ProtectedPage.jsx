@@ -66,7 +66,7 @@ const ProtectedPage = ({ title, children, restrictions }) => {
     ) {
       console.log("Unauthorized Permission");
       setError({
-        code: 401,
+        code: 403,
         error: "Unauthorized",
         message: "You do not have access this page",
       });
