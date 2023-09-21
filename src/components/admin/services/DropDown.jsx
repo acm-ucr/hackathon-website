@@ -6,7 +6,7 @@ const Toggle = ({ option, onClick, show }) => {
   return (
     <button
       onClick={onClick}
-      className="my-1 bg-hackathon-gray-100 rounded-md relative z-50 w-full justify-between flex items-center px-3 py-1"
+      className="my-1 bg-hackathon-gray-100 rounded-md relative z-20 w-full justify-between flex items-center px-3 py-1"
       data-cy="dropdown-selected"
     >
       {option.name}
