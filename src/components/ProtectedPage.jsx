@@ -36,13 +36,37 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       });
       return;
     }
-    const authorized =
-      !restrictions.length > 0 ||
-      session.user.role.some((role) => restrictions.includes(role));
-    if (!authorized) {
-      console.log("Dont have admin permissions");
+
+    if (
+      status === "authenticated" &&
+      restrictions.includes("committee") &&
+      !(
+        (session.user.role.includes("committee") &&
+          session.user.status.committee === "confirmed") ||
+        (session.user.role.includes("admin") &&
+          session.user.status.admins === "confirmed")
+      )
+    ) {
+      console.log("Do not have permission");
       setError({
-        code: 403,
+        code: 401,
+        error: "Unauthorized",
+        message: "You do not have access this page",
+      });
+      return;
+    }
+
+    if (
+      status === "authenticated" &&
+      restrictions.includes("admin") &&
+      !(
+        session.user.role.includes("admin") &&
+        session.user.status.admins === "confirm"
+      )
+    ) {
+      console.log("Do not have permission");
+      setError({
+        code: 401,
         error: "Unauthorized",
         message: "You do not have access this page",
       });

@@ -121,8 +121,10 @@ const Table = ({
                           <div data-cy={`${header.text}`}>
                             <Tag
                               text={
-                                object[header.text][page].includes("https://")
-                                  ? "view"
+                                typeof object[header.text] === "string"
+                                  ? object[header.text].includes("https://")
+                                    ? "view"
+                                    : object[header.text]
                                   : object[header.text][page] +
                                     (object[header.text][page] === "accept" ||
                                     object[header.text][page] === "reject"
@@ -130,8 +132,10 @@ const Table = ({
                                       : "")
                               }
                               color={
-                                object[header.text][page].includes("https://")
-                                  ? COLORS["view"]
+                                typeof object[header.text] === "string"
+                                  ? object[header.text].includes("https://")
+                                    ? COLORS["view"]
+                                    : COLORS[object[header.text]]
                                   : COLORS[object[header.text][page]]
                               }
                               onClick={
