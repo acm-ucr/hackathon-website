@@ -3,19 +3,18 @@ import { useState } from "react";
 
 describe("Select", () => {
   const options = ["Option A", "Option B", "Option C"];
-  const field = "field";
   const placeholder = "Select an option";
   const title = "Title";
 
   it("Renders", () => {
     const Parent = () => {
-      const [user, setUser] = useState({ [field]: "" });
+      const [user, setUser] = useState({ name: "" });
 
       return (
         <Select
           options={options}
           user={user}
-          field={field}
+          field="name"
           setUser={setUser}
           placeholder={placeholder}
           title={title}
@@ -31,13 +30,13 @@ describe("Select", () => {
 
   it("Show dropdown menu", () => {
     const Parent = () => {
-      const [user, setUser] = useState({ [field]: "" });
+      const [user, setUser] = useState({ name: "" });
 
       return (
         <Select
           options={options}
           user={user}
-          field={field}
+          field={"name"}
           setUser={setUser}
           placeholder={placeholder}
           title={title}
