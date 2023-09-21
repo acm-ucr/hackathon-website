@@ -47,6 +47,5 @@ describe("Popup Component", () => {
       .click()
       .then(() => expect(onClick).to.be.calledOnce)
       .then(() => expect(setPopup).to.be.calledWithMatch({ visible: false }));
-
   }); // it 2
 }); // describe
