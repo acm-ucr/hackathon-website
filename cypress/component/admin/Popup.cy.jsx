@@ -19,9 +19,6 @@ describe("Popup Component", () => {
       <Popup popup={popup} onClick={onClick} setPopup={setPopup} text={text} />
     );
 
-    // Use Cypress mount to render the Popup component
-    // cy.mount(<Popup popup={popupContent} />);
-
     // Verify that the popup is visible
     cy.get('[data-cy="popup"]').should("be.visible");
 
@@ -51,49 +48,5 @@ describe("Popup Component", () => {
       .then(() => expect(onClick).to.be.calledOnce)
       .then(() => expect(setPopup).to.be.calledWithMatch({ visible: false }));
 
-    // Ensure the callback was called.
-    // expect(onClick).to.be.calledOnce;
-    // Check that setPopup was called with the correct visibility flag
-    // expect(setPopup).to.be.calledWithMatch({ visible: false });
   }); // it 2
 }); // describe
-
-//     // Ensure that onClick and setPopup were called with the correct arguments
-//     cy.wrap(onClick).should("be.called");
-//   it("closes the popup when the close icon is clicked", () => {
-
-//     // Ensure that setPopup was called with the correct arguments to close the popup
-//     cy.wrap(setPopup).should("be.calledWith", { ...popup, visible: false });
-//   });
-
-//   it("performs the action and closes the popup when the action button is clicked", () => {
-//     const popup = {
-//       title: "Sample Popup",
-//       text: "This is a sample popup message.",
-//       visible: true,
-//       color: "blue", // Replace with your desired color
-//     };
-//     const onClick = cy.stub();
-//     const setPopup = cy.stub();
-//     const text = "Confirm";
-
-//     cy.mount(
-//       <Popup
-//         popup={popup}
-//         onClick={onClick}
-//         setPopup={setPopup}
-//         text={text}
-//       />
-//     );
-
-//     cy.get('[data-cy="popup"]').should("exist");
-//     cy.get("p").should("contain", popup.title);
-
-//     // Click the action button
-//     cy.get('[data-cy="confirm-button"]').click();
-
-//     // Ensure that onClick and setPopup were called with the correct arguments
-//     cy.wrap(onClick).should("be.called");
-//     cy.wrap(setPopup).should("be.calledWith", { ...popup, visible: false });
-//   });
-// });
