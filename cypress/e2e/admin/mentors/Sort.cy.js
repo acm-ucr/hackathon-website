@@ -1,11 +1,14 @@
-import mentors from "../../../fixtures/mentors.json";
+import response from "../../../fixtures/mentors.json";
+
+const mentors = response.items;
 
 describe("Mentor Sort", () => {
   beforeEach(() => {
-    cy.login("admin");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/mentors");
+    cy.fetch({
+      role: "admin",
+      portal: "admin",
+      page: "mentors",
+    });
   });
 
   it("Sort Name Up", () => {
