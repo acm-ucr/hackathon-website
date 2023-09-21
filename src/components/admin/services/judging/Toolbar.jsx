@@ -21,7 +21,7 @@ const Toolbar = ({ data, setData, judges }) => {
   });
   const [input, setInput] = useState({
     rotations: "",
-    search: "",
+    input: "",
   });
 
   const handleSearch = (e) => {
@@ -31,7 +31,7 @@ const Toolbar = ({ data, setData, judges }) => {
       data.map((group) => {
         let boolean = false;
 
-        if (group.name.toLowerCase().match(input.search.toLowerCase())) {
+        if (group.name.toLowerCase().match(input.input.toLowerCase())) {
           boolean = true;
         }
 
@@ -40,7 +40,9 @@ const Toolbar = ({ data, setData, judges }) => {
     );
   };
 
-  const generate = () => {
+  const generate = (e) => {
+    e.preventDefault();
+
     if (input.rotations === "") {
       toast("❌ Please enter a valid integer value");
       return;
@@ -66,7 +68,7 @@ const Toolbar = ({ data, setData, judges }) => {
     // Assign Professors
     for (let i = 0; i < teams.length; i += 1) {
       if (round === parseInt(input.rotations)) continue;
-      teams[i].rounds[round].push(professors[judge].name);
+      teams[i].rounds[round].push(professors[judge]);
       if (judge < professors.length - 1) {
         judge += 1;
       } else {
@@ -81,7 +83,7 @@ const Toolbar = ({ data, setData, judges }) => {
     // Assign Students + Industry
     for (let i = teams.length - 1; i > -1; i -= 1) {
       if (round === parseInt(input.rotations)) continue;
-      teams[i].rounds[round].push(studentsAndIndustry[judge].name);
+      teams[i].rounds[round].push(studentsAndIndustry[judge]);
       if (judge < studentsAndIndustry.length - 1) {
         judge += 1;
       } else {
@@ -126,7 +128,7 @@ const Toolbar = ({ data, setData, judges }) => {
         />
       )}
       <div className="flex items-center justify-between w-full">
-        <div className="flex items-center">
+        <form className="flex items-center" onSubmit={generate}>
           <Input
             setObject={setInput}
             object={input}
@@ -138,7 +140,7 @@ const Toolbar = ({ data, setData, judges }) => {
           />
           <p className="mb-0 font-semibold mx-2"># of rotations</p>
           <Button color="green" text="generate" onClick={generate} />
-        </div>
+        </form>
         <div className="flex">
           {tags.map((tag, index) => (
             <Tag key={index} color={COLORS[tag]} text={tag} classes="mx-2" />

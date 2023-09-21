@@ -1,50 +1,50 @@
 [
   {
     "type": "professor",
-    "name": "p_Allan Knight"
+    "name": "Allan Knight"
   },
   {
     "type": "student",
-    "name": "s_Menthy Wu"
+    "name": "Menthy Wu"
   },
   {
     "type": "industry",
-    "name": "i_Shing Hung"
+    "name": "Shing Hung"
   },
   {
     "type": "professor",
-    "name": "p_Neftali"
+    "name": "Neftali"
   },
   {
     "type": "student",
-    "name": "s_Sachin Chopra"
+    "name": "Sachin Chopra"
   },
   {
     "type": "industry",
-    "name": "i_Raidah"
+    "name": "Raidah"
   },
   {
     "type": "professor",
-    "name": "p_Mariam"
+    "name": "Mariam"
   },
   {
     "type": "student",
-    "name": "s_Divyank Shah"
+    "name": "Divyank Shah"
   },
   {
     "type": "industry",
-    "name": "i_Sally"
+    "name": "Sally"
   },
   {
     "type": "professor",
-    "name": "p_Joe"
+    "name": "Joe"
   },
   {
     "type": "student",
-    "name": "s_John"
+    "name": "John"
   },
   {
     "type": "industry",
-    "name": "i_Kyle"
+    "name": "Kyle"
   }
 ]
