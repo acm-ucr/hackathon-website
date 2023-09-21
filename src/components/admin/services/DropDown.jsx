@@ -10,7 +10,7 @@ const Toggle = ({ option, onClick, show, color }) => {
         color === "gray"
           ? "my-1 bg-hackathon-gray-100 rounded-md"
           : "bg-white text-black border-black border-2 rounded-lg"
-      } relative z-50 w-full justify-between flex items-center px-3 py-1`}
+      } relative z-50 w-full justify-between flex items-center px-3 py-1 highli`}
       data-cy="dropdown-selected"
     >
       {option.name}
@@ -53,7 +53,7 @@ const Menu = ({ setOption, className, setOptions, options }) => {
           .map((option, index) => (
             <Dropdown.Item
               data-cy={`dropdown-option-${index}`}
-              className=" hover:!bg-hackathon-green-200 bg-transparent overflow-hidden px-3 py-1 last:rounded-b-lg"
+              className=" hover:!bg-hackathon-green-300 hover:!text-white bg-transparent overflow-hidden px-3 py-1 last:rounded-b-lg"
               key={index}
               onClick={() => setOption(option)}
             >
@@ -86,7 +86,7 @@ const DropDown = ({ options, setOptions, option, setOption, color }) => {
         setOptions={setOptions}
         className={`${
           color === "gray"
-            ? "rounded-md"
+            ? "rounded-md border-0"
             : "bg-white text-black border-black border-2 rounded-lg"
         } max-h-[50vh] overflow-scroll w-full !rounded-b-lg !rounded-t-none p-0 !z-10 !-mt-4 pt-4`}
       />
