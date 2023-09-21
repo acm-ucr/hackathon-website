@@ -5,7 +5,7 @@ import Filters from "@/components/admin/Filters";
 import Toolbar from "@/components/admin/dashboards/Toolbar";
 import Title from "../Title";
 import Table from "../Table";
-import participantList from "../../../../cypress/fixtures/Participants.json";
+import participantList from "../../../../cypress/fixtures/participants.json";
 import { FILTERS, HEADERS, TAGS, DROPDOWN } from "@/data/admin/Participants";
 
 const Participants = () => {

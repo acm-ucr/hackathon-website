@@ -1,4 +1,4 @@
-import volunteers from "../../../fixtures/Volunteers.json";
+import volunteers from "../../../fixtures/volunteers.json";
 
 describe("Volunteers Filters", () => {
   beforeEach(() => {

@@ -1,4 +1,6 @@
-import teams from "../../../fixtures/Teams.json";
+import DATA from "../../../fixtures/teams.json";
+
+const teams = DATA;
 
 describe("Team Search", () => {
   beforeEach(() => {
