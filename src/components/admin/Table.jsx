@@ -121,28 +121,25 @@ const Table = ({
                           <div data-cy={`${header.text}`}>
                             <Tag
                               text={
-                                typeof object[header.text] === "string"
-                                  ? object[header.text].includes("https://")
-                                    ? "view"
-                                    : object[header.text]
-                                  : object[header.text][page] +
-                                    (object[header.text][page] === "accept" ||
-                                    object[header.text][page] === "reject"
-                                      ? "ed"
-                                      : "")
+                                object[header.text][page]
+                                  ? object[header.text][page]
+                                  : object[header.text].includes("https://")
+                                  ? "view"
+                                  : object[header.text]
                               }
                               color={
-                                typeof object[header.text] === "string"
-                                  ? object[header.text].includes("https://")
-                                    ? COLORS["view"]
-                                    : COLORS[object[header.text]]
-                                  : COLORS[object[header.text][page]]
+                                object[header.text][page]
+                                  ? COLORS[object[header.text][page]]
+                                  : object[header.text].includes("https://")
+                                  ? COLORS["view"]
+                                  : COLORS[object[header.text]]
                               }
                               onClick={
                                 header.onClick
                                   ? () => header.onClick(object, setModal)
                                   : null
                               }
+                              past={true}
                             />
                           </div>
                         )}

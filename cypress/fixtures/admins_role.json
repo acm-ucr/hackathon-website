@@ -8,7 +8,7 @@
     "image": "https://---.---",
     "role": ["admins"],
     "status": {
-      "admins": "confirm"
+      "admins": "accept"
     }
   },
   "expires": "3000-01-01T00:00:00.000Z",

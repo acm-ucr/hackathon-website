@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 const Navigation = () => {
   const [expand, setExpand] = useState(false);
   const pathName = usePathname();
-  const tabs = pathName.startsWith("/admins")
+  const tabs = pathName.startsWith("/admin")
     ? ADMIN
     : pathName.startsWith("/user")
     ? USER

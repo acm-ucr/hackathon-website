@@ -16,7 +16,7 @@ import {
 
 export async function POST(req) {
   const res = NextResponse;
-  const { discord, affiliations, position } = await req.json();
+  const { discord, affiliation, position } = await req.json();
   const session = await getServerSession(authOptions);
 
   if (session) {
@@ -24,14 +24,14 @@ export async function POST(req) {
       position === "committees"
         ? await updateDoc(doc(db, "users", session.user.id), {
             discord: discord,
-            affiliations: affiliations,
+            affiliation: affiliation,
             position: position,
             "status.committees": "pending",
             role: arrayUnion("committees"),
           })
         : await updateDoc(doc(db, "users", session.user.id), {
             discord: discord,
-            affiliations: affiliations,
+            affiliation: affiliation,
             position: position,
             "status.admins": "pending",
             role: arrayUnion("admins"),

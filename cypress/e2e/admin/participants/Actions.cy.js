@@ -22,7 +22,7 @@ describe("Participants Actions", () => {
     five.forEach((participant) =>
       cy
         .get(`[data-cy="${participant.uid}"]`)
-        .find('[data-cy="accepted-tag"]')
+        .find('[data-cy="accept-tag"]')
         .should("exist")
     );
   });
@@ -39,7 +39,7 @@ describe("Participants Actions", () => {
     five.forEach((participant) =>
       cy
         .get(`[data-cy="${participant.uid}"]`)
-        .find('[data-cy="rejected-tag"]')
+        .find('[data-cy="reject-tag"]')
         .should("exist")
     );
   });

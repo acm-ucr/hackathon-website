@@ -6,7 +6,7 @@ describe("Admin Actions", () => {
   beforeEach(() => {
     cy.fetch({
       role: "admins",
-      portal: "admins",
+      portal: "admin",
       page: "admins",
     });
   });
@@ -23,7 +23,7 @@ describe("Admin Actions", () => {
     five.forEach((admin) =>
       cy
         .get(`[data-cy="${admin.uid}"]`)
-        .find('[data-cy="accepted-tag"]')
+        .find('[data-cy="accept-tag"]')
         .should("exist")
     );
   });
@@ -56,7 +56,7 @@ describe("Admin Actions", () => {
     five.forEach((admin) =>
       cy
         .get(`[data-cy="${admin.uid}"]`)
-        .find('[data-cy="rejected-tag"]')
+        .find('[data-cy="reject-tag"]')
         .should("exist")
     );
   });

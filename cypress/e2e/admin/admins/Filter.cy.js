@@ -6,7 +6,7 @@ describe("Admin Filters", () => {
   beforeEach(() => {
     cy.fetch({
       role: "admins",
-      portal: "admins",
+      portal: "admin",
       page: "admins",
     });
   });
@@ -15,10 +15,10 @@ describe("Admin Filters", () => {
     cy.get('[data-cy="pending-filter"]')
       .get("div")
       .should("have.class", "bg-hackathon-blue-100", "text-white");
-    cy.get('[data-cy="rejected-filter"]')
+    cy.get('[data-cy="reject-filter"]')
       .get("div")
       .should("have.class", "bg-hackathon-blue-100", "text-white");
-    cy.get('[data-cy="accepted-filter"]')
+    cy.get('[data-cy="accept-filter"]')
       .get("div")
       .should("have.class", "bg-hackathon-blue-100", "text-white");
   });
@@ -28,12 +28,12 @@ describe("Admin Filters", () => {
     cy.get('[data-cy="pending-filter"]')
       .get("div")
       .should("have.class", "text-hackathon-blue-100", "bg-white");
-    cy.get('[data-cy="rejected-filter"]').click();
-    cy.get('[data-cy="rejected-filter"]')
+    cy.get('[data-cy="reject-filter"]').click();
+    cy.get('[data-cy="reject-filter"]')
       .get("div")
       .should("have.class", "text-hackathon-blue-100", "bg-white");
-    cy.get('[data-cy="accepted-filter"]').click();
-    cy.get('[data-cy="accepted-filter"]')
+    cy.get('[data-cy="accept-filter"]').click();
+    cy.get('[data-cy="accept-filter"]')
       .get("div")
       .should("have.class", "text-hackathon-blue-100", "bg-white");
   });
@@ -48,7 +48,7 @@ describe("Admin Filters", () => {
   });
 
   it("Click Rejected", () => {
-    cy.get('[data-cy="rejected-filter"]').click();
+    cy.get('[data-cy="reject-filter"]').click();
     admins.forEach((admin) => {
       if (admin.status.admins === "reject")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
@@ -57,7 +57,7 @@ describe("Admin Filters", () => {
   });
 
   it("Click Accepted", () => {
-    cy.get('[data-cy="accepted-filter"]').click();
+    cy.get('[data-cy="accept-filter"]').click();
     admins.forEach((admin) => {
       if (admin.status.admins === "accept")
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
@@ -66,7 +66,7 @@ describe("Admin Filters", () => {
   });
 
   it("Click 2 Filters", () => {
-    cy.get('[data-cy="accepted-filter"]').click();
+    cy.get('[data-cy="accept-filter"]').click();
     cy.get('[data-cy="pending-filter"]').click();
     admins.forEach((admin) => {
       if (admin.status.admins === "accept" || admin.status.admins === "pending")

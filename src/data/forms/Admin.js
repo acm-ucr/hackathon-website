@@ -47,11 +47,11 @@ export const FIELDS = {
     width: 12,
     required: true,
   },
-  affiliations: {
+  affiliation: {
     input: "radio",
-    text: "Affiliations",
+    text: "Affiliation",
     options: AFFILIATIONS,
-    field: "affiliations",
+    field: "affiliation",
     width: 12,
     required: true,
   },

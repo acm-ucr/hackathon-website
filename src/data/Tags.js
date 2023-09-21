@@ -74,3 +74,11 @@ export const COLORS = {
   grayblue: mappings["grayblue"],
   pink: mappings["pink"],
 };
+export const PAST = {
+  confirm: "confirmed",
+  Confirm: "Confirmed",
+  reject: "rejected",
+  Reject: "Rejected",
+  accept: "accepted",
+  Accept: "Accepted",
+};

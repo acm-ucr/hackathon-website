@@ -42,9 +42,9 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       restrictions.includes("committees") &&
       !(
         (session.user.role.includes("committees") &&
-          session.user.status.committee === "confirm") ||
+          session.user.status.committee === "accept") ||
         (session.user.role.includes("admins") &&
-          session.user.status.admins === "confirm")
+          session.user.status.admins === "accept")
       )
     ) {
       console.log("Pending Permissions");
@@ -61,7 +61,7 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       restrictions.includes("admins") &&
       !(
         session.user.role.includes("admins") &&
-        session.user.status.admins === "confirm"
+        session.user.status.admins === "accept"
       )
     ) {
       console.log("Unauthorized Permission");
