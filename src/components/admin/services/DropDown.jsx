@@ -2,15 +2,11 @@ import { useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import { RiArrowDownSLine } from "react-icons/ri";
 
-const Toggle = ({ option, onClick, show, color }) => {
+const Toggle = ({ option, onClick, show }) => {
   return (
     <button
       onClick={onClick}
-      className={`${
-        color === "gray"
-          ? "my-1 bg-hackathon-gray-100 rounded-md"
-          : "bg-white text-black border-black border-2 rounded-lg"
-      } relative z-50 w-full justify-between flex items-center px-3 py-1 highli`}
+      className="my-1 bg-hackathon-gray-100 rounded-md relative z-50 w-full justify-between flex items-center px-3 py-1"
       data-cy="dropdown-selected"
     >
       {option.name}
@@ -67,7 +63,7 @@ const Menu = ({ setOption, className, setOptions, options }) => {
   );
 };
 
-const DropDown = ({ options, setOptions, option, setOption, color }) => {
+const DropDown = ({ options, setOptions, option, setOption }) => {
   const [show, setShow] = useState(false);
 
   return (
@@ -78,17 +74,13 @@ const DropDown = ({ options, setOptions, option, setOption, color }) => {
       className="w-full m-0"
       data-cy="dropdown"
     >
-      <Dropdown.Toggle show={show} as={Toggle} option={option} color={color} />
+      <Dropdown.Toggle show={show} as={Toggle} option={option} />
       <Dropdown.Menu
         as={Menu}
         setOption={setOption}
         options={options}
         setOptions={setOptions}
-        className={`${
-          color === "gray"
-            ? "rounded-md border-0"
-            : "bg-white text-black border-black border-2 rounded-lg"
-        } max-h-[50vh] overflow-scroll w-full !rounded-b-lg !rounded-t-none p-0 !z-10 !-mt-4 pt-4`}
+        className="rounded-md border-0 max-h-[50vh] overflow-scroll w-full !rounded-b-lg !rounded-t-none p-0 !z-10 !-mt-4 pt-4"
       />
     </Dropdown>
   );
