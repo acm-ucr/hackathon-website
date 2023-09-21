@@ -10,6 +10,7 @@ const SortIcon = ({
   objects,
   setCurrentSort,
   currentSort,
+  page,
 }) => {
   const handleClick = (state) => {
     if (currentSort === name)
@@ -34,15 +35,26 @@ const SortIcon = ({
       );
     }
     setCurrentSort(name);
-    setObjects(
-      objects.sort((a, b) => {
-        if (state === "up") {
-          return a[name] > b[name] ? -1 : 1;
-        } else if (state === "down") {
-          return b[name] > a[name] ? -1 : 1;
-        }
-      })
-    );
+    if (name === "status")
+      setObjects(
+        objects.sort((a, b) => {
+          if (state === "up") {
+            return a[name][page] > b[name][page] ? -1 : 1;
+          } else if (state === "down") {
+            return b[name][page] > a[name][page] ? -1 : 1;
+          }
+        })
+      );
+    else
+      setObjects(
+        objects.sort((a, b) => {
+          if (state === "up") {
+            return a[name] > b[name] ? -1 : 1;
+          } else if (state === "down") {
+            return b[name] > a[name] ? -1 : 1;
+          }
+        })
+      );
   };
 
   return (
