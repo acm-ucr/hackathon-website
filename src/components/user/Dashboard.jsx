@@ -9,7 +9,7 @@ import Select from "../Select";
 import { SCHOOLS } from "@/data/forms/Schools";
 import Radio from "../Radio";
 import Title from "../admin/Title.jsx";
-import TeamInfo from "./teams";
+import TeamInfo from "./Team";
 import UserInfo from "./User";
 import mockUser from "../../../cypress/fixtures/user.json";
 import { COLORS } from "@/data/Tags";

@@ -6,7 +6,7 @@ const five = mentors.slice(0, 5);
 describe("Mentor Select", () => {
   beforeEach(() => {
     cy.fetch({
-      role: "admin",
+      role: "admins",
       portal: "admin",
       page: "mentors",
     });

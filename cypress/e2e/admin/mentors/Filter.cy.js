@@ -5,7 +5,7 @@ const mentors = response.items;
 describe("Mentors Filters", () => {
   beforeEach(() => {
     cy.fetch({
-      role: "admin",
+      role: "admins",
       portal: "admin",
       page: "mentors",
     });
