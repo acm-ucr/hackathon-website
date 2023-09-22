@@ -16,6 +16,7 @@ import {
 } from "react-icons/fa";
 import { AiOutlineQrcode } from "react-icons/ai";
 import { signOut } from "next-auth/react";
+import { FaPerson } from "react-icons/fa6";
 
 const iconStyle = "mr-2";
 
@@ -52,6 +53,11 @@ export const ADMIN = {
         name: "admins",
         link: "/admin/admins",
         icon: <FaLock className={iconStyle} />,
+      },
+      {
+        name: "committees",
+        link: "/admin/committees",
+        icon: <FaPerson className={iconStyle} />,
       },
     ],
   },

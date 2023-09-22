@@ -36,33 +36,12 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       });
       return;
     }
-
+    const roles = session.user.role.filter(
+      (role) => session.user.status[role] === "accept"
+    );
     if (
       status === "authenticated" &&
-      restrictions.includes("committees") &&
-      !(
-        (session.user.role.includes("committees") &&
-          session.user.status.committee === "accept") ||
-        (session.user.role.includes("admins") &&
-          session.user.status.admins === "accept")
-      )
-    ) {
-      console.log("Pending Permissions");
-      setError({
-        code: 403,
-        error: "Unauthorized",
-        message: "You do not have access this page",
-      });
-      return;
-    }
-
-    if (
-      status === "authenticated" &&
-      restrictions.includes("admins") &&
-      !(
-        session.user.role.includes("admins") &&
-        session.user.status.admins === "accept"
-      )
+      !roles.some((role) => restrictions.includes(role))
     ) {
       console.log("Unauthorized Permission");
       setError({

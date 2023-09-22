@@ -44,7 +44,7 @@ export async function GET() {
   const output = [];
 
   if (session) {
-    if (session.user.role.includes("admin")) {
+    if (session.user.role.includes("admins")) {
       try {
         const snapshot = await getDocs(collection(db, "prizes"));
         snapshot.forEach((doc) => {
@@ -79,7 +79,7 @@ export async function PUT(req) {
   const session = await getServerSession(authOptions);
 
   if (session) {
-    if (session.user.role.includes("admin")) {
+    if (session.user.role.includes("admins")) {
       try {
         await updateDoc(doc(db, "prizes", uid), {
           name: name,
@@ -110,7 +110,7 @@ export async function DELETE(req) {
   const session = await getServerSession(authOptions);
 
   if (session) {
-    if (session.user.role.includes("admin")) {
+    if (session.user.role.includes("admins")) {
       try {
         ids.forEach(async (id) => {
           await deleteDoc(doc(db, "prizes", id));

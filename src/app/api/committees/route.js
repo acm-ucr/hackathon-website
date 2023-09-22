@@ -24,9 +24,10 @@ export async function POST(req) {
       await updateDoc(doc(db, "users", session.user.id), {
         discord: discord,
         affiliation: affiliation,
-        "status.admins": "pending",
-        role: arrayUnion("admins"),
+        "status.committees": "pending",
+        role: arrayUnion("committees"),
       });
+
       return res.json({ message: "OK" }, { status: 200 });
     } catch (err) {
       return res.json(
@@ -53,7 +54,7 @@ export async function GET() {
         const snapshot = await getDocs(
           query(
             collection(db, "users"),
-            where("role", "array-contains", "admins")
+            where("role", "array-contains", "committees")
           )
         );
         snapshot.forEach((doc) => {
@@ -93,12 +94,12 @@ export async function PUT(req) {
         objects.forEach(async (object) => {
           if (attribute === "role") {
             await updateDoc(doc(db, "users", object.uid), {
-              role: arrayRemove("admins"),
-              "status.admins": deleteField(),
+              role: arrayRemove("committees"),
+              "status.committees": deleteField(),
             });
           } else if (attribute === "status") {
             await updateDoc(doc(db, "users", object.uid), {
-              "status.admins": status,
+              "status.committees": status,
             });
           }
         });
