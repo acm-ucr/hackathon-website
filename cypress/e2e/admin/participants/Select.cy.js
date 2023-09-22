@@ -4,7 +4,7 @@ const five = participants.slice(0, 5);
 
 describe("Participant Select", () => {
   beforeEach(() => {
-    cy.login("admin");
+    cy.login("admins");
     cy.visit("/");
     cy.wait("@session");
     cy.visit("/admin/participants");

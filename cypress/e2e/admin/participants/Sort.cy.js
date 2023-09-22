@@ -2,7 +2,7 @@ import participants from "../../../fixtures/participants.json";
 
 describe("Participant Sort", () => {
   beforeEach(() => {
-    cy.login("admin");
+    cy.login("admins");
     cy.visit("/");
     cy.wait("@session");
     cy.visit("/admin/participants");
@@ -66,7 +66,7 @@ describe("Participant Sort", () => {
     cy.get('[data-cy="team-sort-up"]').click();
 
     cy.get('[data-cy="table"]').within(() => {
-      cy.get('[data-cy="team"]').each((element, index) => {
+      cy.get('[data-cy="teams"]').each((element, index) => {
         cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].team);
       });
@@ -79,7 +79,7 @@ describe("Participant Sort", () => {
     cy.get('[data-cy="team-sort-down"]').click();
 
     cy.get('[data-cy="table"]').within(() => {
-      cy.get('[data-cy="team"]').each((element, index) => {
+      cy.get('[data-cy="teams"]').each((element, index) => {
         cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].team);
       });

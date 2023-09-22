@@ -1,11 +1,14 @@
-import admins from "../../../fixtures/admins.json";
+import response from "../../../fixtures/admins.json";
+
+const admins = response.items;
 
 describe("Admin Sort", () => {
   beforeEach(() => {
-    cy.login("admin");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/admin");
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "admins",
+    });
   });
 
   it("Sort Name Up", () => {
@@ -91,7 +94,9 @@ describe("Admin Sort", () => {
   });
 
   it("Sort Status Up", () => {
-    const sorted = admins.sort((a, b) => (a.status > b.status ? -1 : 1));
+    const sorted = admins.sort((a, b) =>
+      a.status.admins > b.status.admins ? -1 : 1
+    );
 
     cy.get('[data-cy="status-sort-up"]').click();
 
@@ -99,16 +104,18 @@ describe("Admin Sort", () => {
       cy.get('[data-cy="status"]').each((element, index) => {
         cy.log(index, element);
         expect(element.text()).to.equal(
-          sorted[index].status.endsWith("t")
-            ? sorted[index].status + "ed"
-            : sorted[index].status
+          sorted[index].status.admins.endsWith("t")
+            ? sorted[index].status.admins + "ed"
+            : sorted[index].status.admins
         );
       });
     });
   });
 
   it("Sort Status Down", () => {
-    const sorted = admins.sort((a, b) => (b.status > a.status ? -1 : 1));
+    const sorted = admins.sort((a, b) =>
+      b.status.admins > a.status.admins ? -1 : 1
+    );
 
     cy.get('[data-cy="status-sort-down"]').click();
 
@@ -116,9 +123,9 @@ describe("Admin Sort", () => {
       cy.get('[data-cy="status"]').each((element, index) => {
         cy.log(index, element);
         expect(element.text()).to.equal(
-          sorted[index].status.endsWith("t")
-            ? sorted[index].status + "ed"
-            : sorted[index].status
+          sorted[index].status.admins.endsWith("t")
+            ? sorted[index].status.admins + "ed"
+            : sorted[index].status.admins
         );
       });
     });

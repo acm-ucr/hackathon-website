@@ -49,8 +49,8 @@ export const ADMIN = {
         icon: <BiSolidHelpCircle className={iconStyle} />,
       },
       {
-        name: "admin",
-        link: "/admin/admin",
+        name: "admins",
+        link: "/admin/admins",
         icon: <FaLock className={iconStyle} />,
       },
     ],

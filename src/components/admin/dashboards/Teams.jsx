@@ -39,7 +39,7 @@ const Teams = () => {
         filters={filters}
         file="TEAMS"
         headers={headers}
-        page="team"
+        page="teams"
       />
       <Table
         headers={headers}
@@ -47,7 +47,7 @@ const Teams = () => {
         setHeaders={setHeaders}
         setObjects={setTeams}
         objects={teams}
-        page="team"
+        page="teams"
       />
     </div>
   );

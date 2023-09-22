@@ -2,7 +2,7 @@ import participants from "../../../fixtures/participants.json";
 
 describe("Participant Search", () => {
   beforeEach(() => {
-    cy.login("admin");
+    cy.login("admins");
     cy.visit("/");
     cy.wait("@session");
     cy.visit("/admin/participants");

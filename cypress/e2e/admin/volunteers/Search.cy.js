@@ -1,11 +1,11 @@
-import response from "../../../fixtures/Volunteers.json";
+import response from "../../../fixtures/volunteers.json";
 
 const volunteers = response.items;
 
 describe("Volunteer Search", () => {
   beforeEach(() => {
     cy.fetch({
-      role: "admin",
+      role: "admins",
       portal: "admin",
       page: "volunteers",
     });

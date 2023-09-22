@@ -4,7 +4,7 @@ const teams = DATA;
 
 describe("Team Search", () => {
   beforeEach(() => {
-    cy.login("admin");
+    cy.login("admins");
     cy.visit("/");
     cy.wait("@session");
     cy.visit("/admin/teams");
@@ -25,10 +25,10 @@ describe("Team Search", () => {
   });
 
   it("Search For Multiple Entries", () => {
-    cy.get('[data-cy="toolbar"]').find('[data-cy="input-input"]').type("team");
+    cy.get('[data-cy="toolbar"]').find('[data-cy="input-input"]').type("teams");
     cy.get('[data-cy="toolbar"]').find("form").submit();
     teams.forEach((team) => {
-      if (team.name.toLowerCase().includes("team"))
+      if (team.name.toLowerCase().includes("teams"))
         cy.get(`[data-cy="${team.uid}"]`).should("exist");
       else cy.get(`[data-cy="${team.uid}"]`).should("not.exist");
     });

@@ -1,4 +1,4 @@
-import response from "../../../fixtures/Volunteers.json";
+import response from "../../../fixtures/volunteers.json";
 
 const volunteers = response.items;
 const five = volunteers.slice(0, 5);
@@ -6,7 +6,7 @@ const five = volunteers.slice(0, 5);
 describe("Volunteers Select", () => {
   beforeEach(() => {
     cy.fetch({
-      role: "admin",
+      role: "admins",
       portal: "admin",
       page: "volunteers",
     });

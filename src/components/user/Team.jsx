@@ -4,7 +4,7 @@ const Team = ({ user, team, setUser }) => {
   return (
     <>
       <Input
-        name="team"
+        name="teams"
         type="text"
         title="Team Name"
         value={user.team}

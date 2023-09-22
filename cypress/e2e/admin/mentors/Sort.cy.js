@@ -5,7 +5,7 @@ const mentors = response.items;
 describe("Mentor Sort", () => {
   beforeEach(() => {
     cy.fetch({
-      role: "admin",
+      role: "admins",
       portal: "admin",
       page: "mentors",
     });

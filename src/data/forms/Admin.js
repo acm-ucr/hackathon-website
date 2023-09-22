@@ -7,7 +7,7 @@ export const AFFILIATIONS = [
   "UIUX",
 ];
 
-export const POSITIONS = ["lead", "committee"];
+export const POSITIONS = ["lead", "committees"];
 
 export const FIELDS = {
   description: {
@@ -47,11 +47,11 @@ export const FIELDS = {
     width: 12,
     required: true,
   },
-  affiliations: {
+  affiliation: {
     input: "radio",
-    text: "Affiliations",
+    text: "Affiliation",
     options: AFFILIATIONS,
-    field: "affiliations",
+    field: "affiliation",
     width: 12,
     required: true,
   },

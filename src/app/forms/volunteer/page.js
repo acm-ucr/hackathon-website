@@ -1,9 +1,9 @@
-import Volunteer from "@/components/forms/Volunteer";
+import Volunteer from "@/components/forms/volunteers";
 import ProtectedPage from "@/components/ProtectedPage";
 
 const Page = () => {
   return (
-    <ProtectedPage title="Form | Volunteer" restrictions={[]}>
+    <ProtectedPage title="Form | volunteers" restrictions={[]}>
       <Volunteer />
     </ProtectedPage>
   );

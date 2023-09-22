@@ -11,15 +11,15 @@
     "size": "XS",
     "restriction": ["Vegan", "Cheese"],
     "resume": "https://shahdivyank.github.io/Divyank_Shah_Resume.pdf",
-    "team": "The team",
+    "teams": "The teams",
     "major": "Computer Science",
     "status": {
-      "admin": "pending",
-      "participant": "pending",
-      "team": "pending",
-      "judge": "pending",
-      "mentor": "pending",
-      "volunteer": "pending"
+      "admins": "pending",
+      "participants": "pending",
+      "teams": "pending",
+      "judges": "pending",
+      "mentors": "pending",
+      "volunteers": "pending"
     },
     "selected": false,
     "hidden": false
@@ -36,15 +36,15 @@
     "size": "S",
     "restriction": "N/A",
     "resume": "https://shahdivyank.github.io/Divyank_Shah_Resume.pdf",
-    "team": "The deer",
+    "teams": "The deer",
     "major": "Computer Science with Business Applications",
     "status": {
-      "admin": "pending",
-      "participant": "pending",
-      "team": "pending",
-      "judge": "pending",
-      "mentor": "pending",
-      "volunteer": "pending"
+      "admins": "pending",
+      "participants": "pending",
+      "teams": "pending",
+      "judges": "pending",
+      "mentors": "pending",
+      "volunteers": "pending"
     },
     "selected": false,
     "hidden": false
@@ -61,15 +61,15 @@
     "size": "XS",
     "restriction": ["Vegan", "No Nuts"],
     "resume": "https://shahdivyank.github.io/Divyank_Shah_Resume.pdf",
-    "team": "The team",
+    "teams": "The teams",
     "major": "Data Science",
     "status": {
-      "admin": "pending",
-      "participant": "pending",
-      "team": "pending",
-      "judge": "pending",
-      "mentor": "pending",
-      "volunteer": "pending"
+      "admins": "pending",
+      "participants": "pending",
+      "teams": "pending",
+      "judges": "pending",
+      "mentors": "pending",
+      "volunteers": "pending"
     },
     "selected": false,
     "hidden": false
@@ -86,15 +86,15 @@
     "size": "XS",
     "restriction": ["Vegan", "No Nuts"],
     "resume": "https://shahdivyank.github.io/Divyank_Shah_Resume.pdf",
-    "team": "The deer",
+    "teams": "The deer",
     "major": "Environmental Engineering",
     "status": {
-      "admin": "pending",
-      "participant": "pending",
-      "team": "pending",
-      "judge": "pending",
-      "mentor": "pending",
-      "volunteer": "pending"
+      "admins": "pending",
+      "participants": "pending",
+      "teams": "pending",
+      "judges": "pending",
+      "mentors": "pending",
+      "volunteers": "pending"
     },
     "selected": false,
     "hidden": false
@@ -111,15 +111,15 @@
     "size": "XS",
     "restriction": ["Vegan", "No Nuts"],
     "resume": "https://shahdivyank.github.io/Divyank_Shah_Resume.pdf",
-    "team": "Citrus",
+    "teams": "Citrus",
     "major": "Chemical Engineering",
     "status": {
-      "admin": "pending",
-      "participant": "pending",
-      "team": "pending",
-      "judge": "pending",
-      "mentor": "pending",
-      "volunteer": "pending"
+      "admins": "pending",
+      "participants": "pending",
+      "teams": "pending",
+      "judges": "pending",
+      "mentors": "pending",
+      "volunteers": "pending"
     },
     "selected": false,
     "hidden": false
@@ -136,15 +136,15 @@
     "size": "XS",
     "restriction": ["Vegan", "No Nuts"],
     "resume": "https://shahdivyank.github.io/Divyank_Shah_Resume.pdf",
-    "team": "Citrus",
+    "teams": "Citrus",
     "major": "Computer Engineering",
     "status": {
-      "admin": "pending",
-      "participant": "pending",
-      "team": "pending",
-      "judge": "pending",
-      "mentor": "pending",
-      "volunteer": "pending"
+      "admins": "pending",
+      "participants": "pending",
+      "teams": "pending",
+      "judges": "pending",
+      "mentors": "pending",
+      "volunteers": "pending"
     },
     "selected": false,
     "hidden": false
@@ -161,15 +161,15 @@
     "size": "XS",
     "restriction": ["Vegan", "No Nuts"],
     "resume": "https://shahdivyank.github.io/Divyank_Shah_Resume.pdf",
-    "team": "Citrus",
+    "teams": "Citrus",
     "major": "Computer Science",
     "status": {
-      "admin": "pending",
-      "participant": "pending",
-      "team": "pending",
-      "judge": "pending",
-      "mentor": "pending",
-      "volunteer": "pending"
+      "admins": "pending",
+      "participants": "pending",
+      "teams": "pending",
+      "judges": "pending",
+      "mentors": "pending",
+      "volunteers": "pending"
     },
     "selected": false,
     "hidden": false
@@ -186,15 +186,15 @@
     "size": "XS",
     "restriction": ["Vegan", "No Nuts"],
     "resume": "https://shahdivyank.github.io/Divyank_Shah_Resume.pdf",
-    "team": "Citrus",
+    "teams": "Citrus",
     "major": "Mechanical Engineering",
     "status": {
-      "admin": "pending",
-      "participant": "pending",
-      "team": "pending",
-      "judge": "pending",
-      "mentor": "pending",
-      "volunteer": "pending"
+      "admins": "pending",
+      "participants": "pending",
+      "teams": "pending",
+      "judges": "pending",
+      "mentors": "pending",
+      "volunteers": "pending"
     },
     "selected": false,
     "hidden": false
@@ -211,15 +211,15 @@
     "size": "XS",
     "restriction": ["Vegan", "No Nuts"],
     "resume": "https://shahdivyank.github.io/Divyank_Shah_Resume.pdf",
-    "team": "Citrus",
+    "teams": "Citrus",
     "major": "Environmental Engineering",
     "status": {
-      "admin": "pending",
-      "participant": "pending",
-      "team": "pending",
-      "judge": "pending",
-      "mentor": "pending",
-      "volunteer": "pending"
+      "admins": "pending",
+      "participants": "pending",
+      "teams": "pending",
+      "judges": "pending",
+      "mentors": "pending",
+      "volunteers": "pending"
     },
     "selected": false,
     "hidden": false
@@ -236,15 +236,15 @@
     "size": "XS",
     "restriction": ["Vegan", "No Nuts"],
     "resume": "https://shahdivyank.github.io/Divyank_Shah_Resume.pdf",
-    "team": "Citrus",
+    "teams": "Citrus",
     "major": "Computer Science",
     "status": {
-      "admin": "pending",
-      "participant": "pending",
-      "team": "pending",
-      "judge": "pending",
-      "mentor": "pending",
-      "volunteer": "pending"
+      "admins": "pending",
+      "participants": "pending",
+      "teams": "pending",
+      "judges": "pending",
+      "mentors": "pending",
+      "volunteers": "pending"
     },
     "selected": false,
     "hidden": false
@@ -261,15 +261,15 @@
     "size": "XS",
     "restriction": ["Vegan", "No Nuts"],
     "resume": "https://shahdivyank.github.io/Divyank_Shah_Resume.pdf",
-    "team": "Citrus",
+    "teams": "Citrus",
     "major": "Computer Science",
     "status": {
-      "admin": "pending",
-      "participant": "pending",
-      "team": "pending",
-      "judge": "pending",
-      "mentor": "pending",
-      "volunteer": "pending"
+      "admins": "pending",
+      "participants": "pending",
+      "teams": "pending",
+      "judges": "pending",
+      "mentors": "pending",
+      "volunteers": "pending"
     },
     "selected": false,
     "hidden": false
@@ -286,15 +286,15 @@
     "size": "XS",
     "restriction": ["Vegan", "No Nuts"],
     "resume": "https://shahdivyank.github.io/Divyank_Shah_Resume.pdf",
-    "team": "Citrus",
+    "teams": "Citrus",
     "major": "Computer Science with Business Applications",
     "status": {
-      "admin": "pending",
-      "participant": "pending",
-      "team": "pending",
-      "judge": "pending",
-      "mentor": "pending",
-      "volunteer": "pending"
+      "admins": "pending",
+      "participants": "pending",
+      "teams": "pending",
+      "judges": "pending",
+      "mentors": "pending",
+      "volunteers": "pending"
     },
     "selected": false,
     "hidden": false
@@ -311,15 +311,15 @@
     "size": "XS",
     "restriction": ["Vegan", "No Nuts"],
     "resume": "https://shahdivyank.github.io/Divyank_Shah_Resume.pdf",
-    "team": "Citrus",
+    "teams": "Citrus",
     "major": "Computer Science",
     "status": {
-      "admin": "pending",
-      "participant": "pending",
-      "team": "pending",
-      "judge": "pending",
-      "mentor": "pending",
-      "volunteer": "pending"
+      "admins": "pending",
+      "participants": "pending",
+      "teams": "pending",
+      "judges": "pending",
+      "mentors": "pending",
+      "volunteers": "pending"
     },
     "selected": false,
     "hidden": false
@@ -336,15 +336,15 @@
     "size": "XS",
     "restriction": ["Vegan", "No Nuts"],
     "resume": "https://shahdivyank.github.io/Divyank_Shah_Resume.pdf",
-    "team": "Citrus",
+    "teams": "Citrus",
     "major": "Computer Science",
     "status": {
-      "admin": "pending",
-      "participant": "pending",
-      "team": "pending",
-      "judge": "pending",
-      "mentor": "pending",
-      "volunteer": "pending"
+      "admins": "pending",
+      "participants": "pending",
+      "teams": "pending",
+      "judges": "pending",
+      "mentors": "pending",
+      "volunteers": "pending"
     },
     "selected": false,
     "hidden": false
@@ -361,15 +361,15 @@
     "size": "XS",
     "restriction": ["Vegan", "No Nuts"],
     "resume": "https://shahdivyank.github.io/Divyank_Shah_Resume.pdf",
-    "team": "Citrus",
+    "teams": "Citrus",
     "major": "Electrical Engineering",
     "status": {
-      "admin": "pending",
-      "participant": "pending",
-      "team": "pending",
-      "judge": "pending",
-      "mentor": "pending",
-      "volunteer": "pending"
+      "admins": "pending",
+      "participants": "pending",
+      "teams": "pending",
+      "judges": "pending",
+      "mentors": "pending",
+      "volunteers": "pending"
     },
     "selected": false,
     "hidden": false
@@ -386,15 +386,15 @@
     "size": "XS",
     "restriction": ["Vegan", "No Nuts"],
     "resume": "https://shahdivyank.github.io/Divyank_Shah_Resume.pdf",
-    "team": "Citrus",
+    "teams": "Citrus",
     "major": "Computer Engineering",
     "status": {
-      "admin": "pending",
-      "participant": "pending",
-      "team": "pending",
-      "judge": "pending",
-      "mentor": "pending",
-      "volunteer": "pending"
+      "admins": "pending",
+      "participants": "pending",
+      "teams": "pending",
+      "judges": "pending",
+      "mentors": "pending",
+      "volunteers": "pending"
     },
     "selected": false,
     "hidden": false
@@ -411,15 +411,15 @@
     "size": "XS",
     "restriction": ["Vegan", "No Nuts"],
     "resume": "https://shahdivyank.github.io/Divyank_Shah_Resume.pdf",
-    "team": "Citrus",
+    "teams": "Citrus",
     "major": "Computer Science",
     "status": {
-      "admin": "pending",
-      "participant": "pending",
-      "team": "pending",
-      "judge": "pending",
-      "mentor": "pending",
-      "volunteer": "pending"
+      "admins": "pending",
+      "participants": "pending",
+      "teams": "pending",
+      "judges": "pending",
+      "mentors": "pending",
+      "volunteers": "pending"
     },
     "selected": false,
     "hidden": false
@@ -436,15 +436,15 @@
     "size": "XS",
     "restriction": ["Vegan", "No Nuts"],
     "resume": "https://shahdivyank.github.io/Divyank_Shah_Resume.pdf",
-    "team": "Citrus",
+    "teams": "Citrus",
     "major": "Mechanical Engineering",
     "status": {
-      "admin": "pending",
-      "participant": "pending",
-      "team": "pending",
-      "judge": "pending",
-      "mentor": "pending",
-      "volunteer": "pending"
+      "admins": "pending",
+      "participants": "pending",
+      "teams": "pending",
+      "judges": "pending",
+      "mentors": "pending",
+      "volunteers": "pending"
     },
     "selected": false,
     "hidden": false
@@ -461,15 +461,15 @@
     "size": "XS",
     "restriction": ["Vegan", "No Nuts"],
     "resume": "https://shahdivyank.github.io/Divyank_Shah_Resume.pdf",
-    "team": "Citrus",
+    "teams": "Citrus",
     "major": "Data Science",
     "status": {
-      "admin": "pending",
-      "participant": "pending",
-      "team": "pending",
-      "judge": "pending",
-      "mentor": "pending",
-      "volunteer": "pending"
+      "admins": "pending",
+      "participants": "pending",
+      "teams": "pending",
+      "judges": "pending",
+      "mentors": "pending",
+      "volunteers": "pending"
     },
     "selected": false,
     "hidden": false
@@ -486,15 +486,15 @@
     "size": "XS",
     "restriction": ["Vegan", "No Nuts"],
     "resume": "https://shahdivyank.github.io/Divyank_Shah_Resume.pdf",
-    "team": "Citrus",
+    "teams": "Citrus",
     "major": "Computer Science",
     "status": {
-      "admin": "pending",
-      "participant": "pending",
-      "team": "pending",
-      "judge": "pending",
-      "mentor": "pending",
-      "volunteer": "pending"
+      "admins": "pending",
+      "participants": "pending",
+      "teams": "pending",
+      "judges": "pending",
+      "mentors": "pending",
+      "volunteers": "pending"
     },
     "selected": false,
     "hidden": false

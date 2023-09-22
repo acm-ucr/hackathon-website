@@ -1,6 +1,6 @@
 describe("Test Auto Redirects", () => {
   it("Auto Redirect to /admin/participants", () => {
-    cy.visit("/admin");
+    cy.visit("/admins");
     cy.url().should("match", /admin\/participants/);
   });
 

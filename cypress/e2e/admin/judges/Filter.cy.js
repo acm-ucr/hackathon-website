@@ -2,7 +2,7 @@ import judges from "../../../fixtures/judges.json";
 
 describe("Judges Filters", () => {
   beforeEach(() => {
-    cy.login("admin");
+    cy.login("admins");
     cy.visit("/");
     cy.wait("@session");
     cy.visit("/admin/judges");
