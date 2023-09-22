@@ -7,9 +7,13 @@ const Toggle = ({ option, onClick, show }) => {
     <button
       onClick={onClick}
       className="relative z-50 bg-white text-black w-full border-2 rounded-lg border-black justify-between flex items-center px-3 py-1"
+      data-cy="dropdown-selected"
     >
       {option.name}
-      <RiArrowDownSLine className={`${show && "rotate-180"} duration-300`} />
+      <RiArrowDownSLine
+        className={`${show && "rotate-180"} duration-300`}
+        data-cy="dropdown-arrow"
+      />
     </button>
   );
 };
@@ -37,12 +41,14 @@ const Menu = ({ setOption, className, setOptions, options }) => {
         placeholder="Type to filter..."
         onChange={handleInput}
         value={value}
+        data-cy="dropdown-input"
       />
       {options.filter((opt) => !opt.hidden).length > 0 ? (
         options
           .filter((opt) => !opt.hidden)
           .map((option, index) => (
             <Dropdown.Item
+              data-cy={`dropdown-option-${index}`}
               className=" hover:!bg-hackathon-green-200 bg-transparent overflow-hidden px-3 py-1 last:rounded-b-lg"
               key={index}
               onClick={() => setOption(option)}
@@ -66,6 +72,7 @@ const DropDown = ({ options, setOptions, option, setOption }) => {
       show={show}
       autoClose={true}
       className="w-full m-0 bg-white rounded-3xl"
+      data-cy="dropdown"
     >
       <Dropdown.Toggle show={show} as={Toggle} option={option} />
       <Dropdown.Menu
