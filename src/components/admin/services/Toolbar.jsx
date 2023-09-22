@@ -126,8 +126,7 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
 
   return (
     <>
-      <div className="flex items-center justify-between w-full"></div>
-      <div className="flex">
+      <div className="flex gap-2">
         <Input
           setObject={setPrize}
           object={prize}
