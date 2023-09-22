@@ -115,6 +115,23 @@ const Toolbar = ({ data, setData, judges }) => {
     }
 
     setData(teams);
+    setInput({
+      ...input,
+      rotations: "",
+    });
+  };
+
+  const handleReset = () => {
+    if (data.some((team) => team.rounds.length === 0)) {
+      toast("❌ Already Reset!");
+      return;
+    }
+    setData(
+      data.map((team) => {
+        team.rounds = [];
+        return team;
+      })
+    );
   };
 
   return (
@@ -128,19 +145,22 @@ const Toolbar = ({ data, setData, judges }) => {
         />
       )}
       <div className="flex items-center justify-between w-full">
-        <form className="flex items-center" onSubmit={generate}>
-          <Input
-            setObject={setInput}
-            object={input}
-            label="rotations"
-            showLabel={false}
-            maxLength={2}
-            placeholder="ie. 5"
-            clear={true}
-          />
-          <p className="mb-0 font-semibold mx-2"># of rotations</p>
-          <Button color="green" text="generate" onClick={generate} />
-        </form>
+        <div className="flex items-center">
+          <form className="flex items-center" onSubmit={generate}>
+            <Input
+              setObject={setInput}
+              object={input}
+              label="rotations"
+              showLabel={false}
+              maxLength={2}
+              placeholder="ie. 5"
+              clear={true}
+            />
+            <p className="mb-0 font-semibold mx-2"># of rotations</p>
+            <Button color="green" text="generate" onClick={generate} />
+          </form>
+          <Button color="red" text="reset" onClick={handleReset} />
+        </div>
         <div className="flex">
           {tags.map((tag, index) => (
             <Tag key={index} color={COLORS[tag]} text={tag} classes="mx-2" />
