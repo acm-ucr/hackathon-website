@@ -17,9 +17,7 @@ const volunteer = () => {
   const handleSubmit = async () => {
     const data = {
       ...volunteer,
-      availability: Object.entries(volunteer.availability)
-        .filter(([_, value]) => value.state === true)
-        .map(([key]) => key),
+      availability: Object.keys(volunteer.availability),
     };
 
     await axios
