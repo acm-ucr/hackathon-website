@@ -24,7 +24,7 @@ const Committee = () => {
       fields={FIELDS}
       object={committee}
       setObject={setCommittee}
-      header="committee PORTAL REQUEST"
+      header="COMMITTEE PORTAL REQUEST"
       submit={handleSubmit}
     />
   );

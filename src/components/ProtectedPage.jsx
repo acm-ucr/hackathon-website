@@ -41,7 +41,10 @@ const ProtectedPage = ({ title, children, restrictions }) => {
     );
     if (
       status === "authenticated" &&
-      !roles.some((role) => restrictions.includes(role))
+      !(
+        restrictions.length === 0 ||
+        roles.some((role) => restrictions.includes(role))
+      )
     ) {
       console.log("Unauthorized Permission");
       setError({
