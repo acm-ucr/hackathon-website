@@ -1,14 +1,31 @@
 import Dropdown from "react-bootstrap/Dropdown";
+import { useState } from "react";
 
 const Select = ({
   options,
+  setOptions,
   user,
   field,
   setUser,
   placeholder,
   title,
   editable = true,
+  searchable = false,
 }) => {
+  const [value, setValue] = useState("");
+
+  const handleInput = (e) => {
+    setValue(e.target.value);
+    setOptions(
+      options.map((option) => ({
+        ...option,
+        hidden: !option.name
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase()),
+      }))
+    );
+  };
+
   return (
     <div className="mt-3">
       <p className="mb-1">{title}</p>
@@ -34,6 +51,16 @@ const Select = ({
         )}
         {editable && (
           <Dropdown.Menu className="w-full bg-hackathon-green-100 !border-none !rounded-none !p-0 overflow-y-auto max-h-[35vh]">
+            {searchable && (
+              <input
+                autoFocus
+                className="mx-1.5 my-1 w-11/12 ring-0 outline-none px-2 py-1"
+                placeholder="Search"
+                onChange={handleInput}
+                value={value}
+              />
+            )}
+
             {options.map((option, index) => (
               <Dropdown.Item
                 className=" hover:!bg-hackathon-green-200 !bg-hackathon-green-100 overflow-hidden"

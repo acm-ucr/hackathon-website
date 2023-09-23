@@ -34,7 +34,7 @@ const Menu = ({ setOption, className, setOptions, options }) => {
       <input
         autoFocus
         className="mx-1.5 my-1 w-11/12 ring-0 outline-none px-2 py-1"
-        placeholder="Type to filter..."
+        placeholder="Search"
         onChange={handleInput}
         value={value}
       />
@@ -51,7 +51,7 @@ const Menu = ({ setOption, className, setOptions, options }) => {
             </Dropdown.Item>
           ))
       ) : (
-        <p className="px-3 text-gray-400">no events</p>
+        <p className="px-3 text-gray-400"></p>
       )}
     </div>
   );

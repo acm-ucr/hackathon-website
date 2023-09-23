@@ -140,6 +140,7 @@ const Register = () => {
               user={user}
               setUser={setUser}
               placeholder="School"
+              searchable={true}
             />
           </Col>
           <Col xl={12}>
