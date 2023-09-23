@@ -58,7 +58,7 @@ const Navigation = () => {
                   title !== " " && (
                     <div key={index} className="w-full">
                       <p
-                        className={`text-white text-xl font-poppin font-bold w-full pl-2 ${subTabs.mt}`}
+                        className={`text-white text-xl font-poppin font-bold w-full pl-2 mb-0 ${subTabs.mt}`}
                       >
                         {title}
                       </p>

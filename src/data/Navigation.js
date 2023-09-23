@@ -23,7 +23,7 @@ const iconStyle = "mr-2";
 
 export const ADMIN = {
   Dashboards: {
-    mt: "mt-3",
+    mt: "mt-0",
     tabs: [
       {
         name: "participants",
@@ -68,7 +68,7 @@ export const ADMIN = {
     ],
   },
   Services: {
-    mt: "mt-5",
+    mt: "mt-3",
     tabs: [
       {
         name: "calendar",
