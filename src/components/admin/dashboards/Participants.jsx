@@ -26,6 +26,7 @@ const Participants = () => {
           setObjects={setParticipants}
           objects={participants}
           input={input.input}
+          page="participants"
         />
       </div>
       <Toolbar
