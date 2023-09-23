@@ -55,14 +55,6 @@ export const FIELDS = {
     width: 12,
     required: true,
   },
-  position: {
-    input: "radio",
-    text: "Position",
-    options: POSITIONS,
-    field: "position",
-    width: 12,
-    required: true,
-  },
   requirements: {
     input: "checkboxes",
     width: 12,

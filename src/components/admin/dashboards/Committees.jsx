@@ -4,10 +4,10 @@ import Title from "../Title.jsx";
 import Filters from "../Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import Table from "../Table.jsx";
-import { FILTERS, HEADERS, TAGS } from "@/data/admin/Admins.js";
+import { FILTERS, HEADERS, TAGS } from "@/data/admin/Committees.js";
 
-const Admin = () => {
-  const [admin, setAdmin] = useState(null);
+const Comittee = () => {
+  const [committees, setCommittees] = useState(null);
   const [input, setInput] = useState({
     input: "",
   });
@@ -17,34 +17,34 @@ const Admin = () => {
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <div className="flex">
-        <Title title="Admins" />
+        <Title title="Committees" />
         <Filters
           filters={filters}
           setFilters={setFilters}
-          setObjects={setAdmin}
-          objects={admin}
+          setObjects={setCommittees}
+          objects={committees}
           input={input.input}
-          page="admins"
+          page="committees"
         />
       </div>
       <Toolbar
         input={input}
         setInput={setInput}
         tags={TAGS}
-        setObjects={setAdmin}
-        objects={admin}
+        setObjects={setCommittees}
+        objects={committees}
         filters={filters}
-        page="admins"
+        page="committees"
       />
       <Table
         headers={headers}
-        empty="No Admin Available"
+        empty="No Comittee Available"
         setHeaders={setHeaders}
-        setObjects={setAdmin}
-        objects={admin}
-        page="admins"
+        setObjects={setCommittees}
+        objects={committees}
+        page="committees"
       />
     </div>
   );
 };
-export default Admin;
+export default Comittee;

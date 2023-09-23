@@ -1,18 +1,18 @@
-import response from "../../../fixtures/mentors.json";
+import response from "../../../fixtures/committees.json";
 
-const mentors = response.items;
+const committees = response.items;
 
-describe("Mentor Sort", () => {
+describe("Committee Sort", () => {
   beforeEach(() => {
     cy.fetch({
       role: "admins",
       portal: "admin",
-      page: "mentors",
+      page: "committees",
     });
   });
 
   it("Sort Name Up", () => {
-    const sorted = mentors.sort((a, b) => (a.name > b.name ? -1 : 1));
+    const sorted = committees.sort((a, b) => (a.name > b.name ? -1 : 1));
 
     cy.get('[data-cy="name-sort-up"]').click();
 
@@ -24,7 +24,7 @@ describe("Mentor Sort", () => {
   });
 
   it("Sort Name Down", () => {
-    const sorted = mentors.sort((a, b) => (b.name > a.name ? -1 : 1));
+    const sorted = committees.sort((a, b) => (b.name > a.name ? -1 : 1));
 
     cy.get('[data-cy="name-sort-down"]').click();
 
@@ -36,7 +36,7 @@ describe("Mentor Sort", () => {
   });
 
   it("Sort Email Up", () => {
-    const sorted = mentors.sort((a, b) => (a.email > b.email ? -1 : 1));
+    const sorted = committees.sort((a, b) => (a.email > b.email ? -1 : 1));
 
     cy.get('[data-cy="email-sort-up"]').click();
 
@@ -48,7 +48,7 @@ describe("Mentor Sort", () => {
   });
 
   it("Sort Email Down", () => {
-    const sorted = mentors.sort((a, b) => (b.email > a.email ? -1 : 1));
+    const sorted = committees.sort((a, b) => (b.email > a.email ? -1 : 1));
 
     cy.get('[data-cy="email-sort-down"]').click();
 
@@ -59,54 +59,66 @@ describe("Mentor Sort", () => {
     });
   });
 
-  it("Sort Discord Up", () => {
-    const sorted = mentors.sort((a, b) => (a.discord > b.discord ? -1 : 1));
+  it("Sort Affiliation Up", () => {
+    const sorted = committees.sort((a, b) =>
+      a.affiliation > b.affiliation ? -1 : 1
+    );
 
-    cy.get('[data-cy="discord-sort-up"]').click();
+    cy.get('[data-cy="affiliation-sort-up"]').click();
 
     cy.get('[data-cy="table"]').within(() => {
-      cy.get('[data-cy="discord"]').each((element, index) => {
-        expect(element.text()).to.equal(sorted[index].discord);
+      cy.get('[data-cy="affiliation"]').each((element, index) => {
+        expect(element.text()).to.equal(sorted[index].affiliation);
       });
     });
   });
 
-  it("Sort Discord Down", () => {
-    const sorted = mentors.sort((a, b) => (b.discord > a.discord ? -1 : 1));
+  it("Sort Affiliation Down", () => {
+    const sorted = committees.sort((a, b) =>
+      b.affiliation > a.affiliation ? -1 : 1
+    );
 
-    cy.get('[data-cy="discord-sort-down"]').click();
+    cy.get('[data-cy="affiliation-sort-down"]').click();
 
     cy.get('[data-cy="table"]').within(() => {
-      cy.get('[data-cy="discord"]').each((element, index) => {
-        expect(element.text()).to.equal(sorted[index].discord);
+      cy.get('[data-cy="affiliation"]').each((element, index) => {
+        expect(element.text()).to.equal(sorted[index].affiliation);
       });
     });
   });
 
   it("Sort Status Up", () => {
-    const sorted = mentors.sort((a, b) =>
-      a.status.mentors > b.status.mentors ? -1 : 1
+    const sorted = committees.sort((a, b) =>
+      a.status.committees > b.status.committees ? -1 : 1
     );
 
     cy.get('[data-cy="status-sort-up"]').click();
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="status"]').each((element, index) => {
-        expect(element.text()).to.equal(sorted[index].status.mentors);
+        expect(element.text()).to.equal(
+          sorted[index].status.committees.endsWith("t")
+            ? sorted[index].status.committees + "ed"
+            : sorted[index].status.committees
+        );
       });
     });
   });
 
   it("Sort Status Down", () => {
-    const sorted = mentors.sort((a, b) =>
-      b.status.mentors > a.status.mentors ? -1 : 1
+    const sorted = committees.sort((a, b) =>
+      b.status.committees > a.status.committees ? -1 : 1
     );
 
     cy.get('[data-cy="status-sort-down"]').click();
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="status"]').each((element, index) => {
-        expect(element.text()).to.equal(sorted[index].status.mentors);
+        expect(element.text()).to.equal(
+          sorted[index].status.committees.endsWith("t")
+            ? sorted[index].status.committees + "ed"
+            : sorted[index].status.committees
+        );
       });
     });
   });
