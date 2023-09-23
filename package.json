@@ -21,7 +21,7 @@
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
     "firebase": "^10.0.0",
-    "firebase-admins": "^11.10.1",
+    "firebase-admin": "^11.10.1",
     "next": "^13.4.9",
     "next-auth": "^4.22.1",
     "qrcode.react": "^3.1.0",
