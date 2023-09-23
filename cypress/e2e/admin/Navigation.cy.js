@@ -35,6 +35,11 @@ describe("Admin Portal Navigation", () => {
     cy.get(".text-2xl").contains("Mentors");
   });
 
+  it("Visit Feedback Page", () => {
+    cy.visit("/admin/feedback");
+    cy.get(".text-2xl").contains("Feedback");
+  });
+
   it("Visit Admin Page", () => {
     cy.visit("/admin/admins");
     cy.get(".text-2xl").contains("Admins");
