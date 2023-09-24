@@ -92,7 +92,6 @@ const Toolbar = ({
   const handleReload = () => {
     axios.get(`/api/${page}`).then((response) => {
       setObjects(response.data.items);
-      console.log(response.data.items);
     });
   };
 
