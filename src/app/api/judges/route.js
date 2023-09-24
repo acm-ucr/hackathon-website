@@ -16,8 +16,7 @@ import {
 
 export async function POST(req) {
   const res = NextResponse;
-  const { phone, gender, title, affiliation, shirt, picture } =
-    await req.json();
+  const { phone, gender, title, affiliation, shirt, photo } = await req.json();
   const session = await getServerSession(authOptions);
 
   if (session) {
@@ -28,12 +27,13 @@ export async function POST(req) {
         title: title,
         affiliation: affiliation,
         shirt: shirt,
-        picture: picture,
+        photo: photo,
         "status.judges": "pending",
         role: arrayUnion("judges"),
       });
       return res.json({ message: "OK" }, { status: 200 });
     } catch (err) {
+      console.log(err);
       return res.json(
         { message: `Internal Server Error: ${err}` },
         { status: 500 }
@@ -58,7 +58,7 @@ export async function GET() {
         const snapshot = await getDocs(
           query(
             collection(db, "users"),
-            where("role", "array-contains", "volunteers")
+            where("role", "array-contains", "judges")
           )
         );
         snapshot.forEach((doc) => {

@@ -1,4 +1,4 @@
-import Volunteer from "@/components/forms/volunteers";
+import Volunteer from "@/components/forms/Volunteer";
 import ProtectedPage from "@/components/ProtectedPage";
 
 const Page = () => {
