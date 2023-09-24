@@ -32,6 +32,7 @@ const Textarea = ({
         <FaCheck className="hover:cursor-pointer" onClick={handleSave} />
       )}
       <textarea
+        data-cy={`${title}-textarea`}
         disabled={editable && !edit}
         className="pl-3 w-full focus:outline-none placeholder:text-hackathon-gray-200 resize-none"
         name={name}
