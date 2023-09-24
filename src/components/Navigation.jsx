@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import LOGO from "../../public/LOGO.png";
+import LOGO from "../../cypress/fixtures/files/UCRLOGO.png";
 import Image from "next/image";
 import Link from "next/link";
 import { ADMIN, USER } from "@/data/Navigation";
@@ -29,7 +29,7 @@ const Navigation = () => {
             <Image
               src={LOGO}
               className="w-10 h-10 mx-2"
-              alt="Picture of RoseHack Logo"
+              alt="Picture of UCR Logo"
             />
             <p className="text-white text-xl font-semibold my-0">
               {pathName.split("/")[2]}
@@ -47,8 +47,8 @@ const Navigation = () => {
             <div className="hidden lg:flex items-center my-3">
               <Image
                 src={LOGO}
-                className=" scale-90"
-                alt="Picture of RoseHack Logo"
+                className=" scale-95"
+                alt="Picture of UCR Logo"
               />
               <p className="text-white font-bold text-lg pr-2 m-0">ROSEHACK</p>
             </div>
