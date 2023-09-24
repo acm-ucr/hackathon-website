@@ -1,7 +1,6 @@
 import { PAST } from "../../data/Tags.js";
 
 const Tag = ({ color, text, onClick, classes, past = false }) => {
-  console.log(text);
   return (
     <div
       data-cy={`${text}-tag`}
