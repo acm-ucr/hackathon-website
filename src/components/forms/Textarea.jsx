@@ -23,8 +23,8 @@ const Textarea = ({
   };
 
   return (
-    <div className="mt-3">
-      <p className="mb-1">{title}</p>
+    <>
+      <p className="mb-1 font-semibold">{title}</p>
       {editable && !edit && (
         <FaPencil className="hover:cursor-pointer" onClick={handleEdit} />
       )}
@@ -41,7 +41,7 @@ const Textarea = ({
         onChange={(e) => setUser({ ...user, [name]: e.target.value })}
         rows={rows}
       />
-    </div>
+    </>
   );
 };
 

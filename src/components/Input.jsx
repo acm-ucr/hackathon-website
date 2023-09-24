@@ -11,8 +11,8 @@ const Input = ({
   required,
 }) => {
   return (
-    <div className="mt-3">
-      <p className="mb-1">
+    <>
+      <p className="mb-1 font-semibold">
         {title}
         <span className="text-hackathon-green-300">{required && " *"}</span>
       </p>
@@ -26,7 +26,7 @@ const Input = ({
         maxLength={maxLength}
         onChange={(e) => setUser({ ...user, [name]: e.target.value })}
       />
-    </div>
+    </>
   );
 };
 
