@@ -25,6 +25,7 @@ const Judges = () => {
           setObjects={setJudges}
           objects={judges}
           input={input.input}
+          page="judges"
         />
       </div>
       <Toolbar

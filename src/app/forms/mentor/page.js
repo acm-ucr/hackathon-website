@@ -1,4 +1,4 @@
-import Mentor from "@/components/forms/mentors";
+import Mentor from "@/components/forms/Mentors";
 import ProtectedPage from "@/components/ProtectedPage";
 
 const Page = () => {
