@@ -10,7 +10,7 @@ const Radio = ({ text, field, options, user, setUser, editable = true }) => {
       <p className="mb-1 font-semibold">{text}</p>
       {!editable && <div>{user[field]}</div>}
       {editable && (
-        <div className="grid grid-flow-row-dense grid-cols-2 md:grid-cols-3 w-full">
+        <div className="grid grid-flow-row grid-cols-2 md:grid-cols-3 w-full">
           {options.map((option, index) => (
             <div
               className="flex items-center whitespace-nowrap hover:cursor-pointer"
