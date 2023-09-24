@@ -11,7 +11,7 @@ const Input = ({
   required,
 }) => {
   return (
-    <>
+    <div className="flex flex-col">
       <p className="mb-1 font-semibold">
         {title}
         <span className="text-hackathon-green-300">{required && " *"}</span>
@@ -26,7 +26,7 @@ const Input = ({
         maxLength={maxLength}
         onChange={(e) => setUser({ ...user, [name]: e.target.value })}
       />
-    </>
+    </div>
   );
 };
 

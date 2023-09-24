@@ -6,7 +6,7 @@ const Radio = ({ text, field, options, user, setUser, editable = true }) => {
   };
 
   return (
-    <>
+    <div className="flex flex-col">
       <p className="mb-1 font-semibold">{text}</p>
       {!editable && <div>{user[field]}</div>}
       {editable && (
@@ -27,7 +27,7 @@ const Radio = ({ text, field, options, user, setUser, editable = true }) => {
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

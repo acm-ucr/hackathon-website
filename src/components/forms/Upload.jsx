@@ -30,7 +30,7 @@ const Upload = ({ field, user, setUser, text, maxSize, types }) => {
   };
 
   return (
-    <>
+    <div className="flex flex-col">
       <p className="mb-0 font-semibold">{text}</p>
       <div className="flex items-center w-full flex-col" data-cy="upload">
         {!file && (
@@ -77,7 +77,7 @@ const Upload = ({ field, user, setUser, text, maxSize, types }) => {
         )}
       </div>
       {uploading && "UPLOADING ..."}
-    </>
+    </div>
   );
 };
 
