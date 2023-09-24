@@ -1,14 +1,17 @@
 import Image from "next/image.js";
 import { useSession } from "next-auth/react";
+import Tag from "../admin/Tag";
+import { COLORS } from "@/data/Tags";
 
 const Header = ({ horizontal = true }) => {
   const { data: session } = useSession();
+  console.log(session.user.status);
 
   return (
     <div
       className={`flex ${
         horizontal ? "flex-row" : "flex-col"
-      } items-center justify-center`}
+      } items-center justify-center w-fit`}
     >
       <Image
         src={session.user.image}
@@ -19,7 +22,11 @@ const Header = ({ horizontal = true }) => {
       />
       <div className="align-left">
         <p className="text-2xl font-bold mb-0">{session.user.name}</p>
-        <p className="text-base">{session.user.email}</p>
+        <p className="text-base mb-1">{session.user.email}</p>
+        <Tag
+          color={COLORS[session.user.status.participants]}
+          text={session.user.status.participants}
+        />
       </div>
     </div>
   );

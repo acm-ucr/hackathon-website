@@ -10,8 +10,8 @@ const Select = ({
   editable = true,
 }) => {
   return (
-    <div className="mt-3">
-      <p className="mb-1">{title}</p>
+    <div className="flex flex-col">
+      <p className="mb-1 font-semibold">{title}</p>
       <Dropdown className="w-full m-0">
         {editable ? (
           <Dropdown.Toggle
@@ -27,7 +27,9 @@ const Select = ({
             id="dropdown-toggle"
             className={`placeholder:text-hackathon-gray-200 ${
               user[field] ? "text-black" : "!text-hackathon-placeholder"
-            } w-full pl-3 !border-x-0 !border-t-0 !border-b-2 !rounded-none !border-black`}
+            } w-full pl-3 !border-x-0 !border-t-0 ${
+              editable ? "!border-b-2" : "border-0"
+            } !rounded-none !border-black`}
           >
             {user[field] || placeholder}
           </div>
