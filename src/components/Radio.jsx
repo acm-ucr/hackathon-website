@@ -6,14 +6,14 @@ const Radio = ({ text, field, options, user, setUser, editable = true }) => {
   };
 
   return (
-    <div className="flex flex-col mt-3">
-      <p className="mb-0">{text}</p>
+    <div className="flex flex-col">
+      <p className="mb-1 font-semibold">{text}</p>
       {!editable && <div>{user[field]}</div>}
       {editable && (
-        <div className="flex flex-wrap whitespace-nowrap">
+        <div className="grid grid-flow-row grid-cols-2 md:grid-cols-3 w-full">
           {options.map((option, index) => (
             <div
-              className="flex items-center px-1 w-1/4 hover:cursor-pointer"
+              className="flex items-center whitespace-nowrap hover:cursor-pointer"
               key={index}
               onClick={() => handleClick(option)}
             >

@@ -5,11 +5,10 @@ import Filters from "@/components/admin/Filters";
 import Toolbar from "@/components/admin/dashboards/Toolbar";
 import Title from "../Title";
 import Table from "../Table";
-import participantList from "../../../../cypress/fixtures/participants.json";
 import { FILTERS, HEADERS, TAGS, DROPDOWN } from "@/data/admin/Participants";
 
 const Participants = () => {
-  const [participants, setParticipants] = useState(participantList);
+  const [participants, setParticipants] = useState(null);
   const [input, setInput] = useState({
     input: "",
   });
@@ -26,6 +25,7 @@ const Participants = () => {
           setObjects={setParticipants}
           objects={participants}
           input={input.input}
+          page="participants"
         />
       </div>
       <Toolbar

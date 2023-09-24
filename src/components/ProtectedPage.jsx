@@ -4,10 +4,12 @@ import { signIn, useSession } from "next-auth/react";
 import Loading from "@/components/Loading";
 import Error from "./Error";
 import Navigation from "./Navigation";
+import { usePathname } from "next/navigation";
 
 const ProtectedPage = ({ title, children, restrictions }) => {
   const { data: session, status } = useSession();
   const [error, setError] = useState(null);
+  const pathName = usePathname();
   useEffect(() => {
     if (status === "loading") return;
     if (status !== "authenticated") {
@@ -25,7 +27,7 @@ const ProtectedPage = ({ title, children, restrictions }) => {
     }
     if (
       status === "authenticated" &&
-      restrictions.includes("hacker") &&
+      restrictions.includes("participants") &&
       !session.user.role
     ) {
       console.log("Have not register");
@@ -36,32 +38,14 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       });
       return;
     }
-
+    const roles = session.user.role.filter(
+      (role) => session.user.status[role] === "accept"
+    );
     if (
       status === "authenticated" &&
-      restrictions.includes("committees") &&
       !(
-        (session.user.role.includes("committees") &&
-          session.user.status.committee === "accept") ||
-        (session.user.role.includes("admins") &&
-          session.user.status.admins === "accept")
-      )
-    ) {
-      console.log("Pending Permissions");
-      setError({
-        code: 403,
-        error: "Unauthorized",
-        message: "You do not have access this page",
-      });
-      return;
-    }
-
-    if (
-      status === "authenticated" &&
-      restrictions.includes("admins") &&
-      !(
-        session.user.role.includes("admins") &&
-        session.user.status.admins === "accept"
+        restrictions.length === 0 ||
+        roles.some((role) => restrictions.includes(role))
       )
     ) {
       console.log("Unauthorized Permission");
@@ -85,7 +69,13 @@ const ProtectedPage = ({ title, children, restrictions }) => {
           <Navigation />
           <title>{title}</title>
           <div className="flex justify-center items-start w-full bg-hackathon-page z-0 h-screen pt-12 lg:pt-0">
-            <div className="w-11/12 h-full">{children}</div>
+            <div
+              className={`${
+                pathName.startsWith("/forms") ? "w-full" : "w-11/12"
+              }  h-full`}
+            >
+              {children}
+            </div>
           </div>
         </>
       )}

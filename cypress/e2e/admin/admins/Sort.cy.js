@@ -18,7 +18,6 @@ describe("Admin Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="name"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].name);
       });
     });
@@ -31,7 +30,6 @@ describe("Admin Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="name"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].name);
       });
     });
@@ -44,7 +42,6 @@ describe("Admin Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="email"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].email);
       });
     });
@@ -57,7 +54,6 @@ describe("Admin Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="email"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].email);
       });
     });
@@ -72,7 +68,6 @@ describe("Admin Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="affiliation"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].affiliation);
       });
     });
@@ -87,7 +82,6 @@ describe("Admin Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="affiliation"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].affiliation);
       });
     });
@@ -102,7 +96,6 @@ describe("Admin Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="status"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(
           sorted[index].status.admins.endsWith("t")
             ? sorted[index].status.admins + "ed"
@@ -121,7 +114,6 @@ describe("Admin Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="status"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(
           sorted[index].status.admins.endsWith("t")
             ? sorted[index].status.admins + "ed"

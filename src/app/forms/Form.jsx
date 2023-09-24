@@ -44,7 +44,7 @@ const Form = ({ object, setObject, header, fields, submit }) => {
           {header}
         </p>
         <div className="rounded-b-xl bg-white p-3">
-          <Row className="flex justify-center p-0 m-0">
+          <Row className="flex justify-center p-0 m-0 gap-3">
             {Object.values(fields).map((field, index) => (
               <Col key={index} md={field.width}>
                 {field.input === "description" &&
@@ -78,7 +78,7 @@ const Form = ({ object, setObject, header, fields, submit }) => {
                 )}
                 {field.input === "checkboxes" && (
                   <>
-                    <p className="mb-1 mt-3">{field.text}</p>
+                    <p className="mb-1 font-semibold">{field.text}</p>
                     {field.options.map((option, i) => (
                       <Checkbox
                         className="w-1/2"

@@ -5,27 +5,35 @@ import { db } from "../../../../firebase";
 import {
   doc,
   updateDoc,
+  arrayUnion,
   collection,
   getDocs,
   query,
   where,
   arrayRemove,
   deleteField,
-  arrayUnion,
 } from "firebase/firestore";
 
 export async function POST(req) {
   const res = NextResponse;
-  const { discord, affiliation } = await req.json();
+  const { phone, major, age, school, grade, gender, shirt, diet, resume } =
+    await req.json();
   const session = await getServerSession(authOptions);
 
   if (session) {
     try {
       await updateDoc(doc(db, "users", session.user.id), {
-        discord: discord,
-        affiliation: affiliation,
-        "status.admins": "pending",
-        role: arrayUnion("admins"),
+        phone: phone,
+        major: major,
+        age: age,
+        school: school,
+        grade: grade,
+        gender: gender,
+        shirt: shirt,
+        "status.participants": "pending",
+        diet: diet,
+        resume: resume,
+        role: arrayUnion("participants"),
       });
       return res.json({ message: "OK" }, { status: 200 });
     } catch (err) {
@@ -53,7 +61,7 @@ export async function GET() {
         const snapshot = await getDocs(
           query(
             collection(db, "users"),
-            where("role", "array-contains", "admins")
+            where("role", "array-contains", "participants")
           )
         );
         snapshot.forEach((doc) => {
@@ -93,12 +101,12 @@ export async function PUT(req) {
         objects.forEach(async (object) => {
           if (attribute === "role") {
             await updateDoc(doc(db, "users", object.uid), {
-              role: arrayRemove("admins"),
-              "status.admins": deleteField(),
+              role: arrayRemove("participants"),
+              "status.participants": deleteField(),
             });
           } else if (attribute === "status") {
             await updateDoc(doc(db, "users", object.uid), {
-              "status.admins": status,
+              "status.participants": status,
             });
           }
         });

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Form from "@/app/forms/Form.jsx";
-import { FIELDS } from "../../data/forms/Admin.js";
+import { FIELDS } from "../../data/forms/Admins";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import toast from "react-hot-toast";

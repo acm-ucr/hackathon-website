@@ -129,14 +129,14 @@ const Table = ({
                               text={
                                 object[header.text][page]
                                   ? object[header.text][page]
-                                  : object[header.text].includes("https://")
+                                  : object[header.text].includes("base64")
                                   ? "view"
                                   : object[header.text]
                               }
                               color={
                                 object[header.text][page]
                                   ? COLORS[object[header.text][page]]
-                                  : object[header.text].includes("https://")
+                                  : object[header.text].includes("base64")
                                   ? COLORS["view"]
                                   : COLORS[object[header.text]]
                               }

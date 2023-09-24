@@ -13,15 +13,17 @@ import {
   FaLock,
   FaCalendarDay,
   FaMedal,
+  FaWpforms,
 } from "react-icons/fa";
 import { AiOutlineQrcode } from "react-icons/ai";
 import { signOut } from "next-auth/react";
+import { FaPerson } from "react-icons/fa6";
 
 const iconStyle = "mr-2";
 
 export const ADMIN = {
   Dashboards: {
-    mt: "mt-3",
+    mt: "mt-0",
     tabs: [
       {
         name: "participants",
@@ -53,10 +55,20 @@ export const ADMIN = {
         link: "/admin/admins",
         icon: <FaLock className={iconStyle} />,
       },
+      {
+        name: "committees",
+        link: "/admin/committees",
+        icon: <FaPerson className={iconStyle} />,
+      },
+      {
+        name: "feedback",
+        link: "/admin/feedback",
+        icon: <FaWpforms className={iconStyle} />,
+      },
     ],
   },
   Services: {
-    mt: "mt-5",
+    mt: "mt-3",
     tabs: [
       {
         name: "calendar",
