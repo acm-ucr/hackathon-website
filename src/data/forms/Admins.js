@@ -1,3 +1,5 @@
+import { CONFIG } from "../Config";
+
 export const AFFILIATIONS = [
   "director",
   "marketing",
@@ -7,14 +9,12 @@ export const AFFILIATIONS = [
   "UIUX",
 ];
 
-export const POSITIONS = ["lead", "committees"];
-
 export const FIELDS = {
   description: {
     input: "description",
     width: 12,
     texts: [
-      "If you would like access to Rosehack&apos;s Admin Portal, please submit the request form below!",
+      `If you would like access to ${CONFIG.name} Admin Portal, please submit the request form below!`,
     ],
   },
   name: {

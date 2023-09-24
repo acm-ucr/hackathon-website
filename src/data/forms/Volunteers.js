@@ -5,8 +5,8 @@ export const FIELDS = {
     input: "description",
     width: 12,
     texts: [
-      "Hello! Rose Hack is coming January 14-15, 2023. Thank you for your interest in Rose Hack, UC Riverside’s women-centric hackathon founded by the female leaders of SWE and WINC!Volunteers are essential to our hackathon in helping run the entire event. Responsibilities include helping set up, tech support, clean up, distributing swag, etc. Meals are also provided during breakfast, lunch, and dinner times. If you are interested in joining the Rose Hack Team as a volunteer, please fill out this quick interest form below!",
-      "We also want to note that if you are volunteering at Rose Hack, you are unable to participate as a hacker as well. If you have any other questions please feel free to contact us on our socials or email us at rosehackucr@gmail.com! :)",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     ],
   },
   name: {
