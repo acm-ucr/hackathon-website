@@ -27,7 +27,7 @@ const ProtectedPage = ({ title, children, restrictions }) => {
     }
     if (
       status === "authenticated" &&
-      restrictions.includes("hacker") &&
+      restrictions.includes("participants") &&
       !session.user.role
     ) {
       console.log("Have not register");
