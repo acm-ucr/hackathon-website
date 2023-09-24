@@ -1,13 +1,14 @@
-import participants from "../../../fixtures/participants.json";
+import response from "../../../fixtures/participants.json";
 
-const five = participants.slice(0, 5);
+const five = response.items.slice(0, 5);
 
 describe("Participants Actions", () => {
   beforeEach(() => {
-    cy.login("admins");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/participants");
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "participants",
+    });
   });
 
   it("Accept First 5 Entries", () => {
@@ -17,7 +18,10 @@ describe("Participants Actions", () => {
         .find('[data-cy="checkbox"]')
         .click()
     );
-    cy.get('[data-cy="toolbar"]').find('[data-cy="accept-tag"]').click();
+    cy.action({
+      tag: "accept",
+      page: "participants",
+    });
 
     five.forEach((participant) =>
       cy
@@ -34,7 +38,10 @@ describe("Participants Actions", () => {
         .find('[data-cy="checkbox"]')
         .click()
     );
-    cy.get('[data-cy="toolbar"]').find('[data-cy="reject-tag"]').click();
+    cy.action({
+      tag: "reject",
+      page: "participants",
+    });
 
     five.forEach((participant) =>
       cy
@@ -51,7 +58,10 @@ describe("Participants Actions", () => {
         .find('[data-cy="checkbox"]')
         .click()
     );
-    cy.get('[data-cy="toolbar"]').find('[data-cy="pending-tag"]').click();
+    cy.action({
+      tag: "pending",
+      page: "participants",
+    });
 
     five.forEach((participant) =>
       cy
@@ -68,8 +78,9 @@ describe("Participants Actions", () => {
         .find('[data-cy="checkbox"]')
         .click()
     );
-    cy.get('[data-cy="toolbar"]').find('[data-cy="delete"]').click();
-    cy.get('[data-cy="confirm-button"]').click();
+    cy.delete({
+      page: "participants",
+    });
 
     five.forEach((participant) =>
       cy.get(`[data-cy="${participant.uid}"]`).should("not.exist")

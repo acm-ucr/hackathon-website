@@ -4,10 +4,11 @@ const five = participants.slice(0, 5);
 
 describe("Participant Select", () => {
   beforeEach(() => {
-    cy.login("admins");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/participants");
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "participants",
+    });
   });
 
   it("Select All", () => {

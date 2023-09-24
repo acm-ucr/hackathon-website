@@ -2,10 +2,11 @@ import participants from "../../../fixtures/participants.json";
 
 describe("Participant Filters", () => {
   beforeEach(() => {
-    cy.login("admins");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/participants");
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "participants",
+    });
   });
 
   it("Default Filters", () => {
