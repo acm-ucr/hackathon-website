@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Select from "@/components/Select";
 import { SHIRTS } from "@/data/forms/Information";
-import { JUDGES } from "@/data/forms/Judges";
+import { JUDGES, AFFILIATIONS } from "@/data/forms/Judges";
 import Radio from "@/components/Radio";
 import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
@@ -137,7 +137,7 @@ const Judge = () => {
           <Col xl={12}>
             <Select
               title="Affiliation"
-              options={["Student", "Professor", "Industry"]}
+              options={AFFILIATIONS}
               field="major"
               user={judge}
               setUser={setJudge}
