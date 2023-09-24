@@ -28,7 +28,7 @@ describe("Select", () => {
     cy.get('[data-cy="menu"]').should("not.exist");
   });
 
-  it("Show dropdown menu", () => {
+  it("Show Dropdown", () => {
     const Parent = () => {
       const [user, setUser] = useState({ name: "" });
 
