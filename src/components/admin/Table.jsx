@@ -120,6 +120,7 @@ const Table = ({
                       >
                         {header.hasTag && (
                           <div data-cy={`${header.text}`}>
+                            {console.log(object, header.text)}
                             <Tag
                               text={
                                 object[header.text][page]
