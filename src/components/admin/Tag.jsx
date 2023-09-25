@@ -1,4 +1,5 @@
 import { PAST } from "../../data/Tags.js";
+
 const Tag = ({ color, text, onClick, classes, past = false }) => {
   return (
     <div
