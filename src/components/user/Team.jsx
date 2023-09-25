@@ -1,36 +1,68 @@
+import Button from "../Button";
 import Input from "../Input";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import toast from "react-hot-toast";
+const Team = ({ user, setUser }) => {
+  const [team, setTeam] = useState(null);
+  const [edit, setEdit] = useState(false);
+  const handleLeave = () => {};
+  // const handleJoin = () => {};
+  const handleEdit = () => {
+    setEdit(true);
+  };
 
-const Team = ({ user, team, setUser }) => {
+  const handleSave = async () => {
+    await axios.post("/api/team", team);
+    toast("✅ Successfully Update!");
+    setEdit(false);
+  };
+  useEffect(() => {
+    axios.get("/api/team").then((response) => setTeam(response.data.items));
+  }, []);
+  console.log(team);
   return (
-    <div className="bg-white rounded-lg p-4 gap-3 m-2">
-      {user.team ? (
+    <div className="bg-white rounded-lg p-4 gap-3 m-2 flex flex-col">
+      {team ? (
         <>
           <Input
-            name="teams"
+            name="name"
             type="text"
             title="Team Name"
-            value={user.team}
-            user={user}
-            setUser={setUser}
-            editable={true}
+            value={team.name}
+            user={team}
+            setUser={setTeam}
+            editable={edit}
           />
 
           <Input
             name="github"
             type="text"
             title="Github Link"
-            value={user.github}
-            user={user}
-            editable={true}
+            value={team.github}
+            user={team}
+            editable={edit}
+            setUser={setTeam}
           />
 
           <Input
             name="devpost"
             type="text"
             title="Devpost Link"
-            value={user.devpost}
-            user={user}
-            editable={true}
+            value={team.devpost}
+            user={team}
+            editable={edit}
+            setUser={setTeam}
+          />
+
+          <Input
+            name="figma"
+            type="text"
+            title="Figma Link"
+            value={team.figma}
+            user={team}
+            editable={edit}
+            setUser={setTeam}
           />
 
           {team.members.map((member, index) => (
@@ -38,9 +70,23 @@ const Team = ({ user, team, setUser }) => {
               {member}
             </p>
           ))}
+
+          <Button text="leave team" onClick={handleLeave} />
+          {edit && <Button text="done" onClick={handleSave} />}
+          {!edit && <Button text="edit" onClick={handleEdit} />}
         </>
       ) : (
-        <p>no team</p>
+        <>
+          <Input
+            name="team"
+            type="text"
+            placeholder="team ID"
+            title="Join a Team"
+            value={user.team}
+            user={user}
+            editable={edit}
+          />
+        </>
       )}
     </div>
   );
