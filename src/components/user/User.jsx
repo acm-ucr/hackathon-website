@@ -21,9 +21,16 @@ const User = ({ user, setUser, edit, setEdit }) => {
   };
 
   const handleSave = async () => {
-    await axios.post("/api/participant", user);
-    toast("✅ Successfully Update!");
-    setEdit(false);
+    axios
+      .post("/api/participant", user)
+      .then(() => {
+        toast("✅ Successfully Update!");
+        setEdit(false);
+      })
+      .catch(() => {
+        toast("❌ Internal Server Error");
+        setEdit(false);
+      });
   };
   return (
     <div className="bg-white rounded-lg p-4 gap-3 m-2 overflow-scroll max-h-[70vh]">
@@ -86,10 +93,10 @@ const User = ({ user, setUser, edit, setEdit }) => {
       />
       <p className="mb-1 font-semibold">Diet</p>
       {edit
-        ? DIETS.map((option, i) => (
+        ? DIETS.map((option, index) => (
             <Checkbox
               className="w-1/2"
-              key={i}
+              key={index}
               toggle={user.diet[option]}
               text={option}
               onClick={() =>
@@ -104,8 +111,7 @@ const User = ({ user, setUser, edit, setEdit }) => {
               color="bg-hackathon-green-300"
             />
           ))
-        : user.diet &&
-          Object.keys(user.diet).map((diet, index) => (
+        : Object.keys(user.diet).map((diet, index) => (
             <p key={index}>{diet}</p>
           ))}
       <div className="w-full flex justify-center">

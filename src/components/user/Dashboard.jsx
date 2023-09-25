@@ -4,8 +4,8 @@ import ProfileHeader from "./Header";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Title from "../admin/Title.jsx";
-import TeamInfo from "./Team";
-import UserInfo from "./User";
+import Team from "./Team";
+import User from "./User";
 import { useSession } from "next-auth/react";
 
 const Dashboard = () => {
@@ -25,16 +25,11 @@ const Dashboard = () => {
       <ProfileHeader email={user.email} name={user.name} />
       <Row className="h-full">
         <Col xl={6} className="h-full">
-          <UserInfo
-            user={user}
-            setUser={setUser}
-            edit={edit}
-            setEdit={setEdit}
-          />
+          <User user={user} setUser={setUser} edit={edit} setEdit={setEdit} />
         </Col>
         {user.status.participants === "accept" && (
           <Col xl={6} className="h-full">
-            <TeamInfo user={user} team={user.team} setUser={setUser} />
+            <Team user={user} team={user.team} setUser={setUser} />
           </Col>
         )}
       </Row>

@@ -82,9 +82,8 @@ export async function GET() {
 
   if (session) {
     try {
-      const { name, links, members } = (
-        await getDoc(doc(db, "teams", session.user.team))
-      ).data();
+      const snapshot = await getDoc(doc(db, "teams", session.user.team));
+      const { name, links, members } = snapshot.data();
       return res.json(
         {
           message: "OK",
