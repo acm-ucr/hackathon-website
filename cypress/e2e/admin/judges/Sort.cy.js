@@ -2,7 +2,7 @@ import judges from "../../../fixtures/judges.json";
 
 describe("Judge Sort", () => {
   beforeEach(() => {
-    cy.login("admin");
+    cy.login("admins");
     cy.visit("/");
     cy.wait("@session");
     cy.visit("/admin/judges");
@@ -15,7 +15,6 @@ describe("Judge Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="name"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].name);
       });
     });
@@ -28,7 +27,6 @@ describe("Judge Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="name"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].name);
       });
     });
@@ -41,7 +39,6 @@ describe("Judge Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="email"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].email);
       });
     });
@@ -54,7 +51,6 @@ describe("Judge Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="email"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].email);
       });
     });
@@ -67,7 +63,6 @@ describe("Judge Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="status"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].status);
       });
     });
@@ -80,7 +75,6 @@ describe("Judge Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="status"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].status);
       });
     });
@@ -93,7 +87,6 @@ describe("Judge Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="type"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].type);
       });
     });
@@ -106,7 +99,6 @@ describe("Judge Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="type"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].type);
       });
     });

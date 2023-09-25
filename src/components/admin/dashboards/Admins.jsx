@@ -4,11 +4,10 @@ import Title from "../Title.jsx";
 import Filters from "../Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import Table from "../Table.jsx";
-import admins from "../../../../cypress/fixtures/admins.json";
-import { FILTERS, HEADERS, TAGS } from "@/data/admin/Admin.js";
+import { FILTERS, HEADERS, TAGS } from "@/data/admin/Admins.js";
 
 const Admin = () => {
-  const [admin, setAdmin] = useState(admins);
+  const [admin, setAdmin] = useState(null);
   const [input, setInput] = useState({
     input: "",
   });
@@ -18,13 +17,14 @@ const Admin = () => {
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <div className="flex">
-        <Title title="Admin" />
+        <Title title="Admins" />
         <Filters
           filters={filters}
           setFilters={setFilters}
           setObjects={setAdmin}
           objects={admin}
           input={input.input}
+          page="admins"
         />
       </div>
       <Toolbar
@@ -34,7 +34,7 @@ const Admin = () => {
         setObjects={setAdmin}
         objects={admin}
         filters={filters}
-        page="admin"
+        page="admins"
       />
       <Table
         headers={headers}
@@ -42,7 +42,7 @@ const Admin = () => {
         setHeaders={setHeaders}
         setObjects={setAdmin}
         objects={admin}
-        page="admin"
+        page="admins"
       />
     </div>
   );

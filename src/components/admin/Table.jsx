@@ -77,6 +77,7 @@ const Table = ({
                 setHeaders={setHeaders}
                 setObjects={setObjects}
                 objects={objects}
+                page={page}
               />
             )}
           </Col>
@@ -121,24 +122,25 @@ const Table = ({
                           <div data-cy={`${header.text}`}>
                             <Tag
                               text={
-                                object[header.text][page].includes("https://")
+                                object[header.text][page]
+                                  ? object[header.text][page]
+                                  : object[header.text].includes("base64")
                                   ? "view"
-                                  : object[header.text][page] +
-                                    (object[header.text][page] === "accept" ||
-                                    object[header.text][page] === "reject"
-                                      ? "ed"
-                                      : "")
+                                  : object[header.text]
                               }
                               color={
-                                object[header.text][page].includes("https://")
+                                object[header.text][page]
+                                  ? COLORS[object[header.text][page]]
+                                  : object[header.text].includes("base64")
                                   ? COLORS["view"]
-                                  : COLORS[object[header.text][page]]
+                                  : COLORS[object[header.text]]
                               }
                               onClick={
                                 header.onClick
                                   ? () => header.onClick(object, setModal)
                                   : null
                               }
+                              past={true}
                             />
                           </div>
                         )}
@@ -155,17 +157,17 @@ const Table = ({
                               }`}
                               key={index}
                             >
-                              {header.text === "links" ? (
-                                <Link
-                                  href={element.link}
-                                  className="flex items-center m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-sm"
-                                >
-                                  {ICONS[element.name]}
-                                  {element.link.replace("https://", "")}
-                                </Link>
-                              ) : (
-                                element
-                              )}
+                              {header.text === "links"
+                                ? element.link !== "No Link" && (
+                                    <Link
+                                      href={element.link}
+                                      className="flex items-center m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-sm"
+                                    >
+                                      {ICONS[element.name]}
+                                      {element.link.replace("https://", "")}
+                                    </Link>
+                                  )
+                                : element}
                             </p>
                           ))}
 

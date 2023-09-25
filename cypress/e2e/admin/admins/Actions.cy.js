@@ -1,13 +1,14 @@
-import admins from "../../../fixtures/admins.json";
+import response from "../../../fixtures/admins.json";
 
-const five = admins.slice(0, 5);
+const five = response.items.slice(0, 5);
 
 describe("Admin Actions", () => {
   beforeEach(() => {
-    cy.login("admin");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/admin");
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "admins",
+    });
   });
 
   it("Accept First 5 Entries", () => {
@@ -15,11 +16,14 @@ describe("Admin Actions", () => {
       cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click()
     );
 
-    cy.get('[data-cy="toolbar"]').find('[data-cy="accept-tag"]').click();
+    cy.action({
+      tag: "accept",
+      page: "admins",
+    });
     five.forEach((admin) =>
       cy
         .get(`[data-cy="${admin.uid}"]`)
-        .find('[data-cy="accepted-tag"]')
+        .find('[data-cy="accept-tag"]')
         .should("exist")
     );
   });
@@ -29,7 +33,10 @@ describe("Admin Actions", () => {
       cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click()
     );
 
-    cy.get('[data-cy="toolbar"]').find('[data-cy="pending-tag"]').click();
+    cy.action({
+      tag: "pending",
+      page: "admins",
+    });
     five.forEach((admin) =>
       cy
         .get(`[data-cy="${admin.uid}"]`)
@@ -42,11 +49,14 @@ describe("Admin Actions", () => {
     five.forEach((admin) =>
       cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click()
     );
-    cy.get('[data-cy="toolbar"]').find('[data-cy="reject-tag"]').click();
+    cy.action({
+      tag: "reject",
+      page: "admins",
+    });
     five.forEach((admin) =>
       cy
         .get(`[data-cy="${admin.uid}"]`)
-        .find('[data-cy="rejected-tag"]')
+        .find('[data-cy="reject-tag"]')
         .should("exist")
     );
   });
@@ -55,8 +65,9 @@ describe("Admin Actions", () => {
     five.forEach((admin) =>
       cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click()
     );
-    cy.get('[data-cy="toolbar"]').find('[data-cy="delete"]').click();
-    cy.get('[data-cy="confirm-button"]').click();
+    cy.delete({
+      page: "admins",
+    });
     five.forEach((admin) =>
       cy.get(`[data-cy="${admin.uid}"]`).should("not.exist")
     );

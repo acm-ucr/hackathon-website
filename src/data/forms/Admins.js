@@ -1,3 +1,5 @@
+import { CONFIG } from "../Config";
+
 export const AFFILIATIONS = [
   "director",
   "marketing",
@@ -7,14 +9,12 @@ export const AFFILIATIONS = [
   "UIUX",
 ];
 
-export const POSITIONS = ["lead", "committee"];
-
 export const FIELDS = {
   description: {
     input: "description",
     width: 12,
     texts: [
-      "If you would like access to Rosehack&apos;s Admin Portal, please submit the request form below!",
+      `If you would like access to ${CONFIG.name} Admin Portal, please submit the request form below!`,
     ],
   },
   name: {
@@ -23,7 +23,7 @@ export const FIELDS = {
     type: "text",
     title: "Name",
     maxLength: 50,
-    width: 6,
+    width: 12,
     editable: false,
     required: true,
   },
@@ -33,7 +33,7 @@ export const FIELDS = {
     type: "email",
     title: "Email Address",
     maxLength: 50,
-    width: 6,
+    width: 12,
     editable: false,
     required: true,
   },
@@ -47,19 +47,11 @@ export const FIELDS = {
     width: 12,
     required: true,
   },
-  affiliations: {
+  affiliation: {
     input: "radio",
-    text: "Affiliations",
+    text: "Affiliation",
     options: AFFILIATIONS,
-    field: "affiliations",
-    width: 12,
-    required: true,
-  },
-  position: {
-    input: "radio",
-    text: "Position",
-    options: POSITIONS,
-    field: "position",
+    field: "affiliation",
     width: 12,
     required: true,
   },

@@ -6,7 +6,7 @@ const Toggle = ({ option, onClick, show }) => {
   return (
     <button
       onClick={onClick}
-      className="relative z-50 bg-white text-black w-full border-2 rounded-lg border-black justify-between flex items-center px-3 py-1"
+      className="my-1 bg-hackathon-gray-100 rounded-md relative z-20 w-full justify-between flex items-center px-3 py-1"
       data-cy="dropdown-selected"
     >
       {option.name}
@@ -49,7 +49,7 @@ const Menu = ({ setOption, className, setOptions, options }) => {
           .map((option, index) => (
             <Dropdown.Item
               data-cy={`dropdown-option-${index}`}
-              className=" hover:!bg-hackathon-green-200 bg-transparent overflow-hidden px-3 py-1 last:rounded-b-lg"
+              className=" hover:!bg-hackathon-green-300 hover:!text-white bg-transparent overflow-hidden px-3 py-1 last:rounded-b-lg"
               key={index}
               onClick={() => setOption(option)}
             >
@@ -71,7 +71,7 @@ const DropDown = ({ options, setOptions, option, setOption }) => {
       onToggle={() => setShow(!show)}
       show={show}
       autoClose={true}
-      className="w-full m-0 bg-white rounded-3xl"
+      className="w-full m-0"
       data-cy="dropdown"
     >
       <Dropdown.Toggle show={show} as={Toggle} option={option} />
@@ -80,7 +80,7 @@ const DropDown = ({ options, setOptions, option, setOption }) => {
         setOption={setOption}
         options={options}
         setOptions={setOptions}
-        className="max-h-[50vh] overflow-scroll w-full bg-white border-none !rounded-b-lg !rounded-t-none border-2 border-black p-0 !z-10 !-mt-4 pt-4"
+        className="rounded-md border-0 max-h-[50vh] overflow-scroll w-full !rounded-b-lg !rounded-t-none p-0 !z-10 !-mt-4 pt-4"
       />
     </Dropdown>
   );

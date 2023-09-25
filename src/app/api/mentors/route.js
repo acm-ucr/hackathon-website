@@ -40,7 +40,7 @@ export async function POST(req) {
         response: response,
         "status.mentors": "pending",
         availability: availability,
-        role: arrayUnion("mentor"),
+        role: arrayUnion("mentors"),
       });
       return res.json({ message: "OK" }, { status: 200 });
     } catch (err) {
@@ -63,12 +63,12 @@ export async function GET() {
   const output = [];
 
   if (session) {
-    if (session.user.role.includes("admin")) {
+    if (session.user.role.includes("admins")) {
       try {
         const snapshot = await getDocs(
           query(
             collection(db, "users"),
-            where("role", "array-contains", "mentor")
+            where("role", "array-contains", "mentors")
           )
         );
         snapshot.forEach((doc) => {
@@ -103,12 +103,12 @@ export async function PUT(req) {
   const session = await getServerSession(authOptions);
 
   if (session) {
-    if (session.user.role.includes("admin")) {
+    if (session.user.role.includes("admins")) {
       try {
         objects.forEach(async (object) => {
           if (attribute === "role") {
             await updateDoc(doc(db, "users", object.uid), {
-              role: arrayRemove("mentor"),
+              role: arrayRemove("mentors"),
               "status.mentors": deleteField(),
             });
           } else if (attribute === "status") {
