@@ -1,14 +1,17 @@
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
-export const auth = async (admin = false) => {
+export const auth = async (admin = false, restrictions = []) => {
   const session = await getServerSession(authOptions);
 
   if (session.user) {
     if (admin) {
       if (
-        session.user.role.includes("admins") &&
-        session.user.status.admins === "accept"
+        !restrictions.some(
+          (restriction) =>
+            session.user.role.includes(restriction) &&
+            session.user.status[restriction] !== "accept"
+        )
       ) {
         return { message: null, authCode: 200, uid: session.user.id };
       } else {
