@@ -11,7 +11,7 @@ describe("Popup Component", () => {
         color: "green",
         visible: true,
       });
-      const onClick = () => {};
+      const onClick = cy.stub();
 
       return (
         <div>
