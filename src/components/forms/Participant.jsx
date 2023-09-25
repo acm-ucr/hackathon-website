@@ -3,22 +3,22 @@
 
 import { useState } from "react";
 import Form from "@/app/forms/Form.jsx";
-import { FIELDS } from "../../data/forms/Register.js";
+import { FIELDS } from "../../data/forms/Participant.js";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const Register = () => {
+const Participant = () => {
   const { data: session } = useSession();
-  const [register, setregister] = useState({
+  const [participant, setParticipant] = useState({
     name: session.user.name,
     email: session.user.email,
   });
 
   const handleSubmit = async () => {
     const data = {
-      ...register,
-      diet: Object.keys(register.diet),
+      ...participant,
+      diet: Object.keys(participant.diet),
     };
 
     await axios
@@ -29,12 +29,12 @@ const Register = () => {
   return (
     <Form
       fields={FIELDS}
-      object={register}
-      setObject={setregister}
+      object={participant}
+      setObject={setParticipant}
       header="HACKER APPLICATION"
       submit={handleSubmit}
     />
   );
 };
 
-export default Register;
+export default Participant;

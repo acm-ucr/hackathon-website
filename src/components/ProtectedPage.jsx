@@ -30,7 +30,7 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       restrictions.includes("participants") &&
       !session.user.role
     ) {
-      console.log("Have not register");
+      console.log("Have not registered");
       setError({
         code: 401,
         error: "Unauthenticated User",
