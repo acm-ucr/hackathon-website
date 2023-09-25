@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "../../Input";
 import Button from "../../Button";
 import Tag from "../../Tag";
@@ -7,6 +7,7 @@ import { COLORS } from "@/data/Tags";
 import Popup from "../../Popup";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const tags = ["professor", "industry", "student"];
 
@@ -133,6 +134,14 @@ const Toolbar = ({ data, setData, judges }) => {
       })
     );
   };
+
+  const load = () => {
+    axios.get("/api/judging").then((response) => setData(response.data.items));
+  };
+
+  useEffect(() => {
+    load();
+  }, []);
 
   return (
     <>
