@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ADMIN, USER } from "@/data/Navigation";
 import { usePathname } from "next/navigation";
+import { CONFIG } from "@/data/Config";
 
 const Navigation = () => {
   const [expand, setExpand] = useState(false);
@@ -29,7 +30,7 @@ const Navigation = () => {
             <Image
               src={LOGO}
               className="w-10 h-10 mx-2"
-              alt="Picture of RoseHack Logo"
+              alt={`${CONFIG.name} Logo`}
             />
             <p className="text-white text-xl font-semibold my-0">
               {pathName.split("/")[2]}
@@ -48,9 +49,11 @@ const Navigation = () => {
               <Image
                 src={LOGO}
                 className=" scale-90"
-                alt="Picture of RoseHack Logo"
+                alt={`${CONFIG.name} Logo`}
               />
-              <p className="text-white font-bold text-lg pr-2 m-0">ROSEHACK</p>
+              <p className="text-white font-bold text-lg pr-2 m-0">
+                {CONFIG.name.toUpperCase()}
+              </p>
             </div>
             <div className="w-full flex flex-col items-center h-full p-0">
               {Object.entries(tabs).map(

@@ -1,3 +1,4 @@
+import { CONFIG } from "../Config";
 import { HOWTOFINDEVENTS } from "./Information";
 
 const RATE = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
@@ -6,7 +7,7 @@ export const FIELDS = {
     input: "description",
     width: 12,
     texts: [
-      "Hello! Thank you for your participation in Rose Hack. We hope you enjoyed and learned some things from this event. Please fill out this anonymous feedback form below!",
+      `Hello! Thank you for your participation in ${CONFIG.name}. We hope you enjoyed and learned some things from this event. Please fill out this anonymous feedback form below!`,
     ],
   },
 
