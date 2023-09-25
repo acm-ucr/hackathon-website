@@ -16,12 +16,12 @@ describe("Popup Component", () => {
       return (
         <div>
           {popup.visible && (
-          <Popup
-            popup={popup}
-            setPopup={setPopup}
-            text="confirm"
-            onClick={onClick}
-          />
+            <Popup
+              popup={popup}
+              setPopup={setPopup}
+              text="confirm"
+              onClick={onClick}
+            />
           )}
         </div>
       );
@@ -47,12 +47,12 @@ describe("Popup Component", () => {
       return (
         <div>
           {popup.visible && (
-          <Popup
-            popup={popup}
-            setPopup={setPopup}
-            text="confirm"
-            onClick={onClick}
-          />
+            <Popup
+              popup={popup}
+              setPopup={setPopup}
+              text="confirm"
+              onClick={onClick}
+            />
           )}
         </div>
       );
@@ -78,12 +78,12 @@ describe("Popup Component", () => {
       return (
         <div>
           {popup.visible && (
-          <Popup
-            popup={popup}
-            setPopup={setPopup}
-            text="confirm"
-            onClick={onClick}
-          />
+            <Popup
+              popup={popup}
+              setPopup={setPopup}
+              text="confirm"
+              onClick={onClick}
+            />
           )}
         </div>
       );
