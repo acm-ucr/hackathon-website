@@ -1,5 +1,6 @@
-import participants from "../../../fixtures/participants.json";
+import response from "../../../fixtures/participants.json";
 
+const participants = response.items;
 const five = participants.slice(0, 5);
 
 describe("Participant Select", () => {

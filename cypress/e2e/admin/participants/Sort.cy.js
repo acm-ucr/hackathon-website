@@ -1,4 +1,6 @@
-import participants from "../../../fixtures/participants.json";
+import response from "../../../fixtures/participants.json";
+
+const participants = response.items;
 
 describe("Participant Sort", () => {
   beforeEach(() => {
