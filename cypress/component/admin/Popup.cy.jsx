@@ -14,12 +14,16 @@ describe("Popup Component", () => {
       const onClick = () => {};
 
       return (
-        <Popup
-          popup={popup}
-          setPopup={setPopup}
-          text="confirm"
-          onClick={onClick}
-        />
+        <div>
+          {popup.visible && (
+          <Popup
+            popup={popup}
+            setPopup={setPopup}
+            text="confirm"
+            onClick={onClick}
+          />
+          )}
+        </div>
       );
     };
 
@@ -29,7 +33,7 @@ describe("Popup Component", () => {
     cy.contains("This is a test popup.").should("be.visible");
   });
 
-  it("Closes", () => {
+  it("Close", () => {
     const Parent = () => {
       const [popup, setPopup] = useState({
         title: "Sample Popup",
@@ -41,12 +45,16 @@ describe("Popup Component", () => {
       const onClick = cy.stub();
 
       return (
-        <Popup
-          popup={popup}
-          setPopup={setPopup}
-          text="confirm"
-          onClick={onClick}
-        />
+        <div>
+          {popup.visible && (
+          <Popup
+            popup={popup}
+            setPopup={setPopup}
+            text="confirm"
+            onClick={onClick}
+          />
+          )}
+        </div>
       );
     };
 
@@ -68,12 +76,16 @@ describe("Popup Component", () => {
       const onClick = cy.stub();
 
       return (
-        <Popup
-          popup={popup}
-          setPopup={setPopup}
-          text="confirm"
-          onClick={onClick}
-        />
+        <div>
+          {popup.visible && (
+          <Popup
+            popup={popup}
+            setPopup={setPopup}
+            text="confirm"
+            onClick={onClick}
+          />
+          )}
+        </div>
       );
     };
 
