@@ -5,7 +5,6 @@ import { COLORS } from "@/data/Tags";
 
 const Header = ({ horizontal = true }) => {
   const { data: session } = useSession();
-  console.log(session.user.status);
 
   return (
     <div
