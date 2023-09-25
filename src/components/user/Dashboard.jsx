@@ -34,7 +34,7 @@ const Dashboard = () => {
         </Col>
         {user.status.participants === "accept" && (
           <Col xl={6} className="h-full">
-            <TeamInfo user={user} team={user.team} />
+            <TeamInfo user={user} team={user.team} setUser={setUser} />
           </Col>
         )}
       </Row>
