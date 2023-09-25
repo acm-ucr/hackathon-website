@@ -12,7 +12,7 @@ export const HEADERS = [
     sort: "off",
   },
   {
-    text: "teams",
+    text: "team",
     size: 4,
     icon: true,
     sort: "off",

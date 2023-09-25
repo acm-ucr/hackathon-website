@@ -97,17 +97,19 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
   };
 
   const handleSave = () => {
+    const data = { ...prize, team: team.name };
+
     setObjects(
       objects.map((a) => {
         if (a.uid === prize.uid) {
-          a = { ...prize, team };
+          a = data;
           a.selected = false;
         }
         return a;
       })
     );
 
-    axios.put("/api/prizes", prize).then(() => toast("✅ Prize Updated"));
+    axios.put("/api/prizes", data).then(() => toast("✅ Prize Updated"));
 
     setPrize(reset);
     setTeam({ name: "No Team Selected" });
@@ -115,9 +117,10 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
   };
 
   const load = () => {
-    axios
-      .get("/api/prizes")
-      .then((response) => setObjects(response.data.items));
+    axios.get("/api/prizes").then((response) => {
+      setObjects(response.data.items.prizes);
+      setTeams(response.data.items.teams);
+    });
   };
 
   useEffect(() => {

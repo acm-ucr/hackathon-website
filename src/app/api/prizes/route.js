@@ -41,21 +41,32 @@ export async function POST(req) {
 export async function GET() {
   const res = NextResponse;
   const session = await getServerSession(authOptions);
-  const output = [];
+  const prizes = [];
+  const teams = [];
 
   if (session) {
     if (session.user.role.includes("admins")) {
       try {
-        const snapshot = await getDocs(collection(db, "prizes"));
-        snapshot.forEach((doc) => {
-          output.push({
+        const prizesSnapshot = await getDocs(collection(db, "prizes"));
+        prizesSnapshot.forEach((doc) => {
+          prizes.push({
             ...doc.data(),
             uid: doc.id,
             selected: false,
             hidden: false,
           });
         });
-        return res.json({ message: "OK", items: output }, { status: 200 });
+
+        const teamsSnapshot = await getDocs(collection(db, "teams"));
+        teamsSnapshot.forEach((doc) => {
+          const { name } = doc.data();
+          teams.push({ name });
+        });
+
+        return res.json(
+          { message: "OK", items: { prizes, teams } },
+          { status: 200 }
+        );
       } catch (err) {
         return res.json(
           { message: `Internal Server Error: ${err}` },
