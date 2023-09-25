@@ -4,7 +4,7 @@ const five = judges.slice(0, 5);
 
 describe("Mentor Select", () => {
   beforeEach(() => {
-    cy.login("admin");
+    cy.login("admins");
     cy.visit("/");
     cy.wait("@session");
     cy.visit("/admin/judges");

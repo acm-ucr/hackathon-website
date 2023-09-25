@@ -1,6 +1,6 @@
 describe("Admin Portal Navigation", () => {
   beforeEach(() => {
-    cy.login("admin");
+    cy.login("admins");
     cy.visit("/");
     cy.wait("@session");
   });
@@ -35,9 +35,14 @@ describe("Admin Portal Navigation", () => {
     cy.get(".text-2xl").contains("Mentors");
   });
 
+  it("Visit Feedback Page", () => {
+    cy.visit("/admin/feedback");
+    cy.get(".text-2xl").contains("Feedback");
+  });
+
   it("Visit Admin Page", () => {
-    cy.visit("/admin/admin");
-    cy.get(".text-2xl").contains("Admin");
+    cy.visit("/admin/admins");
+    cy.get(".text-2xl").contains("Admins");
   });
 
   it("Visit Messenger Page", () => {

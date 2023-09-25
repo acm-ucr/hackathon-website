@@ -4,7 +4,7 @@ import CheckIn from "@/components/admin/services/checkin/CheckIn";
 
 const Page = () => {
   return (
-    <ProtectedPage title="Admin | Check In" restrictions={["admin"]}>
+    <ProtectedPage title="Admin | Check In" restrictions={["admins"]}>
       <CheckIn />
     </ProtectedPage>
   );

@@ -5,7 +5,7 @@ const MentorsPage = () => {
   return (
     <ProtectedPage
       title="Admin | Mentors"
-      restrictions={["admin", "committee"]}
+      restrictions={["admins", "committees"]}
     >
       <Mentors />
     </ProtectedPage>

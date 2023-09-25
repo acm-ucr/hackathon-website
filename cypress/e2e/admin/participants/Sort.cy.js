@@ -1,11 +1,14 @@
-import participants from "../../../fixtures/participants.json";
+import response from "../../../fixtures/participants.json";
+
+const participants = response.items;
 
 describe("Participant Sort", () => {
   beforeEach(() => {
-    cy.login("admin");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/participants");
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "participants",
+    });
   });
 
   it("Sort Name Up", () => {
@@ -15,7 +18,6 @@ describe("Participant Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="name"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].name);
       });
     });
@@ -28,7 +30,6 @@ describe("Participant Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="name"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].name);
       });
     });
@@ -41,7 +42,6 @@ describe("Participant Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="email"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].email);
       });
     });
@@ -54,7 +54,6 @@ describe("Participant Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="email"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].email);
       });
     });
@@ -66,8 +65,7 @@ describe("Participant Sort", () => {
     cy.get('[data-cy="team-sort-up"]').click();
 
     cy.get('[data-cy="table"]').within(() => {
-      cy.get('[data-cy="team"]').each((element, index) => {
-        cy.log(index, element);
+      cy.get('[data-cy="teams"]').each((element, index) => {
         expect(element.text()).to.equal(sorted[index].team);
       });
     });
@@ -79,8 +77,7 @@ describe("Participant Sort", () => {
     cy.get('[data-cy="team-sort-down"]').click();
 
     cy.get('[data-cy="table"]').within(() => {
-      cy.get('[data-cy="team"]').each((element, index) => {
-        cy.log(index, element);
+      cy.get('[data-cy="teams"]').each((element, index) => {
         expect(element.text()).to.equal(sorted[index].team);
       });
     });
@@ -93,7 +90,6 @@ describe("Participant Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="major"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].major);
       });
     });
@@ -106,7 +102,6 @@ describe("Participant Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="major"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].major);
       });
     });
@@ -119,7 +114,6 @@ describe("Participant Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="status"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(
           sorted[index].status.endsWith("t")
             ? sorted[index].status + "ed"
@@ -136,7 +130,6 @@ describe("Participant Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="status"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(
           sorted[index].status.endsWith("t")
             ? sorted[index].status + "ed"

@@ -5,9 +5,9 @@ import Radio from "../Radio";
 import Select from "../Select";
 import Button from "../Button";
 
-const User = ({ handleEdit, handleSave, user, setUser, edit }) => {
+const User = ({ handleEdit, handleSave, user, setUser, editable }) => {
   return (
-    <>
+    <div className="bg-white rounded-lg p-4 gap-3 m-2">
       <Input
         name="phone"
         type="phone"
@@ -15,7 +15,7 @@ const User = ({ handleEdit, handleSave, user, setUser, edit }) => {
         value={user.phone}
         user={user}
         setUser={setUser}
-        editable={edit}
+        editable={editable}
       />
       <Select
         title="School"
@@ -23,7 +23,7 @@ const User = ({ handleEdit, handleSave, user, setUser, edit }) => {
         field="school"
         user={user}
         setUser={setUser}
-        editable={edit}
+        editable={editable}
       />
       <Select
         title="Major"
@@ -31,7 +31,7 @@ const User = ({ handleEdit, handleSave, user, setUser, edit }) => {
         field="major"
         user={user}
         setUser={setUser}
-        editable={edit}
+        editable={editable}
       />
       <Select
         title="Grade"
@@ -39,7 +39,7 @@ const User = ({ handleEdit, handleSave, user, setUser, edit }) => {
         field="grade"
         user={user}
         setUser={setUser}
-        editable={edit}
+        editable={editable}
       />
       <Radio
         text="Gender"
@@ -47,14 +47,16 @@ const User = ({ handleEdit, handleSave, user, setUser, edit }) => {
         field="gender"
         user={user}
         setUser={setUser}
-        editable={edit}
+        editable={editable}
       />
-      {edit ? (
-        <Button text="done" onClick={handleSave} />
-      ) : (
-        <Button text="edit" onClick={handleEdit} />
-      )}
-    </>
+      <div className="w-full flex justify-center">
+        {editable ? (
+          <Button text="done" onClick={handleSave} />
+        ) : (
+          <Button text="edit" onClick={handleEdit} />
+        )}
+      </div>
+    </div>
   );
 };
 

@@ -21,7 +21,6 @@ const CheckIn = () => {
       .then((response) => {
         setEvents(
           response.data.items.map((event) => {
-            console.log(event);
             return { id: event.id, name: event.summary, hidden: false };
           })
         );

@@ -1,21 +1,24 @@
-import participants from "../../../fixtures/participants.json";
+import response from "../../../fixtures/participants.json";
+
+const participants = response.items;
 
 describe("Participant Filters", () => {
   beforeEach(() => {
-    cy.login("admin");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/participants");
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "participants",
+    });
   });
 
   it("Default Filters", () => {
     cy.get('[data-cy="pending-filter"]')
       .get("div")
       .should("have.class", "bg-hackathon-blue-100", "text-white");
-    cy.get('[data-cy="rejected-filter"]')
+    cy.get('[data-cy="reject-filter"]')
       .get("div")
       .should("have.class", "bg-hackathon-blue-100", "text-white");
-    cy.get('[data-cy="accepted-filter"]')
+    cy.get('[data-cy="accept-filter"]')
       .get("div")
       .should("have.class", "bg-hackathon-blue-100", "text-white");
   });
@@ -25,12 +28,12 @@ describe("Participant Filters", () => {
     cy.get('[data-cy="pending-filter"]')
       .get("div")
       .should("have.class", "text-hackathon-blue-100", "bg-white");
-    cy.get('[data-cy="rejected-filter"]').click();
-    cy.get('[data-cy="rejected-filter"]')
+    cy.get('[data-cy="reject-filter"]').click();
+    cy.get('[data-cy="reject-filter"]')
       .get("div")
       .should("have.class", "text-hackathon-blue-100", "bg-white");
-    cy.get('[data-cy="accepted-filter"]').click();
-    cy.get('[data-cy="accepted-filter"]')
+    cy.get('[data-cy="accept-filter"]').click();
+    cy.get('[data-cy="accept-filter"]')
       .get("div")
       .should("have.class", "text-hackathon-blue-100", "bg-white");
   });
@@ -45,7 +48,7 @@ describe("Participant Filters", () => {
   });
 
   it("Click Rejected", () => {
-    cy.get('[data-cy="rejected-filter"]').click();
+    cy.get('[data-cy="reject-filter"]').click();
     participants.forEach((participant) => {
       if (participant.status === "reject")
         cy.get(`[data-cy="${participant.uid}"]`).should("not.exist");
@@ -54,7 +57,7 @@ describe("Participant Filters", () => {
   });
 
   it("Click Accepted", () => {
-    cy.get('[data-cy="accepted-filter"]').click();
+    cy.get('[data-cy="accept-filter"]').click();
     participants.forEach((participant) => {
       if (participant.status === "accept")
         cy.get(`[data-cy="${participant.uid}"]`).should("not.exist");
@@ -63,7 +66,7 @@ describe("Participant Filters", () => {
   });
 
   it("Click 2 Filters", () => {
-    cy.get('[data-cy="accepted-filter"]').click();
+    cy.get('[data-cy="accept-filter"]').click();
     cy.get('[data-cy="pending-filter"]').click();
     participants.forEach((participant) => {
       if (participant.status === "accept" || participant.status === "pending")

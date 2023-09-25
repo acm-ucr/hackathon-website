@@ -1,10 +1,10 @@
-import Register from "@/components/forms/Register";
+import Committee from "@/components/forms/Committee";
 import ProtectedPage from "@/components/ProtectedPage";
 
 const Page = () => {
   return (
-    <ProtectedPage title="Form | Register" restrictions={[]}>
-      <Register />
+    <ProtectedPage title="Form | Committee" restrictions={[]}>
+      <Committee />
     </ProtectedPage>
   );
 };

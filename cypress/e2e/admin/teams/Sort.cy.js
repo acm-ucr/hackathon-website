@@ -4,7 +4,7 @@ const teams = DATA;
 
 describe("Team Sort", () => {
   beforeEach(() => {
-    cy.login("admin");
+    cy.login("admins");
     cy.visit("/");
     cy.wait("@session");
     cy.visit("/admin/teams");
@@ -17,7 +17,6 @@ describe("Team Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="name"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].name);
       });
     });
@@ -30,7 +29,6 @@ describe("Team Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="name"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].name);
       });
     });
@@ -43,7 +41,6 @@ describe("Team Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="status"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].status);
       });
     });
@@ -56,7 +53,6 @@ describe("Team Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="status"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].status);
       });
     });

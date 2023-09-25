@@ -18,9 +18,7 @@ const Mentor = () => {
   const handleSubmit = async () => {
     const data = {
       ...mentor,
-      availability: Object.entries(mentor.availability)
-        .filter(([_, value]) => value.state === true)
-        .map(([key]) => key),
+      availability: Object.keys(mentor.availability),
     };
 
     await axios
