@@ -3,13 +3,10 @@ import { useState } from "react";
 import Title from "../../Title.jsx";
 import Table from "./Table.jsx";
 import Toolbar from "./Toolbar.jsx";
-import DATA from "../../../../../cypress/fixtures/teams.json";
 import judges from "../../../../../cypress/fixtures/judges_list.json";
 
-const teamsCopy = DATA.items;
-
 const Judging = () => {
-  const [data, setData] = useState(teamsCopy);
+  const [data, setData] = useState(null);
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
