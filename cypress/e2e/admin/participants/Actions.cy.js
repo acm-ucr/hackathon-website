@@ -1,5 +1,6 @@
 import response from "../../../fixtures/participants.json";
 
+console.log(response);
 const five = response.items.slice(0, 5);
 
 describe("Participants Actions", () => {
