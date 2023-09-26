@@ -1,11 +1,14 @@
-import judges from "../../../fixtures/judges.json";
+import response from "../../../fixtures/judges.json";
+
+const judges = response.items;
 
 describe("Judge Sort", () => {
   beforeEach(() => {
-    cy.login("admins");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/judges");
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "judges",
+    });
   });
 
   it("Sort Name Up", () => {
@@ -57,25 +60,29 @@ describe("Judge Sort", () => {
   });
 
   it("Sort Status Up", () => {
-    const sorted = judges.sort((a, b) => (a.status > b.status ? -1 : 1));
+    const sorted = judges.sort((a, b) =>
+      a.status.judges > b.status.judges ? -1 : 1
+    );
 
     cy.get('[data-cy="status-sort-up"]').click();
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="status"]').each((element, index) => {
-        expect(element.text()).to.equal(sorted[index].status);
+        expect(element.text()).to.equal(sorted[index].status.judges);
       });
     });
   });
 
   it("Sort Status Down", () => {
-    const sorted = judges.sort((a, b) => (b.status > a.status ? -1 : 1));
+    const sorted = judges.sort((a, b) =>
+      b.status.judges > a.status.judges ? -1 : 1
+    );
 
     cy.get('[data-cy="status-sort-down"]').click();
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="status"]').each((element, index) => {
-        expect(element.text()).to.equal(sorted[index].status);
+        expect(element.text()).to.equal(sorted[index].status.judges);
       });
     });
   });
