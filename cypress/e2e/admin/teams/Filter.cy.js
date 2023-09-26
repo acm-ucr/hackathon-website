@@ -1,13 +1,14 @@
-import DATA from "../../../fixtures/teams.json";
+import response from "../../../fixtures/teams.json";
 
-const teams = DATA;
+const teams = response.items;
 
 describe("Teams Filters", () => {
   beforeEach(() => {
-    cy.login("admins");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/teams");
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "teams",
+    });
   });
 
   it("Default Filters", () => {
@@ -47,7 +48,7 @@ describe("Teams Filters", () => {
   it("Click Disqualify", () => {
     cy.get('[data-cy="disqualify-filter"]').click();
     teams.forEach((team) => {
-      if (team.status === "disqualify")
+      if (team.status.teams === "disqualify")
         cy.get(`[data-cy="${team.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${team.uid}"]`).should("exist");
     });
@@ -56,7 +57,7 @@ describe("Teams Filters", () => {
   it("Click Qualify", () => {
     cy.get('[data-cy="qualify-filter"]').click();
     teams.forEach((team) => {
-      if (team.status === "qualify")
+      if (team.status.teams === "qualify")
         cy.get(`[data-cy="${team.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${team.uid}"]`).should("exist");
     });
@@ -65,7 +66,7 @@ describe("Teams Filters", () => {
   it("Click Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
     teams.forEach((team) => {
-      if (team.status === "pending")
+      if (team.status.teams === "pending")
         cy.get(`[data-cy="${team.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${team.uid}"]`).should("exist");
     });
@@ -75,7 +76,7 @@ describe("Teams Filters", () => {
     cy.get('[data-cy="winner-filter"]').click();
 
     teams.forEach((team) => {
-      if (team.status === "winner")
+      if (team.status.teams === "winner")
         cy.get(`[data-cy="${team.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${team.uid}"]`).should("exist");
     });
@@ -85,7 +86,7 @@ describe("Teams Filters", () => {
     cy.get('[data-cy="qualify-filter"]').click();
     cy.get('[data-cy="disqualify-filter"]').click();
     teams.forEach((team) => {
-      if (team.status === "qualify" || team.status === "disqualify")
+      if (team.status.teams === "qualify" || team.status.teams === "disqualify")
         cy.get(`[data-cy="${team.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${team.uid}"]`).should("exist");
     });

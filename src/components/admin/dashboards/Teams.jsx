@@ -25,6 +25,7 @@ const Teams = () => {
           setObjects={setTeams}
           objects={teams}
           input={input.input}
+          page="teams"
         />
       </div>
       <Toolbar
