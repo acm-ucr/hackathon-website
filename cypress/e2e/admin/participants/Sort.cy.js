@@ -65,7 +65,7 @@ describe("Participant Sort", () => {
     cy.get('[data-cy="team-sort-up"]').click();
 
     cy.get('[data-cy="table"]').within(() => {
-      cy.get('[data-cy="teams"]').each((element, index) => {
+      cy.get('[data-cy="team"]').each((element, index) => {
         expect(element.text()).to.equal(sorted[index].team);
       });
     });
@@ -77,7 +77,7 @@ describe("Participant Sort", () => {
     cy.get('[data-cy="team-sort-down"]').click();
 
     cy.get('[data-cy="table"]').within(() => {
-      cy.get('[data-cy="teams"]').each((element, index) => {
+      cy.get('[data-cy="team"]').each((element, index) => {
         expect(element.text()).to.equal(sorted[index].team);
       });
     });
@@ -108,32 +108,36 @@ describe("Participant Sort", () => {
   });
 
   it("Sort Status Up", () => {
-    const sorted = participants.sort((a, b) => (a.status > b.status ? -1 : 1));
+    const sorted = participants.sort((a, b) =>
+      a.status.participants > b.status.participants ? -1 : 1
+    );
 
     cy.get('[data-cy="status-sort-up"]').click();
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="status"]').each((element, index) => {
         expect(element.text()).to.equal(
-          sorted[index].status.endsWith("t")
-            ? sorted[index].status + "ed"
-            : sorted[index].status
+          sorted[index].status.participants.endsWith("t")
+            ? sorted[index].status.participants + "ed"
+            : sorted[index].status.participants
         );
       });
     });
   });
 
   it("Sort Status Down", () => {
-    const sorted = participants.sort((a, b) => (b.status > a.status ? -1 : 1));
+    const sorted = participants.sort((a, b) =>
+      b.status.participants > a.status.participants ? -1 : 1
+    );
 
     cy.get('[data-cy="status-sort-down"]').click();
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="status"]').each((element, index) => {
         expect(element.text()).to.equal(
-          sorted[index].status.endsWith("t")
-            ? sorted[index].status + "ed"
-            : sorted[index].status
+          sorted[index].status.participants.endsWith("t")
+            ? sorted[index].status.participants + "ed"
+            : sorted[index].status.participants
         );
       });
     });

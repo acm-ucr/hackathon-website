@@ -1,6 +1,7 @@
 import response from "../../../fixtures/judges.json";
 
-const five = response.items.slice(0, 5);
+const judges = response.items;
+const five = judges.slice(0, 5);
 
 describe("Mentor Select", () => {
   beforeEach(() => {
