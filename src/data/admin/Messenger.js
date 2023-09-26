@@ -1,7 +1,5 @@
 export const FILTERS = {
-  accept: true,
-  reject: false,
-  pending: false,
+  participants: true,
   volunteers: false,
   mentors: false,
   judges: false,

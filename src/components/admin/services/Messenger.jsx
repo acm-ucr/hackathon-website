@@ -9,6 +9,7 @@ import Button from "../Button";
 import toast from "react-hot-toast";
 import Upload from "./Upload";
 import { FILTERS } from "@/data/admin/Messenger";
+import { FILTERS_ } from "@/data/admin/Messenger2";
 
 const Messenger = () => {
   const [email, setEmail] = useState({
@@ -18,6 +19,8 @@ const Messenger = () => {
     files: [],
   });
   const [filters, setFilters] = useState(FILTERS);
+  const [filters_, setFilters_] = useState(FILTERS_);
+
   const clickHandler = () => {
     if (email.subject === "") {
       toast("❌ Please add a subject!");
@@ -30,6 +33,7 @@ const Messenger = () => {
     toast(`✅ Email sent successfully!`);
     console.log(email);
   };
+  console.log(typeof Filters);
   return (
     <div className="w-full font-poppins h-full flex flex-col justify-between">
       <div className="flex flex-col pb-3 pt-4 h-full items-stretch justify-between">
@@ -39,6 +43,16 @@ const Messenger = () => {
           <Filters
             filters={filters}
             setFilters={setFilters}
+            setObjects={() => {}}
+            objects={[]}
+            input=""
+          />
+        </div>
+        <div className="flex items-center my-1">
+          <p className="text-lg font-extrabold mr-5 my-0">status:</p>
+          <Filters
+            filters={filters_}
+            setFilters={setFilters_}
             setObjects={() => {}}
             objects={[]}
             input=""
