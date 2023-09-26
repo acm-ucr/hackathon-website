@@ -11,7 +11,7 @@ import axios from "axios";
 
 const tags = ["professor", "industry", "student"];
 
-const Toolbar = ({ data, setData, judges }) => {
+const Toolbar = ({ data, setData, judges, setJudges }) => {
   const router = useRouter();
 
   const [popup, setPopup] = useState({
@@ -49,10 +49,22 @@ const Toolbar = ({ data, setData, judges }) => {
       return;
     }
 
+    if (judges.length === 0) {
+      setPopup({
+        title: "Insufficient Judges",
+        text: "There are not enough judges to go around to each team. Please consider adding more judges via the judge dashboard. ",
+        color: "green",
+        visible: true,
+      });
+      return;
+    }
+
     // Filter Professors vs Students + Industry
-    const professors = judges.filter((judge) => judge.type === "professor");
+    const professors = judges.filter(
+      (judge) => judge.affiliation === "professor"
+    );
     const studentsAndIndustry = judges.filter(
-      (judge) => judge.type !== "professor"
+      (judge) => judge.affiliation !== "professor"
     );
 
     const teams = [...data];
@@ -116,6 +128,7 @@ const Toolbar = ({ data, setData, judges }) => {
     }
 
     setData(teams);
+    axios.put("/api/judging", { teams }).then(() => toast("✅ Rounds Saved!"));
     setInput({
       ...input,
       rotations: "",
@@ -133,10 +146,28 @@ const Toolbar = ({ data, setData, judges }) => {
         return team;
       })
     );
+
+    const uids = data.map((team) => team.uid).join(",");
+
+    axios
+      .delete(`/api/judging?ids=${uids}`)
+      .then(() => toast("✅ Successfully Reset"));
   };
 
   const load = () => {
-    axios.get("/api/judging").then((response) => setData(response.data.items));
+    axios.get("/api/judging").then((response) => {
+      setData(response.data.items.teams);
+      setJudges(response.data.items.judges);
+
+      if (response.data.items.judges.length === 0) {
+        setPopup({
+          title: "Insufficient Judges",
+          text: "There are not enough judges to go around to each team. Please consider adding more judges via the judge dashboard. ",
+          color: "green",
+          visible: true,
+        });
+      }
+    });
   };
 
   useEffect(() => {

@@ -4,9 +4,12 @@ import Tag from "../../Tag";
 import { COLORS } from "@/data/Tags";
 import Link from "next/link";
 import { ICONS } from "@/data/admin/Icons";
+import Loading from "@/components/Loading";
 
 const Table = ({ data }) => {
-  return (
+  return data === null ? (
+    <Loading />
+  ) : (
     <Row className="overflow-y-scroll">
       {data
         .filter((group) => !group.hidden)
@@ -42,7 +45,7 @@ const Table = ({ data }) => {
                     {judges.map((judge, i) => (
                       <Tag
                         classes="mx-1"
-                        color={COLORS[judge.type]}
+                        color={COLORS[judge.affiliation]}
                         key={i}
                         text={judge.name}
                       />
