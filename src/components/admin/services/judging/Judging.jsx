@@ -3,7 +3,6 @@ import { useState } from "react";
 import Title from "../../Title.jsx";
 import Table from "./Table.jsx";
 import Toolbar from "./Toolbar.jsx";
-// import judges from "../../../../../cypress/fixtures/judges_list.json";
 
 const Judging = () => {
   const [data, setData] = useState(null);
