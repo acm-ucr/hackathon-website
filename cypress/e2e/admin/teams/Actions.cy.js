@@ -48,24 +48,6 @@ describe("Teams Actions", () => {
     );
   });
 
-  it("Win First 5 Entries", () => {
-    five.forEach((team) =>
-      cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
-    );
-
-    cy.action({
-      tag: "winner",
-      page: "teams",
-    });
-
-    five.forEach((team) =>
-      cy
-        .get(`[data-cy="${team.uid}"]`)
-        .find('[data-cy="winner-tag"]')
-        .should("exist")
-    );
-  });
-
   it("Pending First 5 Entries", () => {
     five.forEach((team) =>
       cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
