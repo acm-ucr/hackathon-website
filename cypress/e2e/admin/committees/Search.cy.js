@@ -14,7 +14,7 @@ describe("Committee Search", () => {
   it("No Search Results", () => {
     cy.get('[data-cy="toolbar"]').find('[data-cy="input-input"]').type("Meow");
     cy.get('[data-cy="toolbar"]').find("form").submit();
-    cy.contains("No committee Available");
+    cy.contains("No Committee Available");
   });
 
   it("Search For 1st Entry", () => {
