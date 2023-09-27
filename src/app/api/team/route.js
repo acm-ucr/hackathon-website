@@ -5,7 +5,6 @@ import { auth } from "@/utils/auth";
 
 export async function POST() {
   const res = NextResponse;
-
   const { message, authCode, uid, email, name } = await auth(
     ["participants"],
     false
@@ -14,11 +13,11 @@ export async function POST() {
   if (authCode === 200) {
     try {
       const team = {
-        name: "No Team Name",
+        name: "",
         links: {
-          github: "No Link",
-          devpost: "No Link",
-          figma: "No Link",
+          github: "",
+          devpost: "",
+          figma: "",
         },
         members: [{ email: email, name: name }],
         status: "pending",
@@ -47,19 +46,19 @@ export async function POST() {
 
 export async function PUT(req) {
   const res = NextResponse;
-  const teamData = await req.json();
+  const { name, github, figma, devpost, members } = await req.json();
   const { message, authCode, team } = await auth(["participants"], false);
 
   if (authCode === 200) {
     try {
       await updateDoc(doc(db, "teams", team), {
-        name: teamData.name,
+        name: name,
         links: {
-          github: teamData.github,
-          figma: teamData.figma,
-          devpost: teamData.devpost,
+          github: github,
+          figma: figma,
+          devpost: devpost,
         },
-        members: teamData.members,
+        members: members,
       });
       return res.json({ message: "OK" }, { status: 200 });
     } catch (err) {

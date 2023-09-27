@@ -112,7 +112,9 @@ const User = ({ user, setUser, edit, setEdit }) => {
             />
           ))
         : Object.keys(user.diet).map((diet, index) => (
-            <p key={index}>{diet}</p>
+            <p className="pl-3 mb-1" key={index}>
+              {diet}
+            </p>
           ))}
       <div className="w-full flex justify-center">
         {edit && <Button text="done" onClick={handleSave} />}

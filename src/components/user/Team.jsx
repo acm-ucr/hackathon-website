@@ -4,19 +4,23 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Loading from "../Loading";
+import { BiSolidCopy } from "react-icons/bi";
 
 const Team = ({ user, setUser }) => {
   const [team, setTeam] = useState(null);
   const [id, setId] = useState({});
   const [edit, setEdit] = useState(false);
   const defaultTeam = {
-    name: "No Team Name",
-    github: "No Link",
-    devpost: "No Link",
-    figma: "No Link",
+    name: "",
+    github: "",
+    devpost: "",
+    figma: "",
     members: [{ email: user.email, name: user.name }],
   };
-
+  const handleCopy = () => {
+    navigator.clipboard.writeText(user.team);
+    toast("✅ Successfully copy to clipboard!");
+  };
   const handleLeave = () => {
     axios.delete("/api/members").then(() => {
       toast("✅ Successfully left team!");
@@ -91,6 +95,7 @@ const Team = ({ user, setUser }) => {
             user={team}
             editable={edit}
             setUser={setTeam}
+            placeholder="no link"
           />
 
           <Input
@@ -101,6 +106,7 @@ const Team = ({ user, setUser }) => {
             user={team}
             editable={edit}
             setUser={setTeam}
+            placeholder="no link"
           />
 
           <Input
@@ -111,18 +117,28 @@ const Team = ({ user, setUser }) => {
             user={team}
             editable={edit}
             setUser={setTeam}
+            placeholder="no link"
           />
           <div>
             <p className="mb-1 font-semibold">Members</p>
             {team.members.map((member, index) => (
-              <p className="m-0" key={index}>
-                {member.name + " " + member.email}
+              <p className="pl-3 m-0 flex items-center" key={index}>
+                {member.name}
+                <span className="ml-3 text-sm text-hackathon-green-300">
+                  {member.email}
+                </span>
               </p>
             ))}
           </div>
           <div>
             <p className="mb-1 font-semibold">Team ID</p>
-            <p className="mb-0">{user.team}</p>
+            <p className="pl-3 mb-0 flex items-center">
+              {user.team}{" "}
+              <BiSolidCopy
+                onClick={handleCopy}
+                className="text-lg text-gray-400 ml-2 hover:cursor-pointer hover:text-hackathon-blue-100"
+              />
+            </p>
           </div>
           <div className="flex items-center justify-center">
             {edit && <Button text="done" onClick={handleSave} />}
