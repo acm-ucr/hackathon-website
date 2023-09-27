@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Loading from "../Loading";
-import { BiSolidCopy } from "react-icons/bi";
+import { BiLink, BiSolidCopy } from "react-icons/bi";
 
 const Team = ({ user, setUser }) => {
   const [team, setTeam] = useState(null);
@@ -19,7 +19,11 @@ const Team = ({ user, setUser }) => {
   };
   const handleCopy = () => {
     navigator.clipboard.writeText(user.team);
-    toast("✅ Successfully copy to clipboard!");
+    toast("✅ Successfully copy team ID to clipboard!");
+  };
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(`/user/join/${user.team}`);
+    toast("✅ Successfully copy join link to clipboard!");
   };
   const handleLeave = () => {
     axios.delete("/api/members").then(() => {
@@ -67,8 +71,15 @@ const Team = ({ user, setUser }) => {
   };
 
   useEffect(() => {
-    if (user.team)
-      axios.get("/api/team").then((response) => setTeam(response.data.items));
+    if (user.team) {
+      axios
+        .get(`/api/team?teamid=${user.team}`)
+        .then((response) => setTeam(response.data.items))
+        .catch(({ response: data }) => {
+          if (data.message === "Invalid Team ID") toast("❌ Invalid Team ID");
+          else toast("❌ Internal Server Error");
+        });
+    }
   }, [user.team]);
 
   return (
@@ -90,34 +101,34 @@ const Team = ({ user, setUser }) => {
           <Input
             name="github"
             type="text"
-            title="Github Link"
+            title="Github"
             value={team.github}
             user={team}
             editable={edit}
             setUser={setTeam}
-            placeholder="no link"
+            placeholder="N/A"
           />
 
           <Input
             name="devpost"
             type="text"
-            title="Devpost Link"
+            title="Devpost"
             value={team.devpost}
             user={team}
             editable={edit}
             setUser={setTeam}
-            placeholder="no link"
+            placeholder="N/A"
           />
 
           <Input
             name="figma"
             type="text"
-            title="Figma Link"
+            title="Figma"
             value={team.figma}
             user={team}
             editable={edit}
             setUser={setTeam}
-            placeholder="no link"
+            placeholder="N/A"
           />
           <div>
             <p className="mb-1 font-semibold">Members</p>
@@ -130,7 +141,7 @@ const Team = ({ user, setUser }) => {
               </p>
             ))}
           </div>
-          <div>
+          <div className="mt-3 pt-2">
             <p className="mb-1 font-semibold">Team ID</p>
             <p className="pl-3 mb-0 flex items-center">
               {user.team}{" "}
@@ -138,14 +149,16 @@ const Team = ({ user, setUser }) => {
                 onClick={handleCopy}
                 className="text-lg text-gray-400 ml-2 hover:cursor-pointer hover:text-hackathon-blue-100"
               />
+              <BiLink
+                onClick={handleCopyLink}
+                className="text-lg text-gray-400 ml-2 hover:cursor-pointer hover:text-hackathon-blue-100"
+              />
             </p>
           </div>
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-end gap-4">
             {edit && <Button text="done" onClick={handleSave} />}
             {!edit && <Button text="edit" onClick={handleEdit} />}
-          </div>
-          <div className="w-full flex justify-end">
-            <Button color="red" text="leave team" onClick={handleLeave} />
+            <Button color="red" text="leave" onClick={handleLeave} />
           </div>
         </>
       )}

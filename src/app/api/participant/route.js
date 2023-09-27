@@ -20,7 +20,7 @@ export async function POST(req) {
         grade: grade,
         gender: gender,
         shirt: shirt,
-        diet: Object.keys(diet).map((key) => diet[key]),
+        diet: Object.keys(diet).map((key) => diet[key] && key),
       });
       return res.json({ message: "OK" }, { status: 200 });
     } catch (err) {

@@ -72,13 +72,16 @@ export async function PUT(req) {
   }
 }
 
-export async function GET() {
+export async function GET(req) {
   const res = NextResponse;
-  const { message, authCode, team } = await auth(["participants"], false);
+  const team = req.nextUrl.searchParams.get("teamid");
+  const { message, authCode } = await auth(["participants"], false);
 
   if (authCode === 200) {
     try {
       const snapshot = await getDoc(doc(db, "teams", team));
+      if (!snapshot.exists())
+        return res.json({ message: "Invalid Team ID" }, { status: 500 });
       const { name, links, members } = snapshot.data();
       return res.json(
         {

@@ -33,12 +33,11 @@ const User = ({ user, setUser, edit, setEdit }) => {
       });
   };
   return (
-    <div className="bg-white rounded-lg p-4 gap-3 m-2 overflow-scroll max-h-[70vh]">
-      <Input
-        name="phone"
-        type="phone"
-        title="Phone Number"
-        value={user.phone}
+    <div className="bg-white rounded-lg p-4 gap-3 flex flex-col m-2 overflow-scroll max-h-[70vh]">
+      <Select
+        title="School"
+        options={SCHOOLS}
+        field="school"
         user={user}
         setUser={setUser}
         editable={edit}
@@ -52,25 +51,26 @@ const User = ({ user, setUser, edit, setEdit }) => {
         editable={edit}
       />
       <Select
-        title="Age"
-        options={AGES}
-        field="age"
-        user={user}
-        setUser={setUser}
-        editable={edit}
-      />
-      <Select
-        title="School"
-        options={SCHOOLS}
-        field="school"
-        user={user}
-        setUser={setUser}
-        editable={edit}
-      />
-      <Select
         title="Grade"
         options={GRADES}
         field="grade"
+        user={user}
+        setUser={setUser}
+        editable={edit}
+      />
+      <Input
+        name="phone"
+        type="phone"
+        title="Phone Number"
+        value={user.phone}
+        user={user}
+        setUser={setUser}
+        editable={edit}
+      />
+      <Select
+        title="Age"
+        options={AGES}
+        field="age"
         user={user}
         setUser={setUser}
         editable={edit}
@@ -91,31 +91,33 @@ const User = ({ user, setUser, edit, setEdit }) => {
         setUser={setUser}
         editable={edit}
       />
-      <p className="mb-1 font-semibold">Diet</p>
-      {edit
-        ? DIETS.map((option, index) => (
-            <Checkbox
-              className="w-1/2"
-              key={index}
-              toggle={user.diet[option]}
-              text={option}
-              onClick={() =>
-                setUser({
-                  ...user,
-                  diet: {
-                    ...user.diet,
-                    [option]: !user.diet[option],
-                  },
-                })
-              }
-              color="bg-hackathon-green-300"
-            />
-          ))
-        : Object.keys(user.diet).map((diet, index) => (
-            <p className="pl-3 mb-1" key={index}>
-              {diet}
-            </p>
-          ))}
+      <div>
+        <p className="mb-1 font-semibold">Diet</p>
+        {edit
+          ? DIETS.map((option, index) => (
+              <Checkbox
+                className="w-1/2"
+                key={index}
+                toggle={user.diet[option]}
+                text={option}
+                onClick={() =>
+                  setUser({
+                    ...user,
+                    diet: {
+                      ...user.diet,
+                      [option]: !user.diet[option],
+                    },
+                  })
+                }
+                color="bg-hackathon-green-300"
+              />
+            ))
+          : Object.keys(user.diet).map((diet, index) => (
+              <p className="pl-3 mb-1" key={index}>
+                {diet}
+              </p>
+            ))}
+      </div>
       <div className="w-full flex justify-center">
         {edit && <Button text="done" onClick={handleSave} />}
         {!edit && <Button text="edit" onClick={handleEdit} />}
