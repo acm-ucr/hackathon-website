@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Form from "@/app/forms/Form.jsx";
+import Form from "@/components/forms/Form.jsx";
 import { FIELDS } from "../../data/forms/Admins";
 import { useSession } from "next-auth/react";
 import axios from "axios";
@@ -14,10 +14,11 @@ const Admin = () => {
     email: session.user.email,
   });
 
-  const handleSubmit = () => {
-    axios
-      .post("/api/admins", admin)
-      .then(() => toast(`✅ Submitted successfully!`));
+  const handleSubmit = (setLoading) => {
+    axios.post("/api/admins", admin).then(() => {
+      setLoading(false);
+      toast(`✅ Submitted successfully!`);
+    });
   };
   return (
     <Form
@@ -25,7 +26,7 @@ const Admin = () => {
       object={admin}
       setObject={setAdmin}
       header="ADMIN PORTAL REQUEST"
-      submit={handleSubmit}
+      onSubmit={handleSubmit}
     />
   );
 };

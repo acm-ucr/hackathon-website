@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Form from "@/app/forms/Form.jsx";
+import Form from "@/components/forms/Form.jsx";
 import { FIELDS } from "../../data/forms/Mentors.js";
 import { useSession } from "next-auth/react";
 import axios from "axios";
@@ -15,15 +15,16 @@ const Mentor = () => {
     email: session.user.email,
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = (setLoading) => {
     const data = {
       ...mentor,
       availability: Object.keys(mentor.availability),
     };
 
-    axios
-      .post("/api/mentors", data)
-      .then(() => toast(`✅ Submitted successfully!`));
+    axios.post("/api/mentors", data).then(() => {
+      setLoading(false);
+      toast(`✅ Submitted successfully!`);
+    });
   };
   return (
     <Form
@@ -31,7 +32,7 @@ const Mentor = () => {
       object={mentor}
       setObject={setMentor}
       header="MENTOR APPLICATION"
-      submit={handleSubmit}
+      onSubmit={handleSubmit}
     />
   );
 };

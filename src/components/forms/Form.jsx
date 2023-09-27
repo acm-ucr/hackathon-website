@@ -9,9 +9,14 @@ import Button from "@/components/Button.jsx";
 import Textarea from "@/components/forms/Textarea.jsx";
 import Upload from "@/components/forms/Upload";
 import toast from "react-hot-toast";
+import { useState } from "react";
 
-const Form = ({ object, setObject, header, fields, submit }) => {
+const Form = ({ object, setObject, header, fields, onSubmit }) => {
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = () => {
+    setLoading(true);
+
     if (
       Object.entries(fields).some(
         ([key, value]) => value.required && (!object[key] || object[key] === "")
@@ -37,7 +42,7 @@ const Form = ({ object, setObject, header, fields, submit }) => {
       return;
     }
 
-    submit();
+    onSubmit(setLoading);
   };
   return (
     <div className="w-full h-full overflow-scroll flex flex-col items-center font-poppins">
@@ -141,7 +146,7 @@ const Form = ({ object, setObject, header, fields, submit }) => {
               </Col>
             ))}
             <Col xl={12} className="flex justify-center">
-              <Button text="Submit" onClick={handleSubmit} />
+              <Button text="Submit" onClick={handleSubmit} loading={loading} />
             </Col>
           </Row>
         </div>

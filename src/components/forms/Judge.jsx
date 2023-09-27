@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Form from "@/app/forms/Form.jsx";
+import Form from "@/components/forms/Form.jsx";
 import { FIELDS } from "../../data/forms/Judge.js";
 import { useSession } from "next-auth/react";
 import axios from "axios";
@@ -14,14 +14,15 @@ const judge = () => {
     email: session.user.email,
   });
 
-  const handleSubmit = () => {
+  const handleSubmit = (setLoading) => {
     const data = {
       ...judge,
     };
 
-    axios
-      .post("/api/judges", data)
-      .then(() => toast(`✅ Submitted successfully!`));
+    axios.post("/api/judges", data).then(() => {
+      setLoading(false);
+      toast(`✅ Submitted successfully!`);
+    });
   };
 
   return (
@@ -30,7 +31,7 @@ const judge = () => {
       object={judge}
       setObject={setJudge}
       header="JUDGE APPLICATION"
-      submit={handleSubmit}
+      onSubmit={handleSubmit}
     />
   );
 };

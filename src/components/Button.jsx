@@ -1,17 +1,12 @@
-import { useState } from "react";
-
-const Button = ({ onClick, text }) => {
-  const [displayText, setText] = useState(text);
+const Button = ({ onClick, text, loading }) => {
   return (
     <button
+      disabled={loading}
       data-cy={`${text}-button`}
-      className="text-gray-800 py-1 hover:opacity-50 text-xl font-bold px-4 rounded-xl bg-hackathon-green-300 mt-3"
-      onClick={() => {
-        setText("Loading...");
-        onClick().then(() => setText(text));
-      }}
+      className="text-gray-800 py-1 disabled:opacity-50 hover:opacity-50 text-xl font-bold px-4 rounded-xl bg-hackathon-green-300 mt-3"
+      onClick={onClick}
     >
-      {displayText}
+      {loading ? "Loading..." : text}
     </button>
   );
 };
