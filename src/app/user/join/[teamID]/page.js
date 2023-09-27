@@ -72,7 +72,7 @@ export default function page({ params }) {
               </span>
             </p>
           ))}
-          <Button text="Join" onClick={handleJoin} />
+          <Button color="green" size="xl" text="Join" onClick={handleJoin} />
         </div>
       )}
     </div>

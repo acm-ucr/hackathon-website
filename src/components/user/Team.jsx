@@ -44,9 +44,9 @@ const Team = ({ user, setUser }) => {
         setUser({ ...user, team: id.team });
       })
       .catch(({ response: data }) => {
-        if (data.message === "Excceed 4 People Limit")
+        if (data.data.message === "Excceed 4 People Limit")
           toast("❌ Exceeded 4 People Limit");
-        else if (data.message === "Invalid Team ID")
+        else if (data.data.message === "Invalid Team ID")
           toast("❌ Invalid Team ID");
         else toast("❌ Internal Server Error");
       });
@@ -158,8 +158,22 @@ const Team = ({ user, setUser }) => {
             </p>
           </div>
           <div className="flex items-center justify-end gap-4">
-            {edit && <Button text="done" onClick={handleSave} />}
-            {!edit && <Button text="edit" onClick={handleEdit} />}
+            {edit && (
+              <Button
+                color="green"
+                size="xl"
+                text="done"
+                onClick={handleSave}
+              />
+            )}
+            {!edit && (
+              <Button
+                color="green"
+                size="xl"
+                text="edit"
+                onClick={handleEdit}
+              />
+            )}
             <Button color="red" text="leave" onClick={handleLeave} />
           </div>
         </>
@@ -177,9 +191,19 @@ const Team = ({ user, setUser }) => {
               editable={true}
               setUser={setId}
             />
-            <Button text="join team" onClick={handleJoin} />
+            <Button
+              color="green"
+              size="xl"
+              text="join team"
+              onClick={handleJoin}
+            />
           </div>
-          <Button text="create new team" onClick={handleCreate} />
+          <Button
+            color="green"
+            size="xl"
+            text="create new team"
+            onClick={handleCreate}
+          />
         </>
       )}
     </div>

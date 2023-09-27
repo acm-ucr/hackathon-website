@@ -1,6 +1,6 @@
 import { COLORS, SIZES } from "@/data/Button";
 
-const Button = ({ onClick, text, loading, color = "green", size = "xl" }) => {
+const Button = ({ onClick, text, loading, color, size }) => {
   return (
     <button
       disabled={loading}
