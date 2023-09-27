@@ -23,12 +23,12 @@ const Dashboard = () => {
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Title title="Dashboard" />
       <ProfileHeader email={user.email} name={user.name} />
-      <Row className="h-full">
+      <Row className="h-full overflow-scroll gap-3 justify-center">
         <Col xl={6} className="h-full">
           <User user={user} setUser={setUser} edit={edit} setEdit={setEdit} />
         </Col>
         {user.status.participants === "accept" && (
-          <Col xl={6} className="h-full">
+          <Col xl={5} className="h-full">
             <Team user={user} team={user.team} setUser={setUser} />
           </Col>
         )}
