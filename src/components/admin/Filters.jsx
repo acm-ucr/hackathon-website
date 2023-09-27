@@ -8,22 +8,23 @@ const Filters = ({ filters, setFilters, setObjects, objects, input, page }) => {
     const filterValues = { ...filters, [filter]: !filters[filter] };
     setFilters(filterValues);
 
-    setObjects(
-      objects.map((a) => {
-        let boolean = true;
+    setObjects &&
+      setObjects(
+        objects.map((a) => {
+          let boolean = true;
 
-        Object.entries(filterValues).map(([filter, value]) => {
-          if (
-            a.status[page] === filter &&
-            value &&
-            a.name.toLowerCase().match(input.toLowerCase())
-          ) {
-            boolean = false;
-          }
-        });
-        return { ...a, hidden: boolean };
-      })
-    );
+          Object.entries(filterValues).map(([filter, value]) => {
+            if (
+              a.status[page] === filter &&
+              value &&
+              a.name.toLowerCase().match(input.toLowerCase())
+            ) {
+              boolean = false;
+            }
+          });
+          return { ...a, hidden: boolean };
+        })
+      );
   };
 
   return (

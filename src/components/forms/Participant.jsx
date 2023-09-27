@@ -2,7 +2,7 @@
 "use client";
 
 import { useState } from "react";
-import Form from "@/app/forms/Form.jsx";
+import Form from "@/components/forms/Form.jsx";
 import { FIELDS } from "../../data/forms/Participant.js";
 import { useSession } from "next-auth/react";
 import axios from "axios";
@@ -15,15 +15,16 @@ const Participant = () => {
     email: session.user.email,
   });
 
-  const handleSubmit = async () => {
+  const handleSubmit = (setLoading) => {
     const data = {
       ...participant,
       diet: Object.keys(participant.diet),
     };
 
-    await axios
-      .post("/api/participants", data)
-      .then(() => toast(`✅ Submitted successfully!`));
+    axios.post("/api/participants", data).then(() => {
+      setLoading(false);
+      toast(`✅ Submitted successfully!`);
+    });
   };
 
   return (
@@ -32,7 +33,7 @@ const Participant = () => {
       object={participant}
       setObject={setParticipant}
       header="HACKER APPLICATION"
-      submit={handleSubmit}
+      onSubmit={handleSubmit}
     />
   );
 };

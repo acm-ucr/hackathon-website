@@ -10,9 +10,6 @@ export const TAGS = [
     text: "qualify",
   },
   {
-    text: "winner",
-  },
-  {
     text: "disqualify",
   },
   {

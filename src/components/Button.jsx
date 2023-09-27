@@ -1,21 +1,16 @@
-import { useState } from "react";
 import { COLORS, SIZES } from "@/data/Button";
 
-const Button = ({ onClick, text, color = "green", size = "xl" }) => {
-  const [loading, setLoading] = useState(false);
+const Button = ({ onClick, text, loading, color = "green", size = "xl" }) => {
   return (
     <button
-      data-cy={`${text}-button`}
       disabled={loading}
+      data-cy={`${text}-button`}
       className={`${loading ? COLORS["gray"].bg : COLORS[color].bg} ${
         loading ? COLORS["gray"].text : COLORS[color].text
       } ${SIZES[size]} ${
         COLORS[color].border
       } py-1 hover:opacity-50 font-bold px-4 rounded-xl mt-3`}
-      onClick={() => {
-        setLoading(true);
-        onClick().then(() => setLoading(false));
-      }}
+      onClick={onClick}
     >
       {loading ? "Loading..." : text}
     </button>

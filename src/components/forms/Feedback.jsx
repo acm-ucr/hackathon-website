@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Form from "@/app/forms/Form.jsx";
+import Form from "@/components/forms/Form.jsx";
 import { FIELDS } from "../../data/forms/Feedback.js";
 
 const Feedback = () => {

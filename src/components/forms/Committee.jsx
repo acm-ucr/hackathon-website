@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Form from "@/app/forms/Form.jsx";
+import Form from "@/components/forms/Form.jsx";
 import { FIELDS } from "../../data/forms/Committees";
 import { useSession } from "next-auth/react";
 import axios from "axios";
@@ -14,10 +14,11 @@ const Committee = () => {
     email: session.user.email,
   });
 
-  const handleSubmit = async () => {
-    await axios
-      .post("/api/committees", committee)
-      .then(() => toast(`✅ Submitted successfully!`));
+  const handleSubmit = (setLoading) => {
+    axios.post("/api/committees", committee).then(() => {
+      setLoading(false);
+      toast(`✅ Submitted successfully!`);
+    });
   };
   return (
     <Form
@@ -25,7 +26,7 @@ const Committee = () => {
       object={committee}
       setObject={setCommittee}
       header="COMMITTEE PORTAL REQUEST"
-      submit={handleSubmit}
+      onSubmit={handleSubmit}
     />
   );
 };

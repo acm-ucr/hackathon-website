@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Form from "@/app/forms/Form.jsx";
+import Form from "@/components/forms/Form.jsx";
 import { FIELDS } from "../../data/forms/Volunteers.js";
 import { useSession } from "next-auth/react";
 import axios from "axios";
@@ -14,15 +14,16 @@ const volunteer = () => {
     email: session.user.email,
   });
 
-  const handleSubmit = async () => {
+  const handleSubmit = (setLoading) => {
     const data = {
       ...volunteer,
       availability: Object.keys(volunteer.availability),
     };
 
-    await axios
-      .post("/api/volunteers", data)
-      .then(() => toast(`✅ Submitted successfully!`));
+    axios.post("/api/volunteers", data).then(() => {
+      setLoading(false);
+      toast(`✅ Submitted successfully!`);
+    });
   };
   return (
     <Form
@@ -30,7 +31,7 @@ const volunteer = () => {
       object={volunteer}
       setObject={setVolunteer}
       header="VOLUNTEER APPLICATION"
-      submit={handleSubmit}
+      onSubmit={handleSubmit}
     />
   );
 };

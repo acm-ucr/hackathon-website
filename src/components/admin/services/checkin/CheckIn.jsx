@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Title from "../../Title";
-import ScanQRCode from "./ScanQRCode";
+import Scanner from "./Scanner";
 import DropDown from "../DropDown";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -77,8 +77,7 @@ const CheckIn = () => {
               setOptions={setEvents}
             />
           )}
-
-          <ScanQRCode setResult={setResult} />
+          <Scanner setResult={setResult} />
           <Button
             text="Check In"
             color="green"
@@ -86,9 +85,6 @@ const CheckIn = () => {
             size="text-xl"
           />
         </Col>
-        {/* <Col xs={12} md={6} className="p-3 m-0 flex flex-col justify-around">
-          <CheckInfo info={info} events={events} />
-        </Col> */}
       </Row>
     </div>
   );
