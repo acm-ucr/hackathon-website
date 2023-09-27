@@ -175,9 +175,6 @@ const Table = ({
                           !Array.isArray(object[header.text]) && (
                             <div data-cy={`${header.text}`}>
                               {object[header.text]}
-                              {(object.position === header.symbol ||
-                                object.status === header.symbol) &&
-                                ICONS[header.symbol]}
                             </div>
                           )}
                       </Col>
