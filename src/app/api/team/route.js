@@ -3,12 +3,17 @@ import { NextResponse } from "next/server";
 import { authOptions } from "../auth/[...nextauth]/route";
 import { db } from "../../../../firebase";
 import { doc, getDoc, updateDoc, addDoc, collection } from "firebase/firestore";
+import { auth } from "@/utils/auth";
 
 export async function POST() {
   const res = NextResponse;
-  const session = await getServerSession(authOptions);
 
-  if (session) {
+  const { message, authCode, uid, email, name } = await auth(
+    ["participants"],
+    false
+  );
+
+  if (authCode === 200) {
     try {
       const team = {
         name: "No Team Name",
@@ -17,11 +22,11 @@ export async function POST() {
           devpost: "No Link",
           figma: "No Link",
         },
-        members: [{ email: session.user.email, name: session.user.name }],
+        members: [{ email: email, name: name }],
         status: "pending",
       };
       const docRef = await addDoc(collection(db, "teams"), team);
-      await updateDoc(doc(db, "users", session.user.id), {
+      await updateDoc(doc(db, "users", uid), {
         team: docRef.id,
       });
       return res.json(
@@ -38,28 +43,27 @@ export async function POST() {
       );
     }
   } else {
-    return res.json(
-      { error: "Invalid Authentication Credentials." },
-      { status: 401 }
-    );
+    return res.json({ message }, { status: authCode });
   }
 }
 
 export async function PUT(req) {
   const res = NextResponse;
-  const { name, github, figma, devpost, members } = await req.json();
+  const teamData = await req.json();
+  const { message, authCode, team } = await auth(["participants"], false);
+
   const session = await getServerSession(authOptions);
 
   if (session) {
     try {
-      await updateDoc(doc(db, "teams", session.user.team), {
-        name: name,
+      await updateDoc(doc(db, "teams", team), {
+        name: teamData.name,
         links: {
-          github: github,
-          figma: figma,
-          devpost: devpost,
+          github: teamData.github,
+          figma: teamData.figma,
+          devpost: teamData.evpost,
         },
-        members: members,
+        members: teamData.members,
       });
       return res.json({ message: "OK" }, { status: 200 });
     } catch (err) {
@@ -69,20 +73,17 @@ export async function PUT(req) {
       );
     }
   } else {
-    return res.json(
-      { error: "Invalid Authentication Credentials." },
-      { status: 401 }
-    );
+    return res.json({ message }, { status: authCode });
   }
 }
 
 export async function GET() {
   const res = NextResponse;
-  const session = await getServerSession(authOptions);
+  const { message, authCode, team } = await auth(["participants"], false);
 
-  if (session) {
+  if (authCode === 200) {
     try {
-      const snapshot = await getDoc(doc(db, "teams", session.user.team));
+      const snapshot = await getDoc(doc(db, "teams", team));
       const { name, links, members } = snapshot.data();
       return res.json(
         {
@@ -104,9 +105,6 @@ export async function GET() {
       );
     }
   } else {
-    return res.json(
-      { error: "Invalid Authentication Credentials" },
-      { status: 401 }
-    );
+    return res.json({ message }, { status: authCode });
   }
 }

@@ -7,9 +7,9 @@ export const auth = async (roles, accepted) => {
     ? Object.keys(session.user.status).map(
         (status) => session.user.status[status] === "accept"
       )
-    : session.user.roles;
+    : session.user.role;
   if (session.user) {
-    if (roles.some((role) => userRoles.includes(role)))
+    if (!roles || roles.some((role) => userRoles.includes(role)))
       return {
         message: null,
         authCode: 200,

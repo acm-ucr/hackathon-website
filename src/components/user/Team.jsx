@@ -34,9 +34,9 @@ const Team = ({ user, setUser }) => {
         setUser({ ...user, team: id.team });
       })
       .catch(({ response: data }) => {
-        if (response.message === "Excceed 4 People Limit")
+        if (data.message === "Excceed 4 People Limit")
           toast("❌ Exceeded 4 People Limit");
-        else if (response.message === "Invalid Team ID")
+        else if (data.message === "Invalid Team ID")
           toast("❌ Invalid Team ID");
         else toast("❌ Internal Server Error");
       });
