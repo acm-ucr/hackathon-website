@@ -157,17 +157,17 @@ const Table = ({
                               }`}
                               key={index}
                             >
-                              {header.text === "links" ? (
-                                <Link
-                                  href={element.link}
-                                  className="flex items-center m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-sm"
-                                >
-                                  {ICONS[element.name]}
-                                  {element.link.replace("https://", "")}
-                                </Link>
-                              ) : (
-                                element
-                              )}
+                              {header.text === "links"
+                                ? element.link !== "No Link" && (
+                                    <Link
+                                      href={element.link}
+                                      className="flex items-center m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-sm"
+                                    >
+                                      {ICONS[element.name]}
+                                      {element.link.replace("https://", "")}
+                                    </Link>
+                                  )
+                                : element}
                             </p>
                           ))}
 

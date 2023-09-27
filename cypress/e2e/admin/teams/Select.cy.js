@@ -1,15 +1,15 @@
-import DATA from "../../../fixtures/teams.json";
+import response from "../../../fixtures/teams.json";
 
-const teams = DATA;
-
+const teams = response.items;
 const five = teams.slice(0, 5);
 
-describe("Participant Select", () => {
+describe("Teams Select", () => {
   beforeEach(() => {
-    cy.login("admins");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/teams");
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "teams",
+    });
   });
 
   it("Select All", () => {

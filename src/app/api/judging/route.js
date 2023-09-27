@@ -3,68 +3,66 @@ import { NextResponse } from "next/server";
 import { authOptions } from "../auth/[...nextauth]/route";
 import { db } from "../../../../firebase";
 import {
-  doc,
-  updateDoc,
-  setDoc,
   collection,
+  doc,
   getDocs,
-  deleteDoc,
+  updateDoc,
+  query,
+  where,
+  deleteField,
 } from "firebase/firestore";
-
-export async function POST(req) {
-  const res = NextResponse;
-  const { name, category, team, uid } = await req.json();
-  const session = await getServerSession(authOptions);
-
-  if (session) {
-    try {
-      await setDoc(doc(db, "prizes", uid), {
-        name: name,
-        category: category,
-        team: team,
-      });
-      return res.json({ message: "OK" }, { status: 200 });
-    } catch (err) {
-      return res.json(
-        { message: `Internal Server Error: ${err}` },
-        { status: 500 }
-      );
-    }
-  } else {
-    return res.json(
-      { error: "Invalid Authentication Credentials." },
-      { status: 401 }
-    );
-  }
-}
 
 export async function GET() {
   const res = NextResponse;
   const session = await getServerSession(authOptions);
-  const prizes = [];
   const teams = [];
+  const judges = [];
 
   if (session) {
     if (session.user.role.includes("admins")) {
       try {
-        const prizesSnapshot = await getDocs(collection(db, "prizes"));
-        prizesSnapshot.forEach((doc) => {
-          prizes.push({
-            ...doc.data(),
+        const teamsSnapshot = await getDocs(
+          query(collection(db, "teams"), where("status", "==", "qualify"))
+        );
+        teamsSnapshot.forEach((doc) => {
+          const { links, name, rounds, table } = doc.data();
+
+          const formattedRounds =
+            rounds === undefined ? [] : JSON.parse(rounds);
+          const formattedTable = table === undefined ? "" : table;
+          const formattedLinks = Object.entries(links).map(([key, value]) => {
+            return { name: key, link: value };
+          });
+
+          teams.push({
+            links: formattedLinks,
+            rounds: formattedRounds,
+            table: formattedTable,
+            name,
             uid: doc.id,
-            selected: false,
             hidden: false,
           });
         });
 
-        const teamsSnapshot = await getDocs(collection(db, "teams"));
-        teamsSnapshot.forEach((doc) => {
-          const { name } = doc.data();
-          teams.push({ name });
+        const judgesSnapshot = await getDocs(
+          query(
+            collection(db, "users"),
+            where("role", "array-contains", "judges"),
+            where("status", "==", "accept")
+          )
+        );
+        judgesSnapshot.forEach((doc) => {
+          const { affiliation, name } = doc.data();
+
+          judges.push({
+            affiliation,
+            name,
+            uid: doc.id,
+          });
         });
 
         return res.json(
-          { message: "OK", items: { prizes, teams } },
+          { message: "OK", items: { teams, judges } },
           { status: 200 }
         );
       } catch (err) {
@@ -84,19 +82,22 @@ export async function GET() {
   }
 }
 
-export async function PUT(req) {
+export async function DELETE(req) {
   const res = NextResponse;
-  const { name, category, team, uid } = await req.json();
   const session = await getServerSession(authOptions);
+
+  const ids = req.nextUrl.searchParams.get("ids").split(",");
 
   if (session) {
     if (session.user.role.includes("admins")) {
       try {
-        await updateDoc(doc(db, "prizes", uid), {
-          name: name,
-          category: category,
-          team: team,
+        ids.forEach(async (id) => {
+          await updateDoc(doc(db, "teams", id), {
+            table: deleteField(),
+            rounds: deleteField(),
+          });
         });
+
         return res.json({ message: "OK" }, { status: 200 });
       } catch (err) {
         return res.json(
@@ -115,17 +116,22 @@ export async function PUT(req) {
   }
 }
 
-export async function DELETE(req) {
+export async function PUT(req) {
   const res = NextResponse;
-  const ids = req.nextUrl.searchParams.get("ids").split(",");
+  const { teams } = await req.json();
   const session = await getServerSession(authOptions);
 
   if (session) {
     if (session.user.role.includes("admins")) {
       try {
-        ids.forEach(async (id) => {
-          await deleteDoc(doc(db, "prizes", id));
+        teams.forEach(async (object) => {
+          const rounds = JSON.stringify(object.rounds);
+          await updateDoc(doc(db, "teams", object.uid), {
+            table: object.table,
+            rounds: rounds,
+          });
         });
+
         return res.json({ message: "OK" }, { status: 200 });
       } catch (err) {
         return res.json(

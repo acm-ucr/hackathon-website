@@ -5,13 +5,10 @@ import Filters from "@/components/admin/Filters";
 import Toolbar from "@/components/admin/dashboards/Toolbar";
 import Title from "../Title";
 import Table from "../Table";
-import DATA from "../../../../cypress/fixtures/teams.json";
 import { FILTERS, HEADERS, TAGS } from "@/data/admin/Teams";
 
-const teamList = DATA;
-
 const Teams = () => {
-  const [teams, setTeams] = useState(teamList);
+  const [teams, setTeams] = useState(null);
   const [input, setInput] = useState({
     input: "",
   });
@@ -28,6 +25,7 @@ const Teams = () => {
           setObjects={setTeams}
           objects={teams}
           input={input.input}
+          page="teams"
         />
       </div>
       <Toolbar

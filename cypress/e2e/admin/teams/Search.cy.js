@@ -1,13 +1,14 @@
-import DATA from "../../../fixtures/teams.json";
+import response from "../../../fixtures/teams.json";
 
-const teams = DATA;
+const teams = response.items;
 
 describe("Team Search", () => {
   beforeEach(() => {
-    cy.login("admins");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/teams");
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "teams",
+    });
   });
 
   it("No Search Results", () => {

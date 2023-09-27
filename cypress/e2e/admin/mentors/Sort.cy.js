@@ -92,7 +92,11 @@ describe("Mentor Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="status"]').each((element, index) => {
-        expect(element.text()).to.equal(sorted[index].status.mentors);
+        expect(element.text()).to.equal(
+          sorted[index].status.mentors.endsWith("m")
+            ? sorted[index].status.mentors + "ed"
+            : sorted[index].status.mentors
+        );
       });
     });
   });
@@ -106,7 +110,11 @@ describe("Mentor Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="status"]').each((element, index) => {
-        expect(element.text()).to.equal(sorted[index].status.mentors);
+        expect(element.text()).to.equal(
+          sorted[index].status.mentors.endsWith("m")
+            ? sorted[index].status.mentors + "ed"
+            : sorted[index].status.mentors
+        );
       });
     });
   });

@@ -18,8 +18,9 @@
           "link": "https://figma.com"
         }
       ],
-      "status": "winner",
+      "status": { "teams": "winner" },
       "selected": false,
+      "rounds": [],
       "members": ["Menthy Wu", "Mengxuan Wu"],
       "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
       "hidden": false
@@ -37,8 +38,9 @@
           "link": "https://rose-hack-2021.devpost.com"
         }
       ],
-      "status": "pending",
+      "status": { "teams": "pending" },
       "selected": false,
+      "rounds": [],
       "members": ["Menthy Wu", "Mengxuan Wu"],
       "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
       "hidden": false
@@ -56,8 +58,9 @@
           "link": "https://rose-hack-2021.devpost.com"
         }
       ],
-      "status": "qualify",
+      "status": { "teams": "qualify" },
       "selected": false,
+      "rounds": [],
       "members": ["Menthy Wu", "Mengxuan Wu"],
       "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
       "hidden": false
@@ -75,8 +78,9 @@
           "link": "https://rose-hack-2021.devpost.com"
         }
       ],
-      "status": "disqualify",
+      "status": { "teams": "winner" },
       "selected": false,
+      "rounds": [],
       "members": ["Menthy Wu", "Mengxuan Wu"],
       "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
       "hidden": false
@@ -94,8 +98,9 @@
           "link": "https://rose-hack-2021.devpost.com"
         }
       ],
-      "status": "winner",
+      "status": { "teams": "winner" },
       "selected": false,
+      "rounds": [],
       "members": ["Tiffany Wang", "Tiffany Wu"],
       "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
       "hidden": false
@@ -113,8 +118,9 @@
           "link": "https://rose-hack-2021.devpost.com"
         }
       ],
-      "status": "winner",
+      "status": { "teams": "winner" },
       "selected": false,
+      "rounds": [],
       "members": ["Tiffany Wang", "Tiffany Wu"],
       "emails": ["twang022@ucr.edu", "twu278@ucr.edu"],
       "hidden": false
@@ -132,8 +138,9 @@
           "link": "https://rose-hack-2021.devpost.com"
         }
       ],
-      "status": "winner",
+      "status": { "teams": "winner" },
       "selected": false,
+      "rounds": [],
       "members": ["Tiffany Wang", "Tiffany Wu"],
       "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
       "hidden": false
@@ -151,8 +158,9 @@
           "link": "https://rose-hack-2021.devpost.com"
         }
       ],
-      "status": "winner",
+      "status": { "teams": "winner" },
       "selected": false,
+      "rounds": [],
       "members": ["Tiffany Wang", "Tiffany Wu"],
       "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
       "hidden": false
@@ -170,8 +178,9 @@
           "link": "https://rose-hack-2021.devpost.com"
         }
       ],
-      "status": "disqualify",
+      "status": { "teams": "winner" },
       "selected": false,
+      "rounds": [],
       "members": ["Tiffany Wang", "Tiffany Wu"],
       "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
       "hidden": false
@@ -189,8 +198,9 @@
           "link": "https://rose-hack-2021.devpost.com"
         }
       ],
-      "status": "disqualify",
+      "status": { "teams": "winner" },
       "selected": false,
+      "rounds": [],
       "members": ["Tiffany Wang", "Tiffany Wu"],
       "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
       "hidden": false
@@ -208,8 +218,9 @@
           "link": "https://rose-hack-2021.devpost.com"
         }
       ],
-      "status": "pending",
+      "status": { "teams": "pending" },
       "selected": false,
+      "rounds": [],
       "members": ["Tiffany Wang", "Tiffany Wu"],
       "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
       "hidden": false
@@ -227,8 +238,9 @@
           "link": "https://rose-hack-2021.devpost.com"
         }
       ],
-      "status": "disqualify",
+      "status": { "teams": "winner" },
       "selected": false,
+      "rounds": [],
       "members": ["Tiffany Wang", "Tiffany Wu"],
       "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
       "hidden": false
@@ -246,8 +258,9 @@
           "link": "https://rose-hack-2021.devpost.com"
         }
       ],
-      "status": "disqualify",
+      "status": { "teams": "winner" },
       "selected": false,
+      "rounds": [],
       "members": ["Tiffany Wang", "Tiffany Wu"],
       "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
       "hidden": false
@@ -265,8 +278,9 @@
           "link": "https://rose-hack-2021.devpost.com"
         }
       ],
-      "status": "disqualify",
+      "status": { "teams": "winner" },
       "selected": false,
+      "rounds": [],
       "members": ["Tiffany Wang", "Tiffany Wu"],
       "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
       "hidden": false
@@ -284,8 +298,9 @@
           "link": "https://rose-hack-2021.devpost.com"
         }
       ],
-      "status": "disqualify",
+      "status": { "teams": "winner" },
       "selected": false,
+      "rounds": [],
       "members": ["Tiffany Wang", "Tiffany Wu"],
       "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
       "hidden": false
@@ -303,8 +318,9 @@
           "link": "https://rose-hack-2021.devpost.com"
         }
       ],
-      "status": "disqualify",
+      "status": { "teams": "winner" },
       "selected": false,
+      "rounds": [],
       "members": ["Tiffany Wang", "Tiffany Wu"],
       "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
       "hidden": false
@@ -322,8 +338,9 @@
           "link": "https://rose-hack-2021.devpost.com"
         }
       ],
-      "status": "disqualify",
+      "status": { "teams": "winner" },
       "selected": false,
+      "rounds": [],
       "members": ["Tiffany Wang", "Tiffany Wu"],
       "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
       "hidden": false
@@ -341,8 +358,9 @@
           "link": "https://rose-hack-2021.devpost.com"
         }
       ],
-      "status": "disqualify",
+      "status": { "teams": "winner" },
       "selected": false,
+      "rounds": [],
       "members": ["Tiffany Wang", "Tiffany Wu"],
       "emails": ["yhung022@ucr.edu", "yhung022@ucr.edu"],
       "hidden": false

@@ -38,7 +38,7 @@ const Comittee = () => {
       />
       <Table
         headers={headers}
-        empty="No Comittee Available"
+        empty="No Committee Available"
         setHeaders={setHeaders}
         setObjects={setCommittees}
         objects={committees}
