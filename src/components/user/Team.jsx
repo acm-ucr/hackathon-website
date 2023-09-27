@@ -80,6 +80,7 @@ const Team = ({ user, setUser }) => {
             user={team}
             setUser={setTeam}
             editable={edit}
+            placeholder="no team name"
           />
 
           <Input

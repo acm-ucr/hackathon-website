@@ -1,6 +1,4 @@
-import { getServerSession } from "next-auth/next";
 import { NextResponse } from "next/server";
-import { authOptions } from "../auth/[...nextauth]/route";
 import { db } from "../../../../firebase";
 import { doc, getDoc, updateDoc, addDoc, collection } from "firebase/firestore";
 import { auth } from "@/utils/auth";
@@ -52,16 +50,14 @@ export async function PUT(req) {
   const teamData = await req.json();
   const { message, authCode, team } = await auth(["participants"], false);
 
-  const session = await getServerSession(authOptions);
-
-  if (session) {
+  if (authCode === 200) {
     try {
       await updateDoc(doc(db, "teams", team), {
         name: teamData.name,
         links: {
           github: teamData.github,
           figma: teamData.figma,
-          devpost: teamData.evpost,
+          devpost: teamData.devpost,
         },
         members: teamData.members,
       });
