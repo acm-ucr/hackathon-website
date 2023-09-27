@@ -1,12 +1,17 @@
 import { useState } from "react";
+import { COLORS, SIZES } from "@/data/Button";
 
-const Button = ({ onClick, text }) => {
+const Button = ({ onClick, text, color = "green", size = "xl" }) => {
   const [loading, setLoading] = useState(false);
   return (
     <button
       data-cy={`${text}-button`}
       disabled={loading}
-      className="text-gray-800 py-1 hover:opacity-50 text-xl font-bold px-4 rounded-xl bg-hackathon-green-300 mt-3"
+      className={`${loading ? COLORS["gray"].bg : COLORS[color].bg} ${
+        loading ? COLORS["gray"].text : COLORS[color].text
+      } ${SIZES[size]} ${
+        COLORS[color].border
+      } py-1 hover:opacity-50 font-bold px-4 rounded-xl mt-3`}
       onClick={() => {
         setLoading(true);
         onClick().then(() => setLoading(false));

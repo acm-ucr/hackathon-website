@@ -144,7 +144,9 @@ const Team = ({ user, setUser }) => {
             {edit && <Button text="done" onClick={handleSave} />}
             {!edit && <Button text="edit" onClick={handleEdit} />}
           </div>
-          <Button text="leave team" onClick={handleLeave} />
+          <div className="w-full flex justify-end">
+            <Button color="red" text="leave team" onClick={handleLeave} />
+          </div>
         </>
       )}
       {!user.team && (
