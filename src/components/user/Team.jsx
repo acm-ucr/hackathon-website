@@ -22,7 +22,9 @@ const Team = ({ user, setUser }) => {
     toast("✅ Successfully copy team ID to clipboard!");
   };
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(`/user/join/${user.team}`);
+    navigator.clipboard.writeText(
+      `${process.env.NEXT_PUBLIC_URL}user/join/${user.team}`
+    );
     toast("✅ Successfully copy join link to clipboard!");
   };
   const handleLeave = () => {

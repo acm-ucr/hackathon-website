@@ -5,16 +5,21 @@ import axios from "axios";
 import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { useSession } from "next-auth/react";
 
 export default function page({ params }) {
   const [team, setTeam] = useState(null);
   const [error, setError] = useState(null);
   const router = useRouter();
+  const { update: sessionUpdate } = useSession();
   const handleJoin = () => {
     axios
       .put("/api/members", { team: params.teamID })
       .then(() => {
         toast("✅ Successfully joined team!");
+        sessionUpdate({
+          team: params.teamID,
+        });
         router.push("/user/");
       })
       .catch((response) => {
