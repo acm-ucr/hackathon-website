@@ -14,8 +14,8 @@ const Admin = () => {
     email: session.user.email,
   });
 
-  const handleSubmit = async () => {
-    await axios
+  const handleSubmit = () => {
+    axios
       .post("/api/admins", admin)
       .then(() => toast(`✅ Submitted successfully!`));
   };

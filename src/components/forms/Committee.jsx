@@ -14,8 +14,8 @@ const Committee = () => {
     email: session.user.email,
   });
 
-  const handleSubmit = async () => {
-    await axios
+  const handleSubmit = () => {
+    axios
       .post("/api/committees", committee)
       .then(() => toast(`✅ Submitted successfully!`));
   };

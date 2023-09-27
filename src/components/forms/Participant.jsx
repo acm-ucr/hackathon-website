@@ -15,13 +15,13 @@ const Participant = () => {
     email: session.user.email,
   });
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     const data = {
       ...participant,
       diet: Object.keys(participant.diet),
     };
 
-    await axios
+    axios
       .post("/api/participants", data)
       .then(() => toast(`✅ Submitted successfully!`));
   };

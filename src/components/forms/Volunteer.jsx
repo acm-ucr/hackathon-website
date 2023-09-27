@@ -14,13 +14,13 @@ const volunteer = () => {
     email: session.user.email,
   });
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     const data = {
       ...volunteer,
       availability: Object.keys(volunteer.availability),
     };
 
-    await axios
+    axios
       .post("/api/volunteers", data)
       .then(() => toast(`✅ Submitted successfully!`));
   };

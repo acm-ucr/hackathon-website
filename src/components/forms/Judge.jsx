@@ -14,12 +14,12 @@ const judge = () => {
     email: session.user.email,
   });
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     const data = {
       ...judge,
     };
 
-    await axios
+    axios
       .post("/api/judges", data)
       .then(() => toast(`✅ Submitted successfully!`));
   };

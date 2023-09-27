@@ -53,10 +53,11 @@ const Table = ({
       })
     );
   };
-  return objects === null ? (
+  return !objects ? (
     <Loading />
   ) : (
     <div className="w-full rounded-xl overflow-hidden flex flex-col">
+      {console.log(objects)}
       {modal && <Modal data={modal} setModal={setModal} />}
       <Row className="w-full py-2 text-sm flex text-white bg-hackathon-blue-200 justify-evenly px-0 m-0">
         <Col />

@@ -15,13 +15,13 @@ const Mentor = () => {
     email: session.user.email,
   });
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     const data = {
       ...mentor,
       availability: Object.keys(mentor.availability),
     };
 
-    await axios
+    axios
       .post("/api/mentors", data)
       .then(() => toast(`✅ Submitted successfully!`));
   };
