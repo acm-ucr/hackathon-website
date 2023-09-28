@@ -66,6 +66,18 @@ const Team = ({ user, setUser }) => {
   };
 
   const handleSave = () => {
+    if (!(team.github === "" || team.github.includes("github.com/"))) {
+      toast("❌ Invalid Github Link");
+      return;
+    }
+    if (!(team.devpost === "" || team.devpost.includes("devpost.com/"))) {
+      toast("❌ Invalid Devpost Link");
+      return;
+    }
+    if (!(team.figma === "" || team.figma.includes("figma.com/"))) {
+      toast("❌ Invalid Figma Link");
+      return;
+    }
     axios.put("/api/team", team).then(() => {
       toast("✅ Successfully Update!");
       setEdit(false);
@@ -104,7 +116,7 @@ const Team = ({ user, setUser }) => {
             name="github"
             type="text"
             title="Github"
-            value={team.github}
+            value={team.github.replace("https://", "")}
             user={team}
             editable={edit}
             setUser={setTeam}
@@ -115,7 +127,7 @@ const Team = ({ user, setUser }) => {
             name="devpost"
             type="text"
             title="Devpost"
-            value={team.devpost}
+            value={team.devpost.replace("https://", "")}
             user={team}
             editable={edit}
             setUser={setTeam}
@@ -125,8 +137,8 @@ const Team = ({ user, setUser }) => {
           <Input
             name="figma"
             type="text"
-            title="Figma"
-            value={team.figma}
+            title="Figma (please set share permision)"
+            value={team.figma.replace("https://", "")}
             user={team}
             editable={edit}
             setUser={setTeam}
