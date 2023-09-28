@@ -8,3 +8,9 @@ export const JUDGES = {
   major: "",
   photo: null,
 };
+
+export const AFFILIATIONS = [
+  { name: "Student", hidden: false },
+  { name: "Professor", hidden: false },
+  { name: "Industry", hidden: false },
+];
