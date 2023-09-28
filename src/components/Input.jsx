@@ -21,6 +21,7 @@ const Input = ({
         value={value}
         maxLength={maxLength}
         onChange={(e) => setUser({ ...user, [name]: e.target.value })}
+        data-cy={`${name}-input`}
       />
     </div>
   );
