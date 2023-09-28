@@ -14,7 +14,7 @@ describe("Popup Component", () => {
       const onClick = cy.stub();
 
       return (
-        <div>
+        <>
           {popup.visible && (
             <Popup
               popup={popup}
@@ -23,7 +23,7 @@ describe("Popup Component", () => {
               onClick={onClick}
             />
           )}
-        </div>
+        </>
       );
     };
 
