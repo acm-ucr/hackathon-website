@@ -9,8 +9,6 @@ const Prizes = () => {
   const [prizes, setPrizes] = useState(null);
   const [headers, setHeaders] = useState(HEADERS);
 
-  console.log(prizes, teams);
-
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Title title="Prizes" />

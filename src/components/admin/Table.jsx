@@ -174,7 +174,10 @@ const Table = ({
 
                         {!header.hasTag &&
                           !Array.isArray(object[header.text]) && (
-                            <div data-cy={`${header.text}`}>
+                            <div
+                              data-cy={`${header.text}`}
+                              className="break-words"
+                            >
                               {object[header.text]}
                             </div>
                           )}
