@@ -18,7 +18,7 @@ const Toggle = ({ option, onClick, show }) => {
   );
 };
 
-const Menu = ({ setOption, className, setOptions, options }) => {
+const Menu = ({ option, setOption, className, setOptions, options }) => {
   const [value, setValue] = useState("");
 
   const handleInput = (e) => {
@@ -45,7 +45,7 @@ const Menu = ({ setOption, className, setOptions, options }) => {
       />
       {options.filter((opt) => !opt.hidden).length > 0 ? (
         options
-          .filter((opt) => !opt.hidden)
+          .filter((opt) => !opt.hidden && opt.name !== option.name)
           .map((option, index) => (
             <Dropdown.Item
               data-cy={`dropdown-option-${index}`}
@@ -77,6 +77,7 @@ const DropDown = ({ options, setOptions, option, setOption }) => {
       <Dropdown.Toggle show={show} as={Toggle} option={option} />
       <Dropdown.Menu
         as={Menu}
+        option={option}
         setOption={setOption}
         options={options}
         setOptions={setOptions}

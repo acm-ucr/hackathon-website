@@ -9,20 +9,30 @@ import {
   collection,
   getDocs,
   deleteDoc,
+  query,
+  where,
 } from "firebase/firestore";
 
 export async function POST(req) {
   const res = NextResponse;
-  const { name, category, team, uid } = await req.json();
+  const { prize, category, team, uid, id } = await req.json();
   const session = await getServerSession(authOptions);
 
   if (session) {
     try {
       await setDoc(doc(db, "prizes", uid), {
-        name: name,
+        prize: prize,
         category: category,
         team: team,
+        id: id,
       });
+
+      if (id !== "") {
+        await updateDoc(doc(db, "teams", id), {
+          status: "winner",
+        });
+      }
+
       return res.json({ message: "OK" }, { status: 200 });
     } catch (err) {
       return res.json(
@@ -57,10 +67,15 @@ export async function GET() {
           });
         });
 
-        const teamsSnapshot = await getDocs(collection(db, "teams"));
+        const teamsSnapshot = await getDocs(
+          query(
+            collection(db, "teams"),
+            where("status", "in", ["qualify", "winner"])
+          )
+        );
         teamsSnapshot.forEach((doc) => {
           const { name } = doc.data();
-          teams.push({ name });
+          teams.push({ name, id: doc.id });
         });
 
         return res.json(
@@ -86,17 +101,30 @@ export async function GET() {
 
 export async function PUT(req) {
   const res = NextResponse;
-  const { name, category, team, uid } = await req.json();
+  const { prize, category, team, id, uid, backupId } = await req.json();
   const session = await getServerSession(authOptions);
 
   if (session) {
     if (session.user.role.includes("admins")) {
       try {
         await updateDoc(doc(db, "prizes", uid), {
-          name: name,
+          prize: prize,
           category: category,
           team: team,
         });
+
+        if (backupId !== id && backupId !== "") {
+          await updateDoc(doc(db, "teams", backupId), {
+            status: "qualify",
+          });
+        }
+
+        if (id !== "") {
+          await updateDoc(doc(db, "teams", id), {
+            status: "winner",
+          });
+        }
+
         return res.json({ message: "OK" }, { status: 200 });
       } catch (err) {
         return res.json(
@@ -118,6 +146,7 @@ export async function PUT(req) {
 export async function DELETE(req) {
   const res = NextResponse;
   const ids = req.nextUrl.searchParams.get("ids").split(",");
+  const teams = req.nextUrl.searchParams.get("teams").split(",");
   const session = await getServerSession(authOptions);
 
   if (session) {
@@ -126,6 +155,15 @@ export async function DELETE(req) {
         ids.forEach(async (id) => {
           await deleteDoc(doc(db, "prizes", id));
         });
+
+        teams.forEach(async (id) => {
+          if (id !== "") {
+            await updateDoc(doc(db, "teams", id), {
+              status: "qualify",
+            });
+          }
+        });
+
         return res.json({ message: "OK" }, { status: 200 });
       } catch (err) {
         return res.json(

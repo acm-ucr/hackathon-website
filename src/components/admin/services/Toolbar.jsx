@@ -12,11 +12,12 @@ import toast from "react-hot-toast";
 
 const reset = {
   category: "",
-  name: "",
+  prize: "",
 };
 
 const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
-  const [team, setTeam] = useState({ name: "No Team Selected" });
+  const [team, setTeam] = useState({ name: "No Team Selected", id: "" });
+  const [backup, setBackup] = useState({ id: "" });
   const [toggle, setToggle] = useState(false);
   const [prize, setPrize] = useState(reset);
   const [edit, setEdit] = useState(false);
@@ -37,7 +38,7 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
       objects.map((group) => {
         let boolean = false;
 
-        if (group.name.toLowerCase().match(input.search.toLowerCase())) {
+        if (group.prize.toLowerCase().match(input.input.toLowerCase())) {
           boolean = true;
         }
 
@@ -64,14 +65,24 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
       .map((object) => object.uid)
       .join(",");
 
+    const teams = objects
+      .filter((object) => object.selected)
+      .map((object) => object.id)
+      .join(",");
+
     setObjects(keep);
-    axios.delete(`/api/prizes?ids=${remove}`);
+    axios
+      .delete(`/api/prizes?ids=${remove}&teams=${teams}`)
+      .then(() => toast("✅ Successfully deleted!"));
   };
 
   const handleAdd = () => {
+    const formattedTeam = team.name === "No Team Selected" ? "" : team.name;
+
     const data = {
       ...prize,
-      team,
+      team: formattedTeam,
+      id: team.id,
       uid: uuid(),
     };
 
@@ -80,24 +91,33 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
     axios.post("/api/prizes", data).then(() => toast("✅ Prize Added!"));
 
     setPrize(reset);
-    setTeam({ name: "No Team Selected" });
+    setTeam({ name: "No Team Selected", id: "" });
   };
 
   const handleEdit = () => {
     const prizes = objects.filter((a) => a.selected);
-    if (prizes.length > 1) {
-      toast("❌ Select One Prize Only!");
+    if (prizes.length !== 1) {
+      toast("❌ Select a prize!");
       return;
     }
     const prize = prizes[0];
 
     setPrize(prize);
-    setTeam(prize.team);
+    setTeam({
+      name: prize.team === "" ? "No Team Selected" : prize.team,
+      id: prize.id,
+    });
+    setBackup({ id: prize.id });
     setEdit(true);
   };
 
   const handleSave = () => {
-    const data = { ...prize, team: team.name };
+    const data = {
+      ...prize,
+      team: team.name,
+      id: team.id,
+      backupId: backup.id,
+    };
 
     setObjects(
       objects.map((a) => {
@@ -112,7 +132,8 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
     axios.put("/api/prizes", data).then(() => toast("✅ Prize Updated"));
 
     setPrize(reset);
-    setTeam({ name: "No Team Selected" });
+    setTeam({ name: "No Team Selected", id: "" });
+    setBackup({ id: "" });
     setEdit(false);
   };
 
@@ -139,7 +160,7 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
         <Input
           setObject={setPrize}
           object={prize}
-          label="name"
+          label="prize"
           maxLength={30}
         />
         <DropDown
@@ -148,14 +169,14 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
           options={teams}
           setOptions={setTeams}
         />
-        <Button color="green" text="add" onClick={handleAdd} />
+        <Button color="green" text="add" onClick={handleAdd} disabled={edit} />
         {!edit && <Button color="green" text="edit" onClick={handleEdit} />}
         {edit && <Button color="green" text="save" onClick={handleSave} />}
       </div>
       <form className="flex items-center" onSubmit={handleSearch}>
         <Checkbox onClick={selectAll} toggle={toggle} />
         <Input
-          classes="w-full"
+          classes="w-full ml-5"
           object={input}
           setObject={setInput}
           clear={true}
