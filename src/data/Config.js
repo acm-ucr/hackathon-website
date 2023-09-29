@@ -1,5 +1,5 @@
 export const CONFIG = {
   name: "HACKATHON",
-  email: "hackathon@ucr.edu",
+  email: "contact.acmucr@gmail.com",
   year: "2024",
 };

@@ -15,26 +15,51 @@ import axios from "axios";
 const Messenger = () => {
   const [email, setEmail] = useState({
     subject: `${CONFIG.name} Application Status Update`,
-    body: `Hello! \n\nWe've got good news! Your application to participate in ${CONFIG.name} ${CONFIG.year} has been accepted!\n\nStay tuned for more updates from us via email.\n\nIn the meantime, join our discord, the main platform that we will use on the day of the hackathon. Please don't share this invite with anyone else who wasn't approved. Thank you!\n\nThe ${CONFIG.name} team`,
+    text: `Hello! \n\nWe've got good news! Your application to participate in ${CONFIG.name} ${CONFIG.year} has been accepted!\n\nStay tuned for more updates from us via email.\n\nIn the meantime, join our discord, the main platform that we will use on the day of the hackathon. Please don't share this invite with anyone else who wasn't approved. Thank you!\n\nThe ${CONFIG.name} team`,
     files: [],
   });
   const [filters, setFilters] = useState(FILTERS);
   const [statuses, setStatuses] = useState(STATUSES);
 
-  const handleSend = () => {
+  const readFileAsBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
+  const handleSend = async () => {
     if (email.subject === "") {
       toast("❌ Please add a subject!");
       return;
     }
-    if (email.body === "") {
+    if (email.text === "") {
       toast("❌ Please add a body!");
       return;
     }
 
+    const files = await Promise.all(
+      email.files.map(async (file) => {
+        const base64 = await readFileAsBase64(file);
+
+        return {
+          content: base64.split(",")[1],
+          filename: file.name,
+          type: file.type,
+          disposition: "attachment",
+        };
+      })
+    );
+
     const data = {
       filters,
       statuses,
-      email,
+      email: {
+        ...email,
+        attachments: files,
+      },
     };
 
     axios
@@ -58,7 +83,7 @@ const Messenger = () => {
           setObject={setEmail}
           object={email}
           clear={true}
-          label="subject:"
+          label="subject"
           placeholder="subject"
           maxLength={100}
         />
@@ -67,7 +92,7 @@ const Messenger = () => {
           <Textarea
             setObject={setEmail}
             object={email}
-            label="body"
+            label="text"
             maxLength={1000}
           />
           <div className="flex w-full justify-between mt-3 items-end">

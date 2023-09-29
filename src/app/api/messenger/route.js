@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 import { authOptions } from "../auth/[...nextauth]/route";
 import { db } from "../../../../firebase";
 import { collection, getDocs, query, where, or } from "firebase/firestore";
+import sgMail from "@sendgrid/mail";
+import { CONFIG } from "@/data/Config";
 
 export async function PUT(req) {
   const res = NextResponse;
@@ -74,22 +76,30 @@ export async function PUT(req) {
           query(collection(db, "users"), or(...queryConstraints))
         );
 
-        const sendto = [];
+        const to = [];
         snapshot.forEach((doc) => {
           const { email } = doc.data();
-          sendto.push(email);
+          to.push(email);
         });
 
         const formattedEmail = {
           ...email,
-          sendto,
+          to,
+          from: `${CONFIG.email}`,
         };
 
-        console.log(formattedEmail);
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-        return res.json({ message: "OK" }, { status: 200 });
+        try {
+          sgMail.send(formattedEmail);
+          return res.json({ message: "OK" }, { status: 200 });
+        } catch (err) {
+          return res.json(
+            { message: `Sendgrid Error: ${err.response.body}` },
+            { status: 500 }
+          );
+        }
       } catch (err) {
-        console.log(err);
         return res.json(
           { message: `Internal Server Error: ${err}` },
           { status: 500 }
