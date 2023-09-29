@@ -162,10 +162,12 @@ const Table = ({
                                 ? element.link !== "No Link" && (
                                     <Link
                                       href={element.link}
-                                      className="flex items-center m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-sm"
+                                      className="w-11/12 flex items-center m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-sm"
                                     >
                                       {ICONS[element.name]}
-                                      {element.link.replace("https://", "")}
+                                      <p className="truncate w-11/12 ml-1 mb-0">
+                                        {element.link.replace("https://", "")}
+                                      </p>
                                     </Link>
                                   )
                                 : element}
