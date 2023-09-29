@@ -1,11 +1,14 @@
-import judges from "../../../fixtures/judges.json";
+import response from "../../../fixtures/judges.json";
+
+const judges = response.items;
 
 describe("Judge Search", () => {
   beforeEach(() => {
-    cy.login("admin");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/judges");
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "judges",
+    });
   });
 
   it("No Search Results", () => {

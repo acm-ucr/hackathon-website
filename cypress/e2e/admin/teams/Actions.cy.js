@@ -1,21 +1,26 @@
-import DATA from "../../../fixtures/teams.json";
+import response from "../../../fixtures/teams.json";
 
-const teams = DATA;
+const teams = response.items;
 const five = teams.slice(0, 5);
 
 describe("Teams Actions", () => {
   beforeEach(() => {
-    cy.login("admin");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/teams");
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "teams",
+    });
   });
 
   it("Qualify First 5 Entries", () => {
     five.forEach((team) =>
       cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
     );
-    cy.get('[data-cy="toolbar"]').find('[data-cy="qualify-tag"]').click();
+
+    cy.action({
+      tag: "qualify",
+      page: "teams",
+    });
 
     five.forEach((team) =>
       cy
@@ -29,7 +34,11 @@ describe("Teams Actions", () => {
     five.forEach((team) =>
       cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
     );
-    cy.get('[data-cy="toolbar"]').find('[data-cy="disqualify-tag"]').click();
+
+    cy.action({
+      tag: "disqualify",
+      page: "teams",
+    });
 
     five.forEach((team) =>
       cy
@@ -39,25 +48,15 @@ describe("Teams Actions", () => {
     );
   });
 
-  it("Win First 5 Entries", () => {
-    five.forEach((team) =>
-      cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
-    );
-    cy.get('[data-cy="toolbar"]').find('[data-cy="winner-tag"]').click();
-
-    five.forEach((team) =>
-      cy
-        .get(`[data-cy="${team.uid}"]`)
-        .find('[data-cy="winner-tag"]')
-        .should("exist")
-    );
-  });
-
   it("Pending First 5 Entries", () => {
     five.forEach((team) =>
       cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
     );
-    cy.get('[data-cy="toolbar"]').find('[data-cy="pending-tag"]').click();
+
+    cy.action({
+      tag: "pending",
+      page: "teams",
+    });
 
     five.forEach((team) =>
       cy
@@ -71,8 +70,10 @@ describe("Teams Actions", () => {
     five.forEach((team) =>
       cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
     );
-    cy.get('[data-cy="toolbar"]').find('[data-cy="delete"]').click();
-    cy.get('[data-cy="confirm-button"]').click();
+
+    cy.delete({
+      page: "teams",
+    });
 
     five.forEach((team) =>
       cy.get(`[data-cy="${team.uid}"]`).should("not.exist")

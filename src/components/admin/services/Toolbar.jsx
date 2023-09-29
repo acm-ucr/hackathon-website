@@ -1,22 +1,32 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "../Input";
 import Button from "../Button";
 import DropDown from "./DropDown";
 import Checkbox from "@/components/Checkbox";
+import Popup from "../Popup";
 import { FaTrashAlt } from "react-icons/fa";
 import { v4 as uuid } from "uuid";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const reset = {
   category: "",
-  name: "",
+  prize: "",
 };
 
 const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
-  const [team, setTeam] = useState("No Team Selected");
+  const [team, setTeam] = useState({ name: "No Team Selected", id: "" });
+  const [backup, setBackup] = useState({ id: "" });
   const [toggle, setToggle] = useState(false);
   const [prize, setPrize] = useState(reset);
   const [edit, setEdit] = useState(false);
+  const [popup, setPopup] = useState({
+    title: "Delete Confirmation",
+    text: "Are you sure you want to delete these row(s)? This action is irreversible.",
+    color: "red",
+    visible: false,
+  });
   const [input, setInput] = useState({
     input: "",
   });
@@ -28,7 +38,7 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
       objects.map((group) => {
         let boolean = false;
 
-        if (group.name.toLowerCase().match(input.search.toLowerCase())) {
+        if (group.prize.toLowerCase().match(input.input.toLowerCase())) {
           boolean = true;
         }
 
@@ -49,40 +59,98 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
 
   const handleDelete = () => {
     setToggle(false);
-    setObjects(objects.filter((object) => !object.selected));
+    const keep = objects.filter((object) => !object.selected);
+    const remove = objects
+      .filter((object) => object.selected)
+      .map((object) => object.uid)
+      .join(",");
+
+    const teams = objects
+      .filter((object) => object.selected)
+      .map((object) => object.id)
+      .join(",");
+
+    setObjects(keep);
+    axios
+      .delete(`/api/prizes?ids=${remove}&teams=${teams}`)
+      .then(() => toast("✅ Successfully deleted!"));
   };
 
   const handleAdd = () => {
-    setObjects([...objects, { ...prize, team, uid: uuid() }]);
+    const formattedTeam = team.name === "No Team Selected" ? "" : team.name;
+
+    const data = {
+      ...prize,
+      team: formattedTeam,
+      id: team.id,
+      uid: uuid(),
+    };
+
+    setObjects([...objects, data]);
+
+    axios.post("/api/prizes", data).then(() => toast("✅ Prize Added!"));
+
     setPrize(reset);
-    setTeam("No Team Selected");
+    setTeam({ name: "No Team Selected", id: "" });
   };
 
   const handleEdit = () => {
-    const prize = objects.filter((a) => a.selected)[0];
+    const prizes = objects.filter((a) => a.selected);
+    if (prizes.length !== 1) {
+      toast("❌ Select a prize!");
+      return;
+    }
+    const prize = prizes[0];
+
     setPrize(prize);
-    setTeam(prize.team);
+    setTeam({
+      name: prize.team === "" ? "No Team Selected" : prize.team,
+      id: prize.id,
+    });
+    setBackup({ id: prize.id });
     setEdit(true);
   };
 
   const handleSave = () => {
+    const data = {
+      ...prize,
+      team: team.name,
+      id: team.id,
+      backupId: backup.id,
+    };
+
     setObjects(
       objects.map((a) => {
         if (a.uid === prize.uid) {
-          a = { ...prize, team };
+          a = data;
           a.selected = false;
         }
         return a;
       })
     );
+
+    axios.put("/api/prizes", data).then(() => toast("✅ Prize Updated"));
+
     setPrize(reset);
-    setTeam("No Team Selected");
+    setTeam({ name: "No Team Selected", id: "" });
+    setBackup({ id: "" });
+    setEdit(false);
   };
+
+  const load = () => {
+    axios.get("/api/prizes").then((response) => {
+      setObjects(response.data.items.prizes);
+      setTeams(response.data.items.teams);
+    });
+  };
+
+  useEffect(() => {
+    load();
+  }, []);
 
   return (
     <>
-      <div className="flex items-center justify-between w-full"></div>
-      <div className="flex">
+      <div className="flex gap-2">
         <Input
           setObject={setPrize}
           object={prize}
@@ -92,7 +160,7 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
         <Input
           setObject={setPrize}
           object={prize}
-          label="name"
+          label="prize"
           maxLength={30}
         />
         <DropDown
@@ -101,14 +169,14 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
           options={teams}
           setOptions={setTeams}
         />
-        <Button color="green" text="add" onClick={handleAdd} />
+        <Button color="green" text="add" onClick={handleAdd} disabled={edit} />
         {!edit && <Button color="green" text="edit" onClick={handleEdit} />}
         {edit && <Button color="green" text="save" onClick={handleSave} />}
       </div>
       <form className="flex items-center" onSubmit={handleSearch}>
         <Checkbox onClick={selectAll} toggle={toggle} />
         <Input
-          classes="w-full"
+          classes="w-full ml-5"
           object={input}
           setObject={setInput}
           clear={true}
@@ -118,10 +186,23 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
           showLabel={false}
         />
         <FaTrashAlt
-          onClick={handleDelete}
+          onClick={() =>
+            setPopup({
+              ...popup,
+              visible: true,
+            })
+          }
           size={22.5}
-          className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150"
+          className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
         />
+        {popup.visible && (
+          <Popup
+            popup={popup}
+            onClick={handleDelete}
+            setPopup={setPopup}
+            text="confirm"
+          />
+        )}
       </form>
     </>
   );

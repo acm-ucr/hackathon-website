@@ -6,7 +6,7 @@ export const HEADERS = [
     sort: "off",
   },
   {
-    text: "name",
+    text: "prize",
     size: 4,
     icon: true,
     sort: "off",

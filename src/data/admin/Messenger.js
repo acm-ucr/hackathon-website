@@ -1,9 +1,14 @@
 export const FILTERS = {
-  accept: true,
-  reject: false,
-  pending: false,
+  participants: true,
   volunteers: false,
   mentors: false,
   judges: false,
-  admin: false,
+  admins: false,
+  committees: false,
+};
+
+export const STATUSES = {
+  accept: true,
+  reject: false,
+  pending: false,
 };

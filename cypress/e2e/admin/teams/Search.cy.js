@@ -1,13 +1,14 @@
-import DATA from "../../../fixtures/teams.json";
+import response from "../../../fixtures/teams.json";
 
-const teams = DATA;
+const teams = response.items;
 
 describe("Team Search", () => {
   beforeEach(() => {
-    cy.login("admin");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/teams");
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "teams",
+    });
   });
 
   it("No Search Results", () => {
@@ -25,10 +26,10 @@ describe("Team Search", () => {
   });
 
   it("Search For Multiple Entries", () => {
-    cy.get('[data-cy="toolbar"]').find('[data-cy="input-input"]').type("team");
+    cy.get('[data-cy="toolbar"]').find('[data-cy="input-input"]').type("teams");
     cy.get('[data-cy="toolbar"]').find("form").submit();
     teams.forEach((team) => {
-      if (team.name.toLowerCase().includes("team"))
+      if (team.name.toLowerCase().includes("teams"))
         cy.get(`[data-cy="${team.uid}"]`).should("exist");
       else cy.get(`[data-cy="${team.uid}"]`).should("not.exist");
     });

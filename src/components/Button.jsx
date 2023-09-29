@@ -1,13 +1,20 @@
-const Submit = ({ onClick, text }) => {
+import { COLORS, SIZES } from "@/data/Button";
+
+const Button = ({ onClick, text, loading, color, size }) => {
   return (
     <button
+      disabled={loading}
       data-cy={`${text}-button`}
-      className="text-gray-800 py-1 hover:opacity-50 text-xl font-bold w-1/3 rounded-xl bg-hackathon-green-300 mt-3"
+      className={`${loading ? COLORS["gray"].bg : COLORS[color].bg} ${
+        loading ? COLORS["gray"].text : COLORS[color].text
+      } ${SIZES[size]} ${
+        COLORS[color].border
+      } py-1 hover:opacity-50 font-bold px-4 rounded-xl mt-3`}
       onClick={onClick}
     >
-      {text}
+      {loading ? "Loading..." : text}
     </button>
   );
 };
 
-export default Submit;
+export default Button;

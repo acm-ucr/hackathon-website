@@ -1,12 +1,10 @@
 export const HELPER = {
-  first: "",
-  last: "",
   phone: "",
-  email: "",
   major: "",
   grade: "",
   gender: "",
   shirt: "",
+  discord: "",
 };
 
 export const AVAILABILITY = {
@@ -58,4 +56,13 @@ export const AVAILABILITY = {
     state: false,
     text: "Sunday Night",
   },
+};
+export const FEEDBACK = {
+  "What was most helpful about the event?": "",
+  "Was there anything that you would have liked to see?": "",
+  "Was there anything that you did not find beneficial about the hackathon?":
+    "",
+  "How would you rate the hackathon?": "",
+  "How did you find the event?": "",
+  "Is there anything else you'd like to let us know?": "",
 };

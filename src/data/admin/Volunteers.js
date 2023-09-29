@@ -39,7 +39,7 @@ export const DROPDOWN = ({ object }) => {
       {Object.entries(AVAILABILITY).map(([key, value], index) => (
         <Col key={index} xs={4}>
           <Checkbox
-            toggle={object.availability.includes(key)}
+            toggle={object.availability.includes(value.text)}
             text={value.text}
           />
         </Col>

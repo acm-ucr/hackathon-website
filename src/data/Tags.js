@@ -57,8 +57,11 @@ export const COLORS = {
   "not attending": mappings["red"],
   onsite: mappings["purple"],
   online: mappings["green"],
+  Professor: mappings["grayblue"],
   professor: mappings["grayblue"],
+  Student: mappings["teal"],
   student: mappings["teal"],
+  Industry: mappings["lightgreen"],
   industry: mappings["lightgreen"],
   director: mappings["purple"],
   marketing: mappings["teal"],
@@ -77,4 +80,12 @@ export const COLORS = {
   teal: mappings["teal"],
   grayblue: mappings["grayblue"],
   pink: mappings["pink"],
+};
+export const PAST = {
+  confirm: "confirmed",
+  Confirm: "Confirmed",
+  reject: "rejected",
+  Reject: "Rejected",
+  accept: "accepted",
+  Accept: "Accepted",
 };
