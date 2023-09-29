@@ -1,11 +1,14 @@
-import judges from "../../../fixtures/judges.json";
+import response from "../../../fixtures/judges.json";
+
+const judges = response.items;
 
 describe("Judges Filters", () => {
   beforeEach(() => {
-    cy.login("admin");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/judges");
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "judges",
+    });
   });
 
   it("Default Filters", () => {
@@ -38,7 +41,7 @@ describe("Judges Filters", () => {
   it("Click Confirm", () => {
     cy.get('[data-cy="confirm-filter"]').click();
     judges.forEach((judge) => {
-      if (judge.status === "confirm")
+      if (judge.status.judges === "confirm")
         cy.get(`[data-cy="${judge.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${judge.uid}"]`).should("exist");
     });
@@ -47,7 +50,7 @@ describe("Judges Filters", () => {
   it("Click Not Attending", () => {
     cy.get('[data-cy="not attending-filter"]').click();
     judges.forEach((judge) => {
-      if (judge.status === "not attending")
+      if (judge.status.judges === "not attending")
         cy.get(`[data-cy="${judge.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${judge.uid}"]`).should("exist");
     });
@@ -56,7 +59,7 @@ describe("Judges Filters", () => {
   it("Click Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
     judges.forEach((judge) => {
-      if (judge.status === "pending")
+      if (judge.status.judges === "pending")
         cy.get(`[data-cy="${judge.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${judge.uid}"]`).should("exist");
     });
@@ -66,7 +69,10 @@ describe("Judges Filters", () => {
     cy.get('[data-cy="confirm-filter"]').click();
     cy.get('[data-cy="not attending-filter"]').click();
     judges.forEach((judge) => {
-      if (judge.status === "confirm" || judge.status === "not attending")
+      if (
+        judge.status.judges === "confirm" ||
+        judge.status.judges === "not attending"
+      )
         cy.get(`[data-cy="${judge.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${judge.uid}"]`).should("exist");
     });

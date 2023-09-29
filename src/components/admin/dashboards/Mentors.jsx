@@ -5,11 +5,10 @@ import Filters from "@/components/admin/Filters";
 import Toolbar from "@/components/admin/dashboards/Toolbar";
 import Title from "../Title";
 import Table from "../Table";
-import mentorList from "../../../../cypress/fixtures/mentors.json";
 import { FILTERS, HEADERS, TAGS, DROPDOWN } from "@/data/admin/Mentors.js";
 
 const Mentors = () => {
-  const [mentors, setMentors] = useState(mentorList);
+  const [mentors, setMentors] = useState(null);
   const [input, setInput] = useState({
     input: "",
   });
@@ -26,6 +25,7 @@ const Mentors = () => {
           setObjects={setMentors}
           objects={mentors}
           input={input.input}
+          page="mentors"
         />
       </div>
       <Toolbar
@@ -37,8 +37,8 @@ const Mentors = () => {
         filters={filters}
         file="MENTORS"
         headers={headers}
+        page="mentors"
       />
-
       <Table
         headers={headers}
         empty="No Mentors Available"
@@ -46,6 +46,7 @@ const Mentors = () => {
         setObjects={setMentors}
         objects={mentors}
         Dropdown={DROPDOWN}
+        page="mentors"
       />
     </div>
   );

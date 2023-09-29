@@ -2,20 +2,20 @@ import Tag from "@/components/admin/Tag";
 import { COLORS } from "@/data/Tags";
 
 describe("Tag", () => {
-  it("Accepted", () => {
+  it("Accept", () => {
     const color = COLORS["accept"];
     const onClick = cy.stub();
-    const text = "Accepted";
+    const text = "Accept";
 
     cy.mount(<Tag color={color} text={text} onClick={onClick} />);
-    cy.get('[data-cy="Accepted-tag"]').contains("Accepted");
-    cy.get('[data-cy="Accepted-tag"]').should(
+    cy.get('[data-cy="Accept-tag"]').contains("Accept");
+    cy.get('[data-cy="Accept-tag"]').should(
       "have.class",
       "bg-hackathon-tags-green-bg",
       "text-hackathon-tags-green-text",
       "hover:shadow-[inset_0px_0px_0px_2px_#00AFB9]"
     );
-    cy.get('[data-cy="Accepted-tag"]')
+    cy.get('[data-cy="Accept-tag"]')
       .click()
       .then(() => expect(onClick).to.be.called);
   });
@@ -38,20 +38,20 @@ describe("Tag", () => {
       .then(() => expect(onClick).to.be.called);
   });
 
-  it("Rejected", () => {
+  it("Reject", () => {
     const color = COLORS["reject"];
     const onClick = cy.stub();
-    const text = "Rejected";
+    const text = "Reject";
 
     cy.mount(<Tag color={color} text={text} onClick={onClick} />);
-    cy.get('[data-cy="Rejected-tag"]').contains("Rejected");
-    cy.get('[data-cy="Rejected-tag"]').should(
+    cy.get('[data-cy="Reject-tag"]').contains("Reject");
+    cy.get('[data-cy="Reject-tag"]').should(
       "have.class",
       "bg-hackathon-tags-red-bg",
       "text-hackathon-tags-red-text",
       "hover:shadow-[inset_0px_0px_0px_2px_#F07167]"
     );
-    cy.get('[data-cy="Rejected-tag"]')
+    cy.get('[data-cy="Reject-tag"]')
       .click()
       .then(() => expect(onClick).to.be.called);
   });
@@ -59,7 +59,7 @@ describe("Tag", () => {
   it("Custom Classes", () => {
     const color = COLORS["accept"];
     const onClick = cy.stub();
-    const text = "Accepted";
+    const text = "Accept";
 
     cy.mount(
       <Tag
@@ -69,8 +69,8 @@ describe("Tag", () => {
         classes="border-2 border-black"
       />
     );
-    cy.get('[data-cy="Accepted-tag"]').contains("Accepted");
-    cy.get('[data-cy="Accepted-tag"]').should(
+    cy.get('[data-cy="Accept-tag"]').contains("Accept");
+    cy.get('[data-cy="Accept-tag"]').should(
       "have.class",
       "bg-hackathon-tags-green-bg",
       "text-hackathon-tags-green-text",
@@ -78,23 +78,23 @@ describe("Tag", () => {
       "border-black",
       "hover:shadow-[inset_0px_0px_0px_2px_#00AFB9]"
     );
-    cy.get('[data-cy="Accepted-tag"]')
+    cy.get('[data-cy="Accept-tag"]')
       .click()
       .then(() => expect(onClick).to.be.called);
   });
 
   it("No onClick", () => {
     const color = COLORS["accept"];
-    const text = "Accepted";
+    const text = "Accept";
 
     cy.mount(<Tag color={color} text={text} />);
-    cy.get('[data-cy="Accepted-tag"]').contains("Accepted");
-    cy.get('[data-cy="Accepted-tag"]').should(
+    cy.get('[data-cy="Accept-tag"]').contains("Accept");
+    cy.get('[data-cy="Accept-tag"]').should(
       "have.class",
       "bg-hackathon-tags-green-bg",
       "text-hackathon-tags-green-text"
     );
-    cy.get('[data-cy="Accepted-tag"]').should(
+    cy.get('[data-cy="Accept-tag"]').should(
       "not.have.class",
       "hover:shadow-[inset_0px_0px_0px_2px_#00AFB9]"
     );

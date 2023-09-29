@@ -3,7 +3,6 @@
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Poppins } from "next/font/google";
-import Navigation from "../components/Navigation";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "react-hot-toast";
 
@@ -16,14 +15,17 @@ const poppins = Poppins({
 
 export default function RootLayout({ children, session }) {
   return (
-    <html lang="en">
-      <SessionProvider session={session} refetchInterval={5 * 60}>
-        <body className={`${poppins.variable} flex flex-col lg:flex-row`}>
+    <html lang="en" className="h-full">
+      <SessionProvider
+        session={session}
+        refetchInterval={5 * 60}
+        className="h-full"
+      >
+        <body
+          className={`${poppins.variable} flex flex-col lg:flex-row h-full`}
+        >
           <Toaster />
-          <Navigation />
-          <div className="flex justify-center items-start w-full bg-hackathon-page z-0 h-screen pt-12 lg:pt-0">
-            {children}
-          </div>
+          {children}
         </body>
       </SessionProvider>
     </html>
