@@ -1,34 +1,37 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProfileHeader from "./Header";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Title from "../admin/Title.jsx";
-import TeamInfo from "./Team";
-import UserInfo from "./User";
-import mockUser from "../../../cypress/fixtures/user.json";
+import Team from "./Team";
+import User from "./User";
+import { useSession } from "next-auth/react";
 
 const Dashboard = () => {
-  const [user, setUser] = useState(mockUser);
+  const { data: session } = useSession();
+  const [user, setUser] = useState(session.user);
   const [edit, setEdit] = useState(false);
-
+  useEffect(() => {
+    const data = {};
+    user.diet.forEach((option) => {
+      data[option] = true;
+    });
+    setUser({ ...user, diet: data });
+  }, []);
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Title title="Dashboard" />
       <ProfileHeader email={user.email} name={user.name} />
-      <Row className="h-full">
+      <Row className="h-full overflow-scroll gap-3 justify-center">
         <Col xl={6} className="h-full">
-          <UserInfo
-            handleEdit={() => setEdit(true)}
-            handleSave={() => setEdit(false)}
-            user={user}
-            setUser={setUser}
-            editable={edit}
-          />
+          <User user={user} setUser={setUser} edit={edit} setEdit={setEdit} />
         </Col>
-        <Col xl={6} className="h-full">
-          <TeamInfo user={user} team={user.team} />
-        </Col>
+        {user.status.participants === "accept" && (
+          <Col xl={5} className="h-full">
+            <Team user={user} team={user.team} setUser={setUser} />
+          </Col>
+        )}
       </Row>
     </div>
   );

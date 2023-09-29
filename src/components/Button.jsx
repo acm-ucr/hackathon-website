@@ -1,9 +1,15 @@
-const Button = ({ onClick, text, loading }) => {
+import { COLORS, SIZES } from "@/data/Button";
+
+const Button = ({ onClick, text, loading, color, size }) => {
   return (
     <button
       disabled={loading}
       data-cy={`${text}-button`}
-      className="text-gray-800 py-1 disabled:opacity-50 hover:opacity-50 text-xl font-bold px-4 rounded-xl bg-hackathon-green-300 mt-3"
+      className={`${loading ? COLORS["gray"].bg : COLORS[color].bg} ${
+        loading ? COLORS["gray"].text : COLORS[color].text
+      } ${SIZES[size]} ${
+        COLORS[color].border
+      } py-1 hover:opacity-50 font-bold px-4 rounded-xl mt-3`}
       onClick={onClick}
     >
       {loading ? "Loading..." : text}

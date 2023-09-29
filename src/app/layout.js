@@ -15,9 +15,15 @@ const poppins = Poppins({
 
 export default function RootLayout({ children, session }) {
   return (
-    <html lang="en">
-      <SessionProvider session={session} refetchInterval={5 * 60}>
-        <body className={`${poppins.variable} flex flex-col lg:flex-row`}>
+    <html lang="en" className="h-full">
+      <SessionProvider
+        session={session}
+        refetchInterval={5 * 60}
+        className="h-full"
+      >
+        <body
+          className={`${poppins.variable} flex flex-col lg:flex-row h-full`}
+        >
           <Toaster />
           {children}
         </body>

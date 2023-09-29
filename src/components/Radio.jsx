@@ -8,7 +8,7 @@ const Radio = ({ text, field, options, user, setUser, editable = true }) => {
   return (
     <div className="flex flex-col">
       <p className="mb-1 font-semibold">{text}</p>
-      {!editable && <div>{user[field]}</div>}
+      {!editable && <div className="pl-3">{user[field]}</div>}
       {editable && (
         <div className="grid grid-flow-row grid-cols-2 md:grid-cols-3 w-full">
           {options.map((option, index) => (
