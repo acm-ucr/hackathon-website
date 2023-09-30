@@ -3,7 +3,10 @@ import Judging from "@/components/admin/services/judging/Judging";
 
 const Page = () => {
   return (
-    <ProtectedPage title="Admin | Judging" restrictions={["admin"]}>
+    <ProtectedPage
+      title="Admin | Judging"
+      restrictions={["admins", "committees"]}
+    >
       <Judging />
     </ProtectedPage>
   );

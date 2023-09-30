@@ -6,10 +6,10 @@ const Toggle = ({ option, onClick, show }) => {
   return (
     <button
       onClick={onClick}
-      className="relative z-50 bg-white text-black w-full border-2 rounded-lg border-black justify-between flex items-center px-3 py-1"
+      className="my-1 bg-hackathon-gray-100 rounded-md relative z-20 w-full justify-between flex items-center px-3 py-1"
       data-cy="dropdown-selected"
     >
-      {option}
+      {option.name}
       <RiArrowDownSLine
         className={`${show && "rotate-180"} duration-300`}
         data-cy="dropdown-arrow"
@@ -18,7 +18,7 @@ const Toggle = ({ option, onClick, show }) => {
   );
 };
 
-const Menu = ({ setOption, className, setOptions, options }) => {
+const Menu = ({ option, setOption, className, setOptions, options }) => {
   const [value, setValue] = useState("");
 
   const handleInput = (e) => {
@@ -45,13 +45,13 @@ const Menu = ({ setOption, className, setOptions, options }) => {
       />
       {options.filter((opt) => !opt.hidden).length > 0 ? (
         options
-          .filter((opt) => !opt.hidden)
+          .filter((opt) => !opt.hidden && opt.name !== option.name)
           .map((option, index) => (
             <Dropdown.Item
               data-cy={`dropdown-option-${index}`}
-              className=" hover:!bg-hackathon-green-200 bg-transparent overflow-hidden px-3 py-1 last:rounded-b-lg"
+              className=" hover:!bg-hackathon-green-300 hover:!text-white bg-transparent overflow-hidden px-3 py-1 last:rounded-b-lg"
               key={index}
-              onClick={() => setOption(option.name)}
+              onClick={() => setOption(option)}
             >
               {option.name}
             </Dropdown.Item>
@@ -71,16 +71,17 @@ const DropDown = ({ options, setOptions, option, setOption }) => {
       onToggle={() => setShow(!show)}
       show={show}
       autoClose={true}
-      className="w-full m-0 bg-white rounded-3xl"
+      className="w-full m-0"
       data-cy="dropdown"
     >
       <Dropdown.Toggle show={show} as={Toggle} option={option} />
       <Dropdown.Menu
         as={Menu}
+        option={option}
         setOption={setOption}
         options={options}
         setOptions={setOptions}
-        className="max-h-[50vh] overflow-scroll w-full bg-white border-none !rounded-b-lg !rounded-t-none border-2 border-black p-0 !z-10 !-mt-4 pt-4"
+        className="rounded-md border-0 max-h-[50vh] overflow-scroll w-full !rounded-b-lg !rounded-t-none p-0 !z-10 !-mt-4 pt-4"
       />
     </Dropdown>
   );

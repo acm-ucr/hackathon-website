@@ -1,13 +1,14 @@
-import DATA from "../../../fixtures/teams.json";
+import response from "../../../fixtures/teams.json";
 
-const teams = DATA;
+const teams = response.items;
 
 describe("Team Sort", () => {
   beforeEach(() => {
-    cy.login("admin");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/teams");
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "teams",
+    });
   });
 
   it("Sort Name Up", () => {
@@ -17,7 +18,6 @@ describe("Team Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="name"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].name);
       });
     });
@@ -30,34 +30,35 @@ describe("Team Sort", () => {
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="name"]').each((element, index) => {
-        cy.log(index, element);
         expect(element.text()).to.equal(sorted[index].name);
       });
     });
   });
 
   it("Sort Status Up", () => {
-    const sorted = teams.sort((a, b) => (a.status > b.status ? -1 : 1));
+    const sorted = teams.sort((a, b) =>
+      a.status.teams > b.status.teams ? -1 : 1
+    );
 
     cy.get('[data-cy="status-sort-up"]').click();
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="status"]').each((element, index) => {
-        cy.log(index, element);
-        expect(element.text()).to.equal(sorted[index].status);
+        expect(element.text()).to.equal(sorted[index].status.teams);
       });
     });
   });
 
   it("Sort Status Down", () => {
-    const sorted = teams.sort((a, b) => (b.status > a.status ? -1 : 1));
+    const sorted = teams.sort((a, b) =>
+      b.status.teams > a.status.teams ? -1 : 1
+    );
 
     cy.get('[data-cy="status-sort-down"]').click();
 
     cy.get('[data-cy="table"]').within(() => {
       cy.get('[data-cy="status"]').each((element, index) => {
-        cy.log(index, element);
-        expect(element.text()).to.equal(sorted[index].status);
+        expect(element.text()).to.equal(sorted[index].status.teams);
       });
     });
   });

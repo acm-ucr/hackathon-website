@@ -20,7 +20,7 @@ export const HEADERS = [
   { text: "name", size: 3, icon: true, sort: "off" },
   { text: "email", size: 3, icon: true, sort: "off" },
   {
-    text: "type",
+    text: "affiliation",
     size: 2,
     icon: true,
     sort: "off",
@@ -34,13 +34,13 @@ export const HEADERS = [
     hasTag: true,
   },
   {
-    text: "image",
+    text: "photo",
     size: 1,
     icon: false,
     sort: "off",
     hasTag: true,
     onClick: (object, setModal) => {
-      setModal({ src: object.image, title: object.name + "'s Image" });
+      setModal({ src: object.photo, title: object.name + "'s Image" });
     },
   },
 ];

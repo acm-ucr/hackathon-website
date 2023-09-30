@@ -3,7 +3,10 @@ import CheckinPage from "@/components/user/CheckIn";
 
 const Page = () => {
   return (
-    <ProtectedPage title="User | CheckIn" restrictions={["hacker"]}>
+    <ProtectedPage
+      title="User | CheckIn"
+      restrictions={["hacker", "admins", "committees"]}
+    >
       <CheckinPage />
     </ProtectedPage>
   );

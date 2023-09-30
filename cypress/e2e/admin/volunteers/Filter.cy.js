@@ -1,11 +1,14 @@
-import volunteers from "../../../fixtures/volunteers.json";
+import response from "../../../fixtures/volunteers.json";
+
+const volunteers = response.items;
 
 describe("Volunteers Filters", () => {
   beforeEach(() => {
-    cy.login("admin");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/volunteers");
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "volunteers",
+    });
   });
 
   it("Default Filters", () => {
@@ -38,7 +41,7 @@ describe("Volunteers Filters", () => {
   it("Click Confirm", () => {
     cy.get('[data-cy="confirm-filter"]').click();
     volunteers.forEach((volunteer) => {
-      if (volunteer.status === "confirm")
+      if (volunteer.status.volunteers === "confirm")
         cy.get(`[data-cy="${volunteer.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${volunteer.uid}"]`).should("exist");
     });
@@ -47,7 +50,7 @@ describe("Volunteers Filters", () => {
   it("Click Not Attending", () => {
     cy.get('[data-cy="not attending-filter"]').click();
     volunteers.forEach((volunteer) => {
-      if (volunteer.status === "not attending")
+      if (volunteer.status.volunteers === "not attending")
         cy.get(`[data-cy="${volunteer.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${volunteer.uid}"]`).should("exist");
     });
@@ -56,7 +59,7 @@ describe("Volunteers Filters", () => {
   it("Click Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
     volunteers.forEach((volunteer) => {
-      if (volunteer.status === "pending")
+      if (volunteer.status.volunteers === "pending")
         cy.get(`[data-cy="${volunteer.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${volunteer.uid}"]`).should("exist");
     });
@@ -67,8 +70,8 @@ describe("Volunteers Filters", () => {
     cy.get('[data-cy="not attending-filter"]').click();
     volunteers.forEach((volunteer) => {
       if (
-        volunteer.status === "confirm" ||
-        volunteer.status === "not attending"
+        volunteer.status.volunteers === "confirm" ||
+        volunteer.status.volunteers === "not attending"
       )
         cy.get(`[data-cy="${volunteer.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${volunteer.uid}"]`).should("exist");

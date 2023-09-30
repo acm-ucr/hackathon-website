@@ -13,6 +13,7 @@ import Link from "next/link";
 import { COLORS } from "@/data/Tags";
 import Modal from "./dashboards/Modal";
 import { ICONS } from "@/data/admin/Icons";
+import Loading from "../Loading";
 
 const Toggle = ({ eventKey }) => {
   const { activeEventKey } = useContext(AccordionContext);
@@ -38,6 +39,7 @@ const Table = ({
   setObjects,
   objects,
   Dropdown,
+  page,
 }) => {
   const [currentSort, setCurrentSort] = useState("name");
   const [modal, setModal] = useState(null);
@@ -51,7 +53,9 @@ const Table = ({
       })
     );
   };
-  return (
+  return !objects ? (
+    <Loading />
+  ) : (
     <div className="w-full rounded-xl overflow-hidden flex flex-col">
       {modal && <Modal data={modal} setModal={setModal} />}
       <Row className="w-full py-2 text-sm flex text-white bg-hackathon-blue-200 justify-evenly px-0 m-0">
@@ -73,6 +77,7 @@ const Table = ({
                 setHeaders={setHeaders}
                 setObjects={setObjects}
                 objects={objects}
+                page={page}
               />
             )}
           </Col>
@@ -117,16 +122,16 @@ const Table = ({
                           <div data-cy={`${header.text}`}>
                             <Tag
                               text={
-                                object[header.text].includes("https://")
+                                object[header.text][page]
+                                  ? object[header.text][page]
+                                  : object[header.text].includes("base64")
                                   ? "view"
-                                  : object[header.text] +
-                                    (object[header.text] === "accept" ||
-                                    object[header.text] === "reject"
-                                      ? "ed"
-                                      : "")
+                                  : object[header.text]
                               }
                               color={
-                                object[header.text].includes("https://")
+                                object[header.text][page]
+                                  ? COLORS[object[header.text][page]]
+                                  : object[header.text].includes("base64")
                                   ? COLORS["view"]
                                   : COLORS[object[header.text]]
                               }
@@ -135,6 +140,7 @@ const Table = ({
                                   ? () => header.onClick(object, setModal)
                                   : null
                               }
+                              past={true}
                             />
                           </div>
                         )}
@@ -151,27 +157,29 @@ const Table = ({
                               }`}
                               key={index}
                             >
-                              {header.text === "links" ? (
-                                <Link
-                                  href={element.link}
-                                  className="flex items-center m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-sm"
-                                >
-                                  {ICONS[element.name]}
-                                  {element.link.replace("https://", "")}
-                                </Link>
-                              ) : (
-                                element
-                              )}
+                              {header.text === "links"
+                                ? element.link !== "No Link" && (
+                                    <Link
+                                      href={element.link}
+                                      className="w-11/12 flex items-center m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-sm"
+                                    >
+                                      {ICONS[element.name]}
+                                      <p className="truncate w-11/12 ml-1 mb-0">
+                                        {element.link.replace("https://", "")}
+                                      </p>
+                                    </Link>
+                                  )
+                                : element}
                             </p>
                           ))}
 
                         {!header.hasTag &&
                           !Array.isArray(object[header.text]) && (
-                            <div data-cy={`${header.text}`}>
+                            <div
+                              data-cy={`${header.text}`}
+                              className="break-words"
+                            >
                               {object[header.text]}
-                              {(object.position === header.symbol ||
-                                object.status === header.symbol) &&
-                                ICONS[header.symbol]}
                             </div>
                           )}
                       </Col>
