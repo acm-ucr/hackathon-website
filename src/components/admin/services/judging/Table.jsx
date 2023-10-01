@@ -2,9 +2,14 @@
 import { Col, Row } from "react-bootstrap";
 import Tag from "../../Tag";
 import { COLORS } from "@/data/Tags";
+import Link from "next/link";
+import { ICONS } from "@/data/admin/Icons";
+import Loading from "@/components/Loading";
 
 const Table = ({ data }) => {
-  return (
+  return data === null ? (
+    <Loading />
+  ) : (
     <Row className="overflow-y-scroll">
       {data
         .filter((group) => !group.hidden)
@@ -17,7 +22,19 @@ const Table = ({ data }) => {
             <div className="bg-white w-full p-3 rounded-xl">
               <div className="flex justify-between items-center">
                 <Tag color={COLORS["grayblue"]} text={group.name} />
-                <p className="mb-0 text-hackathon-green-300 font-semibold">
+                <div className="flex justify-start w-full ml-2">
+                  {group.links.map((link, index) => (
+                    <Link
+                      key={index}
+                      href={link.link}
+                      target="_blank"
+                      className="m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-xl"
+                    >
+                      {ICONS[link.name]}
+                    </Link>
+                  ))}
+                </div>
+                <p className="mb-0 text-hackathon-green-300 font-semibold whitespace-nowrap">
                   table {group.table}
                 </p>
               </div>
@@ -28,17 +45,9 @@ const Table = ({ data }) => {
                     {judges.map((judge, i) => (
                       <Tag
                         classes="mx-1"
-                        color={
-                          COLORS[
-                            judge.split("_")[0] === "p"
-                              ? "professor"
-                              : judge.split("_")[0] === "i"
-                              ? "industry"
-                              : "student"
-                          ]
-                        }
+                        color={COLORS[judge.affiliation]}
                         key={i}
-                        text={judge.slice(2, judge.length)}
+                        text={judge.name}
                       />
                     ))}
                   </div>

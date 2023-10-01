@@ -28,32 +28,14 @@ export const MAJORS = [
   "Other",
 ];
 
-export const DIETS = {
-  vegan: {
-    state: false,
-    text: "Vegan",
-  },
-  vegetarian: {
-    state: false,
-    text: "Vegetarian",
-  },
-  lactoseIntolerant: {
-    state: false,
-    text: "Lactose Intolerant",
-  },
-  nutAllergy: {
-    state: false,
-    text: "Nut Allergy",
-  },
-  noGluten: {
-    state: false,
-    text: "No Gluten",
-  },
-  halal: {
-    state: false,
-    text: "Halal",
-  },
-};
+export const DIETS = [
+  "Vegan",
+  "Vegetarian",
+  "Lactose Intolerant",
+  "Nut Allergy",
+  "No Gluten",
+  "Halal",
+];
 
 export const REQUIREMENTS = {
   photography: {
@@ -65,3 +47,12 @@ export const REQUIREMENTS = {
     text: "I understand that I will attend the event in person.",
   },
 };
+export const HOWTOFINDEVENTS = [
+  "devpost",
+  "ACM discord server",
+  "hackathon tabling",
+  "instagram",
+  "twitter",
+  "facebook",
+];
+export const JUDGE_AFFILIATION = ["Student", "Professor", "Industry"];

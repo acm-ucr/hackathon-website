@@ -52,7 +52,8 @@ const attributes = [
   "school",
   "major",
   "grade",
-  "size",
+  "shirt",
+  "diet",
   "restriction",
 ];
 

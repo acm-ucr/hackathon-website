@@ -8,9 +8,9 @@
   "github": "www.github.com",
   "devpost": "www.devpost.com",
   "status": "pending",
-  "team": {
+  "teams": {
     "uid": 1,
-    "name": "The team",
+    "name": "The teams",
     "links": [
       {
         "name": "github",
