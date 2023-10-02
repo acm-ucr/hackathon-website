@@ -48,38 +48,37 @@ export async function POST(req) {
 
 export async function GET() {
   const res = NextResponse;
-
-  const { message, authCode } = await auth(true);
-
   const output = [];
 
-  if (authCode === 200) {
-    try {
-      const snapshot = await getDocs(
-        query(
-          collection(db, "users"),
-          where("role", "array-contains", "volunteers")
-        )
-      );
-      snapshot.forEach((doc) => {
-        output.push({
-          ...doc.data(),
-          uid: doc.id,
-          selected: false,
-          hidden: false,
-        });
+  try {
+    const snapshot = await getDocs(
+      query(
+        collection(db, "users"),
+        where("role", "array-contains", "volunteers")
+      )
+    );
+    snapshot.forEach((doc) => {
+      const { name, email, discord, availability, status } = doc.data();
+      output.push({
+        uid: doc.id,
+        name,
+        email,
+        discord,
+        availability,
+        status: status.volunteers,
+        selected: false,
+        hidden: false,
       });
-    } catch (err) {
-      return res.json(
-        { message: `Internal Server Error: ${err}` },
-        { status: 500 }
-      );
-    }
-
-    return res.json({ message: "OK", items: output }, { status: 200 });
-  } else {
-    return res.json({ message }, { status: authCode });
+    });
+  } catch (err) {
+    console.log(err);
+    return res.json(
+      { message: `Internal Server Error: ${err}` },
+      { status: 500 }
+    );
   }
+
+  return res.json({ message: "OK", items: output }, { status: 200 });
 }
 
 export async function PUT(req) {

@@ -24,7 +24,6 @@ const Admin = () => {
           setObjects={setAdmin}
           objects={admin}
           input={input.input}
-          page="admins"
         />
       </div>
       <Toolbar
@@ -42,7 +41,6 @@ const Admin = () => {
         setHeaders={setHeaders}
         setObjects={setAdmin}
         objects={admin}
-        page="admins"
       />
     </div>
   );

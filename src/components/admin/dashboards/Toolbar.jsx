@@ -38,7 +38,7 @@ const Toolbar = ({
     setObjects(
       objects.map((a) => {
         if (a.selected) {
-          a.status[page] = text;
+          a.status = text;
           a.selected = false;
         }
         return a;
@@ -55,7 +55,7 @@ const Toolbar = ({
 
         Object.entries(filters).map(([filter, value]) => {
           if (
-            a.status[page] === filter &&
+            a.status === filter &&
             value &&
             a.name.toLowerCase().match(input.input.toLowerCase())
           ) {

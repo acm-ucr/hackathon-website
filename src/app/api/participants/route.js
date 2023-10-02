@@ -65,9 +65,35 @@ export async function GET() {
           )
         );
         snapshot.forEach((doc) => {
+          const {
+            name,
+            email,
+            phone,
+            major,
+            age,
+            school,
+            grade,
+            gender,
+            shirt,
+            status,
+            diet,
+            resume,
+          } = doc.data();
+
           output.push({
-            ...doc.data(),
             uid: doc.id,
+            name,
+            email,
+            phone,
+            major,
+            age,
+            school,
+            grade,
+            gender,
+            shirt,
+            diet,
+            resume,
+            status: status.participants,
             selected: false,
             hidden: false,
           });

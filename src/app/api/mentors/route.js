@@ -72,8 +72,13 @@ export async function GET() {
           )
         );
         snapshot.forEach((doc) => {
+          const { name, email, discord, status, availability } = doc.data();
           output.push({
-            ...doc.data(),
+            name,
+            email,
+            discord,
+            availability,
+            status: status.mentors,
             uid: doc.id,
             selected: false,
             hidden: false,

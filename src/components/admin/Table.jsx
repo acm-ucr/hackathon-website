@@ -39,7 +39,6 @@ const Table = ({
   setObjects,
   objects,
   Dropdown,
-  page,
 }) => {
   const [currentSort, setCurrentSort] = useState("name");
   const [modal, setModal] = useState(null);
@@ -77,7 +76,6 @@ const Table = ({
                 setHeaders={setHeaders}
                 setObjects={setObjects}
                 objects={objects}
-                page={page}
               />
             )}
           </Col>
@@ -122,16 +120,12 @@ const Table = ({
                           <div data-cy={`${header.text}`}>
                             <Tag
                               text={
-                                object[header.text][page]
-                                  ? object[header.text][page]
-                                  : object[header.text].includes("base64")
+                                object[header.text].includes("base64")
                                   ? "view"
                                   : object[header.text]
                               }
                               color={
-                                object[header.text][page]
-                                  ? COLORS[object[header.text][page]]
-                                  : object[header.text].includes("base64")
+                                object[header.text].includes("base64")
                                   ? COLORS["view"]
                                   : COLORS[object[header.text]]
                               }

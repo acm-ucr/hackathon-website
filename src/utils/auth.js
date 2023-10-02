@@ -8,6 +8,7 @@ export const auth = async (roles, accepted) => {
         (status) => session.user.status[status] === "accept"
       )
     : session.user.role;
+
   if (session.user) {
     if (!roles || roles.some((role) => userRoles.includes(role)))
       return {
