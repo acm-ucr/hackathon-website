@@ -4,10 +4,21 @@ import { USER } from "../../src/data/forms/User";
 
 describe("Input", () => {
   it("Placeholder", () => {
-    cy.mount(
-      <Input name="first" type="text" title="First Name" placeholder="John" />
-    );
+    const Parent = () => {
+      const [user, setUser] = useState(USER);
+      return (
+        <Input
+          name="first"
+          type="text"
+          title="First Name"
+          placeholder="John"
+          user={user}
+          setUser={setUser}
+        />
+      );
+    };
 
+    cy.mount(<Parent />);
     cy.get('[data-cy="first-input"]').should(
       "have.attr",
       "placeholder",
