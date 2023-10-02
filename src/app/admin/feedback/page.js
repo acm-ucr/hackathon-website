@@ -1,4 +1,4 @@
-import Feedback from "@/components/forms/Feedback";
+import Feedback from "@/components/admin/dashboards/Feedback";
 import ProtectedPage from "@/components/ProtectedPage";
 const FeedbackPage = () => {
   return (
