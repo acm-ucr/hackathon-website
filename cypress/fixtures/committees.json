@@ -5,15 +5,7 @@
       "uid": 1,
       "name": "Dewi Norton",
       "position": "lead",
-      "status": {
-        "admins": "pending",
-        "participants": "pending",
-        "teams": "pending",
-        "judges": "pending",
-        "mentors": "pending",
-        "volunteers": "pending",
-        "committees": "pending"
-      },
+      "status": 0,
       "affiliation": "recruitment",
       "email": "dewinorton@email.com",
       "selected": false,
@@ -23,15 +15,7 @@
       "uid": 2,
       "name": "Amie Nguyen",
       "position": "lead",
-      "status": {
-        "admins": "pending",
-        "participants": "pending",
-        "teams": "pending",
-        "judges": "pending",
-        "mentors": "pending",
-        "volunteers": "pending",
-        "committees": "accept"
-      },
+      "status": 0,
       "affiliation": "director",
       "email": "amienguyenn@email.com",
       "selected": false,
@@ -41,15 +25,7 @@
       "uid": 3,
       "name": "Larry Larsen",
       "position": "",
-      "status": {
-        "admins": "pending",
-        "participants": "pending",
-        "teams": "pending",
-        "judges": "pending",
-        "mentors": "pending",
-        "volunteers": "pending",
-        "committees": "accept"
-      },
+      "status": 0,
       "affiliation": "marketing",
       "email": "larrylarsen@email.com",
       "selected": false,
@@ -59,15 +35,7 @@
       "uid": 4,
       "name": "Big Chungus",
       "position": "",
-      "status": {
-        "admins": "pending",
-        "participants": "pending",
-        "teams": "pending",
-        "judges": "pending",
-        "mentors": "pending",
-        "volunteers": "pending",
-        "committees": "pending"
-      },
+      "status": 0,
       "affiliation": "operations",
       "email": "bigchungus101@email.com",
       "selected": false,
@@ -77,15 +45,7 @@
       "uid": 5,
       "name": "Mario Kart",
       "position": "",
-      "status": {
-        "admins": "pending",
-        "participants": "pending",
-        "teams": "pending",
-        "judges": "pending",
-        "mentors": "pending",
-        "volunteers": "pending",
-        "committees": "pending"
-      },
+      "status": 0,
       "affiliation": "sponsorship",
       "email": "mariomoviegoated101@email.com",
       "selected": false,
@@ -95,15 +55,7 @@
       "uid": 6,
       "name": "Ash Ketchum",
       "position": "",
-      "status": {
-        "admins": "pending",
-        "participants": "pending",
-        "teams": "pending",
-        "judges": "pending",
-        "mentors": "pending",
-        "volunteers": "pending",
-        "committees": "pending"
-      },
+      "status": 0,
       "affiliation": "software",
       "email": "ash.ketchum12@email.com",
       "selected": false,
@@ -114,15 +66,7 @@
       "name": "Tiffany Wang",
       "position": "",
       "affiliation": "UIUX",
-      "status": {
-        "admins": "pending",
-        "participants": "pending",
-        "teams": "pending",
-        "judges": "pending",
-        "mentors": "pending",
-        "volunteers": "pending",
-        "committees": "pending"
-      },
+      "status": 0,
       "email": "twang777@email.com",
       "selected": false,
       "hidden": false
@@ -131,15 +75,7 @@
       "uid": 8,
       "name": "Benjamin Wang",
       "affiliation": "sponsorship",
-      "status": {
-        "admins": "pending",
-        "participants": "pending",
-        "teams": "pending",
-        "judges": "pending",
-        "mentors": "pending",
-        "volunteers": "pending",
-        "committees": "pending"
-      },
+      "status": 0,
       "email": "benjjj@ucr.edu",
       "selected": false,
       "hidden": false
@@ -148,15 +84,7 @@
       "uid": 9,
       "name": "Catty Sun",
       "affiliation": "operations",
-      "status": {
-        "admins": "pending",
-        "participants": "pending",
-        "teams": "pending",
-        "judges": "pending",
-        "mentors": "pending",
-        "volunteers": "pending",
-        "committees": "pending"
-      },
+      "status": 0,
       "email": "ash.catty1278@email.com",
       "selected": false,
       "hidden": false
@@ -165,15 +93,7 @@
       "uid": 10,
       "name": "Cindy Koy",
       "affiliation": "industry",
-      "status": {
-        "admins": "pending",
-        "participants": "pending",
-        "teams": "pending",
-        "judges": "pending",
-        "mentors": "pending",
-        "volunteers": "pending",
-        "committees": "pending"
-      },
+      "status": 0,
       "email": "kcindy@email.com",
       "selected": false,
       "hidden": false
@@ -182,15 +102,7 @@
       "uid": 11,
       "name": "Venessal Teng",
       "affiliation": "industry",
-      "status": {
-        "admins": "pending",
-        "participants": "pending",
-        "teams": "pending",
-        "judges": "pending",
-        "mentors": "pending",
-        "volunteers": "pending",
-        "committees": "pending"
-      },
+      "status": 0,
       "email": "vteng666@email.com",
       "selected": false,
       "hidden": false
@@ -199,15 +111,7 @@
       "uid": 12,
       "name": "Savv Kun",
       "affiliation": "marketing",
-      "status": {
-        "admins": "pending",
-        "participants": "pending",
-        "teams": "pending",
-        "judges": "pending",
-        "mentors": "pending",
-        "volunteers": "pending",
-        "committees": "pending"
-      },
+      "status": 0,
       "email": "msuusse8966@email.com",
       "selected": false,
       "hidden": false
@@ -216,15 +120,7 @@
       "uid": 13,
       "name": "Alex Jenkins",
       "affiliation": "industry",
-      "status": {
-        "admins": "pending",
-        "participants": "pending",
-        "teams": "pending",
-        "judges": "pending",
-        "mentors": "pending",
-        "volunteers": "pending",
-        "committees": "pending"
-      },
+      "status": 0,
       "email": "akkkk74@email.com",
       "selected": false,
       "hidden": false
@@ -233,15 +129,7 @@
       "uid": 14,
       "name": "Astin Downy",
       "affiliation": "industry",
-      "status": {
-        "admins": "pending",
-        "participants": "pending",
-        "teams": "pending",
-        "judges": "pending",
-        "mentors": "pending",
-        "volunteers": "pending",
-        "committees": "pending"
-      },
+      "status": 0,
       "email": "Lqy17837@hotmail.com",
       "selected": false,
       "hidden": false

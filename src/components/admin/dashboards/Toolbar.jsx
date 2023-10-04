@@ -27,18 +27,18 @@ const Toolbar = ({
   });
   const [toggle, setToggle] = useState(false);
 
-  const onClick = (text) => {
+  const onClick = (value) => {
     setToggle(false);
     const items = objects.filter((object) => object.selected);
     axios.put(`/api/${page}`, {
       objects: items,
-      status: text,
+      status: value,
       attribute: "status",
     });
     setObjects(
       objects.map((a) => {
         if (a.selected) {
-          a.status[page] = text;
+          a.status = value;
           a.selected = false;
         }
         return a;
@@ -53,10 +53,10 @@ const Toolbar = ({
       objects.map((a) => {
         let boolean = false;
 
-        Object.entries(filters).map(([filter, value]) => {
+        Object.values(filters).map(({ value, state }) => {
           if (
-            a.status[page] === filter &&
-            value &&
+            a.status === value &&
+            state &&
             a.name.toLowerCase().match(input.input.toLowerCase())
           ) {
             boolean = true;
@@ -110,9 +110,8 @@ const Toolbar = ({
             <Tag
               key={index}
               text={tag.text}
-              name={tag.name}
-              onClick={() => onClick(tag.text)}
-              color={COLORS[tag.text]}
+              onClick={() => onClick(tag.value)}
+              color={COLORS[tag.value]}
               setObjects={setObjects}
               objects={objects}
             />

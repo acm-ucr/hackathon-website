@@ -41,7 +41,7 @@ describe("Participant Filters", () => {
   it("Click Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
     participants.forEach((participant) => {
-      if (participant.status.participants === "pending")
+      if (participant.status === 0)
         cy.get(`[data-cy="${participant.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${participant.uid}"]`).should("exist");
     });
@@ -50,7 +50,7 @@ describe("Participant Filters", () => {
   it("Click Rejected", () => {
     cy.get('[data-cy="reject-filter"]').click();
     participants.forEach((participant) => {
-      if (participant.status.participants === "reject")
+      if (participant.status === -1)
         cy.get(`[data-cy="${participant.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${participant.uid}"]`).should("exist");
     });
@@ -59,7 +59,7 @@ describe("Participant Filters", () => {
   it("Click Accepted", () => {
     cy.get('[data-cy="accept-filter"]').click();
     participants.forEach((participant) => {
-      if (participant.status.participants === "accept")
+      if (participant.status === 1)
         cy.get(`[data-cy="${participant.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${participant.uid}"]`).should("exist");
     });
@@ -69,10 +69,7 @@ describe("Participant Filters", () => {
     cy.get('[data-cy="accept-filter"]').click();
     cy.get('[data-cy="pending-filter"]').click();
     participants.forEach((participant) => {
-      if (
-        participant.status.participants === "accept" ||
-        participant.status.participants === "pending"
-      )
+      if (participant.status === 1 || participant.status === 0)
         cy.get(`[data-cy="${participant.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${participant.uid}"]`).should("exist");
     });
