@@ -84,7 +84,6 @@ export async function GET() {
     });
     return res.json({ message: "OK", items: output }, { status: 200 });
   } catch (err) {
-    console.log(err);
     return res.json(
       { message: `Internal Server Error: ${err}` },
       { status: 500 }

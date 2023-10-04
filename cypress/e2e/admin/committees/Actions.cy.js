@@ -26,7 +26,7 @@ describe("Committee Actions", () => {
     five.forEach((committee) =>
       cy
         .get(`[data-cy="${committee.uid}"]`)
-        .find('[data-cy="accept-tag"]')
+        .find('[data-cy="1-tag"]')
         .should("exist")
     );
   });
@@ -46,7 +46,7 @@ describe("Committee Actions", () => {
     five.forEach((committee) =>
       cy
         .get(`[data-cy="${committee.uid}"]`)
-        .find('[data-cy="pending-tag"]')
+        .find('[data-cy="0-tag"]')
         .should("exist")
     );
   });
@@ -65,7 +65,7 @@ describe("Committee Actions", () => {
     five.forEach((committee) =>
       cy
         .get(`[data-cy="${committee.uid}"]`)
-        .find('[data-cy="reject-tag"]')
+        .find('[data-cy="-1-tag"]')
         .should("exist")
     );
   });

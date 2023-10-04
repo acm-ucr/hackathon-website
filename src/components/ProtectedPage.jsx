@@ -20,7 +20,6 @@ const ProtectedPage = ({ title, children, restrictions }) => {
     }
 
     if (!session.user.roles && Object.keys(restrictions).length > 0) {
-      console.log("No Roles");
       setError({
         code: 403,
         error: "Unauthorized",
@@ -36,7 +35,6 @@ const ProtectedPage = ({ title, children, restrictions }) => {
     );
 
     if (!authorized && Object.keys(restrictions).length > 0) {
-      console.log("Unauthorized Permission");
       setError({
         code: 403,
         error: "Unauthorized",
@@ -55,7 +53,6 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       )}
       {status === "authenticated" && confirmed && (
         <>
-          {console.log("being caled")}
           <Navigation />
           <title>{title}</title>
           <div className="flex justify-center items-start w-full bg-hackathon-page z-0 h-screen pt-12 lg:pt-0">
