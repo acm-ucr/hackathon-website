@@ -1,6 +1,4 @@
-import { getServerSession } from "next-auth/next";
 import { NextResponse } from "next/server";
-import { authOptions } from "../auth/[...nextauth]/route";
 import { db } from "../../../../firebase";
 import {
   doc,
@@ -11,25 +9,34 @@ import {
   deleteDoc,
   deleteField,
 } from "firebase/firestore";
+import { authenticate } from "@/utils/auth";
 
-export async function DELETE(req) {
+export async function DELETE() {
   const res = NextResponse;
-  const session = await getServerSession(authOptions);
-  const { members } = (
-    await getDoc(doc(db, "teams", session.user.team))
-  ).data();
+  // TODO: WHAT AUTHENTICATION IS NEEDED HERE?
+  const { auth, message, user } = await authenticate({
+    admins: 1,
+  });
+
+  if (auth !== 200) {
+    return res.json(
+      { message: `Authentication Error: ${message}` },
+      { status: auth }
+    );
+  }
+
+  const { members } = (await getDoc(doc(db, "teams", user.team))).data();
 
   try {
-    if (members.length <= 1)
-      await deleteDoc(doc(db, "teams", session.user.team));
+    if (members.length <= 1) await deleteDoc(doc(db, "teams", user.team));
     else
-      await updateDoc(doc(db, "teams", session.user.team), {
+      await updateDoc(doc(db, "teams", user.team), {
         members: arrayRemove({
-          email: session.user.email,
-          name: session.user.name,
+          email: user.email,
+          name: user.name,
         }),
       });
-    await updateDoc(doc(db, "users", session.user.id), {
+    await updateDoc(doc(db, "users", user.id), {
       team: deleteField(),
     });
     return res.json({ message: "OK" }, { status: 200 });
@@ -43,7 +50,18 @@ export async function DELETE(req) {
 
 export async function PUT(req) {
   const res = NextResponse;
-  const session = await getServerSession(authOptions);
+  // TODO: WHAT AUTHENTICATION IS NEEDED HERE?
+  const { auth, message, user } = await authenticate({
+    admins: 1,
+  });
+
+  if (auth !== 200) {
+    return res.json(
+      { message: `Authentication Error: ${message}` },
+      { status: auth }
+    );
+  }
+
   const { team } = await req.json();
 
   try {
@@ -54,11 +72,11 @@ export async function PUT(req) {
     if (members.length < 4) {
       await updateDoc(doc(db, "teams", team), {
         members: arrayUnion({
-          email: session.user.email,
-          name: session.user.name,
+          email: user.email,
+          name: user.name,
         }),
       });
-      await updateDoc(doc(db, "users", session.user.id), {
+      await updateDoc(doc(db, "users", user.id), {
         team: team,
       });
       return res.json({ message: "OK" }, { status: 200 });

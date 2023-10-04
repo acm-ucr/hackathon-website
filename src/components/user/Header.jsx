@@ -6,6 +6,20 @@ import { COLORS } from "@/data/Tags";
 const Header = ({ horizontal = true }) => {
   const { data: session } = useSession();
 
+  const color =
+    session.user.roles.participants === 1
+      ? "green"
+      : session.user.roles.participants === -1
+      ? "red"
+      : "yellow";
+
+  const text =
+    session.user.roles.participants === 1
+      ? "accepted"
+      : session.user.roles.participants === -1
+      ? "rejected"
+      : "pending";
+
   return (
     <div
       className={`flex ${
@@ -22,10 +36,7 @@ const Header = ({ horizontal = true }) => {
       <div className="align-left">
         <p className="text-2xl font-bold mb-0">{session.user.name}</p>
         <p className="text-base mb-1">{session.user.email}</p>
-        <Tag
-          color={COLORS[session.user.status.participants]}
-          text={session.user.status.participants}
-        />
+        <Tag color={COLORS[color]} text={text} />
       </div>
     </div>
   );

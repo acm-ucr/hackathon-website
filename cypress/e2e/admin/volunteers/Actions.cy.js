@@ -24,7 +24,7 @@ describe("Volunteers Actions", () => {
     five.forEach((volunteer) =>
       cy
         .get(`[data-cy="${volunteer.uid}"]`)
-        .find('[data-cy="confirm-tag"]')
+        .find('[data-cy="1-tag"]')
         .should("exist")
     );
   });
@@ -42,7 +42,7 @@ describe("Volunteers Actions", () => {
     five.forEach((volunteer) =>
       cy
         .get(`[data-cy="${volunteer.uid}"]`)
-        .find('[data-cy="not attending-tag"]')
+        .find('[data-cy="-1-tag"]')
         .should("exist")
     );
   });
@@ -60,7 +60,7 @@ describe("Volunteers Actions", () => {
     five.forEach((volunteer) =>
       cy
         .get(`[data-cy="${volunteer.uid}"]`)
-        .find('[data-cy="pending-tag"]')
+        .find('[data-cy="0-tag"]')
         .should("exist")
     );
   });

@@ -1,11 +1,13 @@
-"use client";
 import ProtectedPage from "@/components/ProtectedPage";
 import Statistics from "@/components/admin/services/Statistics";
 const StatisticsPage = () => {
   return (
     <ProtectedPage
       title="Admin | Statistics"
-      restrictions={["admins", "committees"]}
+      restrictions={{
+        admins: 1,
+        committees: 1,
+      }}
     >
       <Statistics />
     </ProtectedPage>

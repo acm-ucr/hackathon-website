@@ -5,7 +5,13 @@ import Filters from "@/components/admin/Filters";
 import Toolbar from "@/components/admin/dashboards/Toolbar";
 import Title from "../Title";
 import Table from "../Table";
-import { FILTERS, HEADERS, TAGS, DROPDOWN } from "@/data/admin/Mentors.js";
+import {
+  FILTERS,
+  HEADERS,
+  TAGS,
+  DROPDOWN,
+  STATUSES,
+} from "@/data/admin/Mentors.js";
 
 const Mentors = () => {
   const [mentors, setMentors] = useState(null);
@@ -25,7 +31,6 @@ const Mentors = () => {
           setObjects={setMentors}
           objects={mentors}
           input={input.input}
-          page="mentors"
         />
       </div>
       <Toolbar
@@ -46,7 +51,7 @@ const Mentors = () => {
         setObjects={setMentors}
         objects={mentors}
         Dropdown={DROPDOWN}
-        page="mentors"
+        statuses={STATUSES}
       />
     </div>
   );

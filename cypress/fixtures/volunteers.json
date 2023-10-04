@@ -6,7 +6,7 @@
       "name": "Raidah Fairooz",
       "email": "rfair008@ucr.edu",
       "discord": "Raidah#2067",
-      "status": "pending",
+      "status": 0,
       "availability": ["fridayAfternoon", "sundayMorning"],
       "selected": false,
       "hidden": false
@@ -16,7 +16,7 @@
       "name": "Minsoo Kim",
       "email": "mkim001@ucr.edu",
       "discord": "Soup#2023",
-      "status": "pending",
+      "status": 0,
       "availability": ["fridayAfternoon", "sundayMorning"],
       "selected": false,
       "hidden": false
@@ -26,7 +26,7 @@
       "name": "Menthy Divyank",
       "email": "couple002@ucr.edu",
       "discord": "disney#2033",
-      "status": "pending",
+      "status": 0,
       "availability": ["fridayAfternoon", "sundayMorning"],
       "selected": false,
       "hidden": false
@@ -36,7 +36,7 @@
       "name": "John Cena",
       "email": "cantseeme@ucr.edu",
       "discord": "babydonthurtme#2067",
-      "status": "pending",
+      "status": 0,
       "availability": ["fridayAfternoon", "sundayMorning"],
       "selected": false,
       "hidden": false
@@ -46,7 +46,7 @@
       "name": "John Cena",
       "email": "digdag@gmail.com",
       "discord": "dorm#3333",
-      "status": "pending",
+      "status": 0,
       "availability": ["fridayAfternoon", "sundayMorning"],
       "selected": false,
       "hidden": false
@@ -56,7 +56,7 @@
       "name": "John Cena",
       "email": "john666@hotmail.com",
       "discord": "kickkk#8906",
-      "status": "pending",
+      "status": 0,
       "availability": ["fridayAfternoon", "sundayMorning"],
       "selected": false,
       "hidden": false
@@ -66,7 +66,7 @@
       "name": "John Cena",
       "email": "cesss2938@ucr.edu",
       "discord": "bnxgsw#000000",
-      "status": "pending",
+      "status": 0,
       "availability": ["fridayAfternoon", "sundayMorning"],
       "selected": false,
       "hidden": false
@@ -76,7 +76,7 @@
       "name": "John Cena",
       "email": "cantseeme@ucr.edu",
       "discord": "babydonthurtme#2067",
-      "status": "pending",
+      "status": 0,
       "availability": ["fridayAfternoon", "sundayMorning"],
       "selected": false,
       "hidden": false
@@ -86,7 +86,7 @@
       "name": "John Cena",
       "email": "cantseeme@ucr.edu",
       "discord": "babydonthurtme#2067",
-      "status": "pending",
+      "status": 0,
       "availability": ["fridayAfternoon", "sundayMorning"],
       "selected": false,
       "hidden": false
@@ -96,7 +96,7 @@
       "name": "John Cena",
       "email": "cantseeme@ucr.edu",
       "discord": "babydonthurtme#2067",
-      "status": "pending",
+      "status": 0,
       "availability": ["fridayAfternoon", "sundayMorning"],
       "selected": false,
       "hidden": false
@@ -106,7 +106,7 @@
       "name": "John Cena",
       "email": "cantseeme@ucr.edu",
       "discord": "babydonthurtme#2067",
-      "status": "pending",
+      "status": 0,
       "availability": ["fridayAfternoon", "sundayMorning"],
       "selected": false,
       "hidden": false
@@ -116,7 +116,7 @@
       "name": "John Cena",
       "email": "cantseeme@ucr.edu",
       "discord": "babydonthurtme#2067",
-      "status": "pending",
+      "status": 0,
       "availability": ["fridayAfternoon", "sundayMorning"],
       "selected": false,
       "hidden": false
@@ -126,7 +126,7 @@
       "name": "John Cena",
       "email": "cantseeme@ucr.edu",
       "discord": "babydonthurtme#2067",
-      "status": "pending",
+      "status": 0,
       "availability": ["fridayAfternoon", "sundayMorning"],
       "selected": false,
       "hidden": false
@@ -136,7 +136,7 @@
       "name": "John Cena",
       "email": "cantseeme@ucr.edu",
       "discord": "babydonthurtme#2067",
-      "status": "pending",
+      "status": 0,
       "availability": ["fridayAfternoon", "sundayMorning"],
       "selected": false,
       "hidden": false
@@ -146,7 +146,7 @@
       "name": "John Cena",
       "email": "cantseeme@ucr.edu",
       "discord": "babydonthurtme#2067",
-      "status": "pending",
+      "status": 0,
       "availability": ["fridayAfternoon", "sundayMorning"],
       "selected": false,
       "hidden": false
@@ -156,7 +156,7 @@
       "name": "John Cena",
       "email": "cantseeme@ucr.edu",
       "discord": "babydonthurtme#2067",
-      "status": "pending",
+      "status": 0,
       "availability": ["fridayAfternoon", "sundayMorning"],
       "selected": false,
       "hidden": false

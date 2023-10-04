@@ -4,7 +4,7 @@ import Title from "../Title.jsx";
 import Filters from "../Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import Table from "../Table.jsx";
-import { FILTERS, HEADERS, TAGS } from "@/data/admin/Admins.js";
+import { FILTERS, HEADERS, STATUSES, TAGS } from "@/data/admin/Admins.js";
 
 const Admin = () => {
   const [admin, setAdmin] = useState(null);
@@ -41,6 +41,7 @@ const Admin = () => {
         setHeaders={setHeaders}
         setObjects={setAdmin}
         objects={admin}
+        statuses={STATUSES}
       />
     </div>
   );

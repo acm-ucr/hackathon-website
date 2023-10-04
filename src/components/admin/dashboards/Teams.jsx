@@ -5,7 +5,7 @@ import Filters from "@/components/admin/Filters";
 import Toolbar from "@/components/admin/dashboards/Toolbar";
 import Title from "../Title";
 import Table from "../Table";
-import { FILTERS, HEADERS, TAGS } from "@/data/admin/Teams";
+import { FILTERS, HEADERS, TAGS, STATUSES } from "@/data/admin/Teams";
 
 const Teams = () => {
   const [teams, setTeams] = useState(null);
@@ -25,7 +25,6 @@ const Teams = () => {
           setObjects={setTeams}
           objects={teams}
           input={input.input}
-          page="teams"
         />
       </div>
       <Toolbar
@@ -45,7 +44,7 @@ const Teams = () => {
         setHeaders={setHeaders}
         setObjects={setTeams}
         objects={teams}
-        page="teams"
+        statuses={STATUSES}
       />
     </div>
   );

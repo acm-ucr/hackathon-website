@@ -22,7 +22,7 @@ describe("Mentors Actions", () => {
     five.forEach((mentor) =>
       cy
         .get(`[data-cy="${mentor.uid}"]`)
-        .find('[data-cy="confirm-tag"]')
+        .find('[data-cy="1-tag"]')
         .should("exist")
     );
   });
@@ -39,7 +39,7 @@ describe("Mentors Actions", () => {
     five.forEach((mentor) =>
       cy
         .get(`[data-cy="${mentor.uid}"]`)
-        .find('[data-cy="not attending-tag"]')
+        .find('[data-cy="-1-tag"]')
         .should("exist")
     );
   });
@@ -56,7 +56,7 @@ describe("Mentors Actions", () => {
     five.forEach((mentor) =>
       cy
         .get(`[data-cy="${mentor.uid}"]`)
-        .find('[data-cy="pending-tag"]')
+        .find('[data-cy="0-tag"]')
         .should("exist")
     );
   });

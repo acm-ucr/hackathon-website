@@ -146,7 +146,12 @@ const Form = ({ object, setObject, header, fields, onSubmit }) => {
               </Col>
             ))}
             <Col xl={12} className="flex justify-center">
-              <Button text="Submit" onClick={handleSubmit} loading={loading} />
+              <Button
+                text="Submit"
+                onClick={handleSubmit}
+                loading={loading}
+                color="green"
+              />
             </Col>
           </Row>
         </div>
