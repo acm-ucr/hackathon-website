@@ -1,6 +1,4 @@
-import { getServerSession } from "next-auth/next";
 import { NextResponse } from "next/server";
-import { authOptions } from "../auth/[...nextauth]/route";
 import { db } from "../../../../firebase";
 import {
   doc,
@@ -9,75 +7,74 @@ import {
   getDocs,
   query,
   where,
-  arrayRemove,
   deleteField,
-  arrayUnion,
 } from "firebase/firestore";
+import { authenticate } from "@/utils/auth";
+import { AUTH } from "@/data/admin/Admins";
 
 export async function POST(req) {
   const res = NextResponse;
-  const { discord, affiliation } = await req.json();
-  const session = await getServerSession(authOptions);
+  const { auth, message, user } = await authenticate(AUTH.POST);
 
-  if (session) {
-    try {
-      await updateDoc(doc(db, "users", session.user.id), {
-        discord: discord,
-        affiliation: affiliation,
-        "status.admins": "pending",
-        role: arrayUnion("admins"),
-      });
-      return res.json({ message: "OK" }, { status: 200 });
-    } catch (err) {
-      return res.json(
-        { message: `Internal Server Error: ${err}` },
-        { status: 500 }
-      );
-    }
-  } else {
+  if (auth !== 200) {
     return res.json(
-      { error: "Invalid Authentication Credentials." },
-      { status: 401 }
+      { message: `Authentication Error: ${message}` },
+      { status: auth }
+    );
+  }
+
+  const { discord, affiliation } = await req.json();
+
+  try {
+    await updateDoc(doc(db, "users", user.id), {
+      discord: discord,
+      affiliation: affiliation,
+      "roles.admins": 0,
+    });
+    return res.json({ message: "OK" }, { status: 200 });
+  } catch (err) {
+    return res.json(
+      { message: `Internal Server Error: ${err}` },
+      { status: 500 }
     );
   }
 }
 
 export async function GET() {
   const res = NextResponse;
-  const session = await getServerSession(authOptions);
+  const { auth, message } = await authenticate(AUTH.GET);
+
+  if (auth !== 200) {
+    return res.json(
+      { message: `Authentication Error: ${message}` },
+      { status: auth }
+    );
+  }
+
   const output = [];
 
-  if (session) {
-    if (session.user.role.includes("admins")) {
-      try {
-        const snapshot = await getDocs(
-          query(
-            collection(db, "users"),
-            where("role", "array-contains", "admins")
-          )
-        );
-        snapshot.forEach((doc) => {
-          output.push({
-            ...doc.data(),
-            uid: doc.id,
-            selected: false,
-            hidden: false,
-          });
-        });
-        return res.json({ message: "OK", items: output }, { status: 200 });
-      } catch (err) {
-        return res.json(
-          { message: `Internal Server Error: ${err}` },
-          { status: 500 }
-        );
-      }
-    } else {
-      return res.json({ message: `Forbidden Access` }, { status: 403 });
-    }
-  } else {
+  try {
+    const snapshot = await getDocs(
+      query(collection(db, "users"), where("roles.admins", "in", [-1, 0, 1]))
+    );
+    snapshot.forEach((doc) => {
+      const { name, email, roles, affiliation } = doc.data();
+
+      output.push({
+        uid: doc.id,
+        name: name,
+        email: email,
+        affiliation: affiliation,
+        status: roles.admins,
+        selected: false,
+        hidden: false,
+      });
+    });
+    return res.json({ message: "OK", items: output }, { status: 200 });
+  } catch (err) {
     return res.json(
-      { error: "Invalid Authentication Credentials" },
-      { status: 401 }
+      { message: `Internal Server Error: ${err}` },
+      { status: 500 }
     );
   }
 }
@@ -85,38 +82,33 @@ export async function GET() {
 export async function PUT(req) {
   const res = NextResponse;
   const { objects, attribute, status } = await req.json();
-  const session = await getServerSession(authOptions);
+  const { auth, message } = await authenticate(AUTH.PUT);
 
-  if (session) {
-    if (session.user.role.includes("admins")) {
-      try {
-        objects.forEach(async (object) => {
-          if (attribute === "role") {
-            await updateDoc(doc(db, "users", object.uid), {
-              role: arrayRemove("admins"),
-              "status.admins": deleteField(),
-            });
-          } else if (attribute === "status") {
-            await updateDoc(doc(db, "users", object.uid), {
-              "status.admins": status,
-            });
-          }
-        });
-
-        return res.json({ message: "OK" }, { status: 200 });
-      } catch (err) {
-        return res.json(
-          { message: `Internal Server Error: ${err}` },
-          { status: 500 }
-        );
-      }
-    } else {
-      return res.json({ message: `Forbidden Access` }, { status: 403 });
-    }
-  } else {
+  if (auth !== 200) {
     return res.json(
-      { error: "Invalid Authentication Credentials" },
-      { status: 401 }
+      { message: `Authentication Error: ${message}` },
+      { status: auth }
+    );
+  }
+
+  try {
+    objects.forEach(async (object) => {
+      if (attribute === "role") {
+        await updateDoc(doc(db, "users", object.uid), {
+          "roles.admins": deleteField(),
+        });
+      } else if (attribute === "status") {
+        await updateDoc(doc(db, "users", object.uid), {
+          "roles.admins": status,
+        });
+      }
+    });
+
+    return res.json({ message: "OK" }, { status: 200 });
+  } catch (err) {
+    return res.json(
+      { message: `Internal Server Error: ${err}` },
+      { status: 500 }
     );
   }
 }

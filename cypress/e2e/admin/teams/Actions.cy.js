@@ -25,7 +25,7 @@ describe("Teams Actions", () => {
     five.forEach((team) =>
       cy
         .get(`[data-cy="${team.uid}"]`)
-        .find('[data-cy="qualify-tag"]')
+        .find('[data-cy="1-tag"]')
         .should("exist")
     );
   });
@@ -43,7 +43,7 @@ describe("Teams Actions", () => {
     five.forEach((team) =>
       cy
         .get(`[data-cy="${team.uid}"]`)
-        .find('[data-cy="disqualify-tag"]')
+        .find('[data-cy="-1-tag"]')
         .should("exist")
     );
   });
@@ -61,7 +61,7 @@ describe("Teams Actions", () => {
     five.forEach((team) =>
       cy
         .get(`[data-cy="${team.uid}"]`)
-        .find('[data-cy="pending-tag"]')
+        .find('[data-cy="0-tag"]')
         .should("exist")
     );
   });

@@ -80,12 +80,7 @@ export const COLORS = {
   teal: mappings["teal"],
   grayblue: mappings["grayblue"],
   pink: mappings["pink"],
-};
-export const PAST = {
-  confirm: "confirmed",
-  Confirm: "Confirmed",
-  reject: "rejected",
-  Reject: "Rejected",
-  accept: "accepted",
-  Accept: "Accepted",
+  1: mappings["green"],
+  0: mappings["yellow"],
+  "-1": mappings["red"],
 };

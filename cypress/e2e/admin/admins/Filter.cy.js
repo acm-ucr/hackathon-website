@@ -41,7 +41,7 @@ describe("Admin Filters", () => {
   it("Click Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
     admins.forEach((admin) => {
-      if (admin.status.admins === "pending")
+      if (admin.status === 0)
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
     });
@@ -50,7 +50,7 @@ describe("Admin Filters", () => {
   it("Click Rejected", () => {
     cy.get('[data-cy="reject-filter"]').click();
     admins.forEach((admin) => {
-      if (admin.status.admins === "reject")
+      if (admin.status === -1)
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
     });
@@ -59,7 +59,7 @@ describe("Admin Filters", () => {
   it("Click Accepted", () => {
     cy.get('[data-cy="accept-filter"]').click();
     admins.forEach((admin) => {
-      if (admin.status.admins === "accept")
+      if (admin.status === 1)
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
     });
@@ -69,7 +69,7 @@ describe("Admin Filters", () => {
     cy.get('[data-cy="accept-filter"]').click();
     cy.get('[data-cy="pending-filter"]').click();
     admins.forEach((admin) => {
-      if (admin.status.admins === "accept" || admin.status.admins === "pending")
+      if (admin.status === 1 || admin.status === 0)
         cy.get(`[data-cy="${admin.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${admin.uid}"]`).should("exist");
     });

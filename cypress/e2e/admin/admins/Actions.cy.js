@@ -23,7 +23,7 @@ describe("Admin Actions", () => {
     five.forEach((admin) =>
       cy
         .get(`[data-cy="${admin.uid}"]`)
-        .find('[data-cy="accept-tag"]')
+        .find('[data-cy="1-tag"]')
         .should("exist")
     );
   });
@@ -40,7 +40,7 @@ describe("Admin Actions", () => {
     five.forEach((admin) =>
       cy
         .get(`[data-cy="${admin.uid}"]`)
-        .find('[data-cy="pending-tag"]')
+        .find('[data-cy="0-tag"]')
         .should("exist")
     );
   });
@@ -56,7 +56,7 @@ describe("Admin Actions", () => {
     five.forEach((admin) =>
       cy
         .get(`[data-cy="${admin.uid}"]`)
-        .find('[data-cy="reject-tag"]')
+        .find('[data-cy="-1-tag"]')
         .should("exist")
     );
   });

@@ -1,19 +1,29 @@
 export const FILTERS = {
-  disqualify: true,
-  qualify: true,
-  pending: true,
-  winner: true,
+  pending: {
+    state: true,
+    value: 0,
+  },
+  accept: {
+    state: true,
+    value: 1,
+  },
+  reject: {
+    state: true,
+    value: -1,
+  },
 };
-
 export const TAGS = [
   {
     text: "qualify",
+    value: 1,
   },
   {
     text: "disqualify",
+    value: -1,
   },
   {
     text: "pending",
+    value: 0,
   },
 ];
 
@@ -30,3 +40,9 @@ export const HEADERS = [
     hasTag: true,
   },
 ];
+
+export const STATUSES = {
+  1: "accepted",
+  0: "pending",
+  "-1": "rejected",
+};

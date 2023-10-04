@@ -1,3 +1,4 @@
+"use client";
 import Title from "@/components/admin/Title";
 import PieChart from "@/components/admin/services/PieChart";
 import Tag from "@/components/admin/Tag";

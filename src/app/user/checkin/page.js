@@ -5,7 +5,9 @@ const Page = () => {
   return (
     <ProtectedPage
       title="User | CheckIn"
-      restrictions={["hacker", "admins", "committees"]}
+      restrictions={{
+        participants: [-1, 0, 1],
+      }}
     >
       <CheckinPage />
     </ProtectedPage>

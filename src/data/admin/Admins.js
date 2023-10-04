@@ -1,18 +1,30 @@
 export const FILTERS = {
-  pending: true,
-  accept: true,
-  reject: true,
+  pending: {
+    state: true,
+    value: 0,
+  },
+  accept: {
+    state: true,
+    value: 1,
+  },
+  reject: {
+    state: true,
+    value: -1,
+  },
 };
 
 export const TAGS = [
   {
     text: "accept",
+    value: 1,
   },
   {
     text: "reject",
+    value: -1,
   },
   {
     text: "pending",
+    value: 0,
   },
 ];
 
@@ -34,3 +46,22 @@ export const HEADERS = [
     hasTag: true,
   },
 ];
+
+export const AUTH = {
+  POST: {},
+  GET: {
+    admins: 1,
+  },
+  PUT: {
+    admins: 1,
+  },
+  DELETE: {
+    admins: 1,
+  },
+};
+
+export const STATUSES = {
+  1: "accepted",
+  0: "pending",
+  "-1": "rejected",
+};

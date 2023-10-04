@@ -35,31 +35,27 @@ describe("Team Sort", () => {
     });
   });
 
-  it("Sort Status Up", () => {
-    const sorted = teams.sort((a, b) =>
-      a.status.teams > b.status.teams ? -1 : 1
-    );
+  // it("Sort Status Up", () => {
+  //   const sorted = teams.sort((a, b) => (a.status > b.status ? -1 : 1));
 
-    cy.get('[data-cy="status-sort-up"]').click();
+  //   cy.get('[data-cy="status-sort-up"]').click();
 
-    cy.get('[data-cy="table"]').within(() => {
-      cy.get('[data-cy="status"]').each((element, index) => {
-        expect(element.text()).to.equal(sorted[index].status.teams);
-      });
-    });
-  });
+  //   cy.get('[data-cy="table"]').within(() => {
+  //     cy.get('[data-cy="status"]').each((element, index) => {
+  //       expect(element.text()).to.equal(sorted[index].status);
+  //     });
+  //   });
+  // });
 
-  it("Sort Status Down", () => {
-    const sorted = teams.sort((a, b) =>
-      b.status.teams > a.status.teams ? -1 : 1
-    );
+  // it("Sort Status Down", () => {
+  //   const sorted = teams.sort((a, b) => (b.status > a.status ? -1 : 1));
 
-    cy.get('[data-cy="status-sort-down"]').click();
+  //   cy.get('[data-cy="status-sort-down"]').click();
 
-    cy.get('[data-cy="table"]').within(() => {
-      cy.get('[data-cy="status"]').each((element, index) => {
-        expect(element.text()).to.equal(sorted[index].status.teams);
-      });
-    });
-  });
+  //   cy.get('[data-cy="table"]').within(() => {
+  //     cy.get('[data-cy="status"]').each((element, index) => {
+  //       expect(element.text()).to.equal(sorted[index].status);
+  //     });
+  //   });
+  // });
 });

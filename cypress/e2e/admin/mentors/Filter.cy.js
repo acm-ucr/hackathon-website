@@ -15,10 +15,10 @@ describe("Mentors Filters", () => {
     cy.get('[data-cy="pending-filter"]')
       .get("div")
       .should("have.class", "bg-hackathon-blue-100", "text-white");
-    cy.get('[data-cy="not attending-filter"]')
+    cy.get('[data-cy="reject-filter"]')
       .get("div")
       .should("have.class", "bg-hackathon-blue-100", "text-white");
-    cy.get('[data-cy="confirm-filter"]')
+    cy.get('[data-cy="accept-filter"]')
       .get("div")
       .should("have.class", "bg-hackathon-blue-100", "text-white");
   });
@@ -28,29 +28,29 @@ describe("Mentors Filters", () => {
     cy.get('[data-cy="pending-filter"]')
       .get("div")
       .should("have.class", "text-hackathon-blue-100", "bg-white");
-    cy.get('[data-cy="not attending-filter"]').click();
-    cy.get('[data-cy="not attending-filter"]')
+    cy.get('[data-cy="reject-filter"]').click();
+    cy.get('[data-cy="reject-filter"]')
       .get("div")
       .should("have.class", "text-hackathon-blue-100", "bg-white");
-    cy.get('[data-cy="confirm-filter"]').click();
-    cy.get('[data-cy="confirm-filter"]')
+    cy.get('[data-cy="accept-filter"]').click();
+    cy.get('[data-cy="accept-filter"]')
       .get("div")
       .should("have.class", "text-hackathon-blue-100", "bg-white");
   });
 
   it("Click Confirm", () => {
-    cy.get('[data-cy="confirm-filter"]').click();
+    cy.get('[data-cy="accept-filter"]').click();
     mentors.forEach((mentor) => {
-      if (mentor.status.mentors === "confirm")
+      if (mentor.status === 1)
         cy.get(`[data-cy="${mentor.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${mentor.uid}"]`).should("exist");
     });
   });
 
   it("Click Not Attending", () => {
-    cy.get('[data-cy="not attending-filter"]').click();
+    cy.get('[data-cy="reject-filter"]').click();
     mentors.forEach((mentor) => {
-      if (mentor.status.mentors === "not attending")
+      if (mentor.status === -1)
         cy.get(`[data-cy="${mentor.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${mentor.uid}"]`).should("exist");
     });
@@ -59,20 +59,17 @@ describe("Mentors Filters", () => {
   it("Click Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
     mentors.forEach((mentor) => {
-      if (mentor.status.mentors === "pending")
+      if (mentor.status === 0)
         cy.get(`[data-cy="${mentor.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${mentor.uid}"]`).should("exist");
     });
   });
 
   it("Click 2 Filters", () => {
-    cy.get('[data-cy="confirm-filter"]').click();
-    cy.get('[data-cy="not attending-filter"]').click();
+    cy.get('[data-cy="accept-filter"]').click();
+    cy.get('[data-cy="reject-filter"]').click();
     mentors.forEach((mentor) => {
-      if (
-        mentor.status.mentors === "confirm" ||
-        mentor.status.mentors === "not attending"
-      )
+      if (mentor.status === 1 || mentor.status === -1)
         cy.get(`[data-cy="${mentor.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${mentor.uid}"]`).should("exist");
     });

@@ -10,7 +10,6 @@ const SortIcon = ({
   objects,
   setCurrentSort,
   currentSort,
-  page,
 }) => {
   const handleClick = (state) => {
     if (currentSort === name)
@@ -38,10 +37,8 @@ const SortIcon = ({
     setObjects(
       objects.sort((a, b) => {
         if (state === "up") {
-          if (name === "status") return a[name][page] > b[name][page] ? -1 : 1;
           return a[name] > b[name] ? -1 : 1;
         } else if (state === "down") {
-          if (name === "status") return b[name][page] > a[name][page] ? -1 : 1;
           return b[name] > a[name] ? -1 : 1;
         }
       })

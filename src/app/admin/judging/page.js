@@ -5,7 +5,9 @@ const Page = () => {
   return (
     <ProtectedPage
       title="Admin | Judging"
-      restrictions={["admins", "committees"]}
+      restrictions={{
+        admins: 1,
+      }}
     >
       <Judging />
     </ProtectedPage>
