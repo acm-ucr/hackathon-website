@@ -48,7 +48,7 @@ describe("Teams Filters", () => {
   it("Click Disqualify", () => {
     cy.get('[data-cy="disqualify-filter"]').click();
     teams.forEach((team) => {
-      if (team.status.teams === "disqualify")
+      if (team.status === "disqualify")
         cy.get(`[data-cy="${team.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${team.uid}"]`).should("exist");
     });
@@ -57,7 +57,7 @@ describe("Teams Filters", () => {
   it("Click Qualify", () => {
     cy.get('[data-cy="qualify-filter"]').click();
     teams.forEach((team) => {
-      if (team.status.teams === "qualify")
+      if (team.status === "qualify")
         cy.get(`[data-cy="${team.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${team.uid}"]`).should("exist");
     });
@@ -66,7 +66,7 @@ describe("Teams Filters", () => {
   it("Click Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
     teams.forEach((team) => {
-      if (team.status.teams === "pending")
+      if (team.status === "pending")
         cy.get(`[data-cy="${team.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${team.uid}"]`).should("exist");
     });
@@ -76,7 +76,7 @@ describe("Teams Filters", () => {
     cy.get('[data-cy="winner-filter"]').click();
 
     teams.forEach((team) => {
-      if (team.status.teams === "winner")
+      if (team.status === "winner")
         cy.get(`[data-cy="${team.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${team.uid}"]`).should("exist");
     });
@@ -86,7 +86,7 @@ describe("Teams Filters", () => {
     cy.get('[data-cy="qualify-filter"]').click();
     cy.get('[data-cy="disqualify-filter"]').click();
     teams.forEach((team) => {
-      if (team.status.teams === "qualify" || team.status.teams === "disqualify")
+      if (team.status === "qualify" || team.status === "disqualify")
         cy.get(`[data-cy="${team.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${team.uid}"]`).should("exist");
     });

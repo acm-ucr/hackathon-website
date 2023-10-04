@@ -41,7 +41,7 @@ describe("Volunteers Filters", () => {
   it("Click Confirm", () => {
     cy.get('[data-cy="confirm-filter"]').click();
     volunteers.forEach((volunteer) => {
-      if (volunteer.status.volunteers === "confirm")
+      if (volunteer.status === "confirm")
         cy.get(`[data-cy="${volunteer.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${volunteer.uid}"]`).should("exist");
     });
@@ -50,7 +50,7 @@ describe("Volunteers Filters", () => {
   it("Click Not Attending", () => {
     cy.get('[data-cy="not attending-filter"]').click();
     volunteers.forEach((volunteer) => {
-      if (volunteer.status.volunteers === "not attending")
+      if (volunteer.status === "not attending")
         cy.get(`[data-cy="${volunteer.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${volunteer.uid}"]`).should("exist");
     });
@@ -59,7 +59,7 @@ describe("Volunteers Filters", () => {
   it("Click Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
     volunteers.forEach((volunteer) => {
-      if (volunteer.status.volunteers === "pending")
+      if (volunteer.status === "pending")
         cy.get(`[data-cy="${volunteer.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${volunteer.uid}"]`).should("exist");
     });
@@ -70,8 +70,8 @@ describe("Volunteers Filters", () => {
     cy.get('[data-cy="not attending-filter"]').click();
     volunteers.forEach((volunteer) => {
       if (
-        volunteer.status.volunteers === "confirm" ||
-        volunteer.status.volunteers === "not attending"
+        volunteer.status === "confirm" ||
+        volunteer.status === "not attending"
       )
         cy.get(`[data-cy="${volunteer.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${volunteer.uid}"]`).should("exist");

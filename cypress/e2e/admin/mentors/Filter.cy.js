@@ -41,7 +41,7 @@ describe("Mentors Filters", () => {
   it("Click Confirm", () => {
     cy.get('[data-cy="confirm-filter"]').click();
     mentors.forEach((mentor) => {
-      if (mentor.status.mentors === "confirm")
+      if (mentor.status === "confirm")
         cy.get(`[data-cy="${mentor.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${mentor.uid}"]`).should("exist");
     });
@@ -50,7 +50,7 @@ describe("Mentors Filters", () => {
   it("Click Not Attending", () => {
     cy.get('[data-cy="not attending-filter"]').click();
     mentors.forEach((mentor) => {
-      if (mentor.status.mentors === "not attending")
+      if (mentor.status === "not attending")
         cy.get(`[data-cy="${mentor.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${mentor.uid}"]`).should("exist");
     });
@@ -59,7 +59,7 @@ describe("Mentors Filters", () => {
   it("Click Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
     mentors.forEach((mentor) => {
-      if (mentor.status.mentors === "pending")
+      if (mentor.status === "pending")
         cy.get(`[data-cy="${mentor.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${mentor.uid}"]`).should("exist");
     });
@@ -69,10 +69,7 @@ describe("Mentors Filters", () => {
     cy.get('[data-cy="confirm-filter"]').click();
     cy.get('[data-cy="not attending-filter"]').click();
     mentors.forEach((mentor) => {
-      if (
-        mentor.status.mentors === "confirm" ||
-        mentor.status.mentors === "not attending"
-      )
+      if (mentor.status === "confirm" || mentor.status === "not attending")
         cy.get(`[data-cy="${mentor.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${mentor.uid}"]`).should("exist");
     });
