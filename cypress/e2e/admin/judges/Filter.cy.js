@@ -41,7 +41,7 @@ describe("Judges Filters", () => {
   it("Click Confirm", () => {
     cy.get('[data-cy="confirm-filter"]').click();
     judges.forEach((judge) => {
-      if (judge.status === "confirm")
+      if (judge.status === 1)
         cy.get(`[data-cy="${judge.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${judge.uid}"]`).should("exist");
     });
@@ -50,7 +50,7 @@ describe("Judges Filters", () => {
   it("Click Not Attending", () => {
     cy.get('[data-cy="not attending-filter"]').click();
     judges.forEach((judge) => {
-      if (judge.status === "not attending")
+      if (judge.status === -1)
         cy.get(`[data-cy="${judge.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${judge.uid}"]`).should("exist");
     });
@@ -59,7 +59,7 @@ describe("Judges Filters", () => {
   it("Click Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
     judges.forEach((judge) => {
-      if (judge.status === "pending")
+      if (judge.status === 0)
         cy.get(`[data-cy="${judge.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${judge.uid}"]`).should("exist");
     });
@@ -69,7 +69,7 @@ describe("Judges Filters", () => {
     cy.get('[data-cy="confirm-filter"]').click();
     cy.get('[data-cy="not attending-filter"]').click();
     judges.forEach((judge) => {
-      if (judge.status === "confirm" || judge.status === "not attending")
+      if (judge.status === 1 || judge.status === -1)
         cy.get(`[data-cy="${judge.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${judge.uid}"]`).should("exist");
     });

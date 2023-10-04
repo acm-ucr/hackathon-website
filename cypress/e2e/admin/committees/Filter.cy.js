@@ -41,7 +41,7 @@ describe("Committee Filters", () => {
   it("Click Pending", () => {
     cy.get('[data-cy="pending-filter"]').click();
     committees.forEach((committee) => {
-      if (committee.status === "pending")
+      if (committee.status === 0)
         cy.get(`[data-cy="${committee.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${committee.uid}"]`).should("exist");
     });
@@ -50,7 +50,7 @@ describe("Committee Filters", () => {
   it("Click Rejected", () => {
     cy.get('[data-cy="reject-filter"]').click();
     committees.forEach((committee) => {
-      if (committee.status === "reject")
+      if (committee.status === -1)
         cy.get(`[data-cy="${committee.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${committee.uid}"]`).should("exist");
     });
@@ -59,7 +59,7 @@ describe("Committee Filters", () => {
   it("Click Accepted", () => {
     cy.get('[data-cy="accept-filter"]').click();
     committees.forEach((committee) => {
-      if (committee.status === "accept")
+      if (committee.status === 1)
         cy.get(`[data-cy="${committee.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${committee.uid}"]`).should("exist");
     });
@@ -69,7 +69,7 @@ describe("Committee Filters", () => {
     cy.get('[data-cy="accept-filter"]').click();
     cy.get('[data-cy="pending-filter"]').click();
     committees.forEach((committee) => {
-      if (committee.status === "accept" || committee.status === "pending")
+      if (committee.status === 1 || committee.status === 0)
         cy.get(`[data-cy="${committee.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${committee.uid}"]`).should("exist");
     });
