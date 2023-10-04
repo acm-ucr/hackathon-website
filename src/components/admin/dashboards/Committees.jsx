@@ -4,7 +4,7 @@ import Title from "../Title.jsx";
 import Filters from "../Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import Table from "../Table.jsx";
-import { FILTERS, HEADERS, TAGS } from "@/data/admin/Committees.js";
+import { FILTERS, HEADERS, TAGS, STATUSES } from "@/data/admin/Committees.js";
 
 const Comittee = () => {
   const [committees, setCommittees] = useState(null);
@@ -24,7 +24,6 @@ const Comittee = () => {
           setObjects={setCommittees}
           objects={committees}
           input={input.input}
-          page="committees"
         />
       </div>
       <Toolbar
@@ -42,7 +41,7 @@ const Comittee = () => {
         setHeaders={setHeaders}
         setObjects={setCommittees}
         objects={committees}
-        page="committees"
+        statuses={STATUSES}
       />
     </div>
   );

@@ -12,7 +12,7 @@ export const authenticate = async (restrictions = {}) => {
     ([key, value]) => session.user.roles[key] === value
   );
 
-  if (!authorized) {
+  if (!authorized && Object.keys(restrictions) > 0) {
     return { message: `Forbidden Access`, auth: 403 };
   }
 

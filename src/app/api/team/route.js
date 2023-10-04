@@ -25,7 +25,7 @@ export async function POST() {
         figma: "",
       },
       members: [{ email: email, name: user.name }],
-      status: "pending",
+      status: 0,
     };
     const docRef = await addDoc(collection(db, "teams"), team);
     await updateDoc(doc(db, "users", uid), {

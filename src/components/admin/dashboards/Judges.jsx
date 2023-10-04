@@ -4,7 +4,7 @@ import Title from "../Title.jsx";
 import Filters from "../Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import Table from "../Table.jsx";
-import { FILTERS, HEADERS, TAGS } from "@/data/admin/Judges";
+import { FILTERS, HEADERS, TAGS, STATUSES } from "@/data/admin/Judges";
 
 const Judges = () => {
   const [judges, setJudges] = useState(null);
@@ -24,7 +24,6 @@ const Judges = () => {
           setObjects={setJudges}
           objects={judges}
           input={input.input}
-          page="judges"
         />
       </div>
       <Toolbar
@@ -44,7 +43,7 @@ const Judges = () => {
         setHeaders={setHeaders}
         setObjects={setJudges}
         objects={judges}
-        page="judges"
+        statuses={STATUSES}
       />
     </div>
   );

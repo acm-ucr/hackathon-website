@@ -6,7 +6,7 @@ import { authenticate } from "@/utils/auth";
 export async function POST(req) {
   const res = NextResponse;
   // TODO: WHAT AUTH IS REQUIRED HERE
-  const { auth, message } = await authenticate({
+  const { auth, message, user } = await authenticate({
     admins: 1,
   });
 
@@ -20,7 +20,7 @@ export async function POST(req) {
     await req.json();
 
   try {
-    await updateDoc(doc(db, "users", session.user.id), {
+    await updateDoc(doc(db, "users", user.id), {
       phone: phone,
       major: major,
       age: age,

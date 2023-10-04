@@ -3,19 +3,17 @@ import { db } from "../../../../firebase";
 import {
   doc,
   updateDoc,
-  arrayUnion,
   collection,
   getDocs,
   query,
   where,
-  arrayRemove,
   deleteField,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 
 export async function POST(req) {
   const res = NextResponse;
-  const { auth, message } = await authenticate();
+  const { auth, message, user } = await authenticate();
 
   if (auth !== 200) {
     return res.json(
@@ -27,15 +25,14 @@ export async function POST(req) {
   const { phone, gender, title, affiliation, shirt, photo } = await req.json();
 
   try {
-    await updateDoc(doc(db, "users", session.user.id), {
+    await updateDoc(doc(db, "users", user.id), {
       phone: phone,
       gender: gender,
       title: title,
       affiliation: affiliation,
       shirt: shirt,
       photo: photo,
-      "status.judges": "pending",
-      role: arrayUnion("judges"),
+      "roles.judges": 0,
     });
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
@@ -63,16 +60,16 @@ export async function GET() {
 
   try {
     const snapshot = await getDocs(
-      query(collection(db, "users"), where("role", "array-contains", "judges"))
+      query(collection(db, "users"), where("roles.judges", "in", [-1, 0, 1]))
     );
     snapshot.forEach((doc) => {
-      const { name, email, affiliation, status, photo } = doc.data();
+      const { name, email, affiliation, roles, photo } = doc.data();
       output.push({
         uid: doc.id,
         name: name,
         email: email,
         affiliation: affiliation,
-        status: status.judges,
+        status: roles.judges,
         photo: photo,
         selected: false,
         hidden: false,
@@ -106,12 +103,11 @@ export async function PUT(req) {
     objects.forEach(async (object) => {
       if (attribute === "role") {
         await updateDoc(doc(db, "users", object.uid), {
-          role: arrayRemove("judges"),
-          "status.judges": deleteField(),
+          "roles.judges": deleteField(),
         });
       } else if (attribute === "status") {
         await updateDoc(doc(db, "users", object.uid), {
-          "status.judges": status,
+          "roles.judges": status,
         });
       }
     });

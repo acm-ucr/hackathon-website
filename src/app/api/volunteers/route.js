@@ -3,12 +3,10 @@ import { db } from "../../../../firebase";
 import {
   doc,
   updateDoc,
-  arrayUnion,
   collection,
   getDocs,
   query,
   where,
-  arrayRemove,
   deleteField,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
@@ -36,9 +34,8 @@ export async function POST(req) {
       grade: grade,
       gender: gender,
       shirt: shirt,
-      "status.volunteers": "pending",
+      "roles.volunteers": 0,
       availability: availability,
-      role: arrayUnion("volunteers"),
     });
   } catch (err) {
     return res.json(
@@ -69,18 +66,18 @@ export async function GET() {
     const snapshot = await getDocs(
       query(
         collection(db, "users"),
-        where("role", "array-contains", "volunteers")
+        where("roles.volunteers", "in", [-1, 0, 1])
       )
     );
     snapshot.forEach((doc) => {
-      const { name, email, discord, availability, status } = doc.data();
+      const { name, email, discord, availability, roles } = doc.data();
       output.push({
         uid: doc.id,
         name,
         email,
         discord,
         availability,
-        status: status.volunteers,
+        status: roles.volunteers,
         selected: false,
         hidden: false,
       });
@@ -114,12 +111,11 @@ export async function PUT(req) {
     objects.forEach(async (object) => {
       if (attribute === "role") {
         await updateDoc(doc(db, "users", object.uid), {
-          role: arrayRemove("volunteers"),
-          "status.volunteers": deleteField(),
+          "roles.volunteers": deleteField(),
         });
       } else if (attribute === "status") {
         await updateDoc(doc(db, "users", object.uid), {
-          "status.volunteers": status,
+          "roles.volunteers": status,
         });
       }
     });

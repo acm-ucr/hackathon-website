@@ -7,15 +7,13 @@ import {
   getDocs,
   query,
   where,
-  arrayRemove,
   deleteField,
-  arrayUnion,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 
 export async function POST(req) {
   const res = NextResponse;
-  const { auth, message } = await authenticate();
+  const { auth, message, user } = await authenticate();
 
   if (auth !== 200) {
     return res.json(
@@ -27,11 +25,10 @@ export async function POST(req) {
   const { discord, affiliation } = await req.json();
 
   try {
-    await updateDoc(doc(db, "users", session.user.id), {
+    await updateDoc(doc(db, "users", user.id), {
       discord: discord,
       affiliation: affiliation,
-      "status.committees": "pending",
-      role: arrayUnion("committees"),
+      "roles.committees": 0,
     });
 
     return res.json({ message: "OK" }, { status: 200 });
@@ -65,13 +62,13 @@ export async function GET() {
       )
     );
     snapshot.forEach((doc) => {
-      const { name, email, status, affiliation } = doc.data();
+      const { name, email, roles, affiliation } = doc.data();
       output.push({
         uid: doc.id,
         name: name,
         email: email,
         affiliation: affiliation,
-        status: status.committees,
+        status: roles.committees,
         selected: false,
         hidden: false,
       });
@@ -104,12 +101,11 @@ export async function PUT(req) {
     objects.forEach(async (object) => {
       if (attribute === "role") {
         await updateDoc(doc(db, "users", object.uid), {
-          role: arrayRemove("committees"),
-          "status.committees": deleteField(),
+          "roles.committees": deleteField(),
         });
       } else if (attribute === "status") {
         await updateDoc(doc(db, "users", object.uid), {
-          "status.committees": status,
+          "roles.committees": status,
         });
       }
     });

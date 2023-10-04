@@ -3,19 +3,17 @@ import { db } from "../../../../firebase";
 import {
   doc,
   updateDoc,
-  arrayUnion,
   collection,
   getDocs,
   query,
   where,
-  arrayRemove,
   deleteField,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 
 export async function POST(req) {
   const res = NextResponse;
-  const { auth, message } = await authenticate();
+  const { auth, message, user } = await authenticate();
 
   if (auth !== 200) {
     return res.json(
@@ -36,7 +34,7 @@ export async function POST(req) {
   } = await req.json();
 
   try {
-    await updateDoc(doc(db, "users", session.user.id), {
+    await updateDoc(doc(db, "users", user.id), {
       phone: phone,
       discord: discord,
       major: major,
@@ -44,9 +42,8 @@ export async function POST(req) {
       gender: gender,
       shirt: shirt,
       response: response,
-      "status.mentors": "pending",
+      "roles.mentors": 0,
       availability: availability,
-      role: arrayUnion("mentors"),
     });
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
@@ -74,16 +71,16 @@ export async function GET() {
 
   try {
     const snapshot = await getDocs(
-      query(collection(db, "users"), where("role", "array-contains", "mentors"))
+      query(collection(db, "users"), where("roles.mentors", "in", [-1, 0, 1]))
     );
     snapshot.forEach((doc) => {
-      const { name, email, discord, status, availability } = doc.data();
+      const { name, email, discord, roles, availability } = doc.data();
       output.push({
         name,
         email,
         discord,
         availability,
-        status: status.mentors,
+        status: roles.mentors,
         uid: doc.id,
         selected: false,
         hidden: false,
@@ -116,12 +113,11 @@ export async function PUT(req) {
     objects.forEach(async (object) => {
       if (attribute === "role") {
         await updateDoc(doc(db, "users", object.uid), {
-          role: arrayRemove("mentors"),
-          "status.mentors": deleteField(),
+          "roles.mentors": deleteField(),
         });
       } else if (attribute === "status") {
         await updateDoc(doc(db, "users", object.uid), {
-          "status.mentors": status,
+          "roles.mentors": status,
         });
       }
     });

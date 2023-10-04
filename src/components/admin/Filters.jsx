@@ -1,7 +1,6 @@
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { TiPlus } from "react-icons/ti";
-import { PAST } from "@/data/Tags";
 
 const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
   const handleClick = (filter) => {
@@ -44,7 +43,7 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
             } cursor-pointer flex items-center w-fit m-0`}
           >
             <p className="my-0 mx-1 px-2 py-[2px] whitespace-nowrap">
-              {PAST[filter] ? PAST[filter] : filter}
+              {filter}
             </p>
             <TiPlus
               className={`duration-300 mt-[2px] mr-2 hover:opacity-80 ${

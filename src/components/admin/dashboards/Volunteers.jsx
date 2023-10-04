@@ -4,7 +4,13 @@ import Filters from "@/components/admin/Filters";
 import Toolbar from "@/components/admin/dashboards/Toolbar";
 import Title from "../Title";
 import Table from "../Table";
-import { FILTERS, HEADERS, TAGS, DROPDOWN } from "@/data/admin/Volunteers";
+import {
+  FILTERS,
+  HEADERS,
+  TAGS,
+  DROPDOWN,
+  STATUSES,
+} from "@/data/admin/Volunteers";
 
 const Volunteers = () => {
   const [volunteers, setVolunteers] = useState(null);
@@ -24,7 +30,6 @@ const Volunteers = () => {
           setObjects={setVolunteers}
           objects={volunteers}
           input={input.input}
-          page="volunteers"
         />
       </div>
       <Toolbar
@@ -45,7 +50,7 @@ const Volunteers = () => {
         setObjects={setVolunteers}
         objects={volunteers}
         Dropdown={DROPDOWN}
-        page="volunteers"
+        statuses={STATUSES}
       />
     </div>
   );

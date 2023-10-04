@@ -7,12 +7,15 @@ export const FILTERS = {
 export const TAGS = [
   {
     text: "accept",
+    value: 1,
   },
   {
     text: "reject",
+    value: -1,
   },
   {
     text: "pending",
+    value: 0,
   },
 ];
 
@@ -75,4 +78,10 @@ export const DROPDOWN = ({ object, icons }) => {
       ))}
     </div>
   );
+};
+
+export const STATUSES = {
+  1: "accepted",
+  0: "pending",
+  "-1": "rejected",
 };
