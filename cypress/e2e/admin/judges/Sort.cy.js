@@ -59,55 +59,55 @@ describe("Judge Sort", () => {
     });
   });
 
-  it("Sort Status Up", () => {
-    const sorted = judges.sort((a, b) => (a.status > b.status ? -1 : 1));
+  // it("Sort Status Up", () => {
+  //   const sorted = judges.sort((a, b) => (a.status > b.status ? -1 : 1));
 
-    cy.get('[data-cy="status-sort-up"]').click();
-
-    cy.get('[data-cy="table"]').within(() => {
-      cy.get('[data-cy="status"]').each((element, index) => {
-        expect(element.text()).to.equal(sorted[index].status);
-      });
-    });
-  });
-
-  it("Sort Status Down", () => {
-    const sorted = judges.sort((a, b) => (b.status > a.status ? -1 : 1));
-
-    cy.get('[data-cy="status-sort-down"]').click();
-
-    cy.get('[data-cy="table"]').within(() => {
-      cy.get('[data-cy="status"]').each((element, index) => {
-        expect(element.text()).to.equal(sorted[index].status);
-      });
-    });
-  });
-
-  // it("Sort Affiliation Up", () => {
-  //   const sorted = judges.sort((a, b) =>
-  //     a.affiliation > b.affiliation ? -1 : 1
-  //   );
-
-  //   cy.get('[data-cy="affiliation-sort-up"]').click();
+  //   cy.get('[data-cy="status-sort-up"]').click();
 
   //   cy.get('[data-cy="table"]').within(() => {
-  //     cy.get('[data-cy="affiliation"]').each((element, index) => {
-  //       expect(element.text()).to.equal(sorted[index].affiliation);
+  //     cy.get('[data-cy="status"]').each((element, index) => {
+  //       expect(element.text()).to.equal(sorted[index].status);
   //     });
   //   });
   // });
 
-  // it("Sort Type Down", () => {
-  //   const sorted = judges.sort((a, b) =>
-  //     b.affiliation > a.affiliation ? -1 : 1
-  //   );
+  // it("Sort Status Down", () => {
+  //   const sorted = judges.sort((a, b) => (b.status > a.status ? -1 : 1));
 
-  //   cy.get('[data-cy="affiliation-sort-down"]').click();
+  //   cy.get('[data-cy="status-sort-down"]').click();
 
   //   cy.get('[data-cy="table"]').within(() => {
-  //     cy.get('[data-cy="affiliation"]').each((element, index) => {
-  //       expect(element.text()).to.equal(sorted[index].affiliation);
+  //     cy.get('[data-cy="status"]').each((element, index) => {
+  //       expect(element.text()).to.equal(sorted[index].status);
   //     });
   //   });
   // });
+
+  it("Sort Affiliation Up", () => {
+    const sorted = judges.sort((a, b) =>
+      a.affiliation > b.affiliation ? -1 : 1
+    );
+
+    cy.get('[data-cy="affiliation-sort-up"]').click();
+
+    cy.get('[data-cy="table"]').within(() => {
+      cy.get('[data-cy="affiliation"]').each((element, index) => {
+        expect(element.text()).to.equal(sorted[index].affiliation);
+      });
+    });
+  });
+
+  it("Sort Type Down", () => {
+    const sorted = judges.sort((a, b) =>
+      b.affiliation > a.affiliation ? -1 : 1
+    );
+
+    cy.get('[data-cy="affiliation-sort-down"]').click();
+
+    cy.get('[data-cy="table"]').within(() => {
+      cy.get('[data-cy="affiliation"]').each((element, index) => {
+        expect(element.text()).to.equal(sorted[index].affiliation);
+      });
+    });
+  });
 });

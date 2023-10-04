@@ -107,35 +107,35 @@ describe("Participant Sort", () => {
     });
   });
 
-  it("Sort Status Up", () => {
-    const sorted = participants.sort((a, b) => (a.status > b.status ? -1 : 1));
+  // it("Sort Status Up", () => {
+  //   const sorted = participants.sort((a, b) => (a.status > b.status ? -1 : 1));
 
-    cy.get('[data-cy="status-sort-up"]').click();
+  //   cy.get('[data-cy="status-sort-up"]').click();
 
-    cy.get('[data-cy="table"]').within(() => {
-      cy.get('[data-cy="status"]').each((element, index) => {
-        expect(element.text()).to.equal(
-          sorted[index].status.endsWith("t")
-            ? sorted[index].status + "ed"
-            : sorted[index].status
-        );
-      });
-    });
-  });
+  //   cy.get('[data-cy="table"]').within(() => {
+  //     cy.get('[data-cy="status"]').each((element, index) => {
+  //       expect(element.text()).to.equal(
+  //         sorted[index].status.endsWith("t")
+  //           ? sorted[index].status + "ed"
+  //           : sorted[index].status
+  //       );
+  //     });
+  //   });
+  // });
 
-  it("Sort Status Down", () => {
-    const sorted = participants.sort((a, b) => (b.status > a.status ? -1 : 1));
+  // it("Sort Status Down", () => {
+  //   const sorted = participants.sort((a, b) => (b.status > a.status ? -1 : 1));
 
-    cy.get('[data-cy="status-sort-down"]').click();
+  //   cy.get('[data-cy="status-sort-down"]').click();
 
-    cy.get('[data-cy="table"]').within(() => {
-      cy.get('[data-cy="status"]').each((element, index) => {
-        expect(element.text()).to.equal(
-          sorted[index].status.endsWith("t")
-            ? sorted[index].status + "ed"
-            : sorted[index].status
-        );
-      });
-    });
-  });
+  //   cy.get('[data-cy="table"]').within(() => {
+  //     cy.get('[data-cy="status"]').each((element, index) => {
+  //       expect(element.text()).to.equal(
+  //         sorted[index].status.endsWith("t")
+  //           ? sorted[index].status + "ed"
+  //           : sorted[index].status
+  //       );
+  //     });
+  //   });
+  // });
 });

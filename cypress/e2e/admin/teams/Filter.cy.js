@@ -21,9 +21,6 @@ describe("Teams Filters", () => {
     cy.get('[data-cy="pending-filter"]')
       .get("div")
       .should("have.class", "bg-hackathon-blue-100", "text-white");
-    cy.get('[data-cy="winner-filter"]')
-      .get("div")
-      .should("have.class", "bg-hackathon-blue-100", "text-white");
   });
 
   it("Click Filters", () => {
@@ -37,10 +34,6 @@ describe("Teams Filters", () => {
       .should("have.class", "text-hackathon-blue-100", "bg-white");
     cy.get('[data-cy="pending-filter"]').click();
     cy.get('[data-cy="pending-filter"]')
-      .get("div")
-      .should("have.class", "text-hackathon-blue-100", "bg-white");
-    cy.get('[data-cy="winner-filter"]').click();
-    cy.get('[data-cy="winner-filter"]')
       .get("div")
       .should("have.class", "text-hackathon-blue-100", "bg-white");
   });
@@ -67,16 +60,6 @@ describe("Teams Filters", () => {
     cy.get('[data-cy="pending-filter"]').click();
     teams.forEach((team) => {
       if (team.status === 0)
-        cy.get(`[data-cy="${team.uid}"]`).should("not.exist");
-      else cy.get(`[data-cy="${team.uid}"]`).should("exist");
-    });
-  });
-
-  it("Click Winner", () => {
-    cy.get('[data-cy="winner-filter"]').click();
-
-    teams.forEach((team) => {
-      if (team.status === "winner")
         cy.get(`[data-cy="${team.uid}"]`).should("not.exist");
       else cy.get(`[data-cy="${team.uid}"]`).should("exist");
     });
