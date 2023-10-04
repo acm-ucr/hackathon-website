@@ -6,7 +6,10 @@ const ParticipantsPage = () => {
   return (
     <ProtectedPage
       title="Admin | Prizes"
-      restrictions={["admins", "committees"]}
+      restrictions={{
+        admins: 1,
+        committees: 1,
+      }}
     >
       <Prizes />
     </ProtectedPage>

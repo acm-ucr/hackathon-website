@@ -10,13 +10,15 @@ const ProtectedPage = ({ title, children, restrictions }) => {
   const { data: session, status } = useSession();
   const [error, setError] = useState(null);
   const pathName = usePathname();
+
   useEffect(() => {
     if (status === "loading") return;
     if (status !== "authenticated") {
       void signIn("google");
       return;
     }
-    if (!session.user.role || session.user.role.length < 1) {
+
+    if (!session.user.roles || session.user.roles.length < 1) {
       console.log("No Role Assigned");
       setError({
         code: 403,
@@ -25,29 +27,12 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       });
       return;
     }
-    if (
-      status === "authenticated" &&
-      restrictions.includes("participants") &&
-      !session.user.role
-    ) {
-      console.log("Have not registered");
-      setError({
-        code: 401,
-        error: "Unauthenticated User",
-        message: "You need login to access this page",
-      });
-      return;
-    }
-    const roles = session.user.role.filter(
-      (role) => session.user.status[role] === "accept"
+
+    const unauthorized = Object.entries(restrictions).some(
+      ([key, value]) => session.user.roles[key] !== value
     );
-    if (
-      status === "authenticated" &&
-      !(
-        restrictions.length === 0 ||
-        roles.some((role) => restrictions.includes(role))
-      )
-    ) {
+
+    if (unauthorized) {
       console.log("Unauthorized Permission");
       setError({
         code: 403,
