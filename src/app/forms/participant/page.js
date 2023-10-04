@@ -3,7 +3,7 @@ import ProtectedPage from "@/components/ProtectedPage";
 
 const Page = () => {
   return (
-    <ProtectedPage title="Form | Participant" restrictions={[]}>
+    <ProtectedPage title="Form | Participant" restrictions={{}}>
       <Participant />
     </ProtectedPage>
   );

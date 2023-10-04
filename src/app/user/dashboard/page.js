@@ -3,7 +3,12 @@ import Dashboard from "@/components/user/Dashboard";
 
 const Page = () => {
   return (
-    <ProtectedPage title="User | Dashboard" restrictions={[]}>
+    <ProtectedPage
+      title="User | Dashboard"
+      restrictions={{
+        participants: [-1, 0, 1],
+      }}
+    >
       <Dashboard />
     </ProtectedPage>
   );

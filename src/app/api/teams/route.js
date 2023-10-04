@@ -33,14 +33,13 @@ export async function GET() {
       const formattedLinks = Object.entries(links).map(([key, value]) => {
         return { name: key, link: value };
       });
-      const formattedStatus = { teams: status };
 
       output.push({
         links: formattedLinks,
         members: formattedNames,
         emails: formattedEmails,
         name,
-        status: formattedStatus,
+        status,
         uid: doc.id,
         selected: false,
         hidden: false,

@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 const ProtectedPage = ({ title, children, restrictions }) => {
   const { data: session, status } = useSession();
   const [error, setError] = useState(null);
+  const [confirmed, setConfirmed] = useState(false);
   const pathName = usePathname();
 
   useEffect(() => {
@@ -28,11 +29,11 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       return;
     }
 
-    const unauthorized = Object.entries(restrictions).some(
-      ([key, value]) => session.user.roles[key] !== value
+    const authorized = Object.entries(restrictions).some(([key, values]) =>
+      values.includes(session.user.roles[key])
     );
 
-    if (unauthorized) {
+    if (!authorized && Object.keys(restrictions).length > 0) {
       console.log("Unauthorized Permission");
       setError({
         code: 403,
@@ -41,6 +42,7 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       });
       return;
     }
+    setConfirmed(true);
   }, [status]);
 
   return (
@@ -49,8 +51,9 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       {error && (
         <Error code={error.code} error={error.error} message={error.message} />
       )}
-      {status === "authenticated" && !error && (
+      {status === "authenticated" && confirmed && (
         <>
+          {console.log("being caled")}
           <Navigation />
           <title>{title}</title>
           <div className="flex justify-center items-start w-full bg-hackathon-page z-0 h-screen pt-12 lg:pt-0">
