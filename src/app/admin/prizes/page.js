@@ -1,4 +1,3 @@
-"use client";
 import Prizes from "@/components/admin/services/Prizes";
 import ProtectedPage from "@/components/ProtectedPage";
 

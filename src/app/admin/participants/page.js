@@ -1,4 +1,3 @@
-"use client";
 import Participants from "@/components/admin/dashboards/Participants";
 import ProtectedPage from "@/components/ProtectedPage";
 

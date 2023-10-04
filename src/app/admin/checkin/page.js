@@ -1,4 +1,3 @@
-"use client";
 import ProtectedPage from "@/components/ProtectedPage";
 import CheckIn from "@/components/admin/services/checkin/CheckIn";
 

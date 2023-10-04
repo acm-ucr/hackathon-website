@@ -1,4 +1,3 @@
-"use client";
 import Teams from "@/components/admin/dashboards/Teams";
 import ProtectedPage from "@/components/ProtectedPage";
 const TeamsPage = () => {

@@ -1,4 +1,3 @@
-"use client";
 import ProtectedPage from "@/components/ProtectedPage";
 import Statistics from "@/components/admin/services/Statistics";
 const StatisticsPage = () => {
