@@ -1,7 +1,16 @@
 export const FILTERS = {
-  pending: true,
-  confirm: true,
-  "not attending": true,
+  pending: {
+    state: true,
+    value: 0,
+  },
+  accept: {
+    state: true,
+    value: 1,
+  },
+  reject: {
+    state: true,
+    value: -1,
+  },
 };
 
 export const TAGS = [

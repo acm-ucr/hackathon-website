@@ -53,10 +53,10 @@ const Toolbar = ({
       objects.map((a) => {
         let boolean = false;
 
-        Object.entries(filters).map(([filter, value]) => {
+        Object.values(filters).map(({ value, state }) => {
           if (
-            a.status === filter &&
-            value &&
+            a.status === value &&
+            state &&
             a.name.toLowerCase().match(input.input.toLowerCase())
           ) {
             boolean = true;

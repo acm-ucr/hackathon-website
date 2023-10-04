@@ -1,10 +1,17 @@
 export const FILTERS = {
-  disqualify: true,
-  qualify: true,
-  pending: true,
-  winner: true,
+  pending: {
+    state: true,
+    value: 0,
+  },
+  accept: {
+    state: true,
+    value: 1,
+  },
+  reject: {
+    state: true,
+    value: -1,
+  },
 };
-
 export const TAGS = [
   {
     text: "qualify",

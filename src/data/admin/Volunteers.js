@@ -3,11 +3,19 @@ import { AVAILABILITY } from "../forms/Helper";
 import Col from "react-bootstrap/Col";
 
 export const FILTERS = {
-  confirm: true,
-  pending: true,
-  "not attending": true,
+  pending: {
+    state: true,
+    value: 0,
+  },
+  accept: {
+    state: true,
+    value: 1,
+  },
+  reject: {
+    state: true,
+    value: -1,
+  },
 };
-
 export const TAGS = [
   {
     text: "pending",
