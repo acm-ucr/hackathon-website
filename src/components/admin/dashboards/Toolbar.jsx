@@ -51,7 +51,6 @@ const Toolbar = ({
     setObjects(
       objects.map((a) => {
         let boolean = false;
-
         Object.values(filters).map(({ value, state }) => {
           if (
             a.status === value &&

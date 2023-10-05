@@ -67,7 +67,7 @@ export async function GET() {
         uid: doc.id,
         name: name,
         email: email,
-        discord,
+        discord: discord,
         affiliation: affiliation,
         status: roles.committees,
         selected: false,
