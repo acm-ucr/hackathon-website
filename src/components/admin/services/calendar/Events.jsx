@@ -50,12 +50,8 @@ const CalendarEvents = () => {
           localizer={mLocalizer}
           defaultView="month"
           views={["month", "week"]}
-          onNavigate={(newDate) => {
-            setDate(newDate);
-          }}
-          onView={(newView) => {
-            setView(newView);
-          }}
+          onNavigate={(newDate) => setDate(newDate)}
+          onView={(newView) => setView(newView)}
           components={{
             event: Event,
             toolbar: (props) => (
