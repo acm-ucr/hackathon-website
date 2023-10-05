@@ -29,8 +29,9 @@ export const TAGS = [
 ];
 
 export const HEADERS = [
-  { text: "name", size: 3, icon: true, sort: "off", symbol: "lead" },
-  { text: "email", size: 4, icon: true, sort: "off" },
+  { text: "name", size: 2, icon: true, sort: "off", symbol: "lead" },
+  { text: "email", size: 3, icon: true, sort: "off" },
+  { text: "discord", size: 2, icon: true, sort: "off" },
   {
     text: "affiliation",
     size: 2,

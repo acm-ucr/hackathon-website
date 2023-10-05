@@ -48,7 +48,6 @@ const Toolbar = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setObjects(
       objects.map((a) => {
         let boolean = false;
