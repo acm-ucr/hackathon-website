@@ -112,7 +112,7 @@ const User = ({ user, setUser, edit, setEdit }) => {
                 color="bg-hackathon-green-300"
               />
             ))
-          : user.diet.map((diet, index) => (
+          : Object.keys(user.diet).map((diet, index) => (
               <p className="pl-3 mb-1" key={index}>
                 {diet}
               </p>
