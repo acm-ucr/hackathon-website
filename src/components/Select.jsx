@@ -1,10 +1,10 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import { useState } from "react";
+
 const Toggle = ({ option, onClick, placeholder }) => (
   <button
     onClick={onClick}
-    id="dropdown-toggle"
-    data-cy="select-selected"
+    data-cy="select-toggle"
     className={`!bg-white ${
       option ? "text-black" : "!text-hackathon-gray-200"
     } w-full !text-left !border-x-0 !border-t-0 !border-b-2 !rounded-none !border-black`}
@@ -12,6 +12,7 @@ const Toggle = ({ option, onClick, placeholder }) => (
     {option || placeholder}
   </button>
 );
+
 const Select = ({
   defaultOptions,
   user,
@@ -67,7 +68,6 @@ const Select = ({
                 onChange={handleInput}
               />
             )}
-
             {options.map(
               (option, index) =>
                 !option.hidden && (
