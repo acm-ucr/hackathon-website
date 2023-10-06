@@ -12,13 +12,7 @@ export const GRADES = [
   { name: "Prefer not to answer", hidden: false },
 ];
 
-export const GENDERS = [
-  { name: "Female", hidden: false },
-  { name: "Male", hidden: false },
-  { name: "Transgender", hidden: false },
-  { name: "Nonbinary", hidden: false },
-  { name: "Other", hidden: false },
-];
+export const GENDERS = ["Female", "Male", "Transgender", "Nonbinary", "Other"];
 
 export const AGES = [
   { name: "<16", hidden: false },

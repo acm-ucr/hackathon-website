@@ -1,9 +1,19 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import { useState } from "react";
-
+const Toggle = ({ option, onClick, placeholder }) => (
+  <button
+    onClick={onClick}
+    id="dropdown-toggle"
+    data-cy="select-selected"
+    className={`!bg-white ${
+      option ? "text-black" : "!text-hackathon-gray-200"
+    } w-full !text-left !border-x-0 !border-t-0 !border-b-2 !rounded-none !border-black`}
+  >
+    {option || placeholder}
+  </button>
+);
 const Select = ({
-  options,
-  setOptions,
+  defaultOptions,
   user,
   field,
   setUser,
@@ -12,10 +22,9 @@ const Select = ({
   editable = true,
   searchable = false,
 }) => {
-  const [value, setValue] = useState("");
+  const [options, setOptions] = useState(defaultOptions);
 
   const handleInput = (e) => {
-    setValue(e.target.value);
     setOptions(
       options.map((option) => ({
         ...option,
@@ -32,13 +41,10 @@ const Select = ({
       <Dropdown className="w-full m-0">
         {editable ? (
           <Dropdown.Toggle
-            id="dropdown-toggle"
-            className={`!bg-white ${
-              user[field] ? "text-black" : "!text-hackathon-gray-200"
-            } w-full !text-left !border-x-0 !border-t-0 !border-b-2 !rounded-none !border-black`}
-          >
-            {user[field] || placeholder}
-          </Dropdown.Toggle>
+            as={Toggle}
+            option={user[field]}
+            placeholder={placeholder}
+          />
         ) : (
           <div
             id="dropdown-toggle"
@@ -52,26 +58,28 @@ const Select = ({
           </div>
         )}
         {editable && (
-          <Dropdown.Menu className="w-full bg-hackathon-green-100 !border-none !rounded-none !p-0 overflow-y-auto max-h-[35vh]">
+          <Dropdown.Menu className="w-full !bg-hackathon-green-100 !border-none !rounded-none !p-0 overflow-y-auto max-h-[35vh]">
             {searchable && (
               <input
                 autoFocus
-                className="mx-1.5 my-1 w-11/12 ring-0 outline-none px-2 py-1"
+                className="mx-1.5 my-1 w-11/12 ring-0 outline-none px-2 py-1 bg-hackathon-green-100"
                 placeholder="Search"
                 onChange={handleInput}
-                value={value}
               />
             )}
 
-            {options.map((option, index) => (
-              <Dropdown.Item
-                className=" hover:!bg-hackathon-green-200 !bg-hackathon-green-100 overflow-hidden"
-                key={index}
-                onClick={() => setUser({ ...user, [field]: option })}
-              >
-                {option}
-              </Dropdown.Item>
-            ))}
+            {options.map(
+              (option, index) =>
+                !option.hidden && (
+                  <Dropdown.Item
+                    className=" hover:!bg-hackathon-green-200 !bg-hackathon-green-100 overflow-hidden"
+                    key={index}
+                    onClick={() => setUser({ ...user, [field]: option.name })}
+                  >
+                    {option.name}
+                  </Dropdown.Item>
+                )
+            )}
           </Dropdown.Menu>
         )}
       </Dropdown>

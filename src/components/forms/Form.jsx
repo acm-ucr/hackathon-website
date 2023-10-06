@@ -75,12 +75,13 @@ const Form = ({ object, setObject, header, fields, onSubmit }) => {
                 {field.input === "select" && (
                   <Select
                     title={field.title}
-                    options={field.options}
+                    defaultOptions={field.options}
                     field={field.field}
                     placeholder={field.placeholder}
                     user={object}
                     setUser={setObject}
                     required={field.required}
+                    searchable={field.searchable}
                   />
                 )}
                 {field.input === "checkboxes" && (
