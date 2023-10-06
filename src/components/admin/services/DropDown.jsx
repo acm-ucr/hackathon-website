@@ -57,7 +57,7 @@ const Menu = ({ option, setOption, className, setOptions, options }) => {
             </Dropdown.Item>
           ))
       ) : (
-        <p className="px-3 text-gray-400"></p>
+        <p className="px-3 text-gray-400">no events</p>
       )}
     </div>
   );
