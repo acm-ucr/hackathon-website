@@ -3,20 +3,32 @@ import Col from "react-bootstrap/Col";
 import { AVAILABILITY } from "../forms/Helper";
 
 export const FILTERS = {
-  confirm: true,
-  pending: true,
-  "not attending": true,
+  pending: {
+    state: true,
+    value: 0,
+  },
+  accept: {
+    state: true,
+    value: 1,
+  },
+  reject: {
+    state: true,
+    value: -1,
+  },
 };
 
 export const TAGS = [
   {
     text: "pending",
+    value: 0,
   },
   {
     text: "confirm",
+    value: 1,
   },
   {
     text: "not attending",
+    value: -1,
   },
 ];
 
@@ -39,11 +51,17 @@ export const DROPDOWN = ({ object }) => {
       {Object.entries(AVAILABILITY).map(([key, value], index) => (
         <Col key={index} xs={4}>
           <Checkbox
-            toggle={object.availability.includes(key)}
+            toggle={object.availability.includes(value.text)}
             text={value.text}
           />
         </Col>
       ))}
     </>
   );
+};
+
+export const STATUSES = {
+  1: "accepted",
+  0: "pending",
+  "-1": "rejected",
 };

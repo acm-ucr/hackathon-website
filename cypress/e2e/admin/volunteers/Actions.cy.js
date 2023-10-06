@@ -1,25 +1,30 @@
-import vounteers from "../../../fixtures/volunteers.json";
+import response from "../../../fixtures/volunteers.json";
 
-const five = vounteers.slice(0, 5);
+const five = response.items.slice(0, 5);
 
 describe("Volunteers Actions", () => {
   beforeEach(() => {
-    cy.login("admin");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/volunteers");
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "volunteers",
+    });
   });
 
   it("Confirm First 5 Entries", () => {
     five.forEach((volunteer) =>
       cy.get(`[data-cy="${volunteer.uid}"]`).find('[data-cy="select"]').click()
     );
-    cy.get('[data-cy="toolbar"]').find('[data-cy="confirm-tag"]').click();
+
+    cy.action({
+      tag: "confirm",
+      page: "volunteers",
+    });
 
     five.forEach((volunteer) =>
       cy
         .get(`[data-cy="${volunteer.uid}"]`)
-        .find('[data-cy="confirm-tag"]')
+        .find('[data-cy="1-tag"]')
         .should("exist")
     );
   });
@@ -28,12 +33,16 @@ describe("Volunteers Actions", () => {
     five.forEach((volunteer) =>
       cy.get(`[data-cy="${volunteer.uid}"]`).find('[data-cy="select"]').click()
     );
-    cy.get('[data-cy="toolbar"]').find('[data-cy="not attending-tag"]').click();
+
+    cy.action({
+      tag: "not attending",
+      page: "volunteers",
+    });
 
     five.forEach((volunteer) =>
       cy
         .get(`[data-cy="${volunteer.uid}"]`)
-        .find('[data-cy="not attending-tag"]')
+        .find('[data-cy="-1-tag"]')
         .should("exist")
     );
   });
@@ -42,12 +51,16 @@ describe("Volunteers Actions", () => {
     five.forEach((volunteer) =>
       cy.get(`[data-cy="${volunteer.uid}"]`).find('[data-cy="select"]').click()
     );
-    cy.get('[data-cy="toolbar"]').find('[data-cy="pending-tag"]').click();
+
+    cy.action({
+      tag: "pending",
+      page: "volunteers",
+    });
 
     five.forEach((volunteer) =>
       cy
         .get(`[data-cy="${volunteer.uid}"]`)
-        .find('[data-cy="pending-tag"]')
+        .find('[data-cy="0-tag"]')
         .should("exist")
     );
   });
@@ -56,8 +69,10 @@ describe("Volunteers Actions", () => {
     five.forEach((volunteer) =>
       cy.get(`[data-cy="${volunteer.uid}"]`).find('[data-cy="select"]').click()
     );
-    cy.get('[data-cy="toolbar"]').find('[data-cy="delete"]').click();
-    cy.get('[data-cy="confirm-button"]').click();
+
+    cy.delete({
+      page: "volunteers",
+    });
 
     five.forEach((volunteer) =>
       cy.get(`[data-cy="${volunteer.uid}"]`).should("not.exist")

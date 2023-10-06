@@ -1,0 +1,15 @@
+{
+  "user": {
+    "name": {
+      "first": "USER",
+      "last": "TEST"
+    },
+    "email": "user@test.com",
+    "image": "https://---.---",
+    "roles": {
+      "admins": 1
+    }
+  },
+  "expires": "3000-01-01T00:00:00.000Z",
+  "accessToken": "qwertyuiop"
+}

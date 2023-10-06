@@ -1,12 +1,16 @@
 "use client";
-import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import Loading from "@/components/Loading";
+import Error from "./Error";
+import Navigation from "./Navigation";
+import { usePathname } from "next/navigation";
 
 const ProtectedPage = ({ title, children, restrictions }) => {
-  const router = useRouter();
   const { data: session, status } = useSession();
+  const [error, setError] = useState(null);
+  const [confirmed, setConfirmed] = useState(false);
+  const pathName = usePathname();
 
   useEffect(() => {
     if (status === "loading") return;
@@ -14,34 +18,53 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       void signIn("google");
       return;
     }
-    if (
-      status === "authenticated" &&
-      restrictions.includes("hacker") &&
-      !session.user.role
-    ) {
-      console.log("Have not register");
-      router.push("/");
+
+    if (!session.user.roles && Object.keys(restrictions).length > 0) {
+      setError({
+        code: 403,
+        error: "Unauthorized",
+        message: "You do not have any assigned roles",
+      });
       return;
     }
-    if (
-      status === "authenticated" &&
-      restrictions.includes("admin") &&
-      session.user.role !== "admin"
-    ) {
-      console.log("Dont have admin permissions");
-      router.push("/");
+
+    const authorized = Object.entries(restrictions).some(([key, values]) =>
+      Array.isArray(values)
+        ? values.includes(session.user.roles[key])
+        : session.user.roles[key] === values
+    );
+
+    if (!authorized && Object.keys(restrictions).length > 0) {
+      setError({
+        code: 403,
+        error: "Unauthorized",
+        message: "You do not have access this page",
+      });
       return;
     }
+    setConfirmed(true);
   }, [status]);
 
   return (
     <>
       {status === "loading" && <Loading />}
-      {status === "authenticated" && (
-        <div className="w-full flex justify-center h-full">
+      {error && (
+        <Error code={error.code} error={error.error} message={error.message} />
+      )}
+      {status === "authenticated" && confirmed && (
+        <>
+          <Navigation />
           <title>{title}</title>
-          <div className="w-11/12 h-full">{children}</div>
-        </div>
+          <div className="flex justify-center items-start w-full bg-hackathon-page z-0 h-screen pt-12 lg:pt-0">
+            <div
+              className={`${
+                pathName.startsWith("/forms") ? "w-full" : "w-11/12"
+              }  h-full`}
+            >
+              {children}
+            </div>
+          </div>
+        </>
       )}
     </>
   );

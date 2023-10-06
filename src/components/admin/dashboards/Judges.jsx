@@ -4,11 +4,10 @@ import Title from "../Title.jsx";
 import Filters from "../Filters.jsx";
 import Toolbar from "./Toolbar.jsx";
 import Table from "../Table.jsx";
-import judgeList from "../../../../cypress/fixtures/judges.json";
-import { FILTERS, HEADERS, TAGS } from "@/data/admin/Judges";
+import { FILTERS, HEADERS, TAGS, STATUSES } from "@/data/admin/Judges";
 
 const Judges = () => {
-  const [judges, setJudges] = useState(judgeList);
+  const [judges, setJudges] = useState(null);
   const [input, setInput] = useState({
     input: "",
   });
@@ -36,6 +35,7 @@ const Judges = () => {
         filters={filters}
         file="JUDGES"
         headers={headers}
+        page="judges"
       />
       <Table
         headers={headers}
@@ -43,6 +43,7 @@ const Judges = () => {
         setHeaders={setHeaders}
         setObjects={setJudges}
         objects={judges}
+        statuses={STATUSES}
       />
     </div>
   );

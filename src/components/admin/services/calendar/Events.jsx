@@ -14,6 +14,8 @@ const mLocalizer = momentLocalizer(moment);
 const CalendarEvents = () => {
   const [events, setEvents] = useState([]);
   const [event, setEvent] = useState();
+  const [date, setDate] = useState(new Date());
+  const [view, setView] = useState("month");
 
   useEffect(() => {
     axios
@@ -41,11 +43,15 @@ const CalendarEvents = () => {
       {event && <Modal event={event} setEvent={setEvent} />}
       {events && (
         <Calendar
+          date={date}
+          view={view}
           className="py-4"
           events={events.filter((event) => !event.hidden)}
           localizer={mLocalizer}
           defaultView="month"
           views={["month", "week"]}
+          onNavigate={(newDate) => setDate(newDate)}
+          onView={(newView) => setView(newView)}
           components={{
             event: Event,
             toolbar: (props) => (

@@ -1,46 +1,46 @@
 export const LABELS = {
   all: {
-    color: "red",
-    background: "!bg-hackathon-tags-red-bg",
+    color: "gray",
+    background: "!bg-hackathon-tags-gray-text",
   },
   director: {
-    color: "pink",
-    background: "!bg-hackathon-tags-pink-bg",
+    color: "red",
+    background: "!bg-hackathon-tags-red-text",
   },
   marketing: {
-    color: "green",
-    background: "!bg-hackathon-tags-green-bg",
+    color: "yellow",
+    background: "!bg-hackathon-tags-yellow-text",
   },
   operations: {
-    color: "red",
-    background: "!bg-hackathon-tags-red-bg",
+    color: "green",
+    background: "!bg-hackathon-tags-green-text",
   },
   sponsorship: {
-    color: "lightgreen",
-    background: "!bg-hackathon-tags-lightgreen-bg",
+    color: "purple",
+    background: "!bg-hackathon-tags-purple-text",
   },
   recruitment: {
-    color: "purple",
-    background: "!bg-hackathon-tags-purple-bg",
+    color: "teal",
+    background: "!bg-hackathon-tags-teal-text",
   },
   software: {
     color: "teal",
-    background: "!bg-hackathon-tags-teal-bg",
+    background: "!bg-hackathon-tags-teal-text",
   },
   UIUX: {
-    color: "grayblue",
-    background: "!bg-hackathon-tags-grayblue-bg",
+    color: "lightgreen",
+    background: "!bg-hackathon-tags-lightgreen-text",
   },
   activities: {
-    color: "purple",
-    background: "!bg-hackathon-tags-purple-bg",
+    color: "pink",
+    background: "!bg-hackathon-tags-pink-text",
   },
   workshop: {
-    color: "purple",
-    background: "!bg-hackathon-tags-purple-bg",
+    color: "grayblue",
+    background: "!bg-hackathon-tags-grayblue-text",
   },
   general: {
-    color: "purple",
-    background: "!bg-hackathon-tags-purple-bg",
+    color: "red",
+    background: "!bg-hackathon-tags-red-text",
   },
 };

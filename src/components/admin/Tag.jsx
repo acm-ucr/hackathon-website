@@ -1,4 +1,4 @@
-const Tag = ({ color, text, onClick, classes }) => {
+const Tag = ({ color, text, onClick, classes, statuses }) => {
   return (
     <div
       data-cy={`${text}-tag`}
@@ -7,7 +7,7 @@ const Tag = ({ color, text, onClick, classes }) => {
       } whitespace-nowrap px-2 py-0.5 rounded text-xs md:text-sm w-fit m-0`}
       onClick={onClick}
     >
-      {text}
+      {isNaN(text) ? text : statuses[text]}
     </div>
   );
 };

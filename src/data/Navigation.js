@@ -5,7 +5,7 @@ import {
   BsGlobe2,
   BsBoxArrowInRight,
 } from "react-icons/bs";
-import { MdVolunteerActivism } from "react-icons/md";
+import { MdVolunteerActivism, MdFeedback } from "react-icons/md";
 import { BiSolidHelpCircle } from "react-icons/bi";
 import {
   FaGavel,
@@ -13,16 +13,16 @@ import {
   FaLock,
   FaCalendarDay,
   FaMedal,
-  FaWpforms,
 } from "react-icons/fa";
 import { AiOutlineQrcode } from "react-icons/ai";
 import { signOut } from "next-auth/react";
+import { SiHandshake } from "react-icons/si";
 
 const iconStyle = "mr-2";
 
 export const ADMIN = {
   Dashboards: {
-    mt: "mt-3",
+    mt: "mt-0",
     tabs: [
       {
         name: "participants",
@@ -50,19 +50,24 @@ export const ADMIN = {
         icon: <BiSolidHelpCircle className={iconStyle} />,
       },
       {
-        name: "admin",
-        link: "/admin/admin",
+        name: "admins",
+        link: "/admin/admins",
         icon: <FaLock className={iconStyle} />,
+      },
+      {
+        name: "committees",
+        link: "/admin/committees",
+        icon: <SiHandshake className={iconStyle} />,
       },
       {
         name: "feedback",
         link: "/admin/feedback",
-        icon: <FaWpforms className={iconStyle} />,
+        icon: <MdFeedback className={iconStyle} />,
       },
     ],
   },
   Services: {
-    mt: "mt-5",
+    mt: "mt-3",
     tabs: [
       {
         name: "calendar",

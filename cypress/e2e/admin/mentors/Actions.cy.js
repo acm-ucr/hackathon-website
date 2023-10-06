@@ -1,25 +1,28 @@
-import mentors from "../../../fixtures/mentors.json";
+import response from "../../../fixtures/mentors.json";
 
-const five = mentors.slice(0, 5);
+const five = response.items.slice(0, 5);
 
 describe("Mentors Actions", () => {
   beforeEach(() => {
-    cy.login("admin");
-    cy.visit("/");
-    cy.wait("@session");
-    cy.visit("/admin/mentors");
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "mentors",
+    });
   });
 
   it("Confirm First 5 Entries", () => {
     five.forEach((mentor) =>
       cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="select"]').click()
     );
-    cy.get('[data-cy="toolbar"]').find('[data-cy="confirm-tag"]').click();
-
+    cy.action({
+      tag: "confirm",
+      page: "mentors",
+    });
     five.forEach((mentor) =>
       cy
         .get(`[data-cy="${mentor.uid}"]`)
-        .find('[data-cy="confirm-tag"]')
+        .find('[data-cy="1-tag"]')
         .should("exist")
     );
   });
@@ -28,12 +31,15 @@ describe("Mentors Actions", () => {
     five.forEach((mentor) =>
       cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="select"]').click()
     );
-    cy.get('[data-cy="toolbar"]').find('[data-cy="not attending-tag"]').click();
+    cy.action({
+      tag: "not attending",
+      page: "mentors",
+    });
 
     five.forEach((mentor) =>
       cy
         .get(`[data-cy="${mentor.uid}"]`)
-        .find('[data-cy="not attending-tag"]')
+        .find('[data-cy="-1-tag"]')
         .should("exist")
     );
   });
@@ -42,12 +48,15 @@ describe("Mentors Actions", () => {
     five.forEach((mentor) =>
       cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="select"]').click()
     );
-    cy.get('[data-cy="toolbar"]').find('[data-cy="pending-tag"]').click();
+    cy.action({
+      tag: "pending",
+      page: "mentors",
+    });
 
     five.forEach((mentor) =>
       cy
         .get(`[data-cy="${mentor.uid}"]`)
-        .find('[data-cy="pending-tag"]')
+        .find('[data-cy="0-tag"]')
         .should("exist")
     );
   });
@@ -56,9 +65,9 @@ describe("Mentors Actions", () => {
     five.forEach((mentor) =>
       cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="select"]').click()
     );
-    cy.get('[data-cy="toolbar"]').find('[data-cy="delete"]').click();
-    cy.get('[data-cy="confirm-button"]').click();
-
+    cy.delete({
+      page: "mentors",
+    });
     five.forEach((mentor) =>
       cy.get(`[data-cy="${mentor.uid}"]`).should("not.exist")
     );

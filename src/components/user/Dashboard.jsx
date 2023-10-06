@@ -1,82 +1,39 @@
 "use client";
-import { useState } from "react";
-import ProfileHeader from "./Header";
-import Tag from "../admin/Tag";
+import { useEffect, useState } from "react";
+import Header from "./Header";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { GENDERS, GRADES, MAJORS } from "@/data/forms/Information";
-import Select from "../Select";
-import { SCHOOLS } from "@/data/forms/Schools";
-import Radio from "../Radio";
 import Title from "../admin/Title.jsx";
-import TeamInfo from "./Team";
-import UserInfo from "./User";
-import mockUser from "../../../cypress/fixtures/user.json";
-import { COLORS } from "@/data/Tags";
+import Team from "./Team";
+import User from "./User";
+import { useSession } from "next-auth/react";
 
 const Dashboard = () => {
-  const [user, setUser] = useState(mockUser);
+  const { data: session } = useSession();
+  const [user, setUser] = useState(session.user);
   const [edit, setEdit] = useState(false);
 
+  useEffect(() => {
+    const data = {};
+    user.diet.forEach((option) => {
+      data[option] = true;
+    });
+    setUser({ ...user, diet: data });
+  }, []);
+
   return (
-    <div className="w-full">
+    <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Title title="Dashboard" />
-      <div className="flex justify-between items-center">
-        <ProfileHeader email={user.email} name={user.name} />
-        <div className="text-right">
-          <p className="text-xl font-bold mb-0">Status</p>
-          <Tag color={COLORS[user.status]} text={user.status} />
-        </div>
-      </div>
-      <Row>
-        <Col xl={6}>
-          <UserInfo
-            handleEdit={() => setEdit(true)}
-            handleSave={() => setEdit(false)}
-            user={user}
-            setUser={setUser}
-            editable={edit}
-          />
-          <Select
-            title="School"
-            options={SCHOOLS}
-            field="school"
-            user={user}
-            setUser={setUser}
-            editable={edit}
-          />
-          <Select
-            title="Major"
-            options={MAJORS}
-            field="major"
-            user={user}
-            setUser={setUser}
-            editable={edit}
-          />
-          <Select
-            title="Grade"
-            options={GRADES}
-            field="grade"
-            user={user}
-            setUser={setUser}
-            editable={edit}
-          />
-          <Radio
-            text="Gender"
-            options={GENDERS}
-            field="gender"
-            user={user}
-            setUser={setUser}
-            editable={edit}
-          />
+      <Header email={user.email} name={user.name} />
+      <Row className="h-full overflow-scroll gap-3 justify-center">
+        <Col xl={6} className="h-full">
+          <User user={user} setUser={setUser} edit={edit} setEdit={setEdit} />
         </Col>
-        <Col xl={6}>
-          {user.team ? (
-            <TeamInfo user={user} team={user.team} />
-          ) : (
-            <p>no team</p>
-          )}
-        </Col>
+        {user.roles.participants === 1 && (
+          <Col xl={5} className="h-full">
+            <Team user={user} team={user.team} setUser={setUser} />
+          </Col>
+        )}
       </Row>
     </div>
   );

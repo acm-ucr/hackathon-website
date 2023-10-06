@@ -5,13 +5,10 @@ import Filters from "@/components/admin/Filters";
 import Toolbar from "@/components/admin/dashboards/Toolbar";
 import Title from "../Title";
 import Table from "../Table";
-import DATA from "../../../../cypress/fixtures/teams.json";
-import { FILTERS, HEADERS, TAGS } from "@/data/admin/Teams";
-
-const teamList = DATA;
+import { FILTERS, HEADERS, TAGS, STATUSES } from "@/data/admin/Teams";
 
 const Teams = () => {
-  const [teams, setTeams] = useState(teamList);
+  const [teams, setTeams] = useState(null);
   const [input, setInput] = useState({
     input: "",
   });
@@ -39,6 +36,7 @@ const Teams = () => {
         filters={filters}
         file="TEAMS"
         headers={headers}
+        page="teams"
       />
       <Table
         headers={headers}
@@ -46,6 +44,7 @@ const Teams = () => {
         setHeaders={setHeaders}
         setObjects={setTeams}
         objects={teams}
+        statuses={STATUSES}
       />
     </div>
   );
