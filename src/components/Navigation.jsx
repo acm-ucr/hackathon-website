@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import LOGO from "../../public/LOGO.png";
+import LOGO from "../../public/ucrlogo.png";
 import Image from "next/image";
 import Link from "next/link";
 import { ADMIN, USER } from "@/data/Navigation";
