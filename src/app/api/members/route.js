@@ -15,7 +15,9 @@ export async function DELETE() {
   const res = NextResponse;
   // TODO: WHAT AUTHENTICATION IS NEEDED HERE?
   const { auth, message, user } = await authenticate({
-    admins: 1,
+    participants: -1,
+    participants: 0,
+    participants: 1,
   });
 
   if (auth !== 200) {
