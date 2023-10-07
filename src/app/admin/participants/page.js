@@ -1,5 +1,5 @@
-import Participants from "@/components/admin/dashboards/Participants";
-import ProtectedPage from "@/components/ProtectedPage";
+import Participants from "@/components/dynamic/admin/dashboards/Participants";
+import ProtectedPage from "@/components/dynamic/ProtectedPage";
 
 const ParticipantsPage = () => {
   return (

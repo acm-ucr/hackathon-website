@@ -1,5 +1,5 @@
-import ProtectedPage from "@/components/ProtectedPage";
-import Judges from "@/components/admin/dashboards/Judges";
+import ProtectedPage from "@/components/dynamic/ProtectedPage";
+import Judges from "@/components/dynamic/admin/dashboards/Judges";
 
 const Page = () => {
   return (

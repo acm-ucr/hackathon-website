@@ -10,7 +10,7 @@ import {
   deleteField,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
-import { AUTH } from "@/data/admin/Admins";
+import { AUTH } from "@/data/dynamic/admin/Admins";
 
 export async function POST(req) {
   const res = NextResponse;

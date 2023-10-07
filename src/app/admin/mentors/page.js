@@ -1,5 +1,5 @@
-import Mentors from "@/components/admin/dashboards/Mentors";
-import ProtectedPage from "@/components/ProtectedPage";
+import Mentors from "@/components/dynamic/admin/dashboards/Mentors";
+import ProtectedPage from "@/components/dynamic/ProtectedPage";
 const MentorsPage = () => {
   return (
     <ProtectedPage

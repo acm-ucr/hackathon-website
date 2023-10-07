@@ -1,5 +1,5 @@
-import Mentor from "@/components/forms/Mentor";
-import ProtectedPage from "@/components/ProtectedPage";
+import Mentor from "@/components/dynamic/forms/Mentor";
+import ProtectedPage from "@/components/dynamic/ProtectedPage";
 
 const Page = () => {
   return (

@@ -1,5 +1,5 @@
-import Prizes from "@/components/admin/services/Prizes";
-import ProtectedPage from "@/components/ProtectedPage";
+import Prizes from "@/components/dynamic/admin/services/Prizes";
+import ProtectedPage from "@/components/dynamic/ProtectedPage";
 
 const ParticipantsPage = () => {
   return (

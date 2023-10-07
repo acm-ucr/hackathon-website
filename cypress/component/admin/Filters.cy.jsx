@@ -1,4 +1,4 @@
-import Filters from "@/components/admin/Filters";
+import Filters from "@/components/dynamic/admin/Filters";
 import { useState } from "react";
 
 describe("Filters Component", () => {
