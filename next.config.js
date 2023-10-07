@@ -14,7 +14,7 @@ const nextConfig = {
       },
       {
         source: "/forms",
-        destination: "/forms/participant",
+        destination: "/forms/participants",
         permanent: true,
       },
     ];
