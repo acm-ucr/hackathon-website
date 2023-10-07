@@ -7,6 +7,7 @@ export const AFFILIATIONS = [
   "recruitment",
   "software",
   "UIUX",
+  "Operations",
 ];
 
 export const FIELDS = {
