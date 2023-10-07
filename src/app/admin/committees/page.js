@@ -1,5 +1,5 @@
-import ProtectedPage from "@/components/ProtectedPage";
-import Committees from "@/components/admin/dashboards/Committees";
+import ProtectedPage from "@/components/dynamic/ProtectedPage";
+import Committees from "@/components/dynamic/admin/dashboards/Committees";
 
 const AdminPage = () => {
   return (

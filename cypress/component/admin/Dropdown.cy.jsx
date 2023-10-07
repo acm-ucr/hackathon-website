@@ -1,4 +1,4 @@
-import Dropdown from "@/components/admin/services/DropDown";
+import Dropdown from "@/components/dynamic/admin/services/DropDown";
 import { useState } from "react";
 import mockevents from "../../fixtures/Events.json";
 

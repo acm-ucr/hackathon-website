@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { db } from "../../../../firebase";
 import { collection, getDocs, query, where, or } from "firebase/firestore";
 import sgMail from "@sendgrid/mail";
-import { CONFIG } from "@/data/Config";
+import { CONFIG } from "@/data/dynamic/Config";
 import { authenticate } from "@/utils/auth";
 
 export async function PUT(req) {

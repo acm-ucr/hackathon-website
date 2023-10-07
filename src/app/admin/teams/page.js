@@ -1,5 +1,5 @@
-import Teams from "@/components/admin/dashboards/Teams";
-import ProtectedPage from "@/components/ProtectedPage";
+import Teams from "@/components/dynamic/admin/dashboards/Teams";
+import ProtectedPage from "@/components/dynamic/ProtectedPage";
 const TeamsPage = () => {
   return (
     <ProtectedPage

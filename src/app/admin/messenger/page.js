@@ -1,5 +1,5 @@
-import Messenger from "@/components/admin/services/Messenger";
-import ProtectedPage from "@/components/ProtectedPage";
+import Messenger from "@/components/dynamic/admin/services/Messenger";
+import ProtectedPage from "@/components/dynamic/ProtectedPage";
 
 const MessengerPage = () => {
   return (
