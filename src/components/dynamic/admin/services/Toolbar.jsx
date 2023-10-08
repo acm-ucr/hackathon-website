@@ -200,17 +200,16 @@ const Toolbar = ({ objects, setObjects, teams, setTeams, tags }) => {
           <Checkbox onClick={selectAll} toggle={toggle} />
         </div>
         <div className="flex flex-row gap-2">
-          {tags &&
-            tags.map((tag, index) => (
-              <Tag
-                key={index}
-                text={tag.text}
-                onClick={() => onClick(tag.value)}
-                color={COLORS[tag.value]}
-                setObjects={setObjects}
-                objects={objects}
-              />
-            ))}
+          {tags.map((tag, index) => (
+            <Tag
+              key={index}
+              text={tag.text}
+              onClick={() => onClick(tag.value)}
+              color={COLORS[tag.value]}
+              setObjects={setObjects}
+              objects={objects}
+            />
+          ))}
         </div>
         <Input
           classes="w-full ml-5"
