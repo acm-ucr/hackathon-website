@@ -1,4 +1,6 @@
-export const FAQ = {
-  question: "",
-  answer: "",
-};
+export const FAQ = [
+  {
+    question: "",
+    answer: "",
+  },
+];
