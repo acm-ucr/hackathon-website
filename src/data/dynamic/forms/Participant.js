@@ -109,7 +109,6 @@ export const FIELDS = {
     width: 12,
     types: ["pdf"],
     maxSize: [150, "KB"],
-    required: true,
   },
   requirements: {
     input: "checkboxes",
@@ -121,4 +120,18 @@ export const FIELDS = {
       "I understand that I will attend the event in person.",
     ],
   },
+};
+
+export const HELPER = {
+  name: "",
+  email: "",
+  phone: "",
+  major: "",
+  age: "",
+  school: "",
+  grade: "",
+  gender: "",
+  shirt: "",
+  diet: {},
+  resume: "",
 };

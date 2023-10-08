@@ -65,3 +65,10 @@ export const FIELDS = {
     required: true,
   },
 };
+
+export const HELPER = {
+  name: "",
+  email: "",
+  discord: "",
+  affiliation: "",
+};

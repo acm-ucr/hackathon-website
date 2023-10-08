@@ -1,5 +1,5 @@
 import Checkbox from "@/components/dynamic/Checkbox";
-import { AVAILABILITY } from "../forms/Helper";
+import { AVAILABILITY } from "../forms/Availability";
 import Col from "react-bootstrap/Col";
 
 export const FILTERS = {

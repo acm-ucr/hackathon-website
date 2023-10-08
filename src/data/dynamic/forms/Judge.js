@@ -95,3 +95,14 @@ export const FIELDS = {
     options: ["I agree to photograph."],
   },
 };
+
+export const HELPER = {
+  name: "",
+  email: "",
+  phone: "",
+  gender: "",
+  shirt: "",
+  affiliation: "",
+  title: "",
+  photo: null,
+};

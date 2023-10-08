@@ -1,6 +1,6 @@
 import Upload from "@/components/dynamic/forms/Upload";
-import { USER } from "@/data/dynamic/forms/User";
-import { JUDGES } from "@/data/dynamic/forms/Judges";
+import { HELPER as USER } from "@/data/dynamic/forms/User";
+import { HELPER as JUDGE } from "@/data/dynamic/forms/Judge";
 import { useState } from "react";
 
 describe("Forms Upload", () => {
@@ -63,7 +63,7 @@ describe("Forms Upload", () => {
   it("Upload valid PNG", () => {
     const file = "sample.png";
     const Parent = () => {
-      const [judge, setJudge] = useState(JUDGES);
+      const [judge, setJudge] = useState(JUDGE);
 
       return (
         <Upload
@@ -90,7 +90,7 @@ describe("Forms Upload", () => {
   it("Upload invalid PNG (file size)", () => {
     const file = "sample.png";
     const Parent = () => {
-      const [judge, setJudge] = useState(JUDGES);
+      const [judge, setJudge] = useState(JUDGE);
 
       return (
         <Upload
@@ -119,7 +119,7 @@ describe("Forms Upload", () => {
   it("Upload valid JPEG", () => {
     const file = "sample.jpeg";
     const Parent = () => {
-      const [judge, setJudge] = useState(JUDGES);
+      const [judge, setJudge] = useState(JUDGE);
 
       return (
         <Upload
@@ -146,7 +146,7 @@ describe("Forms Upload", () => {
   it("Upload invalid JPEG (file size)", () => {
     const file = "sample.jpeg";
     const Parent = () => {
-      const [judge, setJudge] = useState(JUDGES);
+      const [judge, setJudge] = useState(JUDGE);
 
       return (
         <Upload
@@ -175,7 +175,7 @@ describe("Forms Upload", () => {
   it("Remove file", () => {
     const file = "sample.jpeg";
     const Parent = () => {
-      const [judge, setJudge] = useState(JUDGES);
+      const [judge, setJudge] = useState(JUDGE);
 
       return (
         <Upload

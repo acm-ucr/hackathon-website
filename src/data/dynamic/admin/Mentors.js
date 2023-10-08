@@ -1,6 +1,6 @@
 import Checkbox from "@/components/dynamic/Checkbox";
 import Col from "react-bootstrap/Col";
-import { AVAILABILITY } from "../forms/Helper";
+import { AVAILABILITY } from "../forms/Availability";
 
 export const FILTERS = {
   pending: {

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Form from "@/components/dynamic/forms/Form.jsx";
-import { FIELDS } from "../../../data/dynamic/forms/Volunteers.js";
+import { FIELDS, HELPER } from "../../../data/dynamic/forms/Volunteers.js";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -10,6 +10,7 @@ import toast from "react-hot-toast";
 const volunteer = () => {
   const { data: session } = useSession();
   const [volunteer, setVolunteer] = useState({
+    ...HELPER,
     name: session.user.name,
     email: session.user.email,
   });

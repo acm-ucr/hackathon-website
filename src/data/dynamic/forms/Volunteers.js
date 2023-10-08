@@ -116,3 +116,16 @@ export const FIELDS = {
     ],
   },
 };
+
+export const HELPER = {
+  name: "",
+  email: "",
+  phone: "",
+  discord: "",
+  major: "",
+  grade: "",
+  availability: {},
+  gender: "",
+  shirt: "",
+  response: "",
+};
