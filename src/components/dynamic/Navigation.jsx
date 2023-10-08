@@ -11,9 +11,9 @@ import { CONFIG } from "@/data/dynamic/Config";
 const Navigation = () => {
   const [expand, setExpand] = useState(false);
   const pathName = usePathname();
-  const tabs = pathName.startsWith("/admin")
+  const tabs = pathName.startsWith("/admins")
     ? ADMIN
-    : pathName.startsWith("/user")
+    : pathName.startsWith("/users")
     ? USER
     : null;
 

@@ -26,42 +26,42 @@ export const ADMIN = {
     tabs: [
       {
         name: "participants",
-        link: "/admin/participants",
+        link: "/admins/participants",
         icon: <BsFillPersonFill className={iconStyle} />,
       },
       {
         name: "teams",
-        link: "/admin/teams",
+        link: "/admins/teams",
         icon: <BsPeopleFill className={iconStyle} />,
       },
       {
         name: "judges",
-        link: "/admin/judges",
+        link: "/admins/judges",
         icon: <FaGavel className={iconStyle} />,
       },
       {
         name: "volunteers",
-        link: "/admin/volunteers",
+        link: "/admins/volunteers",
         icon: <MdVolunteerActivism className={iconStyle} />,
       },
       {
         name: "mentors",
-        link: "/admin/mentors",
+        link: "/admins/mentors",
         icon: <BiSolidHelpCircle className={iconStyle} />,
       },
       {
         name: "admins",
-        link: "/admin/admins",
+        link: "/admins/admins",
         icon: <FaLock className={iconStyle} />,
       },
       {
         name: "committees",
-        link: "/admin/committees",
+        link: "/admins/committees",
         icon: <SiHandshake className={iconStyle} />,
       },
       {
         name: "feedback",
-        link: "/admin/feedback",
+        link: "/admins/feedback",
         icon: <MdFeedback className={iconStyle} />,
       },
     ],
@@ -71,32 +71,32 @@ export const ADMIN = {
     tabs: [
       {
         name: "calendar",
-        link: "/admin/calendar",
+        link: "/admins/calendar",
         icon: <FaCalendarDay className={iconStyle} />,
       },
       {
         name: "messenger",
-        link: "/admin/messenger",
+        link: "/admins/messenger",
         icon: <FaEnvelope className={iconStyle} />,
       },
       {
         name: "check in",
-        link: "/admin/checkin",
+        link: "/admins/checkin",
         icon: <AiOutlineQrcode className={iconStyle} />,
       },
       {
         name: "judging",
-        link: "/admin/judging",
+        link: "/admins/judging",
         icon: <FaGavel className={iconStyle} />,
       },
       {
         name: "prizes",
-        link: "/admin/prizes",
+        link: "/admins/prizes",
         icon: <FaMedal className={iconStyle} />,
       },
       {
         name: "statistics",
-        link: "/admin/statistics",
+        link: "/admins/statistics",
         icon: <BsBarChartFill className={iconStyle} />,
       },
     ],
@@ -122,12 +122,12 @@ export const USER = {
     tabs: [
       {
         name: "dashboard",
-        link: "/user/dashboard",
+        link: "/users/dashboard",
         icon: <BsFillPersonFill className={iconStyle} />,
       },
       {
         name: "checkin",
-        link: "/user/checkin",
+        link: "/users/checkin",
         icon: <AiOutlineQrcode className={iconStyle} />,
       },
     ],
