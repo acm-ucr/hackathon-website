@@ -20,10 +20,16 @@ const judge = () => {
       ...judge,
     };
 
-    axios.post("/api/judges", data).then(() => {
-      setLoading(false);
-      toast(`✅ Submitted successfully!`);
-    });
+    axios
+      .post("/api/judges", data)
+      .then(() => {
+        setLoading(false);
+        toast(`✅ Submitted successfully!`);
+      })
+      .catch(() => {
+        setLoading(false);
+        toast(`❌ Internal Server Error`);
+      });
   };
 
   return (

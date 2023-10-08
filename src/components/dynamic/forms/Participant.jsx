@@ -22,10 +22,16 @@ const Participant = () => {
       diet: Object.keys(participant.diet),
     };
 
-    axios.post("/api/participants", data).then(() => {
-      setLoading(false);
-      toast(`✅ Submitted successfully!`);
-    });
+    axios
+      .post("/api/participants", data)
+      .then(() => {
+        setLoading(false);
+        toast(`✅ Submitted successfully!`);
+      })
+      .catch(() => {
+        setLoading(false);
+        toast(`❌ Internal Server Error`);
+      });
   };
 
   return (

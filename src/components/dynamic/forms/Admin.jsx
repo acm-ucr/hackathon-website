@@ -16,10 +16,16 @@ const Admin = () => {
   });
 
   const handleSubmit = (setLoading) => {
-    axios.post("/api/admins", admin).then(() => {
-      setLoading(false);
-      toast(`✅ Submitted successfully!`);
-    });
+    axios
+      .post("/api/admins", admin)
+      .then(() => {
+        setLoading(false);
+        toast(`✅ Submitted successfully!`);
+      })
+      .catch(() => {
+        setLoading(false);
+        toast(`❌ Internal Server Error`);
+      });
   };
   return (
     <Form

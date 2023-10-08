@@ -22,16 +22,8 @@ export async function POST(req) {
     );
   }
 
-  const {
-    phone,
-    discord,
-    major,
-    grade,
-    gender,
-    shirt,
-    availability,
-    response,
-  } = await req.json();
+  const { phone, discord, major, grade, gender, shirt, availability } =
+    await req.json();
 
   try {
     await updateDoc(doc(db, "users", user.id), {
@@ -41,7 +33,6 @@ export async function POST(req) {
       grade: grade,
       gender: gender,
       shirt: shirt,
-      response: response,
       "roles.mentors": 0,
       availability: availability,
     });

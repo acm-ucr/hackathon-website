@@ -7,8 +7,9 @@ import { useSession } from "next-auth/react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const volunteer = () => {
+const Volunteer = () => {
   const { data: session } = useSession();
+
   const [volunteer, setVolunteer] = useState({
     ...HELPER,
     name: session.user.name,
@@ -21,10 +22,16 @@ const volunteer = () => {
       availability: Object.keys(volunteer.availability),
     };
 
-    axios.post("/api/volunteers", data).then(() => {
-      setLoading(false);
-      toast(`✅ Submitted successfully!`);
-    });
+    axios
+      .post("/api/volunteers", data)
+      .then(() => {
+        setLoading(false);
+        toast(`✅ Submitted successfully!`);
+      })
+      .catch(() => {
+        setLoading(false);
+        toast(`❌ Internal Server Error`);
+      });
   };
   return (
     <Form
@@ -37,4 +44,4 @@ const volunteer = () => {
   );
 };
 
-export default volunteer;
+export default Volunteer;

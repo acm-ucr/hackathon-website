@@ -16,10 +16,16 @@ const Committee = () => {
   });
 
   const handleSubmit = (setLoading) => {
-    axios.post("/api/committees", committee).then(() => {
-      setLoading(false);
-      toast(`✅ Submitted successfully!`);
-    });
+    axios
+      .post("/api/committees", committee)
+      .then(() => {
+        setLoading(false);
+        toast(`✅ Submitted successfully!`);
+      })
+      .catch(() => {
+        setLoading(false);
+        toast(`❌ Internal Server Error`);
+      });
   };
   return (
     <Form

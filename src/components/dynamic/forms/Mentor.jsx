@@ -22,10 +22,16 @@ const Mentor = () => {
       availability: Object.keys(mentor.availability),
     };
 
-    axios.post("/api/mentors", data).then(() => {
-      setLoading(false);
-      toast(`✅ Submitted successfully!`);
-    });
+    axios
+      .post("/api/mentors", data)
+      .then(() => {
+        setLoading(false);
+        toast(`✅ Submitted successfully!`);
+      })
+      .catch(() => {
+        setLoading(false);
+        toast(`❌ Internal Server Error`);
+      });
   };
   return (
     <Form
