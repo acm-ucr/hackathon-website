@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import Form from "@/components/dynamic/forms/Form.jsx";
-import { FIELDS, HELPER } from "../../../data/dynamic/forms/Participant.js";
+import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/forms/Participant.js";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 const Participant = () => {
   const { data: session } = useSession();
   const [participant, setParticipant] = useState({
-    ...HELPER,
+    ...ATTRIBUTES,
     name: session.user.name,
     email: session.user.email,
   });

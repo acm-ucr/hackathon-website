@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import Form from "@/components/dynamic/forms/Form.jsx";
-import { FIELDS, HELPER } from "../../../data/dynamic/forms/Feedback.js";
+import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/forms/Feedback.js";
 
 const Feedback = () => {
-  const [feedback, setfeedback] = useState({ HELPER });
+  const [feedback, setfeedback] = useState({ ATTRIBUTES });
 
   return (
     <Form

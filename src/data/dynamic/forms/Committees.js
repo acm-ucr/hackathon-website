@@ -66,7 +66,7 @@ export const FIELDS = {
   },
 };
 
-export const HELPER = {
+export const ATTRIBUTES = {
   name: "",
   email: "",
   discord: "",
