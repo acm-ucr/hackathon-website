@@ -6,6 +6,7 @@ import {
   deleteDoc,
   collection,
   getDocs,
+  deleteField,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 
@@ -30,6 +31,7 @@ export async function GET() {
 
       const formattedNames = members.map((member) => member.name);
       const formattedEmails = members.map((member) => member.email);
+      const formattedUids = members.map((member) => member.uid);
       const formattedLinks = Object.entries(links).map(([key, value]) => {
         return { name: key, link: value };
       });
@@ -38,6 +40,7 @@ export async function GET() {
         links: formattedLinks,
         members: formattedNames,
         emails: formattedEmails,
+        uids: formattedUids,
         name,
         status,
         uid: doc.id,
@@ -71,6 +74,11 @@ export async function PUT(req) {
   try {
     objects.forEach(async (object) => {
       if (attribute === "role") {
+        object.uids.forEach(async (member) => {
+          await updateDoc(doc(db, "users", member), {
+            team: deleteField(),
+          });
+        });
         await deleteDoc(doc(db, "teams", object.uid));
       } else if (attribute === "status") {
         await updateDoc(doc(db, "teams", object.uid), {
