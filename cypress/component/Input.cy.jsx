@@ -1,11 +1,10 @@
 import Input from "@/components/dynamic/Input";
 import { useState } from "react";
-import { HELPER } from "../../src/data/dynamic/forms/Participant";
 
 describe("Input", () => {
   it("Placeholder", () => {
     const Parent = () => {
-      const [user, setUser] = useState(HELPER);
+      const [user, setUser] = useState({});
       return (
         <Input
           name="first"
@@ -28,7 +27,7 @@ describe("Input", () => {
 
   it("Typing...", () => {
     const Parent = () => {
-      const [user, setUser] = useState(HELPER);
+      const [user, setUser] = useState({});
       return (
         <Input
           name="first"
@@ -51,7 +50,7 @@ describe("Input", () => {
 
   it("Backspace", () => {
     const Parent = () => {
-      const [user, setUser] = useState(HELPER);
+      const [user, setUser] = useState({});
       return (
         <Input
           name="first"
@@ -75,7 +74,7 @@ describe("Input", () => {
 
   it("Select all clear", () => {
     const Parent = () => {
-      const [user, setUser] = useState(HELPER);
+      const [user, setUser] = useState({});
       return (
         <Input
           name="first"
