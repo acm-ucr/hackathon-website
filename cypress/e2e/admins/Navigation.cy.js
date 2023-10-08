@@ -2,7 +2,7 @@ describe("Admin Portal Navigation", () => {
   it("Visit Participants Page", () => {
     cy.fetch({
       role: "admins",
-      portal: "admin",
+      portal: "admins",
       page: "participants",
     });
 
@@ -12,7 +12,7 @@ describe("Admin Portal Navigation", () => {
   it("Visit Teams Page", () => {
     cy.fetch({
       role: "admins",
-      portal: "admin",
+      portal: "admins",
       page: "teams",
     });
     cy.get(".text-2xl").contains("Teams");
@@ -21,7 +21,7 @@ describe("Admin Portal Navigation", () => {
   it("Visit Judges Page", () => {
     cy.fetch({
       role: "admins",
-      portal: "admin",
+      portal: "admins",
       page: "judges",
     });
     cy.get(".text-2xl").contains("Judges");
@@ -30,7 +30,7 @@ describe("Admin Portal Navigation", () => {
   it("Visit Volunteers Page", () => {
     cy.fetch({
       role: "admins",
-      portal: "admin",
+      portal: "admins",
       page: "volunteers",
     });
     cy.get(".text-2xl").contains("Volunteers");
@@ -39,7 +39,7 @@ describe("Admin Portal Navigation", () => {
   it("Visit Mentors Page", () => {
     cy.fetch({
       role: "admins",
-      portal: "admin",
+      portal: "admins",
       page: "mentors",
     });
     cy.get(".text-2xl").contains("Mentors");
@@ -48,7 +48,7 @@ describe("Admin Portal Navigation", () => {
   it("Visit Admin Page", () => {
     cy.fetch({
       role: "admins",
-      portal: "admin",
+      portal: "admins",
       page: "admins",
     });
     cy.get(".text-2xl").contains("Admins");
@@ -57,7 +57,7 @@ describe("Admin Portal Navigation", () => {
   it("Visit Committee Page", () => {
     cy.fetch({
       role: "admins",
-      portal: "admin",
+      portal: "admins",
       page: "committees",
     });
     cy.get(".text-2xl").contains("Committees");
