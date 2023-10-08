@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
-import Error from "@/components/Error";
+import Error from "@/components/dynamic/Error";
 import axios from "axios";
-import Button from "@/components/Button";
+import Button from "@/components/dynamic/Button";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";

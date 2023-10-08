@@ -1,5 +1,5 @@
-import ProtectedPage from "@/components/ProtectedPage";
-import Events from "@/components/admin/services/calendar/Events";
+import ProtectedPage from "@/components/dynamic/ProtectedPage";
+import Events from "@/components/dynamic/admin/services/calendar/Events";
 
 const Page = () => {
   return (

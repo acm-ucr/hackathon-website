@@ -1,5 +1,5 @@
-import ProtectedPage from "@/components/ProtectedPage";
-import Statistics from "@/components/admin/services/Statistics";
+import ProtectedPage from "@/components/dynamic/ProtectedPage";
+import Statistics from "@/components/dynamic/admin/services/Statistics";
 const StatisticsPage = () => {
   return (
     <ProtectedPage

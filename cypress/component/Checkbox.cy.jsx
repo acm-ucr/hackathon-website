@@ -1,4 +1,4 @@
-import Checkbox from "@/components/Checkbox";
+import Checkbox from "@/components/dynamic/Checkbox";
 import { useState } from "react";
 
 describe("Checkbox", () => {

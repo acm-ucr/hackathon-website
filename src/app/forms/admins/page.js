@@ -1,5 +1,5 @@
-import Admin from "@/components/forms/Admin";
-import ProtectedPage from "@/components/ProtectedPage";
+import Admin from "@/components/dynamic/forms/Admin";
+import ProtectedPage from "@/components/dynamic/ProtectedPage";
 
 const Page = () => {
   return (

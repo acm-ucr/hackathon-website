@@ -1,5 +1,5 @@
-import Volunteer from "@/components/forms/Volunteer";
-import ProtectedPage from "@/components/ProtectedPage";
+import Volunteer from "@/components/dynamic/forms/Volunteer";
+import ProtectedPage from "@/components/dynamic/ProtectedPage";
 
 const Page = () => {
   return (

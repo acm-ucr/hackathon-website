@@ -1,5 +1,5 @@
-import Judge from "@/components/forms/Judge";
-import ProtectedPage from "@/components/ProtectedPage";
+import Judge from "@/components/dynamic/forms/Judge";
+import ProtectedPage from "@/components/dynamic/ProtectedPage";
 
 const Page = () => {
   return (
