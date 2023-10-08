@@ -6,7 +6,7 @@ import { authenticate } from "@/utils/auth";
 export async function POST() {
   const res = NextResponse;
   const { auth, message, user } = await authenticate({
-    admins: 1,
+    participants: [-1, 0, 1],
   });
 
   if (auth !== 200) {
@@ -48,9 +48,7 @@ export async function POST() {
 
 export async function PUT(req) {
   const res = NextResponse;
-  const { auth, user } = await authenticate({
-    admins: 1,
-  });
+  const { auth, user } = await authenticate({ participants: [-1, 0, 1] });
 
   if (auth !== 200) {
     return res.json(
@@ -82,9 +80,7 @@ export async function PUT(req) {
 
 export async function GET(req) {
   const res = NextResponse;
-  const { auth } = await authenticate({
-    admins: 1,
-  });
+  const { auth } = await authenticate({ participants: [-1, 0, 1] });
 
   if (auth !== 200) {
     return res.json(

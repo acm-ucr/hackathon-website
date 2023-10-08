@@ -10,10 +10,11 @@ import {
   deleteField,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
+import { AUTH } from "@/data/dynamic/admin/Volunteers";
 
 export async function POST(req) {
   const res = NextResponse;
-  const { auth, message, user } = await authenticate();
+  const { auth, message, user } = await authenticate(AUTH.POST);
 
   if (auth !== 200) {
     return res.json(
@@ -46,9 +47,7 @@ export async function POST(req) {
 
 export async function GET() {
   const res = NextResponse;
-  const { auth } = await authenticate({
-    admins: 1,
-  });
+  const { auth } = await authenticate(AUTH.GET);
 
   if (auth !== 200) {
     return res.json(
@@ -90,9 +89,7 @@ export async function GET() {
 
 export async function PUT(req) {
   const res = NextResponse;
-  const { auth } = await authenticate({
-    admins: 1,
-  });
+  const { auth } = await authenticate(AUTH.PUT);
 
   if (auth !== 200) {
     return res.json(
