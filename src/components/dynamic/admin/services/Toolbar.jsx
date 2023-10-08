@@ -9,13 +9,16 @@ import { FaTrashAlt } from "react-icons/fa";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
 import toast from "react-hot-toast";
+import Tag from "../Tag.jsx";
+import { COLORS } from "@/data/dynamic/Tags";
 
 const reset = {
   category: "",
   prize: "",
+  status: 0,
 };
 
-const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
+const Toolbar = ({ objects, setObjects, teams, setTeams, tags }) => {
   const [team, setTeam] = useState({ name: "No Team Selected", id: "" });
   const [backup, setBackup] = useState({ id: "" });
   const [toggle, setToggle] = useState(false);
@@ -30,6 +33,25 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
   const [input, setInput] = useState({
     input: "",
   });
+
+  const onClick = (value) => {
+    setToggle(false);
+    const items = objects.filter((object) => object.selected);
+    axios.put(`/api/prizes`, {
+      objects: items,
+      status: value,
+      attribute: "status",
+    });
+    setObjects(
+      objects.map((a) => {
+        if (a.selected) {
+          a.status = value;
+          a.selected = false;
+        }
+        return a;
+      })
+    );
+  };
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -174,7 +196,22 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
         {edit && <Button color="green" text="save" onClick={handleSave} />}
       </div>
       <form className="flex items-center" onSubmit={handleSearch}>
-        <Checkbox onClick={selectAll} toggle={toggle} />
+        <div className="mr-4" data-cy="select-all">
+          <Checkbox onClick={selectAll} toggle={toggle} />
+        </div>
+        <div className="flex flex-row gap-2">
+          {tags &&
+            tags.map((tag, index) => (
+              <Tag
+                key={index}
+                text={tag.text}
+                onClick={() => onClick(tag.value)}
+                color={COLORS[tag.value]}
+                setObjects={setObjects}
+                objects={objects}
+              />
+            ))}
+        </div>
         <Input
           classes="w-full ml-5"
           object={input}

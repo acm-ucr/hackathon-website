@@ -3,7 +3,7 @@ import { useState } from "react";
 import Title from "../Title";
 import Toolbar from "./Toolbar";
 import Table from "../Table";
-import { HEADERS } from "@/data/dynamic/admin/Prizes";
+import { HEADERS, TAGS, STATUSES } from "@/data/dynamic/admin/Prizes";
 
 const Prizes = () => {
   const [teams, setTeams] = useState(null);
@@ -18,6 +18,7 @@ const Prizes = () => {
         setObjects={setPrizes}
         teams={teams}
         setTeams={setTeams}
+        tags={TAGS}
       />
       <Table
         headers={headers}
@@ -25,6 +26,7 @@ const Prizes = () => {
         objects={prizes}
         setObjects={setPrizes}
         empty="No Prizes Available"
+        statuses={STATUSES}
       />
     </div>
   );
