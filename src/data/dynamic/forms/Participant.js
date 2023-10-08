@@ -97,9 +97,11 @@ export const FIELDS = {
   },
   diet: {
     input: "checkboxes",
+    text: "Dietary Restrictions",
     width: 12,
     field: "diet",
     options: DIETS,
+    required: true,
   },
 
   resume: {
@@ -108,8 +110,8 @@ export const FIELDS = {
     text: "Upload  Resume",
     width: 12,
     types: ["pdf"],
-    maxSize: [150, "KB"],
-    required: true,
+    maxSize: [200, "KB"],
+    required: false,
   },
   requirements: {
     input: "checkboxes",
