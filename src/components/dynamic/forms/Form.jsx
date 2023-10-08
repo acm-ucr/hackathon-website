@@ -23,7 +23,7 @@ const Form = ({ object, setObject, header, fields, onSubmit }) => {
       )
     ) {
       toast("❌ Please complete all required fields!");
-      setLoading(false); // Reset loading state
+      setLoading(false);
       return;
     }
     if (
@@ -33,7 +33,7 @@ const Form = ({ object, setObject, header, fields, onSubmit }) => {
       )
     ) {
       toast("❌ Please agree to all the terms!");
-      setLoading(false); // Reset loading state
+      setLoading(false);
       return;
     }
     if (
@@ -41,7 +41,7 @@ const Form = ({ object, setObject, header, fields, onSubmit }) => {
       !Object.values(object.availability).some((time) => time)
     ) {
       toast("❌ Please select at least one available time!");
-      setLoading(false); // Reset loading state
+      setLoading(false);
       return;
     }
 
