@@ -21,33 +21,35 @@ const Admin = () => {
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
-      <div className="flex">
-        <Title title="Admins" />
-        <Filters
-          filters={filters}
-          setFilters={setFilters}
+      <>
+        <div className="flex">
+          <Title title="Admins" />
+          <Filters
+            filters={filters}
+            setFilters={setFilters}
+            setObjects={setAdmin}
+            objects={admin}
+            input={input.input}
+          />
+        </div>
+        <Toolbar
+          input={input}
+          setInput={setInput}
+          tags={TAGS}
           setObjects={setAdmin}
           objects={admin}
-          input={input.input}
+          filters={filters}
+          page="admins"
         />
-      </div>
-      <Toolbar
-        input={input}
-        setInput={setInput}
-        tags={TAGS}
-        setObjects={setAdmin}
-        objects={admin}
-        filters={filters}
-        page="admins"
-      />
-      <Table
-        headers={headers}
-        empty="No Admin Available"
-        setHeaders={setHeaders}
-        setObjects={setAdmin}
-        objects={admin}
-        statuses={STATUSES}
-      />
+        <Table
+          headers={headers}
+          empty="No Admin Available"
+          setHeaders={setHeaders}
+          setObjects={setAdmin}
+          objects={admin}
+          statuses={STATUSES}
+        />
+      </>
     </div>
   );
 };
