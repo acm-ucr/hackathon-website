@@ -68,7 +68,7 @@ export const FIELDS = {
   },
 };
 
-export const HEALPER = {
+export const HELPER = {
   "What was most helpful about the event?": "",
   "Was there anything that you would have liked to see?": "",
   "Was there anything that you did not find beneficial about the hackathon?":

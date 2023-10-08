@@ -18,14 +18,9 @@ const Committee = () => {
   const handleSubmit = (setLoading) => {
     axios
       .post("/api/committees", committee)
-      .then(() => {
-        setLoading(false);
-        toast(`✅ Submitted successfully!`);
-      })
-      .catch(() => {
-        setLoading(false);
-        toast(`❌ Internal Server Error`);
-      });
+      .then(() => toast(`✅ Submitted successfully!`))
+      .catch(() => toast(`❌ Internal Server Error`))
+      .finally(() => setLoading(false));
   };
   return (
     <Form

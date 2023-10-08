@@ -24,14 +24,9 @@ const Mentor = () => {
 
     axios
       .post("/api/mentors", data)
-      .then(() => {
-        setLoading(false);
-        toast(`✅ Submitted successfully!`);
-      })
-      .catch(() => {
-        setLoading(false);
-        toast(`❌ Internal Server Error`);
-      });
+      .then(() => toast(`✅ Submitted successfully!`))
+      .catch(() => toast(`❌ Internal Server Error`))
+      .finally(() => setLoading(false));
   };
   return (
     <Form
