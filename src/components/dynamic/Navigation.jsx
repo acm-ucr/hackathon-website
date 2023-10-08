@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ADMIN, USER } from "@/data/dynamic/Navigation";
 import { usePathname } from "next/navigation";
-import { CONFIG } from "@/data/dynamic/Config";
+import { CONFIG } from "@/data/Config";
 
 const Navigation = () => {
   const [expand, setExpand] = useState(false);

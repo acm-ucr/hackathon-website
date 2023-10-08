@@ -1,24 +1,13 @@
-import { TABS, CHARTS } from "@/data/dynamic/admin/statistics/Statistics";
+import { Row } from "react-bootstrap";
 import Tab from "./Tab";
 
-const Tabs = ({ tab, setTab, setConfig }) => {
-  const handleClick = (selected) => {
-    setTab(selected);
-    setConfig(CHARTS[selected]);
-  };
-
+const Tabs = ({ counts }) => {
   return (
-    <div className="flex w-full">
-      {TABS.map((title, index) => (
-        <Tab
-          key={index}
-          title={title}
-          value="300"
-          handleClick={handleClick}
-          tab={tab}
-        />
+    <Row className="flex w-full mt-3">
+      {Object.entries(counts).map(([title, count], index) => (
+        <Tab key={index} title={title} value={count} />
       ))}
-    </div>
+    </Row>
   );
 };
 
