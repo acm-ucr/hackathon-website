@@ -1,5 +1,5 @@
-import ProtectedPage from "@/components/ProtectedPage";
-import CheckIn from "@/components/admin/services/checkin/CheckIn";
+import ProtectedPage from "@/components/dynamic/ProtectedPage";
+import CheckIn from "@/components/dynamic/admin/services/checkin/CheckIn";
 
 const Page = () => {
   return (

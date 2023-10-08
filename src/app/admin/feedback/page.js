@@ -1,5 +1,5 @@
-import Feedback from "@/components/forms/Feedback";
-import ProtectedPage from "@/components/ProtectedPage";
+import Feedback from "@/components/dynamic/forms/Feedback";
+import ProtectedPage from "@/components/dynamic/ProtectedPage";
 const FeedbackPage = () => {
   return (
     <ProtectedPage
