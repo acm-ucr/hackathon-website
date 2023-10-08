@@ -24,11 +24,11 @@ export async function POST() {
         devpost: "",
         figma: "",
       },
-      members: [{ email: email, name: user.name }],
+      members: [{ email: user.email, name: user.name }],
       status: 0,
     };
     const docRef = await addDoc(collection(db, "teams"), team);
-    await updateDoc(doc(db, "users", uid), {
+    await updateDoc(doc(db, "users", user.id), {
       team: docRef.id,
     });
     return res.json(
