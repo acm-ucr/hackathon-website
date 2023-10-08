@@ -1,6 +1,6 @@
-import Input from "@/components/Input";
+import Input from "@/components/dynamic/Input";
 import { useState } from "react";
-import { USER } from "../../src/data/forms/User";
+import { USER } from "../../src/data/dynamic/forms/User";
 
 describe("Input", () => {
   it("Placeholder", () => {
