@@ -130,6 +130,11 @@ export const USER = {
         link: "/user/checkin",
         icon: <AiOutlineQrcode className={iconStyle} />,
       },
+      {
+        name: "feedback",
+        link: "/user/feedback",
+        icon: <MdFeedback className={iconStyle} />,
+      },
     ],
   },
   " ": [
