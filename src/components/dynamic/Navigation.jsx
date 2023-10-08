@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import LOGO from "../../../public/LOGO.png";
+import LOGO from "../../../public/UCRLOGO.png";
 import Image from "next/image";
 import Link from "next/link";
 import { ADMIN, USER } from "@/data/dynamic/Navigation";
@@ -11,9 +11,9 @@ import { CONFIG } from "@/data/Config";
 const Navigation = () => {
   const [expand, setExpand] = useState(false);
   const pathName = usePathname();
-  const tabs = pathName.startsWith("/admin")
+  const tabs = pathName.startsWith("/admins")
     ? ADMIN
-    : pathName.startsWith("/user")
+    : pathName.startsWith("/users")
     ? USER
     : null;
 
