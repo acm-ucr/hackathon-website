@@ -64,22 +64,21 @@ const Select = ({
               <input
                 autoFocus
                 className="mx-1.5 my-1 w-11/12 ring-0 outline-none px-2 py-1 bg-hackathon-green-100"
-                placeholder="Search"
+                placeholder="search"
                 onChange={handleInput}
               />
             )}
-            {options.map(
-              (option, index) =>
-                !option.hidden && (
-                  <Dropdown.Item
-                    className=" hover:!bg-hackathon-green-200 !bg-hackathon-green-100 overflow-hidden"
-                    key={index}
-                    onClick={() => setUser({ ...user, [field]: option.name })}
-                  >
-                    {option.name}
-                  </Dropdown.Item>
-                )
-            )}
+            {options
+              .filter((option, index) => !option.hidden)
+              .map((option, index) => (
+                <Dropdown.Item
+                  className=" hover:!bg-hackathon-green-200 !bg-hackathon-green-100 overflow-hidden"
+                  key={index}
+                  onClick={() => setUser({ ...user, [field]: option.name })}
+                >
+                  {option.name}
+                </Dropdown.Item>
+              ))}
           </Dropdown.Menu>
         )}
       </Dropdown>
