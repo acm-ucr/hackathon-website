@@ -150,29 +150,6 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
 
   return (
     <>
-      <div className="flex gap-2">
-        <Input
-          setObject={setPrize}
-          object={prize}
-          label="category"
-          maxLength={30}
-        />
-        <Input
-          setObject={setPrize}
-          object={prize}
-          label="prize"
-          maxLength={30}
-        />
-        <DropDown
-          option={team}
-          setOption={setTeam}
-          options={teams}
-          setOptions={setTeams}
-        />
-        <Button color="green" text="add" onClick={handleAdd} disabled={edit} />
-        {!edit && <Button color="green" text="edit" onClick={handleEdit} />}
-        {edit && <Button color="green" text="save" onClick={handleSave} />}
-      </div>
       <form className="flex items-center" onSubmit={handleSearch}>
         <Checkbox onClick={selectAll} toggle={toggle} />
         <Input
@@ -204,6 +181,29 @@ const Toolbar = ({ objects, setObjects, teams, setTeams }) => {
           />
         )}
       </form>
+      <div className="flex gap-2">
+        <Input
+          setObject={setPrize}
+          object={prize}
+          label="category"
+          maxLength={30}
+        />
+        <Input
+          setObject={setPrize}
+          object={prize}
+          label="prize"
+          maxLength={30}
+        />
+        <DropDown
+          option={team}
+          setOption={setTeam}
+          options={teams}
+          setOptions={setTeams}
+        />
+        <Button color="green" text="add" onClick={handleAdd} disabled={edit} />
+        {!edit && <Button color="green" text="edit" onClick={handleEdit} />}
+        {edit && <Button color="green" text="save" onClick={handleSave} />}
+      </div>
     </>
   );
 };
