@@ -1,5 +1,3 @@
 User-Agent: *
 Allow: /
 Disallow: /admin/
-
-Sitemap: https://acme.com/sitemap.xml
