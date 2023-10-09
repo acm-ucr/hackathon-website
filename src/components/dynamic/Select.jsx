@@ -69,7 +69,7 @@ const Select = ({
               />
             )}
             {options
-              .filter((option, index) => !option.hidden)
+              .filter((option) => !option.hidden)
               .map((option, index) => (
                 <Dropdown.Item
                   className=" hover:!bg-hackathon-green-200 !bg-hackathon-green-100 overflow-hidden"
