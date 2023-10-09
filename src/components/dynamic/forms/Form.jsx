@@ -99,10 +99,10 @@ const Form = ({ object, setObject, header, fields, onSubmit }) => {
                 {field.input === "checkboxes" && (
                   <>
                     <p className="mb-1 font-semibold">
-                      {field.text}{" "}
-                      <span className="text-hackathon-green-300">
-                        {field.text && field.required && " *"}
-                      </span>
+                      {field.text}
+                      {field.text && field.required && (
+                        <span className="text-hackathon-green-300">*</span>
+                      )}
                     </p>
                     {field.options.map((option, i) => (
                       <Checkbox

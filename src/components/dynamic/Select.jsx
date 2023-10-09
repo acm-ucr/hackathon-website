@@ -13,8 +13,8 @@ const Select = ({
   return (
     <div className="flex flex-col">
       <p className="mb-1 font-semibold">
-        {title}{" "}
-        <span className="text-hackathon-green-300">{required && " *"}</span>
+        {title}
+        {required && <span className="text-hackathon-green-300">*</span>}
       </p>
       <Dropdown className="w-full m-0">
         {editable ? (
