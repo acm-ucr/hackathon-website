@@ -9,7 +9,7 @@ import Button from "../Button";
 import toast from "react-hot-toast";
 import Upload from "./Upload";
 import { FILTERS, STATUSES } from "@/data/dynamic/admin/Messenger";
-import { CONFIG } from "@/data/dynamic/Config";
+import { CONFIG } from "@/data/Config";
 import axios from "axios";
 
 const Messenger = () => {
