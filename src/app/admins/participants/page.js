@@ -7,7 +7,6 @@ const ParticipantsPage = () => {
       title="Admin | Participants"
       restrictions={{
         admins: 1,
-        participants: [-1, 0, 1],
       }}
     >
       <Participants />

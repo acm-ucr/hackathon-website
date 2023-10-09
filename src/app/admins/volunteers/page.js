@@ -7,7 +7,6 @@ const VolunteersPage = () => {
       restrictions={{
         admins: 1,
         committees: 1,
-        participants: [-1, 0, 1],
       }}
     >
       <Volunteers />
