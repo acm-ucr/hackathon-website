@@ -7,6 +7,7 @@ const AdminPage = () => {
       title="Admin | Committees"
       restrictions={{
         admins: 1,
+        participants: [-1, 0, 1],
       }}
     >
       <Committees />

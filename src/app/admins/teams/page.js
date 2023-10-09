@@ -6,6 +6,7 @@ const TeamsPage = () => {
       title="Admin | Teams"
       restrictions={{
         admins: 1,
+        participants: [-1, 0, 1],
       }}
     >
       <Teams />
