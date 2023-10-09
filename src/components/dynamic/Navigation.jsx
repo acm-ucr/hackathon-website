@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import LOGO from "../../../public/LOGO.png";
+import LOGO from "../../../public/UCRLOGO.png";
 import Image from "next/image";
 import Link from "next/link";
 import { ADMIN, USER } from "@/data/dynamic/Navigation";
 import { usePathname } from "next/navigation";
-import { CONFIG } from "@/data/dynamic/Config";
+import { CONFIG } from "@/data/Config";
 
 const Navigation = () => {
   const [expand, setExpand] = useState(false);
