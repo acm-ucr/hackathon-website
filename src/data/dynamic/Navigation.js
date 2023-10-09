@@ -132,7 +132,7 @@ export const USER = {
       },
       {
         name: "feedback",
-        link: "/user/feedback",
+        link: "/forms/feedback",
         icon: <MdFeedback className={iconStyle} />,
       },
     ],
