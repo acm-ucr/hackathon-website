@@ -1,7 +1,8 @@
+"use client";
 import { useState } from "react";
-import Title from "./Title.jsx";
 import Filters from "./Filters.jsx";
 import Toolbar from "./dashboards/Toolbar.jsx";
+import Title from "./Title.jsx";
 import Table from "./Table.jsx";
 import {
   FILTERS,
@@ -10,8 +11,7 @@ import {
   TAGS,
 } from "@/data/dynamic/admin/Admins.js";
 
-const Dashboard = () => {
-  const [admin, setAdmin] = useState(null);
+const Dashboard = ({ data, setData }) => {
   const [input, setInput] = useState({
     input: "",
   });
@@ -25,8 +25,8 @@ const Dashboard = () => {
         <Filters
           filters={filters}
           setFilters={setFilters}
-          setObjects={setAdmin}
-          objects={admin}
+          setObjects={setData}
+          objects={data}
           input={input.input}
         />
       </div>
@@ -34,8 +34,8 @@ const Dashboard = () => {
         input={input}
         setInput={setInput}
         tags={TAGS}
-        setObjects={setAdmin}
-        objects={admin}
+        setObjects={setData}
+        objects={data}
         filters={filters}
         page="admins"
       />
@@ -43,8 +43,8 @@ const Dashboard = () => {
         headers={headers}
         empty="No Admin Available"
         setHeaders={setHeaders}
-        setObjects={setAdmin}
-        objects={admin}
+        setObjects={setData}
+        objects={data}
         statuses={STATUSES}
       />
     </div>
