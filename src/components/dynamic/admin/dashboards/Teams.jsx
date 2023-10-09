@@ -2,13 +2,26 @@
 
 import { useState } from "react";
 import Dashboard from "../Dashboard.jsx";
-// import { FILTERS, HEADERS, TAGS, STATUSES } from "@/data/dynamic/admin/Teams";
+// import { DROPDOWN } from "@/data/dynamic/admin/Teams";
 
 const Teams = () => {
   const [teams, setTeams] = useState(null);
+  const title = "Teams";
+  const page = "teams";
+  const empty = "No Teams Available";
+  const file = "TEAMS";
+  const dropdown = "";
 
   return (
-    <Dashboard teams={teams} setTeams={setTeams} />
+    <Dashboard
+      objects={teams}
+      setObjects={setTeams}
+      title={title}
+      page={page}
+      empty={empty}
+      file={file}
+      dropdown={dropdown}
+    />
     // <div className="h-full font-poppins flex flex-col py-4 gap-3">
     //   <div className="flex">
     //     <Title title="Teams" />

@@ -1,19 +1,32 @@
 "use client";
 import { useState } from "react";
 import Dashboard from "../Dashboard.jsx";
-// import {
-//   FILTERS,
-//   HEADERS,
-//   TAGS,
-//   DROPDOWN,
-//   STATUSES,
-// } from "@/data/dynamic/admin/Volunteers";
+import {
+  //   FILTERS,
+  //   HEADERS,
+  //   TAGS,
+  DROPDOWN,
+  //   STATUSES,
+} from "@/data/dynamic/admin/Volunteers";
 
 const Volunteers = () => {
   const [volunteers, setVolunteers] = useState(null);
+  const title = "Volunteers";
+  const page = "volunteers";
+  const empty = "No Volunteers Available";
+  const file = "VOLUNTEERS";
+  const dropdown = DROPDOWN;
 
   return (
-    <Dashboard volunteers={volunteers} setVolunteers={setVolunteers} />
+    <Dashboard
+      objects={volunteers}
+      setObjects={setVolunteers}
+      title={title}
+      page={page}
+      empty={empty}
+      file={file}
+      dropdown={dropdown}
+    />
     // <div className="h-full font-poppins flex flex-col py-4 gap-3">
     //   <div className="flex">
     //     <Title title="Volunteers" />

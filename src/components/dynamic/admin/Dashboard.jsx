@@ -11,7 +11,15 @@ import {
   TAGS,
 } from "@/data/dynamic/admin/Admins.js";
 
-const Dashboard = ({ data, setData }) => {
+const Dashboard = ({
+  objects,
+  setObjects,
+  title,
+  page,
+  empty,
+  file,
+  dropdown,
+}) => {
   const [input, setInput] = useState({
     input: "",
   });
@@ -21,12 +29,12 @@ const Dashboard = ({ data, setData }) => {
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <div className="flex">
-        <Title title="Admins" />
+        <Title title={title} />
         <Filters
           filters={filters}
           setFilters={setFilters}
-          setObjects={setData}
-          objects={data}
+          setObjects={setObjects}
+          objects={objects}
           input={input.input}
         />
       </div>
@@ -34,17 +42,20 @@ const Dashboard = ({ data, setData }) => {
         input={input}
         setInput={setInput}
         tags={TAGS}
-        setObjects={setData}
-        objects={data}
+        setObjects={setObjects}
+        objects={objects}
         filters={filters}
-        page="admins"
+        file={file}
+        headers={headers}
+        page={page}
       />
       <Table
         headers={headers}
-        empty="No Admin Available"
+        empty={empty}
         setHeaders={setHeaders}
-        setObjects={setData}
-        objects={data}
+        setObjects={setObjects}
+        objects={objects}
+        Dropdown={dropdown}
         statuses={STATUSES}
       />
     </div>

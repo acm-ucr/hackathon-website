@@ -2,19 +2,32 @@
 
 import { useState } from "react";
 import Dashboard from "../Dashboard.jsx";
-// import {
-//   FILTERS,
-//   HEADERS,
-//   TAGS,
-//   DROPDOWN,
-//   STATUSES,
-// } from "@/data/dynamic/admin/Participants";
+import {
+  //   FILTERS,
+  //   HEADERS,
+  //   TAGS,
+  DROPDOWN,
+  //   STATUSES,
+} from "@/data/dynamic/admin/Participants";
 
 const Participants = () => {
   const [participants, setParticipants] = useState(null);
+  const title = "Participants";
+  const page = "participants";
+  const empty = "No Participants Available";
+  const file = "PARTICIPANTS";
+  const dropdown = DROPDOWN;
 
   return (
-    <Dashboard participants={participants} setParticipants={setParticipants} />
+    <Dashboard
+      objects={participants}
+      setObjects={setParticipants}
+      title={title}
+      page={page}
+      empty={empty}
+      file={file}
+      dropdown={dropdown}
+    />
     // <div className="h-full font-poppins flex flex-col py-4 gap-3">
     //   <div className="flex">
     //     <Title title="Participants" />
