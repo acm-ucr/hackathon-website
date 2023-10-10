@@ -18,16 +18,16 @@ export const FILTERS = {
 };
 export const TAGS = [
   {
+    text: "confirm",
+    value: 1,
+  },
+  {
     text: "pending",
     value: 0,
   },
   {
     text: "not attending",
     value: -1,
-  },
-  {
-    text: "confirm",
-    value: 1,
   },
 ];
 
