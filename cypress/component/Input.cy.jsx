@@ -4,7 +4,7 @@ import { useState } from "react";
 describe("Input", () => {
   it("Placeholder", () => {
     const Parent = () => {
-      const [user, setUser] = useState({});
+      const [user, setUser] = useState({ name: "" });
       return (
         <Input
           name="first"
@@ -27,7 +27,7 @@ describe("Input", () => {
 
   it("Typing...", () => {
     const Parent = () => {
-      const [user, setUser] = useState({});
+      const [user, setUser] = useState({ name: "" });
       return (
         <Input
           name="first"
@@ -50,7 +50,7 @@ describe("Input", () => {
 
   it("Backspace", () => {
     const Parent = () => {
-      const [user, setUser] = useState({});
+      const [user, setUser] = useState({ name: "" });
       return (
         <Input
           name="first"
@@ -74,7 +74,7 @@ describe("Input", () => {
 
   it("Select all clear", () => {
     const Parent = () => {
-      const [user, setUser] = useState({});
+      const [user, setUser] = useState({ name: "" });
       return (
         <Input
           name="first"

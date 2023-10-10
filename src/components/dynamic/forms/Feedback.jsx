@@ -5,7 +5,7 @@ import Form from "@/components/dynamic/forms/Form.jsx";
 import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/forms/Feedback.js";
 
 const Feedback = () => {
-  const [feedback, setfeedback] = useState({ ATTRIBUTES });
+  const [feedback, setfeedback] = useState(ATTRIBUTES);
 
   return (
     <Form
