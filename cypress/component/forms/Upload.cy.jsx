@@ -1,6 +1,6 @@
-import Upload from "@/components/forms/Upload";
-import { USER } from "@/data/forms/User";
-import { JUDGES } from "@/data/forms/Judges";
+import Upload from "@/components/dynamic/forms/Upload";
+import { USER } from "@/data/dynamic/forms/User";
+import { JUDGES } from "@/data/dynamic/forms/Judges";
 import { useState } from "react";
 
 describe("Forms Upload", () => {
