@@ -14,7 +14,7 @@ import { authenticate } from "@/utils/auth";
 export async function DELETE() {
   const res = NextResponse;
   const { auth, message, user } = await authenticate({
-    participants: [-1, 0, 1],
+    participants: [1, 0, -1],
   });
 
   if (auth !== 200) {
@@ -51,7 +51,7 @@ export async function DELETE() {
 export async function PUT(req) {
   const res = NextResponse;
   const { auth, message, user } = await authenticate({
-    participants: [-1, 0, 1],
+    participants: [1, 0, -1],
   });
 
   if (auth !== 200) {

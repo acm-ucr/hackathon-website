@@ -6,7 +6,7 @@ import { authenticate } from "@/utils/auth";
 export async function POST(req) {
   const res = NextResponse;
   const { auth, message, user } = await authenticate({
-    participants: [-1, 0, 1],
+    participants: [1, 0, -1],
   });
 
   if (auth !== 200) {
