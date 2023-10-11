@@ -1,6 +1,6 @@
 import Checkbox from "@/components/dynamic/Checkbox";
 import Col from "react-bootstrap/Col";
-import { AVAILABILITY } from "../forms/Helper";
+import { AVAILABILITY } from "../forms/Availability";
 
 export const FILTERS = {
   pending: {
@@ -58,6 +58,22 @@ export const DROPDOWN = ({ object }) => {
       ))}
     </>
   );
+};
+
+export const AUTH = {
+  POST: {},
+  GET: {
+    admins: 1,
+    committees: 1,
+  },
+  PUT: {
+    admins: 1,
+    committees: 1,
+  },
+  DELETE: {
+    admins: 1,
+    committees: 1,
+  },
 };
 
 export const STATUSES = {

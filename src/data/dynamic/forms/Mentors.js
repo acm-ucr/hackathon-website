@@ -125,3 +125,16 @@ export const FIELDS = {
     ],
   },
 };
+
+export const ATTRIBUTES = {
+  name: "",
+  email: "",
+  phone: "",
+  discord: "",
+  major: "",
+  grade: "",
+  availability: {},
+  gender: "",
+  shirt: "",
+  response: "",
+};

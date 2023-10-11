@@ -1,13 +1,11 @@
 import Upload from "@/components/dynamic/forms/Upload";
-import { USER } from "@/data/dynamic/forms/User";
-import { JUDGES } from "@/data/dynamic/forms/Judges";
 import { useState } from "react";
 
 describe("Forms Upload", () => {
   it("Upload valid PDF", () => {
     const file = "sample.pdf";
     const Parent = () => {
-      const [user, setUser] = useState(USER);
+      const [user, setUser] = useState({ resume: "" });
 
       return (
         <Upload
@@ -34,7 +32,7 @@ describe("Forms Upload", () => {
   it("Upload invalid PDF (file size)", () => {
     const file = "sample.pdf";
     const Parent = () => {
-      const [user, setUser] = useState(USER);
+      const [user, setUser] = useState({ resume: "" });
 
       return (
         <Upload
@@ -63,7 +61,7 @@ describe("Forms Upload", () => {
   it("Upload valid PNG", () => {
     const file = "sample.png";
     const Parent = () => {
-      const [judge, setJudge] = useState(JUDGES);
+      const [judge, setJudge] = useState({ photo: "" });
 
       return (
         <Upload
@@ -90,7 +88,7 @@ describe("Forms Upload", () => {
   it("Upload invalid PNG (file size)", () => {
     const file = "sample.png";
     const Parent = () => {
-      const [judge, setJudge] = useState(JUDGES);
+      const [judge, setJudge] = useState({ photo: "" });
 
       return (
         <Upload
@@ -119,7 +117,7 @@ describe("Forms Upload", () => {
   it("Upload valid JPEG", () => {
     const file = "sample.jpeg";
     const Parent = () => {
-      const [judge, setJudge] = useState(JUDGES);
+      const [judge, setJudge] = useState({ photo: "" });
 
       return (
         <Upload
@@ -146,7 +144,7 @@ describe("Forms Upload", () => {
   it("Upload invalid JPEG (file size)", () => {
     const file = "sample.jpeg";
     const Parent = () => {
-      const [judge, setJudge] = useState(JUDGES);
+      const [judge, setJudge] = useState({ photo: "" });
 
       return (
         <Upload
@@ -175,7 +173,7 @@ describe("Forms Upload", () => {
   it("Remove file", () => {
     const file = "sample.jpeg";
     const Parent = () => {
-      const [judge, setJudge] = useState(JUDGES);
+      const [judge, setJudge] = useState({ photo: "" });
 
       return (
         <Upload

@@ -1,5 +1,5 @@
 import Checkbox from "@/components/dynamic/Checkbox";
-import { AVAILABILITY } from "../forms/Helper";
+import { AVAILABILITY } from "../forms/Availability";
 import Col from "react-bootstrap/Col";
 
 export const FILTERS = {
@@ -57,6 +57,22 @@ export const DROPDOWN = ({ object }) => {
       ))}
     </>
   );
+};
+
+export const AUTH = {
+  POST: {},
+  GET: {
+    admins: 1,
+    committees: 1,
+  },
+  PUT: {
+    admins: 1,
+    committees: 1,
+  },
+  DELETE: {
+    admins: 1,
+    committees: 1,
+  },
 };
 
 export const STATUSES = {

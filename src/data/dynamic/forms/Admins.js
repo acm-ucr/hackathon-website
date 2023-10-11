@@ -67,3 +67,10 @@ export const FIELDS = {
     required: true,
   },
 };
+
+export const ATTRIBUTES = {
+  name: "",
+  email: "",
+  discord: "",
+  affiliation: "",
+};
