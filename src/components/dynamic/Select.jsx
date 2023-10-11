@@ -9,7 +9,7 @@ const Toggle = ({ onClick, user, field, show, placeholder }) => {
       className={`${
         user[field] ? "text-black" : "text-hackathon-gray-200"
       } bg-white flex items-center justify-between w-full border-b-2 border-black`}
-      data-cy="select-selected"
+      data-cy="select-toggle"
     >
       {user[field] || placeholder}
       <RiArrowDownSLine
