@@ -6,6 +6,7 @@ import {
   deleteDoc,
   collection,
   getDocs,
+  deleteField,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 
@@ -30,6 +31,7 @@ export async function GET() {
 
       const formattedNames = members.map((member) => member.name);
       const formattedEmails = members.map((member) => member.email);
+      const formattedUids = members.map((member) => member.uid);
       const formattedLinks = Object.entries(links).map(([key, value]) => {
         return { name: key, link: value };
       });
@@ -38,6 +40,7 @@ export async function GET() {
         links: formattedLinks,
         members: formattedNames,
         emails: formattedEmails,
+        uids: formattedUids,
         name,
         status,
         uid: doc.id,
@@ -69,15 +72,38 @@ export async function PUT(req) {
   const { objects, attribute, status } = await req.json();
 
   try {
-    objects.forEach(async (object) => {
-      if (attribute === "role") {
-        await deleteDoc(doc(db, "teams", object.uid));
-      } else if (attribute === "status") {
-        await updateDoc(doc(db, "teams", object.uid), {
-          status: status,
-        });
-      }
-    });
+    await Promise.all(
+      objects.map(async (object) => {
+        const teamRef = doc(db, "teams", object.uid);
+
+        if (attribute === "role") {
+          // Check if the status of the team being deleted is "winner"
+          const teamSnapshot = await teamRef.get();
+          if (
+            teamSnapshot.exists() &&
+            teamSnapshot.data().status === "winner"
+          ) {
+            // Find the prize that has this team as the winner and update it
+            const prizeSnapshot = await getDocs(collection(db, "prizes"));
+
+            // UDelete the teamId and teamName fields from the prize document
+            prizeSnapshot.forEach(async (prizeDoc) => {
+              if (prizeDoc.data().teamId === object.uid) {
+                await updateDoc(doc(db, "prizes", prizeDoc.id), {
+                  teamId: deleteField(),
+                  teamName: deleteField(),
+                });
+              }
+            });
+          }
+
+          // Delete the team after potentially updating the prize entry
+          await deleteDoc(teamRef);
+        } else if (attribute === "status") {
+          await updateDoc(teamRef, { status: status });
+        }
+      })
+    );
 
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
