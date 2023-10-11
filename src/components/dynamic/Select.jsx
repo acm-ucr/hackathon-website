@@ -8,7 +8,7 @@ const Toggle = ({ onClick, user, field, show, placeholder }) => {
       onClick={onClick}
       className={`${
         user[field] ? "text-black" : "text-hackathon-gray-200"
-      } bg-white flex items-center justify-between w-full text-left border-b-2 rounded-none border-black`}
+      } bg-white flex items-center justify-between w-full border-b-2 border-black`}
       data-cy="select-selected"
     >
       {user[field] || placeholder}
