@@ -32,8 +32,8 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
   return (
     <div className="flex flex-col">
       <p className="mb-0 font-semibold">
-        {text}{" "}
-        <span className="text-hackathon-green-300">{required && " *"}</span>
+        {text}
+        {required && <span className="text-hackathon-green-300">*</span>}
       </p>
       <div className="flex items-center w-full flex-col" data-cy="upload">
         {!file && (
