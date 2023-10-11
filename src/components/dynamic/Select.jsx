@@ -8,10 +8,14 @@ const Select = ({
   placeholder,
   title,
   editable = true,
+  required,
 }) => {
   return (
     <div className="flex flex-col">
-      <p className="mb-1 font-semibold">{title}</p>
+      <p className="mb-1 font-semibold">
+        {title}
+        {required && <span className="text-hackathon-green-300">*</span>}
+      </p>
       <Dropdown className="w-full m-0">
         {editable ? (
           <Dropdown.Toggle

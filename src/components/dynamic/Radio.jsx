@@ -1,13 +1,24 @@
 import { BsCircleFill, BsCircle } from "react-icons/bs";
 
-const Radio = ({ text, field, options, user, setUser, editable = true }) => {
+const Radio = ({
+  text,
+  field,
+  options,
+  user,
+  setUser,
+  editable = true,
+  required,
+}) => {
   const handleClick = (option) => {
     setUser({ ...user, [field]: option });
   };
 
   return (
     <div className="flex flex-col">
-      <p className="mb-1 font-semibold">{text}</p>
+      <p className="mb-1 font-semibold">
+        {text}
+        {required && <span className="text-hackathon-green-300">*</span>}
+      </p>
       {!editable && <div className="pl-3">{user[field]}</div>}
       {editable && (
         <div className="grid grid-flow-row grid-cols-2 md:grid-cols-3 w-full">
