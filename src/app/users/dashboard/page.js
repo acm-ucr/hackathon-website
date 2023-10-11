@@ -6,7 +6,7 @@ const Page = () => {
     <ProtectedPage
       title="User | Dashboard"
       restrictions={{
-        participants: [-1, 0, 1],
+        participants: [1, 0, -1],
       }}
     >
       <Dashboard />
