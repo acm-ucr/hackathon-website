@@ -4,7 +4,7 @@ export const GRADES = [
   "Less than Secondary / High School",
   "Secondary / High School",
   "Undergraduate University",
-  "Graduate University (Masters, Doctoral, etc)",
+  "Graduate University",
   "Code School / Bootcamp",
   "Other Vocational / Trade Program / Apprenticeship",
   "Post Doctorate",

@@ -59,8 +59,18 @@ const Form = ({ object, setObject, header, fields, onSubmit }) => {
               <Col key={index} md={field.width}>
                 {field.input === "description" &&
                   field.texts.map((description, index) => (
-                    <p key={index}>{description}</p>
+                    <>
+                      <p key={index}>{description}</p>
+                      {index === field.texts.length - 1 && (
+                        <p>
+                          Fields with
+                          <span className="text-hackathon-green-300"> * </span>
+                          are required.
+                        </p>
+                      )}
+                    </>
                   ))}
+
                 {field.input === "input" && (
                   <Input
                     name={field.name}
@@ -88,7 +98,12 @@ const Form = ({ object, setObject, header, fields, onSubmit }) => {
                 )}
                 {field.input === "checkboxes" && (
                   <>
-                    <p className="mb-1 font-semibold">{field.text}</p>
+                    <p className="mb-1 font-semibold">
+                      {field.text}
+                      {field.required && (
+                        <span className="text-hackathon-green-300">*</span>
+                      )}
+                    </p>
                     {field.options.map((option, i) => (
                       <Checkbox
                         className="w-1/2"
