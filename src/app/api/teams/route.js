@@ -86,7 +86,7 @@ export async function PUT(req) {
             // Find the prize that has this team as the winner and update it
             const prizeSnapshot = await getDocs(collection(db, "prizes"));
 
-            // UDelete the teamId and teamName fields from the prize document
+            // Delete the teamId and teamName fields from the prize document
             prizeSnapshot.forEach(async (prizeDoc) => {
               if (prizeDoc.data().teamId === object.uid) {
                 await updateDoc(doc(db, "prizes", prizeDoc.id), {
