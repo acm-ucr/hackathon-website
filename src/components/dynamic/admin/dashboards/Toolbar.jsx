@@ -29,13 +29,13 @@ const Toolbar = ({
 
   const onClick = (value) => {
     const selectedWinners = object.filter(
-      (object) => object.selected === "winner"
+      (object) => object.selected && object.status === "winner"
     );
-    if (value == "qualify" && selectedWinners.length > 0) {
+    if (value === "qualify" && selectedWinners.length > 0) {
       setPopup({
         title: "Status Change Restricted",
         text: "Changing status from 'winner' to 'qualify' is restricted. You can check the Prize page for more information.",
-        color: "green",
+        color: "red",
         visible: true,
       });
       return;
