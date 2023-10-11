@@ -49,7 +49,7 @@ const Form = ({ object, setObject, header, fields, onSubmit }) => {
   };
   return (
     <div className="w-full h-full overflow-scroll flex flex-col items-center font-poppins">
-      <div className="w-10/12 md:w-1/3 my-5">
+      <div className="w-10/12 md:w-1/2 xl:w-1/3 my-5">
         <p className="text-xl bg-hackathon-green-300 font-semibold px-4 py-2 rounded-t-xl m-0">
           {header}
         </p>
