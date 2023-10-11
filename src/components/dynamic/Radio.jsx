@@ -1,5 +1,3 @@
-import { BsCircleFill, BsCircle } from "react-icons/bs";
-
 const Radio = ({
   text,
   field,
@@ -28,11 +26,15 @@ const Radio = ({
               key={index}
               onClick={() => handleClick(option)}
             >
-              {option === user[field] ? (
-                <BsCircleFill className="mx-1 w-3.5 h-3.5 text-hackathon-green-300 border-[1.5px] p-0.5 rounded-full border-black" />
-              ) : (
-                <BsCircle className="mx-1 h-3.5 w-3.5" />
-              )}
+              <div className="rounded-full w-4 border-black border aspect-square bg-transparent p-0.5 mr-1">
+                <div
+                  className={`rounded-full w-full aspect-square duration-100 ${
+                    option === user[field]
+                      ? "bg-hackathon-green-300"
+                      : "bg-transparent"
+                  }`}
+                />
+              </div>
               {option}
             </div>
           ))}
