@@ -1,4 +1,4 @@
-import { CONFIG } from "../Config";
+import { CONFIG } from "../../Config";
 import { HOWTOFINDEVENTS } from "./Information";
 
 const RATE = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
