@@ -114,67 +114,67 @@ const Toolbar = ({
 
   return (
     // <>
-      // {popup.visible && (
-      //   <Popup
-      //     setPopup={setPopup}
-      //     popup={popup}
-      //     onClick={() => router.push("/admin/teams")}
-      //     text="prizes"
-      //   />
-      // )}
-      <div className="w-full flex items-center" data-cy="toolbar">
-        <div className="w-2/3 flex items-center">
-          <div className="mr-4" data-cy="select-all">
-            <Checkbox onClick={selectAll} toggle={toggle} />
-          </div>
-          <div className="flex flex-row gap-2 ">
-            {tags.map((tag, index) => (
-              <Tag
-                key={index}
-                text={tag.text}
-                onClick={() => onClick(tag.value)}
-                color={COLORS[tag.value]}
-                setObjects={setObjects}
-                objects={objects}
-              />
-            ))}
-          </div>
-          <form className="flex ml-2 w-full items-center" onSubmit={handleSubmit}>
-            <Input
-              classes="w-full"
-              object={input}
-              setObject={setInput}
-              clear={true}
-              label="input"
-              maxLength={60}
-              placeholder="search"
-              showLabel={false}
-            />
-          </form>
+    // {popup.visible && (
+    //   <Popup
+    //     setPopup={setPopup}
+    //     popup={popup}
+    //     onClick={() => router.push("/admin/teams")}
+    //     text="prizes"
+    //   />
+    // )}
+    <div className="w-full flex items-center" data-cy="toolbar">
+      <div className="w-2/3 flex items-center">
+        <div className="mr-4" data-cy="select-all">
+          <Checkbox onClick={selectAll} toggle={toggle} />
         </div>
-        <TbReload onClick={handleReload} />
-        <div className="flex w-1/3">
-          <FaTrashAlt
-            data-cy="delete"
-            onClick={() =>
-              setPopup({
-                ...popup,
-                visible: true,
-              })
-            }
-            size={22.5}
-            className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
+        <div className="flex flex-row gap-2 ">
+          {tags.map((tag, index) => (
+            <Tag
+              key={index}
+              text={tag.text}
+              onClick={() => onClick(tag.value)}
+              color={COLORS[tag.value]}
+              setObjects={setObjects}
+              objects={objects}
+            />
+          ))}
+        </div>
+        <form className="flex ml-2 w-full items-center" onSubmit={handleSubmit}>
+          <Input
+            classes="w-full"
+            object={input}
+            setObject={setInput}
+            clear={true}
+            label="input"
+            maxLength={60}
+            placeholder="search"
+            showLabel={false}
           />
-          {popup.visible && (
-            <Popup
-              popup={popup}
-              onClick={handleDelete}
-              setPopup={setPopup}
-              text="confirm"
-            />
-          )}
-        </div>
+        </form>
       </div>
+      <TbReload onClick={handleReload} />
+      <div className="flex w-1/3">
+        <FaTrashAlt
+          data-cy="delete"
+          onClick={() =>
+            setPopup({
+              ...popup,
+              visible: true,
+            })
+          }
+          size={22.5}
+          className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
+        />
+        {popup.visible && (
+          <Popup
+            popup={popup}
+            onClick={handleDelete}
+            setPopup={setPopup}
+            text="confirm"
+          />
+        )}
+      </div>
+    </div>
     // </>
   );
 };
