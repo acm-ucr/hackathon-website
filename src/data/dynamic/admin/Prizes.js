@@ -4,12 +4,12 @@ export const TAGS = [
     value: 1,
   },
   {
-    text: "reject",
-    value: -1,
-  },
-  {
     text: "pending",
     value: 0,
+  },
+  {
+    text: "reject",
+    value: -1,
   },
 ];
 

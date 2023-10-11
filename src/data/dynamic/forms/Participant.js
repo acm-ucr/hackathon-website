@@ -111,6 +111,7 @@ export const FIELDS = {
     maxSize: [150, "KB"],
   },
   requirements: {
+    text: "Terms and Conditions",
     input: "checkboxes",
     width: 12,
     field: "requirements",
