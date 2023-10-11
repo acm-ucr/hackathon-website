@@ -28,8 +28,8 @@ const Toolbar = ({
   const [toggle, setToggle] = useState(false);
 
   const onClick = (value) => {
-    const selectedWinners = object.filter(
-      (object) => object.selected && object.status === "winner"
+    const selectedWinners = objects.filter(
+      (obj) => obj.selected && obj.status === "winner"
     );
     if (value === "qualify" && selectedWinners.length > 0) {
       setPopup({
