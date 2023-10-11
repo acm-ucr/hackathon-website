@@ -7,14 +7,14 @@ const Toggle = ({ onClick, user, field, show, placeholder }) => {
     <button
       onClick={onClick}
       className={`${
-        user[field] ? "text-black" : "!text-hackathon-gray-200"
-      } !bg-white flex items-center justify-between w-full !text-left !border-x-0 !border-t-0 !border-b-2 !rounded-none !border-black`}
-      data-cy="dropdown-selected"
+        user[field] ? "text-black" : "text-hackathon-gray-200"
+      } bg-white flex items-center justify-between w-full text-left border-b-2 rounded-none border-black`}
+      data-cy="select-selected"
     >
       {user[field] || placeholder}
       <RiArrowDownSLine
-        className={`${show && "rotate-180"} duration-300`}
-        data-cy="dropdown-arrow"
+        className={`${show && "rotate-180"} duration-300 text-black`}
+        data-cy="select-arrow"
       />
     </button>
   );
