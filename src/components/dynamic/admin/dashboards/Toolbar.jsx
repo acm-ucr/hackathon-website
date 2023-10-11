@@ -28,6 +28,19 @@ const Toolbar = ({
   const [toggle, setToggle] = useState(false);
 
   const onClick = (value) => {
+    const selectedWinners = object.filter(
+      (object) => object.selected === "winner"
+    );
+    if (value == "qualify" && selectedWinners.length > 0) {
+      setPopup({
+        title: "Status Change Restricted",
+        text: "Changing status from 'winner' to 'qualify' is restricted. You can check the Prize page for more information.",
+        color: "green",
+        visible: true,
+      });
+      return;
+    }
+
     setToggle(false);
     const items = objects.filter((object) => object.selected);
     axios.put(`/api/${page}`, {
