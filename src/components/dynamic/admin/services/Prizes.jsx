@@ -19,7 +19,7 @@ const Prizes = () => {
         teams={teams}
         setTeams={setTeams}
         tags={TAGS}
-        dropplace="no team"
+        dropPlace="no team"
       />
       <Table
         headers={headers}
