@@ -70,7 +70,7 @@ export const AUTH = {
   POST: {},
   GET: {
     admins: 1,
-    committees: 1,
+    committevfdvbfdeves: 1,
   },
   PUT: {
     admins: 1,

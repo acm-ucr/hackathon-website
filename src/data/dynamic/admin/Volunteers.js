@@ -34,7 +34,7 @@ export const TAGS = [
 export const HEADERS = [
   { text: "name", size: 3, icon: true, sort: "off" },
   { text: "email", size: 3, icon: true, sort: "off" },
-  { text: "discord", size: 3, icon: true, sort: "off" },
+  { text: "discord", size: 2, icon: true, sort: "off" },
   {
     text: "status",
     size: 2,
@@ -42,6 +42,13 @@ export const HEADERS = [
     sort: "off",
     hasTag: true,
   },
+
+  {
+    // added new empty box so that the alignment would match.
+    text: "",
+    size: 1,
+  },
+
 ];
 
 export const DROPDOWN = ({ object }) => {
