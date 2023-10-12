@@ -18,7 +18,14 @@ const Toggle = ({ option, onClick, show }) => {
   );
 };
 
-const Menu = ({ option, setOption, className, setOptions, options }) => {
+const Menu = ({
+  option,
+  setOption,
+  className,
+  setOptions,
+  options,
+  placeholder,
+}) => {
   const [value, setValue] = useState("");
 
   const handleInput = (e) => {
@@ -57,7 +64,7 @@ const Menu = ({ option, setOption, className, setOptions, options }) => {
             </Dropdown.Item>
           ))
       ) : (
-        <p className="px-3 text-gray-400">no events</p>
+        <p className="px-3 text-gray-400">{placeholder}</p>
       )}
     </div>
   );
