@@ -29,25 +29,25 @@ export const TAGS = [
 ];
 
 export const HEADERS = [
-  { text: "name", size: 3, icon: true, sort: "off" },
-  { text: "email", size: 3, icon: true, sort: "off" },
+  { text: "name", size: "w-3/12", icon: true, sort: "off" },
+  { text: "email", size: "w-3/12", icon: true, sort: "off" },
   {
     text: "affiliation",
-    size: 2,
+    size: "w-2/12",
     icon: true,
     sort: "off",
     hasTag: true,
   },
   {
     text: "status",
-    size: 2,
+    size: "w-2/12",
     icon: true,
     sort: "off",
     hasTag: true,
   },
   {
     text: "photo",
-    size: 1,
+    size: "w-1/12",
     icon: false,
     sort: "off",
     hasTag: true,

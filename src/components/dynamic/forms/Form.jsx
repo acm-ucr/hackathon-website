@@ -3,8 +3,6 @@ import Select from "@/components/dynamic/Select";
 import Radio from "@/components/dynamic/Radio";
 import Checkbox from "@/components/dynamic/Checkbox";
 import Input from "@/components/dynamic/Input";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import Button from "@/components/dynamic/Button.jsx";
 import Textarea from "@/components/dynamic/forms/Textarea.jsx";
 import Upload from "@/components/dynamic/forms/Upload";
@@ -54,9 +52,9 @@ const Form = ({ object, setObject, header, fields, onSubmit }) => {
           {header}
         </p>
         <div className="rounded-b-xl bg-white p-3">
-          <Row className="flex justify-center p-0 m-0 gap-3">
+          <div className="grid grid-cols-1 gap-3">
             {Object.values(fields).map((field, index) => (
-              <Col key={index} md={field.width}>
+              <div key={index}>
                 {field.input === "description" &&
                   field.texts.map((description, index) => (
                     <>
@@ -161,17 +159,17 @@ const Form = ({ object, setObject, header, fields, onSubmit }) => {
                     required={field.required}
                   />
                 )}
-              </Col>
+              </div>
             ))}
-            <Col xl={12} className="flex justify-center">
+            <div className="flex justify-center">
               <Button
                 text="Submit"
                 onClick={handleSubmit}
                 loading={loading}
                 color="green"
               />
-            </Col>
-          </Row>
+            </div>
+          </div>
         </div>
       </div>
     </div>

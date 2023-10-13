@@ -1,7 +1,6 @@
+"use client";
 import { useState } from "react";
 import SortIcon from "./dashboards/SortIcon";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import Accordion from "react-bootstrap/Accordion";
 import Checkbox from "../Checkbox";
 import Tag from "./Tag";
@@ -58,13 +57,12 @@ const Table = ({
   ) : (
     <div className="w-full rounded-xl overflow-hidden flex flex-col">
       {modal && <Modal data={modal} setModal={setModal} />}
-      <Row className="w-full py-2 text-sm flex text-white bg-hackathon-blue-200 justify-evenly px-0 m-0">
-        <Col />
+      <div className="w-full py-2 text-sm flex text-white bg-hackathon-blue-200 justify-evenly px-0 m-0">
+        <div className="w-1/12" />
         {headers.map((header, index) => (
-          <Col
-            xs={header.size}
+          <div
             key={index}
-            className="font-semibold text-white flex items-center p-0"
+            className={`font-semibold text-white flex items-center p-0 ${header.size}`}
           >
             {header.text}
             {header.icon && (
@@ -79,9 +77,9 @@ const Table = ({
                 objects={objects}
               />
             )}
-          </Col>
+          </div>
         ))}
-      </Row>
+      </div>
       <Accordion
         data-cy="table"
         className="h-full overflow-y-scroll w-full bg-white"
@@ -89,113 +87,105 @@ const Table = ({
         {objects.map(
           (object, index) =>
             !object.hidden && (
-              <Row
+              <div
                 data-cy={object.uid}
                 key={index}
-                className={`first:border-0 border-t-[1px] border-hackathon-gray-100  w-full flex justify-between items-center p-0 m-0 py-2 ${
+                className={`first:border-0 border-t border-hackathon-gray-100 w-full grid grid-cols-1 py-2 ${
                   object.selected ? "bg-green-100" : "bg-white"
                 }`}
               >
-                <Col
-                  className="p-0 flex justify-center items-center"
-                  data-cy="select"
-                  xs
-                >
-                  <Checkbox
-                    onClick={() => handleSelect(object)}
-                    toggle={object.selected}
-                  />
-                </Col>
-                {headers.map(
-                  (header, index) =>
-                    header.text !== "" && (
-                      <Col
-                        data-cy="element"
-                        key={index}
-                        md={header.size}
-                        className={`p-0 text-sm ${
-                          header.text === "name" && "font-bold flex"
-                        }`}
-                      >
-                        {header.hasTag && (
-                          <div data-cy={`${header.text}`}>
-                            <Tag
-                              text={
-                                String(object[header.text]).includes("base64")
-                                  ? "view"
-                                  : object[header.text]
-                              }
-                              color={
-                                String(object[header.text]).includes("base64")
-                                  ? COLORS["view"]
-                                  : COLORS[object[header.text]]
-                              }
-                              onClick={
-                                header.onClick
-                                  ? () => header.onClick(object, setModal)
-                                  : null
-                              }
-                              statuses={statuses}
-                            />
-                          </div>
-                        )}
-
-                        {Array.isArray(object[header.text]) &&
-                          object[header.text].map((element, index) => (
-                            <p
-                              className={`mb-0 text-sm ${
-                                header.text === "members"
-                                  ? "font-bold text-hackathon-blue-100"
-                                  : header.text === "emails"
-                                  ? "text-hackathon-gray-200"
-                                  : ""
-                              }`}
-                              key={index}
-                            >
-                              {header.text === "links"
-                                ? element.link !== "No Link" && (
-                                    <Link
-                                      href={element.link}
-                                      className="w-11/12 flex items-center m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-sm"
-                                    >
-                                      {ICONS[element.name]}
-                                      <p className="truncate w-11/12 ml-1 mb-0">
-                                        {element.link.replace("https://", "")}
-                                      </p>
-                                    </Link>
-                                  )
-                                : element}
-                            </p>
-                          ))}
-
-                        {!header.hasTag &&
-                          !Array.isArray(object[header.text]) && (
-                            <div
-                              data-cy={`${header.text}`}
-                              className="break-words"
-                            >
-                              {object[header.text]}
+                <div className="flex justify-between items-center">
+                  <div
+                    className="flex justify-center items-center w-1/12"
+                    data-cy="select"
+                  >
+                    <Checkbox
+                      onClick={() => handleSelect(object)}
+                      toggle={object.selected}
+                    />
+                  </div>
+                  {headers.map(
+                    (header, index) =>
+                      header.text !== "" && (
+                        <div
+                          data-cy="element"
+                          key={index}
+                          className={`p-0 text-sm ${header.size} ${
+                            header.text === "name" && "font-bold flex"
+                          }`}
+                        >
+                          {header.hasTag && (
+                            <div data-cy={header.text}>
+                              <Tag
+                                text={
+                                  String(object[header.text]).includes("base64")
+                                    ? "view"
+                                    : object[header.text]
+                                }
+                                color={
+                                  String(object[header.text]).includes("base64")
+                                    ? COLORS["view"]
+                                    : COLORS[object[header.text]]
+                                }
+                                onClick={
+                                  header.onClick
+                                    ? () => header.onClick(object, setModal)
+                                    : null
+                                }
+                                statuses={statuses}
+                              />
                             </div>
                           )}
-                      </Col>
-                    )
-                )}
+
+                          {Array.isArray(object[header.text]) &&
+                            object[header.text].map((element, index) => (
+                              <p
+                                className={`mb-0 text-sm ${
+                                  header.text === "members"
+                                    ? "font-bold text-hackathon-blue-100"
+                                    : header.text === "emails"
+                                    ? "text-hackathon-gray-200"
+                                    : ""
+                                }`}
+                                key={index}
+                              >
+                                {header.text === "links"
+                                  ? element.link !== "No Link" && (
+                                      <Link
+                                        href={element.link}
+                                        className="w-11/12 flex items-center m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-sm"
+                                      >
+                                        {ICONS[element.name]}
+                                        <p className="truncate w-11/12 ml-1 mb-0">
+                                          {element.link.replace("https://", "")}
+                                        </p>
+                                      </Link>
+                                    )
+                                  : element}
+                              </p>
+                            ))}
+
+                          {!header.hasTag &&
+                            !Array.isArray(object[header.text]) && (
+                              <div
+                                data-cy={`${header.text}`}
+                                className="break-words"
+                              >
+                                {object[header.text]}
+                              </div>
+                            )}
+                        </div>
+                      )
+                  )}
+                  {Dropdown && <Toggle eventKey={index} />}
+                </div>
 
                 {Dropdown && (
-                  <>
-                    <Col className="p-0 m-0 flex justify-center" xs>
-                      <Toggle eventKey={index} />
-                    </Col>
-                    <Col className="p-0" xs={12}>
-                      <Accordion.Collapse eventKey={index}>
-                        <Row className="pl-[8%] pt-2">
-                          <Dropdown object={object} icons={ICONS} />
-                        </Row>
-                      </Accordion.Collapse>
-                    </Col>
-                  </>
+                  <Accordion.Collapse eventKey={index} className="p-2">
+                    <Dropdown object={object} icons={ICONS} />
+                  </Accordion.Collapse>
                 )}
-              </Row>
+              </div>
             )
         )}
 
