@@ -1,8 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import Header from "./Header";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import Title from "../admin/Title.jsx";
 import Team from "./Team";
 import User from "./User";
@@ -25,16 +23,16 @@ const Dashboard = () => {
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Title title="Dashboard" />
       <Header email={user.email} name={user.name} />
-      <Row className="h-full overflow-scroll gap-3 justify-center">
-        <Col xl={6} className="h-full">
+      <div className="grid grid-cols-2 h-full overflow-scroll gap-3 justify-center">
+        <div className="h-full">
           <User user={user} setUser={setUser} edit={edit} setEdit={setEdit} />
-        </Col>
+        </div>
         {user.roles.participants === 1 && (
-          <Col xl={5} className="h-full">
+          <div className="h-full">
             <Team user={user} team={user.team} setUser={setUser} />
-          </Col>
+          </div>
         )}
-      </Row>
+      </div>
     </div>
   );
 };

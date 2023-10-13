@@ -1,5 +1,3 @@
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import { TiPlus } from "react-icons/ti";
 
 const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
@@ -30,10 +28,10 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
   };
 
   return (
-    <Row className="w-fit">
+    <div className="w-fit grid grid-cols-3 gap-2">
       {Object.entries(filters).map(([filter, { state }], index) => (
-        <Col
-          className="px-1"
+        <div
+          className="flex justify-center"
           key={index}
           onClick={() => handleClick(filter)}
           data-cy={filter + "-filter"}
@@ -43,7 +41,7 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
               state
                 ? "text-white bg-hackathon-blue-100"
                 : "text-hackathon-blue-100 bg-white"
-            } cursor-pointer flex items-center w-fit m-0`}
+            } cursor-pointer flex items-center justify-between w-full`}
           >
             <p className="my-0 mx-1 px-2 py-[2px] whitespace-nowrap">
               {filter}
@@ -54,9 +52,9 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
               }`}
             />
           </div>
-        </Col>
+        </div>
       ))}
-    </Row>
+    </div>
   );
 };
 

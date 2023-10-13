@@ -1,6 +1,5 @@
 import Checkbox from "@/components/dynamic/Checkbox";
 import { AVAILABILITY } from "../forms/Availability";
-import Col from "react-bootstrap/Col";
 
 export const FILTERS = {
   pending: {
@@ -32,12 +31,12 @@ export const TAGS = [
 ];
 
 export const HEADERS = [
-  { text: "name", size: 3, icon: true, sort: "off" },
-  { text: "email", size: 3, icon: true, sort: "off" },
-  { text: "discord", size: 3, icon: true, sort: "off" },
+  { text: "name", size: "w-3/12", icon: true, sort: "off" },
+  { text: "email", size: "w-3/12", icon: true, sort: "off" },
+  { text: "discord", size: "w-3/12", icon: true, sort: "off" },
   {
     text: "status",
-    size: 2,
+    size: "w-2/12",
     icon: true,
     sort: "off",
     hasTag: true,
@@ -46,16 +45,17 @@ export const HEADERS = [
 
 export const DROPDOWN = ({ object }) => {
   return (
-    <>
-      {Object.entries(AVAILABILITY).map(([key, value], index) => (
-        <Col key={index} xs={4}>
+    <div className="flex justify-center">
+      <div className="grid grid-cols-3 w-11/12">
+        {Object.values(AVAILABILITY).map(({ text }, index) => (
           <Checkbox
-            toggle={object.availability.includes(value.text)}
-            text={value.text}
+            toggle={object.availability.includes(text)}
+            text={text}
+            key={index}
           />
-        </Col>
-      ))}
-    </>
+        ))}
+      </div>
+    </div>
   );
 };
 
