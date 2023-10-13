@@ -94,7 +94,11 @@ const Table = ({
                   object.selected ? "bg-green-100" : "bg-white"
                 }`}
               >
+<<<<<<< HEAD
                 <div className="flex justify-start items-center">
+=======
+                <div className="flex justify-between items-center">
+>>>>>>> f5d310b (get rid of bootstrap grid)
                   <div
                     className="flex justify-center items-center w-1/12"
                     data-cy="select"
@@ -114,7 +118,11 @@ const Table = ({
                             header.text === "name" && "font-bold flex"
                           }`}
                         >
+<<<<<<< HEAD
                           {header.hasTag && object[header.text] !== "" && (
+=======
+                          {header.hasTag && (
+>>>>>>> f5d310b (get rid of bootstrap grid)
                             <div data-cy={header.text}>
                               <Tag
                                 text={
