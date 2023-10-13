@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { RiAttachment2 } from "react-icons/ri";
 import { FaTimes } from "react-icons/fa";
 import { toast } from "react-hot-toast";
-import { Row, Col } from "react-bootstrap";
 import { BYTES } from "@/data/dynamic/Bytes";
 
 const getSize = (maxSize) => BYTES[maxSize[1]] * maxSize[0];
@@ -47,9 +46,9 @@ const Upload = ({ text, setObjects, objects, size, types }) => {
       <p className="mb-0">{text}</p>
       <div className="flex flex-col items-start">
         {uploading && <p>uploading...</p>}
-        <Row className="p-0 m-0">
+        <div className="flex flex-wrap">
           {objects?.files.map((file, index) => (
-            <Col
+            <div
               key={index}
               className="flex items-center bg-hackathon-gray-100 px-2 py-1 mb-1 mr-1 !max-w-fit p-0"
               data-cy="upload-list"
@@ -70,9 +69,9 @@ const Upload = ({ text, setObjects, objects, size, types }) => {
                 }}
                 data-cy={`${file.name}-delete`}
               />
-            </Col>
+            </div>
           ))}
-        </Row>
+        </div>
         <label
           htmlFor="dropzone-file"
           className="flex items-center justify-center w-git border-2 border-gray-300 rounded cursor-pointer bg-gray-50 hover:bg-gray-100 px-2 py-1 m-0"

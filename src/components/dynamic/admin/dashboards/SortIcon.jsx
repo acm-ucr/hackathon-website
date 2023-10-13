@@ -1,4 +1,3 @@
-"use client";
 import { TbTriangleFilled, TbTriangleInvertedFilled } from "react-icons/tb";
 
 const SortIcon = ({
