@@ -1,5 +1,4 @@
 "use client";
-"use client";
 
 import { useState } from "react";
 import Form from "@/components/dynamic/forms/Form.jsx";
