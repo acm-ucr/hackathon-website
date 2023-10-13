@@ -44,10 +44,11 @@ export const HEADERS = [
     hasTag: true,
   },
 
-  { //added new empty box so that the alignment would match. 
-    text:"",
-    size:1,
-  }
+  {
+    // added new empty box so that the alignment would match.
+    text: "",
+    size: 1,
+  },
 ];
 
 export const DROPDOWN = ({ object }) => {
@@ -69,7 +70,7 @@ export const AUTH = {
   POST: {},
   GET: {
     admins: 1,
-    committees: 1,
+    committevfdvbfdeves: 1,
   },
   PUT: {
     admins: 1,

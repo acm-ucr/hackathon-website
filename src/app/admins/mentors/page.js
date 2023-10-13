@@ -1,3 +1,5 @@
+"use client";
+
 import Mentors from "@/components/dynamic/admin/dashboards/Mentors";
 import ProtectedPage from "@/components/dynamic/ProtectedPage";
 const MentorsPage = () => {
