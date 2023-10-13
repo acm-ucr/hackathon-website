@@ -45,9 +45,10 @@ export const HEADERS = [
   },
 
   {
-    // added new empty box so that the alignment would match.
+    
     text: "",
     size: 1,
+    // added new empty box so that the alignment would match.
   },
 ];
 
