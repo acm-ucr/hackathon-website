@@ -97,7 +97,7 @@ export async function GET() {
         gender,
         shirt,
         diet,
-        resume,
+        resume: resume || "",
         status: roles.participants,
         selected: false,
         hidden: false,
