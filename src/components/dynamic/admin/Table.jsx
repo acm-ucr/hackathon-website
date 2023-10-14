@@ -114,7 +114,7 @@ const Table = ({
                             header.text === "name" && "font-bold flex"
                           }`}
                         >
-                          {header.hasTag && (
+                          {header.hasTag && object[header.text] !== "" && (
                             <div data-cy={header.text}>
                               <Tag
                                 text={
