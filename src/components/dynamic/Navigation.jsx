@@ -18,7 +18,9 @@ const Navigation = () => {
     ? USER
     : null;
   const [dropdown, setDropdown] = useState(Object.keys(tabs)[0]);
-
+  const handleToggle = (title) => {
+    title !== dropdown ? setDropdown(title) : setDropdown("");
+  };
   return (
     tabs && (
       <>
@@ -64,23 +66,18 @@ const Navigation = () => {
                     <div key={index} className="w-full">
                       <p
                         className={`text-white text-xl font-poppin font-bold w-full px-2 mb-0 flex items-center justify-between hover:cursor-pointer ${subTabs.mt}`}
-                        onClick={() => {
-                          if (!subTabs.expand) return;
-                          title !== dropdown
-                            ? setDropdown(title)
-                            : setDropdown("");
-                        }}
+                        onClick={() => handleToggle(title)}
                       >
                         {title}
                         {subTabs.expand && (
                           <BiSolidDownArrow
                             className={`text-sm duration-300 ${
-                              dropdown == title && "rotate-180"
+                              dropdown === title && "rotate-180"
                             }`}
                           />
                         )}
                       </p>
-                      {(dropdown == title || !subTabs.expand) &&
+                      {(dropdown === title || !subTabs.expand) &&
                         subTabs.tabs.map((tab, index) => (
                           <Link
                             key={index}
