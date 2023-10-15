@@ -37,7 +37,7 @@ export const HEADERS = [
   { text: "discord", size: "w-2/12", icon: true, sort: "off" },
   {
     text: "status",
-    size: "w-3/12",
+    size: "w-2/12",
     icon: true,
     sort: "off",
     hasTag: true,
@@ -45,8 +45,7 @@ export const HEADERS = [
 
   {
     text: "",
-    size: 1,
-    // added new empty box so that the alignment would match.
+    size: "w-1/12",
   },
 ];
 
