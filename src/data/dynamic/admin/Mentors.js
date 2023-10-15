@@ -44,9 +44,8 @@ export const HEADERS = [
   },
   {
     text: "",
-    size:"w-1/12",
-
-  }
+    size: "w-1/12",
+  },
 ];
 
 export const DROPDOWN = ({ object }) => {
