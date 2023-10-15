@@ -1,6 +1,6 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import { RiArrowDownSLine } from "react-icons/ri";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Toggle = ({ onClick, user, field, show, placeholder }) => {
   return (
@@ -19,8 +19,9 @@ const Toggle = ({ onClick, user, field, show, placeholder }) => {
     </button>
   );
 };
+
 const Select = ({
-  options,
+  items,
   user,
   field,
   setUser,
@@ -28,8 +29,29 @@ const Select = ({
   title,
   editable = true,
   required,
+  searchable = false,
 }) => {
+  const [options, setOptions] = useState(items);
   const [show, setShow] = useState(false);
+  const [input, setInput] = useState("");
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setOptions(
+        options.map((option) => ({
+          ...option,
+          hidden: !option.name.toLowerCase().includes(input.toLowerCase()),
+        }))
+      );
+    }, 850);
+
+    return () => clearTimeout(timeout);
+  }, [input]);
+
+  const handleInput = (e) => {
+    setInput(e.target.value);
+  };
+
   return (
     <div className="flex flex-col">
       <p className="mb-1 font-semibold">
@@ -64,15 +86,26 @@ const Select = ({
         )}
         {editable && (
           <Dropdown.Menu className="w-full bg-hackathon-green-100 !border-none !rounded-none !p-0 overflow-y-auto max-h-[35vh]">
-            {options.map((option, index) => (
-              <Dropdown.Item
-                className=" hover:!bg-hackathon-green-200 !bg-hackathon-green-100 overflow-hidden"
-                key={index}
-                onClick={() => setUser({ ...user, [field]: option })}
-              >
-                {option}
-              </Dropdown.Item>
-            ))}
+            {searchable && (
+              <input
+                value={input}
+                autoFocus
+                className="w-full outline-none px-3 py-1 bg-hackathon-green-100"
+                placeholder="search"
+                onChange={handleInput}
+              />
+            )}
+            {options
+              .filter((opt) => !opt.hidden)
+              .map((option, index) => (
+                <Dropdown.Item
+                  className=" hover:!bg-hackathon-green-200 !bg-hackathon-green-100 overflow-hidden"
+                  key={index}
+                  onClick={() => setUser({ ...user, [field]: option.name })}
+                >
+                  {option.name}
+                </Dropdown.Item>
+              ))}
           </Dropdown.Menu>
         )}
       </Dropdown>
