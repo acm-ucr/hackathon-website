@@ -37,11 +37,16 @@ export const HEADERS = [
   { text: "discord", size: "w-2/12", icon: true, sort: "off" },
   {
     text: "status",
-    size: "w-3/12",
+    size: "w-2/12",
     icon: true,
     sort: "off",
     hasTag: true,
   },
+  {
+    text: "",
+    size:"w-1/12",
+
+  }
 ];
 
 export const DROPDOWN = ({ object }) => {
