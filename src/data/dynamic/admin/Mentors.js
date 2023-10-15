@@ -42,8 +42,6 @@ export const HEADERS = [
     sort: "off",
     hasTag: true,
   },
-
-
 ];
 
 export const DROPDOWN = ({ object }) => {
