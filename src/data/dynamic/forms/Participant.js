@@ -81,6 +81,7 @@ export const FIELDS = {
     placeholder: "ie. Undergraduate",
     width: 12,
     required: true,
+    searchable: true,
   },
   gender: {
     input: "radio",

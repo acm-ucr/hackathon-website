@@ -38,7 +38,7 @@ const Menu = ({ option, setOption, className, setOptions, options }) => {
       <input
         autoFocus
         className="mx-1.5 my-1 w-11/12 ring-0 outline-none px-2 py-1"
-        placeholder="Search"
+        placeholder="Type to filter..."
         onChange={handleInput}
         value={value}
         data-cy="dropdown-input"
@@ -57,7 +57,7 @@ const Menu = ({ option, setOption, className, setOptions, options }) => {
             </Dropdown.Item>
           ))
       ) : (
-        <p className="px-3 text-gray-400"></p>
+        <p className="px-3 text-gray-400">no events</p>
       )}
     </div>
   );

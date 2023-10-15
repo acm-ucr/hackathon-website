@@ -2,16 +2,16 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { useEffect, useState } from "react";
 
-const Toggle = ({ onClick, user, field, show, placeholder }) => {
+const Toggle = ({ onClick, option, show, placeholder }) => {
   return (
     <button
       onClick={onClick}
       className={`${
-        user[field] ? "text-black" : "text-hackathon-gray-200"
+        option ? "text-black" : "text-hackathon-gray-200"
       } bg-white flex items-center justify-between w-full border-b-2 border-black`}
       data-cy="select-toggle"
     >
-      {user[field] || placeholder}
+      {option || placeholder}
       <RiArrowDownSLine
         className={`${show && "rotate-180"} duration-300 text-black`}
         data-cy="select-arrow"
@@ -67,11 +67,10 @@ const Select = ({
       >
         {editable ? (
           <Dropdown.Toggle
-            show={show}
             as={Toggle}
-            user={user}
-            field={field}
+            option={user[field]}
             placeholder={placeholder}
+            show={show}
           />
         ) : (
           <div
@@ -85,12 +84,12 @@ const Select = ({
           </div>
         )}
         {editable && (
-          <Dropdown.Menu className="w-full bg-hackathon-green-100 !border-none !rounded-none !p-0 overflow-y-auto max-h-[35vh]">
+          <Dropdown.Menu className="w-full !bg-hackathon-green-100 !border-none !rounded-none !p-0 overflow-y-auto max-h-[35vh]">
             {searchable && (
               <input
                 value={input}
                 autoFocus
-                className="w-full outline-none px-3 py-1 bg-hackathon-green-100"
+                className="mx-1.5 my-1 w-11/12 ring-0 outline-none px-2 py-1 bg-hackathon-green-100"
                 placeholder="search"
                 onChange={handleInput}
               />
