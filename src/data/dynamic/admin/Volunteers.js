@@ -31,12 +31,13 @@ export const TAGS = [
 ];
 
 export const HEADERS = [
+
   { text: "name", size: "w-3/12", icon: true, sort: "off" },
   { text: "email", size: "w-3/12", icon: true, sort: "off" },
   { text: "discord", size: "w-3/12", icon: true, sort: "off" },
   {
     text: "status",
-    size: "w-2/12",
+    size: "w-3/12",
     icon: true,
     sort: "off",
     hasTag: true,
