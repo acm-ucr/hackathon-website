@@ -42,7 +42,6 @@ export const HEADERS = [
     sort: "off",
     hasTag: true,
   },
-
   {
     text: "",
     size: "w-1/12",
