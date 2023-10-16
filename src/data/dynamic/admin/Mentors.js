@@ -45,7 +45,7 @@ export const HEADERS = [
 
   {
     text: "",
-    size: "w-1/12", // dummy commit
+    size: "w-1/12",
   },
 ];
 
