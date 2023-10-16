@@ -28,13 +28,13 @@ const Toolbar = ({
   const [toggle, setToggle] = useState(false);
 
   const onClick = (value) => {
-    const selectedWinners = objects.filter(
+    const selectedWinners = objects.some(
       (obj) => obj.selected && obj.status === "winner"
     );
-    if (value === "qualify" && selectedWinners.length > 0) {
+    if (selectedWinners) {
       setPopup({
         title: "Status Change Restricted",
-        text: "Changing status from 'winner' to 'qualify' is restricted. You can check the Prize page for more information.",
+        text: "Changing status from is restricted. You can check the Prize page for more information.",
         color: "red",
         visible: true,
       });
@@ -113,15 +113,6 @@ const Toolbar = ({
   }, []);
 
   return (
-    // <>
-    // {popup.visible && (
-    //   <Popup
-    //     setPopup={setPopup}
-    //     popup={popup}
-    //     onClick={() => router.push("/admin/teams")}
-    //     text="prizes"
-    //   />
-    // )}
     <div className="w-full flex items-center" data-cy="toolbar">
       <div className="w-2/3 flex items-center">
         <div className="mr-4" data-cy="select-all">
@@ -175,7 +166,6 @@ const Toolbar = ({
         )}
       </div>
     </div>
-    // </>
   );
 };
 
