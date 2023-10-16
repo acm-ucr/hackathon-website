@@ -102,15 +102,12 @@ const User = ({ user, setUser, edit, setEdit }) => {
                 toggle={user.diet.includes(option)}
                 text={option}
                 onClick={() =>
-                  user.diet.includes(option)
-                    ? setUser({
-                        ...user,
-                        diet: user.diet.filter((diet) => diet !== option),
-                      })
-                    : setUser({
-                        ...user,
-                        diet: [...user.diet, option],
-                      })
+                  setUser({
+                    ...user,
+                    diet: user.diet.includes(option)
+                      ? user.diet.filter((diet) => diet !== option)
+                      : [...user.diet, option],
+                  })
                 }
                 color="bg-hackathon-green-300"
               />
