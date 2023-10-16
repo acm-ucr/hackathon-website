@@ -18,8 +18,7 @@ const Navigation = () => {
     ? USER
     : null;
   const [dropdown, setDropdown] = useState(Object.keys(tabs)[0]);
-  const handleToggle = (title) =>
-    title === dropdown ? setDropdown("") : setDropdown(title);
+  const handleToggle = (title) => setDropdown(title === dropdown ? "" : title);
 
   return (
     tabs && (
