@@ -18,7 +18,6 @@ const Navigation = () => {
     ? USER
     : null;
   const [dropdown, setDropdown] = useState(Object.keys(tabs)[0]);
-  const handleToggle = (title) => setDropdown(title === dropdown ? "" : title);
 
   return (
     tabs && (
@@ -65,7 +64,9 @@ const Navigation = () => {
                     <div key={index} className="w-full">
                       <p
                         className={`text-white text-xl font-poppin font-bold w-full px-2 mb-0 flex items-center justify-between hover:cursor-pointer ${subTabs.mt}`}
-                        onClick={() => handleToggle(title)}
+                        onClick={() =>
+                          setDropdown(title === dropdown ? "" : title)
+                        }
                       >
                         {title}
                         {subTabs.expand && (
