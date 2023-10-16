@@ -1,12 +1,16 @@
 "use client";
 import { useState } from "react";
 import Dashboard from "../Dashboard.jsx";
+import Filters from "@/components/dynamic/admin/Filters";
+import Toolbar from "@/components/dynamic/admin/dashboards/Toolbar";
+import Title from "../Title";
+import Table from "../Table";
 import {
-  //   FILTERS,
-  //   HEADERS,
-  //   TAGS,
+  FILTERS,
+  HEADERS,
+  TAGS,
   DROPDOWN,
-  //   STATUSES,
+  STATUSES,
 } from "@/data/dynamic/admin/Volunteers";
 
 const Volunteers = () => {
@@ -15,7 +19,6 @@ const Volunteers = () => {
   const page = "volunteers";
   const empty = "No Volunteers Available";
   const file = "VOLUNTEERS";
-  const dropdown = DROPDOWN;
 
   return (
     <Dashboard
@@ -25,40 +28,16 @@ const Volunteers = () => {
       page={page}
       empty={empty}
       file={file}
-      dropdown={dropdown}
+      FILTERS={FILTERS}
+      HEADERS={HEADERS}
+      TAGS={TAGS}
+      DROPDOWN={DROPDOWN}
+      STATUSES={STATUSES}
+      Title={Title}
+      Filters={Filters}
+      Toolbar={Toolbar}
+      Table={Table}
     />
-    // <div className="h-full font-poppins flex flex-col py-4 gap-3">
-    //   <div className="flex">
-    //     <Title title="Volunteers" />
-    //     <Filters
-    //       filters={filters}
-    //       setFilters={setFilters}
-    //       setObjects={setVolunteers}
-    //       objects={volunteers}
-    //       input={input.input}
-    //     />
-    //   </div>
-    //   <Toolbar
-    //     input={input}
-    //     setInput={setInput}
-    //     tags={TAGS}
-    //     setObjects={setVolunteers}
-    //     objects={volunteers}
-    //     filters={filters}
-    //     file="VOLUNTEERS"
-    //     headers={headers}
-    //     page="volunteers"
-    //   />
-    //   <Table
-    //     headers={headers}
-    //     empty="No Volunteers Available"
-    //     setHeaders={setHeaders}
-    //     setObjects={setVolunteers}
-    //     objects={volunteers}
-    //     Dropdown={DROPDOWN}
-    //     statuses={STATUSES}
-    //   />
-    // </div>
   );
 };
 

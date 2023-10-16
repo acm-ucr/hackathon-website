@@ -1,13 +1,16 @@
 "use client";
-
 import { useState } from "react";
 import Dashboard from "../Dashboard.jsx";
+import Filters from "@/components/dynamic/admin/Filters";
+import Toolbar from "@/components/dynamic/admin/dashboards/Toolbar";
+import Title from "../Title.jsx";
+import Table from "../Table.jsx";
 import {
-  //   FILTERS,
-  //   HEADERS,
-  //   TAGS,
+  FILTERS,
+  HEADERS,
+  TAGS,
   DROPDOWN,
-  //   STATUSES,
+  STATUSES,
 } from "@/data/dynamic/admin/Participants";
 
 const Participants = () => {
@@ -27,39 +30,16 @@ const Participants = () => {
       empty={empty}
       file={file}
       dropdown={dropdown}
+      FILTERS={FILTERS} // Pass your data constants as props
+      HEADERS={HEADERS}
+      STATUSES={STATUSES}
+      TAGS={TAGS}
+      DROPDOWN={DROPDOWN}
+      Title={Title}
+      Filters={Filters}
+      Toolbar={Toolbar}
+      Table={Table}
     />
-    // <div className="h-full font-poppins flex flex-col py-4 gap-3">
-    //   <div className="flex">
-    //     <Title title="Participants" />
-    //     <Filters
-    //       filters={filters}
-    //       setFilters={setFilters}
-    //       setObjects={setParticipants}
-    //       objects={participants}
-    //       input={input.input}
-    //     />
-    //   </div>
-    //   <Toolbar
-    //     input={input}
-    //     setInput={setInput}
-    //     tags={TAGS}
-    //     setObjects={setParticipants}
-    //     objects={participants}
-    //     filters={filters}
-    //     file="PARTICIPANTS"
-    //     headers={headers}
-    //     page="participants"
-    //   />
-    //   <Table
-    //     headers={headers}
-    //     empty="No Participants Available"
-    //     setHeaders={setHeaders}
-    //     setObjects={setParticipants}
-    //     objects={participants}
-    //     Dropdown={DROPDOWN}
-    //     statuses={STATUSES}
-    //   />
-    // </div>
   );
 };
 

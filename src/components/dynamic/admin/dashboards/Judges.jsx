@@ -1,9 +1,16 @@
 "use client";
 import { useState } from "react";
+import Filters from "@/components/dynamic/admin/Filters";
+import Toolbar from "@/components/dynamic/admin/dashboards/Toolbar";
+import Title from "../Title";
+import Table from "../Table";
+import {
+  FILTERS,
+  HEADERS,
+  TAGS,
+  STATUSES,
+} from "@/data/dynamic/admin/Judges.js";
 import Dashboard from "../Dashboard.jsx";
-// import {
-//   DROPDOWN
-// } from "@/data/dynamic/admin/Admins.js";
 
 const Judges = () => {
   const [judges, setJudges] = useState(null);
@@ -22,38 +29,15 @@ const Judges = () => {
       empty={empty}
       file={file}
       dropdown={dropdown}
+      FILTERS={FILTERS} // Pass your data constants as props
+      HEADERS={HEADERS}
+      STATUSES={STATUSES}
+      TAGS={TAGS}
+      Title={Title}
+      Filters={Filters}
+      Toolbar={Toolbar}
+      Table={Table}
     />
-    // <div className="h-full font-poppins flex flex-col py-4 gap-3">
-    //   <div className="flex">
-    //     <Title title="Judges" />
-    //     <Filters
-    //       filters={filters}
-    //       setFilters={setFilters}
-    //       setObjects={setJudges}
-    //       objects={judges}
-    //       input={input.input}
-    //     />
-    //   </div>
-    //   <Toolbar
-    //     input={input}
-    //     setInput={setInput}
-    //     tags={TAGS}
-    //     setObjects={setJudges}
-    //     objects={judges}
-    //     filters={filters}
-    //     file="JUDGES"
-    //     headers={headers}
-    //     page="judges"
-    //   />
-    //   <Table
-    //     headers={headers}
-    //     empty="No Judges Available"
-    //     setHeaders={setHeaders}
-    //     setObjects={setJudges}
-    //     objects={judges}
-    //     statuses={STATUSES}
-    //   />
-    // </div>
   );
 };
 export default Judges;

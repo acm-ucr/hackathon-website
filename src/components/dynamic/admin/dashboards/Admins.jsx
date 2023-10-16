@@ -1,17 +1,24 @@
 "use client";
 import { useState } from "react";
+import Filters from "@/components/dynamic/admin/Filters";
+import Toolbar from "@/components/dynamic/admin/dashboards/Toolbar";
+import Title from "../Title";
+import Table from "../Table";
+import {
+  FILTERS,
+  HEADERS,
+  STATUSES,
+  TAGS,
+} from "@/data/dynamic/admin/Admins.js";
 import Dashboard from "../Dashboard.jsx";
-// import {
-//   DROPDOWN
-// } from "@/data/dynamic/admin/Admins.js";
 
 const Admin = () => {
   const [admin, setAdmin] = useState(null);
+
   const title = "Admins";
   const page = "admins";
   const empty = "No Admin Available";
   const file = "";
-  const dropdown = "";
 
   return (
     <Dashboard
@@ -21,7 +28,14 @@ const Admin = () => {
       page={page}
       empty={empty}
       file={file}
-      dropdown={dropdown}
+      FILTERS={FILTERS} // Pass your data constants as props
+      HEADERS={HEADERS}
+      STATUSES={STATUSES}
+      TAGS={TAGS}
+      Title={Title}
+      Filters={Filters}
+      Toolbar={Toolbar}
+      Table={Table}
     />
   );
 };

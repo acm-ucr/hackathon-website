@@ -1,15 +1,9 @@
 "use client";
 import { useState } from "react";
-import Filters from "./Filters.jsx";
-import Toolbar from "./dashboards/Toolbar.jsx";
-import Title from "./Title.jsx";
-import Table from "./Table.jsx";
-import {
-  FILTERS,
-  HEADERS,
-  STATUSES,
-  TAGS,
-} from "@/data/dynamic/admin/Admins.js";
+// import Filters from "./Filters.jsx";
+// import Toolbar from "./dashboards/Toolbar.jsx";
+// import Title from "./Title.jsx";
+// import Table from "./Table.jsx";
 
 const Dashboard = ({
   objects,
@@ -18,7 +12,15 @@ const Dashboard = ({
   page,
   empty,
   file,
-  dropdown,
+  DROPDOWN,
+  FILTERS,
+  HEADERS,
+  STATUSES,
+  TAGS,
+  Filters,
+  Toolbar,
+  Title,
+  Table,
 }) => {
   const [input, setInput] = useState({
     input: "",
@@ -55,7 +57,7 @@ const Dashboard = ({
         setHeaders={setHeaders}
         setObjects={setObjects}
         objects={objects}
-        Dropdown={dropdown}
+        Dropdown={DROPDOWN}
         statuses={STATUSES}
       />
     </div>

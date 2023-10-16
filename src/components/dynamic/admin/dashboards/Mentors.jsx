@@ -1,13 +1,16 @@
 "use client";
-
 import { useState } from "react";
 import Dashboard from "../Dashboard.jsx";
+import Filters from "@/components/dynamic/admin/Filters";
+import Toolbar from "@/components/dynamic/admin/dashboards/Toolbar";
+import Title from "../Title";
+import Table from "../Table";
 import {
-  //   FILTERS,
-  //   HEADERS,
-  //   TAGS,
+  FILTERS,
+  HEADERS,
+  TAGS,
   DROPDOWN,
-  //   STATUSES,
+  STATUSES,
 } from "@/data/dynamic/admin/Mentors.js";
 
 const Mentors = () => {
@@ -27,39 +30,16 @@ const Mentors = () => {
       empty={empty}
       file={file}
       dropdown={dropdown}
+      FILTERS={FILTERS} // Pass your data constants as props
+      HEADERS={HEADERS}
+      STATUSES={STATUSES}
+      TAGS={TAGS}
+      DROPDOWN={DROPDOWN}
+      Title={Title}
+      Filters={Filters}
+      Toolbar={Toolbar}
+      Table={Table}
     />
-    // <div className="h-full font-poppins flex flex-col py-4 gap-3">
-    //   <div className="flex">
-    //     <Title title="Mentors" />
-    //     <Filters
-    //       filters={filters}
-    //       setFilters={setFilters}
-    //       setObjects={setMentors}
-    //       objects={mentors}
-    //       input={input.input}
-    //     />
-    //   </div>
-    //   <Toolbar
-    //     input={input}
-    //     setInput={setInput}
-    //     tags={TAGS}
-    //     setObjects={setMentors}
-    //     objects={mentors}
-    //     filters={filters}
-    //     file="MENTORS"
-    //     headers={headers}
-    //     page="mentors"
-    //   />
-    //   <Table
-    //     headers={headers}
-    //     empty="No Mentors Available"
-    //     setHeaders={setHeaders}
-    //     setObjects={setMentors}
-    //     objects={mentors}
-    //     Dropdown={DROPDOWN}
-    //     statuses={STATUSES}
-    //   />
-    // </div>
   );
 };
 
