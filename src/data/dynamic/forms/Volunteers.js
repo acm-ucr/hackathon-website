@@ -106,6 +106,7 @@ export const FIELDS = {
     required: true,
   },
   requirements: {
+    text: "Terms and Conditions",
     input: "checkboxes",
     width: 12,
     field: "requirements",
@@ -115,4 +116,17 @@ export const FIELDS = {
       "I understand that I will attend the event in person.",
     ],
   },
+};
+
+export const ATTRIBUTES = {
+  name: "",
+  email: "",
+  phone: "",
+  discord: "",
+  major: "",
+  grade: "",
+  availability: {},
+  gender: "",
+  shirt: "",
+  response: "",
 };

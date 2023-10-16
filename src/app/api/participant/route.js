@@ -2,12 +2,11 @@ import { NextResponse } from "next/server";
 import { db } from "../../../../firebase";
 import { doc, updateDoc } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
+import { AUTH } from "@/data/dynamic/user/Participant";
 
 export async function POST(req) {
   const res = NextResponse;
-  const { auth, message, user } = await authenticate({
-    participants: [-1, 0, 1],
-  });
+  const { auth, message, user } = await authenticate(AUTH.POST);
 
   if (auth !== 200) {
     return res.json(

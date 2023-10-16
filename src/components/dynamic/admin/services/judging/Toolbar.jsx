@@ -186,7 +186,7 @@ const Toolbar = ({ data, setData, judges, setJudges }) => {
       )}
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center">
-          <form className="flex items-center" onSubmit={generate}>
+          <form className="flex items-center pr-2" onSubmit={generate}>
             <Input
               setObject={setInput}
               object={input}

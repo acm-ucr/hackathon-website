@@ -2,12 +2,11 @@ import { NextResponse } from "next/server";
 import { db } from "../../../../firebase";
 import { doc, getDoc, updateDoc, addDoc, collection } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
+import { AUTH } from "@/data/dynamic/user/Team";
 
 export async function POST() {
   const res = NextResponse;
-  const { auth, message, user } = await authenticate({
-    admins: 1,
-  });
+  const { auth, message, user } = await authenticate(AUTH.POST);
 
   if (auth !== 200) {
     return res.json(
@@ -48,9 +47,7 @@ export async function POST() {
 
 export async function PUT(req) {
   const res = NextResponse;
-  const { auth, user } = await authenticate({
-    admins: 1,
-  });
+  const { auth, user } = await authenticate(AUTH.PUT);
 
   if (auth !== 200) {
     return res.json(
@@ -82,9 +79,7 @@ export async function PUT(req) {
 
 export async function GET(req) {
   const res = NextResponse;
-  const { auth } = await authenticate({
-    admins: 1,
-  });
+  const { auth } = await authenticate(AUTH.GET);
 
   if (auth !== 200) {
     return res.json(

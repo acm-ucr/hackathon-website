@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Checkbox from "../../Checkbox";
 import Tag from "../Tag.jsx";
 import { FaTrashAlt } from "react-icons/fa";
-import { TbReload } from "react-icons/tb";
+import { FaUndoAlt } from "react-icons/fa";
 import { COLORS } from "@/data/dynamic/Tags";
 import Popup from "../Popup";
 import Input from "../Input";
@@ -92,6 +92,7 @@ const Toolbar = ({
   const handleReload = () => {
     axios.get(`/api/${page}`).then((response) => {
       setObjects(response.data.items);
+      toast("✅ Fetched Data Successfully");
     });
   };
 
@@ -130,7 +131,11 @@ const Toolbar = ({
           />
         </form>
       </div>
-      <TbReload onClick={handleReload} />
+      <FaUndoAlt
+        size={22.5}
+        onClick={handleReload}
+        className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
+      />
       <div className="flex w-1/3">
         <FaTrashAlt
           data-cy="delete"

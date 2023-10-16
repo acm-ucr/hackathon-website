@@ -1,5 +1,24 @@
 import Dropdown from "react-bootstrap/Dropdown";
+import { RiArrowDownSLine } from "react-icons/ri";
+import { useState } from "react";
 
+const Toggle = ({ onClick, user, field, show, placeholder }) => {
+  return (
+    <button
+      onClick={onClick}
+      className={`${
+        user[field] ? "text-black" : "text-hackathon-gray-200"
+      } bg-white flex items-center justify-between w-full border-b-2 border-black`}
+      data-cy="select-toggle"
+    >
+      {user[field] || placeholder}
+      <RiArrowDownSLine
+        className={`${show && "rotate-180"} duration-300 text-black`}
+        data-cy="select-arrow"
+      />
+    </button>
+  );
+};
 const Select = ({
   options,
   user,
@@ -8,23 +27,32 @@ const Select = ({
   placeholder,
   title,
   editable = true,
+  required,
 }) => {
+  const [show, setShow] = useState(false);
   return (
     <div className="flex flex-col">
-      <p className="mb-1 font-semibold">{title}</p>
-      <Dropdown className="w-full m-0">
+      <p className="mb-1 font-semibold">
+        {title}
+        {required && <span className="text-hackathon-green-300">*</span>}
+      </p>
+      <Dropdown
+        show={show}
+        className="w-full m-0"
+        onToggle={() => setShow(!show)}
+        autoClose={true}
+        data-cy="select"
+      >
         {editable ? (
           <Dropdown.Toggle
-            id="dropdown-toggle"
-            className={`!bg-white ${
-              user[field] ? "text-black" : "!text-hackathon-gray-200"
-            } w-full !text-left !border-x-0 !border-t-0 !border-b-2 !rounded-none !border-black`}
-          >
-            {user[field] || placeholder}
-          </Dropdown.Toggle>
+            show={show}
+            as={Toggle}
+            user={user}
+            field={field}
+            placeholder={placeholder}
+          />
         ) : (
           <div
-            id="dropdown-toggle"
             className={`placeholder:text-hackathon-gray-200 ${
               user[field] ? "text-black" : "!text-hackathon-placeholder"
             } w-full pl-3 !border-x-0 !border-t-0 ${

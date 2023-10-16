@@ -2,6 +2,7 @@ import { CONFIG } from "../../Config";
 import { HOWTOFINDEVENTS } from "./Information";
 
 const RATE = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+
 export const FIELDS = {
   description: {
     input: "description",
@@ -65,4 +66,14 @@ export const FIELDS = {
     placeholder: "Literally anything...",
     width: 12,
   },
+};
+
+export const ATTRIBUTES = {
+  "What was most helpful about the event?": "",
+  "Was there anything that you would have liked to see?": "",
+  "Was there anything that you did not find beneficial about the hackathon?":
+    "",
+  rate: "",
+  "How did you find the event?": "",
+  "Is there anything else you'd like to let us know?": "",
 };

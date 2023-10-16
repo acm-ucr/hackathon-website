@@ -88,10 +88,22 @@ export const FIELDS = {
     required: true,
   },
   requirements: {
+    text: "Terms and Conditions",
     input: "checkboxes",
     width: 12,
     field: "requirements",
     required: true,
     options: ["I agree to photograph."],
   },
+};
+
+export const ATTRIBUTES = {
+  name: "",
+  email: "",
+  phone: "",
+  gender: "",
+  shirt: "",
+  affiliation: "",
+  title: "",
+  photo: "",
 };

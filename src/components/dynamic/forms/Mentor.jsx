@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Form from "@/components/dynamic/forms/Form.jsx";
-import { FIELDS } from "../../../data/dynamic/forms/Mentors.js";
+import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/forms/Mentors.js";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -11,6 +11,7 @@ const Mentor = () => {
   const { data: session } = useSession();
 
   const [mentor, setMentor] = useState({
+    ...ATTRIBUTES,
     name: session.user.name,
     email: session.user.email,
   });
@@ -21,10 +22,11 @@ const Mentor = () => {
       availability: Object.keys(mentor.availability),
     };
 
-    axios.post("/api/mentors", data).then(() => {
-      setLoading(false);
-      toast(`✅ Submitted successfully!`);
-    });
+    axios
+      .post("/api/mentors", data)
+      .then(() => toast(`✅ Submitted successfully!`))
+      .catch(() => toast(`❌ Internal Server Error`))
+      .finally(() => setLoading(false));
   };
   return (
     <Form

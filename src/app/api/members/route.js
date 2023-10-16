@@ -10,12 +10,11 @@ import {
   deleteField,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
+import { AUTH } from "@/data/dynamic/user/Members";
 
 export async function DELETE() {
   const res = NextResponse;
-  const { auth, message, user } = await authenticate({
-    participants: [-1, 0, 1],
-  });
+  const { auth, message, user } = await authenticate(AUTH.DELETE);
 
   if (auth !== 200) {
     return res.json(
@@ -50,9 +49,7 @@ export async function DELETE() {
 
 export async function PUT(req) {
   const res = NextResponse;
-  const { auth, message, user } = await authenticate({
-    participants: [-1, 0, 1],
-  });
+  const { auth, message, user } = await authenticate(AUTH.PUT);
 
   if (auth !== 200) {
     return res.json(

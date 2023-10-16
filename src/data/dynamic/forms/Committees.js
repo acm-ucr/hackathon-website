@@ -7,6 +7,7 @@ export const AFFILIATIONS = [
   "recruitment",
   "software",
   "UIUX",
+  "operations",
 ];
 
 export const FIELDS = {
@@ -56,6 +57,7 @@ export const FIELDS = {
     required: true,
   },
   requirements: {
+    text: "Terms and Conditions",
     input: "checkboxes",
     width: 12,
     field: "requirements",
@@ -64,4 +66,11 @@ export const FIELDS = {
     ],
     required: true,
   },
+};
+
+export const ATTRIBUTES = {
+  name: "",
+  email: "",
+  discord: "",
+  affiliation: "",
 };
