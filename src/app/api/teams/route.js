@@ -59,9 +59,7 @@ export async function GET() {
 
 export async function PUT(req) {
   const res = NextResponse;
-  const { auth } = await authenticate({
-    admins: 1,
-  });
+  const { auth } = await authenticate(AUTH.PUT);
 
   if (auth !== 200) {
     return res.json(
@@ -72,38 +70,36 @@ export async function PUT(req) {
   const { objects, attribute, status } = await req.json();
 
   try {
-    await Promise.all(
-      objects.map(async (object) => {
+    for (const object of objects) {
+      if (attribute === "role") {
+        for (const member of object.uids) {
+          await updateDoc(doc(db, "users", member), {
+            team: deleteField(),
+          });
+        }
+
         const teamRef = doc(db, "teams", object.uid);
 
-        if (attribute === "role") {
-          // Check if the status of the team being deleted is "winner"
-          const teamSnapshot = await teamRef.get();
-          if (
-            teamSnapshot.exists() &&
-            teamSnapshot.data().status === "winner"
-          ) {
-            // Find the prize that has this team as the winner and update it
-            const prizeSnapshot = await getDocs(collection(db, "prizes"));
-
-            // Delete the teamId and teamName fields from the prize document
-            prizeSnapshot.forEach(async (prizeDoc) => {
-              if (prizeDoc.data().teamId === object.uid) {
-                await updateDoc(doc(db, "prizes", prizeDoc.id), {
-                  teamId: deleteField(),
-                  teamName: deleteField(),
-                });
-              }
-            });
-          }
-
-          // Delete the team after potentially updating the prize entry
-          await deleteDoc(teamRef);
-        } else if (attribute === "status") {
-          await updateDoc(teamRef, { status: status });
+        const teamSnapshot = await teamRef.get();
+        if (teamSnapshot.exists() && teamSnapshot.data().status === "winner") {
+          const prizeSnapshot = await getDocs(collection(db, "prizes"));
+          prizeSnapshot.forEach(async (prizeDoc) => {
+            if (prizeDoc.data().teamId === object.uid) {
+              await updateDoc(doc(db, "prizes", prizeDoc.id), {
+                teamId: deleteField(),
+                teamName: deleteField(),
+              });
+            }
+          });
         }
-      })
-    );
+
+        await deleteDoc(teamRef);
+      } else if (attribute === "status") {
+        await updateDoc(doc(db, "teams", object.uid), {
+          status: status,
+        });
+      }
+    }
 
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
