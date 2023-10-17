@@ -15,19 +15,14 @@ import Dashboard from "../Dashboard.jsx";
 const Admin = () => {
   const [admin, setAdmin] = useState(null);
 
-  const title = "Admins";
-  const page = "admins";
-  const empty = "No Admin Available";
-  const file = "";
-
   return (
     <Dashboard
       objects={admin}
       setObjects={setAdmin}
-      title={title}
-      page={page}
-      empty={empty}
-      file={file}
+      title="Admins"
+      page="admins"
+      empty="No Admin Available"
+      file=""
       filters={FILTERS}
       headers={HEADERS}
       statuses={STATUSES}

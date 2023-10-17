@@ -9,19 +9,15 @@ import { FILTERS, HEADERS, TAGS, STATUSES } from "@/data/dynamic/admin/Teams";
 
 const Teams = () => {
   const [teams, setTeams] = useState(null);
-  const title = "Teams";
-  const page = "teams";
-  const empty = "No Teams Available";
-  const file = "TEAMS";
 
   return (
     <Dashboard
       objects={teams}
       setObjects={setTeams}
-      title={title}
-      page={page}
-      empty={empty}
-      file={file}
+      title="Teams"
+      page="teams"
+      empty="No Teams Available"
+      file="TEAMS"
       filters={FILTERS}
       headers={HEADERS}
       tags={TAGS}

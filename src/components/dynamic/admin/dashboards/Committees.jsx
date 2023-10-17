@@ -14,21 +14,16 @@ import Dashboard from "../Dashboard.jsx";
 
 const Comittee = () => {
   const [committees, setCommittees] = useState(null);
-  const title = "Committees";
-  const page = "committees";
-  const empty = "No Committee Available";
-  const file = "";
-  const dropdown = "";
 
   return (
     <Dashboard
       objects={committees}
       setObjects={setCommittees}
-      title={title}
-      page={page}
-      empty={empty}
-      file={file}
-      dropdown={dropdown}
+      title="Committees"
+      page="committees"
+      empty="No Committee Available"
+      file=""
+      dropdown=""
       filters={FILTERS}
       headers={HEADERS}
       statuses={STATUSES}

@@ -15,19 +15,15 @@ import {
 
 const Volunteers = () => {
   const [volunteers, setVolunteers] = useState(null);
-  const title = "Volunteers";
-  const page = "volunteers";
-  const empty = "No Volunteers Available";
-  const file = "VOLUNTEERS";
 
   return (
     <Dashboard
       objects={volunteers}
       setObjects={setVolunteers}
-      title={title}
-      page={page}
-      empty={empty}
-      file={file}
+      title="Volunteers"
+      page="volunteers"
+      empty="No Volunteers Available"
+      file="VOLUNTEERS"
       filters={FILTERS}
       headers={HEADERS}
       tags={TAGS}

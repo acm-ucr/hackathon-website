@@ -15,19 +15,15 @@ import {
 
 const Participants = () => {
   const [participants, setParticipants] = useState(null);
-  const title = "Participants";
-  const page = "participants";
-  const empty = "No Participants Available";
-  const file = "PARTICIPANTS";
-
+  
   return (
     <Dashboard
       objects={participants}
       setObjects={setParticipants}
-      title={title}
-      page={page}
-      empty={empty}
-      file={file}
+      title="Participants"
+      page="participants"
+      empty="No Participants Available"
+      file="PARTICIPANTS"
       filters={FILTERS}
       headers={HEADERS}
       statuses={STATUSES}

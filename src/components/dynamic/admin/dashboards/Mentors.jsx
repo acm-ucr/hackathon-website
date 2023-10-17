@@ -15,19 +15,15 @@ import {
 
 const Mentors = () => {
   const [mentors, setMentors] = useState(null);
-  const title = "Mentors";
-  const page = "mentors";
-  const empty = "No Mentors Available";
-  const file = "MENTORS";
 
   return (
     <Dashboard
       objects={mentors}
       setObjects={setMentors}
-      title={title}
-      page={page}
-      empty={empty}
-      file={file}
+      title="Mentors"
+      page="mentors"
+      empty="No Mentors Available"
+      file="MENTORS"
       filters={FILTERS}
       headers={HEADERS}
       statuses={STATUSES}

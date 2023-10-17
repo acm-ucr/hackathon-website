@@ -14,21 +14,16 @@ import Dashboard from "../Dashboard.jsx";
 
 const Judges = () => {
   const [judges, setJudges] = useState(null);
-  const title = "Judges";
-  const page = "judges";
-  const empty = "No Judges Available";
-  const file = "JUDGES";
-  const dropdown = "";
 
   return (
     <Dashboard
       objects={judges}
       setObjects={setJudges}
-      title={title}
-      page={page}
-      empty={empty}
-      file={file}
-      dropdown={dropdown}
+      title="Judges"
+      page="judges"
+      empty="No Judges Available"
+      file="JUDGES"
+      dropdown=""
       filters={FILTERS}
       headers={HEADERS}
       statuses={STATUSES}
