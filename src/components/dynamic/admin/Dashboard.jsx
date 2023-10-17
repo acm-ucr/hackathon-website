@@ -1,9 +1,5 @@
 "use client";
 import { useState } from "react";
-// import Filters from "./Filters.jsx";
-// import Toolbar from "./dashboards/Toolbar.jsx";
-// import Title from "./Title.jsx";
-// import Table from "./Table.jsx";
 
 const Dashboard = ({
   objects,
