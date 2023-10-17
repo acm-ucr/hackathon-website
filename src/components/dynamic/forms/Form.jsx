@@ -34,7 +34,7 @@ const Form = ({ object, setObject, header, fields, onSubmit }) => {
       setLoading(false);
       return;
     }
-    if (fields.availability && object.availability.length > 0) {
+    if (fields.availability && object.availability.length === 0) {
       toast("❌ Please select at least one available time!");
       setLoading(false);
       return;
