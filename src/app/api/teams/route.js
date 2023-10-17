@@ -70,7 +70,7 @@ export async function PUT(req) {
   const { objects, attribute, status } = await req.json();
 
   try {
-    for (const object of objects) {
+    objects.forEach(async (object) => {
       if (attribute === "role") {
         for (const member of object.uids) {
           await updateDoc(doc(db, "users", member), {
@@ -80,8 +80,8 @@ export async function PUT(req) {
 
         const teamRef = doc(db, "teams", object.uid);
 
-        const teamSnapshot = await teamRef.get();
-        if (teamSnapshot.exists() && teamSnapshot.data().status === "winner") {
+        const teamSnapshot = await getDocs(doc(db, "teams", object.uid));
+        if (teamSnapshot.data().status === "winner") {
           const prizeSnapshot = await getDocs(collection(db, "prizes"));
           prizeSnapshot.forEach(async (prizeDoc) => {
             if (prizeDoc.data().teamId === object.uid) {
@@ -99,7 +99,7 @@ export async function PUT(req) {
           status: status,
         });
       }
-    }
+    });
 
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
