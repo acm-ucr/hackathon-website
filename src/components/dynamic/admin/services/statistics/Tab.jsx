@@ -1,10 +1,12 @@
-import Title from "@/components/dynamic/admin/Title";
-
 const Tab = ({ title, value }) => {
   return (
     <div className="text-center w-full">
-      <Title title={title} classes="text-2xl font-medium" />
-      <Title title={value} classes="text-5xl font-extrabold" />
+      <div data-cy={`${title}-tab`} className="text-2xl font-medium">
+        {title}
+      </div>
+      <div data-cy={`${value}-value`} className="text-5xl font-extrabold">
+        {value}
+      </div>
     </div>
   );
 };
