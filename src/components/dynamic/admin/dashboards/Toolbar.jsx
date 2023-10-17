@@ -9,6 +9,7 @@ import Popup from "../Popup";
 import Input from "../Input";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const Toolbar = ({
   input,
@@ -19,12 +20,22 @@ const Toolbar = ({
   filters,
   page,
 }) => {
-  const [popup, setPopup] = useState({
+  const router = useRouter();
+
+  const [deletePopup, setDeletePopup] = useState({
     title: "Delete Confirmation",
     text: "Are you sure you want to delete these row(s)? This action is irreversible.",
     color: "red",
     visible: false,
   });
+
+  const [winnerPopup, setWinnerPopup] = useState({
+    title: "Status Change Restricted",
+    text: "Changing status from 'winner' is restricted. You can check the Prize page for more information.",
+    color: "green",
+    visible: false,
+  });
+
   const [toggle, setToggle] = useState(false);
 
   const onClick = (value) => {
@@ -32,10 +43,10 @@ const Toolbar = ({
       (obj) => obj.selected && obj.status === "winner"
     );
     if (selectedWinners) {
-      setPopup({
+      setWinnerPopup({
         title: "Status Change Restricted",
-        text: "Changing status from is restricted. You can check the Prize page for more information.",
-        color: "red",
+        text: "Changing status from 'winner' is restricted. You can check the Prize page for more information.",
+        color: "green",
         visible: true,
       });
       return;
@@ -100,6 +111,7 @@ const Toolbar = ({
       .then(() => {
         toast("✅ Successfully Deleted");
       });
+    setDeletePopup({ ...deletePopup, visible: true });
   };
 
   const handleReload = () => {
@@ -147,21 +159,24 @@ const Toolbar = ({
       <div className="flex w-1/3">
         <FaTrashAlt
           data-cy="delete"
-          onClick={() =>
-            setPopup({
-              ...popup,
-              visible: true,
-            })
-          }
+          onClick={() => setDeletePopup({ ...deletePopup, visible: true })}
           size={22.5}
           className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
         />
-        {popup.visible && (
+        {deletePopup.visible && (
           <Popup
-            popup={popup}
+            popup={deletePopup}
             onClick={handleDelete}
-            setPopup={setPopup}
+            setPopup={setDeletePopup}
             text="confirm"
+          />
+        )}
+        {winnerPopup.visible && (
+          <Popup
+            popup={winnerPopup}
+            onClick={() => router.push("/admin/prizes")}
+            setPopup={setWinnerPopup}
+            text="prizes"
           />
         )}
       </div>
