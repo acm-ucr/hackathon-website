@@ -1,10 +1,7 @@
 "use client";
 import { useState } from "react";
 import Dashboard from "../Dashboard.jsx";
-import Filters from "@/components/dynamic/admin/Filters";
-import Toolbar from "@/components/dynamic/admin/dashboards/Toolbar";
-import Title from "../Title";
-import Table from "../Table";
+
 import {
   FILTERS,
   HEADERS,
@@ -29,10 +26,6 @@ const Volunteers = () => {
       tags={TAGS}
       dropdown={DROPDOWN}
       statuses={STATUSES}
-      Title={Title}
-      Filters={Filters}
-      Toolbar={Toolbar}
-      Table={Table}
     />
   );
 };

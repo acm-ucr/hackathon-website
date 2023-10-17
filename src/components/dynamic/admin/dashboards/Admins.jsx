@@ -1,9 +1,5 @@
 "use client";
 import { useState } from "react";
-import Filters from "@/components/dynamic/admin/Filters";
-import Toolbar from "@/components/dynamic/admin/dashboards/Toolbar";
-import Title from "../Title";
-import Table from "../Table";
 import {
   FILTERS,
   HEADERS,
@@ -23,14 +19,11 @@ const Admin = () => {
       page="admins"
       empty="No Admin Available"
       file=""
+      dropdown=""
       filters={FILTERS}
       headers={HEADERS}
       statuses={STATUSES}
       tags={TAGS}
-      Title={Title}
-      Filters={Filters}
-      Toolbar={Toolbar}
-      Table={Table}
     />
   );
 };

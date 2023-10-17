@@ -1,10 +1,6 @@
 "use client";
 import { useState } from "react";
 import Dashboard from "../Dashboard.jsx";
-import Filters from "@/components/dynamic/admin/Filters";
-import Toolbar from "@/components/dynamic/admin/dashboards/Toolbar";
-import Title from "../Title.jsx";
-import Table from "../Table.jsx";
 import {
   FILTERS,
   HEADERS,
@@ -15,7 +11,7 @@ import {
 
 const Participants = () => {
   const [participants, setParticipants] = useState(null);
-  
+
   return (
     <Dashboard
       objects={participants}
@@ -29,10 +25,6 @@ const Participants = () => {
       statuses={STATUSES}
       tags={TAGS}
       dropdown={DROPDOWN}
-      Title={Title}
-      Filters={Filters}
-      Toolbar={Toolbar}
-      Table={Table}
     />
   );
 };

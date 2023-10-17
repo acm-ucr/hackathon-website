@@ -1,5 +1,9 @@
 "use client";
 import { useState } from "react";
+import Filters from "./Filters.jsx";
+import Toolbar from "./dashboards/Toolbar.jsx";
+import Title from "./Title.jsx";
+import Table from "./Table.jsx";
 
 const Dashboard = ({
   objects,
@@ -13,16 +17,12 @@ const Dashboard = ({
   HEADERS,
   STATUSES,
   TAGS,
-  Filters,
-  Toolbar,
-  Title,
-  Table,
 }) => {
   const [input, setInput] = useState({
     input: "",
   });
-  const [filters, setFilters] = useState(FILTERS);
-  const [headers, setHeaders] = useState(HEADERS);
+  const [filters, setFilters] = useState(FILTERS || {});
+  const [headers, setHeaders] = useState(HEADERS || []);
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
@@ -39,7 +39,7 @@ const Dashboard = ({
       <Toolbar
         input={input}
         setInput={setInput}
-        tags={TAGS}
+        tags={TAGS || []}
         setObjects={setObjects}
         objects={objects}
         filters={filters}
@@ -53,7 +53,7 @@ const Dashboard = ({
         setHeaders={setHeaders}
         setObjects={setObjects}
         objects={objects}
-        Dropdown={DROPDOWN}
+        dropdown={DROPDOWN}
         statuses={STATUSES}
       />
     </div>

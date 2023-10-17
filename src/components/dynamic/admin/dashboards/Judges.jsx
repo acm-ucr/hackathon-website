@@ -1,9 +1,5 @@
 "use client";
 import { useState } from "react";
-import Filters from "@/components/dynamic/admin/Filters";
-import Toolbar from "@/components/dynamic/admin/dashboards/Toolbar";
-import Title from "../Title";
-import Table from "../Table";
 import {
   FILTERS,
   HEADERS,
@@ -28,10 +24,6 @@ const Judges = () => {
       headers={HEADERS}
       statuses={STATUSES}
       tags={TAGS}
-      Title={Title}
-      Filters={Filters}
-      Toolbar={Toolbar}
-      Table={Table}
     />
   );
 };
