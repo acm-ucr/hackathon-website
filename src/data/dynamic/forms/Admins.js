@@ -73,4 +73,5 @@ export const ATTRIBUTES = {
   email: "",
   discord: "",
   affiliation: "",
+  requirements: [],
 };

@@ -16,12 +16,8 @@ const judge = () => {
   });
 
   const handleSubmit = (setLoading) => {
-    const data = {
-      ...judge,
-    };
-
     axios
-      .post("/api/judges", data)
+      .post("/api/judges", judge)
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
       .finally(() => setLoading(false));
