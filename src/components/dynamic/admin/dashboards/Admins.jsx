@@ -28,7 +28,7 @@ const Admin = () => {
       page={page}
       empty={empty}
       file={file}
-      FILTERS={FILTERS} // Pass your data constants as props
+      FILTERS={FILTERS}
       HEADERS={HEADERS}
       STATUSES={STATUSES}
       TAGS={TAGS}
