@@ -22,6 +22,7 @@ const iconStyle = "mr-2";
 
 export const ADMIN = {
   Dashboards: {
+    expand: true,
     mt: "mt-0",
     tabs: [
       {
@@ -67,6 +68,7 @@ export const ADMIN = {
     ],
   },
   Services: {
+    expand: true,
     mt: "mt-3",
     tabs: [
       {

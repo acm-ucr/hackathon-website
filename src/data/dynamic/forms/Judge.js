@@ -106,4 +106,5 @@ export const ATTRIBUTES = {
   affiliation: "",
   title: "",
   photo: "",
+  requirements: [],
 };

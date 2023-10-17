@@ -136,6 +136,7 @@ export const ATTRIBUTES = {
   grade: "",
   gender: "",
   shirt: "",
-  diet: {},
+  diet: [],
   resume: "",
+  requirements: [],
 };
