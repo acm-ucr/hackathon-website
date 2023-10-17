@@ -28,10 +28,10 @@ const Admin = () => {
       page={page}
       empty={empty}
       file={file}
-      FILTERS={FILTERS}
-      HEADERS={HEADERS}
-      STATUSES={STATUSES}
-      TAGS={TAGS}
+      filters={FILTERS}
+      headers={HEADERS}
+      statuses={STATUSES}
+      tags={TAGS}
       Title={Title}
       Filters={Filters}
       Toolbar={Toolbar}

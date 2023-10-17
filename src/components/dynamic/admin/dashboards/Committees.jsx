@@ -29,10 +29,10 @@ const Comittee = () => {
       empty={empty}
       file={file}
       dropdown={dropdown}
-      FILTERS={FILTERS} // Pass your data constants as props
-      HEADERS={HEADERS}
-      STATUSES={STATUSES}
-      TAGS={TAGS}
+      filters={FILTERS}
+      headers={HEADERS}
+      statuses={STATUSES}
+      tags={TAGS}
       Title={Title}
       Filters={Filters}
       Toolbar={Toolbar}

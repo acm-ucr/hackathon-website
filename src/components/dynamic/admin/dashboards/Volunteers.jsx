@@ -28,11 +28,11 @@ const Volunteers = () => {
       page={page}
       empty={empty}
       file={file}
-      FILTERS={FILTERS}
-      HEADERS={HEADERS}
-      TAGS={TAGS}
-      DROPDOWN={DROPDOWN}
-      STATUSES={STATUSES}
+      filters={FILTERS}
+      headers={HEADERS}
+      tags={TAGS}
+      dropdown={DROPDOWN}
+      statuses={STATUSES}
       Title={Title}
       Filters={Filters}
       Toolbar={Toolbar}

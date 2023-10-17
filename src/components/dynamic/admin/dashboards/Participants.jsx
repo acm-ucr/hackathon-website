@@ -19,7 +19,6 @@ const Participants = () => {
   const page = "participants";
   const empty = "No Participants Available";
   const file = "PARTICIPANTS";
-  const dropdown = DROPDOWN;
 
   return (
     <Dashboard
@@ -29,12 +28,11 @@ const Participants = () => {
       page={page}
       empty={empty}
       file={file}
-      dropdown={dropdown}
-      FILTERS={FILTERS} // Pass your data constants as props
-      HEADERS={HEADERS}
-      STATUSES={STATUSES}
-      TAGS={TAGS}
-      DROPDOWN={DROPDOWN}
+      filters={FILTERS}
+      headers={HEADERS}
+      statuses={STATUSES}
+      tags={TAGS}
+      dropdown={DROPDOWN}
       Title={Title}
       Filters={Filters}
       Toolbar={Toolbar}

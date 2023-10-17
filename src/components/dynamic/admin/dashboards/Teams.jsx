@@ -22,10 +22,10 @@ const Teams = () => {
       page={page}
       empty={empty}
       file={file}
-      FILTERS={FILTERS}
-      HEADERS={HEADERS}
-      TAGS={TAGS}
-      STATUSES={STATUSES}
+      filters={FILTERS}
+      headers={HEADERS}
+      tags={TAGS}
+      statuses={STATUSES}
       Title={Title}
       Filters={Filters}
       Toolbar={Toolbar}
