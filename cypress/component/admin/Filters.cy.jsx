@@ -1,18 +1,18 @@
-import Filters from "@/components/admin/Filters";
+import Filters from "@/components/dynamic/admin/Filters";
 import { useState } from "react";
 
 describe("Filters Component", () => {
   it("Default", () => {
     const Parent = () => {
       const [filters, setFilters] = useState({
-        rejected: true,
-        accepted: true,
+        reject: true,
+        accept: true,
         pending: true,
       });
       const [objects, setObjects] = useState([
         { name: "pending" },
-        { name: "rejected" },
-        { name: "accepted" },
+        { name: "reject" },
+        { name: "accept" },
       ]);
       const input = "";
 
@@ -37,10 +37,10 @@ describe("Filters Component", () => {
     cy.get('[data-cy="pending-filter"]')
       .get("div")
       .should("have.class", "bg-hackathon-blue-100", "text-white");
-    cy.get('[data-cy="rejected-filter"]')
+    cy.get('[data-cy="reject-filter"]')
       .get("div")
       .should("have.class", "bg-hackathon-blue-100", "text-white");
-    cy.get('[data-cy="accepted-filter"]')
+    cy.get('[data-cy="accept-filter"]')
       .get("div")
       .should("have.class", "bg-hackathon-blue-100", "text-white");
   });
@@ -50,8 +50,8 @@ describe("Filters Component", () => {
 
     const Parent = ({ setObjects }) => {
       const [filters, setFilters] = useState({
-        rejected: true,
-        accepted: true,
+        reject: true,
+        accept: true,
         pending: true,
       });
       const objects = [];
@@ -82,16 +82,16 @@ describe("Filters Component", () => {
     cy.get('[data-cy="pending-filter"]')
       .get("div")
       .should("have.class", "bg-white", "text-hackathon-blue-100");
-    cy.get('[data-cy="rejected-filter"]')
+    cy.get('[data-cy="reject-filter"]')
       .click()
       .then(() => expect(setObjects).to.be.called);
-    cy.get('[data-cy="rejected-filter"]')
+    cy.get('[data-cy="reject-filter"]')
       .get("div")
       .should("have.class", "bg-white", "text-hackathon-blue-100");
-    cy.get('[data-cy="accepted-filter"]')
+    cy.get('[data-cy="accept-filter"]')
       .click()
       .then(() => expect(setObjects).to.be.called);
-    cy.get('[data-cy="accepted-filter"]')
+    cy.get('[data-cy="accept-filter"]')
       .get("div")
       .should("have.class", "bg-white", "text-hackathon-blue-100");
   });
