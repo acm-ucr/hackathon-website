@@ -22,17 +22,10 @@ const Toolbar = ({
 }) => {
   const router = useRouter();
 
-  const [deletePopup, setDeletePopup] = useState({
-    title: "Delete Confirmation",
-    text: "Are you sure you want to delete these row(s)? This action is irreversible.",
-    color: "red",
-    visible: false,
-  });
-
-  const [winnerPopup, setWinnerPopup] = useState({
-    title: "Status Change Restricted",
-    text: "Changing status from 'winner' is restricted. You can check the Prize page for more information.",
-    color: "green",
+  const [popup, setPopup] = useState({
+    title: "",
+    text: "",
+    color: "",
     visible: false,
   });
 
@@ -43,11 +36,13 @@ const Toolbar = ({
       (obj) => obj.selected && obj.status === "winner"
     );
     if (selectedWinners) {
-      setWinnerPopup({
+      setPopup({
         title: "Status Change Restricted",
         text: "Changing status from 'winner' is restricted. You can check the Prize page for more information.",
         color: "green",
         visible: true,
+        onClick: () => router.push("/prizes"),
+        button: "Prizes",
       });
       return;
     }
@@ -111,7 +106,6 @@ const Toolbar = ({
       .then(() => {
         toast("✅ Successfully Deleted");
       });
-    setDeletePopup({ ...deletePopup, visible: true });
   };
 
   const handleReload = () => {
@@ -159,26 +153,20 @@ const Toolbar = ({
       <div className="flex w-1/3">
         <FaTrashAlt
           data-cy="delete"
-          onClick={() => setDeletePopup({ ...deletePopup, visible: true })}
+          onClick={() =>
+            setPopup({
+              button: "confirm",
+              title: "Delete Confirmation",
+              text: "Are you sure you want to delete these row(s)? This action is irreversible.",
+              color: "red",
+              visible: true,
+              onClick: handleDelete,
+            })
+          }
           size={22.5}
           className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
         />
-        {deletePopup.visible && (
-          <Popup
-            popup={deletePopup}
-            onClick={handleDelete}
-            setPopup={setDeletePopup}
-            text="confirm"
-          />
-        )}
-        {winnerPopup.visible && (
-          <Popup
-            popup={winnerPopup}
-            onClick={() => router.push("/admin/prizes")}
-            setPopup={setWinnerPopup}
-            text="prizes"
-          />
-        )}
+        {popup.visible && <Popup popup={Popup} setPopup={setPopup} />}
       </div>
     </div>
   );
