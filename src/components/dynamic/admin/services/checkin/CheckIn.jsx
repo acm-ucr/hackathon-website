@@ -9,8 +9,8 @@ import Button from "../../Button";
 import toast from "react-hot-toast";
 import axios from "axios";
 
-const CheckIn = () => {
-  const [event, setEvent] = useState({ name: "No Event Selected" });
+const CheckIn = ({}) => {
+  const [event, setEvent] = useState({ name: "No event" });
   const [events, setEvents] = useState(null);
   const [code, setCode] = useState(null);
 
