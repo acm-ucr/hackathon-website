@@ -17,7 +17,7 @@ const Navigation = () => {
     : pathName.startsWith("/users")
     ? USER
     : null;
-  const [dropdown, setDropdown] = useState(tabs && Object.keys(tabs)[0]);
+  const [dropdown, setDropdown] = useState(Object.keys(tabs)[0]);
 
   return (
     tabs && (
