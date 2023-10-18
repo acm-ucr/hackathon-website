@@ -56,3 +56,18 @@ export const HOWTOFINDEVENTS = [
   "facebook",
 ];
 export const JUDGE_AFFILIATION = ["Student", "Professor", "Industry"];
+
+export const AVAILABILITY = [
+  "Friday Morning",
+  "Saturday Morning",
+  "Sunday Morning",
+  "Friday Afternoon",
+  "Saturday Afternoon",
+  "Sunday Afternoon",
+  "Friday Evening",
+  "Saturday Evening",
+  "Sunday Evening",
+  "Friday Night",
+  "Saturday Night",
+  "Sunday Night",
+];
