@@ -35,13 +35,13 @@ const Navigation = () => {
         </div>
       </div>
       <div
-        className={`z-10 ${
+        className={`z-10 lg:flex ${
           expand
-            ? "left-0 h-screen w-1/2 fixed lg:flex lg:w-[12%] pt-5"
-            : `hidden lg:flex w-[12%]`
+            ? "left-0 h-screen w-1/2 fixed lg:w-[12%] pt-5"
+            : `hidden w-[12%]`
         }`}
       >
-        <div className="bg-hackathon-blue-200 h-screen flex flex-col justify-between items-center w-full">
+        <div className="bg-hackathon-blue-200 h-full flex flex-col justify-between items-center w-full">
           <div className="hidden lg:flex items-center my-3">
             <Image
               src={LOGO}
@@ -55,48 +55,43 @@ const Navigation = () => {
           <div className="w-full flex flex-col items-center h-full">
             {Object.entries(tabs)
               .filter(([title]) => title !== " ")
-              .map(
-                ([title, subTabs], index) =>
-                  title !== " " && (
-                    <div key={index} className="w-full">
-                      <p
-                        className={`text-white text-xl font-poppin font-bold w-full px-2 mb-0 flex items-center justify-between hover:cursor-pointer ${subTabs.mt}`}
-                        onClick={() =>
-                          setDropdown(title === dropdown ? "" : title)
-                        }
+              .map(([title, subTabs], index) => (
+                <div key={index} className="w-full">
+                  <p
+                    className={`text-white text-xl font-poppin font-bold w-full px-2 mb-0 flex items-center justify-between hover:cursor-pointer ${subTabs.mt}`}
+                    onClick={() => setDropdown(title === dropdown ? "" : title)}
+                  >
+                    {title}
+                    {subTabs.expand && (
+                      <BiSolidDownArrow
+                        className={`text-sm duration-300 ${
+                          dropdown === title && "rotate-180"
+                        }`}
+                      />
+                    )}
+                  </p>
+                  {(dropdown === title || !subTabs.expand) &&
+                    subTabs.tabs.map((tab, index) => (
+                      <Link
+                        key={index}
+                        href={tab.link}
+                        className="no-underline p-0 w-full"
                       >
-                        {title}
-                        {subTabs.expand && (
-                          <BiSolidDownArrow
-                            className={`text-sm duration-300 ${
-                              dropdown === title && "rotate-180"
-                            }`}
-                          />
-                        )}
-                      </p>
-                      {(dropdown === title || !subTabs.expand) &&
-                        subTabs.tabs.map((tab, index) => (
-                          <Link
-                            key={index}
-                            href={tab.link}
-                            className="no-underline p-0 w-full"
-                          >
-                            <div
-                              onClick={() => setExpand(false)}
-                              className={`w-full flex [&>*]:text-white items-center justify-start py-1 m-0 pl-[10%] ${
-                                pathName.endsWith(tab.link)
-                                  ? "bg-hackathon-blue-100"
-                                  : "[&>*]:hover:text-hackathon-blue-100"
-                              }`}
-                            >
-                              {tab.icon}
-                              <p className="text-lg m-0 p-0">{tab.name}</p>
-                            </div>
-                          </Link>
-                        ))}
-                    </div>
-                  )
-              )}
+                        <div
+                          onClick={() => setExpand(false)}
+                          className={`w-full flex [&>*]:text-white items-center justify-start py-1 m-0 pl-[10%] ${
+                            pathName.endsWith(tab.link)
+                              ? "bg-hackathon-blue-100"
+                              : "[&>*]:hover:text-hackathon-blue-100"
+                          }`}
+                        >
+                          {tab.icon}
+                          <p className="text-lg m-0 p-0">{tab.name}</p>
+                        </div>
+                      </Link>
+                    ))}
+                </div>
+              ))}
           </div>
           <div className="w-full flex flex-col items-center mb-3">
             {tabs[" "].map((tab, index) => (
@@ -115,7 +110,7 @@ const Navigation = () => {
                   }`}
                 >
                   {tab.icon}
-                  <p className="text-lg m-0 p-0">{tab.name}</p>
+                  <div className="text-lg">{tab.name}</div>
                 </div>
               </Link>
             ))}
