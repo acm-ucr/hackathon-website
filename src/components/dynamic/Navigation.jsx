@@ -37,7 +37,7 @@ const Navigation = () => {
       <div
         className={
           expand
-            ? "left-0 h-screen w-1/2 fixed z-10 lg:flex lg:w-[12%]"
+            ? "left-0 h-screen w-1/2 fixed z-10 lg:flex lg:w-[12%] pt-5"
             : `hidden lg:flex w-[12%] z-10`
         }
       >
@@ -45,7 +45,7 @@ const Navigation = () => {
           <div className="hidden lg:flex items-center my-3">
             <Image
               src={LOGO}
-              className=" scale-90"
+              className="w-10 h-10 mx-2"
               alt={`${CONFIG.name} Logo`}
             />
             <p className="text-white font-bold text-lg pr-2 m-0">
