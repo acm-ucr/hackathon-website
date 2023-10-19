@@ -177,7 +177,7 @@ const Toolbar = ({
         {popup.visible && (
           <Popup
             popup={popup}
-            onClick={onClick}
+            onClick={popup.onClick}
             setPopup={setPopup}
             text={popup.button}
           />
