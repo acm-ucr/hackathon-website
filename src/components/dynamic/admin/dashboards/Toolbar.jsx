@@ -27,7 +27,7 @@ const Toolbar = ({
     text: "",
     color: "",
     visible: false,
-    action: () => {},
+    onClick: () => {},
     button: "",
   });
 
@@ -35,16 +35,17 @@ const Toolbar = ({
 
   const onClick = (value) => {
     const selectedWinners = objects.some(
-      (obj) => obj.selected && obj.status === "winner"
+      (obj) => obj.selected && obj.status === 2
     );
+
     if (selectedWinners) {
       setPopup({
         title: "Status Change Restricted",
-        text: "Changing status from 'winner' is restricted. You can check the Prize page for more information.",
+        text: "Changing status from 'winner' is restricted. You can check the prizes page for more information.",
         color: "green",
         visible: true,
-        action: () => router.push("/prizes"),
-        button: "Prizes",
+        onClick: () => router.push("/admins/prizes"),
+        button: "prizes",
       });
       return;
     }
@@ -161,7 +162,7 @@ const Toolbar = ({
               text: "Are you sure you want to delete these row(s)? This action is irreversible.",
               color: "red",
               visible: true,
-              action: handleDelete,
+              onClick: handleDelete,
               button: "confirm",
             })
           }
@@ -170,8 +171,8 @@ const Toolbar = ({
         />
         {popup.visible && (
           <Popup
-            popup={Popup}
-            onClick={popup.action}
+            popup={popup}
+            onClick={onClick}
             setPopup={setPopup}
             text={popup.button}
           />
