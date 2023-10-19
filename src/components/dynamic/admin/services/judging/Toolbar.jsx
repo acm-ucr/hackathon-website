@@ -43,9 +43,13 @@ const Toolbar = ({ data, setData, judges, setJudges }) => {
 
   const generate = (e) => {
     e.preventDefault();
-
-    if (input.rotations === "") {
-      toast("❌ Please enter a valid integer value");
+    if (
+      input.rotations === "" ||
+      isNaN(input.rotations) ||
+      parseInt(input.rotations) < 1 ||
+      parseInt(input.rotations) > 99
+    ) {
+      toast("❌ Please enter a valid integer value between 1 and 99");
       return;
     }
 
