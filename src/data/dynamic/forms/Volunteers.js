@@ -1,4 +1,4 @@
-import { MAJORS, GRADES, GENDERS, SHIRTS } from "./Information";
+import { MAJORS, GRADES, GENDERS, SHIRTS, AVAILABILITY } from "./Information";
 
 export const FIELDS = {
   description: {
@@ -74,20 +74,7 @@ export const FIELDS = {
     field: "availability",
     text: "Availability",
     required: true,
-    options: [
-      "Friday Morning",
-      "Saturday Morning",
-      "Sunday Morning",
-      "Friday Afternoon",
-      "Saturday Afternoon",
-      "Sunday Afternoon",
-      "Friday Evening",
-      "Saturday Evening",
-      "Sunday Evening",
-      "Friday Night",
-      "Saturday Night",
-      "Sunday Night",
-    ],
+    options: AVAILABILITY,
   },
   gender: {
     input: "radio",
