@@ -133,8 +133,9 @@ export const ATTRIBUTES = {
   discord: "",
   major: "",
   grade: "",
-  availability: {},
+  availability: [],
   gender: "",
   shirt: "",
   response: "",
+  requirements: [],
 };

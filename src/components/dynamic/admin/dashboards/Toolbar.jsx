@@ -92,6 +92,7 @@ const Toolbar = ({
   const handleReload = () => {
     axios.get(`/api/${page}`).then((response) => {
       setObjects(response.data.items);
+      toast("✅ Fetched Data Successfully");
     });
   };
 

@@ -33,90 +33,95 @@ const User = ({ user, setUser, edit, setEdit }) => {
       });
   };
   return (
-    <div className="bg-white rounded-lg p-4 gap-3 flex flex-col m-2 overflow-scroll max-h-[70vh]">
-      <Select
-        title="School"
-        options={SCHOOLS}
-        field="school"
-        user={user}
-        setUser={setUser}
-        editable={edit}
-      />
-      <Select
-        title="Major"
-        options={MAJORS}
-        field="major"
-        user={user}
-        setUser={setUser}
-        editable={edit}
-      />
-      <Select
-        title="Grade"
-        options={GRADES}
-        field="grade"
-        user={user}
-        setUser={setUser}
-        editable={edit}
-      />
-      <Input
-        name="phone"
-        type="phone"
-        title="Phone Number"
-        value={user.phone}
-        user={user}
-        setUser={setUser}
-        editable={edit}
-      />
-      <Select
-        title="Age"
-        options={AGES}
-        field="age"
-        user={user}
-        setUser={setUser}
-        editable={edit}
-      />
-      <Radio
-        text="Gender"
-        options={GENDERS}
-        field="gender"
-        user={user}
-        setUser={setUser}
-        editable={edit}
-      />
-      <Radio
-        text="Shirt"
-        options={SHIRTS}
-        field="shirt"
-        user={user}
-        setUser={setUser}
-        editable={edit}
-      />
-      <div>
-        <p className="mb-1 font-semibold">Diet</p>
-        {edit
-          ? DIETS.map((option, index) => (
+    <div className="bg-white rounded-lg gap-3 flex flex-col m-2 max-h-[70vh] pb-4">
+      <div className="gap-3 flex flex-col m-2 overflow-scroll h-[90%] p-4 bg-transparent">
+        <Select
+          title="School"
+          options={SCHOOLS}
+          field="school"
+          user={user}
+          setUser={setUser}
+          editable={edit}
+        />
+        <Select
+          title="Major"
+          options={MAJORS}
+          field="major"
+          user={user}
+          setUser={setUser}
+          editable={edit}
+        />
+        <Select
+          title="Grade"
+          options={GRADES}
+          field="grade"
+          user={user}
+          setUser={setUser}
+          editable={edit}
+        />
+        <Input
+          name="phone"
+          type="phone"
+          title="Phone Number"
+          value={user.phone}
+          user={user}
+          setUser={setUser}
+          editable={edit}
+        />
+        <Select
+          title="Age"
+          options={AGES}
+          field="age"
+          user={user}
+          setUser={setUser}
+          editable={edit}
+        />
+        <Radio
+          text="Gender"
+          options={GENDERS}
+          field="gender"
+          user={user}
+          setUser={setUser}
+          editable={edit}
+        />
+        <Radio
+          text="Shirt"
+          options={SHIRTS}
+          field="shirt"
+          user={user}
+          setUser={setUser}
+          editable={edit}
+        />
+        <div>
+          <p className="mb-1 font-semibold">Diet</p>
+          {edit ? (
+            DIETS.map((option, index) => (
               <Checkbox
                 className="w-1/2"
                 key={index}
-                toggle={user.diet[option]}
+                toggle={user.diet.includes(option)}
                 text={option}
                 onClick={() =>
                   setUser({
                     ...user,
-                    diet: {
-                      ...user.diet,
-                      [option]: !user.diet[option],
-                    },
+                    diet: user.diet.includes(option)
+                      ? user.diet.filter((diet) => diet !== option)
+                      : [...user.diet, option],
                   })
                 }
                 color="bg-hackathon-green-300"
               />
             ))
-          : Object.keys(user.diet).map((diet, index) => (
+          ) : user.diet.length > 0 ? (
+            user.diet.map((diet, index) => (
               <p className="pl-3 mb-1" key={index}>
                 {diet}
               </p>
-            ))}
+            ))
+          ) : (
+            <p className="pl-3 mb-1">No diet restrictions</p>
+          )}
+        </div>
       </div>
       <div className="w-full flex justify-center">
         {edit && (

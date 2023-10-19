@@ -1,5 +1,3 @@
-"use client";
-import { Col, Row } from "react-bootstrap";
 import Tag from "../../Tag";
 import { COLORS } from "@/data/dynamic/Tags";
 import Link from "next/link";
@@ -10,15 +8,11 @@ const Table = ({ data }) => {
   return data === null ? (
     <Loading />
   ) : (
-    <Row className="overflow-y-scroll">
+    <div className="grid grid-cols-4 overflow-y-scroll">
       {data
         .filter((group) => !group.hidden)
         .map((group, index) => (
-          <Col
-            xl={3}
-            key={index}
-            className="flex justify-between items-start p-2"
-          >
+          <div key={index} className="flex justify-between items-start p-2">
             <div className="bg-white w-full p-3 rounded-xl">
               <div className="flex justify-between items-center">
                 <Tag color={COLORS["grayblue"]} text={group.name} />
@@ -54,9 +48,9 @@ const Table = ({ data }) => {
                 </div>
               ))}
             </div>
-          </Col>
+          </div>
         ))}
-    </Row>
+    </div>
   );
 };
 
