@@ -17,13 +17,8 @@ const Mentor = () => {
   });
 
   const handleSubmit = (setLoading) => {
-    const data = {
-      ...mentor,
-      availability: Object.keys(mentor.availability),
-    };
-
     axios
-      .post("/api/mentors", data)
+      .post("/api/mentors", mentor)
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
       .finally(() => setLoading(false));

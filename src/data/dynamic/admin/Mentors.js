@@ -1,5 +1,5 @@
 import Checkbox from "@/components/dynamic/Checkbox";
-import { AVAILABILITY } from "../forms/Availability";
+import { AVAILABILITY } from "../forms/Information";
 
 export const FILTERS = {
   pending: {
@@ -52,7 +52,7 @@ export const DROPDOWN = ({ object }) => {
   return (
     <div className="flex justify-center">
       <div className="grid grid-cols-3 w-11/12">
-        {Object.values(AVAILABILITY).map(({ text }, index) => (
+        {AVAILABILITY.map((text, index) => (
           <Checkbox
             toggle={object.availability.includes(text)}
             text={text}

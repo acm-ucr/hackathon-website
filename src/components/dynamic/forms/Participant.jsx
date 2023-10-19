@@ -16,13 +16,8 @@ const Participant = () => {
   });
 
   const handleSubmit = (setLoading) => {
-    const data = {
-      ...participant,
-      diet: Object.keys(participant.diet),
-    };
-
     axios
-      .post("/api/participants", data)
+      .post("/api/participants", participant)
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
       .finally(() => setLoading(false));

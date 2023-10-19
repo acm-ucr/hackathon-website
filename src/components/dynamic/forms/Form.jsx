@@ -27,17 +27,14 @@ const Form = ({ object, setObject, header, fields, onSubmit }) => {
     if (
       fields.requirements &&
       fields.requirements.options.some(
-        (requirement) => !object.requirements[requirement]
+        (requirement) => !object.requirements.includes(requirement)
       )
     ) {
       toast("❌ Please agree to all the terms!");
       setLoading(false);
       return;
     }
-    if (
-      fields.availability &&
-      !Object.values(object.availability).some((time) => time)
-    ) {
+    if (fields.availability && object.availability.length === 0) {
       toast("❌ Please select at least one available time!");
       setLoading(false);
       return;
@@ -68,7 +65,6 @@ const Form = ({ object, setObject, header, fields, onSubmit }) => {
                       )}
                     </>
                   ))}
-
                 {field.input === "input" && (
                   <Input
                     name={field.name}
@@ -86,12 +82,13 @@ const Form = ({ object, setObject, header, fields, onSubmit }) => {
                 {field.input === "select" && (
                   <Select
                     title={field.title}
-                    options={field.options}
+                    items={field.options}
                     field={field.field}
                     placeholder={field.placeholder}
                     user={object}
                     setUser={setObject}
                     required={field.required}
+                    searchable={field.searchable}
                   />
                 )}
                 {field.input === "checkboxes" && (
@@ -106,19 +103,16 @@ const Form = ({ object, setObject, header, fields, onSubmit }) => {
                       <Checkbox
                         className="w-1/2"
                         key={i}
-                        toggle={
-                          object[field.field] && object[field.field][option]
-                        }
+                        toggle={object[field.field].includes(option)}
                         text={option}
                         onClick={() =>
                           setObject({
                             ...object,
-                            [field.field]: {
-                              ...object[field.field],
-                              [option]: object[field.field]
-                                ? !object[field.field][option]
-                                : true,
-                            },
+                            [field.field]: object[field.field].includes(option)
+                              ? object[field.field].filter(
+                                  (item) => item !== option
+                                )
+                              : [...object[field.field], option],
                           })
                         }
                         color="bg-hackathon-green-300"
