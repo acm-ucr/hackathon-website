@@ -42,7 +42,6 @@ const Dashboard = ({
         setObjects={setObjects}
         objects={objects}
         filters={filters}
-        file={file}
         headers={headers}
         page={page}
       />
