@@ -155,18 +155,20 @@ const Toolbar = ({
           data-cy="delete"
           onClick={() =>
             setPopup({
-              button: "confirm",
               title: "Delete Confirmation",
               text: "Are you sure you want to delete these row(s)? This action is irreversible.",
               color: "red",
               visible: true,
               onClick: handleDelete,
+              button: "confirm",
             })
           }
           size={22.5}
           className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
         />
-        {popup.visible && <Popup popup={Popup} setPopup={setPopup} />}
+        {popup.visible && (
+          <Popup popup={Popup} setPopup={setPopup} text={popup.button} />
+        )}
       </div>
     </div>
   );
