@@ -11,7 +11,6 @@ const Dashboard = ({
   title,
   page,
   empty,
-  file,
   dropdown,
   filter,
   header,
