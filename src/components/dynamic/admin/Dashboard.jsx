@@ -51,7 +51,7 @@ const Dashboard = ({
         setHeaders={setHeaders}
         setObjects={setObjects}
         objects={objects}
-        dropdown={dropdown}
+        Dropdown={dropdown}
         statuses={statuses}
       />
     </div>
