@@ -36,7 +36,7 @@ describe("Select", () => {
         <Select
           options={options}
           user={user}
-          field={"name"}
+          field="name"
           setUser={setUser}
           placeholder={placeholder}
           title={title}
@@ -48,5 +48,35 @@ describe("Select", () => {
 
     cy.get('[data-cy="toggle"]').click();
     cy.get('[data-cy="menu"]').should("be.visible");
+  });
+  it("Selects and Updates", () => {
+    const Parent = () => {
+      const [user, setUser] = useState({ name: "" });
+
+      return (
+        <Select
+          options={options}
+          user={user}
+          field="name"
+          setUser={setUser}
+          placeholder={placeholder}
+          title={title}
+        />
+      );
+    };
+
+    cy.mount(<Parent />);
+
+    cy.get('[data-cy="toggle"]').click();
+
+    const selectedOption = options[0];
+    cy.get('[data-cy="menu"]').contains(selectedOption).click();
+
+    cy.get('[data-cy="toggle"]').should("contain", selectedOption);
+
+    cy.get('[data-cy="toggle"]').then(($toggle) => {
+      const updatedUserName = $toggle.text().trim();
+      expect(updatedUserName).to.equal(selectedOption);
+    });
   });
 });
