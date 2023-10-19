@@ -37,7 +37,7 @@ const User = ({ user, setUser, edit, setEdit }) => {
       <div className="gap-3 flex flex-col m-2 overflow-scroll h-[90%] p-4 bg-transparent">
         <Select
           title="School"
-          options={SCHOOLS}
+          items={SCHOOLS}
           field="school"
           user={user}
           setUser={setUser}
@@ -45,7 +45,7 @@ const User = ({ user, setUser, edit, setEdit }) => {
         />
         <Select
           title="Major"
-          options={MAJORS}
+          items={MAJORS}
           field="major"
           user={user}
           setUser={setUser}
@@ -53,7 +53,7 @@ const User = ({ user, setUser, edit, setEdit }) => {
         />
         <Select
           title="Grade"
-          options={GRADES}
+          items={GRADES}
           field="grade"
           user={user}
           setUser={setUser}
@@ -70,7 +70,7 @@ const User = ({ user, setUser, edit, setEdit }) => {
         />
         <Select
           title="Age"
-          options={AGES}
+          items={AGES}
           field="age"
           user={user}
           setUser={setUser}
