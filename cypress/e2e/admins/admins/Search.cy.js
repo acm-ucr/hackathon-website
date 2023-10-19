@@ -14,7 +14,7 @@ describe("Admin Search", () => {
   it("No Search Results", () => {
     cy.get('[data-cy="toolbar"]').find('[data-cy="input-input"]').type("Meow");
     cy.get('[data-cy="toolbar"]').find("form").submit();
-    cy.contains("No Admin Available");
+    cy.contains("No Admins Available");
   });
 
   it("Search For 1st Entry", () => {
