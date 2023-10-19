@@ -1,5 +1,5 @@
 import { CONFIG } from "../../Config";
-import { HOWTOFINDEVENTS } from "./Information";
+import { SOURCES } from "./Information";
 
 const RATE = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
@@ -52,7 +52,7 @@ export const FIELDS = {
   "How did you find the event?": {
     input: "select",
     title: "How did you find the event?",
-    options: HOWTOFINDEVENTS,
+    options: SOURCES,
     field: "How did you find the event?",
     placeholder: "Devpost",
     width: 12,

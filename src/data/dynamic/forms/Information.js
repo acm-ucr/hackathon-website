@@ -57,13 +57,13 @@ export const REQUIREMENTS = {
     text: "I understand that I will attend the event in person.",
   },
 };
-export const HOWTOFINDEVENTS = [
-  "devpost",
-  "ACM discord server",
-  "hackathon tabling",
-  "instagram",
-  "twitter",
-  "facebook",
+export const SOURCES = [
+  { name: "devpost", hidden: false },
+  { name: "ACM discord server", hidden: false },
+  { name: "hackathon tabling", hidden: false },
+  { name: "instagram", hidden: false },
+  { name: "twitter", hidden: false },
+  { name: "facebook", hidden: false },
 ];
 export const JUDGE_AFFILIATION = ["Student", "Professor", "Industry"];
 
