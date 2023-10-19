@@ -6,14 +6,14 @@ import {
   deleteDoc,
   collection,
   getDocs,
+  deleteField,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
+import { AUTH } from "@/data/dynamic/admin/Teams";
 
 export async function GET() {
   const res = NextResponse;
-  const { auth } = await authenticate({
-    admins: 1,
-  });
+  const { auth } = await authenticate(AUTH.GET);
 
   if (auth !== 200) {
     return res.json(
@@ -30,14 +30,18 @@ export async function GET() {
 
       const formattedNames = members.map((member) => member.name);
       const formattedEmails = members.map((member) => member.email);
-      const formattedLinks = Object.entries(links).map(([key, value]) => {
-        return { name: key, link: value };
-      });
+      const formattedUids = members.map((member) => member.uid);
+      const formattedLinks = Object.entries(links)
+        .filter(([key, value]) => value !== "")
+        .map(([key, value]) => {
+          return { name: key, link: value };
+        });
 
       output.push({
         links: formattedLinks,
         members: formattedNames,
         emails: formattedEmails,
+        uids: formattedUids,
         name,
         status,
         uid: doc.id,
@@ -56,9 +60,7 @@ export async function GET() {
 
 export async function PUT(req) {
   const res = NextResponse;
-  const { auth } = await authenticate({
-    admins: 1,
-  });
+  const { auth } = await authenticate(AUTH.PUT);
 
   if (auth !== 200) {
     return res.json(
@@ -71,6 +73,11 @@ export async function PUT(req) {
   try {
     objects.forEach(async (object) => {
       if (attribute === "role") {
+        object.uids.forEach(async (member) => {
+          await updateDoc(doc(db, "users", member), {
+            team: deleteField(),
+          });
+        });
         await deleteDoc(doc(db, "teams", object.uid));
       } else if (attribute === "status") {
         await updateDoc(doc(db, "teams", object.uid), {

@@ -6,7 +6,7 @@ import { BYTES } from "@/data/dynamic/Bytes";
 const getSize = (maxSize) => BYTES[maxSize[1]] * maxSize[0];
 const getType = (types) => "." + types.join(",.");
 
-const Upload = ({ field, user, setUser, text, maxSize, types }) => {
+const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
 
@@ -31,7 +31,10 @@ const Upload = ({ field, user, setUser, text, maxSize, types }) => {
 
   return (
     <div className="flex flex-col">
-      <p className="mb-0 font-semibold">{text}</p>
+      <p className="mb-0 font-semibold">
+        {text}
+        {required && <span className="text-hackathon-green-300">*</span>}
+      </p>
       <div className="flex items-center w-full flex-col" data-cy="upload">
         {!file && (
           <label

@@ -10,16 +10,15 @@ import {
   deleteField,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
+import { AUTH } from "@/data/dynamic/admin/Volunteers";
 
 export async function POST(req) {
   const res = NextResponse;
-  const { auth } = await authenticate({
-    admins: 1,
-  });
+  const { auth, message, user } = await authenticate(AUTH.POST);
 
   if (auth !== 200) {
     return res.json(
-      { message: `Authentication Error: ${"MESSAGE VARIABLE SHOULD BE HERE"}` },
+      { message: `Authentication Error: ${message}` },
       { status: auth }
     );
   }
@@ -27,7 +26,7 @@ export async function POST(req) {
     await req.json();
 
   try {
-    await updateDoc(doc(db, "users", uid), {
+    await updateDoc(doc(db, "users", user.id), {
       phone: phone,
       discord: discord,
       major: major,
@@ -37,21 +36,18 @@ export async function POST(req) {
       "roles.volunteers": 0,
       availability: availability,
     });
+    return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
       { status: 500 }
     );
   }
-
-  return res.json({ message: "OK" }, { status: 200 });
 }
 
 export async function GET() {
   const res = NextResponse;
-  const { auth } = await authenticate({
-    admins: 1,
-  });
+  const { auth } = await authenticate(AUTH.GET);
 
   if (auth !== 200) {
     return res.json(
@@ -93,9 +89,7 @@ export async function GET() {
 
 export async function PUT(req) {
   const res = NextResponse;
-  const { auth } = await authenticate({
-    admins: 1,
-  });
+  const { auth } = await authenticate(AUTH.PUT);
 
   if (auth !== 200) {
     return res.json(

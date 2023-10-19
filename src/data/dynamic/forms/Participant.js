@@ -51,6 +51,7 @@ export const FIELDS = {
     placeholder: "ie. Computer Science",
     width: 12,
     required: true,
+    searchable: true,
   },
   age: {
     input: "select",
@@ -60,6 +61,7 @@ export const FIELDS = {
     placeholder: "Age",
     width: 12,
     required: true,
+    searchable: true,
   },
   school: {
     input: "select",
@@ -69,6 +71,7 @@ export const FIELDS = {
     placeholder: "School",
     width: 12,
     required: true,
+    searchable: true,
   },
   grade: {
     input: "select",
@@ -78,6 +81,7 @@ export const FIELDS = {
     placeholder: "ie. Undergraduate",
     width: 12,
     required: true,
+    searchable: true,
   },
   gender: {
     input: "radio",
@@ -97,9 +101,11 @@ export const FIELDS = {
   },
   diet: {
     input: "checkboxes",
+    text: "Dietary Restrictions",
     width: 12,
     field: "diet",
     options: DIETS,
+    required: false,
   },
 
   resume: {
@@ -108,10 +114,11 @@ export const FIELDS = {
     text: "Upload  Resume",
     width: 12,
     types: ["pdf"],
-    maxSize: [150, "KB"],
-    required: true,
+    maxSize: [200, "KB"],
+    required: false,
   },
   requirements: {
+    text: "Terms and Conditions",
     input: "checkboxes",
     width: 12,
     field: "requirements",
@@ -121,4 +128,19 @@ export const FIELDS = {
       "I understand that I will attend the event in person.",
     ],
   },
+};
+
+export const ATTRIBUTES = {
+  name: "",
+  email: "",
+  phone: "",
+  major: "",
+  age: "",
+  school: "",
+  grade: "",
+  gender: "",
+  shirt: "",
+  diet: [],
+  resume: "",
+  requirements: [],
 };

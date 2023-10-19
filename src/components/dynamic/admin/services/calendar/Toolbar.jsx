@@ -1,5 +1,3 @@
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import { LABELS } from "@/data/dynamic/admin/Calendar.js";
 import Tag from "../../Tag.jsx";
 import { COLORS } from "@/data/dynamic/Tags.js";
@@ -39,8 +37,8 @@ const CustomToolbar = ({
   };
 
   return (
-    <Row className="p-0 m-0 pb-2">
-      <Col xs={4} className="flex items-center p-0">
+    <div className="grid grid-cols-3">
+      <div className="flex items-center">
         <Tag
           onClick={() => onView("month")}
           text="month"
@@ -53,8 +51,8 @@ const CustomToolbar = ({
           color={view === "week" ? COLORS["green"] : COLORS["gray"]}
           classes="mx-2"
         />
-      </Col>
-      <Col xs={4} className="flex justify-center items-center p-0">
+      </div>
+      <div className="flex justify-center items-center">
         <FaChevronLeft
           onClick={() => onNavigate("PREV")}
           className="hover:cursor-pointer mx-2"
@@ -67,8 +65,8 @@ const CustomToolbar = ({
           onClick={() => onNavigate("NEXT")}
           className="hover:cursor-pointer mx-2"
         />
-      </Col>
-      <Col xs={4} className="p-0 flex justify-evenly items-center flex-wrap">
+      </div>
+      <div className="flex justify-evenly items-center flex-wrap">
         {Object.entries(LABELS).map(([label, value], index) => (
           <Tag
             key={index}
@@ -78,8 +76,8 @@ const CustomToolbar = ({
             onClick={() => onClick(label)}
           />
         ))}
-      </Col>
-    </Row>
+      </div>
+    </div>
   );
 };
 
