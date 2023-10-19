@@ -27,6 +27,8 @@ const Toolbar = ({
     text: "",
     color: "",
     visible: false,
+    action: () => {},
+    button: "",
   });
 
   const [toggle, setToggle] = useState(false);
@@ -41,7 +43,7 @@ const Toolbar = ({
         text: "Changing status from 'winner' is restricted. You can check the Prize page for more information.",
         color: "green",
         visible: true,
-        onClick: () => router.push("/prizes"),
+        action: () => router.push("/prizes"),
         button: "Prizes",
       });
       return;
@@ -159,7 +161,7 @@ const Toolbar = ({
               text: "Are you sure you want to delete these row(s)? This action is irreversible.",
               color: "red",
               visible: true,
-              onClick: handleDelete,
+              action: handleDelete,
               button: "confirm",
             })
           }
@@ -167,7 +169,12 @@ const Toolbar = ({
           className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
         />
         {popup.visible && (
-          <Popup popup={Popup} setPopup={setPopup} text={popup.button} />
+          <Popup
+            popup={Popup}
+            onClick={popup.action}
+            setPopup={setPopup}
+            text={popup.button}
+          />
         )}
       </div>
     </div>
