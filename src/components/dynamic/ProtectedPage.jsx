@@ -12,6 +12,7 @@ const ProtectedPage = ({ title, children, restrictions }) => {
   const [error, setError] = useState(null);
   const [confirmed, setConfirmed] = useState(false);
   const pathName = usePathname();
+  const navigation = RegExp(/users|admins/).test(pathName);
 
   useEffect(() => {
     if (RELEASES.DYNAMIC[pathName] > new Date()) {
@@ -63,14 +64,10 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       )}
       {status === "authenticated" && confirmed && (
         <>
-          <Navigation />
+          {navigation && <Navigation />}
           <title>{title}</title>
           <div className="flex justify-center items-start w-full bg-hackathon-page z-0 h-screen pt-12 lg:pt-0">
-            <div
-              className={`${
-                pathName.startsWith("/forms") ? "w-full" : "w-11/12"
-              }  h-full`}
-            >
+            <div className={`${navigation ? "w-11/12" : "w-full"} h-full`}>
               {children}
             </div>
           </div>
