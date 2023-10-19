@@ -6,6 +6,7 @@ import DropDown from "./DropDown";
 import Checkbox from "@/components/dynamic/Checkbox";
 import Popup from "../Popup";
 import { FaTrashAlt } from "react-icons/fa";
+import { FaUndoAlt } from "react-icons/fa";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -197,6 +198,11 @@ const Toolbar = ({ objects, setObjects, teams, setTeams, tags }) => {
           maxLength={60}
           placeholder="search"
           showLabel={false}
+        />
+        <FaUndoAlt
+          size={22.5}
+          onClick={load}
+          className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
         />
         <FaTrashAlt
           onClick={() =>

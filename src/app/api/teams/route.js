@@ -31,9 +31,11 @@ export async function GET() {
       const formattedNames = members.map((member) => member.name);
       const formattedEmails = members.map((member) => member.email);
       const formattedUids = members.map((member) => member.uid);
-      const formattedLinks = Object.entries(links).map(([key, value]) => {
-        return { name: key, link: value };
-      });
+      const formattedLinks = Object.entries(links)
+        .filter(([key, value]) => value !== "")
+        .map(([key, value]) => {
+          return { name: key, link: value };
+        });
 
       output.push({
         links: formattedLinks,

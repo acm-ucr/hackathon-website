@@ -17,13 +17,8 @@ const Volunteer = () => {
   });
 
   const handleSubmit = (setLoading) => {
-    const data = {
-      ...volunteer,
-      availability: Object.keys(volunteer.availability),
-    };
-
     axios
-      .post("/api/volunteers", data)
+      .post("/api/volunteers", volunteer)
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
       .finally(() => setLoading(false));

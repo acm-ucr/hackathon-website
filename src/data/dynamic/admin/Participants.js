@@ -12,6 +12,7 @@ export const FILTERS = {
     value: -1,
   },
 };
+
 export const TAGS = [
   {
     text: "accept",
@@ -28,20 +29,20 @@ export const TAGS = [
 ];
 
 export const HEADERS = [
-  { text: "name", size: 2, icon: true, sort: "off" },
-  { text: "email", size: 2, icon: true, sort: "off" },
-  { text: "team", size: 2, icon: true, sort: "off" },
-  { text: "major", size: 2, icon: true, sort: "off" },
+  { text: "name", size: "w-2/12", icon: true, sort: "off" },
+  { text: "email", size: "w-2/12", icon: true, sort: "off" },
+  { text: "team", size: "w-2/12", icon: true, sort: "off" },
+  { text: "major", size: "w-2/12", icon: true, sort: "off" },
   {
     text: "status",
-    size: 1,
+    size: "w-1/12",
     icon: true,
     sort: "off",
     hasTag: true,
   },
   {
     text: "resume",
-    size: 1,
+    size: "w-1/12",
     icon: false,
     sort: "off",
     hasTag: true,
@@ -70,20 +71,17 @@ const attributes = [
 
 export const DROPDOWN = ({ object, icons }) => {
   return (
-    <div className="flex flex-wrap">
-      {attributes.map((attribute, index) => (
-        <div
-          key={index}
-          className="items-center my-1 px-1 flex text-sm min-w-fit w-1/4"
-        >
-          {icons[attribute]}
-          {Array.isArray(object[attribute])
-            ? object[attribute].map((element, index) => (
-                <div key={index}>{element} &#x2c;&nbsp;</div>
-              ))
-            : object[attribute]}
-        </div>
-      ))}
+    <div className="flex justify-center items-center">
+      <div className="grid grid-cols-3 w-11/12">
+        {attributes.map((attribute, index) => (
+          <div key={index} className="my-1 px-1 flex text-sm">
+            {icons[attribute]}
+            {Array.isArray(object[attribute])
+              ? object[attribute].join(",")
+              : object[attribute]}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

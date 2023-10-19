@@ -51,6 +51,7 @@ export const FIELDS = {
     placeholder: "ie. Computer Science",
     width: 12,
     required: true,
+    searchable: true,
   },
   age: {
     input: "select",
@@ -60,6 +61,7 @@ export const FIELDS = {
     placeholder: "Age",
     width: 12,
     required: true,
+    searchable: true,
   },
   school: {
     input: "select",
@@ -69,6 +71,7 @@ export const FIELDS = {
     placeholder: "School",
     width: 12,
     required: true,
+    searchable: true,
   },
   grade: {
     input: "select",
@@ -78,6 +81,7 @@ export const FIELDS = {
     placeholder: "ie. Undergraduate",
     width: 12,
     required: true,
+    searchable: true,
   },
   gender: {
     input: "radio",
@@ -101,7 +105,7 @@ export const FIELDS = {
     width: 12,
     field: "diet",
     options: DIETS,
-    required: true,
+    required: false,
   },
 
   resume: {
@@ -136,6 +140,7 @@ export const ATTRIBUTES = {
   grade: "",
   gender: "",
   shirt: "",
-  diet: {},
+  diet: [],
   resume: "",
+  requirements: [],
 };

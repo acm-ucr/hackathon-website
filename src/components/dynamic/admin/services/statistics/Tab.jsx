@@ -1,12 +1,13 @@
-import Title from "@/components/dynamic/admin/Title";
-import { Col } from "react-bootstrap";
-
 const Tab = ({ title, value }) => {
   return (
-    <Col className="text-center w-full">
-      <Title title={title} classes="text-2xl font-medium" />
-      <Title title={value} classes="text-5xl font-extrabold" />
-    </Col>
+    <div className="text-center w-full">
+      <div data-cy={`${title}-tab`} className="text-2xl font-medium">
+        {title}
+      </div>
+      <div data-cy={`${value}-value`} className="text-5xl font-extrabold">
+        {value}
+      </div>
+    </div>
   );
 };
 

@@ -19,7 +19,7 @@ const Radio = ({
       </p>
       {!editable && <div className="pl-3">{user[field]}</div>}
       {editable && (
-        <div className="grid grid-flow-row grid-cols-2 md:grid-cols-3 w-full">
+        <div className="grid grid-cols-2 md:grid-cols-3 w-full">
           {options.map((option, index) => (
             <div
               className="flex items-center whitespace-nowrap hover:cursor-pointer"
