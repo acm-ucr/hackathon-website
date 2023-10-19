@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import SortIcon from "@/components/admin/dashboards/SortIcon";
-
+import SortIcon from "@/components/dynamic/admin/dashboards/SortIcon";
 describe("SortIcon", () => {
   it("Exists", () => {
     const Parent = () => {
       const [headers, setHeaders] = useState([{ text: "name", sort: "off" }]);
-      const [currentSort, setCurrentSort] = useState(null);
+      const [currentSort, setCurrentSort] = useState(false);
       const setObjects = () => {};
 
       return (

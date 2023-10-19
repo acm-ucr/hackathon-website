@@ -48,7 +48,6 @@ const SortIcon = ({
     <div className="mx-2">
       <TbTriangleFilled
         data-cy={`${name}-sort-up`}
-        id="up"
         className={`${
           headers[index].sort === "up"
             ? " text-hackathon-blue-100"
@@ -58,7 +57,6 @@ const SortIcon = ({
       />
       <TbTriangleInvertedFilled
         data-cy={`${name}-sort-down`}
-        id="down"
         onClick={() => handleClick("down")}
         className={`${
           headers[index].sort === "down"
