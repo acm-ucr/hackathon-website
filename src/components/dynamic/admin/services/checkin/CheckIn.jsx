@@ -74,6 +74,7 @@ const CheckIn = () => {
               setOption={setEvent}
               options={events}
               setOptions={setEvents}
+              empty="no event"
             />
           )}
           <Scanner setResult={setResult} />
