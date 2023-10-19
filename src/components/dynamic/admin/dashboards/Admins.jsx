@@ -18,8 +18,6 @@ const Admin = () => {
       title="Admins"
       page="admins"
       empty="No Admins Available"
-      file=""
-      dropdown=""
       filter={FILTERS}
       header={HEADERS}
       statuses={STATUSES}

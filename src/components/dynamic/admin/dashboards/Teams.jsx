@@ -13,8 +13,6 @@ const Teams = () => {
       title="Teams"
       page="teams"
       empty="No Teams Available"
-      file="TEAMS"
-      dropdown=""
       filter={FILTERS}
       header={HEADERS}
       statuses={STATUSES}

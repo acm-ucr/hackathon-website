@@ -19,7 +19,6 @@ const Mentors = () => {
       title="Mentors"
       page="mentors"
       empty="No Mentors Available"
-      file="MENTORS"
       dropdown={DROPDOWN}
       filter={FILTERS}
       header={HEADERS}

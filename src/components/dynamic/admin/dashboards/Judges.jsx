@@ -18,8 +18,6 @@ const Judges = () => {
       title="Judges"
       page="judges"
       empty="No Judges Available"
-      file="JUDGES"
-      dropdown=""
       filter={FILTERS}
       header={HEADERS}
       statuses={STATUSES}

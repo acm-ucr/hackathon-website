@@ -21,8 +21,8 @@ const Dashboard = ({
   const [input, setInput] = useState({
     input: "",
   });
-  const [filters, setFilters] = useState(filter || {});
-  const [headers, setHeaders] = useState(header || []);
+  const [filters, setFilters] = useState(filter);
+  const [headers, setHeaders] = useState(header);
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
@@ -39,7 +39,7 @@ const Dashboard = ({
       <Toolbar
         input={input}
         setInput={setInput}
-        tags={tags || []}
+        tags={tags}
         setObjects={setObjects}
         objects={objects}
         filters={filters}

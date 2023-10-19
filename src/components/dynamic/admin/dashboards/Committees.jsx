@@ -18,8 +18,6 @@ const Comittee = () => {
       title="Committees"
       page="committees"
       empty="No Committee Available"
-      file=""
-      dropdown=""
       filter={FILTERS}
       header={HEADERS}
       statuses={STATUSES}

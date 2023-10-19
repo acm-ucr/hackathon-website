@@ -20,7 +20,6 @@ const Volunteers = () => {
       title="Volunteers"
       page="volunteers"
       empty="No Volunteers Available"
-      file="VOLUNTEERS"
       dropdown={DROPDOWN}
       filter={FILTERS}
       header={HEADERS}

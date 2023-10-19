@@ -19,7 +19,6 @@ const Participants = () => {
       title="Participants"
       page="participants"
       empty="No Participants Available"
-      file="PARTICIPANTS"
       dropdown={DROPDOWN}
       filter={FILTERS}
       header={HEADERS}
