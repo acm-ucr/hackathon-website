@@ -20,9 +20,7 @@ const Navigation = () => {
       <div className="flex lg:hidden w-full bg-hackathon-blue-200 h-12 items-center fixed z-20">
         <div
           className="flex items-center hover:cursor-pointer"
-          onClick={() => {
-            setExpand(!expand);
-          }}
+          onClick={() => setExpand(!expand)}
         >
           <Image
             src={LOGO}
@@ -36,9 +34,7 @@ const Navigation = () => {
       </div>
       <div
         className={`z-10 lg:flex ${
-          expand
-            ? "left-0 h-screen w-1/2 fixed lg:w-[12%] pt-5"
-            : `hidden w-[12%]`
+          expand ? "left-0 h-screen w-1/2 fixed lg:w-[12%] pt-5" : `hidden`
         }`}
       >
         <div className="bg-hackathon-blue-200 h-full flex flex-col justify-between items-center w-full">
@@ -79,14 +75,14 @@ const Navigation = () => {
                       >
                         <div
                           onClick={() => setExpand(false)}
-                          className={`w-full flex [&>*]:text-white items-center justify-start py-1 m-0 pl-[10%] ${
+                          className={`w-full flex [&>*]:text-white items-center justify-start py-1 pl-[10%] ${
                             pathName.endsWith(tab.link)
                               ? "bg-hackathon-blue-100"
                               : "[&>*]:hover:text-hackathon-blue-100"
                           }`}
                         >
                           {tab.icon}
-                          <p className="text-lg m-0 p-0">{tab.name}</p>
+                          <p className="text-lg m-0">{tab.name}</p>
                         </div>
                       </Link>
                     ))}
@@ -103,7 +99,7 @@ const Navigation = () => {
               >
                 <div
                   onClick={() => setExpand(false)}
-                  className={`w-full flex [&>*]:text-white items-center justify-start pl-[10%] py-1 m-0 ${
+                  className={`w-full flex [&>*]:text-white items-center justify-start pl-[10%] py-1 ${
                     pathName.endsWith(tab.link)
                       ? "bg-hackathon-blue-100"
                       : "[&>*]:hover:text-hackathon-blue-100"
