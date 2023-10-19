@@ -17,11 +17,11 @@ const Admin = () => {
       setObjects={setAdmin}
       title="Admins"
       page="admins"
-      empty="No Admin Available"
+      empty="No Admins Available"
       file=""
       dropdown=""
-      filters={FILTERS}
-      headers={HEADERS}
+      filter={FILTERS}
+      header={HEADERS}
       statuses={STATUSES}
       tags={TAGS}
     />

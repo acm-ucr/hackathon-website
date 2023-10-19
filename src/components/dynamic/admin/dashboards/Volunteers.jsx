@@ -21,11 +21,11 @@ const Volunteers = () => {
       page="volunteers"
       empty="No Volunteers Available"
       file="VOLUNTEERS"
-      filters={FILTERS}
-      headers={HEADERS}
-      tags={TAGS}
       dropdown={DROPDOWN}
+      filter={FILTERS}
+      header={HEADERS}
       statuses={STATUSES}
+      tags={TAGS}
     />
   );
 };

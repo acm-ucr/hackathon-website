@@ -20,11 +20,11 @@ const Mentors = () => {
       page="mentors"
       empty="No Mentors Available"
       file="MENTORS"
-      filters={FILTERS}
-      headers={HEADERS}
+      dropdown={DROPDOWN}
+      filter={FILTERS}
+      header={HEADERS}
       statuses={STATUSES}
       tags={TAGS}
-      dropdown={DROPDOWN}
     />
   );
 };

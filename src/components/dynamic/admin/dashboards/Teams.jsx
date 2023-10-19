@@ -14,10 +14,11 @@ const Teams = () => {
       page="teams"
       empty="No Teams Available"
       file="TEAMS"
-      filters={FILTERS}
-      headers={HEADERS}
-      tags={TAGS}
+      dropdown=""
+      filter={FILTERS}
+      header={HEADERS}
       statuses={STATUSES}
+      tags={TAGS}
     />
   );
 };

@@ -20,8 +20,8 @@ const Judges = () => {
       empty="No Judges Available"
       file="JUDGES"
       dropdown=""
-      filters={FILTERS}
-      headers={HEADERS}
+      filter={FILTERS}
+      header={HEADERS}
       statuses={STATUSES}
       tags={TAGS}
     />

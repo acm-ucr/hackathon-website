@@ -20,8 +20,8 @@ const Comittee = () => {
       empty="No Committee Available"
       file=""
       dropdown=""
-      filters={FILTERS}
-      headers={HEADERS}
+      filter={FILTERS}
+      header={HEADERS}
       statuses={STATUSES}
       tags={TAGS}
     />

@@ -20,11 +20,11 @@ const Participants = () => {
       page="participants"
       empty="No Participants Available"
       file="PARTICIPANTS"
-      filters={FILTERS}
-      headers={HEADERS}
+      dropdown={DROPDOWN}
+      filter={FILTERS}
+      header={HEADERS}
       statuses={STATUSES}
       tags={TAGS}
-      dropdown={DROPDOWN}
     />
   );
 };
