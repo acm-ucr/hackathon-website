@@ -1,7 +1,7 @@
 import Button from "./Button";
 import { LiaTimesSolid } from "react-icons/lia";
 
-const Popup = ({ popup, onClick, setPopup, text }) => {
+const Popup = ({ popup, onClick, setPopup, text, onCancel }) => {
   return (
     <div
       className="fixed inset-0 bg-black/40 w-screen h-screen flex items-center justify-center"
@@ -12,7 +12,10 @@ const Popup = ({ popup, onClick, setPopup, text }) => {
           <p className="text-lg font-bold m-0">{popup.title}</p>
           <LiaTimesSolid
             className="hover:cursor-pointer text-lg"
-            onClick={() => setPopup({ ...popup, visible: false })}
+            onClick={() => {
+              setPopup({ ...popup, visible: false });
+              onCancel();
+            }}
           />
         </div>
         <p>{popup.text}</p>
@@ -21,7 +24,10 @@ const Popup = ({ popup, onClick, setPopup, text }) => {
             color="grayOutline"
             text="cancel"
             size="text-lg"
-            onClick={() => setPopup({ ...popup, visible: false })}
+            onClick={() => {
+              setPopup({ ...popup, visible: false });
+              onCancel();
+            }}
           />
           <Button
             color={popup.color}
@@ -30,6 +36,7 @@ const Popup = ({ popup, onClick, setPopup, text }) => {
             onClick={() => {
               onClick();
               setPopup({ ...popup, visible: false });
+              onCancel();
             }}
           />
         </div>
