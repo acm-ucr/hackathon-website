@@ -29,7 +29,6 @@ const Toolbar = ({
     visible: false,
     onClick: () => {},
     button: "",
-    onCancel: () => {},
   });
 
   const [toggle, setToggle] = useState(false);
@@ -47,17 +46,15 @@ const Toolbar = ({
         visible: true,
         onClick: () => router.push("/admins/prizes"),
         button: "prizes",
-        onCancel: () => {
-          setObjects(
-            objects.map((a) => {
-              if (a.selected && a.status === 2) {
-                a.selected = false;
-              }
-              return a;
-            })
-          );
-        },
       });
+      setObjects(
+        objects.map((a) => {
+          if (a.selected) {
+            a.selected = false;
+          }
+          return a;
+        })
+      );
       return;
     }
 
@@ -191,7 +188,6 @@ const Toolbar = ({
             onClick={popup.onClick}
             setPopup={setPopup}
             text={popup.button}
-            onCancel={popup.onCancel}
           />
         )}
       </div>

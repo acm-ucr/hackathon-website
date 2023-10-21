@@ -12,10 +12,7 @@ const Popup = ({ popup, onClick, setPopup, text, onCancel }) => {
           <p className="text-lg font-bold m-0">{popup.title}</p>
           <LiaTimesSolid
             className="hover:cursor-pointer text-lg"
-            onClick={() => {
-              setPopup({ ...popup, visible: false });
-              onCancel();
-            }}
+            onClick={() => setPopup({ ...popup, visible: false })}
           />
         </div>
         <p>{popup.text}</p>
@@ -24,10 +21,7 @@ const Popup = ({ popup, onClick, setPopup, text, onCancel }) => {
             color="grayOutline"
             text="cancel"
             size="text-lg"
-            onClick={() => {
-              setPopup({ ...popup, visible: false });
-              onCancel();
-            }}
+            onClick={() => setPopup({ ...popup, visible: false })}
           />
           <Button
             color={popup.color}
@@ -36,7 +30,6 @@ const Popup = ({ popup, onClick, setPopup, text, onCancel }) => {
             onClick={() => {
               onClick();
               setPopup({ ...popup, visible: false });
-              onCancel();
             }}
           />
         </div>
