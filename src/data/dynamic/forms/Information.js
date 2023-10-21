@@ -47,17 +47,6 @@ export const DIETS = [
   "Halal",
 ];
 
-export const REQUIREMENTS = {
-  photography: {
-    state: false,
-    text: "I agree to photograph.",
-  },
-  inPerson: {
-    state: false,
-    text: "I understand that I will attend the event in person.",
-  },
-};
-
 export const SOURCES = [
   { name: "Devpost", hidden: false },
   { name: "Discord", hidden: false },
