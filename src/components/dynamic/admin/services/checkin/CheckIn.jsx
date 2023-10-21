@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 
 const CheckIn = () => {
-  const [event, setEvent] = useState({ name: "No event" });
+  const [event, setEvent] = useState({ name: "No events" });
   const [events, setEvents] = useState(null);
   const [code, setCode] = useState(null);
 
@@ -74,7 +74,7 @@ const CheckIn = () => {
               setOption={setEvent}
               options={events}
               setOptions={setEvents}
-              empty="no event"
+              empty="no events"
             />
           )}
           <Scanner setResult={setResult} />
