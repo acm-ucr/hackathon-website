@@ -1,12 +1,10 @@
-import { CONFIG } from "../../Config";
-
 export const AFFILIATIONS = [
   "director",
   "marketing",
   "sponsorship",
   "recruitment",
   "software",
-  "UIUX",
+  "uiux",
   "operations",
 ];
 
@@ -15,7 +13,9 @@ export const FIELDS = {
     input: "description",
     width: 12,
     texts: [
-      `If you would like access to ${CONFIG.name} Admin Portal, please submit the request form below!`,
+      "Welcome to HACKATHON_NAME. Thank you for being on the organizing team, we appreciate your efforts to help support HACKATHON_NAME. HACKATHON_NAME is a DESCRIPTION hackathon spanning HACKATHON_LENGTH on HACKATHON_DATE.",
+      "Admins are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
+      "Note: Admins are not permitted to become participants for the hackathon.",
     ],
   },
   name: {
@@ -62,7 +62,13 @@ export const FIELDS = {
     width: 12,
     field: "requirements",
     options: [
-      "You will be given access to private data that cannot be shared anywhere. If you violate this, you will be reported.",
+      "I have read the MLH code of conduct and agree to the terms and conditions listed",
+      "I consent to photographs being taken and being used for future marketing purposes",
+      "I consent to providing a safe space for hackers to learn and grow their interests in computing",
+      "I consent to following the provided guidelines and rules instructed by the organizing team",
+      "I understand that failure to comply with guidelines or creating an unsafe space will result in my removal from the event",
+      "I understand this is an in person event taking place in UCR and I must attend in person in order to participate",
+      "I understand that I will be given access to private data and malicious intents and actions will be reported immediately.",
     ],
     required: true,
   },
