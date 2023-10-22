@@ -3,18 +3,18 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: "/admins",
-        destination: "/admins/participants",
+        source: "/admin",
+        destination: "/admin/participants",
         permanent: true,
       },
       {
-        source: "/users",
-        destination: "/users/dashboard",
+        source: "/user",
+        destination: "/user/dashboard",
         permanent: true,
       },
       {
-        source: "/forms",
-        destination: "/forms/participants",
+        source: "/form",
+        destination: "/form/participant",
         permanent: true,
       },
     ];

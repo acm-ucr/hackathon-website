@@ -55,6 +55,7 @@ export const AUTH = {
 };
 
 export const STATUSES = {
+  2: "winner",
   1: "accepted",
   0: "pending",
   "-1": "rejected",

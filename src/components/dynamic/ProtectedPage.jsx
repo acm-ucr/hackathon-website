@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import Loading from "@/components/dynamic/Loading";
 import Error from "./Error";
@@ -11,8 +11,9 @@ const ProtectedPage = ({ title, children, restrictions }) => {
   const { data: session, status } = useSession();
   const [error, setError] = useState(null);
   const [confirmed, setConfirmed] = useState(false);
+
   const pathName = usePathname();
-  const navigation = RegExp(/users|admins/).test(pathName);
+  const navigation = RegExp(/user|admin/).test(pathName);
 
   useEffect(() => {
     if (RELEASES.DYNAMIC[pathName] > new Date()) {

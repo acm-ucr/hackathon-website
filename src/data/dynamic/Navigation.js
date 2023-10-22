@@ -21,49 +21,49 @@ import { SiHandshake } from "react-icons/si";
 const iconStyle = "mr-2";
 
 export const TABS = {
-  admins: {
+  admin: {
     Dashboards: {
       expand: true,
       mt: "mt-0",
       tabs: [
         {
           name: "participants",
-          link: "/admins/participants",
+          link: "/admin/participants",
           icon: <BsFillPersonFill className={iconStyle} />,
         },
         {
           name: "teams",
-          link: "/admins/teams",
+          link: "/admin/teams",
           icon: <BsPeopleFill className={iconStyle} />,
         },
         {
           name: "judges",
-          link: "/admins/judges",
+          link: "/admin/judges",
           icon: <FaGavel className={iconStyle} />,
         },
         {
           name: "volunteers",
-          link: "/admins/volunteers",
+          link: "/admin/volunteers",
           icon: <MdVolunteerActivism className={iconStyle} />,
         },
         {
           name: "mentors",
-          link: "/admins/mentors",
+          link: "/admin/mentors",
           icon: <BiSolidHelpCircle className={iconStyle} />,
         },
         {
-          name: "admins",
-          link: "/admins/admins",
+          name: "admin",
+          link: "/admin/admins",
           icon: <FaLock className={iconStyle} />,
         },
         {
           name: "committees",
-          link: "/admins/committees",
+          link: "/admin/committees",
           icon: <SiHandshake className={iconStyle} />,
         },
         {
           name: "feedback",
-          link: "/admins/feedback",
+          link: "/admin/feedback",
           icon: <MdFeedback className={iconStyle} />,
         },
       ],
@@ -74,32 +74,32 @@ export const TABS = {
       tabs: [
         {
           name: "calendar",
-          link: "/admins/calendar",
+          link: "/admin/calendar",
           icon: <FaCalendarDay className={iconStyle} />,
         },
         {
           name: "messenger",
-          link: "/admins/messenger",
+          link: "/admin/messenger",
           icon: <FaEnvelope className={iconStyle} />,
         },
         {
           name: "check in",
-          link: "/admins/checkin",
+          link: "/admin/checkin",
           icon: <AiOutlineQrcode className={iconStyle} />,
         },
         {
           name: "judging",
-          link: "/admins/judging",
+          link: "/admin/judging",
           icon: <FaGavel className={iconStyle} />,
         },
         {
           name: "prizes",
-          link: "/admins/prizes",
+          link: "/admin/prizes",
           icon: <FaMedal className={iconStyle} />,
         },
         {
           name: "statistics",
-          link: "/admins/statistics",
+          link: "/admin/statistics",
           icon: <BsBarChartFill className={iconStyle} />,
         },
       ],
@@ -134,7 +134,7 @@ export const TABS = {
         },
         {
           name: "feedback",
-          link: "/forms/feedback",
+          link: "/form/feedback",
           icon: <MdFeedback className={iconStyle} />,
         },
       ],
