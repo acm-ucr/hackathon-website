@@ -18,11 +18,11 @@ const CalendarEvents = () => {
   const [view, setView] = useState("month");
 
   const handleShortcuts = (e) => {
-    switch (e.keyCode) {
-      case 77:
+    switch (e.key) {
+      case "m":
         setView("month");
         break;
-      case 87:
+      case "w":
         setView("week");
         break;
       default:
