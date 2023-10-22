@@ -8,72 +8,70 @@ export const FIELDS = {
     input: "description",
     width: 12,
     texts: [
-      `Hello! Thank you for your participation in ${CONFIG.name}. We hope you enjoyed and learned some things from this event. Please fill out this anonymous feedback form below!`,
+      `Hello! Thank you for your participation in ${CONFIG.name}. We hope you enjoyed and learned new things from this hackathon. Please fill out this anonymous feedback form below!`,
     ],
   },
-
-  "What was most helpful about the event?": {
+  helpful: {
     input: "textarea",
-    name: "What was most helpful about the event?",
+    name: "helpful",
     rows: 4,
     title: "What was most helpful about the event?",
-    placeholder: "Workshops, team collaboration, mentorship...",
+    placeholder: "N/A",
     width: 12,
     required: true,
   },
-  "Was there anything that you would have liked to see?": {
+  improvements: {
     input: "textarea",
-    name: "Was there anything that you would have liked to see?",
+    name: "improvements",
     rows: 4,
     title: "Was there anything that you would have liked to see?",
-    placeholder: "",
+    placeholder: "N/A",
     width: 12,
     required: true,
   },
-  "Was there anything that you did not find beneficial about the hackathon?": {
+  notBenficial: {
     input: "textarea",
-    name: "Was there anything that you did not find beneficial about the hackathon?",
+    name: "notBenficial",
     rows: 4,
     title:
       "Was there anything that you did not find beneficial about the hackathon?",
-    placeholder: "",
+    placeholder: "N/A",
     width: 12,
     required: true,
   },
-  rate: {
+  rating: {
     input: "radio",
-    text: "How would you rate the hackathon?",
+    text: "Please rate the hackathon on a scale of 1 - 10. 1 being the worst experience and 10 being the best experience",
     options: RATE,
-    field: "rate",
+    field: "rating",
     width: 12,
     required: true,
   },
 
-  "How did you find the event?": {
+  eventSource: {
     input: "select",
     title: "How did you find the event?",
     options: SOURCES,
-    field: "How did you find the event?",
-    placeholder: "Devpost",
+    field: "eventSource",
+    placeholder: "Event Source",
     width: 12,
     required: true,
   },
-  "Is there anything else you'd like to let us know?": {
+  additionalComments: {
     input: "textarea",
-    name: "Is there anything else you'd like to let us know?",
+    name: "additionalComments",
     rows: 4,
     title: "Is there anything else you'd like to let us know?",
-    placeholder: "Literally anything...",
+    placeholder: "N/A",
     width: 12,
   },
 };
 
 export const ATTRIBUTES = {
-  "What was most helpful about the event?": "",
-  "Was there anything that you would have liked to see?": "",
-  "Was there anything that you did not find beneficial about the hackathon?":
-    "",
-  rate: "",
-  "How did you find the event?": "",
-  "Is there anything else you'd like to let us know?": "",
+  helpful: "",
+  improvements: "",
+  notBeneficial: "",
+  rating: "",
+  eventSource: "",
+  additionalComments: "",
 };

@@ -48,6 +48,7 @@ export const DIETS = [
 ];
 
 export const SOURCES = [
+  { name: "Student Organization", hidden: false },
   { name: "Devpost", hidden: false },
   { name: "Discord", hidden: false },
   { name: "Tabling", hidden: false },

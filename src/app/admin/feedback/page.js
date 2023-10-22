@@ -1,6 +1,7 @@
-import Feedback from "@/components/dynamic/form/Feedback";
+import Feedback from "@/components/dynamic/admin/dashboards/Feedback";
 import ProtectedPage from "@/components/dynamic/ProtectedPage";
-const FeedbackPage = () => {
+
+const Page = () => {
   return (
     <ProtectedPage
       title="Admin | Feedback"
@@ -13,4 +14,4 @@ const FeedbackPage = () => {
   );
 };
 
-export default FeedbackPage;
+export default Page;
