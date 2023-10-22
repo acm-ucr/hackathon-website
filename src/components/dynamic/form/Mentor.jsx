@@ -1,15 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import Form from "@/components/dynamic/forms/Form.jsx";
-import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/forms/Admins";
+import Form from "@/components/dynamic/form/Form.jsx";
+import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/form/Mentors.js";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const Admin = () => {
+const Mentor = () => {
   const { data: session } = useSession();
-  const [admin, setAdmin] = useState({
+
+  const [mentor, setMentor] = useState({
     ...ATTRIBUTES,
     name: session.user.name,
     email: session.user.email,
@@ -17,7 +18,7 @@ const Admin = () => {
 
   const handleSubmit = (setLoading) => {
     axios
-      .post("/api/admins", admin)
+      .post("/api/mentors", mentor)
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
       .finally(() => setLoading(false));
@@ -25,12 +26,12 @@ const Admin = () => {
   return (
     <Form
       fields={FIELDS}
-      object={admin}
-      setObject={setAdmin}
-      header="ADMIN PORTAL REQUEST"
+      object={mentor}
+      setObject={setMentor}
+      header="MENTOR APPLICATION"
       onSubmit={handleSubmit}
     />
   );
 };
 
-export default Admin;
+export default Mentor;

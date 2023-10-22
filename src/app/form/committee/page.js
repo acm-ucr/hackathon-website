@@ -1,4 +1,4 @@
-import Committee from "@/components/dynamic/forms/Committee";
+import Committee from "@/components/dynamic/form/Committee";
 import ProtectedPage from "@/components/dynamic/ProtectedPage";
 
 const Page = () => {

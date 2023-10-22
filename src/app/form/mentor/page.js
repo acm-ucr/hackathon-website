@@ -1,4 +1,4 @@
-import Mentor from "@/components/dynamic/forms/Mentor";
+import Mentor from "@/components/dynamic/form/Mentor";
 import ProtectedPage from "@/components/dynamic/ProtectedPage";
 
 const Page = () => {

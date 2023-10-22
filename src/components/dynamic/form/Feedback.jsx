@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Form from "@/components/dynamic/forms/Form.jsx";
-import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/forms/Feedback.js";
+import Form from "@/components/dynamic/form/Form.jsx";
+import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/form/Feedback.js";
 
 const Feedback = () => {
   const [feedback, setfeedback] = useState(ATTRIBUTES);

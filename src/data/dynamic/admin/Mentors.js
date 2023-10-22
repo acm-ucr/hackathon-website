@@ -1,5 +1,5 @@
 import Checkbox from "@/components/dynamic/Checkbox";
-import { AVAILABILITY } from "../forms/Information";
+import { AVAILABILITY } from "../form/Information";
 
 export const FILTERS = {
   pending: {

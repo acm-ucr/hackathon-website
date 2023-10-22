@@ -1,4 +1,4 @@
-import Volunteer from "@/components/dynamic/forms/Volunteer";
+import Volunteer from "@/components/dynamic/form/Volunteer";
 import ProtectedPage from "@/components/dynamic/ProtectedPage";
 
 const Page = () => {

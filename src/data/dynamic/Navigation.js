@@ -134,7 +134,7 @@ export const TABS = {
         },
         {
           name: "feedback",
-          link: "/forms/feedback",
+          link: "/form/feedback",
           icon: <MdFeedback className={iconStyle} />,
         },
       ],

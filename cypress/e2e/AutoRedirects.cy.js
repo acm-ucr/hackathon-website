@@ -5,7 +5,7 @@ describe("Test Auto Redirects", () => {
   });
 
   it("Auto Redirect to /form/participants", () => {
-    cy.visit("/forms");
+    cy.visit("/form");
     cy.url().should("match", /form\/participants/);
   });
 

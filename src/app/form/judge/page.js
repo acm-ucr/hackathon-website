@@ -1,4 +1,4 @@
-import Judge from "@/components/dynamic/forms/Judge";
+import Judge from "@/components/dynamic/form/Judge";
 import ProtectedPage from "@/components/dynamic/ProtectedPage";
 
 const Page = () => {

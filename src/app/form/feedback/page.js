@@ -1,4 +1,4 @@
-import Feedback from "@/components/dynamic/forms/Feedback";
+import Feedback from "@/components/dynamic/form/Feedback";
 import ProtectedPage from "@/components/dynamic/ProtectedPage";
 
 const Page = () => {

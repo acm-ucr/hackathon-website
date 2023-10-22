@@ -5,8 +5,8 @@ import {
   GRADES,
   MAJORS,
   SHIRTS,
-} from "@/data/dynamic/forms/Information";
-import { SCHOOLS } from "@/data/dynamic/forms/Schools";
+} from "@/data/dynamic/form/Information";
+import { SCHOOLS } from "@/data/dynamic/form/Schools";
 import Input from "../Input";
 import Radio from "../Radio";
 import Select from "../Select";

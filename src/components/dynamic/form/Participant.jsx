@@ -1,15 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import Form from "@/components/dynamic/forms/Form.jsx";
-import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/forms/Judge.js";
+import Form from "@/components/dynamic/form/Form.jsx";
+import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/form/Participant.js";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const judge = () => {
+const Participant = () => {
   const { data: session } = useSession();
-  const [judge, setJudge] = useState({
+  const [participant, setParticipant] = useState({
     ...ATTRIBUTES,
     name: session.user.name,
     email: session.user.email,
@@ -17,7 +17,7 @@ const judge = () => {
 
   const handleSubmit = (setLoading) => {
     axios
-      .post("/api/judges", judge)
+      .post("/api/participants", participant)
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
       .finally(() => setLoading(false));
@@ -26,12 +26,12 @@ const judge = () => {
   return (
     <Form
       fields={FIELDS}
-      object={judge}
-      setObject={setJudge}
-      header="JUDGE APPLICATION"
+      object={participant}
+      setObject={setParticipant}
+      header="HACKER APPLICATION"
       onSubmit={handleSubmit}
     />
   );
 };
 
-export default judge;
+export default Participant;
