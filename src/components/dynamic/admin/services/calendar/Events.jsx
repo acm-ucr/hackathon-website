@@ -25,8 +25,6 @@ const CalendarEvents = () => {
       case "w":
         setView("week");
         break;
-      default:
-        break;
     }
   };
 
