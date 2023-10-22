@@ -8,6 +8,8 @@ import Textarea from "@/components/dynamic/forms/Textarea.jsx";
 import Upload from "@/components/dynamic/forms/Upload";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import Link from "next/link";
+import { FaLink } from "react-icons/fa";
 
 const Form = ({ object, setObject, header, fields, onSubmit }) => {
   const [loading, setLoading] = useState(false);
@@ -155,6 +157,15 @@ const Form = ({ object, setObject, header, fields, onSubmit }) => {
                 )}
               </div>
             ))}
+            <div className="font-semibold">Resources</div>
+            <Link
+              href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
+              target="_blank"
+              className="no-underline flex items-center"
+            >
+              MLH Code of Conduct
+              <FaLink className="mx-2" />
+            </Link>
             <div className="flex justify-center">
               <Button
                 text="Submit"

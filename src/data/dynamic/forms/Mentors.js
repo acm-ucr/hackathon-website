@@ -5,8 +5,10 @@ export const FIELDS = {
     input: "description",
     width: 12,
     texts: [
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      "Welcome to HACKATHON_NAME. Thank you for considering to become a volunteer, we appreciate your efforts to help support HACKATHON_NAME. HACKATHON_NAME is a DESCRIPTION hackathon spanning HACKATHON_LENGTH on HACKATHON_DATE.",
+      "Mentors are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
+      "Mentor duties include but are not limited to providing expertise and assistance to hackers throughout the hackathon without jeopardizing their chances at winning.",
+      "Note: Mentors are not permitted to become participants for the hackathon.",
     ],
   },
   name: {
@@ -107,8 +109,12 @@ export const FIELDS = {
     field: "requirements",
     required: true,
     options: [
-      "I agree to photograph. Thank you",
-      "I understand that I will attend the event in person.",
+      "I have read the MLH code of conduct and agree to the terms and conditions listed",
+      "I consent to photographs being taken and being used for future marketing purposes",
+      "I consent to providing a safe space for hackers to learn and grow their interests in computing",
+      "I consent to following the provided guidelines and rules instructed by the organizing team",
+      "I understand that failure to comply with guidelines or creating an unsafe space will result in my removal from the event",
+      "I understand this is an in person event taking place in UCR and I must attend in person in order to mentor",
     ],
   },
 };
