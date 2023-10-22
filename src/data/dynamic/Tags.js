@@ -69,7 +69,7 @@ export const COLORS = {
   sponsorship: mappings["yellow"],
   recruitment: mappings["pink"],
   software: mappings["lightgreen"],
-  UIUX: mappings["red"],
+  uiux: mappings["red"],
   view: mappings["gray"],
   green: mappings["green"],
   gray: mappings["gray"],
