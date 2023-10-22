@@ -80,6 +80,7 @@ export const COLORS = {
   teal: mappings["teal"],
   grayblue: mappings["grayblue"],
   pink: mappings["pink"],
+  2: mappings["purple"],
   1: mappings["green"],
   0: mappings["yellow"],
   "-1": mappings["red"],

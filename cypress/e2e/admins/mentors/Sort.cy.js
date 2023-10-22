@@ -6,7 +6,7 @@ describe("Mentor Sort", () => {
   beforeEach(() => {
     cy.fetch({
       role: "admins",
-      portal: "admins",
+      portal: "admin",
       page: "mentors",
     });
   });

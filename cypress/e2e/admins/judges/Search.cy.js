@@ -6,7 +6,7 @@ describe("Judge Search", () => {
   beforeEach(() => {
     cy.fetch({
       role: "admins",
-      portal: "admins",
+      portal: "admin",
       page: "judges",
     });
   });

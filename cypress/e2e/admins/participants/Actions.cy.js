@@ -6,7 +6,7 @@ describe("Participants Actions", () => {
   beforeEach(() => {
     cy.fetch({
       role: "admins",
-      portal: "admins",
+      portal: "admin",
       page: "participants",
     });
   });

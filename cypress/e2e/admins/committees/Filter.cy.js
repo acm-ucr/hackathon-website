@@ -6,7 +6,7 @@ describe("Committee Filters", () => {
   beforeEach(() => {
     cy.fetch({
       role: "admins",
-      portal: "admins",
+      portal: "admin",
       page: "committees",
     });
   });
