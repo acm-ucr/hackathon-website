@@ -7,7 +7,6 @@ const Input = ({
   label,
   showLabel = true,
   maxLength,
-  type,
   placeholder,
   classes,
 }) => {
@@ -25,7 +24,7 @@ const Input = ({
           value={object[label]}
           maxLength={maxLength}
           placeholder={placeholder}
-          type={type ?? "text"}
+          type="text"
           className="outline-none w-full font-poppins text-base py-1 bg-transparent px-2"
           onChange={handleInput}
         />

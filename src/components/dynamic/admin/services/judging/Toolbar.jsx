@@ -192,21 +192,12 @@ const Toolbar = ({ data, setData, judges, setJudges }) => {
         <div className="flex items-center">
           <form className="flex items-center pr-2" onSubmit={generate}>
             <Input
-              setObject={(value) => {
-                if (
-                  value["rotations"] == "" ||
-                  (parseInt(value["rotations"]) >= 0 &&
-                    parseInt(value["rotations"]) < 99)
-                ) {
-                  setInput(value);
-                }
-              }}
+              setObject={setInput}
               object={input}
               label="rotations"
               showLabel={false}
               maxLength={2}
               placeholder="ie. 5"
-              type="number"
               clear={true}
             />
             <p className="mb-0 font-semibold mx-2"># of rotations</p>
