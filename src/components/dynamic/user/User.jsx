@@ -24,7 +24,7 @@ const User = ({ user, setUser, edit, setEdit }) => {
     axios
       .post("/api/participant", user)
       .then(() => {
-        toast("✅ Successfully Update!");
+        toast("✅ Successfully Updated!");
         setEdit(false);
       })
       .catch(() => {
