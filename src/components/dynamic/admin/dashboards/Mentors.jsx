@@ -1,3 +1,4 @@
+"use client";
 import Dashboard from "../Dashboard.jsx";
 import {
   FILTERS,
