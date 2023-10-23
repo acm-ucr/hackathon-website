@@ -63,6 +63,7 @@ jobs:
       - name: Run Cypress
         uses: cypress-io/github-action@v3
         with:
+          component: true
           project: ./
           browser: chrome
           build: npm run build
