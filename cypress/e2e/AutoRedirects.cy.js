@@ -1,16 +1,16 @@
 describe("Test Auto Redirects", () => {
-  it("Auto Redirect to /admins/participants", () => {
-    cy.visit("/admins");
-    cy.url().should("match", /admins\/participants/);
+  it("Auto Redirect to /admin/participants", () => {
+    cy.visit("/admin");
+    cy.url().should("match", /admin\/participants/);
   });
 
-  it("Auto Redirect to /forms/participants", () => {
-    cy.visit("/forms");
-    cy.url().should("match", /forms\/participants/);
+  it("Auto Redirect to /form/participant", () => {
+    cy.visit("/form");
+    cy.url().should("match", /form\/participant/);
   });
 
   it("Auto Redirect to /users/dashboard", () => {
-    cy.visit("/users");
-    cy.url().should("match", /users\/dashboard/);
+    cy.visit("/user");
+    cy.url().should("match", /user\/dashboard/);
   });
 });

@@ -4,7 +4,7 @@
     {
       "uid": 1,
       "name": "Dewi Norton",
-      "position": "lead",
+
       "status": 0,
       "affiliation": "recruitment",
       "email": "dewinorton@email.com",
@@ -14,7 +14,7 @@
     {
       "uid": 2,
       "name": "Amie Nguyen",
-      "position": "lead",
+
       "status": 0,
       "affiliation": "director",
       "email": "amienguyenn@email.com",
@@ -24,7 +24,7 @@
     {
       "uid": 3,
       "name": "Larry Larsen",
-      "position": "",
+
       "status": 0,
       "affiliation": "marketing",
       "email": "larrylarsen@email.com",
@@ -34,7 +34,7 @@
     {
       "uid": 4,
       "name": "Big Chungus",
-      "position": "",
+
       "status": 0,
       "affiliation": "operations",
       "email": "bigchungus101@email.com",
@@ -44,7 +44,7 @@
     {
       "uid": 5,
       "name": "Mario Kart",
-      "position": "",
+
       "status": 0,
       "affiliation": "sponsorship",
       "email": "mariomoviegoated101@email.com",
@@ -54,7 +54,7 @@
     {
       "uid": 6,
       "name": "Ash Ketchum",
-      "position": "",
+
       "status": 0,
       "affiliation": "software",
       "email": "ash.ketchum12@email.com",
@@ -64,8 +64,8 @@
     {
       "uid": 7,
       "name": "Tiffany Wang",
-      "position": "",
-      "affiliation": "UIUX",
+
+      "affiliation": "uiux",
       "status": 0,
       "email": "twang777@email.com",
       "selected": false,
