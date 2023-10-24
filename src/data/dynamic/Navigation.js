@@ -118,7 +118,7 @@ export const TABS = {
       },
     ],
   },
-  users: {
+  user: {
     Portal: {
       mt: "mt-0",
       tabs: [
