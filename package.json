@@ -12,8 +12,7 @@
     "eslint": "npx eslint . --ext js --ext jsx",
     "cypress": "cypress open",
     "test": "start-server-and-test dev 3000 cypress",
-    "prepare": "husky install",
-    "create-env": "printenv > .env"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@auth/firebase-adapter": "^1.0.0",
