@@ -101,10 +101,7 @@ const Toolbar = ({
   }, []);
 
   return (
-    <div
-      className="w-full flex items-center"
-      data-cy="toolbar"
-    >
+    <div className="w-full flex items-center" data-cy="toolbar">
       <div className="w-11/12 flex items-center">
         <div className="mr-4" data-cy="select-all">
           <Checkbox onClick={selectAll} toggle={toggle} />
@@ -121,10 +118,7 @@ const Toolbar = ({
             />
           ))}
         </div>
-        <form
-          className="flex ml-2 w-full items-center"
-          onSubmit={handleSubmit}
-        >
+        <form className="flex ml-2 w-full items-center" onSubmit={handleSubmit}>
           <Input
             classes="w-full"
             object={input}
