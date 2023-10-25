@@ -28,10 +28,11 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
   };
 
   return (
-    <div className="w-fit grid grid-cols-3 gap-2">
+    // heh the columns wat
+    <div className="w-fit grid grid-cols-6 gap-2 border-4 border-blue-500">
       {Object.entries(filters).map(([filter, { state }], index) => (
         <div
-          className="flex justify-center"
+          className="flex justify-center border-4 border-purple-500"
           key={index}
           onClick={() => handleClick(filter)}
           data-cy={filter + "-filter"}
@@ -43,7 +44,7 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
                 : "text-hackathon-blue-100 bg-white"
             } cursor-pointer flex items-center justify-between w-full`}
           >
-            <p className="my-0 mx-1 px-2 py-[2px] whitespace-nowrap">
+            <p className="my-0 mx-1 px-1 py-[2px] whitespace-nowrap">
               {filter}
             </p>
             <TiPlus
