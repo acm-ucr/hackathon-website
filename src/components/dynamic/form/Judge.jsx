@@ -15,6 +15,11 @@ const judge = () => {
     email: session.user.email,
   });
 
+  FIELDS.affiliation.options = FIELDS.affiliation.options.map((x) => {
+    x.name = x.name.charAt(0).toUpperCase() + x.name.slice(1);
+    return x;
+  });
+
   const handleSubmit = (setLoading) => {
     axios
       .post("/api/judges", judge)
