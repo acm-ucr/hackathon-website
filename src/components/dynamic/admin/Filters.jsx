@@ -28,11 +28,10 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
   };
 
   return (
-    // heh the columns wat
-    <div className="w-fit grid grid-cols-6 gap-2 border-4 border-blue-500">
+    <div className="w-fit grid grid-cols-6 gap-2">
       {Object.entries(filters).map(([filter, { state }], index) => (
         <div
-          className="flex justify-center border-4 border-purple-500"
+          className="flex justify-center"
           key={index}
           onClick={() => handleClick(filter)}
           data-cy={filter + "-filter"}

@@ -68,14 +68,12 @@ const Messenger = () => {
   };
 
   return (
-    <div className="w-full font-poppins h-full flex flex-col justify-between border-4 border-blue-500">
+    <div className="w-full font-poppins h-full flex flex-col justify-between">
       <div className="flex flex-col pb-3 pt-4 h-full items-stretch justify-between">
         <Title title="Messenger" />
-        <div className="flex items-center my-1 border-4 border-red-500">
-          <p className="text-lg font-extrabold mr-1 my-0 border-4 border-yellow-500">
-            to:
-          </p>
-          <div className="w-full border-4 border-green-500">
+        <div className="flex items-center my-1">
+          <p className="text-lg font-extrabold mr-1 my-0">to:</p>
+          <div className="w-full ">
             <Filters filters={filters} setFilters={setFilters} />
           </div>
         </div>
