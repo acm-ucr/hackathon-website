@@ -1,5 +1,5 @@
 import Checkbox from "@/components/dynamic/Checkbox";
-import { AVAILABILITY } from "../forms/Information";
+import { AVAILABILITY } from "../form/Information";
 
 export const FILTERS = {
   pending: {
@@ -34,13 +34,17 @@ export const TAGS = [
 export const HEADERS = [
   { text: "name", size: "w-3/12", icon: true, sort: "off" },
   { text: "email", size: "w-3/12", icon: true, sort: "off" },
-  { text: "discord", size: "w-3/12", icon: true, sort: "off" },
+  { text: "discord", size: "w-2/12", icon: true, sort: "off" },
   {
     text: "status",
     size: "w-2/12",
     icon: true,
     sort: "off",
     hasTag: true,
+  },
+  {
+    text: "",
+    size: "w-1/12",
   },
 ];
 

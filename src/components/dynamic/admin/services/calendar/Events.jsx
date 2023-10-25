@@ -17,6 +17,17 @@ const CalendarEvents = () => {
   const [date, setDate] = useState(new Date());
   const [view, setView] = useState("month");
 
+  const handleShortcuts = (e) => {
+    switch (e.key) {
+      case "m":
+        setView("month");
+        break;
+      case "w":
+        setView("week");
+        break;
+    }
+  };
+
   useEffect(() => {
     axios
       .get(
@@ -36,6 +47,8 @@ const CalendarEvents = () => {
         });
         setEvents(items);
       });
+    document.addEventListener("keydown", handleShortcuts);
+    return () => document.removeEventListener("keydown", handleShortcuts);
   }, []);
 
   return (

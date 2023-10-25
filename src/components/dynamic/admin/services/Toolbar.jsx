@@ -19,8 +19,8 @@ const reset = {
   status: 0,
 };
 
-const Toolbar = ({ objects, setObjects, teams, setTeams, tags }) => {
-  const [team, setTeam] = useState({ name: "No Team Selected", id: "" });
+const Toolbar = ({ objects, setObjects, teams, setTeams, tags, empty }) => {
+  const [team, setTeam] = useState({ name: empty, id: "" });
   const [backup, setBackup] = useState({ id: "" });
   const [toggle, setToggle] = useState(false);
   const [prize, setPrize] = useState(reset);
@@ -241,6 +241,7 @@ const Toolbar = ({ objects, setObjects, teams, setTeams, tags }) => {
           setOption={setTeam}
           options={teams}
           setOptions={setTeams}
+          empty="no teams"
         />
         <Button color="green" text="add" onClick={handleAdd} disabled={edit} />
         {!edit && <Button color="green" text="edit" onClick={handleEdit} />}

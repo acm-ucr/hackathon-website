@@ -18,7 +18,7 @@ const Toggle = ({ option, onClick, show }) => {
   );
 };
 
-const Menu = ({ option, setOption, className, setOptions, options }) => {
+const Menu = ({ option, setOption, className, setOptions, options, empty }) => {
   const [value, setValue] = useState("");
 
   const handleInput = (e) => {
@@ -57,13 +57,13 @@ const Menu = ({ option, setOption, className, setOptions, options }) => {
             </Dropdown.Item>
           ))
       ) : (
-        <p className="px-3 text-gray-400">no events</p>
+        <p className="px-3 text-gray-400">{empty}</p>
       )}
     </div>
   );
 };
 
-const DropDown = ({ options, setOptions, option, setOption }) => {
+const DropDown = ({ options, setOptions, option, setOption, empty }) => {
   const [show, setShow] = useState(false);
 
   return (
@@ -81,6 +81,7 @@ const DropDown = ({ options, setOptions, option, setOption }) => {
         setOption={setOption}
         options={options}
         setOptions={setOptions}
+        empty={empty}
         className="rounded-md border-0 max-h-[50vh] overflow-scroll w-full !rounded-b-lg !rounded-t-none p-0 !z-10 !-mt-4 pt-4"
       />
     </Dropdown>
