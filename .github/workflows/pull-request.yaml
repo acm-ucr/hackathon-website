@@ -75,7 +75,6 @@ jobs:
           component: true
           project: ./
           browser: chrome
-          build: npm run build
           wait-on: "http://localhost:3000"
 
     env:
