@@ -1,7 +1,7 @@
 import Button from "./Button";
 import { LiaTimesSolid } from "react-icons/lia";
 
-const Popup = ({ popup, onClick, setPopup, text, onCancel }) => {
+const Popup = ({ popup, onClick, setPopup, text }) => {
   return (
     <div
       className="fixed inset-0 bg-black/40 w-screen h-screen flex items-center justify-center"

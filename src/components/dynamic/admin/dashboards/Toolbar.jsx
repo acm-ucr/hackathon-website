@@ -44,7 +44,7 @@ const Toolbar = ({
         text: "Changing status from 'winner' is restricted. You can check the prizes page for more information.",
         color: "green",
         visible: true,
-        onClick: () => router.push("/admins/prizes"),
+        onClick: () => router.push("/admin/prizes"),
         button: "prizes",
       });
       setObjects(

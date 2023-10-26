@@ -184,7 +184,7 @@ const Toolbar = ({ data, setData, judges, setJudges }) => {
         <Popup
           setPopup={setPopup}
           popup={popup}
-          onClick={() => router.push("/admins/judges")}
+          onClick={() => router.push("/admin/judges")}
           text="add judges"
         />
       )}
