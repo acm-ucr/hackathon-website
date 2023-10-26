@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import {
   DROPDOWN,
   FILTERS,
@@ -10,12 +9,8 @@ import {
 import Dashboard from "../Dashboard.jsx";
 
 const Feedback = () => {
-  const [feedback, setFeedback] = useState(null);
-
   return (
     <Dashboard
-      objects={feedback}
-      setObjects={setFeedback}
       title="Feedback"
       page="feedback"
       empty="No Feedback Available"

@@ -79,7 +79,7 @@ const Team = ({ user, setUser }) => {
       return;
     }
     axios.put("/api/team", team).then(() => {
-      toast("✅ Successfully Update!");
+      toast("✅ Successfully Updated!");
       setEdit(false);
     });
   };
