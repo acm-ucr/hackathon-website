@@ -1,0 +1,34 @@
+name: Sync Changes from Template
+on:
+  schedule:
+    # Run at 6:00 AM every sunday
+    - cron: "0 6 * * 0"
+
+jobs:
+  sync-from-template:
+    # don't run this job on the template
+    if: github.repository != 'acm-ucr/hackathon-website'
+    name: Sync changes from acm-ucr/hackathon-website
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout current repo
+        uses: actions/checkout@v3
+        with:
+          path: ${{ github.repository }}
+
+      - name: fetch template changes
+        working-directory: ${{ github.repository }}
+        run: |
+          git remote add template https://github.com/acm-ucr/hackathon-website
+          git fetch --all
+          git merge template/dev dev
+
+      - name: update all current PRs
+        working-directory: ${{ github.repository }}
+        run: |
+          numbers=$(gh pr list | awk '{print $1}')
+          for number in $numbers; do
+              gh pr checkout $number
+              git pull origin dev
+          done
