@@ -4,9 +4,9 @@ import Error from "@/components/dynamic/Error";
 const NotFoundError = () => {
   return (
     <Error
-      code={"404"}
-      error={"Page Not Found"}
-      message={"The page you are looking for does not seem to exist."}
+      code="404"
+      error="Page Not Found"
+      message="The page you are looking for does not seem to exist."
     />
   );
 };
