@@ -11,6 +11,7 @@ import {
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/admin/Volunteers";
+import { checkServer } from "src/utils/checkServer.js";
 
 export async function POST(req) {
   const res = NextResponse;
@@ -22,6 +23,16 @@ export async function POST(req) {
       { status: auth }
     );
   }
+
+  const checkServerResult = checkServer(await req.json());
+
+  if (!checkServerResult.valid) {
+    return res.json(
+      { message: "Validation Error", errors: checkServerResult.errors },
+      { status: 400 }
+    );
+  }
+
   const { phone, discord, major, grade, gender, shirt, availability } =
     await req.json();
 
@@ -53,6 +64,15 @@ export async function GET() {
     return res.json(
       { message: `Authentication Error: ${"MESSAGE VARIABLE SHOULD BE HERE"}` },
       { status: auth }
+    );
+  }
+
+  const checkServerResult = checkServer(await req.json());
+
+  if (!checkServerResult.valid) {
+    return res.json(
+      { message: "Validation Error", errors: checkServerResult.errors },
+      { status: 400 }
     );
   }
 
@@ -95,6 +115,15 @@ export async function PUT(req) {
     return res.json(
       { message: `Authentication Error: ${"MESSAGE VARIABLE SHOULD BE HERE"}` },
       { status: auth }
+    );
+  }
+
+  const checkServerResult = checkServer(await req.json());
+
+  if (!checkServerResult.valid) {
+    return res.json(
+      { message: "Validation Error", errors: checkServerResult.errors },
+      { status: 400 }
     );
   }
 
