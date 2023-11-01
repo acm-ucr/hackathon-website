@@ -6,8 +6,6 @@ import Title from "./Title.jsx";
 import Table from "./Table.jsx";
 
 const Dashboard = ({
-  objects,
-  setObjects,
   title,
   page,
   empty,
@@ -22,6 +20,7 @@ const Dashboard = ({
   });
   const [filters, setFilters] = useState(filter);
   const [headers, setHeaders] = useState(header);
+  const [objects, setObjects] = useState(null);
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">

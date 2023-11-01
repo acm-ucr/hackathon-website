@@ -11,3 +11,7 @@ export const MANIFEST = {
   description: "Hackathon Site",
   start_url: "/",
 };
+
+export const SITEMAP = {
+  domain: "https://www.placeholder.com",
+};
