@@ -139,12 +139,16 @@ const Toolbar = ({
       <div className="flex w-1/3">
         <FaTrashAlt
           data-cy="delete"
-          onClick={() =>
+          onClick={() => {
+            if (objects.filter((a) => a.selected).length === 0) {
+              toast("❌ Select row(s) before pressing the delete button");
+              return;
+            }
             setPopup({
               ...popup,
               visible: true,
-            })
-          }
+            });
+          }}
           size={22.5}
           className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
         />
