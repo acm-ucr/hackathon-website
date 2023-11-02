@@ -24,15 +24,6 @@ export async function POST(req) {
     );
   }
 
-  const checkServerResult = checkServer(await req.json());
-
-  if (!checkServerResult.valid) {
-    return res.json(
-      { message: "Validation Error", errors: checkServerResult.errors },
-      { status: 400 }
-    );
-  }
-
   const { phone, discord, major, grade, gender, shirt, availability } =
     await req.json();
 
@@ -64,15 +55,6 @@ export async function GET() {
     return res.json(
       { message: `Authentication Error: ${"MESSAGE VARIABLE SHOULD BE HERE"}` },
       { status: auth }
-    );
-  }
-
-  const checkServerResult = checkServer(await req.json());
-
-  if (!checkServerResult.valid) {
-    return res.json(
-      { message: "Validation Error", errors: checkServerResult.errors },
-      { status: 400 }
     );
   }
 
@@ -118,7 +100,13 @@ export async function PUT(req) {
     );
   }
 
-  const checkServerResult = checkServer(await req.json());
+  const checkData = {
+    objects: objects,
+    attribute: attribute,
+    status: status,
+  };
+
+  const checkServerResult = checkServer(checkData);
 
   if (!checkServerResult.valid) {
     return res.json(
@@ -126,8 +114,8 @@ export async function PUT(req) {
       { status: 400 }
     );
   }
-
-  const { objects, attribute, status } = await req.json();
+  // Pass these three objects into checkServer. Using an array or something
+  // const { objects, attribute, status } = await req.json();
 
   try {
     objects.forEach(async (object) => {
