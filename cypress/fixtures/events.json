@@ -1,0 +1,16 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "name": "React Workshop"
+    },
+    {
+      "id": 2,
+      "name": "GitHub Workshop"
+    },
+    {
+      "id": 3,
+      "name": "Unity Workshop"
+    }
+  ]
+}
