@@ -34,11 +34,9 @@ const Toolbar = ({
   const [toggle, setToggle] = useState(false);
 
   const onClick = (value) => {
-    const selectedWinners = objects.some(
-      (obj) => obj.selected && obj.status === 2
-    );
+    const winners = objects.some((obj) => obj.selected && obj.status === 2);
 
-    if (selectedWinners) {
+    if (winners) {
       setPopup({
         title: "Status Change Restricted",
         text: "Changing status from 'winner' is restricted. You can check the prizes page for more information.",
@@ -172,6 +170,30 @@ const Toolbar = ({
         <FaTrashAlt
           data-cy="delete"
           onClick={() => {
+            const winners = objects.some(
+              (obj) => obj.selected && obj.status === 2
+            );
+
+            if (winners) {
+              setPopup({
+                title: "Status Change Restricted",
+                text: "Changing status from 'winner' is restricted. You can check the prizes page for more information.",
+                color: "green",
+                visible: true,
+                onClick: () => router.push("/admin/prizes"),
+                button: "prizes",
+              });
+              setObjects(
+                objects.map((a) => {
+                  if (a.selected) {
+                    a.selected = false;
+                  }
+                  return a;
+                })
+              );
+              return;
+            }
+
             if (objects.filter((a) => a.selected).length === 0) {
               toast("❌ Select row(s) before pressing the delete button");
               return;
