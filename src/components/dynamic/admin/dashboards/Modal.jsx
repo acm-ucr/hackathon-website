@@ -11,7 +11,7 @@ const Modal = ({ data, setModal }) => {
         />
       </div>
       <div className="bg-white px-3 rounded-b-xl py-2 border-x-2 border-b-2 border-hackathon-darkgray h-full w-full flex justify-center">
-        <img className="h-full object-cover" src={data.src} />
+        <img className="h-full" src={data.src} />
       </div>
     </div>
   );
