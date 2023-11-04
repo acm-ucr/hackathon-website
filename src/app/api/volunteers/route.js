@@ -11,7 +11,7 @@ import {
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/admin/Volunteers";
-import { checkServer } from "src/utils/checkServer.js";
+import { validate } from "src/utils/validate.js";
 
 export async function POST(req) {
   const res = NextResponse;
@@ -91,31 +91,33 @@ export async function GET() {
 
 export async function PUT(req) {
   const res = NextResponse;
-  const { auth } = await authenticate(AUTH.PUT);
+  const { auth, message } = await authenticate(AUTH.PUT);
 
   if (auth !== 200) {
     return res.json(
-      { message: `Authentication Error: ${"MESSAGE VARIABLE SHOULD BE HERE"}` },
+      { message: `Authentication Error: ${message}` },
       { status: auth }
     );
   }
 
-  const checkData = {
-    objects: objects,
-    attribute: attribute,
-    status: status,
+  const { objects, attribute, status } = await req.json();
+
+  const validatation = {
+    objects: [objects],
+    strings: [attribute],
+    numbers: [status],
   };
 
-  const checkServerResult = checkServer(checkData);
+  const results = validate(validatation);
 
-  if (!checkServerResult.valid) {
+  if (!results.valid) {
     return res.json(
-      { message: "Validation Error", errors: checkServerResult.errors },
+      {
+        message: `Validation Error: ${results.message}`,
+      },
       { status: 400 }
     );
   }
-  // Pass these three objects into checkServer. Using an array or something
-  // const { objects, attribute, status } = await req.json();
 
   try {
     objects.forEach(async (object) => {
