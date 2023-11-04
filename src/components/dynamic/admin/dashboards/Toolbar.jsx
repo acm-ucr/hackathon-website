@@ -9,6 +9,7 @@ import Popup from "../Popup";
 import Input from "../Input";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const Toolbar = ({
   input,
@@ -19,15 +20,44 @@ const Toolbar = ({
   filters,
   page,
 }) => {
+  const router = useRouter();
+
   const [popup, setPopup] = useState({
-    title: "Delete Confirmation",
-    text: "Are you sure you want to delete these row(s)? This action is irreversible.",
-    color: "red",
+    title: "",
+    text: "",
+    color: "",
     visible: false,
+    onClick: () => {},
+    button: "",
   });
+
   const [toggle, setToggle] = useState(false);
 
   const onClick = (value) => {
+    const selectedWinners = objects.some(
+      (obj) => obj.selected && obj.status === 2
+    );
+
+    if (selectedWinners) {
+      setPopup({
+        title: "Status Change Restricted",
+        text: "Changing status from 'winner' is restricted. You can check the prizes page for more information.",
+        color: "green",
+        visible: true,
+        onClick: () => router.push("/admin/prizes"),
+        button: "prizes",
+      });
+      setObjects(
+        objects.map((a) => {
+          if (a.selected) {
+            a.selected = false;
+          }
+          return a;
+        })
+      );
+      return;
+    }
+
     setToggle(false);
     const items = objects.filter((object) => object.selected);
     axios.put(`/api/${page}`, {
@@ -147,8 +177,12 @@ const Toolbar = ({
               return;
             }
             setPopup({
-              ...popup,
+              title: "Delete Confirmation",
+              text: "Are you sure you want to delete these row(s)? This action is irreversible.",
+              color: "red",
               visible: true,
+              onClick: handleDelete,
+              button: "confirm",
             });
           }}
           size={22.5}
@@ -157,9 +191,9 @@ const Toolbar = ({
         {popup.visible && (
           <Popup
             popup={popup}
-            onClick={handleDelete}
+            onClick={popup.onClick}
             setPopup={setPopup}
-            text="confirm"
+            text={popup.button}
           />
         )}
       </div>
