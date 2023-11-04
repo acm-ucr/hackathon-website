@@ -14,7 +14,9 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
     setUploading(true);
     if (e.target.files[0].size > getSize(maxSize)) {
       toast(`❌ File too big, exceeds ${maxSize[0]} ${maxSize[1]}!`);
-    } else setFile(e.target.files[0]);
+      return;
+    }
+    setFile(e.target.files[0]);
     const base64 = await readFileAsBase64(e.target.files[0]);
     setUser({ ...user, [field]: base64 });
     setUploading(false);

@@ -169,7 +169,11 @@ const Toolbar = ({
       <div className="flex w-1/3">
         <FaTrashAlt
           data-cy="delete"
-          onClick={() =>
+          onClick={() => {
+            if (objects.filter((a) => a.selected).length === 0) {
+              toast("❌ Select row(s) before pressing the delete button");
+              return;
+            }
             setPopup({
               title: "Delete Confirmation",
               text: "Are you sure you want to delete these row(s)? This action is irreversible.",
@@ -177,8 +181,8 @@ const Toolbar = ({
               visible: true,
               onClick: handleDelete,
               button: "confirm",
-            })
-          }
+            });
+          }}
           size={22.5}
           className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
         />
