@@ -102,11 +102,11 @@ const Toolbar = ({
 
   return (
     <div className="w-full flex items-center" data-cy="toolbar">
-      <div className="w-2/3 flex items-center">
+      <div className="w-11/12 flex items-center">
         <div className="mr-4" data-cy="select-all">
           <Checkbox onClick={selectAll} toggle={toggle} />
         </div>
-        <div className="flex flex-row gap-2 ">
+        <div className="flex flex-row gap-2">
           {tags.map((tag, index) => (
             <Tag
               key={index}
@@ -131,12 +131,14 @@ const Toolbar = ({
           />
         </form>
       </div>
+
       <FaUndoAlt
         size={22.5}
         onClick={handleReload}
         className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
       />
-      <div className="flex w-1/3">
+
+      <div className="flex">
         <FaTrashAlt
           data-cy="delete"
           onClick={() => {
