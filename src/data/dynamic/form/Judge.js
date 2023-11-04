@@ -2,9 +2,9 @@ import { GENDERS } from "./Information";
 import { SHIRTS } from "./Information";
 
 const AFFILIATIONS = [
-  { name: "professor", hidden: false },
-  { name: "student", hidden: false },
-  { name: "industry", hidden: false },
+  { name: "Professor", hidden: false },
+  { name: "Student", hidden: false },
+  { name: "Industry", hidden: false },
 ];
 
 export const FIELDS = {
