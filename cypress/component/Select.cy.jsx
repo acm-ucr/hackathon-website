@@ -1,8 +1,12 @@
-import Select from "@/components/Select";
+import Select from "@/components/dynamic/Select";
 import { useState } from "react";
 
 describe("Select", () => {
-  const options = ["Option A", "Option B", "Option C"];
+  const options = [
+    { name: "Option A" },
+    { name: "Option B" },
+    { name: "Option C" },
+  ];
   const placeholder = "Select an option";
   const title = "Title";
 
@@ -12,7 +16,7 @@ describe("Select", () => {
 
       return (
         <Select
-          options={options}
+          items={options}
           user={user}
           field="name"
           setUser={setUser}
@@ -24,8 +28,8 @@ describe("Select", () => {
 
     cy.mount(<Parent />);
 
-    cy.get('[data-cy="toggle"]').should("exist");
-    cy.get('[data-cy="menu"]').should("not.exist");
+    cy.get('[data-cy="select-toggle"]').should("exist");
+    cy.get('[data-cy="select-menu"]').should("not.exist");
   });
 
   it("Show Dropdown", () => {
@@ -34,7 +38,7 @@ describe("Select", () => {
 
       return (
         <Select
-          options={options}
+          items={options}
           user={user}
           field="name"
           setUser={setUser}
@@ -46,8 +50,8 @@ describe("Select", () => {
 
     cy.mount(<Parent />);
 
-    cy.get('[data-cy="toggle"]').click();
-    cy.get('[data-cy="menu"]').should("be.visible");
+    cy.get('[data-cy="select-toggle"]').click();
+    cy.get('[data-cy="select-menu"]').should("be.visible");
   });
   it("Selects and Updates", () => {
     const Parent = () => {
@@ -55,7 +59,7 @@ describe("Select", () => {
 
       return (
         <Select
-          options={options}
+          items={options}
           user={user}
           field="name"
           setUser={setUser}
@@ -67,14 +71,14 @@ describe("Select", () => {
 
     cy.mount(<Parent />);
 
-    cy.get('[data-cy="toggle"]').click();
+    cy.get('[data-cy="select-toggle"]').click();
 
-    const selectedOption = options[0];
-    cy.get('[data-cy="menu"]').contains(selectedOption).click();
+    const selectedOption = options[0].name;
+    cy.get('[data-cy="select-menu"]').contains(selectedOption).click();
 
-    cy.get('[data-cy="toggle"]').should("contain", selectedOption);
+    cy.get('[data-cy="select-toggle"]').should("contain", selectedOption);
 
-    cy.get('[data-cy="toggle"]').then(($toggle) => {
+    cy.get('[data-cy="select-toggle"]').then(($toggle) => {
       const updatedUserName = $toggle.text().trim();
       expect(updatedUserName).to.equal(selectedOption);
     });
