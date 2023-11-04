@@ -73,11 +73,7 @@ const Messenger = () => {
         <Title title="Messenger" />
         <div className="flex items-center my-1">
           <p className="text-lg font-extrabold mr-1 my-0">to:</p>
-          <Filters
-            filters={filters}
-            setFilters={setFilters}
-            className="w-full"
-          />
+          <Filters filters={filters} setFilters={setFilters} />
         </div>
         <div className="flex items-center my-1">
           <p className="text-lg font-extrabold mr-5 my-0">status:</p>
