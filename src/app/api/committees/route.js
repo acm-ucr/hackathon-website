@@ -10,10 +10,11 @@ import {
   deleteField,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
+import { AUTH } from "@/data/dynamic/admin/Committees";
 
 export async function POST(req) {
   const res = NextResponse;
-  const { auth, message, user } = await authenticate();
+  const { auth, message, user } = await authenticate(AUTH.POST);
 
   if (auth !== 200) {
     return res.json(
@@ -42,9 +43,7 @@ export async function POST(req) {
 
 export async function GET() {
   const res = NextResponse;
-  const { auth, message } = await authenticate({
-    admins: 1,
-  });
+  const { auth, message } = await authenticate(AUTH.GET);
 
   if (auth !== 200) {
     return res.json(
@@ -58,15 +57,16 @@ export async function GET() {
     const snapshot = await getDocs(
       query(
         collection(db, "users"),
-        where("role", "array-contains", "committees")
+        where("roles.committees", "in", [-1, 0, 1])
       )
     );
     snapshot.forEach((doc) => {
-      const { name, email, roles, affiliation } = doc.data();
+      const { name, email, roles, affiliation, discord } = doc.data();
       output.push({
         uid: doc.id,
         name: name,
         email: email,
+        discord: discord,
         affiliation: affiliation,
         status: roles.committees,
         selected: false,
@@ -84,9 +84,7 @@ export async function GET() {
 
 export async function PUT(req) {
   const res = NextResponse;
-  const { auth, message } = await authenticate({
-    admins: 1,
-  });
+  const { auth, message } = await authenticate(AUTH.PUT);
 
   if (auth !== 200) {
     return res.json(

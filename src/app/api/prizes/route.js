@@ -29,6 +29,7 @@ export async function POST(req) {
       prize: prize,
       category: category,
       team: team,
+      status: 0,
       id: id,
     });
 
@@ -110,25 +111,43 @@ export async function PUT(req) {
     );
   }
 
-  const { prize, category, team, id, uid, backupId } = await req.json();
+  const {
+    prize,
+    category,
+    team,
+    id,
+    uid,
+    backupId,
+    attribute,
+    objects,
+    status,
+  } = await req.json();
 
   try {
-    await updateDoc(doc(db, "prizes", uid), {
-      prize: prize,
-      category: category,
-      team: team,
-    });
-
-    if (backupId !== id && backupId !== "") {
-      await updateDoc(doc(db, "teams", backupId), {
-        status: "qualify",
+    if (attribute === "status") {
+      objects.forEach(async (object) => {
+        await updateDoc(doc(db, "prizes", object.uid), {
+          status: status,
+        });
       });
-    }
-
-    if (id !== "") {
-      await updateDoc(doc(db, "teams", id), {
-        status: "winner",
+    } else {
+      await updateDoc(doc(db, "prizes", uid), {
+        prize: prize,
+        category: category,
+        team: team,
       });
+
+      if (backupId !== id && backupId !== "") {
+        await updateDoc(doc(db, "teams", backupId), {
+          status: "qualify",
+        });
+      }
+
+      if (id !== "") {
+        await updateDoc(doc(db, "teams", id), {
+          status: "winner",
+        });
+      }
     }
 
     return res.json({ message: "OK" }, { status: 200 });

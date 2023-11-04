@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
-import Error from "@/components/Error";
+import Error from "@/components/dynamic/Error";
 import axios from "axios";
-import Button from "@/components/Button";
+import Button from "@/components/dynamic/Button";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
@@ -20,7 +20,7 @@ export default function page({ params }) {
         sessionUpdate({
           team: params.teamID,
         });
-        router.push("/user/");
+        router.push("/users");
       })
       .catch((response) => {
         if (response.data.message === "Excceed 4 People Limit")

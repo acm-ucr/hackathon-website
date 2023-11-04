@@ -1,5 +1,5 @@
-import Volunteers from "@/components/admin/dashboards/Volunteers";
-import ProtectedPage from "@/components/ProtectedPage";
+import Volunteers from "@/components/dynamic/admin/dashboards/Volunteers";
+import ProtectedPage from "@/components/dynamic/ProtectedPage";
 const VolunteersPage = () => {
   return (
     <ProtectedPage

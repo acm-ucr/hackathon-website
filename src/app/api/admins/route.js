@@ -10,7 +10,7 @@ import {
   deleteField,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
-import { AUTH } from "@/data/admin/Admins";
+import { AUTH } from "@/data/dynamic/admin/Admins";
 
 export async function POST(req) {
   const res = NextResponse;
@@ -58,12 +58,13 @@ export async function GET() {
       query(collection(db, "users"), where("roles.admins", "in", [-1, 0, 1]))
     );
     snapshot.forEach((doc) => {
-      const { name, email, roles, affiliation } = doc.data();
+      const { name, email, roles, affiliation, discord } = doc.data();
 
       output.push({
         uid: doc.id,
         name: name,
         email: email,
+        discord: discord,
         affiliation: affiliation,
         status: roles.admins,
         selected: false,

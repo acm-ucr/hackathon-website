@@ -2,13 +2,11 @@ import { NextResponse } from "next/server";
 import { db } from "../../../../firebase";
 import { doc, updateDoc } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
+import { AUTH } from "@/data/dynamic/user/Participant";
 
 export async function POST(req) {
   const res = NextResponse;
-  // TODO: WHAT AUTH IS REQUIRED HERE
-  const { auth, message, user } = await authenticate({
-    admins: 1,
-  });
+  const { auth, message, user } = await authenticate(AUTH.POST);
 
   if (auth !== 200) {
     return res.json(
@@ -28,7 +26,7 @@ export async function POST(req) {
       grade: grade,
       gender: gender,
       shirt: shirt,
-      diet: Object.keys(diet).map((key) => diet[key] && key),
+      diet: diet,
     });
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {

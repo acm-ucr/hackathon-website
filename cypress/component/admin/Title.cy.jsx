@@ -1,4 +1,4 @@
-import Title from "@/components/admin/Title";
+import Title from "@/components/dynamic/admin/Title";
 
 describe("Title test", () => {
   it("Title", () => {
@@ -13,11 +13,11 @@ describe("Title test", () => {
 
   it("Empty", () => {
     cy.mount(<Title title="" />);
-    cy.get('[data-cy="Dashboard-title"]').should(
+    cy.get('[data-cy="-title"]').should(
       "have.class",
       "text-2xl",
       "font-extrabold"
     );
-    cy.get('[data-cy="Dashboard-title"]').contains("");
+    cy.get('[data-cy="-title"]').should("have.value", "");
   });
 });
