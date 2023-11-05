@@ -6,6 +6,7 @@ import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/form/Mentors.js";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { STATUSES } from "@/data/dynamic/admin/Mentors.js";
 
 const Mentor = () => {
   const { data: session } = useSession();
@@ -14,14 +15,19 @@ const Mentor = () => {
     ...ATTRIBUTES,
     name: session.user.name,
     email: session.user.email,
+    roles: session.user.roles,
+    form: "mentors",
   });
 
-  const handleSubmit = (setLoading) => {
+  const handleSubmit = (setLoading, setState) => {
     axios
       .post("/api/mentors", mentor)
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+        setState(2);
+      });
   };
   return (
     <Form
@@ -30,6 +36,7 @@ const Mentor = () => {
       setObject={setMentor}
       header="MENTOR APPLICATION"
       onSubmit={handleSubmit}
+      statuses={STATUSES}
     />
   );
 };
