@@ -8,6 +8,7 @@ import {
   query,
   where,
   deleteField,
+  Timestamp,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/admin/Admins";
@@ -29,6 +30,7 @@ export async function POST(req) {
     await updateDoc(doc(db, "users", user.id), {
       discord: discord,
       affiliation: affiliation,
+      timestamp: Timestamp.now(),
       "roles.admins": 0,
     });
     return res.json({ message: "OK" }, { status: 200 });

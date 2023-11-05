@@ -8,6 +8,7 @@ import {
   query,
   where,
   deleteField,
+  Timestamp,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/admin/Judges";
@@ -33,6 +34,7 @@ export async function POST(req) {
       affiliation: affiliation.toLowerCase(),
       shirt: shirt,
       photo: photo,
+      timestamp: Timestamp.now(),
       "roles.judges": 0,
     });
     return res.json({ message: "OK" }, { status: 200 });

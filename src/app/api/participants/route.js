@@ -8,6 +8,7 @@ import {
   query,
   where,
   deleteField,
+  Timestamp,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/admin/Participants";
@@ -35,6 +36,7 @@ export async function POST(req) {
       grade: grade,
       gender: gender,
       shirt: shirt,
+      timestamp: Timestamp.now(),
       "roles.participants": 0,
       diet: diet,
       resume: resume,

@@ -8,6 +8,7 @@ import {
   query,
   where,
   deleteField,
+  Timestamp,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/admin/Mentors";
@@ -43,6 +44,7 @@ export async function POST(req) {
       gender: gender,
       shirt: shirt,
       response: response,
+      timestamp: Timestamp.now(),
       "roles.mentors": 0,
       availability: availability,
     });
