@@ -30,7 +30,7 @@ export async function POST(req) {
     await updateDoc(doc(db, "users", user.id), {
       discord: discord,
       affiliation: affiliation,
-      timestamp: new Timestamp(),
+      timestamp: Timestamp.now(),
       "roles.committees": 0,
     });
 
