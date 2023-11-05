@@ -36,13 +36,13 @@ describe("Filters Component", () => {
     cy.mount(<Parent />);
     cy.get('[data-cy="pending-filter"]')
       .get("div")
-      .should("have.class", "bg-hackathon-blue-100", "text-white");
+      .should("have.class", "bg-white", "text-hackathon-blue-100");
     cy.get('[data-cy="reject-filter"]')
       .get("div")
-      .should("have.class", "bg-hackathon-blue-100", "text-white");
+      .should("have.class", "bg-white", "text-hackathon-blue-100");
     cy.get('[data-cy="accept-filter"]')
       .get("div")
-      .should("have.class", "bg-hackathon-blue-100", "text-white");
+      .should("have.class", "bg-white", "text-hackathon-blue-100");
   });
 
   it("Click Filters", () => {
@@ -81,18 +81,18 @@ describe("Filters Component", () => {
       .then(() => expect(setObjects).to.be.called);
     cy.get('[data-cy="pending-filter"]')
       .get("div")
-      .should("have.class", "bg-white", "text-hackathon-blue-100");
+      .should("have.class", "bg-hackathon-blue-100", "text-white");
     cy.get('[data-cy="reject-filter"]')
       .click()
       .then(() => expect(setObjects).to.be.called);
     cy.get('[data-cy="reject-filter"]')
       .get("div")
-      .should("have.class", "bg-white", "text-hackathon-blue-100");
+      .should("have.class", "bg-hackathon-blue-100", "text-white");
     cy.get('[data-cy="accept-filter"]')
       .click()
       .then(() => expect(setObjects).to.be.called);
     cy.get('[data-cy="accept-filter"]')
       .get("div")
-      .should("have.class", "bg-white", "text-hackathon-blue-100");
+      .should("have.class", "bg-hackathon-blue-100", "text-white");
   });
 });

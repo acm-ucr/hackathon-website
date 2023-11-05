@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
@@ -54,15 +54,45 @@ jobs:
       NEXT_PUBLIC_GOOGLE_CLIENT_SECRET: ${{secrets.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET}}
       NEXTAUTH_SECRET: ${{secrets.NEXTAUTH_SECRET}}
       NEXTAUTH_URL: ${{secrets.NEXTAUTH_URL}}
-  testing:
+
+  e2e_testing:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run Cypress
-        uses: cypress-io/github-action@v3
+        uses: cypress-io/github-action@v6
         with:
+          project: ./
+          browser: chrome
+          build: npm run build
+          start: npm run start
+          wait-on: "http://localhost:3000"
+    env:
+      NEXT_PUBLIC_FIREBASE_API_KEY: ${{secrets.NEXT_PUBLIC_FIREBASE_API_KEY}}
+      NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN}}
+      NEXT_PUBLIC_FIREBASE_PROJECT_ID: ${{secrets.NEXT_PUBLIC_FIREBASE_PROJECT_ID}}
+      NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: ${{secrets.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET}}
+      NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: ${{secrets.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID}}
+      NEXT_PUBLIC_FIREBASE_APP_ID: ${{secrets.NEXT_PUBLIC_FIREBASE_APP_ID}}
+      NEXT_PUBLIC_FIREBASE_CLIENT_EMAIL: ${{secrets.NEXT_PUBLIC_FIREBASE_CLIENT_EMAIL}}
+      NEXT_PUBLIC_FIREBASE_PRIVATE_KEY: ${{secrets.NEXT_PUBLIC_FIREBASE_PRIVATE_KEY}}
+      NEXT_PUBLIC_GOOGLE_CLIENT_ID: ${{secrets.NEXT_PUBLIC_GOOGLE_CLIENT_ID}}
+      NEXT_PUBLIC_GOOGLE_CLIENT_SECRET: ${{secrets.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET}}
+      NEXTAUTH_SECRET: ${{secrets.NEXTAUTH_SECRET}}
+      NEXTAUTH_URL: ${{secrets.NEXTAUTH_URL}}
+
+  component_testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Cypress
+        uses: cypress-io/github-action@v6
+        with:
+          component: true
           project: ./
           browser: chrome
           build: npm run build

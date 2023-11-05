@@ -8,6 +8,7 @@ import {
   query,
   where,
   deleteField,
+  Timestamp,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/admin/Committees";
@@ -29,6 +30,7 @@ export async function POST(req) {
     await updateDoc(doc(db, "users", user.id), {
       discord: discord,
       affiliation: affiliation,
+      timestamp: Timestamp.now(),
       "roles.committees": 0,
     });
 
@@ -61,7 +63,8 @@ export async function GET() {
       )
     );
     snapshot.forEach((doc) => {
-      const { name, email, roles, affiliation, discord } = doc.data();
+      const { name, email, roles, affiliation, discord, timestamp } =
+        doc.data();
       output.push({
         uid: doc.id,
         name: name,
@@ -71,9 +74,15 @@ export async function GET() {
         status: roles.committees,
         selected: false,
         hidden: false,
+        timestamp: timestamp,
       });
     });
-    return res.json({ message: "OK", items: output }, { status: 200 });
+
+    const sorted = output.sort((a, b) =>
+      a.timestamp.seconds < b.timestamp.seconds ? 1 : -1
+    );
+
+    return res.json({ message: "OK", items: sorted }, { status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },

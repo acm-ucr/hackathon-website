@@ -9,6 +9,7 @@ import Popup from "../Popup";
 import Input from "../Input";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const Toolbar = ({
   input,
@@ -19,15 +20,42 @@ const Toolbar = ({
   filters,
   page,
 }) => {
+  const router = useRouter();
+
   const [popup, setPopup] = useState({
-    title: "Delete Confirmation",
-    text: "Are you sure you want to delete these row(s)? This action is irreversible.",
-    color: "red",
+    title: "",
+    text: "",
+    color: "",
     visible: false,
+    onClick: () => {},
+    button: "",
   });
+
   const [toggle, setToggle] = useState(false);
 
   const onClick = (value) => {
+    const winners = objects.some((obj) => obj.selected && obj.status === 2);
+
+    if (winners) {
+      setPopup({
+        title: "Status Change Restricted",
+        text: "Changing status from 'winner' is restricted. You can check the prizes page for more information.",
+        color: "green",
+        visible: true,
+        onClick: () => router.push("/admin/prizes"),
+        button: "prizes",
+      });
+      setObjects(
+        objects.map((a) => {
+          if (a.selected) {
+            a.selected = false;
+          }
+          return a;
+        })
+      );
+      return;
+    }
+
     setToggle(false);
     const items = objects.filter((object) => object.selected);
     axios.put(`/api/${page}`, {
@@ -102,11 +130,11 @@ const Toolbar = ({
 
   return (
     <div className="w-full flex items-center" data-cy="toolbar">
-      <div className="w-2/3 flex items-center">
+      <div className="w-11/12 flex items-center">
         <div className="mr-4" data-cy="select-all">
           <Checkbox onClick={selectAll} toggle={toggle} />
         </div>
-        <div className="flex flex-row gap-2 ">
+        <div className="flex flex-row gap-2">
           {tags.map((tag, index) => (
             <Tag
               key={index}
@@ -131,29 +159,63 @@ const Toolbar = ({
           />
         </form>
       </div>
+
       <FaUndoAlt
         size={22.5}
         onClick={handleReload}
         className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
       />
-      <div className="flex w-1/3">
+
+      <div className="flex">
         <FaTrashAlt
           data-cy="delete"
-          onClick={() =>
+          onClick={() => {
+            const winners = objects.some(
+              (obj) => obj.selected && obj.status === 2
+            );
+
+            if (winners) {
+              setPopup({
+                title: "Status Change Restricted",
+                text: "Changing status from 'winner' is restricted. You can check the prizes page for more information.",
+                color: "green",
+                visible: true,
+                onClick: () => router.push("/admin/prizes"),
+                button: "prizes",
+              });
+              setObjects(
+                objects.map((a) => {
+                  if (a.selected) {
+                    a.selected = false;
+                  }
+                  return a;
+                })
+              );
+              return;
+            }
+
+            if (objects.filter((a) => a.selected).length === 0) {
+              toast("❌ Select row(s) before pressing the delete button");
+              return;
+            }
             setPopup({
-              ...popup,
+              title: "Delete Confirmation",
+              text: "Are you sure you want to delete these row(s)? This action is irreversible.",
+              color: "red",
               visible: true,
-            })
-          }
+              onClick: handleDelete,
+              button: "confirm",
+            });
+          }}
           size={22.5}
           className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
         />
         {popup.visible && (
           <Popup
             popup={popup}
-            onClick={handleDelete}
+            onClick={popup.onClick}
             setPopup={setPopup}
-            text="confirm"
+            text={popup.button}
           />
         )}
       </div>

@@ -19,6 +19,7 @@ const Prizes = () => {
         teams={teams}
         setTeams={setTeams}
         tags={TAGS}
+        empty="No Team Selected"
       />
       <Table
         headers={headers}

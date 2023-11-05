@@ -8,6 +8,7 @@ import {
   query,
   where,
   deleteField,
+  Timestamp,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/admin/Judges";
@@ -30,9 +31,10 @@ export async function POST(req) {
       phone: phone,
       gender: gender,
       title: title,
-      affiliation: affiliation,
+      affiliation: affiliation.toLowerCase(),
       shirt: shirt,
       photo: photo,
+      timestamp: Timestamp.now(),
       "roles.judges": 0,
     });
     return res.json({ message: "OK" }, { status: 200 });
@@ -62,7 +64,7 @@ export async function GET() {
       query(collection(db, "users"), where("roles.judges", "in", [-1, 0, 1]))
     );
     snapshot.forEach((doc) => {
-      const { name, email, affiliation, roles, photo } = doc.data();
+      const { name, email, affiliation, roles, photo, timestamp } = doc.data();
       output.push({
         uid: doc.id,
         name: name,
@@ -72,9 +74,15 @@ export async function GET() {
         photo: photo,
         selected: false,
         hidden: false,
+        timestamp: timestamp,
       });
     });
-    return res.json({ message: "OK", items: output }, { status: 200 });
+
+    const sorted = output.sort((a, b) =>
+      a.timestamp.seconds < b.timestamp.seconds ? 1 : -1
+    );
+
+    return res.json({ message: "OK", items: sorted }, { status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },

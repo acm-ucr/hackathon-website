@@ -10,7 +10,7 @@ const MessengerPage = () => {
         committees: 1,
       }}
     >
-      <div className="w-11/12 justify-center bg-hackathon-page z-0 h-screen">
+      <div className="w-full justify-center bg-hackathon-page z-0 h-screen">
         <Messenger />
       </div>
     </ProtectedPage>

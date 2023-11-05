@@ -8,6 +8,7 @@ import {
   query,
   where,
   deleteField,
+  Timestamp,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/admin/Participants";
@@ -35,6 +36,7 @@ export async function POST(req) {
       grade: grade,
       gender: gender,
       shirt: shirt,
+      timestamp: Timestamp.now(),
       "roles.participants": 0,
       diet: diet,
       resume: resume,
@@ -83,6 +85,7 @@ export async function GET() {
         roles,
         diet,
         resume,
+        timestamp,
       } = doc.data();
 
       output.push({
@@ -97,16 +100,22 @@ export async function GET() {
         gender,
         shirt,
         diet,
+        timestamp,
         resume: resume || "",
         status: roles.participants,
         selected: false,
         hidden: false,
       });
     });
-    return res.json({ message: "OK", items: output }, { status: 200 });
+
+    const sorted = output.sort((a, b) =>
+      a.timestamp.seconds < b.timestamp.seconds ? 1 : -1
+    );
+
+    return res.json({ message: "OK", items: sorted }, { status: 200 });
   } catch (err) {
     return res.json(
-      { message: "Internal Server Error", items: [] },
+      { message: `Internal Server Error: ${err}`, items: [] },
       { status: 500 }
     );
   }

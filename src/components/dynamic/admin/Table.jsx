@@ -13,6 +13,7 @@ import { COLORS } from "@/data/dynamic/Tags";
 import Modal from "./dashboards/Modal";
 import { ICONS } from "@/data/dynamic/admin/Icons";
 import Loading from "../Loading";
+import { FaStar } from "react-icons/fa";
 
 const Toggle = ({ eventKey }) => {
   const { activeEventKey } = useContext(AccordionContext);
@@ -104,79 +105,91 @@ const Table = ({
                       toggle={object.selected}
                     />
                   </div>
-                  {headers.map(
-                    (header, index) =>
-                      header.text !== "" && (
-                        <div
-                          data-cy="element"
-                          key={index}
-                          className={`p-0 text-sm ${header.size} ${
-                            header.text === "name" && "font-bold flex"
-                          }`}
-                        >
-                          {header.hasTag && object[header.text] !== "" && (
-                            <div data-cy={header.text}>
-                              <Tag
-                                text={
-                                  String(object[header.text]).includes("base64")
-                                    ? "view"
-                                    : object[header.text]
-                                }
-                                color={
-                                  String(object[header.text]).includes("base64")
-                                    ? COLORS["view"]
-                                    : COLORS[object[header.text]]
-                                }
-                                onClick={
-                                  header.onClick
-                                    ? () => header.onClick(object, setModal)
-                                    : null
-                                }
-                                statuses={statuses}
-                              />
-                            </div>
-                          )}
-
-                          {Array.isArray(object[header.text]) &&
-                            object[header.text].map((element, index) => (
-                              <p
-                                className={`mb-0 text-sm ${
-                                  header.text === "members"
-                                    ? "font-bold text-hackathon-blue-100"
-                                    : header.text === "emails"
-                                    ? "text-hackathon-gray-200"
-                                    : ""
-                                }`}
-                                key={index}
-                              >
-                                {header.text === "links"
-                                  ? element.link !== "No Link" && (
-                                      <Link
-                                        href={element.link}
-                                        className="w-11/12 flex items-center m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-sm"
-                                      >
-                                        {ICONS[element.name]}
-                                        <p className="truncate w-11/12 ml-1 mb-0">
-                                          {element.link.replace("https://", "")}
-                                        </p>
-                                      </Link>
+                  {headers
+                    .filter((header) => header.text !== "")
+                    .map(
+                      (header, key) =>
+                        header.text !== "" && (
+                          <div
+                            data-cy="element"
+                            key={key}
+                            className={`p-0 text-sm ${header.size} ${
+                              header.text === "name" && "font-bold flex"
+                            }`}
+                          >
+                            {header.hasTag && object[header.text] !== "" && (
+                              <div data-cy={header.text}>
+                                <Tag
+                                  text={
+                                    String(object[header.text]).includes(
+                                      "base64"
                                     )
-                                  : element}
-                              </p>
-                            ))}
-
-                          {!header.hasTag &&
-                            !Array.isArray(object[header.text]) && (
-                              <div
-                                data-cy={`${header.text}`}
-                                className="break-words"
-                              >
-                                {object[header.text]}
+                                      ? "view"
+                                      : object[header.text]
+                                  }
+                                  color={
+                                    String(object[header.text]).includes(
+                                      "base64"
+                                    )
+                                      ? COLORS["view"]
+                                      : COLORS[object[header.text]]
+                                  }
+                                  onClick={
+                                    header.onClick
+                                      ? () => header.onClick(object, setModal)
+                                      : null
+                                  }
+                                  statuses={statuses}
+                                />
                               </div>
                             )}
-                        </div>
-                      )
-                  )}
+
+                            {Array.isArray(object[header.text]) &&
+                              object[header.text].map((element, i) => (
+                                <p
+                                  className={`mb-0 text-sm ${
+                                    header.text === "members"
+                                      ? "font-bold text-hackathon-blue-100"
+                                      : header.text === "emails"
+                                      ? "text-hackathon-gray-200"
+                                      : ""
+                                  }`}
+                                  key={i}
+                                >
+                                  {header.text === "links"
+                                    ? element.link !== "No Link" && (
+                                        <Link
+                                          href={element.link}
+                                          className="w-11/12 flex items-center m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-sm"
+                                        >
+                                          {ICONS[element.name]}
+                                          <p className="truncate w-11/12 ml-1 mb-0">
+                                            {element.link.replace(
+                                              "https://",
+                                              ""
+                                            )}
+                                          </p>
+                                        </Link>
+                                      )
+                                    : element}
+                                </p>
+                              ))}
+
+                            {!header.hasTag &&
+                              !Array.isArray(object[header.text]) && (
+                                <div
+                                  data-cy={`${header.text}`}
+                                  className="break-words flex items-center"
+                                >
+                                  {index < header.limit && (
+                                    <FaStar className="mr-2 text-yellow-400" />
+                                  )}
+                                  {object[header.text]}
+                                </div>
+                              )}
+                          </div>
+                        )
+                    )}
                   {Dropdown && <Toggle eventKey={index} />}
                 </div>
 
