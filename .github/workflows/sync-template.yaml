@@ -12,10 +12,9 @@ jobs:
 
     steps:
       - name: add remote
-        run: git remote add template https://github.com/acm-ucr/hackathon-website
-      - name: fetch
-        run: git fetch --all
-      - name: create pull request
-        run: gh pr create -B dev -H template/dev --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'
+        run: |
+          git remote add template https://github.com/acm-ucr/hackathon-website
+          git fetch --all
+          gh pr create -B dev -H template/dev --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
