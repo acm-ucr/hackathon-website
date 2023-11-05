@@ -53,6 +53,7 @@ const Table = ({
       })
     );
   };
+
   return !objects ? (
     <Loading />
   ) : (
