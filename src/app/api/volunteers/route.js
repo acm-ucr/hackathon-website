@@ -112,9 +112,7 @@ export async function PUT(req) {
 
   if (!results.valid) {
     return res.json(
-      {
-        message: `Validation Error: ${results.message}`,
-      },
+      { message: `Validation Error: ${results.message}` },
       { status: 400 }
     );
   }
