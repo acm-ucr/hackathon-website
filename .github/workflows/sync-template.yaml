@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: add remote
+        run: git remote add template https://github.com/acm-ucr/hackathon-website
       - name: fetch
         run: git fetch --all
       - name: create pull request
