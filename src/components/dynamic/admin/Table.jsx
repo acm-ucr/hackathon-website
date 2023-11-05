@@ -13,6 +13,7 @@ import { COLORS } from "@/data/dynamic/Tags";
 import Modal from "./dashboards/Modal";
 import { ICONS } from "@/data/dynamic/admin/Icons";
 import Loading from "../Loading";
+import { FaStar } from "react-icons/fa";
 
 const Toggle = ({ eventKey }) => {
   const { activeEventKey } = useContext(AccordionContext);
@@ -107,11 +108,11 @@ const Table = ({
                   {headers
                     .filter((header) => header.text !== "")
                     .map(
-                      (header, index) =>
+                      (header, key) =>
                         header.text !== "" && (
                           <div
                             data-cy="element"
-                            key={index}
+                            key={key}
                             className={`p-0 text-sm ${header.size} ${
                               header.text === "name" && "font-bold flex"
                             }`}
@@ -144,7 +145,7 @@ const Table = ({
                             )}
 
                             {Array.isArray(object[header.text]) &&
-                              object[header.text].map((element, index) => (
+                              object[header.text].map((element, i) => (
                                 <p
                                   className={`mb-0 text-sm ${
                                     header.text === "members"
@@ -153,7 +154,7 @@ const Table = ({
                                       ? "text-hackathon-gray-200"
                                       : ""
                                   }`}
-                                  key={index}
+                                  key={i}
                                 >
                                   {header.text === "links"
                                     ? element.link !== "No Link" && (
@@ -178,8 +179,11 @@ const Table = ({
                               !Array.isArray(object[header.text]) && (
                                 <div
                                   data-cy={`${header.text}`}
-                                  className="break-words"
+                                  className="break-words flex items-center"
                                 >
+                                  {index < header.limit && (
+                                    <FaStar className="mr-2 text-yellow-400" />
+                                  )}
                                   {object[header.text]}
                                 </div>
                               )}

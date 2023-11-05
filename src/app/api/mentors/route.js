@@ -75,7 +75,8 @@ export async function GET() {
       query(collection(db, "users"), where("roles.mentors", "in", [-1, 0, 1]))
     );
     snapshot.forEach((doc) => {
-      const { name, email, discord, roles, availability } = doc.data();
+      const { name, email, discord, roles, availability, timestamp } =
+        doc.data();
       output.push({
         name,
         email,
@@ -85,9 +86,15 @@ export async function GET() {
         uid: doc.id,
         selected: false,
         hidden: false,
+        timestamp: timestamp,
       });
     });
-    return res.json({ message: "OK", items: output }, { status: 200 });
+
+    const sorted = output.sort((a, b) =>
+      a.timestamp.seconds < b.timestamp.seconds ? 1 : -1
+    );
+
+    return res.json({ message: "OK", items: sorted }, { status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
