@@ -17,18 +17,19 @@ jobs:
         with:
           path: ${{ github.repository }}
 
-      - name: fetch template changes
+      - name: checkout new branch
+        working-directory: ${{ github.repository }}
+        run: |
+          git checkout -b sync-template
+
+      - name: fetch and merge template changes
         working-directory: ${{ github.repository }}
         run: |
           git remote add template https://github.com/acm-ucr/hackathon-website
           git fetch --all
-          git merge template/dev dev
+          git merge template/dev sync-template
 
-      - name: update all current PRs
+      - name: create new PR
         working-directory: ${{ github.repository }}
         run: |
-          numbers=$(gh pr list | awk '{print $1}')
-          for number in $numbers; do
-              gh pr checkout $number
-              git pull origin dev
-          done
+          gh pr create --title "Sync Template Changes" --body "Syncing template changes from $(date +'%m-%d-%Y')"
