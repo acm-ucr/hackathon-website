@@ -37,6 +37,10 @@ const Team = ({ user, setUser }) => {
   };
 
   const handleJoin = () => {
+    if(id.team.length === 0)  {
+      toast("❌ Enter a Valid Team ID");
+      return;
+    }
     axios
       .put("/api/members", { team: id.team })
       .then(() => {
