@@ -30,7 +30,7 @@ export async function POST(req) {
       phone: phone,
       gender: gender,
       title: title,
-      affiliation: affiliation,
+      affiliation: affiliation.toLowerCase(),
       shirt: shirt,
       photo: photo,
       "roles.judges": 0,
