@@ -6,6 +6,7 @@ import { FIELDS, ATTRIBUTES } from "@/data/dynamic/form/Committees";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { STATUSES } from "@/data/dynamic/admin/Committees";
 
 const Committee = () => {
   const { data: session } = useSession();
@@ -13,14 +14,19 @@ const Committee = () => {
     ...ATTRIBUTES,
     name: session.user.name,
     email: session.user.email,
+    roles: session.user.roles,
+    form: "committees",
   });
 
-  const handleSubmit = (setLoading) => {
+  const handleSubmit = (setLoading, setState) => {
     axios
       .post("/api/committees", committee)
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+        setState(2);
+      });
   };
   return (
     <Form
@@ -29,6 +35,7 @@ const Committee = () => {
       setObject={setCommittee}
       header="COMMITTEE PORTAL REQUEST"
       onSubmit={handleSubmit}
+      statuses={STATUSES}
     />
   );
 };

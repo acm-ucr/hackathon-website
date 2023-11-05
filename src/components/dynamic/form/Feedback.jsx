@@ -24,6 +24,7 @@ const Feedback = () => {
       setObject={setfeedback}
       header="FEEDBACK APPLICATION"
       onSubmit={onSubmit}
+      bypass={true}
     />
   );
 };
