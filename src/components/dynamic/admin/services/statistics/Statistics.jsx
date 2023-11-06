@@ -6,10 +6,7 @@ import axios from "axios";
 import Loading from "@/components/dynamic/Loading";
 
 const Statistics = () => {
-  const [counts, setCounts] = useState({
-    users: {},
-    events: {},
-  });
+  const [counts, setCounts] = useState(null);
 
   useEffect(() => {
     axios.get("/api/statistics").then((response) => {
@@ -20,7 +17,11 @@ const Statistics = () => {
   return (
     <div className="h-full font-poppins flex flex-col py-4">
       <Title title="Statistics" />
-      <Tabs counts={counts.users} events={counts.events} />
+      {!counts ? (
+        <Loading />
+      ) : (
+        <Tabs counts={counts.users} events={counts.events} />
+      )}
     </div>
   );
 };
