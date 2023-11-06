@@ -23,62 +23,34 @@ export async function PUT(req) {
 
   try {
     const formattedUsers = Object.keys(filters).filter(
-      (filter) => filters[filter] === true
+      (key) => filters[key].state
     );
 
-    const formattedStatuses = Object.keys(statuses).filter(
-      (status) => statuses[status] === true
-    );
+    const formattedStatuses = Object.values(statuses)
+      .filter((value) => value.state)
+      .map((value) => value.value);
 
     const queryConstraints = [];
 
     if (formattedUsers.includes("participants"))
       queryConstraints.push(
-        or(
-          where("roles", "array-contains", "participants"),
-          where("status.participants", "in", formattedStatuses)
-        )
+        where("roles.participants", "in", formattedStatuses)
       );
 
     if (formattedUsers.includes("volunteers"))
-      queryConstraints.push(
-        or(
-          where("roles", "array-contains", "volunteers"),
-          where("status.volunteers", "in", formattedStatuses)
-        )
-      );
+      queryConstraints.push(where("roles.volunteers", "in", formattedStatuses));
 
     if (formattedUsers.includes("mentors"))
-      queryConstraints.push(
-        or(
-          where("roles", "array-contains", "mentors"),
-          where("status.mentors", "in", formattedStatuses)
-        )
-      );
+      queryConstraints.push(where("roles.mentors", "in", formattedStatuses));
 
     if (formattedUsers.includes("judges"))
-      queryConstraints.push(
-        or(
-          where("roles", "array-contains", "judges"),
-          where("status.judges", "in", formattedStatuses)
-        )
-      );
+      queryConstraints.push(where("roles.judges", "in", formattedStatuses));
 
     if (formattedUsers.includes("admins"))
-      queryConstraints.push(
-        or(
-          where("roles", "array-contains", "admins"),
-          where("status.admins", "in", formattedStatuses)
-        )
-      );
+      queryConstraints.push(where("roles.admins", "in", formattedStatuses));
 
     if (formattedUsers.includes("committees"))
-      queryConstraints.push(
-        or(
-          where("roles", "array-contains", "committees"),
-          where("status.committees", "in", formattedStatuses)
-        )
-      );
+      queryConstraints.push(where("roles.committees", "in", formattedStatuses));
 
     const snapshot = await getDocs(
       query(collection(db, "users"), or(...queryConstraints))
