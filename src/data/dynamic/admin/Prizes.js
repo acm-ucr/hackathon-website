@@ -4,10 +4,6 @@ export const TAGS = [
     value: 1,
   },
   {
-    text: "pending",
-    value: 0,
-  },
-  {
     text: "reject",
     value: -1,
   },
@@ -16,25 +12,25 @@ export const TAGS = [
 export const HEADERS = [
   {
     text: "category",
-    size: 3,
+    size: "w-3/12",
     icon: true,
     sort: "off",
   },
   {
     text: "prize",
-    size: 3,
+    size: "w-4/12",
     icon: true,
     sort: "off",
   },
   {
     text: "team",
-    size: 3,
+    size: "w-4/12",
     icon: true,
     sort: "off",
   },
   {
     text: "status",
-    size: 2,
+    size: "w-1/12",
     icon: true,
     sort: "off",
     hasTag: true,
