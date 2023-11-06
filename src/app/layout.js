@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Poppins } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "react-hot-toast";
+import ProtectedPage from "@/components/dynamic/ProtectedPage";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -21,12 +22,19 @@ export default function RootLayout({ children, session }) {
         refetchInterval={5 * 60}
         className="h-full"
       >
-        <body
-          className={`${poppins.variable} flex flex-col lg:flex-row h-full`}
+        <ProtectedPage
+          title="User | Dashboard"
+          restrictions={{
+            admins: 1,
+          }}
         >
-          <Toaster />
-          {children}
-        </body>
+          <body
+            className={`${poppins.variable} flex flex-col lg:flex-row h-full`}
+          >
+            <Toaster />
+            {children}
+          </body>
+        </ProtectedPage>
       </SessionProvider>
     </html>
   );
