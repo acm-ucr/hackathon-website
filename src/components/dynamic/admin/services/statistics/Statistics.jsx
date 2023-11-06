@@ -5,18 +5,21 @@ import Tabs from "./Tabs";
 import axios from "axios";
 
 const Statistics = () => {
-  const [counts, setCounts] = useState({});
+  const [counts, setCounts] = useState({
+    users: {},
+    events: {},
+  });
 
   useEffect(() => {
-    axios
-      .get("/api/statistics")
-      .then((response) => setCounts(response.data.items));
+    axios.get("/api/statistics").then((response) => {
+      setCounts(response.data.items);
+    });
   }, []);
 
   return (
     <div className="h-full font-poppins flex flex-col py-4">
       <Title title="Statistics" />
-      <Tabs counts={counts} />
+      <Tabs counts={counts.users} events={counts.events} />
     </div>
   );
 };

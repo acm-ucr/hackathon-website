@@ -48,6 +48,7 @@ const CheckIn = () => {
     // TODO: CHANGE TO 5 SECONDS ONCE DEPLOYED
     if (delta < 5000) {
       const response = await axios.get(`/api/checkin?uid=${user}`);
+      console.log(response.data);
 
       if (response.data.items.includes(event.id)) {
         toast("❌ Already Checked In!");
@@ -55,7 +56,7 @@ const CheckIn = () => {
       }
 
       axios
-        .put("/api/checkin", { uid: user, event: event.id })
+        .put("/api/checkin", { uid: user, event: event.id, name: event.name })
         .then(() => toast(`✅ Checked in for ${event.name}`));
     } else {
       toast("❌ Expired QR code!");

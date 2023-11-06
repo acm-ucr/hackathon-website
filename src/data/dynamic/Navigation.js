@@ -130,12 +130,12 @@ export const TABS = {
       tabs: [
         {
           name: "dashboard",
-          link: "/users/dashboard",
+          link: "/user/dashboard",
           icon: <BsFillPersonFill className={iconStyle} />,
         },
         {
           name: "checkin",
-          link: "/users/checkin",
+          link: "/user/checkin",
           icon: <AiOutlineQrcode className={iconStyle} />,
         },
         {
