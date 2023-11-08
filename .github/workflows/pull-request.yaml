@@ -1,4 +1,4 @@
-name: ACM UCR Website
+name: Hackathon Website
 on:
   pull_request:
     branches: [main, dev]
