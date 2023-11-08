@@ -1,4 +1,5 @@
-name: ACM UCR Website
+name: Hackathon Website
+
 on:
   pull_request:
     branches: [main, dev]
@@ -14,9 +15,10 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "16.14.2"
+          node-version: "18.17.1"
       - run: npm ci
       - run: npm run check
+
   lint:
     name: linting
     runs-on: ubuntu-latest
@@ -26,9 +28,10 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "16.14.2"
+          node-version: "18.17.1"
       - run: npm ci
       - run: npm run eslint
+
   build:
     name: build
     runs-on: ubuntu-latest
@@ -38,9 +41,16 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "16.14.2"
+          node-version: "18.17.1"
       - run: npm ci
       - run: npm run build
+
+      - name: Save build folder
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          if-no-files-found: error
+          path: ./.next
     env:
       NEXT_PUBLIC_FIREBASE_API_KEY: ${{secrets.NEXT_PUBLIC_FIREBASE_API_KEY}}
       NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN}}
@@ -57,16 +67,22 @@ jobs:
 
   e2e_testing:
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Download the build folder
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: ./.next
 
       - name: Run Cypress
         uses: cypress-io/github-action@v6
         with:
           project: ./
           browser: chrome
-          build: npm run build
           start: npm run start
           wait-on: "http://localhost:3000"
     env:
@@ -85,9 +101,16 @@ jobs:
 
   component_testing:
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Download the build folder
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: ./.next
 
       - name: Run Cypress
         uses: cypress-io/github-action@v6
@@ -95,7 +118,6 @@ jobs:
           component: true
           project: ./
           browser: chrome
-          build: npm run build
           start: npm run start
           wait-on: "http://localhost:3000"
     env:
