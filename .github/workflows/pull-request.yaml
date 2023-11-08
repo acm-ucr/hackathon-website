@@ -71,7 +71,7 @@ jobs:
         with:
           name: build
           if-no-files-found: error
-          path: build
+          path: ./.next
     env:
       NEXT_PUBLIC_FIREBASE_API_KEY: ${{secrets.NEXT_PUBLIC_FIREBASE_API_KEY}}
       NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN}}
@@ -96,7 +96,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build
-          path: build
+          path: ./.next
 
       - name: Run Cypress
         uses: cypress-io/github-action@v6
@@ -130,7 +130,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build
-          path: build
+          path: ./.next
 
       - name: Run Cypress
         uses: cypress-io/github-action@v6
