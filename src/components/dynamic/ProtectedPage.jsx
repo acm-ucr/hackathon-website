@@ -3,17 +3,19 @@ import { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import Loading from "@/components/dynamic/Loading";
 import Error from "./Error";
-import Navigation from "./Navigation";
 import { usePathname } from "next/navigation";
 import RELEASES from "@/data/Releases";
+import { ROUTES } from "@/data/ProtectedRoutes";
 
-const ProtectedPage = ({ title, children, restrictions }) => {
+const ProtectedPage = ({ children }) => {
   const { data: session, status } = useSession();
   const [error, setError] = useState(null);
   const [confirmed, setConfirmed] = useState(false);
 
   const pathName = usePathname();
-  const navigation = RegExp(/user\/|admin\//).test(pathName);
+
+  const restrictions = ROUTES[pathName].restrictions;
+  const title = ROUTES[pathName].title;
 
   useEffect(() => {
     if (RELEASES.DYNAMIC[pathName] > new Date()) {
@@ -65,12 +67,9 @@ const ProtectedPage = ({ title, children, restrictions }) => {
       )}
       {status === "authenticated" && confirmed && (
         <>
-          {navigation && <Navigation />}
           <title>{title}</title>
-          <div className="flex justify-center items-start w-full bg-hackathon-page z-0 h-screen pt-12 lg:pt-0">
-            <div className={`${navigation ? "w-11/12" : "w-full"} h-full`}>
-              {children}
-            </div>
+          <div className="flex justify-center items-start w-full bg-hackathon-page h-screen pt-12 lg:pt-0 z-0">
+            <div className={`w-[96%] h-full`}>{children}</div>
           </div>
         </>
       )}
