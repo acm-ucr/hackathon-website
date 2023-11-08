@@ -1,6 +1,4 @@
 const Event = ({ event, view }) => {
-  console.log(event);
-
   return (
     <div className="p-0.5">
       <p className="inline text-xs">

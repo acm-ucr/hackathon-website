@@ -40,6 +40,24 @@ const Messenger = () => {
       return;
     }
 
+    const usersCount = Object.keys(filters).filter(
+      (key) => filters[key].state
+    ).length;
+
+    const statusesCount = Object.values(statuses)
+      .filter((value) => value.state)
+      .map((value) => value.value).length;
+
+    if (usersCount === 0) {
+      toast("❌ Please select a user type!");
+      return;
+    }
+
+    if (statusesCount === 0) {
+      toast("❌ Please select a user status!");
+      return;
+    }
+
     const files = await Promise.all(
       email.files.map(async (file) => {
         const base64 = await readFileAsBase64(file);

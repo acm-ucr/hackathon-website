@@ -28,7 +28,6 @@ export async function GET(req) {
   try {
     const docSnap = await getDoc(doc(db, "users", uid));
     const data = docSnap.data().events || [];
-    console.log(data);
     return res.json({ message: "OK", items: data }, { status: 200 });
   } catch (err) {
     return res.json(
