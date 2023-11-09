@@ -140,7 +140,6 @@ const Toolbar = ({ data, setData, judges, setJudges }) => {
   };
 
   const handleReset = () => {
-    console.log(data);
     if (data.some((team) => team.rounds.length === 0)) {
       toast("❌ Already Reset!");
       return;
