@@ -25,20 +25,6 @@ const CalendarEvents = () => {
       case "w":
         setView("week");
         break;
-      case "ArrowRight":
-        if (view === "month") {
-          setDate(new Date(date.setMonth(date.getMonth() + 1)));
-        } else if (view === "week") {
-          setDate(new Date(date.setDate(date.getDate() + 7)));
-        }
-        break;
-      case "ArrowLeft":
-        if (view === "month") {
-          setDate(new Date(date.setMonth(date.getMonth() - 1)));
-        } else if (view === "week") {
-          setDate(new Date(date.setDate(date.getDate() - 7)));
-        }
-        break;
     }
   };
 
@@ -72,7 +58,7 @@ const CalendarEvents = () => {
 
     document.addEventListener("keydown", handleShortcuts);
     return () => document.removeEventListener("keydown", handleShortcuts);
-  }, [view]);
+  }, []);
 
   return (
     <div className="relative h-screen">

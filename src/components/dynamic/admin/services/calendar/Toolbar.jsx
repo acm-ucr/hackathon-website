@@ -2,6 +2,7 @@ import { LABELS } from "@/data/dynamic/admin/Calendar.js";
 import Tag from "../../Tag.jsx";
 import { COLORS } from "@/data/dynamic/Tags.js";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+import { useEffect } from "react";
 
 const CustomToolbar = ({
   onView,
@@ -35,6 +36,22 @@ const CustomToolbar = ({
       );
     }
   };
+
+  const handleShortcuts = (e) => {
+    switch (e.key) {
+      case "ArrowRight":
+        onNavigate("NEXT");
+        break;
+      case "ArrowLeft":
+        onNavigate("PREV");
+        break;
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleShortcuts);
+    return () => document.removeEventListener("keydown", handleShortcuts);
+  }, []);
 
   return (
     <div className="grid grid-cols-3">
