@@ -1,9 +1,24 @@
 export const ROUTES = {
+  "/": {
+    bypass: true,
+  },
+  "/_not-found": {
+    bypass: true,
+  },
+  "/_error": {
+    bypass: true,
+  },
   "/admin/participants": {
     restrictions: {
       admins: 1,
     },
     title: "Admin | Participants",
+  },
+  "/admin/feedback": {
+    restrictions: {
+      admins: 1,
+    },
+    title: "Admin | Feedback",
   },
   "/admin/teams": {
     restrictions: {
@@ -121,6 +136,30 @@ export const ROUTES = {
       admins: 1,
     },
     title: "Form | Judge",
+  },
+  "/form/volunteer": {
+    restrictions: {
+      admins: 1,
+    },
+    title: "Form | Volunteer",
+  },
+  "/form/participant": {
+    restrictions: {
+      admins: 1,
+    },
+    title: "Form | Participant",
+  },
+  "/form/mentor": {
+    restrictions: {
+      admins: 1,
+    },
+    title: "Form | Mentor",
+  },
+  "/form/interest": {
+    restrictions: {
+      admins: 1,
+    },
+    title: "Form | Interest",
   },
 
   "/user/dashboard": {

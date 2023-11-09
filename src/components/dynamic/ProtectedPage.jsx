@@ -15,6 +15,7 @@ const ProtectedPage = ({ children }) => {
   const pathName = usePathname();
   const restrictions = ROUTES[pathName].restrictions;
   const title = ROUTES[pathName].title;
+  const bypass = ROUTES[pathName].bypass;
 
   useEffect(() => {
     if (RELEASES.DYNAMIC[pathName] > new Date()) {
@@ -64,7 +65,7 @@ const ProtectedPage = ({ children }) => {
       {error && (
         <Error code={error.code} error={error.error} message={error.message} />
       )}
-      {status === "authenticated" && confirmed && (
+      {(confirmed || bypass) && (
         <>
           <title>{title}</title>
           <div className="flex justify-center items-start w-full bg-hackathon-page h-screen pt-12 lg:pt-0 z-0">
