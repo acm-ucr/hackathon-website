@@ -5,6 +5,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Poppins } from "next/font/google";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "react-hot-toast";
+import ProtectedPage from "@/components/dynamic/ProtectedPage";
+import Navigation from "@/components/dynamic/Navigation";
+import { usePathname } from "next/navigation";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -14,20 +17,27 @@ const poppins = Poppins({
 });
 
 export default function RootLayout({ children, session }) {
+  const pathName = usePathname();
+
+  const navigation = RegExp(/user\/|admin\//).test(pathName);
+
   return (
     <html lang="en" className="h-full">
-      <SessionProvider
-        session={session}
-        refetchInterval={5 * 60}
-        className="h-full"
-      >
-        <body
-          className={`${poppins.variable} flex flex-col lg:flex-row h-full`}
+      <body className={`${poppins.variable} flex flex-col lg:flex-row h-full`}>
+        <SessionProvider
+          session={session}
+          refetchInterval={5 * 60}
+          className="h-full"
         >
-          <Toaster />
-          {children}
-        </body>
-      </SessionProvider>
+          <div className="flex w-full">
+            {navigation && <Navigation />}
+            <ProtectedPage>
+              <Toaster />
+              {children}
+            </ProtectedPage>
+          </div>
+        </SessionProvider>
+      </body>
     </html>
   );
 }
