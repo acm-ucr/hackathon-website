@@ -6,6 +6,7 @@ import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/form/Participant.js";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { STATUSES } from "@/data/dynamic/admin/Participants.js";
 
 const Participant = () => {
   const { data: session } = useSession();
@@ -13,6 +14,8 @@ const Participant = () => {
     ...ATTRIBUTES,
     name: session.user.name,
     email: session.user.email,
+    roles: session.user.roles,
+    form: "participants",
   });
 
   const handleSubmit = (setLoading) => {
@@ -20,7 +23,10 @@ const Participant = () => {
       .post("/api/participants", participant)
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+        setState(2);
+      });
   };
 
   return (
@@ -30,6 +36,7 @@ const Participant = () => {
       setObject={setParticipant}
       header="HACKER APPLICATION"
       onSubmit={handleSubmit}
+      statuses={STATUSES}
     />
   );
 };

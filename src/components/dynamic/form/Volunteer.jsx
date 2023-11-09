@@ -6,6 +6,7 @@ import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/form/Volunteers.js";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { STATUSES } from "@/data/dynamic/admin/Volunteers.js";
 
 const Volunteer = () => {
   const { data: session } = useSession();
@@ -14,6 +15,8 @@ const Volunteer = () => {
     ...ATTRIBUTES,
     name: session.user.name,
     email: session.user.email,
+    roles: session.user.roles,
+    form: "volunteers",
   });
 
   const handleSubmit = (setLoading) => {
@@ -21,7 +24,10 @@ const Volunteer = () => {
       .post("/api/volunteers", volunteer)
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+        setState(2);
+      });
   };
   return (
     <Form
@@ -30,6 +36,7 @@ const Volunteer = () => {
       setObject={setVolunteer}
       header="VOLUNTEER APPLICATION"
       onSubmit={handleSubmit}
+      statuses={STATUSES}
     />
   );
 };

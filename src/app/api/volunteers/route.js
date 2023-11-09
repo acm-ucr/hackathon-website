@@ -8,6 +8,7 @@ import {
   query,
   where,
   deleteField,
+  Timestamp,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/admin/Volunteers";
@@ -33,6 +34,7 @@ export async function POST(req) {
       grade: grade,
       gender: gender,
       shirt: shirt,
+      timestamp: Timestamp.now(),
       "roles.volunteers": 0,
       availability: availability,
     });
@@ -66,7 +68,8 @@ export async function GET() {
       )
     );
     snapshot.forEach((doc) => {
-      const { name, email, discord, availability, roles } = doc.data();
+      const { name, email, discord, availability, roles, timestamp } =
+        doc.data();
       output.push({
         uid: doc.id,
         name,
@@ -76,9 +79,15 @@ export async function GET() {
         status: roles.volunteers,
         selected: false,
         hidden: false,
+        timestamp: timestamp,
       });
     });
-    return res.json({ message: "OK", items: output }, { status: 200 });
+
+    const sorted = output.sort((a, b) =>
+      a.timestamp.seconds < b.timestamp.seconds ? 1 : -1
+    );
+
+    return res.json({ message: "OK", items: sorted }, { status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },

@@ -2,26 +2,25 @@
 
 import { useState } from "react";
 import Form from "@/components/dynamic/form/Form.jsx";
-import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/form/Mentors.js";
-import { useSession } from "next-auth/react";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { STATUSES } from "@/data/dynamic/admin/Mentors.js";
+import { FIELDS, ATTRIBUTES } from "@/data/dynamic/form/Interest";
+import { useSession } from "next-auth/react";
+import { STATUSES } from "@/data/dynamic/admin/Interest";
 
-const Mentor = () => {
+const Interest = () => {
   const { data: session } = useSession();
-
-  const [mentor, setMentor] = useState({
+  const [interest, setInterest] = useState({
     ...ATTRIBUTES,
     name: session.user.name,
     email: session.user.email,
     roles: session.user.roles,
-    form: "mentors",
+    form: "interests",
   });
 
-  const handleSubmit = (setLoading, setState) => {
+  const onSubmit = (setLoading, setState) => {
     axios
-      .post("/api/mentors", mentor)
+      .post("/api/interests", interest)
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
       .finally(() => {
@@ -29,16 +28,17 @@ const Mentor = () => {
         setState(2);
       });
   };
+
   return (
     <Form
       fields={FIELDS}
-      object={mentor}
-      setObject={setMentor}
-      header="MENTOR APPLICATION"
-      onSubmit={handleSubmit}
+      object={interest}
+      setObject={setInterest}
+      header="INTEREST APPLICATION"
+      onSubmit={onSubmit}
       statuses={STATUSES}
     />
   );
 };
 
-export default Mentor;
+export default Interest;

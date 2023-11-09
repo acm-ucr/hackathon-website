@@ -84,7 +84,10 @@ const Select = ({
           </div>
         )}
         {editable && (
-          <Dropdown.Menu className="w-full !bg-hackathon-green-100 !border-none !rounded-none !p-0 overflow-y-auto max-h-[35vh]">
+          <Dropdown.Menu
+            className="w-full !bg-hackathon-green-100 !border-none !rounded-none !p-0 overflow-y-auto max-h-[35vh]"
+            data-cy="select-menu"
+          >
             {searchable && (
               <input
                 value={input}
