@@ -1,12 +1,15 @@
 export const ROUTES = {
   "/": {
     bypass: true,
+    title: "Bypass | /",
   },
   "/_not-found": {
     bypass: true,
+    title: "Bypass | /_not-found",
   },
   "/_error": {
     bypass: true,
+    title: "Bypass | /_error",
   },
   "/admin/participants": {
     restrictions: {
