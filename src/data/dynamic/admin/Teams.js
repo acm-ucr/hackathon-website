@@ -18,10 +18,6 @@ export const TAGS = [
     value: 1,
   },
   {
-    text: "pending",
-    value: 0,
-  },
-  {
     text: "disqualify",
     value: -1,
   },

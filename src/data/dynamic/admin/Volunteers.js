@@ -21,10 +21,6 @@ export const TAGS = [
     value: 1,
   },
   {
-    text: "pending",
-    value: 0,
-  },
-  {
     text: "not attending",
     value: -1,
   },

@@ -48,24 +48,6 @@ describe("Teams Actions", () => {
     );
   });
 
-  it("Pending First 5 Entries", () => {
-    five.forEach((team) =>
-      cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
-    );
-
-    cy.action({
-      tag: "pending",
-      page: "teams",
-    });
-
-    five.forEach((team) =>
-      cy
-        .get(`[data-cy="${team.uid}"]`)
-        .find('[data-cy="0-tag"]')
-        .should("exist")
-    );
-  });
-
   it("Delete First 5 Entries", () => {
     five.forEach((team) =>
       cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()

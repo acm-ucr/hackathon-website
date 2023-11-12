@@ -47,24 +47,6 @@ describe("Judges Actions", () => {
     );
   });
 
-  it("Pending First 5 Entries", () => {
-    five.forEach((judge) =>
-      cy.get(`[data-cy="${judge.uid}"]`).find('[data-cy="checkbox"]').click()
-    );
-
-    cy.action({
-      tag: "pending",
-      page: "judges",
-    });
-
-    five.forEach((judge) =>
-      cy
-        .get(`[data-cy="${judge.uid}"]`)
-        .find('[data-cy="0-tag"]')
-        .should("exist")
-    );
-  });
-
   it("Delete First 5 Entries", () => {
     five.forEach((judge) =>
       cy.get(`[data-cy="${judge.uid}"]`).find('[data-cy="checkbox"]').click()
