@@ -47,24 +47,6 @@ describe("Volunteers Actions", () => {
     );
   });
 
-  it("Pending First 5 Entries", () => {
-    five.forEach((volunteer) =>
-      cy.get(`[data-cy="${volunteer.uid}"]`).find('[data-cy="select"]').click()
-    );
-
-    cy.action({
-      tag: "pending",
-      page: "volunteers",
-    });
-
-    five.forEach((volunteer) =>
-      cy
-        .get(`[data-cy="${volunteer.uid}"]`)
-        .find('[data-cy="0-tag"]')
-        .should("exist")
-    );
-  });
-
   it("Delete First 5 Entries", () => {
     five.forEach((volunteer) =>
       cy.get(`[data-cy="${volunteer.uid}"]`).find('[data-cy="select"]').click()

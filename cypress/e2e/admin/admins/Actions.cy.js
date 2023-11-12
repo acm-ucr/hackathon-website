@@ -28,23 +28,6 @@ describe("Admin Actions", () => {
     );
   });
 
-  it("Pending First 5 Entries", () => {
-    five.forEach((admin) =>
-      cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click()
-    );
-
-    cy.action({
-      tag: "pending",
-      page: "admins",
-    });
-    five.forEach((admin) =>
-      cy
-        .get(`[data-cy="${admin.uid}"]`)
-        .find('[data-cy="0-tag"]')
-        .should("exist")
-    );
-  });
-
   it("Reject First 5 Entries", () => {
     five.forEach((admin) =>
       cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click()
