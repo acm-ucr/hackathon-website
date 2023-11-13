@@ -31,16 +31,20 @@ export const LABELS = {
     color: "lightgreen",
     background: "!bg-hackathon-tags-lightgreen-text",
   },
-  workshop: {
-    color: "grayblue",
-    background: "!bg-hackathon-tags-grayblue-text",
-  },
   leads: {
     color: "red",
     background: "!bg-hackathon-tags-red-text",
   },
+  workshop: {
+    color: "grayblue",
+    background: "!bg-hackathon-tags-grayblue-text",
+  },
   hackathon: {
     color: "pink",
     background: "!bg-hackathon-tags-pink-text",
+  },
+  food: {
+    color: "yellow",
+    background: "!bg-hackathon-tags-yellow-text",
   },
 };

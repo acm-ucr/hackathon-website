@@ -75,12 +75,14 @@ export async function GET() {
       query(collection(db, "users"), where("roles.judges", "in", [-1, 0, 1]))
     );
     snapshot.forEach((doc) => {
-      const { name, email, affiliation, roles, photo, timestamp } = doc.data();
+      const { name, email, affiliation, roles, photo, timestamp, title } =
+        doc.data();
       output.push({
         uid: doc.id,
         name: name,
         email: email,
         affiliation: affiliation,
+        title: title,
         status: roles.judges,
         photo: photo,
         selected: false,

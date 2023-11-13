@@ -25,8 +25,9 @@ export const TAGS = [
 ];
 
 export const HEADERS = [
-  { text: "name", size: "w-3/12", icon: true, sort: "off" },
+  { text: "name", size: "w-2/12", icon: true, sort: "off" },
   { text: "email", size: "w-3/12", icon: true, sort: "off" },
+  { text: "title", size: "w-2/12", icon: true, sort: "off" },
   {
     text: "affiliation",
     size: "w-2/12",
@@ -36,7 +37,7 @@ export const HEADERS = [
   },
   {
     text: "status",
-    size: "w-2/12",
+    size: "w-1/12",
     icon: true,
     sort: "off",
     hasTag: true,

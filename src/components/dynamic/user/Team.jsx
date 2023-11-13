@@ -17,16 +17,19 @@ const Team = ({ user, setUser }) => {
     figma: "",
     members: [{ email: user.email, name: user.name }],
   };
+
   const handleCopy = () => {
     navigator.clipboard.writeText(user.team);
-    toast("✅ Successfully copy team ID to clipboard!");
+    toast("✅ Successfully copied team id!");
   };
+
   const handleCopyLink = () => {
     navigator.clipboard.writeText(
       `${process.env.NEXT_PUBLIC_URL}users/join/${user.team}`
     );
-    toast("✅ Successfully copy join link to clipboard!");
+    toast("✅ Successfully copied join link!");
   };
+
   const handleLeave = () => {
     axios.delete("/api/members").then(() => {
       toast("✅ Successfully left team!");
@@ -137,7 +140,7 @@ const Team = ({ user, setUser }) => {
           <Input
             name="figma"
             type="text"
-            title="Figma (please set share permision)"
+            title="Figma"
             value={team.figma.replace("https://", "")}
             user={team}
             editable={edit}
@@ -170,22 +173,12 @@ const Team = ({ user, setUser }) => {
             </p>
           </div>
           <div className="flex items-center justify-end gap-4">
-            {edit && (
-              <Button
-                color="green"
-                size="xl"
-                text="done"
-                onClick={handleSave}
-              />
-            )}
-            {!edit && (
-              <Button
-                color="green"
-                size="xl"
-                text="edit"
-                onClick={handleEdit}
-              />
-            )}
+            <Button
+              color="green"
+              size="xl"
+              text={edit ? "done" : "edit"}
+              onClick={edit ? handleSave : handleEdit}
+            />
             <Button color="red" text="leave" onClick={handleLeave} />
           </div>
         </>
