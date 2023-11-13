@@ -44,7 +44,6 @@ const CalendarEvents = () => {
       const rawEvents = [...hackathon, ...leads];
 
       rawEvents.forEach((item) => {
-        console.log(item.summary, item.description);
         item.start = new Date(item.start.dateTime);
         item.end = new Date(item.end.dateTime);
         const [category, assignee] = item.description
