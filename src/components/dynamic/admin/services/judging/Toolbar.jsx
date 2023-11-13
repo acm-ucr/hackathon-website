@@ -161,7 +161,6 @@ const Toolbar = ({ data, setData }) => {
 
   const load = () => {
     axios.get("/api/judging").then((response) => {
-      console.log(response.data.items);
       setData(response.data.items.teams);
       setJudges(response.data.items.judges);
 

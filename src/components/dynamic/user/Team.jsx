@@ -42,7 +42,6 @@ const Team = ({ user, setUser }) => {
   };
 
   const handleJoin = () => {
-    console.log(id);
     if (id.team === "") {
       toast("❌ Enter a Valid Team ID");
       return;
