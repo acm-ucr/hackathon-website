@@ -109,7 +109,6 @@ const Toolbar = ({
         break;
       }
       case "Backspace": {
-        //e.keyCode === 46
         console.log("delete pressed");
         handleDelete();
         break;
