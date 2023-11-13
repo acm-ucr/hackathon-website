@@ -18,6 +18,10 @@ const ProtectedPage = ({ children }) => {
   const bypass = ROUTES[pathName].bypass;
 
   useEffect(() => {
+    if (bypass) {
+      setConfirmed(true);
+      return;
+    }
     if (RELEASES.DYNAMIC[pathName] > new Date()) {
       setError({
         code: 423,
@@ -65,7 +69,7 @@ const ProtectedPage = ({ children }) => {
       {error && (
         <Error code={error.code} error={error.error} message={error.message} />
       )}
-      {(confirmed || bypass) && (
+      {confirmed && (
         <>
           <title>{title}</title>
           <div className="flex justify-center items-start w-full bg-hackathon-page h-screen pt-12 lg:pt-0 z-0">

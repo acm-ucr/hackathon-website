@@ -11,9 +11,10 @@ import axios from "axios";
 
 const tags = ["professor", "industry", "student"];
 
-const Toolbar = ({ data, setData, judges, setJudges }) => {
+const Toolbar = ({ data, setData }) => {
   const router = useRouter();
 
+  const [judges, setJudges] = useState(null);
   const [popup, setPopup] = useState({
     title: "",
     text: "",
