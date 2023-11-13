@@ -64,7 +64,7 @@ export const TABS = {
         },
         {
           name: "interests",
-          link: "/admin/interest",
+          link: "/admin/interests",
           icon: <FaExclamation className={iconStyle} />,
         },
         {
