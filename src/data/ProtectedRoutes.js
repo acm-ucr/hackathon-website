@@ -1,15 +1,15 @@
 export const ROUTES = {
   "/": {
     bypass: true,
-    title: "Bypass | /",
+    title: "Hackathon",
   },
   "/_not-found": {
     bypass: true,
-    title: "Bypass | /_not-found",
+    title: "Hackathon | Not Found",
   },
   "/_error": {
     bypass: true,
-    title: "Bypass | /_error",
+    title: "Hackathon | Error",
   },
   "/admin/participants": {
     restrictions: {
