@@ -3,6 +3,12 @@ import { db } from "../../../../firebase";
 import { doc, getDoc, updateDoc, addDoc, collection } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/user/Team";
+import {
+  uniqueNamesGenerator,
+  adjectives,
+  colors,
+  animals,
+} from "unique-names-generator";
 
 export async function POST() {
   const res = NextResponse;
@@ -16,8 +22,13 @@ export async function POST() {
   }
 
   try {
+    const randomName = uniqueNamesGenerator({
+      dictionaries: [adjectives, colors, animals],
+      separator: " ",
+    });
+
     const team = {
-      name: "",
+      name: randomName,
       links: {
         github: "",
         devpost: "",
@@ -79,11 +90,11 @@ export async function PUT(req) {
 
 export async function GET(req) {
   const res = NextResponse;
-  const { auth } = await authenticate(AUTH.GET);
+  const { auth, message } = await authenticate(AUTH.GET);
 
   if (auth !== 200) {
     return res.json(
-      { message: `Authentication Error: ${"MESSAGE VARIABLE SHOULD BE HERE"}` },
+      { message: `Authentication Error: ${message}` },
       { status: auth }
     );
   }

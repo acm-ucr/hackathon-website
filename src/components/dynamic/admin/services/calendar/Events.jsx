@@ -46,10 +46,14 @@ const CalendarEvents = () => {
       rawEvents.forEach((item) => {
         item.start = new Date(item.start.dateTime);
         item.end = new Date(item.end.dateTime);
-        item.color =
-          LABELS[
-            item.description.split("\n")[1].split(": ")[1].toLowerCase()
-          ].background;
+        const [category, assignee] = item.description
+          .split("\n")[0]
+          .split("#")
+          .map((item) => item.trim())
+          .filter((item) => item !== "");
+        item.category = category;
+        item.color = LABELS[item.category].background;
+        item.assignee = assignee;
         item.hidden = false;
       });
 
