@@ -50,9 +50,6 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
     }
   };
   document.addEventListener("keyup", handleFilterKeys);
-  // useEffect(() => {
-  //   return () => document.removeEventListener("keydown", handleFilterKeys);
-  // }, []);
 
   return (
     <div className="w-fit grid grid-cols-3 gap-2">
