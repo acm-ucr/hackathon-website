@@ -4,23 +4,16 @@ import { signIn, useSession } from "next-auth/react";
 import Loading from "@/components/dynamic/Loading";
 import { usePathname } from "next/navigation";
 import RELEASES from "@/data/Releases";
-import { ROUTES } from "@/data/ProtectedRoutes";
 import Fault from "@/utils/error";
+import Navigation from "@/components/dynamic/Navigation";
 
-const ProtectedPage = ({ children }) => {
+const ProtectedPage = ({ children, restrictions, title }) => {
   const { data: session, status } = useSession();
   const [confirmed, setConfirmed] = useState(false);
 
   const pathName = usePathname();
-  const restrictions = ROUTES[pathName].restrictions;
-  const title = ROUTES[pathName].title;
-  const bypass = ROUTES[pathName].bypass;
 
   useEffect(() => {
-    if (bypass) {
-      setConfirmed(true);
-      return;
-    }
     if (RELEASES.DYNAMIC[pathName] > new Date()) {
       throw new Fault(
         423,
@@ -55,12 +48,15 @@ const ProtectedPage = ({ children }) => {
     setConfirmed(true);
   }, [status]);
 
+  const navigation = RegExp(/user\/|admin\//).test(pathName);
+
   return (
     <>
       {status === "loading" && <Loading />}
       {confirmed && (
         <>
           <title>{title}</title>
+          {navigation && <Navigation />}
           <div className="flex justify-center items-start w-full bg-hackathon-page h-screen pt-12 lg:pt-0 z-0">
             <div className={`w-[96%] h-full`}>{children}</div>
           </div>
