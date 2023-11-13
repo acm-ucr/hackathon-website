@@ -203,7 +203,12 @@ const Toolbar = ({ data, setData, judges, setJudges }) => {
             <p className="mb-0 font-semibold mx-2"># of rotations</p>
             <Button color="green" text="generate" onClick={generate} />
           </form>
-          <Button color="red" text="reset" onClick={handleReset} />
+          <Button
+            color="red"
+            text="reset"
+            onClick={handleReset}
+            disabled={data === null || []}
+          />
         </div>
         <div className="flex">
           {tags.map((tag, index) => (
