@@ -100,6 +100,25 @@ const Toolbar = ({
     handleReload();
   }, []);
 
+  const keyHandler = (e) => {
+    if (e.repeat) return;
+    switch (e.key) {
+      case "r": {
+        console.log("r pressed");
+        handleReload();
+        break;
+      }
+      case "Backspace": {
+        //e.keyCode === 46
+        console.log("delete pressed");
+        handleDelete();
+        break;
+      }
+    }
+  };
+
+  document.addEventListener("keyup", keyHandler);
+
   return (
     <div className="w-full flex items-center" data-cy="toolbar">
       <div className="w-2/3 flex items-center">

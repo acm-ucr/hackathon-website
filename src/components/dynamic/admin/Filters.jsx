@@ -2,6 +2,7 @@ import { TiPlus } from "react-icons/ti";
 
 const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
   const handleClick = (filter) => {
+    console.log("Filter", filter);
     const filterValues = {
       ...filters,
       [filter]: { ...filters[filter], state: !filters[filter].state },
@@ -26,6 +27,32 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
         })
       );
   };
+
+  const handleFilterKeys = (e) => {
+    if (e.repeat) return;
+    console.log("event", e);
+    switch (e.key) {
+      case "1": {
+        console.log("1 pressed");
+        handleClick(Object.keys(filters)[0]);
+        break;
+      }
+      case "2": {
+        console.log("2 pressed");
+        handleClick(Object.keys(filters)[1]);
+        break;
+      }
+      case "3": {
+        console.log("3 pressed");
+        handleClick(Object.keys(filters)[2]);
+        break;
+      }
+    }
+  };
+  document.addEventListener("keyup", handleFilterKeys);
+  // useEffect(() => {
+  //   return () => document.removeEventListener("keydown", handleFilterKeys);
+  // }, []);
 
   return (
     <div className="w-fit grid grid-cols-3 gap-2">
