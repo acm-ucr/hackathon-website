@@ -11,9 +11,10 @@ import axios from "axios";
 
 const tags = ["professor", "industry", "student"];
 
-const Toolbar = ({ data, setData, judges, setJudges }) => {
+const Toolbar = ({ data, setData }) => {
   const router = useRouter();
 
+  const [judges, setJudges] = useState(null);
   const [popup, setPopup] = useState({
     title: "",
     text: "",
@@ -160,6 +161,7 @@ const Toolbar = ({ data, setData, judges, setJudges }) => {
 
   const load = () => {
     axios.get("/api/judging").then((response) => {
+      console.log(response.data.items);
       setData(response.data.items.teams);
       setJudges(response.data.items.judges);
 
