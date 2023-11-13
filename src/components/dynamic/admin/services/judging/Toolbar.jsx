@@ -209,7 +209,6 @@ const Toolbar = ({ data, setData, judges, setJudges }) => {
             onClick={handleReset}
             disabled={data === null || []}
           />
-          {console.log(data)}
         </div>
         <div className="flex">
           {tags.map((tag, index) => (
