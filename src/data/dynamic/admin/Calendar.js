@@ -39,7 +39,7 @@ export const LABELS = {
     color: "grayblue",
     background: "!bg-hackathon-tags-grayblue-text",
   },
-  hackathon: {
+  general: {
     color: "pink",
     background: "!bg-hackathon-tags-pink-text",
   },
