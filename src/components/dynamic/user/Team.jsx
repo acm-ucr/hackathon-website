@@ -8,7 +8,9 @@ import { BiLink, BiSolidCopy } from "react-icons/bi";
 
 const Team = ({ user, setUser }) => {
   const [team, setTeam] = useState(null);
-  const [id, setId] = useState({});
+  const [id, setId] = useState({
+    team: "",
+  });
   const [edit, setEdit] = useState(false);
   const defaultTeam = {
     name: "",
@@ -35,11 +37,16 @@ const Team = ({ user, setUser }) => {
       toast("✅ Successfully left team!");
       setTeam(null);
       setUser({ ...user, team: null });
-      setId({});
+      setId({ team: "" });
     });
   };
 
   const handleJoin = () => {
+    console.log(id);
+    if (id.team === "") {
+      toast("❌ Enter a Valid Team ID");
+      return;
+    }
     axios
       .put("/api/members", { team: id.team })
       .then(() => {
