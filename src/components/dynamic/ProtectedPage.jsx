@@ -2,14 +2,13 @@
 import { useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import Loading from "@/components/dynamic/Loading";
-import Error from "./Error";
 import { usePathname } from "next/navigation";
 import RELEASES from "@/data/Releases";
 import { ROUTES } from "@/data/ProtectedRoutes";
+import Fault from "@/utils/error";
 
 const ProtectedPage = ({ children }) => {
   const { data: session, status } = useSession();
-  const [error, setError] = useState(null);
   const [confirmed, setConfirmed] = useState(false);
 
   const pathName = usePathname();
@@ -23,12 +22,11 @@ const ProtectedPage = ({ children }) => {
       return;
     }
     if (RELEASES.DYNAMIC[pathName] > new Date()) {
-      setError({
-        code: 423,
-        error: "Locked Resource",
-        message: "This resource has not been released",
-      });
-      return;
+      throw new Fault(
+        423,
+        "Locked Resource",
+        "This resource has not been released"
+      );
     }
 
     if (status === "loading") return;
@@ -38,12 +36,11 @@ const ProtectedPage = ({ children }) => {
     }
 
     if (!session.user.roles && Object.keys(restrictions).length > 0) {
-      setError({
-        code: 403,
-        error: "Unauthorized",
-        message: "You do not have any assigned roles",
-      });
-      return;
+      throw new Fault(
+        403,
+        "Unauthorized",
+        "You do not have any assigned roles"
+      );
     }
 
     const authorized = Object.entries(restrictions).some(([key, values]) =>
@@ -53,12 +50,7 @@ const ProtectedPage = ({ children }) => {
     );
 
     if (!authorized && Object.keys(restrictions).length > 0) {
-      setError({
-        code: 403,
-        error: "Unauthorized",
-        message: "You do not have access this page",
-      });
-      return;
+      throw new Fault(403, "Unauthorized", "You do not have access this page");
     }
     setConfirmed(true);
   }, [status]);
@@ -66,9 +58,6 @@ const ProtectedPage = ({ children }) => {
   return (
     <>
       {status === "loading" && <Loading />}
-      {error && (
-        <Error code={error.code} error={error.error} message={error.message} />
-      )}
       {confirmed && (
         <>
           <title>{title}</title>
