@@ -4,6 +4,8 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 export const authenticate = async (restrictions = {}) => {
   const session = await getServerSession(authOptions);
 
+  console.log(session, restrictions);
+
   if (!session.user) {
     return { message: "Invalid Authentication Credentials.", auth: 401 };
   }
@@ -12,7 +14,7 @@ export const authenticate = async (restrictions = {}) => {
     ([key, value]) => session.user.roles[key] === value
   );
 
-  if (!authorized && Object.keys(restrictions) > 0) {
+  if (!authorized && Object.keys(restrictions).length > 0) {
     return { message: `Forbidden Access`, auth: 403 };
   }
 
