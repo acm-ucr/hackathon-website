@@ -57,16 +57,16 @@ export const HEADERS = [
 export const AUTH = {
   POST: {},
   GET: {
-    admins: 1,
-    committees: 1,
+    admins: [1],
+    committees: [1],
   },
   PUT: {
-    admins: 1,
-    committees: 1,
+    admins: [1],
+    committees: [1],
   },
   DELETE: {
-    admins: 1,
-    committees: 1,
+    admins: [1],
+    committees: [1],
   },
 };
 

@@ -53,12 +53,12 @@ export const STATUSES = {
 export const AUTH = {
   POST: {},
   GET: {
-    admins: 1,
+    admins: [1],
   },
   PUT: {
-    admins: 1,
+    admins: [1],
   },
   DELETE: {
-    admins: 1,
+    admins: [1],
   },
 };
