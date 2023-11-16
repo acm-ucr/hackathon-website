@@ -23,9 +23,9 @@ export async function PUT(req) {
   const { filters, statuses, email } = await req.json();
 
   const validation = {
-    objects: [],
-    strings: [],
-    numbers: [],
+    filters: [filters],
+    statuses: [statuses],
+    email: [email],
   };
 
   const results = validate(validation);

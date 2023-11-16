@@ -119,9 +119,7 @@ export async function PUT(req) {
   const { teams } = await req.json();
 
   const validation = {
-    objects: [],
-    strings: [],
-    numbers: [],
+    teams: [teams],
   };
 
   const results = validate(validation);

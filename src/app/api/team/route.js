@@ -71,9 +71,11 @@ export async function PUT(req) {
   const { name, github, figma, devpost, members } = await req.json();
 
   const validation = {
-    objects: [],
-    strings: [],
-    numbers: [],
+    name: [name],
+    github: [github],
+    figma: [figma],
+    devpost: [devpost],
+    members: [members],
   };
 
   const results = validate(validation);

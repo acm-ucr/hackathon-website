@@ -37,9 +37,14 @@ export async function POST(req) {
   } = await req.json();
 
   const validation = {
-    objects: [],
-    strings: [],
-    numbers: [],
+    phone: [phone],
+    discord: [discord],
+    major: [major],
+    grade: [grade],
+    gender: [gender],
+    shirt: [shirt],
+    availability: [availability],
+    response: [response],
   };
 
   const results = validate(validation);
