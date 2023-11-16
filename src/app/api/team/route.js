@@ -58,6 +58,21 @@ export async function PUT(req) {
 
   const { name, github, figma, devpost, members } = await req.json();
 
+  const validation = {
+    objects: [],
+    strings: [],
+    numbers: [],
+  };
+
+  const results = validate(validation);
+
+  if (!results.valid) {
+    return res.json(
+      { message: `Validation Error: ${results.message}` },
+      { status: 400 }
+    );
+  }
+
   try {
     await updateDoc(doc(db, "teams", user.team), {
       name: name,

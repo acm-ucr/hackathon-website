@@ -70,6 +70,21 @@ export async function PUT(req) {
   }
   const { objects, attribute, status } = await req.json();
 
+  const validation = {
+    objects: [objects],
+    strings: [attribute],
+    numbers: [status],
+  };
+
+  const results = validate(validation);
+
+  if (!results.valid) {
+    return res.json(
+      { message: `Validation Error: ${results.message}` },
+      { status: 400 }
+    );
+  }
+
   try {
     objects.forEach(async (object) => {
       if (attribute === "role") {
