@@ -19,7 +19,7 @@ export default function page({ params }) {
         sessionUpdate({
           team: params.teamID,
         });
-        router.push("/users");
+        router.push("/user");
       })
       .catch((response) => {
         if (response.data.message === "Excceed 4 People Limit")
