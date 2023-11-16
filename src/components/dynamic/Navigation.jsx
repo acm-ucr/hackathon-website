@@ -12,8 +12,7 @@ import { BiSolidDownArrow } from "react-icons/bi";
 const Navigation = () => {
   const [expand, setExpand] = useState(false);
   const pathName = usePathname();
-  const tabs = TABS[pathName.split("/")[1]];
-  const [dropdown, setDropdown] = useState(Object.keys(tabs)[0]);
+  const [tabs, setTabs] = useState(TABS[pathName.split("/")[1]]);
 
   return (
     <>
@@ -50,23 +49,28 @@ const Navigation = () => {
           </div>
           <div className="w-full flex flex-col items-center h-full">
             {Object.entries(tabs)
-              .filter(([title]) => title !== " ")
+              .filter(([title]) => title !== " " && title !== "dropdown")
               .map(([title, subTabs], index) => (
                 <div key={index} className="w-full">
                   <p
                     className={`text-white text-xl font-poppin font-bold w-full px-2 mb-0 flex items-center justify-between hover:cursor-pointer ${subTabs.mt}`}
-                    onClick={() => setDropdown(title === dropdown ? "" : title)}
+                    onClick={() =>
+                      setTabs({
+                        ...tabs,
+                        [title]: { ...subTabs, expand: !subTabs.expand },
+                      })
+                    }
                   >
                     {title}
-                    {subTabs.expand && (
+                    {tabs.dropdown && (
                       <BiSolidDownArrow
                         className={`text-sm duration-300 ${
-                          dropdown === title && "rotate-180"
+                          subTabs.expand && "rotate-180"
                         }`}
                       />
                     )}
                   </p>
-                  {(dropdown === title || !subTabs.expand) &&
+                  {(subTabs.expand || !tabs.dropdown) &&
                     subTabs.tabs.map((tab, index) => (
                       <Link
                         key={index}
