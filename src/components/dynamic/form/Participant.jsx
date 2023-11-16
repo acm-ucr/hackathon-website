@@ -18,7 +18,7 @@ const Participant = () => {
     form: "participants",
   });
 
-  const handleSubmit = (setLoading) => {
+  const handleSubmit = (setLoading, setState) => {
     axios
       .post("/api/participants", participant)
       .then(() => toast(`✅ Submitted successfully!`))

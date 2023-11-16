@@ -5,9 +5,15 @@ import Form from "@/components/dynamic/form/Form.jsx";
 import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/form/Feedback.js";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useSession } from "next-auth/react";
 
 const Feedback = () => {
-  const [feedback, setfeedback] = useState(ATTRIBUTES);
+  const { data: session } = useSession();
+  const [feedback, setfeedback] = useState({
+    ...ATTRIBUTES,
+    roles: session.user.roles,
+    form: "feedback",
+  });
 
   const onSubmit = (setLoading) => {
     axios
