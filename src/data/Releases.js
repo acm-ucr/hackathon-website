@@ -89,6 +89,8 @@ const PRODUCTION = {
     "/form/mentor": new Date("10/01/2023"),
     "/form/admin": new Date("10/01/2023"),
     "/form/committee": new Date("10/01/2023"),
+    "/form/feedback": new Date("10/01/2023"),
+    "/form/interest": new Date("10/01/2023"),
 
     "/user/checkin": new Date("10/01/2023"),
     "/user/dashboard": new Date("10/01/2023"),
