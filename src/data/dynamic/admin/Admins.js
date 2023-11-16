@@ -19,10 +19,6 @@ export const TAGS = [
     value: 1,
   },
   {
-    text: "pending",
-    value: 0,
-  },
-  {
     text: "reject",
     value: -1,
   },
@@ -51,13 +47,13 @@ export const HEADERS = [
 export const AUTH = {
   POST: {},
   GET: {
-    admins: 1,
+    admins: [1],
   },
   PUT: {
-    admins: 1,
+    admins: [1],
   },
   DELETE: {
-    admins: 1,
+    admins: [1],
   },
 };
 

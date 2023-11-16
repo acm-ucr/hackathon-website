@@ -13,6 +13,7 @@ import {
   FaLock,
   FaCalendarDay,
   FaMedal,
+  FaExclamation,
 } from "react-icons/fa";
 import { AiOutlineQrcode } from "react-icons/ai";
 import { signOut } from "next-auth/react";
@@ -60,6 +61,11 @@ export const TABS = {
           name: "committees",
           link: "/admin/committees",
           icon: <SiHandshake className={iconStyle} />,
+        },
+        {
+          name: "interests",
+          link: "/admin/interests",
+          icon: <FaExclamation className={iconStyle} />,
         },
         {
           name: "feedback",
@@ -124,12 +130,12 @@ export const TABS = {
       tabs: [
         {
           name: "dashboard",
-          link: "/users/dashboard",
+          link: "/user/dashboard",
           icon: <BsFillPersonFill className={iconStyle} />,
         },
         {
           name: "checkin",
-          link: "/users/checkin",
+          link: "/user/checkin",
           icon: <AiOutlineQrcode className={iconStyle} />,
         },
         {

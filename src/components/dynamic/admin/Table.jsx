@@ -53,6 +53,7 @@ const Table = ({
       })
     );
   };
+
   return !objects ? (
     <Loading />
   ) : (
@@ -181,7 +182,7 @@ const Table = ({
                                   data-cy={`${header.text}`}
                                   className="break-words flex items-center"
                                 >
-                                  {index < header.limit && (
+                                  {objects.length - header.limit <= index && (
                                     <FaStar className="mr-2 text-yellow-400" />
                                   )}
                                   {object[header.text]}

@@ -44,23 +44,6 @@ describe("Mentors Actions", () => {
     );
   });
 
-  it("Pending First 5 Entries", () => {
-    five.forEach((mentor) =>
-      cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="select"]').click()
-    );
-    cy.action({
-      tag: "pending",
-      page: "mentors",
-    });
-
-    five.forEach((mentor) =>
-      cy
-        .get(`[data-cy="${mentor.uid}"]`)
-        .find('[data-cy="0-tag"]')
-        .should("exist")
-    );
-  });
-
   it("Delete First 5 Entries", () => {
     five.forEach((mentor) =>
       cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="select"]').click()

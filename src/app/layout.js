@@ -16,18 +16,18 @@ const poppins = Poppins({
 export default function RootLayout({ children, session }) {
   return (
     <html lang="en" className="h-full">
-      <SessionProvider
-        session={session}
-        refetchInterval={5 * 60}
-        className="h-full"
-      >
-        <body
-          className={`${poppins.variable} flex flex-col lg:flex-row h-full`}
+      <body className={`${poppins.variable} flex flex-col lg:flex-row h-full`}>
+        <SessionProvider
+          session={session}
+          refetchInterval={5 * 60}
+          className="h-full"
         >
-          <Toaster />
-          {children}
-        </body>
-      </SessionProvider>
+          <div className="flex w-full">
+            <Toaster />
+            {children}
+          </div>
+        </SessionProvider>
+      </body>
     </html>
   );
 }

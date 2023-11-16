@@ -8,11 +8,11 @@ export const authenticate = async (restrictions = {}) => {
     return { message: "Invalid Authentication Credentials.", auth: 401 };
   }
 
-  const authorized = Object.entries(restrictions).some(
-    ([key, value]) => session.user.roles[key] === value
+  const authorized = Object.entries(restrictions).some(([key, value]) =>
+    value.includes(session.user.roles[key])
   );
 
-  if (!authorized && Object.keys(restrictions) > 0) {
+  if (!authorized && Object.keys(restrictions).length > 0) {
     return { message: `Forbidden Access`, auth: 403 };
   }
 

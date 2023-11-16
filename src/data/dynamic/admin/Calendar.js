@@ -3,7 +3,7 @@ export const LABELS = {
     color: "gray",
     background: "!bg-hackathon-tags-gray-text",
   },
-  director: {
+  directors: {
     color: "red",
     background: "!bg-hackathon-tags-red-text",
   },
@@ -27,20 +27,24 @@ export const LABELS = {
     color: "teal",
     background: "!bg-hackathon-tags-teal-text",
   },
-  UIUX: {
+  uiux: {
     color: "lightgreen",
     background: "!bg-hackathon-tags-lightgreen-text",
   },
-  activities: {
-    color: "pink",
-    background: "!bg-hackathon-tags-pink-text",
+  leads: {
+    color: "red",
+    background: "!bg-hackathon-tags-red-text",
   },
   workshop: {
     color: "grayblue",
     background: "!bg-hackathon-tags-grayblue-text",
   },
   general: {
-    color: "red",
-    background: "!bg-hackathon-tags-red-text",
+    color: "pink",
+    background: "!bg-hackathon-tags-pink-text",
+  },
+  food: {
+    color: "yellow",
+    background: "!bg-hackathon-tags-yellow-text",
   },
 };

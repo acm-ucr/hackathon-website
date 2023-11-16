@@ -1,15 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
-import Error from "@/components/dynamic/Error";
 import axios from "axios";
 import Button from "@/components/dynamic/Button";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
+import Fault from "@/utils/error";
 
 export default function page({ params }) {
   const [team, setTeam] = useState(null);
-  const [error, setError] = useState(null);
   const router = useRouter();
   const { update: sessionUpdate } = useSession();
   const handleJoin = () => {
@@ -37,26 +36,23 @@ export default function page({ params }) {
         .then((response) => setTeam(response.data.items))
         .catch(({ response: data }) => {
           if (data.data.message === "Invalid Team ID")
-            setError({
-              code: "404",
-              error: "Invalid Team ID",
-              message: "Please get a new team invite",
-            });
+            throw new Fault(
+              404,
+              "Invalid Team ID",
+              "Please get a new team invite"
+            );
           else
-            setError({
-              code: "500",
-              error: "Internal Server Erro",
-              message: "Please contact web dev",
-            });
+            throw new Fault(
+              500,
+              "Internal Server Error",
+              "Please contact the software engineering team for assistance"
+            );
         });
     }
   }, []);
 
   return (
     <div>
-      {error && (
-        <Error code={error.code} error={error.error} message={error.message} />
-      )}
       {team && (
         <div className="flex flex-col w-screen h-screen items-center justify-center font-poppins">
           <p className="text-3xl">

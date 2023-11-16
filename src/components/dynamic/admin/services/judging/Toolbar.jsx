@@ -11,9 +11,10 @@ import axios from "axios";
 
 const tags = ["professor", "industry", "student"];
 
-const Toolbar = ({ data, setData, judges, setJudges }) => {
+const Toolbar = ({ data, setData }) => {
   const router = useRouter();
 
+  const [judges, setJudges] = useState(null);
   const [popup, setPopup] = useState({
     title: "",
     text: "",
@@ -203,7 +204,12 @@ const Toolbar = ({ data, setData, judges, setJudges }) => {
             <p className="mb-0 font-semibold mx-2"># of rotations</p>
             <Button color="green" text="generate" onClick={generate} />
           </form>
-          <Button color="red" text="reset" onClick={handleReset} />
+          <Button
+            color="red"
+            text="reset"
+            onClick={handleReset}
+            disabled={data === null || []}
+          />
         </div>
         <div className="flex">
           {tags.map((tag, index) => (

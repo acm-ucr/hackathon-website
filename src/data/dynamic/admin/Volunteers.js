@@ -21,10 +21,6 @@ export const TAGS = [
     value: 1,
   },
   {
-    text: "pending",
-    value: 0,
-  },
-  {
     text: "not attending",
     value: -1,
   },
@@ -66,16 +62,16 @@ export const DROPDOWN = ({ object }) => {
 export const AUTH = {
   POST: {},
   GET: {
-    admins: 1,
-    committees: 1,
+    admins: [1],
+    committees: [1],
   },
   PUT: {
-    admins: 1,
-    committees: 1,
+    admins: [1],
+    committees: [1],
   },
   DELETE: {
-    admins: 1,
-    committees: 1,
+    admins: [1],
+    committees: [1],
   },
 };
 
