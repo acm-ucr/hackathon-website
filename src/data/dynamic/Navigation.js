@@ -76,7 +76,6 @@ export const TABS = {
       ],
     },
     Services: {
-      dropdown: false,
       expand: true,
       mt: "mt-3",
       tabs: [
