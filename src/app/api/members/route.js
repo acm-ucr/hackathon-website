@@ -11,6 +11,7 @@ import {
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/user/Members";
+import { validate } from "src/utils/validate.js";
 
 export async function DELETE() {
   const res = NextResponse;
@@ -59,6 +60,21 @@ export async function PUT(req) {
   }
 
   const { team } = await req.json();
+
+  const validation = {
+    objects: [],
+    strings: [],
+    numbers: [],
+  };
+
+  const results = validate(validation);
+
+  if (!results.valid) {
+    return res.json(
+      { message: `Validation Error: ${results.message}` },
+      { status: 400 }
+    );
+  }
 
   try {
     const snapshot = await getDoc(doc(db, "teams", team));

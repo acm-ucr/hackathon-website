@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/admin/Mentors";
+import { validate } from "src/utils/validate.js";
 
 export async function POST(req) {
   const res = NextResponse;
@@ -34,6 +35,21 @@ export async function POST(req) {
     availability,
     response,
   } = await req.json();
+
+  const validation = {
+    objects: [],
+    strings: [],
+    numbers: [],
+  };
+
+  const results = validate(validation);
+
+  if (!results.valid) {
+    return res.json(
+      { message: `Validation Error: ${results.message}` },
+      { status: 400 }
+    );
+  }
 
   try {
     await updateDoc(doc(db, "users", user.id), {

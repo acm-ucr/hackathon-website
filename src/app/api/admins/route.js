@@ -13,6 +13,7 @@ import {
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/admin/Admins";
 import SG from "@/utils/sendgrid";
+import { validate } from "src/utils/validate.js";
 
 export async function POST(req) {
   const res = NextResponse;
@@ -109,6 +110,21 @@ export async function PUT(req) {
     return res.json(
       { message: `Authentication Error: ${message}` },
       { status: auth }
+    );
+  }
+
+  const validatation = {
+    objects: [objects],
+    strings: [attribute],
+    numbers: [status],
+  };
+
+  const results = validate(validatation);
+
+  if (!results.valid) {
+    return res.json(
+      { message: `Validation Error: ${results.message}` },
+      { status: 400 }
     );
   }
 

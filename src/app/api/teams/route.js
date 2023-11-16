@@ -10,6 +10,7 @@ import {
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/admin/Teams";
+import { validate } from "src/utils/validate.js";
 
 export async function GET() {
   const res = NextResponse;

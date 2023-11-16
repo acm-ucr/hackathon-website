@@ -11,6 +11,7 @@ import {
   where,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
+import { validate } from "src/utils/validate.js";
 
 export async function POST(req) {
   const res = NextResponse;
@@ -122,6 +123,21 @@ export async function PUT(req) {
     objects,
     status,
   } = await req.json();
+
+  const validation = {
+    objects: [],
+    strings: [],
+    numbers: [],
+  };
+
+  const results = validate(validation);
+
+  if (!results.valid) {
+    return res.json(
+      { message: `Validation Error: ${results.message}` },
+      { status: 400 }
+    );
+  }
 
   try {
     if (attribute === "status") {

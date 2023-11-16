@@ -4,6 +4,7 @@ import { collection, getDocs, query, where, or } from "firebase/firestore";
 import sgMail from "@sendgrid/mail";
 import { CONFIG } from "@/data/Config";
 import { authenticate } from "@/utils/auth";
+import { validate } from "src/utils/validate.js";
 
 export async function PUT(req) {
   const res = NextResponse;
@@ -20,6 +21,21 @@ export async function PUT(req) {
   }
 
   const { filters, statuses, email } = await req.json();
+
+  const validation = {
+    objects: [],
+    strings: [],
+    numbers: [],
+  };
+
+  const results = validate(validation);
+
+  if (!results.valid) {
+    return res.json(
+      { message: `Validation Error: ${results.message}` },
+      { status: 400 }
+    );
+  }
 
   try {
     const formattedUsers = Object.keys(filters).filter(

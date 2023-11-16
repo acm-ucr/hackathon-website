@@ -9,6 +9,7 @@ import {
   colors,
   animals,
 } from "unique-names-generator";
+import { validate } from "src/utils/validate.js";
 
 export async function POST() {
   const res = NextResponse;

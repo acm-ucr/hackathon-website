@@ -10,6 +10,7 @@ import {
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/admin/Feedback";
+import { validate } from "src/utils/validate.js";
 
 export async function POST(req) {
   const res = NextResponse;
@@ -107,6 +108,21 @@ export async function PUT(req) {
   }
 
   const { objects, attribute, status } = await req.json();
+
+  const validation = {
+    objects: [objects],
+    strings: [attribute],
+    numbers: [status],
+  };
+
+  const results = validate(validation);
+
+  if (!results.valid) {
+    return res.json(
+      { message: `Validation Error: ${results.message}` },
+      { status: 400 }
+    );
+  }
 
   try {
     objects.forEach(async (object) => {

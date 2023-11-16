@@ -9,6 +9,7 @@ import {
   setDoc,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
+import { validate } from "src/utils/validate.js";
 
 export async function GET(req) {
   const res = NextResponse;
@@ -51,6 +52,21 @@ export async function PUT(req) {
   }
 
   const { uid, event, name } = await req.json();
+
+  const validatation = {
+    objects: [],
+    strings: [],
+    numbers: [],
+  };
+
+  const results = validate(validatation);
+
+  if (!results.valid) {
+    return res.json(
+      { message: `Validation Error: ${results.message}` },
+      { status: 400 }
+    );
+  }
 
   try {
     await updateDoc(doc(db, "users", uid), {
