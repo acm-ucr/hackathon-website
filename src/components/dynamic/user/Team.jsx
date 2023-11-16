@@ -190,32 +190,27 @@ const Team = ({ user, setUser }) => {
         </>
       )}
       {!user.team && (
-        <>
-          <div>
-            <Input
-              name="team"
-              type="text"
-              placeholder="team ID"
-              title="Join a Team"
-              value={id.team}
-              user={id}
-              editable={true}
-              setUser={setId}
-            />
+        <div className="flex flex-col justify-between h-full">
+          <Input
+            name="team"
+            type="text"
+            placeholder="team ID"
+            title="Join a Team"
+            value={id.team}
+            user={id}
+            editable={true}
+            setUser={setId}
+          />
+          <div className="flex justify-end gap-2">
+            <Button color="green" size="lg" text="join" onClick={handleJoin} />
             <Button
               color="green"
-              size="xl"
-              text="join team"
-              onClick={handleJoin}
+              size="lg"
+              text="create"
+              onClick={handleCreate}
             />
           </div>
-          <Button
-            color="green"
-            size="xl"
-            text="create new team"
-            onClick={handleCreate}
-          />
-        </>
+        </div>
       )}
     </div>
   );
