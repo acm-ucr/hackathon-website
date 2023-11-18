@@ -84,14 +84,24 @@ const Toolbar = ({ data, setData }) => {
     let round = 0;
 
     // Assign Professors
-    for (let i = 0; i < teams.length; i += 1) {
-      if (round === parseInt(input.rotations)) continue;
-      teams[i].rounds[round].push(professors[judge]);
-      if (judge < professors.length - 1) {
-        judge += 1;
-      } else {
-        judge = 0;
-        round += 1;
+    for (let j = 0; j < input.rotations; j += 1) {
+      for (let i = 0; i < teams.length; i += 1) {
+        if (round === parseInt(input.rotations)) continue;
+        if (
+          teams[i].rounds.some((judges) =>
+            judges.some(
+              (individual) => individual.name === professors[judge].name
+            )
+          )
+        )
+          continue;
+        teams[i].rounds[round].push(professors[judge]);
+        if (judge < professors.length - 1) {
+          judge += 1;
+        } else {
+          judge = 0;
+          round += 1;
+        }
       }
     }
 
@@ -99,14 +109,25 @@ const Toolbar = ({ data, setData }) => {
     round = 0;
 
     // Assign Students + Industry
-    for (let i = teams.length - 1; i > -1; i -= 1) {
-      if (round === parseInt(input.rotations)) continue;
-      teams[i].rounds[round].push(studentsAndIndustry[judge]);
-      if (judge < studentsAndIndustry.length - 1) {
-        judge += 1;
-      } else {
-        judge = 0;
-        round += 1;
+    for (let j = 0; j < input.rotations; j += 1) {
+      for (let i = teams.length - 1; i > -1; i -= 1) {
+        if (round === parseInt(input.rotations)) continue;
+        if (
+          teams[i].rounds.some((judges) =>
+            judges.some(
+              (individual) =>
+                individual.name === studentsAndIndustry[judge].name
+            )
+          )
+        )
+          continue;
+        teams[i].rounds[round].push(studentsAndIndustry[judge]);
+        if (judge < studentsAndIndustry.length - 1) {
+          judge += 1;
+        } else {
+          judge = 0;
+          round += 1;
+        }
       }
     }
 
