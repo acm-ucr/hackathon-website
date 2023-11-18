@@ -110,7 +110,7 @@ export async function GET() {
         grade,
         gender,
         shirt,
-        diet,
+        diet: diet.join(","),
         timestamp,
         resume: resume || "",
         status: roles.participants,
