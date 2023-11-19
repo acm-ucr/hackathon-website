@@ -31,9 +31,8 @@ export async function GET() {
       query(collection(db, "teams"), where("status", "==", 1))
     );
     teamsSnapshot.forEach((doc) => {
-      if (doc.data().links.devpost !== "") {
-        const { links, name, rounds, table } = doc.data();
-
+      const { links, name, rounds, table } = doc.data();
+      if (links.devpost !== "") {
         const formattedRounds = rounds === undefined ? [] : JSON.parse(rounds);
         const formattedTable = table === undefined ? "" : table;
         const formattedLinks = Object.entries(links).map(([key, value]) => {
