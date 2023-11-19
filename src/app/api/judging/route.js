@@ -32,6 +32,7 @@ export async function GET() {
     );
     teamsSnapshot.forEach((doc) => {
       const { links, name, rounds, table } = doc.data();
+
       if (links.devpost !== "") {
         const formattedRounds = rounds === undefined ? [] : JSON.parse(rounds);
         const formattedTable = table === undefined ? "" : table;
