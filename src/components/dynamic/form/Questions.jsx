@@ -56,8 +56,8 @@ const Questions = ({
         <div key={index}>
           {field.input === "description" &&
             field.texts.map((description, index) => (
-              <>
-                <p key={index}>{description}</p>
+              <div key={index}>
+                <p>{description}</p>
                 {index === field.texts.length - 1 && (
                   <p>
                     Fields with
@@ -65,7 +65,7 @@ const Questions = ({
                     are required.
                   </p>
                 )}
-              </>
+              </div>
             ))}
           {field.input === "input" && (
             <Input

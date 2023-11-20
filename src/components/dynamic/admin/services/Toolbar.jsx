@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Input from "../Input";
 import Button from "../Button";
-import DropDown from "./DropDown";
+import Dropdown from "./Dropdown";
 import Checkbox from "@/components/dynamic/Checkbox";
 import Popup from "../Popup";
 import { FaTrashAlt } from "react-icons/fa";
@@ -236,7 +236,7 @@ const Toolbar = ({ objects, setObjects, teams, setTeams, tags, empty }) => {
           label="prize"
           maxLength={30}
         />
-        <DropDown
+        <Dropdown
           option={team}
           setOption={setTeam}
           options={teams}
