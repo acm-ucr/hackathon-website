@@ -213,6 +213,7 @@ const Toolbar = ({
               toast("❌ Select row(s) before pressing the delete button");
               return;
             }
+
             setPopup({
               title: "Delete Confirmation",
               text: "Are you sure you want to delete these row(s)? This action is irreversible.",
