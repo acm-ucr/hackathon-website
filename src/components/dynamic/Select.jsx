@@ -35,9 +35,9 @@ const Select = ({
     return () => clearTimeout(timeout);
   }, [input]);
   useEffect(() => {
-    document.addEventListener("click", handleClickOutside, true);
+    document.addEventListener("click", handleClickOutside);
     return () => {
-      document.removeEventListener("click", handleClickOutside, true);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
   const handleInput = (e) => {
