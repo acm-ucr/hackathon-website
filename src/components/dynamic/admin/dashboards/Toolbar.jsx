@@ -97,7 +97,6 @@ const Toolbar = ({
         let boolean = false;
 
         Object.values(filters).map(({ value, state }) => {
-          console.log(input.input);
           if (
             a.status === value &&
             state &&
@@ -212,7 +211,6 @@ const Toolbar = ({
 
             if (objects.filter((a) => a.selected).length === 0) {
               toast("❌ Select row(s) before pressing the delete button");
-              console.log(objects);
               return;
             }
 
