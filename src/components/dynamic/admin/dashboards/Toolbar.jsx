@@ -96,10 +96,6 @@ const Toolbar = ({
     });
   };
 
-  useEffect(() => {
-    handleReload();
-  }, []);
-
   const keyHandler = (e) => {
     if (e.repeat) return;
     switch (e.key) {
@@ -115,8 +111,11 @@ const Toolbar = ({
       }
     }
   };
-
-  document.addEventListener("keyup", keyHandler);
+  useEffect(() => {
+    handleReload();
+    document.addEventListener("keyup", keyHandler);
+    return () => document.removeEventListener("keyup", keyHandler);
+  }, []);
 
   return (
     <div className="w-full flex items-center" data-cy="toolbar">

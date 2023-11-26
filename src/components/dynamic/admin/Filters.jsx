@@ -1,8 +1,9 @@
+"use client";
 import { TiPlus } from "react-icons/ti";
+import { useEffect } from "react";
 
 const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
   const handleClick = (filter) => {
-    console.log("Filter", filter);
     const filterValues = {
       ...filters,
       [filter]: { ...filters[filter], state: !filters[filter].state },
@@ -10,14 +11,12 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
     setFilters(filterValues);
 
     setObjects &&
+      objects &&
       setObjects(
         objects.map((a) => {
-          let boolean = true;
-
           Object.values(filterValues).map(({ value, state }) => {
             if (
               a.status === value &&
-              state &&
               a.name.toLowerCase().match(input.toLowerCase())
             ) {
               boolean = false;
@@ -31,25 +30,17 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
   const handleFilterKeys = (e) => {
     if (e.repeat) return;
     console.log("event", e);
-    switch (e.key) {
-      case "1": {
-        console.log("1 pressed");
-        handleClick(Object.keys(filters)[0]);
-        break;
+    Object.entries(filters).map(([filter, { state }], index) => {
+      if (e.key == index + 1) {
+        handleClick(filter);
       }
-      case "2": {
-        console.log("2 pressed");
-        handleClick(Object.keys(filters)[1]);
-        break;
-      }
-      case "3": {
-        console.log("3 pressed");
-        handleClick(Object.keys(filters)[2]);
-        break;
-      }
-    }
+    });
   };
-  document.addEventListener("keyup", handleFilterKeys);
+
+  useEffect(() => {
+    document.addEventListener("keyup", handleFilterKeys);
+    return () => document.removeEventListener("keyup", handleFilterKeys);
+  }, []);
 
   return (
     <div className="w-fit grid grid-cols-3 gap-2">
