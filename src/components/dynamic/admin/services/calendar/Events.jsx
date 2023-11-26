@@ -29,24 +29,37 @@ const CalendarEvents = () => {
   };
 
   useEffect(() => {
-    axios
-      .get(
-        `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_EMAIL}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime`
-      )
-      .then((response) => {
-        const items = response.data.items.map((item) => {
-          item.start = new Date(item.start.dateTime);
-          item.end = new Date(item.end.dateTime);
-          item.color =
-            LABELS[
-              item.description.split("\n")[1].split(": ")[1].toLowerCase()
-            ].background;
-          item.hidden = false;
+    const hackathon = axios.get(
+      `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime`
+    );
 
-          return item;
-        });
-        setEvents(items);
+    const leads = axios.get(
+      `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_LEADS}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime`
+    );
+
+    Promise.all([hackathon, leads]).then(([hackathonData, leadsData]) => {
+      const hackathon = hackathonData.data.items;
+      const leads = leadsData.data.items;
+
+      const rawEvents = [...hackathon, ...leads];
+
+      rawEvents.forEach((item) => {
+        item.start = new Date(item.start.dateTime);
+        item.end = new Date(item.end.dateTime);
+        const [category, assignee] = item.description
+          .split("\n")[0]
+          .split("#")
+          .map((item) => item.trim())
+          .filter((item) => item !== "");
+        item.category = category;
+        item.color = LABELS[item.category].background;
+        item.assignee = assignee;
+        item.hidden = false;
       });
+
+      setEvents(rawEvents);
+    });
+
     document.addEventListener("keydown", handleShortcuts);
     return () => document.removeEventListener("keydown", handleShortcuts);
   }, []);
@@ -59,6 +72,7 @@ const CalendarEvents = () => {
           date={date}
           view={view}
           className="py-4"
+          step={15}
           events={events.filter((event) => !event.hidden)}
           localizer={mLocalizer}
           defaultView="month"
@@ -66,7 +80,7 @@ const CalendarEvents = () => {
           onNavigate={(newDate) => setDate(newDate)}
           onView={(newView) => setView(newView)}
           components={{
-            event: Event,
+            event: (props) => <Event {...props} view={view} />,
             toolbar: (props) => (
               <Toolbar {...props} events={events} setEvents={setEvents} />
             ),

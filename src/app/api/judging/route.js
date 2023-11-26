@@ -28,33 +28,31 @@ export async function GET() {
 
   try {
     const teamsSnapshot = await getDocs(
-      query(collection(db, "teams"), where("status", "==", "qualify"))
+      query(collection(db, "teams"), where("status", "==", 1))
     );
     teamsSnapshot.forEach((doc) => {
       const { links, name, rounds, table } = doc.data();
 
-      const formattedRounds = rounds === undefined ? [] : JSON.parse(rounds);
-      const formattedTable = table === undefined ? "" : table;
-      const formattedLinks = Object.entries(links).map(([key, value]) => {
-        return { name: key, link: value };
-      });
+      if (links.devpost !== "") {
+        const formattedRounds = rounds === undefined ? [] : JSON.parse(rounds);
+        const formattedTable = table === undefined ? "" : table;
+        const formattedLinks = Object.entries(links).map(([key, value]) => {
+          return { name: key, link: value };
+        });
 
-      teams.push({
-        links: formattedLinks,
-        rounds: formattedRounds,
-        table: formattedTable,
-        name,
-        uid: doc.id,
-        hidden: false,
-      });
+        teams.push({
+          links: formattedLinks,
+          rounds: formattedRounds,
+          table: formattedTable,
+          name,
+          uid: doc.id,
+          hidden: false,
+        });
+      }
     });
 
     const judgesSnapshot = await getDocs(
-      query(
-        collection(db, "users"),
-        where("role", "array-contains", "judges"),
-        where("status", "==", "accept")
-      )
+      query(collection(db, "users"), where("roles.judges", "==", 1))
     );
     judgesSnapshot.forEach((doc) => {
       const { affiliation, name } = doc.data();

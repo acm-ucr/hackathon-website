@@ -6,6 +6,7 @@ import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/form/Judge.js";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { STATUSES } from "@/data/dynamic/admin/Judges.js";
 
 const judge = () => {
   const { data: session } = useSession();
@@ -13,14 +14,19 @@ const judge = () => {
     ...ATTRIBUTES,
     name: session.user.name,
     email: session.user.email,
+    roles: session.user.roles,
+    form: "judges",
   });
 
-  const handleSubmit = (setLoading) => {
+  const handleSubmit = (setLoading, setState) => {
     axios
       .post("/api/judges", judge)
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+        setState(2);
+      });
   };
 
   return (
@@ -30,6 +36,7 @@ const judge = () => {
       setObject={setJudge}
       header="JUDGE APPLICATION"
       onSubmit={handleSubmit}
+      statuses={STATUSES}
     />
   );
 };

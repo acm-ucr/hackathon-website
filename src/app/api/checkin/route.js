@@ -1,6 +1,13 @@
 import { NextResponse } from "next/server";
 import { db } from "../../../../firebase";
-import { doc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  updateDoc,
+  arrayUnion,
+  increment,
+  setDoc,
+} from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 
 export async function GET(req) {
@@ -20,7 +27,7 @@ export async function GET(req) {
 
   try {
     const docSnap = await getDoc(doc(db, "users", uid));
-    const data = docSnap.data().events;
+    const data = docSnap.data().events || [];
     return res.json({ message: "OK", items: data }, { status: 200 });
   } catch (err) {
     return res.json(
@@ -43,12 +50,25 @@ export async function PUT(req) {
     );
   }
 
-  const { uid, event } = await req.json();
+  const { uid, event, name } = await req.json();
 
   try {
     await updateDoc(doc(db, "users", uid), {
       events: arrayUnion(event),
     });
+
+    const data = await getDoc(doc(db, "events", event));
+    if (data.exists()) {
+      await updateDoc(doc(db, "events", event), {
+        attendance: increment(1),
+      });
+    } else {
+      await setDoc(doc(db, "events", event), {
+        attendance: 1,
+        name: name,
+      });
+    }
+
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(

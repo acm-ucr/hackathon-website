@@ -31,26 +31,6 @@ describe("Committee Actions", () => {
     );
   });
 
-  it("Pending First 5 Entries", () => {
-    five.forEach((committee) =>
-      cy
-        .get(`[data-cy="${committee.uid}"]`)
-        .find('[data-cy="checkbox"]')
-        .click()
-    );
-
-    cy.action({
-      tag: "pending",
-      page: "committees",
-    });
-    five.forEach((committee) =>
-      cy
-        .get(`[data-cy="${committee.uid}"]`)
-        .find('[data-cy="0-tag"]')
-        .should("exist")
-    );
-  });
-
   it("Reject First 5 Entries", () => {
     five.forEach((committee) =>
       cy

@@ -8,6 +8,7 @@ import {
   query,
   where,
   deleteField,
+  Timestamp,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/admin/Mentors";
@@ -43,9 +44,20 @@ export async function POST(req) {
       gender: gender,
       shirt: shirt,
       response: response,
+      timestamp: Timestamp.now(),
       "roles.mentors": 0,
       availability: availability,
     });
+
+    SG.send({
+      to: user.email,
+      template_id: process.env.SENDGRID_CONFIRMATION_TEMPLATE,
+      dynamic_template_data: {
+        name: user.name,
+        position: "MENTOR",
+      },
+    });
+
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
@@ -73,7 +85,8 @@ export async function GET() {
       query(collection(db, "users"), where("roles.mentors", "in", [-1, 0, 1]))
     );
     snapshot.forEach((doc) => {
-      const { name, email, discord, roles, availability } = doc.data();
+      const { name, email, discord, roles, availability, timestamp } =
+        doc.data();
       output.push({
         name,
         email,
@@ -83,9 +96,15 @@ export async function GET() {
         uid: doc.id,
         selected: false,
         hidden: false,
+        timestamp: timestamp,
       });
     });
-    return res.json({ message: "OK", items: output }, { status: 200 });
+
+    const sorted = output.sort((a, b) =>
+      a.timestamp.seconds < b.timestamp.seconds ? 1 : -1
+    );
+
+    return res.json({ message: "OK", items: sorted }, { status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
@@ -115,6 +134,18 @@ export async function PUT(req) {
       } else if (attribute === "status") {
         await updateDoc(doc(db, "users", object.uid), {
           "roles.mentors": status,
+        });
+
+        SG.send({
+          to: object.email,
+          template_id:
+            status === 1
+              ? process.env.SENDGRID_ACCEPTANCE_TEMPLATE
+              : process.env.SENDGRID_REJECTION_TEMPLATE,
+          dynamic_template_data: {
+            name: object.name,
+            position: "MENTOR",
+          },
         });
       }
     });

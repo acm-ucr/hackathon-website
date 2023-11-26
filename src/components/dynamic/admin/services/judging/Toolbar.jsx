@@ -11,9 +11,10 @@ import axios from "axios";
 
 const tags = ["professor", "industry", "student"];
 
-const Toolbar = ({ data, setData, judges, setJudges }) => {
+const Toolbar = ({ data, setData }) => {
   const router = useRouter();
 
+  const [judges, setJudges] = useState(null);
   const [popup, setPopup] = useState({
     title: "",
     text: "",
@@ -83,14 +84,24 @@ const Toolbar = ({ data, setData, judges, setJudges }) => {
     let round = 0;
 
     // Assign Professors
-    for (let i = 0; i < teams.length; i += 1) {
-      if (round === parseInt(input.rotations)) continue;
-      teams[i].rounds[round].push(professors[judge]);
-      if (judge < professors.length - 1) {
-        judge += 1;
-      } else {
-        judge = 0;
-        round += 1;
+    for (let j = 0; j < input.rotations; j += 1) {
+      for (let i = 0; i < teams.length; i += 1) {
+        if (round === parseInt(input.rotations)) continue;
+        if (
+          teams[i].rounds.some((judges) =>
+            judges.some(
+              (individual) => individual.name === professors[judge].name
+            )
+          )
+        )
+          continue;
+        teams[i].rounds[round].push(professors[judge]);
+        if (judge < professors.length - 1) {
+          judge += 1;
+        } else {
+          judge = 0;
+          round += 1;
+        }
       }
     }
 
@@ -98,14 +109,25 @@ const Toolbar = ({ data, setData, judges, setJudges }) => {
     round = 0;
 
     // Assign Students + Industry
-    for (let i = teams.length - 1; i > -1; i -= 1) {
-      if (round === parseInt(input.rotations)) continue;
-      teams[i].rounds[round].push(studentsAndIndustry[judge]);
-      if (judge < studentsAndIndustry.length - 1) {
-        judge += 1;
-      } else {
-        judge = 0;
-        round += 1;
+    for (let j = 0; j < input.rotations; j += 1) {
+      for (let i = teams.length - 1; i > -1; i -= 1) {
+        if (round === parseInt(input.rotations)) continue;
+        if (
+          teams[i].rounds.some((judges) =>
+            judges.some(
+              (individual) =>
+                individual.name === studentsAndIndustry[judge].name
+            )
+          )
+        )
+          continue;
+        teams[i].rounds[round].push(studentsAndIndustry[judge]);
+        if (judge < studentsAndIndustry.length - 1) {
+          judge += 1;
+        } else {
+          judge = 0;
+          round += 1;
+        }
       }
     }
 
@@ -203,7 +225,12 @@ const Toolbar = ({ data, setData, judges, setJudges }) => {
             <p className="mb-0 font-semibold mx-2"># of rotations</p>
             <Button color="green" text="generate" onClick={generate} />
           </form>
-          <Button color="red" text="reset" onClick={handleReset} />
+          <Button
+            color="red"
+            text="reset"
+            onClick={handleReset}
+            disabled={data === null || []}
+          />
         </div>
         <div className="flex">
           {tags.map((tag, index) => (

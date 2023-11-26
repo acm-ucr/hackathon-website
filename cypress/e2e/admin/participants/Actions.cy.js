@@ -51,26 +51,6 @@ describe("Participants Actions", () => {
     );
   });
 
-  it("Pending First 5 Entries", () => {
-    five.forEach((participant) =>
-      cy
-        .get(`[data-cy="${participant.uid}"]`)
-        .find('[data-cy="checkbox"]')
-        .click()
-    );
-    cy.action({
-      tag: "pending",
-      page: "participants",
-    });
-
-    five.forEach((participant) =>
-      cy
-        .get(`[data-cy="${participant.uid}"]`)
-        .find('[data-cy="0-tag"]')
-        .should("exist")
-    );
-  });
-
   it("Delete First 5 Entries", () => {
     five.forEach((participant) =>
       cy

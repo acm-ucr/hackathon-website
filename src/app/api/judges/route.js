@@ -8,9 +8,11 @@ import {
   query,
   where,
   deleteField,
+  Timestamp,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/admin/Judges";
+import SG from "@/utils/sendgrid";
 
 export async function POST(req) {
   const res = NextResponse;
@@ -30,11 +32,22 @@ export async function POST(req) {
       phone: phone,
       gender: gender,
       title: title,
-      affiliation: affiliation,
+      affiliation: affiliation.toLowerCase(),
       shirt: shirt,
       photo: photo,
+      timestamp: Timestamp.now(),
       "roles.judges": 0,
     });
+
+    SG.send({
+      to: user.email,
+      template_id: process.env.SENDGRID_CONFIRMATION_TEMPLATE,
+      dynamic_template_data: {
+        name: user.name,
+        position: "JUDGE",
+      },
+    });
+
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
@@ -62,19 +75,27 @@ export async function GET() {
       query(collection(db, "users"), where("roles.judges", "in", [-1, 0, 1]))
     );
     snapshot.forEach((doc) => {
-      const { name, email, affiliation, roles, photo } = doc.data();
+      const { name, email, affiliation, roles, photo, timestamp, title } =
+        doc.data();
       output.push({
         uid: doc.id,
         name: name,
         email: email,
         affiliation: affiliation,
+        title: title,
         status: roles.judges,
         photo: photo,
         selected: false,
         hidden: false,
+        timestamp: timestamp,
       });
     });
-    return res.json({ message: "OK", items: output }, { status: 200 });
+
+    const sorted = output.sort((a, b) =>
+      a.timestamp.seconds < b.timestamp.seconds ? 1 : -1
+    );
+
+    return res.json({ message: "OK", items: sorted }, { status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
@@ -105,6 +126,18 @@ export async function PUT(req) {
       } else if (attribute === "status") {
         await updateDoc(doc(db, "users", object.uid), {
           "roles.judges": status,
+        });
+
+        SG.send({
+          to: object.email,
+          template_id:
+            status === 1
+              ? process.env.SENDGRID_ACCEPTANCE_TEMPLATE
+              : process.env.SENDGRID_REJECTION_TEMPLATE,
+          dynamic_template_data: {
+            name: object.name,
+            position: "JUDGE",
+          },
         });
       }
     });

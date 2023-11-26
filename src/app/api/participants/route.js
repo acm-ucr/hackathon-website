@@ -8,9 +8,11 @@ import {
   query,
   where,
   deleteField,
+  Timestamp,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/admin/Participants";
+import SG from "@/utils/sendgrid";
 
 export async function POST(req) {
   const res = NextResponse;
@@ -35,10 +37,21 @@ export async function POST(req) {
       grade: grade,
       gender: gender,
       shirt: shirt,
+      timestamp: Timestamp.now(),
       "roles.participants": 0,
       diet: diet,
       resume: resume,
     });
+
+    SG.send({
+      to: user.email,
+      template_id: process.env.SENDGRID_CONFIRMATION_TEMPLATE,
+      dynamic_template_data: {
+        name: user.name,
+        position: "PARTICIPANT",
+      },
+    });
+
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
@@ -83,6 +96,7 @@ export async function GET() {
         roles,
         diet,
         resume,
+        timestamp,
       } = doc.data();
 
       output.push({
@@ -96,17 +110,23 @@ export async function GET() {
         grade,
         gender,
         shirt,
-        diet,
+        diet: diet.join(","),
+        timestamp,
         resume: resume || "",
         status: roles.participants,
         selected: false,
         hidden: false,
       });
     });
-    return res.json({ message: "OK", items: output }, { status: 200 });
+
+    const sorted = output.sort((a, b) =>
+      a.timestamp.seconds < b.timestamp.seconds ? 1 : -1
+    );
+
+    return res.json({ message: "OK", items: sorted }, { status: 200 });
   } catch (err) {
     return res.json(
-      { message: "Internal Server Error", items: [] },
+      { message: `Internal Server Error: ${err}`, items: [] },
       { status: 500 }
     );
   }
@@ -134,6 +154,18 @@ export async function PUT(req) {
       } else if (attribute === "status") {
         await updateDoc(doc(db, "users", object.uid), {
           "roles.participants": status,
+        });
+
+        SG.send({
+          to: object.email,
+          template_id:
+            status === 1
+              ? process.env.SENDGRID_ACCEPTANCE_TEMPLATE
+              : process.env.SENDGRID_REJECTION_TEMPLATE,
+          dynamic_template_data: {
+            name: object.name,
+            position: "PARTICIPANT",
+          },
         });
       }
     });

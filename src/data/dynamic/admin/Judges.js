@@ -19,18 +19,15 @@ export const TAGS = [
     value: 1,
   },
   {
-    text: "pending",
-    value: 0,
-  },
-  {
     text: "not attending",
     value: -1,
   },
 ];
 
 export const HEADERS = [
-  { text: "name", size: "w-3/12", icon: true, sort: "off" },
+  { text: "name", size: "w-2/12", icon: true, sort: "off" },
   { text: "email", size: "w-3/12", icon: true, sort: "off" },
+  { text: "title", size: "w-2/12", icon: true, sort: "off" },
   {
     text: "affiliation",
     size: "w-2/12",
@@ -40,7 +37,7 @@ export const HEADERS = [
   },
   {
     text: "status",
-    size: "w-2/12",
+    size: "w-1/12",
     icon: true,
     sort: "off",
     hasTag: true,
@@ -60,16 +57,16 @@ export const HEADERS = [
 export const AUTH = {
   POST: {},
   GET: {
-    admins: 1,
-    committees: 1,
+    admins: [1],
+    committees: [1],
   },
   PUT: {
-    admins: 1,
-    committees: 1,
+    admins: [1],
+    committees: [1],
   },
   DELETE: {
-    admins: 1,
-    committees: 1,
+    admins: [1],
+    committees: [1],
   },
 };
 

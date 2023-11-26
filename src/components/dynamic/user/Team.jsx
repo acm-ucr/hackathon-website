@@ -8,7 +8,9 @@ import { BiLink, BiSolidCopy } from "react-icons/bi";
 
 const Team = ({ user, setUser }) => {
   const [team, setTeam] = useState(null);
-  const [id, setId] = useState({});
+  const [id, setId] = useState({
+    team: "",
+  });
   const [edit, setEdit] = useState(false);
   const defaultTeam = {
     name: "",
@@ -17,26 +19,33 @@ const Team = ({ user, setUser }) => {
     figma: "",
     members: [{ email: user.email, name: user.name }],
   };
+
   const handleCopy = () => {
     navigator.clipboard.writeText(user.team);
-    toast("✅ Successfully copy team ID to clipboard!");
+    toast("✅ Successfully copied team id!");
   };
+
   const handleCopyLink = () => {
     navigator.clipboard.writeText(
-      `${process.env.NEXT_PUBLIC_URL}users/join/${user.team}`
+      `${process.env.NEXT_PUBLIC_URL}user/join/${user.team}`
     );
-    toast("✅ Successfully copy join link to clipboard!");
+    toast("✅ Successfully copied join link!");
   };
+
   const handleLeave = () => {
     axios.delete("/api/members").then(() => {
       toast("✅ Successfully left team!");
       setTeam(null);
       setUser({ ...user, team: null });
-      setId({});
+      setId({ team: "" });
     });
   };
 
   const handleJoin = () => {
+    if (id.team === "") {
+      toast("❌ Enter a Valid Team ID");
+      return;
+    }
     axios
       .put("/api/members", { team: id.team })
       .then(() => {
@@ -97,7 +106,7 @@ const Team = ({ user, setUser }) => {
   }, [user.team]);
 
   return (
-    <div className="bg-white rounded-lg p-4 gap-3 m-2 overflow-scroll max-h-[70vh]">
+    <div className="bg-white rounded-lg p-4 gap-3 m-2 overflow-scroll max-h-[70vh] flex flex-col justify-start">
       {user.team && !team && <Loading />}
       {team && (
         <>
@@ -137,7 +146,7 @@ const Team = ({ user, setUser }) => {
           <Input
             name="figma"
             type="text"
-            title="Figma (please set share permision)"
+            title="Figma"
             value={team.figma.replace("https://", "")}
             user={team}
             editable={edit}
@@ -155,8 +164,11 @@ const Team = ({ user, setUser }) => {
               </p>
             ))}
           </div>
-          <div className="mt-3 pt-2">
+          <div className="mt-3 pt-2 flex-grow">
             <p className="mb-1 font-semibold">Team ID</p>
+            <div className="text-hackathon-green-300">
+              share this team ID or join link to your teammates
+            </div>
             <p className="pl-3 mb-0 flex items-center">
               {user.team}{" "}
               <BiSolidCopy
@@ -170,29 +182,23 @@ const Team = ({ user, setUser }) => {
             </p>
           </div>
           <div className="flex items-center justify-end gap-4">
-            {edit && (
-              <Button
-                color="green"
-                size="xl"
-                text="done"
-                onClick={handleSave}
-              />
-            )}
-            {!edit && (
-              <Button
-                color="green"
-                size="xl"
-                text="edit"
-                onClick={handleEdit}
-              />
-            )}
-            <Button color="red" text="leave" onClick={handleLeave} />
+            <Button
+              color="green"
+              size="lg"
+              text={edit ? "done" : "edit"}
+              onClick={edit ? handleSave : handleEdit}
+            />
+            <Button color="red" size="lg" text="leave" onClick={handleLeave} />
           </div>
         </>
       )}
       {!user.team && (
-        <>
-          <div>
+        <div className="flex flex-col justify-between h-full">
+          <div className="text-hackathon-green-300">
+            ask your teammates to share team ID or join link with you to join
+            the team
+          </div>
+          <div className="flex-grow">
             <Input
               name="team"
               type="text"
@@ -203,20 +209,17 @@ const Team = ({ user, setUser }) => {
               editable={true}
               setUser={setId}
             />
+          </div>
+          <div className="flex justify-end gap-2">
+            <Button color="green" size="lg" text="join" onClick={handleJoin} />
             <Button
               color="green"
-              size="xl"
-              text="join team"
-              onClick={handleJoin}
+              size="lg"
+              text="create"
+              onClick={handleCreate}
             />
           </div>
-          <Button
-            color="green"
-            size="xl"
-            text="create new team"
-            onClick={handleCreate}
-          />
-        </>
+        </div>
       )}
     </div>
   );
