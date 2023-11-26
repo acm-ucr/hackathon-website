@@ -34,3 +34,6 @@ jobs:
         working-directory: ${{ github.repository }}
         run: |
           gh pr create --title "Sync Template Changes" --body "Syncing template changes from $(date +'%m-%d-%Y')"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
