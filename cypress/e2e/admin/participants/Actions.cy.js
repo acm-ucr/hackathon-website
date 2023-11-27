@@ -19,7 +19,7 @@ describe("Participants Actions", () => {
         .click()
     );
     cy.action({
-      tag: "accept",
+      tag: "accepted",
       page: "participants",
     });
 
@@ -39,7 +39,7 @@ describe("Participants Actions", () => {
         .click()
     );
     cy.action({
-      tag: "reject",
+      tag: "rejected",
       page: "participants",
     });
 
