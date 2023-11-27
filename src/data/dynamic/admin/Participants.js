@@ -3,11 +3,11 @@ export const FILTERS = {
     state: true,
     value: 0,
   },
-  accept: {
+  accepted: {
     state: true,
     value: 1,
   },
-  reject: {
+  rejected: {
     state: true,
     value: -1,
   },
@@ -15,11 +15,11 @@ export const FILTERS = {
 
 export const TAGS = [
   {
-    text: "accept",
+    text: "accepted",
     value: 1,
   },
   {
-    text: "reject",
+    text: "rejected",
     value: -1,
   },
 ];

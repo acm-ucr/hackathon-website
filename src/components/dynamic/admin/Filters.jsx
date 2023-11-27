@@ -14,15 +14,17 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
       objects &&
       setObjects(
         objects.map((a) => {
-          Object.values(filterValues).map(({ value, boolean }) => {
+          let rowIsHidden = true;
+          Object.values(filterValues).map(({ value, state }) => {
             if (
               a.status === value &&
+              state &&
               a.name.toLowerCase().match(input.toLowerCase())
             ) {
-              boolean = false;
+              rowIsHidden = false;
             }
           });
-          return { ...a, hidden: boolean };
+          return { ...a, hidden: rowIsHidden };
         })
       );
   };
@@ -40,7 +42,7 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
   useEffect(() => {
     document.addEventListener("keyup", handleFilterKeys);
     return () => document.removeEventListener("keyup", handleFilterKeys);
-  }, []);
+  }, [filters, objects]);
 
   return (
     <div className="w-fit grid grid-cols-6 gap-2">
