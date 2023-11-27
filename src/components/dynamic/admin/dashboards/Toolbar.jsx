@@ -139,8 +139,25 @@ const Toolbar = ({
     });
   };
 
+  const keyHandler = (e) => {
+    if (e.repeat) return;
+    switch (e.key) {
+      case "r": {
+        console.log("r pressed");
+        handleReload();
+        break;
+      }
+      case "Backspace": {
+        console.log("delete pressed");
+        handleDelete();
+        break;
+      }
+    }
+  };
   useEffect(() => {
     handleReload();
+    document.addEventListener("keyup", keyHandler);
+    return () => document.removeEventListener("keyup", keyHandler);
   }, []);
 
   return (

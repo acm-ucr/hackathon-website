@@ -1,4 +1,6 @@
+"use client";
 import { TiPlus } from "react-icons/ti";
+import { useEffect } from "react";
 
 const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
   const handleClick = (filter) => {
@@ -9,14 +11,12 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
     setFilters(filterValues);
 
     setObjects &&
+      objects &&
       setObjects(
         objects.map((a) => {
-          let boolean = true;
-
-          Object.values(filterValues).map(({ value, state }) => {
+          Object.values(filterValues).map(({ value, boolean }) => {
             if (
               a.status === value &&
-              state &&
               a.name.toLowerCase().match(input.toLowerCase())
             ) {
               boolean = false;
@@ -26,6 +26,21 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
         })
       );
   };
+
+  const handleFilterKeys = (e) => {
+    if (e.repeat) return;
+    console.log("event", e);
+    Object.entries(filters).map(([filter, { state }], index) => {
+      if (e.key == index + 1) {
+        handleClick(filter);
+      }
+    });
+  };
+
+  useEffect(() => {
+    document.addEventListener("keyup", handleFilterKeys);
+    return () => document.removeEventListener("keyup", handleFilterKeys);
+  }, []);
 
   return (
     <div className="w-fit grid grid-cols-6 gap-2">
