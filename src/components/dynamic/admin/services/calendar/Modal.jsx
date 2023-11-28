@@ -46,7 +46,7 @@ const CalendarModal = ({ event, setEvent }) => {
         </div>
         <div className="flex my-2 items-center">
           <FaLocationDot className="mr-2" />
-          {event.location}
+          {event.location ? event.location : "No Location Specified"}
         </div>
         <div className="flex my-2 items-center">
           <BsPersonFill className="mr-2" />
