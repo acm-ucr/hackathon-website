@@ -45,7 +45,7 @@ export const FIELDS = {
   discord: {
     input: "input",
     name: "discord",
-    type: "discord",
+    type: "text",
     title: "Discord Username",
     placeholder: "ie. john123",
     maxLength: 30,
