@@ -27,8 +27,8 @@ const CustomToolbar = ({
             event.description
               .split("\n")[0]
               .split("#")
-              .map((item) => item.trim())
               .filter((item) => item !== "")[0]
+              .trim()
               .toLowerCase() === value
           ) {
             event.hidden = false;
