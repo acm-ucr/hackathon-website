@@ -1,24 +1,5 @@
-import Dropdown from "react-bootstrap/Dropdown";
 import { RiArrowDownSLine } from "react-icons/ri";
-import { useEffect, useState } from "react";
-
-const Toggle = ({ onClick, option, show, placeholder }) => {
-  return (
-    <button
-      onClick={onClick}
-      className={`${
-        option ? "text-black" : "text-hackathon-gray-200"
-      } bg-white flex items-center justify-between w-full border-b-2 border-black`}
-      data-cy="select-toggle"
-    >
-      {option || placeholder}
-      <RiArrowDownSLine
-        className={`${show && "rotate-180"} duration-300 text-black`}
-        data-cy="select-arrow"
-      />
-    </button>
-  );
-};
+import { useState, useEffect, useRef } from "react";
 
 const Select = ({
   items,
@@ -34,6 +15,12 @@ const Select = ({
   const [options, setOptions] = useState(items);
   const [show, setShow] = useState(false);
   const [input, setInput] = useState("");
+  const ref = useRef(null);
+  const handleClickOutside = (event) => {
+    if (ref.current && !ref.current.contains(event.target)) {
+      setShow(false);
+    }
+  };
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -47,7 +34,12 @@ const Select = ({
 
     return () => clearTimeout(timeout);
   }, [input]);
-
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
   const handleInput = (e) => {
     setInput(e.target.value);
   };
@@ -58,20 +50,21 @@ const Select = ({
         {title}
         {required && <span className="text-hackathon-green-300">*</span>}
       </p>
-      <Dropdown
-        show={show}
-        className="w-full m-0"
-        onToggle={() => setShow(!show)}
-        autoClose={true}
-        data-cy="select"
-      >
+      <div className="w-full m-0 relative" data-cy="select" ref={ref}>
         {editable ? (
-          <Dropdown.Toggle
-            as={Toggle}
-            option={user[field]}
-            placeholder={placeholder}
-            show={show}
-          />
+          <button
+            onClick={() => setShow(!show)}
+            className={`${
+              user[field] ? "text-black" : "text-hackathon-gray-200"
+            } bg-white flex items-center justify-between w-full border-b-2 border-black`}
+            data-cy="select-toggle"
+          >
+            {user[field] || placeholder}
+            <RiArrowDownSLine
+              className={`${show && "rotate-180"} duration-300 text-black`}
+              data-cy="select-arrow"
+            />
+          </button>
         ) : (
           <div
             className={`placeholder:text-hackathon-gray-200 ${
@@ -83,9 +76,9 @@ const Select = ({
             {user[field] || placeholder}
           </div>
         )}
-        {editable && (
-          <Dropdown.Menu
-            className="w-full !bg-hackathon-green-100 !border-none !rounded-none !p-0 overflow-y-auto max-h-[35vh]"
+        {editable && show && (
+          <div
+            className="w-full absolute z-10 !bg-hackathon-green-100 !border-none !rounded-none !p-0 overflow-y-auto max-h-[35vh]"
             data-cy="select-menu"
           >
             {searchable && (
@@ -100,17 +93,20 @@ const Select = ({
             {options
               .filter((opt) => !opt.hidden)
               .map((option, index) => (
-                <Dropdown.Item
+                <div
                   className=" hover:!bg-hackathon-green-200 !bg-hackathon-green-100 overflow-hidden"
                   key={index}
-                  onClick={() => setUser({ ...user, [field]: option.name })}
+                  onClick={() => {
+                    setUser({ ...user, [field]: option.name });
+                    setShow(false);
+                  }}
                 >
                   {option.name}
-                </Dropdown.Item>
+                </div>
               ))}
-          </Dropdown.Menu>
+          </div>
         )}
-      </Dropdown>
+      </div>
     </div>
   );
 };

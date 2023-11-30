@@ -52,7 +52,7 @@ export async function POST(req) {
 export async function GET() {
   const res = NextResponse;
   const { auth, message } = await authenticate({
-    admins: 1,
+    admins: [1],
   });
 
   if (auth !== 200) {
@@ -77,10 +77,7 @@ export async function GET() {
     });
 
     const teamsSnapshot = await getDocs(
-      query(
-        collection(db, "teams"),
-        where("status", "in", ["qualify", "winner"])
-      )
+      query(collection(db, "teams"), where("status", "in", [1, 2]))
     );
     teamsSnapshot.forEach((doc) => {
       const { name } = doc.data();
@@ -102,7 +99,7 @@ export async function GET() {
 export async function PUT(req) {
   const res = NextResponse;
   const { auth, message } = await authenticate({
-    admins: 1,
+    admins: [1],
   });
 
   if (auth !== 200) {
@@ -184,7 +181,7 @@ export async function PUT(req) {
 export async function DELETE(req) {
   const res = NextResponse;
   const { auth, message } = await authenticate({
-    admins: 1,
+    admins: [1],
   });
 
   if (auth !== 200) {
