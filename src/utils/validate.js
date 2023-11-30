@@ -9,8 +9,12 @@ export const validate = (data) => {
   });
 
   data.files.forEach((file, key) => {
-    if (file.length > 200 * 1024 * 1024) {
-      return { message: `File ${key} exceeds 200MB.`, valid: false };
+    if (typeof file === "number") {
+      if (file * 1024 * 1024 > 200 * 1024 * 1024) {
+        return { message: `File ${key} exceeds 200MB.`, valid: false };
+      }
+    } else if (file.length > 800 * 1024 * 1024) {
+      return { message: `File ${key} exceeds 800MB.`, valid: false };
     }
   });
 
