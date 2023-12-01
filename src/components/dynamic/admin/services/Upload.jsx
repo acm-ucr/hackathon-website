@@ -3,6 +3,7 @@ import { RiAttachment2 } from "react-icons/ri";
 import { FaTimes } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import { BYTES } from "@/data/dynamic/Bytes";
+import { compress } from "@/utils/convert";
 
 const getSize = (maxSize) => BYTES[maxSize[1]] * maxSize[0];
 const getType = (types) => "." + types.join(",.");
