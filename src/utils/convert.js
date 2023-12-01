@@ -10,6 +10,8 @@ export const readFileAsBase64 = (file) => {
 };
 
 export const compress = (file) => {
+  if (file.type.split("/")[0] !== "image") return file;
+
   return new Promise((resolve, reject) => {
     new Compressor(file, {
       quality: 0.8,
