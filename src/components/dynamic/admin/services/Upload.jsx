@@ -25,9 +25,10 @@ const Upload = ({ text, setObjects, objects, size, types }) => {
       ...objects,
       files: [
         ...objects.files,
-        ...Object.values(e.target.files).filter((file) => {
-          if (file.size > getSize(size)) {
-            toast(`❌ ${file.name} exceeds ${size[0]} ${size[1]}`);
+        ...Object.values(e.target.files).filter(async (file) => {
+          const blob = await compress(file);
+          if (blob.size > getSize(size)) {
+            toast(`❌ ${blob.name} exceeds ${size[0]} ${size[1]}`);
             return false;
           }
           if (objects.files.map((file) => file.name).includes(file.name)) {
