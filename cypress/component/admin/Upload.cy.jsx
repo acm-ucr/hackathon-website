@@ -122,7 +122,7 @@ describe("Upload", () => {
       .find("input[type=file]")
       .selectFile("cypress/fixtures/files/" + file, { force: true });
     cy.get(`[data-cy="${file}"]`).should("exist");
-    cy.get('[data-cy="upload-list"]').should("have.length", 1);
+    cy.get('[data-cy="upload-list"]').should("have.length", 2);
   });
 
   it("Remove File", () => {
