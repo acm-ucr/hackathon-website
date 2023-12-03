@@ -24,8 +24,12 @@ const CustomToolbar = ({
       setEvents(
         events.map((event) => {
           if (
-            event.description.split("\n")[1].split(": ")[1].toLowerCase() ===
-            value
+            event.description
+              .split("\n")[0]
+              .split("#")
+              .filter((item) => item !== "")[0]
+              .trim()
+              .toLowerCase() === value
           ) {
             event.hidden = false;
           } else {

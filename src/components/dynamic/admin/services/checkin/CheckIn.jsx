@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Title from "../../Title";
 import Scanner from "./Scanner";
-import DropDown from "../DropDown";
+import Dropdown from "../Dropdown";
 import Button from "../../Button";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -69,7 +69,7 @@ const CheckIn = () => {
       <div className="grid grid-cols-1">
         <div className="p-3 flex flex-col items-center">
           {events && (
-            <DropDown
+            <Dropdown
               option={event}
               setOption={setEvent}
               options={events}

@@ -25,12 +25,23 @@ export async function POST(req) {
     );
   }
 
-  const { phone, major, age, school, grade, gender, shirt, diet, resume } =
-    await req.json();
+  const {
+    phone,
+    discord,
+    major,
+    age,
+    school,
+    grade,
+    gender,
+    shirt,
+    diet,
+    resume,
+  } = await req.json();
 
   try {
     await updateDoc(doc(db, "users", user.id), {
       phone: phone,
+      discord: discord,
       major: major,
       age: age,
       school: school,
@@ -87,6 +98,7 @@ export async function GET() {
         name,
         email,
         phone,
+        discord,
         major,
         age,
         school,
@@ -104,6 +116,7 @@ export async function GET() {
         name,
         email,
         phone,
+        discord,
         major,
         age,
         school,
