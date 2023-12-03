@@ -31,10 +31,12 @@ const Filters = ({ filters, setFilters, setObjects, objects, input }) => {
 
   const handleFilterKeys = (e) => {
     if (e.repeat) return;
-    console.log("event", e);
     Object.entries(filters).map(([filter, { state }], index) => {
-      if (e.key == index + 1) {
-        handleClick(filter);
+      switch (e.key) {
+        case (index + 1).toString(): {
+          handleClick(filter);
+          break;
+        }
       }
     });
   };
