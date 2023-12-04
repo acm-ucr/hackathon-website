@@ -18,6 +18,7 @@ const Questions = ({
   loading,
   setLoading,
   setState,
+  showPacket = false,
 }) => {
   const handleSubmit = () => {
     setLoading(true);
@@ -164,6 +165,16 @@ const Questions = ({
         MLH Code of Conduct
         <FaLink className="mx-2" />
       </Link>
+      {showPacket && (
+        <Link
+          href="https://cutiehack2021.vercel.app/sponsorship-packet.pdf"
+          target="_blank"
+          className="no-underline flex items-center"
+        >
+          Sponsorship Packet
+          <FaLink className="mx-2" />
+        </Link>
+      )}
       <div className="flex justify-center">
         <Button
           text="Submit"

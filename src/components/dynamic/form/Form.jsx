@@ -38,6 +38,7 @@ const Form = ({
                 fields={fields}
                 onSubmit={onSubmit}
                 setState={setState}
+                showPacket={true}
               />
             ) : (
               <Confirmation />
