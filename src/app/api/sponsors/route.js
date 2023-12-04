@@ -25,12 +25,14 @@ export async function POST(req) {
     );
   }
 
-  const { discord, affiliation } = await req.json();
+  const { phone, company, position, tier } = await req.json();
 
   try {
     await updateDoc(doc(db, "users", user.id), {
-      discord: discord,
-      affiliation: affiliation,
+      phone: phone,
+      company: company,
+      position: position,
+      tier: tier,
       timestamp: Timestamp.now(),
       "roles.sponsors": 0,
     });
@@ -63,6 +65,7 @@ export async function GET() {
       { status: auth }
     );
   }
+
   const output = [];
 
   try {
@@ -70,15 +73,17 @@ export async function GET() {
       query(collection(db, "users"), where("roles.sponsors", "in", [-1, 0, 1]))
     );
     snapshot.forEach((doc) => {
-      const { name, email, roles, affiliation, discord, timestamp } =
+      const { name, email, phone, roles, company, position, tier, timestamp } =
         doc.data();
       output.push({
         uid: doc.id,
         name: name,
         email: email,
-        discord: discord,
-        affiliation: affiliation,
-        status: roles.committees,
+        phone: phone,
+        company: company,
+        position: position,
+        tier: tier,
+        status: roles.sponsors,
         selected: false,
         hidden: false,
         timestamp: timestamp,
@@ -115,7 +120,7 @@ export async function PUT(req) {
     objects.forEach(async (object) => {
       if (attribute === "role") {
         await updateDoc(doc(db, "users", object.uid), {
-          "roles.committees": deleteField(),
+          "roles.sponsors": deleteField(),
         });
       } else if (attribute === "status") {
         await updateDoc(doc(db, "users", object.uid), {

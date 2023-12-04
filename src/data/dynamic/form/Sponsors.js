@@ -35,6 +35,16 @@ export const FIELDS = {
     editable: false,
     required: true,
   },
+  phone: {
+    input: "input",
+    name: "phone",
+    type: "phone",
+    title: "Phone Number",
+    placeholder: "123 456 7890",
+    maxLength: 50,
+    width: 12,
+    required: true,
+  },
   company: {
     input: "input",
     name: "company",
@@ -84,6 +94,7 @@ export const FIELDS = {
 export const ATTRIBUTES = {
   name: "",
   email: "",
+  phone: "",
   company: "",
   position: "",
   tier: "",
