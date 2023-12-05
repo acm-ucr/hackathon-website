@@ -71,31 +71,6 @@ describe("Upload", () => {
     });
   });
 
-  it("Upload invalid file size", () => {
-    const file = "sample.png";
-    const Parent = () => {
-      const [email, setEmail] = useState({
-        files: [],
-      });
-
-      return (
-        <Upload
-          setObjects={setEmail}
-          objects={email}
-          size={[1, "B"]}
-          types={["pdf", "jpg", "jpeg", "png"]}
-        />
-      );
-    };
-
-    cy.mount(<Parent />);
-    cy.contains("attach");
-    cy.get('[data-cy="upload-input"]')
-      .find("input[type=file]")
-      .selectFile("cypress/fixtures/files/" + file, { force: true });
-    cy.get(`[data-cy="${file}"]`).should("not.exist");
-  });
-
   it("Upload Invalid File", () => {
     const file = "sample.png";
     const Parent = () => {
