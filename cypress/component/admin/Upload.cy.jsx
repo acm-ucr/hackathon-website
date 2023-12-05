@@ -82,7 +82,7 @@ describe("Upload", () => {
         <Upload
           setObjects={setEmail}
           objects={email}
-          size={[1, "KB"]}
+          size={[1, "B"]}
           types={["pdf", "jpg", "jpeg", "png"]}
         />
       );
