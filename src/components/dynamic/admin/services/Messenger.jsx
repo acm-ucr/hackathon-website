@@ -11,6 +11,7 @@ import Upload from "./Upload";
 import { FILTERS, STATUSES } from "@/data/dynamic/admin/Messenger";
 import { CONFIG } from "@/data/Config";
 import axios from "axios";
+import { readFileAsBase64 } from "@/utils/convert";
 
 const Messenger = () => {
   const [email, setEmail] = useState({
@@ -20,15 +21,6 @@ const Messenger = () => {
   });
   const [filters, setFilters] = useState(FILTERS);
   const [statuses, setStatuses] = useState(STATUSES);
-
-  const readFileAsBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
-  };
 
   const handleSend = async () => {
     if (email.subject === "") {
