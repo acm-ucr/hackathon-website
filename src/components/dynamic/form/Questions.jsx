@@ -167,14 +167,15 @@ const Questions = ({
         <FaLink className="mx-2" />
       </Link>
       {showSponsorPacket && (
-        <Link
+        <a
           href={packetLink}
           target="_blank"
+          rel="noreferrer noopener"
           className="no-underline flex items-center"
         >
           Sponsorship Packet
           <FaLink className="mx-2" />
-        </Link>
+        </a>
       )}
       <div className="flex justify-center">
         <Button
