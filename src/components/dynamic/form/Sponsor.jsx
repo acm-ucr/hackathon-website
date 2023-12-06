@@ -37,7 +37,6 @@ const Sponsor = () => {
       onSubmit={handleSubmit}
       statuses={STATUSES}
       showSponsorPacket={true}
-      sponsorPacket="https://cutiehack2021.vercel.app/sponsorship-packet.pdf"
     />
   );
 };

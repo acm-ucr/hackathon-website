@@ -9,6 +9,7 @@ import Upload from "@/components/dynamic/form/Upload";
 import toast from "react-hot-toast";
 import Link from "next/link";
 import { FaLink } from "react-icons/fa";
+import { CONFIG } from "@/data/Config";
 
 const Questions = ({
   fields,
@@ -19,7 +20,6 @@ const Questions = ({
   setLoading,
   setState,
   showSponsorPacket = false,
-  packetLink,
 }) => {
   const handleSubmit = () => {
     setLoading(true);
@@ -167,15 +167,15 @@ const Questions = ({
         <FaLink className="mx-2" />
       </Link>
       {showSponsorPacket && (
-        <a
-          href={packetLink}
+        <Link
+          href={CONFIG.packet}
           target="_blank"
           rel="noreferrer noopener"
           className="no-underline flex items-center"
         >
           Sponsorship Packet
           <FaLink className="mx-2" />
-        </a>
+        </Link>
       )}
       <div className="flex justify-center">
         <Button
