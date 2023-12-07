@@ -33,7 +33,6 @@
     "react-icons": "^4.11.0",
     "react-zxing": "^2.0.0",
     "sharp": "^0.32.6",
-    "unique-names-generator": "^4.7.1",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
