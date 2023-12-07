@@ -7,6 +7,7 @@ import {
 } from "react-icons/bs";
 import { MdVolunteerActivism, MdFeedback } from "react-icons/md";
 import { BiSolidHelpCircle } from "react-icons/bi";
+import { GoSponsorTiers } from "react-icons/go";
 import {
   FaGavel,
   FaEnvelope,
@@ -62,6 +63,11 @@ export const TABS = {
           name: "committees",
           link: "/admin/committees",
           icon: <SiHandshake className={iconStyle} />,
+        },
+        {
+          name: "sponsors",
+          link: "/admin/sponsors",
+          icon: <GoSponsorTiers className={iconStyle} />,
         },
         {
           name: "interests",
