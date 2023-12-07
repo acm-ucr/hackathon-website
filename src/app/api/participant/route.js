@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { db } from "../../../../firebase";
+import { db } from "../../../utils/firebase";
 import { doc, updateDoc } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/user/Participant";
