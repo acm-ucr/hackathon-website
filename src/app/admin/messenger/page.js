@@ -10,6 +10,7 @@ const MessengerPage = () => {
         committees: 1,
       }}
     >
+      {console.log("CONSLOE.LOG: hereeee")}
       <div className="w-full justify-center bg-hackathon-page z-0 h-screen">
         <Messenger />
       </div>

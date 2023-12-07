@@ -62,6 +62,13 @@ export async function PUT(req) {
       to.push(email);
     });
 
+    console.log("CONSOLE LOG: format of each element in to: ");
+    if (to.length != 0) {
+      console.log(to[0]);
+    } else {
+      console.log("TO IS EMPTY!!!");
+    }
+
     const formattedEmail = {
       ...email,
       to,
