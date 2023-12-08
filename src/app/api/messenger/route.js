@@ -8,6 +8,7 @@ import { authenticate } from "@/utils/auth";
 export async function PUT(req) {
   const res = NextResponse;
   // TODO: AUTH NEEDS TO MATCH PROTECTED PAGES
+
   const { auth, message } = await authenticate({
     admins: 1,
   });
@@ -55,26 +56,21 @@ export async function PUT(req) {
     if (formattedUsers.includes("sponsors"))
       queryConstraints.push(where("roles.sponsors", "in", formattedStatuses));
 
+    console.log("we here2?");
+
     const snapshot = await getDocs(
       query(collection(db, "users"), or(...queryConstraints))
     );
 
-    const to = [];
+    const bcc = [];
     snapshot.forEach((doc) => {
       const { email } = doc.data();
-      to.push(email);
+      bcc.push(email);
     });
-
-    console.log("CONSOLE LOG: format of each element in to: ");
-    if (to.length != 0) {
-      console.log(to[0]);
-    } else {
-      console.log("TO IS EMPTY!!!");
-    }
 
     const formattedEmail = {
       ...email,
-      to,
+      bcc,
       from: `${CONFIG.email}`,
     };
 
