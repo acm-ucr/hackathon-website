@@ -19,7 +19,7 @@ const Questions = ({
   loading,
   setLoading,
   setState,
-  showSponsorPacket = false,
+  packet = false,
 }) => {
   const handleSubmit = () => {
     setLoading(true);
@@ -166,7 +166,7 @@ const Questions = ({
         MLH Code of Conduct
         <FaLink className="mx-2" />
       </Link>
-      {showSponsorPacket && (
+      {packet && (
         <Link
           href={CONFIG.packet}
           target="_blank"

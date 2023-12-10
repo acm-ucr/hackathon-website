@@ -40,8 +40,7 @@ const Form = ({
                 fields={fields}
                 onSubmit={onSubmit}
                 setState={setState}
-                showSponsorPacket={showSponsorPacket}
-                packetLink={sponsorPacket}
+                packet={true}
               />
             ) : (
               <Confirmation />
