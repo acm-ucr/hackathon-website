@@ -46,7 +46,7 @@ export const HEADERS = [
 
 export const DROPDOWN = ({ object }) => {
   return (
-    <div className="flex flex-col">
+    <>
       <div className="flex justify-center">
         <div className="grid grid-cols-3 w-11/12">
           {AVAILABILITY.map((text, index) => (
@@ -59,7 +59,7 @@ export const DROPDOWN = ({ object }) => {
         </div>
       </div>
       <p className="ml-5 mt-3">{object.response}</p>
-    </div>
+    </>
   );
 };
 
