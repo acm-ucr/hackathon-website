@@ -20,6 +20,7 @@ export async function PUT(req) {
     );
   }
 
+  console.log("we ever here???");
   const { filters, statuses, email } = await req.json();
 
   try {
@@ -68,7 +69,7 @@ export async function PUT(req) {
 
     const formattedEmail = {
       ...email,
-      personalization: bcc,
+      personalization: [{ bcc: bcc }],
       from: `${CONFIG.email}`,
     };
 
