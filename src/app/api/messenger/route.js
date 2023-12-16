@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { db } from "../../../../firebase";
+import { db } from "../../../utils/firebase";
 import { collection, getDocs, query, where, or } from "firebase/firestore";
 import sgMail from "@sendgrid/mail";
 import { CONFIG } from "@/data/Config";

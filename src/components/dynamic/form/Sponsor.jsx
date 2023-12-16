@@ -36,6 +36,7 @@ const Sponsor = () => {
       header="SPONSORSHIP INTEREST FORM"
       onSubmit={handleSubmit}
       statuses={STATUSES}
+      packet={true}
     />
   );
 };
