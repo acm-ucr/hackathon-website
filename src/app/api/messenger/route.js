@@ -56,8 +56,6 @@ export async function PUT(req) {
     if (formattedUsers.includes("sponsors"))
       queryConstraints.push(where("roles.sponsors", "in", formattedStatuses));
 
-    console.log("we here2?");
-
     const snapshot = await getDocs(
       query(collection(db, "users"), or(...queryConstraints))
     );
@@ -65,12 +63,12 @@ export async function PUT(req) {
     const bcc = [];
     snapshot.forEach((doc) => {
       const { email } = doc.data();
-      bcc.push(email);
+      bcc.push({ email });
     });
 
     const formattedEmail = {
       ...email,
-      bcc,
+      personalization: bcc,
       from: `${CONFIG.email}`,
     };
 
