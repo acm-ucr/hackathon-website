@@ -3,6 +3,7 @@ import { RiAttachment2 } from "react-icons/ri";
 import { FaTimes } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import { BYTES } from "@/data/dynamic/Bytes";
+import { compress } from "@/utils/convert";
 
 const getSize = (maxSize) => BYTES[maxSize[1]] * maxSize[0];
 const getType = (types) => "." + types.join(",.");
@@ -25,9 +26,10 @@ const Upload = ({ text, setObjects, objects, size, types }) => {
       ...objects,
       files: [
         ...objects.files,
-        ...Object.values(e.target.files).filter((file) => {
-          if (file.size > getSize(size)) {
-            toast(`❌ ${file.name} exceeds ${size[0]} ${size[1]}`);
+        ...Object.values(e.target.files).filter(async (file) => {
+          const blob = await compress(file);
+          if (blob.size > getSize(size)) {
+            toast(`❌ ${blob.name} exceeds ${size[0]} ${size[1]}`);
             return false;
           }
           if (objects.files.map((file) => file.name).includes(file.name)) {

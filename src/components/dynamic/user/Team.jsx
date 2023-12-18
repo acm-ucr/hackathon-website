@@ -13,7 +13,6 @@ const Team = ({ user, setUser }) => {
   });
   const [edit, setEdit] = useState(false);
   const defaultTeam = {
-    name: "",
     github: "",
     devpost: "",
     figma: "",
@@ -110,17 +109,6 @@ const Team = ({ user, setUser }) => {
       {user.team && !team && <Loading />}
       {team && (
         <>
-          <Input
-            name="name"
-            type="text"
-            title="Team Name"
-            value={team.name}
-            user={team}
-            setUser={setTeam}
-            editable={edit}
-            placeholder="no team name"
-          />
-
           <Input
             name="github"
             type="text"

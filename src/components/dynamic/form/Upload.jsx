@@ -3,6 +3,8 @@ import { BsUpload } from "react-icons/bs";
 import { FaFilePdf, FaImage, FaTimes } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import { BYTES } from "@/data/dynamic/Bytes";
+import { readFileAsBase64, compress } from "@/utils/convert";
+
 const getSize = (maxSize) => BYTES[maxSize[1]] * maxSize[0];
 const getType = (types) => "." + types.join(",.");
 
@@ -12,23 +14,15 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
 
   const handleInput = async (e) => {
     setUploading(true);
-    if (e.target.files[0].size > getSize(maxSize)) {
+    const blob = await compress(e.target.files[0]);
+    if (blob.size > getSize(maxSize)) {
       toast(`❌ File too big, exceeds ${maxSize[0]} ${maxSize[1]}!`);
       return;
     }
-    setFile(e.target.files[0]);
-    const base64 = await readFileAsBase64(e.target.files[0]);
+    setFile(blob);
+    const base64 = await readFileAsBase64(blob);
     setUser({ ...user, [field]: base64 });
     setUploading(false);
-  };
-
-  const readFileAsBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = (error) => reject(error);
-    });
   };
 
   return (

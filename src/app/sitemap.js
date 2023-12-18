@@ -51,6 +51,12 @@ const sitemap = () => {
       priority: 0.5,
     },
     {
+      url: `${SITEMAP.domain}/form/sponsor`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
       url: `${SITEMAP.domain}/user/checkin`,
       lastModified: new Date(),
       changeFrequency: "monthly",

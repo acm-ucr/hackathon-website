@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { db } from "../../../../firebase";
+import { db } from "../../../utils/firebase";
 import {
   doc,
   updateDoc,
@@ -27,7 +27,7 @@ export async function GET() {
   try {
     const snapshot = await getDocs(collection(db, "teams"));
     snapshot.forEach((doc) => {
-      const { links, name, status, members } = doc.data();
+      const { links, status, members } = doc.data();
 
       const formattedNames = members.map((member) => member.name);
       const formattedEmails = members.map((member) => member.email);
@@ -43,7 +43,6 @@ export async function GET() {
         members: formattedNames,
         emails: formattedEmails,
         uids: formattedUids,
-        name,
         status,
         uid: doc.id,
         selected: false,
