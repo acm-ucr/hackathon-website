@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { db } from "../../../../firebase";
+import { db } from "../../../utils/firebase";
 import {
   where,
   query,
@@ -65,6 +65,14 @@ export async function GET() {
         )
       )
     ).data().count;
+    const sponsors = (
+      await getCountFromServer(
+        query(
+          collection(db, "users"),
+          where("roles.sponsors", "in", [-1, 0, 1])
+        )
+      )
+    ).data().count;
 
     const admins = (
       await getCountFromServer(
@@ -88,6 +96,7 @@ export async function GET() {
       volunteers,
       mentors,
       committees,
+      sponsors,
       admins,
     };
 

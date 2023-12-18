@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { db } from "../../../../firebase";
+import { db } from "../../../utils/firebase";
 import { collection, getDocs, query, where, or } from "firebase/firestore";
 import sgMail from "@sendgrid/mail";
 import { CONFIG } from "@/data/Config";
@@ -67,6 +67,9 @@ export async function PUT(req) {
 
     if (formattedUsers.includes("committees"))
       queryConstraints.push(where("roles.committees", "in", formattedStatuses));
+
+    if (formattedUsers.includes("sponsors"))
+      queryConstraints.push(where("roles.sponsors", "in", formattedStatuses));
 
     const snapshot = await getDocs(
       query(collection(db, "users"), or(...queryConstraints))

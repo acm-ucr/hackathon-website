@@ -54,6 +54,15 @@ describe("Admin Portal Navigation", () => {
     cy.get(".text-2xl").contains("Admins");
   });
 
+  it("Visit Sponsors Page", () => {
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "sponsors",
+    });
+    cy.get(".text-2xl").contains("Sponsors");
+  });
+
   it("Visit Committee Page", () => {
     cy.fetch({
       role: "admins",

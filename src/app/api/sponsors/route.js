@@ -11,8 +11,7 @@ import {
   Timestamp,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
-import { AUTH } from "@/data/dynamic/admin/Volunteers";
-import { validate } from "src/utils/validate.js";
+import { AUTH } from "@/data/dynamic/admin/Sponsors";
 import SG from "@/utils/sendgrid";
 
 export async function POST(req) {
@@ -26,20 +25,16 @@ export async function POST(req) {
     );
   }
 
-  const { phone, discord, major, grade, gender, shirt, availability } =
-    await req.json();
+  const { phone, company, position, tier } = await req.json();
 
   try {
     await updateDoc(doc(db, "users", user.id), {
       phone: phone,
-      discord: discord,
-      major: major,
-      grade: grade,
-      gender: gender,
-      shirt: shirt,
+      company: company,
+      position: position,
+      tier: tier,
       timestamp: Timestamp.now(),
-      "roles.volunteers": 0,
-      availability: availability,
+      "roles.sponsors": 0,
     });
 
     SG.send({
@@ -47,7 +42,7 @@ export async function POST(req) {
       template_id: process.env.SENDGRID_CONFIRMATION_TEMPLATE,
       dynamic_template_data: {
         name: user.name,
-        position: "VOLUNTEER",
+        position: "SPONSOR",
       },
     });
 
@@ -62,11 +57,11 @@ export async function POST(req) {
 
 export async function GET() {
   const res = NextResponse;
-  const { auth } = await authenticate(AUTH.GET);
+  const { auth, message } = await authenticate(AUTH.GET);
 
   if (auth !== 200) {
     return res.json(
-      { message: `Authentication Error: ${"MESSAGE VARIABLE SHOULD BE HERE"}` },
+      { message: `Authentication Error: ${message}` },
       { status: auth }
     );
   }
@@ -75,21 +70,20 @@ export async function GET() {
 
   try {
     const snapshot = await getDocs(
-      query(
-        collection(db, "users"),
-        where("roles.volunteers", "in", [-1, 0, 1])
-      )
+      query(collection(db, "users"), where("roles.sponsors", "in", [-1, 0, 1]))
     );
     snapshot.forEach((doc) => {
-      const { name, email, discord, availability, roles, timestamp } =
+      const { name, email, phone, roles, company, position, tier, timestamp } =
         doc.data();
       output.push({
         uid: doc.id,
-        name,
-        email,
-        discord,
-        availability,
-        status: roles.volunteers,
+        name: name,
+        email: email,
+        phone: phone,
+        company: company,
+        position: position,
+        tier: tier,
+        status: roles.sponsors,
         selected: false,
         hidden: false,
         timestamp: timestamp,
@@ -122,30 +116,15 @@ export async function PUT(req) {
 
   const { objects, attribute, status } = await req.json();
 
-  const validatation = {
-    objects: [objects],
-    strings: [attribute],
-    numbers: [status],
-  };
-
-  const results = validate(validatation);
-
-  if (!results.valid) {
-    return res.json(
-      { message: `Validation Error: ${results.message}` },
-      { status: 400 }
-    );
-  }
-
   try {
     objects.forEach(async (object) => {
       if (attribute === "role") {
         await updateDoc(doc(db, "users", object.uid), {
-          "roles.volunteers": deleteField(),
+          "roles.sponsors": deleteField(),
         });
       } else if (attribute === "status") {
         await updateDoc(doc(db, "users", object.uid), {
-          "roles.volunteers": status,
+          "roles.sponsors": status,
         });
 
         SG.send({
@@ -156,17 +135,17 @@ export async function PUT(req) {
               : process.env.SENDGRID_REJECTION_TEMPLATE,
           dynamic_template_data: {
             name: object.name,
-            position: "VOLUNTEER",
+            position: "SPONSOR",
           },
         });
       }
     });
+
+    return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
       { status: 500 }
     );
   }
-
-  return res.json({ message: "OK" }, { status: 200 });
 }
