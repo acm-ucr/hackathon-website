@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { db } from "../../../../firebase";
+import { db } from "../../../utils/firebase";
 import {
   doc,
   updateDoc,
@@ -85,13 +85,14 @@ export async function GET() {
       query(collection(db, "users"), where("roles.mentors", "in", [-1, 0, 1]))
     );
     snapshot.forEach((doc) => {
-      const { name, email, discord, roles, availability, timestamp } =
+      const { name, email, discord, roles, availability, timestamp, response } =
         doc.data();
       output.push({
         name,
         email,
         discord,
         availability,
+        response,
         status: roles.mentors,
         uid: doc.id,
         selected: false,
