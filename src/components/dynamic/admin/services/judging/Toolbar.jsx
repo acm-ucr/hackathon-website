@@ -154,7 +154,13 @@ const Toolbar = ({ data, setData }) => {
     }
 
     setData(teams);
-    axios.put("/api/judging", { teams }).then(() => toast("✅ Rounds Saved!"));
+
+    api({
+      method: "PUT",
+      url: "/api/judging",
+      body: { teams },
+    }).then(() => toast("✅ Rounds Saved!"));
+
     setInput({
       ...input,
       rotations: "",
@@ -181,11 +187,14 @@ const Toolbar = ({ data, setData }) => {
   };
 
   const load = () => {
-    axios.get("/api/judging").then((response) => {
-      setData(response.data.items.teams);
-      setJudges(response.data.items.judges);
+    api({
+      method: "GET",
+      url: "/api/judging",
+    }).then(({ items }) => {
+      setData(items.teams);
+      setJudges(items.judges);
 
-      if (response.data.items.judges.length === 0) {
+      if (items.judges.length === 0) {
         setPopup({
           title: "Insufficient Judges",
           text: "There are not enough judges to go around to each team. Please consider adding more judges via the judge dashboard. ",

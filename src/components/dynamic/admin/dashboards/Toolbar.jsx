@@ -10,6 +10,7 @@ import Input from "../Input";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { api } from "@/utils/api";
 
 const Toolbar = ({
   input,
@@ -73,11 +74,17 @@ const Toolbar = ({
 
     setToggle(false);
     const items = objects.filter((object) => object.selected);
-    axios.put(`/api/${page}`, {
-      objects: items,
-      status: value,
-      attribute: "status",
+
+    api({
+      method: "PUT",
+      url: `/api/${page}`,
+      body: {
+        objects: items,
+        status: value,
+        attribute: "status",
+      },
     });
+
     setObjects(
       objects.map((a) => {
         if (a.selected) {
@@ -132,9 +139,12 @@ const Toolbar = ({
       });
   };
 
-  const handleReload = () => {
-    axios.get(`/api/${page}`).then((response) => {
-      setObjects(response.data.items);
+  const handleReload = async () => {
+    api({
+      method: "GET",
+      url: `/api/${page}`,
+    }).then(({ items }) => {
+      setObjects(items);
       toast("✅ Fetched Data Successfully");
     });
   };
