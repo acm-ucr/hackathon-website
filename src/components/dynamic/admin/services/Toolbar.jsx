@@ -109,15 +109,7 @@ const Toolbar = ({ objects, setObjects, teams, setTeams, tags, empty }) => {
       uid: uuid(),
     };
 
-    let isValid = true;
-
-    Object.keys(data).forEach((item) => {
-      if (data[item] === "") {
-        isValid = false;
-      }
-    });
-
-    if (isValid) {
+    if (!Object.values(data).some((val) => val === "")) {
       setObjects([...objects, data]);
       axios.post("/api/prizes", data).then(() => toast("✅ Prize Added!"));
     } else {
