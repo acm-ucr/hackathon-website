@@ -94,6 +94,20 @@ const Toolbar = ({
     );
   };
 
+  const handleShortcuts = (e) => {
+    if (e.repeat) return;
+    switch (e.key) {
+      case "r": {
+        handleReload();
+        break;
+      }
+      case "Backspace": {
+        handleDelete();
+        break;
+      }
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -151,6 +165,10 @@ const Toolbar = ({
 
   useEffect(() => {
     handleReload();
+
+    document.addEventListener("keydown", handleShortcuts);
+
+    return () => document.removeEventListener("keydown", handleShortcuts);
   }, []);
 
   return (
