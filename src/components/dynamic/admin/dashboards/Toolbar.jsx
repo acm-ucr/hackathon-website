@@ -39,11 +39,6 @@ const Toolbar = ({
       return;
     }
 
-    if (!objects.some((obj) => obj.selected)) {
-      toast("❌ No items selected.");
-      return;
-    }
-
     const notPending = objects.some((obj) => obj.selected && obj.status !== 0);
 
     if (notPending) {
