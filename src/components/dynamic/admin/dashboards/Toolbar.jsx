@@ -34,6 +34,11 @@ const Toolbar = ({
   const [toggle, setToggle] = useState(false);
 
   const onClick = (value) => {
+    if (!objects.some((obj) => obj.selected)) {
+      toast("❌ No items selected.");
+      return;
+    }
+
     const notPending = objects.some((obj) => obj.selected && obj.status !== 0);
 
     if (notPending) {
@@ -121,6 +126,11 @@ const Toolbar = ({
   };
 
   const handleDelete = () => {
+    if (!objects.some((obj) => obj.selected)) {
+      toast("❌ No items selected for deletion.");
+      return;
+    }
+
     setToggle(false);
     const remove = objects.filter((object) => object.selected);
     const keep = objects.filter((object) => !object.selected);
