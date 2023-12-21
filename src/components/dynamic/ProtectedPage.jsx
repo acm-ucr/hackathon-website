@@ -45,6 +45,7 @@ const ProtectedPage = ({ children, restrictions, title }) => {
     if (!authorized && Object.keys(restrictions).length > 0) {
       throw new Fault(403, "Unauthorized", "You do not have access this page");
     }
+
     setConfirmed(true);
   }, [status]);
 

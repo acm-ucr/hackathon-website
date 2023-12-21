@@ -56,8 +56,6 @@ export async function PUT(req) {
     if (formattedUsers.includes("sponsors"))
       queryConstraints.push(where("roles.sponsors", "in", formattedStatuses));
 
-    console.log("we here2?");
-
     const snapshot = await getDocs(
       query(collection(db, "users"), or(...queryConstraints))
     );
