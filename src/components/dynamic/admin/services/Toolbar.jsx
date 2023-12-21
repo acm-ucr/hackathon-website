@@ -116,13 +116,16 @@ const Toolbar = ({ objects, setObjects, teams, setTeams, tags, empty }) => {
       uid: uuid(),
     };
 
-    setObjects([...objects, data]);
-
-    api({
-      method: "POST",
-      url: "/api/prizes",
-      body: data,
-    }).then(() => toast("✅ Prize Added!"));
+    if (!Object.values(data).some((val) => val === "")) {
+      setObjects([...objects, data]);
+      api({
+        method: "POST",
+        url: "/api/prizes",
+        body: data,
+      }).then(() => toast("✅ Prize Added!"));
+    } else {
+      toast("❌ Please fill out all required fields");
+    }
 
     setPrize(reset);
     setTeam({ name: "No Team Selected", id: "" });
