@@ -20,7 +20,6 @@ export async function PUT(req) {
     );
   }
 
-  console.log("we ever here???");
   const { filters, statuses, email } = await req.json();
 
   try {
