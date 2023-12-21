@@ -58,15 +58,15 @@ export const SOURCES = [
 
 export const AVAILABILITY = [
   "Friday Morning",
-  "Saturday Morning",
-  "Sunday Morning",
   "Friday Afternoon",
-  "Saturday Afternoon",
-  "Sunday Afternoon",
   "Friday Evening",
-  "Saturday Evening",
-  "Sunday Evening",
   "Friday Night",
+  "Saturday Morning",
+  "Saturday Afternoon",
+  "Saturday Evening",
   "Saturday Night",
+  "Sunday Morning",
+  "Sunday Afternoon",
+  "Sunday Evening",
   "Sunday Night",
 ];
