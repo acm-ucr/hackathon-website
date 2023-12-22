@@ -1,5 +1,4 @@
 /* eslint-disable new-cap */
-"use client";
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Poppins } from "next/font/google";
