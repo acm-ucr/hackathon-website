@@ -177,7 +177,9 @@ const Toolbar = ({ objects, setObjects, teams, setTeams, tags, empty }) => {
   return (
     <>
       <form className="flex items-center" onSubmit={handleSearch}>
-        <Checkbox onClick={selectAll} toggle={toggle} data-cy="select-all" />
+        <div className="mr-4" data-cy="select-all">
+          <Checkbox onClick={selectAll} toggle={toggle} />
+        </div>
         <div className="flex flex-row gap-2">
           {tags.map((tag, index) => (
             <Tag

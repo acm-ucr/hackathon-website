@@ -174,7 +174,7 @@ const Toolbar = ({
   return (
     <div className="w-full flex items-center" data-cy="toolbar">
       <div className="w-11/12 flex items-center">
-        <Checkbox onClick={selectAll} toggle={toggle} data-cy="select-all" />
+        <Checkbox onClick={selectAll} toggle={toggle} />
         <div className="flex flex-row gap-2">
           {tags.map((tag, index) => (
             <Tag
