@@ -4,6 +4,8 @@ import { useState } from "react";
 import Status from "./Status";
 import Questions from "./Questions";
 import Confirmation from "./Confirmation";
+import Button from "../Button";
+import { signOut } from "next-auth/react";
 
 const Form = ({
   object,
@@ -19,9 +21,21 @@ const Form = ({
     typeof object.roles[object.form] !== "undefined" && !bypass ? 0 : 1
   );
 
+  const handleSignOut = () => {
+    signOut({ callbackUrl: "/", redirect: true });
+  };
+
   return (
     <div className="w-full h-full overflow-scroll flex flex-col items-center font-poppins">
-      <div className="w-10/12 md:w-1/2 xl:w-1/3 my-5">
+      <div className="w-full flex flex-col justify-center items-center">
+        <Button
+          text="Sign Out"
+          onClick={handleSignOut}
+          loading={loading}
+          color="green"
+        />
+      </div>
+      <div className="w-10/12 md:w-1/2 xl:w-1/3 my-5 ">
         <p className="text-xl bg-hackathon-green-300 font-semibold px-4 py-2 rounded-t-xl m-0">
           {header}
         </p>
