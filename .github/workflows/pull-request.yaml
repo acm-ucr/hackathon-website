@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Use ACM Formatting
-        uses: acm-ucr/formatting@main
+        uses: acm-ucr/formatting@v2
 
   lint:
     name: linting
@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Use ACM Linting
-        uses: acm-ucr/linting@main
+        uses: acm-ucr/linting@v2
 
   build:
     name: build
@@ -31,7 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Use ACM Build
-        uses: acm-ucr/build@main
+        uses: acm-ucr/build@v2
 
       - name: Save build folder
         uses: actions/upload-artifact@v3
