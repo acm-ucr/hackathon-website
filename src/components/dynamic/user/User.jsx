@@ -12,7 +12,7 @@ import Radio from "../Radio";
 import Select from "../Select";
 import Button from "../Button";
 import Checkbox from "../Checkbox";
-import axios from "axios";
+import { api } from "@/utils/api";
 import toast from "react-hot-toast";
 
 const User = ({ user, setUser, edit, setEdit }) => {
@@ -21,8 +21,11 @@ const User = ({ user, setUser, edit, setEdit }) => {
   };
 
   const handleSave = async () => {
-    axios
-      .post("/api/participant", user)
+    api({
+      method: "POST",
+      url: "/api/participant",
+      body: user,
+    })
       .then(() => {
         toast("✅ Successfully Updated!");
         setEdit(false);

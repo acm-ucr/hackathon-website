@@ -7,10 +7,9 @@ import { FaUndoAlt } from "react-icons/fa";
 import { COLORS } from "@/data/dynamic/Tags";
 import Popup from "../Popup";
 import Input from "../Input";
-import axios from "axios";
+import { api } from "@/utils/api";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { api } from "@/utils/api";
 
 const Toolbar = ({
   input,
@@ -156,11 +155,13 @@ const Toolbar = ({
     const remove = objects.filter((object) => object.selected);
     const keep = objects.filter((object) => !object.selected);
     setObjects(keep);
-    axios
-      .put(`/api/${page}`, { objects: remove, attribute: "role" })
-      .then(() => {
-        toast("✅ Successfully Deleted");
-      });
+    api({
+      method: "PUT",
+      url: `/api/${page}`,
+      body: { objects: remove, attribute: "role" },
+    }).then(() => {
+      toast("✅ Successfully Deleted");
+    });
   };
 
   const handleReload = async () => {
