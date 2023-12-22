@@ -13,7 +13,7 @@ describe("Volunteers Select", () => {
   });
 
   it("Select All", () => {
-    cy.get('[data-cy="select-all"]').click();
+    cy.get('[data-cy="toolbar"]').find('[data-cy="checkbox"]').click();
     volunteers.forEach((volunteer) => {
       cy.get(`[data-cy="${volunteer.uid}"]`).should(
         "have.class",
