@@ -6,7 +6,8 @@ import { AUTH } from "@/data/dynamic/user/Team";
 
 export async function POST() {
   const res = NextResponse;
-  const { auth, message, user } = await authenticate(AUTH.POST);
+  const { auth, message, user } = await authenticate(AUTH.POST); // this user is taken from the session
+  console.log(user);
 
   if (auth !== 200) {
     return res.json(
@@ -22,7 +23,7 @@ export async function POST() {
         devpost: "",
         figma: "",
       },
-      members: [{ email: user.email, name: user.name, uid: user.id }],
+      members: [{ discord: user.discord, name: user.name, uid: user.id }],
       status: 0,
     };
     const docRef = await addDoc(collection(db, "teams"), team);
