@@ -20,7 +20,7 @@ const Judge = () => {
 
   const handleSubmit = (setLoading, setState) => {
     axios
-      .post("/api/judges", judge)
+      .post("/api/dashboard/judges", judge)
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
       .finally(() => {

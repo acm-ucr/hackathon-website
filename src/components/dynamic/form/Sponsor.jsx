@@ -20,7 +20,7 @@ const Sponsor = () => {
 
   const handleSubmit = (setLoading, setState) => {
     axios
-      .post("/api/sponsors", sponsor)
+      .post("/api/dashboard/sponsors", sponsor)
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
       .finally(() => {

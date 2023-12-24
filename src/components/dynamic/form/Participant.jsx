@@ -20,7 +20,7 @@ const Participant = () => {
 
   const handleSubmit = (setLoading, setState) => {
     axios
-      .post("/api/participants", participant)
+      .post("/api/dashboard/participants", participant)
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
       .finally(() => {

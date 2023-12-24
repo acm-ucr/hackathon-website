@@ -20,7 +20,7 @@ const Admin = () => {
 
   const handleSubmit = (setLoading, setState) => {
     axios
-      .post("/api/admins", admin)
+      .post("/api/dashboard/admins", admin)
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
       .finally(() => {

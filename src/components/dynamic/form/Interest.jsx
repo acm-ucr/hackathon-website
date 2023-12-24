@@ -20,7 +20,7 @@ const Interest = () => {
 
   const onSubmit = (setLoading, setState) => {
     axios
-      .post("/api/interests", interest)
+      .post("/api/dashboard/interests", interest)
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
       .finally(() => {

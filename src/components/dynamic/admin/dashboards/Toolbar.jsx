@@ -78,10 +78,9 @@ const Toolbar = ({
 
     setToggle(false);
     const items = objects.filter((object) => object.selected);
-    axios.put(`/api/${page}`, {
+    axios.put(`/api/dashboard/${page}`, {
       objects: items,
       status: value,
-      attribute: "status",
     });
     setObjects(
       objects.map((a) => {
@@ -149,15 +148,20 @@ const Toolbar = ({
     const remove = objects.filter((object) => object.selected);
     const keep = objects.filter((object) => !object.selected);
     setObjects(keep);
+    console.log(
+      `/api/dashboard/${page}?remove=${remove.map((a) => a.uid).toString()}`
+    );
     axios
-      .put(`/api/${page}`, { objects: remove, attribute: "role" })
+      .delete(
+        `/api/dashboard/${page}?remove=${remove.map((a) => a.uid).toString()}`
+      )
       .then(() => {
         toast("✅ Successfully Deleted");
       });
   };
 
   const handleReload = () => {
-    axios.get(`/api/${page}`).then((response) => {
+    axios.get(`/api/dashboard/${page}`).then((response) => {
       setObjects(response.data.items);
       toast("✅ Fetched Data Successfully");
     });
