@@ -231,7 +231,7 @@ const Toolbar = ({ data, setData }) => {
             color="red"
             text="reset"
             onClick={handleReset}
-            disabled={data.some(({ rounds }) => rounds.length === 0)}
+            disabled={!data || data.some(({ rounds }) => rounds.length === 0)}
           />
         </div>
         <div className="flex">
