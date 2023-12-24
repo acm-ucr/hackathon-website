@@ -8,7 +8,6 @@ import Popup from "../Popup";
 import { FaTrashAlt } from "react-icons/fa";
 import { FaUndoAlt } from "react-icons/fa";
 import { v4 as uuid } from "uuid";
-import axios from "axios";
 import toast from "react-hot-toast";
 import Tag from "../Tag.jsx";
 import { COLORS } from "@/data/dynamic/Tags";
@@ -101,9 +100,10 @@ const Toolbar = ({ objects, setObjects, teams, setTeams, tags, empty }) => {
       .join(",");
 
     setObjects(keep);
-    axios
-      .delete(`/api/prizes?ids=${remove}&teams=${teams}`)
-      .then(() => toast("✅ Successfully deleted!"));
+    api({
+      method: "DELETE",
+      url: `/api/prizes?ids=${remove}&teams=${teams}`,
+    }).then(() => toast("✅ Successfully deleted!"));
   };
 
   const handleAdd = () => {

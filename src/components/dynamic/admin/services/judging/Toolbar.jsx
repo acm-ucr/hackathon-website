@@ -7,7 +7,7 @@ import { COLORS } from "@/data/dynamic/Tags";
 import Popup from "../../Popup";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+import { api } from "@/utils/api";
 
 const tags = ["professor", "industry", "student"];
 
@@ -181,9 +181,10 @@ const Toolbar = ({ data, setData }) => {
 
     const uids = data.map((team) => team.uid).join(",");
 
-    axios
-      .delete(`/api/judging?ids=${uids}`)
-      .then(() => toast("✅ Successfully Reset"));
+    api({
+      method: "DELETE",
+      url: `/api/judging?ids=${uids}`,
+    }).then(() => toast("✅ Successfully Reset"));
   };
 
   const load = () => {
