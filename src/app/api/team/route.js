@@ -6,8 +6,7 @@ import { AUTH } from "@/data/dynamic/user/Team";
 
 export async function POST() {
   const res = NextResponse;
-  const { auth, message, user } = await authenticate(AUTH.POST); // this user is taken from the session
-  console.log(user);
+  const { auth, message, user } = await authenticate(AUTH.POST);
 
   if (auth !== 200) {
     return res.json(
