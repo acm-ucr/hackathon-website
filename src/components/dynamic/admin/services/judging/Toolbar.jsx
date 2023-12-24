@@ -11,7 +11,7 @@ import axios from "axios";
 
 const tags = ["professor", "industry", "student"];
 
-const Toolbar = ({ data, setData }) => {
+const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
   const router = useRouter();
 
   const [judges, setJudges] = useState(null);
@@ -182,6 +182,24 @@ const Toolbar = ({ data, setData }) => {
       .then(() => toast("✅ Successfully Reset"));
   };
 
+  const handleView = () => {
+    setView(!view);
+    const totalJudges = [...judges];
+
+    totalJudges.forEach((judge) => {
+      judge.rounds = Array.from(Array(data[0].rounds.length), () => []);
+
+      data.forEach((team) => {
+        team.rounds.forEach((round, index) => {
+          if (round.some((individual) => individual.name === judge.name))
+            judge.rounds[index] = [{ name: team.name, affiliation: "student" }];
+        });
+      });
+    });
+
+    setJudgesView(totalJudges);
+  };
+
   const load = () => {
     axios.get("/api/judging").then((response) => {
       setData(response.data.items.teams);
@@ -233,6 +251,7 @@ const Toolbar = ({ data, setData }) => {
             onClick={handleReset}
             disabled={!data || data.some(({ rounds }) => rounds.length === 0)}
           />
+          <Button color="green" text="view" onClick={handleView} />
         </div>
         <div className="flex">
           {tags.map((tag, index) => (

@@ -17,20 +17,23 @@ const Table = ({ data }) => {
               <div className="flex justify-between items-center">
                 <Tag color={COLORS["grayblue"]} text={group.name} />
                 <div className="flex justify-start w-full ml-2">
-                  {group.links.map((link, index) => (
-                    <Link
-                      key={index}
-                      href={link.link}
-                      target="_blank"
-                      className="m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-xl"
-                    >
-                      {ICONS[link.name]}
-                    </Link>
-                  ))}
+                  {group.links &&
+                    group.links.map((link, index) => (
+                      <Link
+                        key={index}
+                        href={link.link}
+                        target="_blank"
+                        className="m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-xl"
+                      >
+                        {ICONS[link.name]}
+                      </Link>
+                    ))}
                 </div>
-                <p className="mb-0 text-hackathon-green-300 font-semibold whitespace-nowrap">
-                  table {group.table}
-                </p>
+                {group.table && (
+                  <p className="mb-0 text-hackathon-green-300 font-semibold whitespace-nowrap">
+                    table {group.table}
+                  </p>
+                )}
               </div>
               {group.rounds.map((judges, index) => (
                 <div key={index} className="flex items-center my-2">
