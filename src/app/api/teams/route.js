@@ -29,7 +29,7 @@ export async function GET() {
       const { links, status, members } = doc.data();
 
       const formattedNames = members.map((member) => member.name);
-      const formattedEmails = members.map((member) => member.email);
+      const formattedDiscords = members.map((member) => member.discord);
       const formattedUids = members.map((member) => member.uid);
       const formattedLinks = Object.entries(links)
         .filter(([key, value]) => value !== "")
@@ -40,7 +40,7 @@ export async function GET() {
       output.push({
         links: formattedLinks,
         members: formattedNames,
-        emails: formattedEmails,
+        discords: formattedDiscords,
         uids: formattedUids,
         status,
         uid: doc.id,
