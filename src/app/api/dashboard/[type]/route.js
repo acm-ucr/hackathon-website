@@ -153,6 +153,11 @@ export async function GET(req, { params }) {
           });
         });
         break;
+      default:
+        return res.json(
+          { message: `Internal Server Error: ${err}` },
+          { status: 500 }
+        );
     }
     const sorted = output.sort((a, b) =>
       a.timestamp.seconds < b.timestamp.seconds ? 1 : -1
@@ -204,6 +209,7 @@ export async function PUT(req, { params }) {
             },
           });
         });
+        break;
       case "feedback":
         objects.forEach(async (object) => {
           await batch.update(doc(db, "feedback", object.uid), {
@@ -218,6 +224,11 @@ export async function PUT(req, { params }) {
           });
         });
         break;
+      default:
+        return res.json(
+          { message: `Internal Server Error: ${err}` },
+          { status: 500 }
+        );
     }
     await batch.commit();
     return res.json({ message: "OK" }, { status: 200 });
@@ -256,6 +267,7 @@ export async function DELETE(req, { params }) {
             [`roles.${params.type}`]: deleteField(),
           });
         });
+        break;
       case "feedback":
         objects.forEach(async (object) => {
           await batch.delete(doc(db, "feedback", object));
@@ -273,6 +285,11 @@ export async function DELETE(req, { params }) {
           });
           await batch.delete(doc(db, "teams", object));
         });
+      default:
+        return res.json(
+          { message: `Internal Server Error: ${err}` },
+          { status: 500 }
+        );
     }
     await batch.commit();
     return res.json({ message: "OK" }, { status: 200 });
