@@ -1,6 +1,12 @@
 import { BsCheckLg } from "react-icons/bs";
 
-const Checkbox = ({ toggle, onClick = () => {}, text = "", color }) => {
+const Checkbox = ({
+  toggle,
+  onClick = () => {},
+  text = "",
+  color,
+  "data-cy": dataCy,
+}) => {
   return (
     <div
       className="flex items-center hover:cursor-pointer w-fit"
@@ -9,7 +15,7 @@ const Checkbox = ({ toggle, onClick = () => {}, text = "", color }) => {
     >
       <div
         data-cy="checkbox-bg"
-        className={`w-4 h-4 rounded-sm ${
+        className={`w-4 h-4 rounded-sm mr-4 ${
           toggle
             ? `${color ? color : "bg-hackathon-blue-100"}`
             : "bg-hackathon-gray-100"

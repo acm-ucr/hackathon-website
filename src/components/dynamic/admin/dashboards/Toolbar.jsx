@@ -34,6 +34,11 @@ const Toolbar = ({
   const [toggle, setToggle] = useState(false);
 
   const onClick = (value) => {
+    if (!objects.some((obj) => obj.selected)) {
+      toast("❌ No items selected.");
+      return;
+    }
+
     const notPending = objects.some((obj) => obj.selected && obj.status !== 0);
 
     if (notPending) {
@@ -89,6 +94,20 @@ const Toolbar = ({
     );
   };
 
+  const handleShortcuts = (e) => {
+    if (e.repeat) return;
+    switch (e.key) {
+      case "r": {
+        handleReload();
+        break;
+      }
+      case "Backspace": {
+        handleDelete();
+        break;
+      }
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -121,6 +140,11 @@ const Toolbar = ({
   };
 
   const handleDelete = () => {
+    if (!objects.some((obj) => obj.selected)) {
+      toast("❌ No items selected for deletion.");
+      return;
+    }
+
     setToggle(false);
     const remove = objects.filter((object) => object.selected);
     const keep = objects.filter((object) => !object.selected);
@@ -141,14 +165,16 @@ const Toolbar = ({
 
   useEffect(() => {
     handleReload();
+
+    document.addEventListener("keydown", handleShortcuts);
+
+    return () => document.removeEventListener("keydown", handleShortcuts);
   }, []);
 
   return (
     <div className="w-full flex items-center" data-cy="toolbar">
       <div className="w-11/12 flex items-center">
-        <div className="mr-4" data-cy="select-all">
-          <Checkbox onClick={selectAll} toggle={toggle} />
-        </div>
+        <Checkbox onClick={selectAll} toggle={toggle} />
         <div className="flex flex-row gap-2">
           {tags.map((tag, index) => (
             <Tag

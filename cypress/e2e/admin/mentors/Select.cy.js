@@ -13,7 +13,7 @@ describe("Mentor Select", () => {
   });
 
   it("Select All", () => {
-    cy.get('[data-cy="select-all"]').click();
+    cy.get('[data-cy="toolbar"]').find('[data-cy="checkbox"]').click();
     mentors.forEach((mentor) => {
       cy.get(`[data-cy="${mentor.uid}"]`).should("have.class", "bg-green-100");
     });
