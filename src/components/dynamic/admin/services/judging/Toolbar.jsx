@@ -95,10 +95,11 @@ const Toolbar = ({ data, setData }) => {
           )
         )
           continue;
-        teams[i].rounds[round].push(professors[judge]);
-        if (judge < professors.length - 1) {
+        if (judge < professors.length) {
+          teams[i].rounds[round].push(professors[judge]);
           judge += 1;
-        } else {
+        }
+        if (judge === professors.length) {
           judge = 0;
           round += 1;
         }
@@ -121,10 +122,11 @@ const Toolbar = ({ data, setData }) => {
           )
         )
           continue;
-        teams[i].rounds[round].push(studentsAndIndustry[judge]);
-        if (judge < studentsAndIndustry.length - 1) {
+        if (judge < studentsAndIndustry.length) {
+          teams[i].rounds[round].push(studentsAndIndustry[judge]);
           judge += 1;
-        } else {
+        }
+        if (judge === studentsAndIndustry.length) {
           judge = 0;
           round += 1;
         }
@@ -229,7 +231,7 @@ const Toolbar = ({ data, setData }) => {
             color="red"
             text="reset"
             onClick={handleReset}
-            disabled={data === null || []}
+            disabled={data.some(({ rounds }) => rounds.length === 0)}
           />
         </div>
         <div className="flex">
