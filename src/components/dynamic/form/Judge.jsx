@@ -8,7 +8,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { STATUSES } from "@/data/dynamic/admin/Judges.js";
 
-const judge = () => {
+const Judge = () => {
   const { data: session } = useSession();
   const [judge, setJudge] = useState({
     ...ATTRIBUTES,
@@ -41,4 +41,4 @@ const judge = () => {
   );
 };
 
-export default judge;
+export default Judge;
