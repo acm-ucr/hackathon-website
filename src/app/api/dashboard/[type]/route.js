@@ -223,8 +223,8 @@ export async function PUT(req, { params }) {
       case "participants":
       case "interests":
       case "sponsors":
-        objects.forEach(async (object) => {
-          await batch.update(doc(db, "users", object.uid), {
+        objects.forEach((object) => {
+          batch.update(doc(db, "users", object.uid), {
             [`roles.${params.type}`]: status,
           });
           SG.send({
@@ -241,15 +241,15 @@ export async function PUT(req, { params }) {
         });
         break;
       case "feedback":
-        objects.forEach(async (object) => {
-          await batch.update(doc(db, "feedback", object.uid), {
+        objects.forEach((object) => {
+          batch.update(doc(db, "feedback", object.uid), {
             status: status,
           });
         });
         break;
       case "teams":
-        objects.forEach(async (object) => {
-          await batch.update(doc(db, "teams", object.uid), {
+        objects.forEach((object) => {
+          batch.update(doc(db, "teams", object.uid), {
             status: status,
           });
         });
@@ -289,29 +289,31 @@ export async function DELETE(req, { params }) {
       case "participants":
       case "interests":
       case "sponsors":
-        objects.forEach(async (object) => {
-          await batch.update(doc(db, "users", object), {
+        objects.forEach((object) => {
+          batch.update(doc(db, "users", object), {
             [`roles.${params.type}`]: deleteField(),
           });
         });
         break;
       case "feedback":
-        objects.forEach(async (object) => {
-          await batch.delete(doc(db, "feedback", object));
+        objects.forEach((object) => {
+          batch.delete(doc(db, "feedback", object));
         });
         break;
       case "teams":
-        objects.forEach(async (object) => {
-          const members = db.collection("users").where("team", "==", object);
-          members.get().then((snapshot) => {
-            snapshot.docs.forEach((doc) => {
-              batch.update(doc(db, "users", object), {
+        await Promise.all(
+          objects.map(async (object) => {
+            const members = await getDocs(
+              query(collection(db, "users"), where("team", "==", object))
+            );
+            members.docs.forEach((member) => {
+              batch.update(doc(db, "users", member.id), {
                 team: deleteField(),
               });
             });
-          });
-          await batch.delete(doc(db, "teams", object));
-        });
+            batch.delete(doc(db, "teams", object));
+          })
+        );
         break;
       default:
         throw "page doesn't exist";
