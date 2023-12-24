@@ -7,12 +7,10 @@ import Mentor from "@/components/dynamic/form/Mentor";
 import Participant from "@/components/dynamic/form/Participant";
 import Sponsor from "@/components/dynamic/form/Sponsor";
 import Volunteer from "@/components/dynamic/form/Volunteer";
-import Error from "@/components/dynamic/Error";
 import ProtectedPage from "@/components/dynamic/ProtectedPage";
+import Fault from "@/utils/error";
 
 const Page = ({ params }) => {
-  const route = params.type;
-
   const components = {
     admin: <Admin />,
     committee: <Committee />,
@@ -25,17 +23,26 @@ const Page = ({ params }) => {
     volunteer: <Volunteer />,
   };
 
-  return components[route] ? (
-    <ProtectedPage title={`Form | ${route}`} restrictions={{}}>
-      {components[route]}
-    </ProtectedPage>
-  ) : (
-    <Error
-      code="404"
-      error="Page Not Found"
-      message="The page you are looking for does not seem to exist."
-    />
-  );
+  const capitalizeFirstLetter = (word) => {
+    return word[0].toUpperCase() + word.slice(1);
+  };
+
+  if (components.hasOwnProperty(params.type)) {
+    return (
+      <ProtectedPage
+        title={`Form | ${capitalizeFirstLetter(params.type)}`}
+        restrictions={{}}
+      >
+        {components[params.type]}
+      </ProtectedPage>
+    );
+  } else {
+    throw new Fault(
+      404,
+      "Page Not Found",
+      "The page you are looking for does not seem to exist"
+    );
+  }
 };
 
 export default Page;
