@@ -1,3 +1,4 @@
+/* eslint-disable no-throw-literal */
 import { NextResponse } from "next/server";
 import { db } from "../../../../utils/firebase";
 import {
@@ -48,6 +49,7 @@ export async function POST(req, { params }) {
           timestamp: Timestamp.now(),
           [`roles.${params.type}`]: 0,
         });
+        break;
       case "feedback":
         await addDoc(collection(db, "feedback"), {
           ...element,
@@ -55,6 +57,7 @@ export async function POST(req, { params }) {
           rating: parseInt(data.rating),
           status: 0,
         });
+        break;
       case "teams":
         const team = {
           links: {
@@ -69,6 +72,9 @@ export async function POST(req, { params }) {
         await updateDoc(doc(db, "users", user.id), {
           team: docRef.id,
         });
+        break;
+      default:
+        throw "page doesn't exist";
     }
 
     SG.send({
@@ -153,11 +159,35 @@ export async function GET(req, { params }) {
           });
         });
         break;
+      case "teams":
+        snapshot = await getDocs(collection(db, "teams"));
+        snapshot.forEach((doc) => {
+          const { links, status, members, timestamp } = doc.data();
+
+          const formattedNames = members.map((member) => member.name);
+          const formattedDiscords = members.map((member) => member.discord);
+          const formattedUids = members.map((member) => member.uid);
+          const formattedLinks = Object.entries(links)
+            .filter(([key, value]) => value !== "")
+            .map(([key, value]) => {
+              return { name: key, link: value };
+            });
+
+          output.push({
+            links: formattedLinks,
+            members: formattedNames,
+            discords: formattedDiscords,
+            uids: formattedUids,
+            status,
+            uid: doc.id,
+            selected: false,
+            hidden: false,
+            timestamp: timestamp || new Date(),
+          });
+        });
+        break;
       default:
-        return res.json(
-          { message: `Internal Server Error: ${err}` },
-          { status: 500 }
-        );
+        throw "page doesn't exist";
     }
     const sorted = output.sort((a, b) =>
       a.timestamp.seconds < b.timestamp.seconds ? 1 : -1
@@ -225,10 +255,7 @@ export async function PUT(req, { params }) {
         });
         break;
       default:
-        return res.json(
-          { message: `Internal Server Error: ${err}` },
-          { status: 500 }
-        );
+        throw "page doesn't exist";
     }
     await batch.commit();
     return res.json({ message: "OK" }, { status: 200 });
@@ -285,11 +312,9 @@ export async function DELETE(req, { params }) {
           });
           await batch.delete(doc(db, "teams", object));
         });
+        break;
       default:
-        return res.json(
-          { message: `Internal Server Error: ${err}` },
-          { status: 500 }
-        );
+        throw "page doesn't exist";
     }
     await batch.commit();
     return res.json({ message: "OK" }, { status: 200 });
