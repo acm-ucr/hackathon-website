@@ -39,5 +39,4 @@ export const ATTRIBUTES = {
     "helpful",
     "status",
   ],
-  teams: ["name"],
 };

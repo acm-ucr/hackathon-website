@@ -29,10 +29,6 @@ export async function POST(req, { params }) {
     );
   }
   const data = await req.json();
-  const element = {};
-  ATTRIBUTES[params.type].forEach((attribute) => {
-    element[attribute] = data[attribute];
-  });
 
   try {
     switch (params.type) {
@@ -44,6 +40,10 @@ export async function POST(req, { params }) {
       case "participants":
       case "interests":
       case "sponsors":
+        const element = {};
+        ATTRIBUTES[params.type].forEach((attribute) => {
+          element[attribute] = data[attribute];
+        });
         await updateDoc(doc(db, "users", user.id), {
           ...element,
           timestamp: Timestamp.now(),
@@ -52,25 +52,14 @@ export async function POST(req, { params }) {
         break;
       case "feedback":
         await addDoc(collection(db, "feedback"), {
-          ...element,
+          rating: parseInt(rating),
+          additionalComments,
+          eventSource,
+          improvements,
+          notBeneficial,
+          helpful,
+          status: 0,
           timestamp: Timestamp.now(),
-          rating: parseInt(data.rating),
-          status: 0,
-        });
-        break;
-      case "teams":
-        const team = {
-          links: {
-            github: "",
-            devpost: "",
-            figma: "",
-          },
-          members: [{ discord: user.discord, name: user.name, uid: user.id }],
-          status: 0,
-        };
-        const docRef = await addDoc(collection(db, "teams"), team);
-        await updateDoc(doc(db, "users", user.id), {
-          team: docRef.id,
         });
         break;
       default:
@@ -189,6 +178,7 @@ export async function GET(req, { params }) {
       default:
         throw "page doesn't exist";
     }
+
     const sorted = output.sort((a, b) =>
       a.timestamp.seconds < b.timestamp.seconds ? 1 : -1
     );
