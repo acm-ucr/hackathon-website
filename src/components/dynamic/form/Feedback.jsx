@@ -17,7 +17,7 @@ const Feedback = () => {
 
   const onSubmit = (setLoading) => {
     axios
-      .post("/api/feedback", feedback)
+      .post("/api/dashboard/feedback", feedback)
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
       .finally(() => setLoading(false));

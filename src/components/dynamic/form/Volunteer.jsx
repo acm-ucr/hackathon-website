@@ -21,7 +21,7 @@ const Volunteer = () => {
 
   const handleSubmit = (setLoading) => {
     axios
-      .post("/api/volunteers", volunteer)
+      .post("/api/dashboard/volunteers", volunteer)
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
       .finally(() => {

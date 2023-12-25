@@ -51,12 +51,13 @@ describe("Toolbar", () => {
         />
       );
     };
-    cy.intercept("GET", `/api/admins`, {
+    cy.intercept("GET", `/api/dashboard/admins`, {
       fixture: `admins.json`,
-    }).as("GET");
-    cy.intercept("PUT", `/api/admins`, { message: "OK", status: 200 }).as(
-      "GET"
-    );
+    });
+    cy.intercept("PUT", `/api/dashboard/admins`, {
+      message: "OK",
+      status: 200,
+    });
     cy.mount(
       <MockNextRouter>
         <Parent />
@@ -93,12 +94,13 @@ describe("Toolbar", () => {
         />
       );
     };
-    cy.intercept("GET", `/api/admins`, {
+    cy.intercept("GET", `/api/dashboard/admins`, {
       fixture: `admins.json`,
-    }).as("GET");
-    cy.intercept("PUT", `/api/admins`, { message: "OK", status: 200 }).as(
-      "GET"
-    );
+    });
+    cy.intercept("DELETE", `/api/dashboard/admins?remove=*`, {
+      message: "OK",
+      status: 200,
+    });
     cy.mount(
       <MockNextRouter>
         <Parent />
@@ -143,12 +145,13 @@ describe("Toolbar", () => {
         />
       );
     };
-    cy.intercept("GET", `/api/admins`, {
+    cy.intercept("GET", `/api/dashboard/admins`, {
       fixture: `admins.json`,
-    }).as("GET");
-    cy.intercept("PUT", `/api/admins`, { message: "OK", status: 200 }).as(
-      "GET"
-    );
+    });
+    cy.intercept("PUT", `/api/dashboard/admins`, {
+      message: "OK",
+      status: 200,
+    });
     cy.mount(
       <MockNextRouter>
         <Parent />
@@ -188,12 +191,13 @@ describe("Toolbar", () => {
         />
       );
     };
-    cy.intercept("GET", `/api/admins`, {
+    cy.intercept("GET", `/api/dashboard/admins`, {
       fixture: `admins.json`,
-    }).as("GET");
-    cy.intercept("PUT", `/api/admins`, { message: "OK", status: 200 }).as(
-      "GET"
-    );
+    });
+    cy.intercept("PUT", `/api/dashboard/admins`, {
+      message: "OK",
+      status: 200,
+    });
     cy.mount(
       <MockNextRouter>
         <Parent />
@@ -236,12 +240,13 @@ describe("Toolbar", () => {
         />
       );
     };
-    cy.intercept("GET", `/api/admins`, {
+    cy.intercept("GET", `/api/dashboard/admins`, {
       fixture: `admins.json`,
-    }).as("GET");
-    cy.intercept("PUT", `/api/admins`, { message: "OK", status: 200 }).as(
-      "GET"
-    );
+    });
+    cy.intercept("PUT", `/api/dashboard/admins`, {
+      message: "OK",
+      status: 200,
+    });
     cy.mount(
       <MockNextRouter>
         <Parent />
@@ -286,12 +291,13 @@ describe("Toolbar", () => {
         />
       );
     };
-    cy.intercept("GET", `/api/admins`, {
+    cy.intercept("GET", `/api/dashboard/admins`, {
       fixture: `admins.json`,
-    }).as("GET");
-    cy.intercept("PUT", `/api/admins`, { message: "OK", status: 200 }).as(
-      "GET"
-    );
+    });
+    cy.intercept("PUT", `/api/dashboard/admins`, {
+      message: "OK",
+      status: 200,
+    });
     cy.mount(
       <MockNextRouter>
         <Parent />

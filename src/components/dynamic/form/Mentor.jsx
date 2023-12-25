@@ -21,7 +21,7 @@ const Mentor = () => {
 
   const handleSubmit = (setLoading, setState) => {
     axios
-      .post("/api/mentors", mentor)
+      .post("/api/dashboard/mentors", mentor)
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
       .finally(() => {
