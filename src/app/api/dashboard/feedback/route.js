@@ -9,7 +9,7 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
-import { AUTH } from "@/data/dynamic/admin/Feedback";
+import { AUTH } from "@/data/dynamic/admin/Dashboard";
 
 export async function POST(req) {
   const res = NextResponse;

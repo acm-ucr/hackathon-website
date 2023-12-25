@@ -11,9 +11,8 @@ import {
   Timestamp,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
-import { AUTH } from "@/data/dynamic/admin/Admins";
+import { AUTH, ATTRIBUTES } from "@/data/dynamic/admin/Dashboard";
 import SG from "@/utils/sendgrid";
-import { ATTRIBUTES } from "@/data/dynamic/admin/Attributes";
 const types = new Set([
   "admins",
   "committees",

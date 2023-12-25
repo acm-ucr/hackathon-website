@@ -11,7 +11,7 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
-import { AUTH } from "@/data/dynamic/admin/Admins";
+import { AUTH } from "@/data/dynamic/admin/Dashboard";
 
 export async function GET(req, { params }) {
   const res = NextResponse;
