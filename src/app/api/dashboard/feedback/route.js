@@ -109,13 +109,11 @@ export async function PUT(req) {
   const { objects, status } = await req.json();
 
   try {
-    await Promise.all(
-      objects.map((object) => {
-        return updateDoc(doc(db, "feedback", object.uid), {
-          status: status,
-        });
-      })
-    );
+    objects.map(async (object) => {
+      await updateDoc(doc(db, "feedback", object.uid), {
+        status: status,
+      });
+    });
 
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
@@ -138,11 +136,9 @@ export async function DELETE(req) {
     );
   }
   try {
-    await Promise.all(
-      objects.map((object) => {
-        return deleteDoc(doc(db, "feedback", object));
-      })
-    );
+    objects.map(async (object) => {
+      await deleteDoc(doc(db, "feedback", object));
+    });
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(

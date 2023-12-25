@@ -14,7 +14,7 @@ import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/admin/Admins";
 import SG from "@/utils/sendgrid";
 import { ATTRIBUTES } from "@/data/dynamic/admin/Attributes";
-const types = [
+const types = new Set([
   "admins",
   "committees",
   "judges",
@@ -23,7 +23,7 @@ const types = [
   "participants",
   "interests",
   "sponsors",
-];
+]);
 export async function POST(req, { params }) {
   const res = NextResponse;
   const { auth, message, user } = await authenticate(AUTH.POST);
@@ -37,7 +37,7 @@ export async function POST(req, { params }) {
   const data = await req.json();
 
   try {
-    if (types.includes(params.type)) {
+    if (types.has(params.type)) {
       const element = {};
       ATTRIBUTES[params.type].forEach((attribute) => {
         element[attribute] = data[attribute];
@@ -82,7 +82,7 @@ export async function GET(req, { params }) {
   const output = [];
   try {
     let snapshot;
-    if (types.includes(params.type)) {
+    if (types.has(params.type)) {
       snapshot = await getDocs(
         query(
           collection(db, "users"),
@@ -130,29 +130,23 @@ export async function PUT(req, { params }) {
     );
   }
   try {
-    if (types.includes(params.type)) {
-      const commits = [];
-      objects.map((object) => {
-        commits.push(
-          updateDoc(doc(db, "users", object.uid), {
-            [`roles.${params.type}`]: status,
-          })
-        );
-        commits.push(
-          SG.send({
-            to: object.email,
-            template_id:
-              status === 1
-                ? process.env.SENDGRID_ACCEPTANCE_TEMPLATE
-                : process.env.SENDGRID_REJECTION_TEMPLATE,
-            dynamic_template_data: {
-              name: object.name,
-              position: params.type.slice(0, -1).toUpperCase(),
-            },
-          })
-        );
+    if (types.has(params.type)) {
+      objects.map(async (object) => {
+        await updateDoc(doc(db, "users", object.uid), {
+          [`roles.${params.type}`]: status,
+        });
+        SG.send({
+          to: object.email,
+          template_id:
+            status === 1
+              ? process.env.SENDGRID_ACCEPTANCE_TEMPLATE
+              : process.env.SENDGRID_REJECTION_TEMPLATE,
+          dynamic_template_data: {
+            name: object.name,
+            position: params.type.slice(0, -1).toUpperCase(),
+          },
+        });
       });
-      await Promise.all(commits);
     }
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
@@ -175,14 +169,12 @@ export async function DELETE(req, { params }) {
     );
   }
   try {
-    if (types.includes(params.type)) {
-      await Promise.all(
-        objects.map((object) => {
-          return updateDoc(doc(db, "users", object), {
-            [`roles.${params.type}`]: deleteField(),
-          });
-        })
-      );
+    if (types.has(params.type)) {
+      objects.map(async (object) => {
+        await updateDoc(doc(db, "users", object), {
+          [`roles.${params.type}`]: deleteField(),
+        });
+      });
     }
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {

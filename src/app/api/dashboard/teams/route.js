@@ -77,13 +77,11 @@ export async function PUT(req, { params }) {
     );
   }
   try {
-    await Promise.all(
-      objects.map((object) => {
-        return updateDoc(doc(db, "teams", object.uid), {
-          status: status,
-        });
-      })
-    );
+    objects.map(async (object) => {
+      await updateDoc(doc(db, "teams", object.uid), {
+        status: status,
+      });
+    });
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
@@ -104,22 +102,18 @@ export async function DELETE(req, { params }) {
       { status: auth }
     );
   }
-  const commits = [];
   try {
     objects.map(async (object) => {
       const members = await getDocs(
         query(collection(db, "users"), where("team", "==", object))
       );
-      members.docs.forEach((member) => {
-        commits.push(
-          updateDoc(doc(db, "users", member.id), {
-            team: deleteField(),
-          })
-        );
+      members.docs.forEach(async (member) => {
+        await updateDoc(doc(db, "users", member.id), {
+          team: deleteField(),
+        });
       });
-      commits.push(deleteDoc(doc(db, "teams", object)));
+      await deleteDoc(doc(db, "teams", object));
     });
-    await Promise.all(commits);
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
