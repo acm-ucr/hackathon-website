@@ -1,6 +1,5 @@
-/* eslint-disable no-throw-literal */
 import { NextResponse } from "next/server";
-import { db } from "../../../../utils/firebase";
+import { db } from "@/utils/firebase";
 import {
   doc,
   updateDoc,
@@ -10,14 +9,21 @@ import {
   where,
   deleteField,
   Timestamp,
-  writeBatch,
-  addDoc,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/admin/Admins";
 import SG from "@/utils/sendgrid";
 import { ATTRIBUTES } from "@/data/dynamic/admin/Attributes";
-
+const types = [
+  "admins",
+  "committees",
+  "judges",
+  "mentors",
+  "volunteers",
+  "participants",
+  "interests",
+  "sponsors",
+];
 export async function POST(req, { params }) {
   const res = NextResponse;
   const { auth, message, user } = await authenticate(AUTH.POST);
@@ -31,49 +37,25 @@ export async function POST(req, { params }) {
   const data = await req.json();
 
   try {
-    switch (params.type) {
-      case "admins":
-      case "committees":
-      case "judges":
-      case "mentors":
-      case "volunteers":
-      case "participants":
-      case "interests":
-      case "sponsors":
-        const element = {};
-        ATTRIBUTES[params.type].forEach((attribute) => {
-          element[attribute] = data[attribute];
-        });
-        await updateDoc(doc(db, "users", user.id), {
-          ...element,
-          timestamp: Timestamp.now(),
-          [`roles.${params.type}`]: 0,
-        });
-        break;
-      case "feedback":
-        await addDoc(collection(db, "feedback"), {
-          rating: parseInt(rating),
-          additionalComments,
-          eventSource,
-          improvements,
-          notBeneficial,
-          helpful,
-          status: 0,
-          timestamp: Timestamp.now(),
-        });
-        break;
-      default:
-        throw "page doesn't exist";
+    if (types.includes(params.type)) {
+      const element = {};
+      ATTRIBUTES[params.type].forEach((attribute) => {
+        element[attribute] = data[attribute];
+      });
+      await updateDoc(doc(db, "users", user.id), {
+        ...element,
+        timestamp: Timestamp.now(),
+        [`roles.${params.type}`]: 0,
+      });
+      SG.send({
+        to: user.email,
+        template_id: process.env.SENDGRID_CONFIRMATION_TEMPLATE,
+        dynamic_template_data: {
+          name: user.name,
+          position: params.type.slice(0, -1).toUpperCase(),
+        },
+      });
     }
-
-    SG.send({
-      to: user.email,
-      template_id: process.env.SENDGRID_CONFIRMATION_TEMPLATE,
-      dynamic_template_data: {
-        name: user.name,
-        position: params.type.slice(0, -1).toUpperCase(),
-      },
-    });
 
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
@@ -100,83 +82,28 @@ export async function GET(req, { params }) {
   const output = [];
   try {
     let snapshot;
-    switch (params.type) {
-      case "admins":
-      case "committees":
-      case "judges":
-      case "mentors":
-      case "volunteers":
-      case "participants":
-      case "interests":
-      case "sponsors":
-        snapshot = await getDocs(
-          query(
-            collection(db, "users"),
-            where(`roles.${params.type}`, "in", [-1, 0, 1])
-          )
-        );
-        snapshot.forEach((doc) => {
-          const data = doc.data();
-          const element = {};
-          ATTRIBUTES[params.type].forEach((attribute) => {
-            element[attribute] = data[attribute];
-          });
-          output.push({
-            ...element,
-            uid: doc.id,
-            timestamp: data.timestamp,
-            status: data.roles[params.type],
-            selected: false,
-            hidden: false,
-          });
+    if (types.includes(params.type)) {
+      snapshot = await getDocs(
+        query(
+          collection(db, "users"),
+          where(`roles.${params.type}`, "in", [-1, 0, 1])
+        )
+      );
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        const element = {};
+        ATTRIBUTES[params.type].forEach((attribute) => {
+          element[attribute] = data[attribute];
         });
-        break;
-      case "feedback":
-        snapshot = await getDocs(collection(db, "feedback"));
-        snapshot.forEach((doc) => {
-          const data = doc.data();
-          const element = {};
-          ATTRIBUTES[params.type].forEach((attribute) => {
-            element[attribute] = data[attribute];
-          });
-          output.push({
-            ...element,
-            uid: doc.id,
-            timestamp: data.timestamp,
-            selected: false,
-            hidden: false,
-          });
+        output.push({
+          ...element,
+          uid: doc.id,
+          timestamp: data.timestamp,
+          status: data.roles[params.type],
+          selected: false,
+          hidden: false,
         });
-        break;
-      case "teams":
-        snapshot = await getDocs(collection(db, "teams"));
-        snapshot.forEach((doc) => {
-          const { links, status, members, timestamp } = doc.data();
-
-          const formattedNames = members.map((member) => member.name);
-          const formattedDiscords = members.map((member) => member.discord);
-          const formattedUids = members.map((member) => member.uid);
-          const formattedLinks = Object.entries(links)
-            .filter(([key, value]) => value !== "")
-            .map(([key, value]) => {
-              return { name: key, link: value };
-            });
-
-          output.push({
-            links: formattedLinks,
-            members: formattedNames,
-            discords: formattedDiscords,
-            uids: formattedUids,
-            status,
-            uid: doc.id,
-            selected: false,
-            hidden: false,
-            timestamp: timestamp || new Date(),
-          });
-        });
-        break;
-      default:
-        throw "page doesn't exist";
+      });
     }
 
     const sorted = output.sort((a, b) =>
@@ -203,20 +130,15 @@ export async function PUT(req, { params }) {
     );
   }
   try {
-    const batch = writeBatch(db);
-    switch (params.type) {
-      case "admins":
-      case "committees":
-      case "judges":
-      case "mentors":
-      case "volunteers":
-      case "participants":
-      case "interests":
-      case "sponsors":
-        objects.forEach((object) => {
-          batch.update(doc(db, "users", object.uid), {
+    if (types.includes(params.type)) {
+      const commits = [];
+      objects.map((object) => {
+        commits.push(
+          updateDoc(doc(db, "users", object.uid), {
             [`roles.${params.type}`]: status,
-          });
+          })
+        );
+        commits.push(
           SG.send({
             to: object.email,
             template_id:
@@ -227,27 +149,11 @@ export async function PUT(req, { params }) {
               name: object.name,
               position: params.type.slice(0, -1).toUpperCase(),
             },
-          });
-        });
-        break;
-      case "feedback":
-        objects.forEach((object) => {
-          batch.update(doc(db, "feedback", object.uid), {
-            status: status,
-          });
-        });
-        break;
-      case "teams":
-        objects.forEach((object) => {
-          batch.update(doc(db, "teams", object.uid), {
-            status: status,
-          });
-        });
-        break;
-      default:
-        throw "page doesn't exist";
+          })
+        );
+      });
+      await Promise.all(commits);
     }
-    await batch.commit();
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
@@ -269,46 +175,15 @@ export async function DELETE(req, { params }) {
     );
   }
   try {
-    const batch = writeBatch(db);
-    switch (params.type) {
-      case "admins":
-      case "committees":
-      case "judges":
-      case "mentors":
-      case "volunteers":
-      case "participants":
-      case "interests":
-      case "sponsors":
-        objects.forEach((object) => {
-          batch.update(doc(db, "users", object), {
+    if (types.includes(params.type)) {
+      await Promise.all(
+        objects.map((object) => {
+          return updateDoc(doc(db, "users", object), {
             [`roles.${params.type}`]: deleteField(),
           });
-        });
-        break;
-      case "feedback":
-        objects.forEach((object) => {
-          batch.delete(doc(db, "feedback", object));
-        });
-        break;
-      case "teams":
-        await Promise.all(
-          objects.map(async (object) => {
-            const members = await getDocs(
-              query(collection(db, "users"), where("team", "==", object))
-            );
-            members.docs.forEach((member) => {
-              batch.update(doc(db, "users", member.id), {
-                team: deleteField(),
-              });
-            });
-            batch.delete(doc(db, "teams", object));
-          })
-        );
-        break;
-      default:
-        throw "page doesn't exist";
+        })
+      );
     }
-    await batch.commit();
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
