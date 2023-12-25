@@ -68,7 +68,7 @@ export async function POST(req, { params }) {
 
 export async function GET(req, { params }) {
   const res = NextResponse;
-  const { auth, message } = await authenticate(AUTh.GET);
+  const { auth, message } = await authenticate(AUTH.GET);
 
   if (auth !== 200) {
     return res.json(
