@@ -15,9 +15,7 @@ import { AUTH } from "@/data/dynamic/admin/Admins";
 
 export async function GET(req, { params }) {
   const res = NextResponse;
-  const { auth, message } = await authenticate({
-    admins: [1],
-  });
+  const { auth, message } = await authenticate(AUTH.GET);
 
   if (auth !== 200) {
     return res.json(

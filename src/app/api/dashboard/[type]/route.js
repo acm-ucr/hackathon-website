@@ -68,9 +68,7 @@ export async function POST(req, { params }) {
 
 export async function GET(req, { params }) {
   const res = NextResponse;
-  const { auth, message } = await authenticate({
-    admins: [1],
-  });
+  const { auth, message } = await authenticate(AUTh.GET);
 
   if (auth !== 200) {
     return res.json(
