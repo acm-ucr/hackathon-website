@@ -19,7 +19,7 @@ const Volunteer = () => {
     form: "volunteers",
   });
 
-  const handleSubmit = (setLoading) => {
+  const handleSubmit = (setLoading, setState) => {
     axios
       .post("/api/dashboard/volunteers", volunteer)
       .then(() => toast(`✅ Submitted successfully!`))
