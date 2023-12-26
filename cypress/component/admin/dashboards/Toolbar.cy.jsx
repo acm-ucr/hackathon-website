@@ -2,8 +2,8 @@ import { useState } from "react";
 import Toolbar from "@/components/dynamic/admin/dashboards/Toolbar";
 import response from "../../../fixtures/admins.json";
 import committeeResponse from "../../../fixtures/committees.json";
-import { TAGS } from "src/data/dynamic/admin/Admins.js";
-import { FILTERS } from "src/data/dynamic/admin/Admins.js";
+import { TAGS } from "@/data/dynamic/admin/Admins.js";
+import { FILTERS } from "@/data/dynamic/admin/Admins.js";
 import { AppRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 const adminData = response.items;
