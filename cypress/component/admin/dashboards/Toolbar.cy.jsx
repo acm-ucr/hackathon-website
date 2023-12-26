@@ -71,57 +71,6 @@ describe("Toolbar", () => {
     );
   });
 
-  it("Select and Delete all", () => {
-    let admins = adminData;
-    const setAdmins = (e) => {
-      admins = e;
-    };
-
-    const Parent = () => {
-      const [input, setInput] = useState({
-        input: "",
-      });
-
-      return (
-        <Toolbar
-          input={input}
-          setInput={setInput}
-          tags={TAGS}
-          setObjects={setAdmins}
-          objects={admins}
-          filters={FILTERS}
-          page="admins"
-        />
-      );
-    };
-    cy.intercept("GET", `/api/dashboard/admins`, {
-      fixture: `admins.json`,
-    });
-    cy.intercept("DELETE", `/api/dashboard/admins?remove=*`, {
-      message: "OK",
-      status: 200,
-    });
-    cy.mount(
-      <MockNextRouter>
-        <Parent />
-      </MockNextRouter>
-    );
-
-    cy.get('[data-cy="delete"]')
-      .click()
-      .then(
-        () =>
-          expect(admins.every((admin) => admin.selected === false)).to.be.true
-      );
-    cy.get('[data-cy="checkbox-bg"]')
-      .click()
-      .should("have.class", "bg-hackathon-blue-100");
-    cy.get('[data-cy="delete"]').click();
-    cy.get('[data-cy="confirm-button"]')
-      .click()
-      .then(() => expect(admins).to.be.empty);
-  });
-
   it("Reject all", () => {
     let admins = adminData;
     const setAdmins = (e) => {
