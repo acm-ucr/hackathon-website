@@ -7,7 +7,7 @@ import { FaUndoAlt } from "react-icons/fa";
 import { COLORS } from "@/data/dynamic/Tags";
 import Popup from "../Popup";
 import Input from "../Input";
-import axios from "axios";
+import { api } from "@/utils/api";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
@@ -78,10 +78,17 @@ const Toolbar = ({
 
     setToggle(false);
     const items = objects.filter((object) => object.selected);
-    axios.put(`/api/dashboard/${page}`, {
-      objects: items,
-      status: value,
+
+    api({
+      method: "PUT",
+      url: `/api/dashboard/${page}`,
+      body: {
+        objects: items,
+        status: value,
+        attribute: "status",
+      },
     });
+
     setObjects(
       objects.map((a) => {
         if (a.selected) {
@@ -148,21 +155,22 @@ const Toolbar = ({
     const remove = objects.filter((object) => object.selected);
     const keep = objects.filter((object) => !object.selected);
     setObjects(keep);
-    console.log(
-      `/api/dashboard/${page}?remove=${remove.map((a) => a.uid).toString()}`
-    );
-    axios
-      .delete(
-        `/api/dashboard/${page}?remove=${remove.map((a) => a.uid).toString()}`
-      )
-      .then(() => {
-        toast("✅ Successfully Deleted");
-      });
+    api({
+      method: "DELETE",
+      url: `/api/dashboard/${page}?remove=${remove
+        .map((a) => a.uid)
+        .toString()}`,
+    }).then(() => {
+      toast("✅ Successfully Deleted");
+    });
   };
 
-  const handleReload = () => {
-    axios.get(`/api/dashboard/${page}`).then((response) => {
-      setObjects(response.data.items);
+  const handleReload = async () => {
+    api({
+      method: "GET",
+      url: `/api/dashboard/${page}`,
+    }).then(({ items }) => {
+      setObjects(items);
       toast("✅ Fetched Data Successfully");
     });
   };

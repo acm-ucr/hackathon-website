@@ -7,7 +7,7 @@ import { COLORS } from "@/data/dynamic/Tags";
 import Popup from "../../Popup";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+import { api } from "@/utils/api";
 
 const tags = ["professor", "industry", "student"];
 
@@ -156,7 +156,13 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
     }
 
     setData(teams);
-    axios.put("/api/judging", { teams }).then(() => toast("✅ Rounds Saved!"));
+
+    api({
+      method: "PUT",
+      url: "/api/judging",
+      body: { teams },
+    }).then(() => toast("✅ Rounds Saved!"));
+
     setInput({
       ...input,
       rotations: "",
@@ -177,9 +183,10 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
 
     const uids = data.map((team) => team.uid).join(",");
 
-    axios
-      .delete(`/api/judging?ids=${uids}`)
-      .then(() => toast("✅ Successfully Reset"));
+    api({
+      method: "DELETE",
+      url: `/api/judging?ids=${uids}`,
+    }).then(() => toast("✅ Successfully Reset"));
   };
 
   const handleView = () => {
@@ -201,11 +208,14 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
   };
 
   const load = () => {
-    axios.get("/api/judging").then((response) => {
-      setData(response.data.items.teams);
-      setJudges(response.data.items.judges);
+    api({
+      method: "GET",
+      url: "/api/judging",
+    }).then(({ items }) => {
+      setData(items.teams);
+      setJudges(items.judges);
 
-      if (response.data.items.judges.length === 0) {
+      if (items.judges.length === 0) {
         setPopup({
           title: "Insufficient Judges",
           text: "There are not enough judges to go around to each team. Please consider adding more judges via the judge dashboard. ",

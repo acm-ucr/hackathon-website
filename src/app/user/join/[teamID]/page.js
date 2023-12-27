@@ -1,11 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Button from "@/components/dynamic/Button";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import Fault from "@/utils/error";
+import axios from "axios";
 
 export default function page({ params }) {
   const [team, setTeam] = useState(null);

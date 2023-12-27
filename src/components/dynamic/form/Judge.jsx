@@ -4,7 +4,7 @@ import { useState } from "react";
 import Form from "@/components/dynamic/form/Form.jsx";
 import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/form/Judge.js";
 import { useSession } from "next-auth/react";
-import axios from "axios";
+import { api } from "@/utils/api";
 import toast from "react-hot-toast";
 import { STATUSES } from "@/data/dynamic/admin/Judges.js";
 
@@ -19,8 +19,11 @@ const Judge = () => {
   });
 
   const handleSubmit = (setLoading, setState) => {
-    axios
-      .post("/api/dashboard/judges", judge)
+    api({
+      method: "POST",
+      url: "/api/dashboard/judges",
+      body: judge,
+    })
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
       .finally(() => {
