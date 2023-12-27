@@ -5,18 +5,15 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import Fault from "@/utils/error";
-import { api } from "@/utils/api";
+import axios from "axios";
 
 export default function page({ params }) {
   const [team, setTeam] = useState(null);
   const router = useRouter();
   const { update: sessionUpdate } = useSession();
   const handleJoin = () => {
-    api({
-      method: "PUT",
-      url: "/api/members",
-      body: { team: params.teamID },
-    })
+    axios
+      .put("/api/members", { team: params.teamID })
       .then(() => {
         toast("✅ Successfully joined team!");
         sessionUpdate({
@@ -34,11 +31,9 @@ export default function page({ params }) {
   };
   useEffect(() => {
     if (params.teamID) {
-      api({
-        method: "GET",
-        url: `/api/team?teamid=${params.teamID}`,
-      })
-        .then(({ items }) => setTeam(items))
+      axios
+        .get(`/api/team?teamid=${params.teamID}`)
+        .then((response) => setTeam(response.data.items))
         .catch(({ response: data }) => {
           if (data.data.message === "Invalid Team ID")
             throw new Fault(

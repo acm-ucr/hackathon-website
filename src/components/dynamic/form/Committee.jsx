@@ -21,7 +21,7 @@ const Committee = () => {
   const handleSubmit = (setLoading, setState) => {
     api({
       method: "POST",
-      url: "/api/committees",
+      url: "/api/dashboard/committees",
       body: committee,
     })
       .then(() => toast(`✅ Submitted successfully!`))

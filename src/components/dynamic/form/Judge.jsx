@@ -21,7 +21,7 @@ const Judge = () => {
   const handleSubmit = (setLoading, setState) => {
     api({
       method: "POST",
-      url: "/api/judges",
+      url: "/api/dashboard/judges",
       body: judge,
     })
       .then(() => toast(`✅ Submitted successfully!`))

@@ -81,7 +81,7 @@ const Toolbar = ({
 
     api({
       method: "PUT",
-      url: `/api/${page}`,
+      url: `/api/dashboard/${page}`,
       body: {
         objects: items,
         status: value,
@@ -156,9 +156,10 @@ const Toolbar = ({
     const keep = objects.filter((object) => !object.selected);
     setObjects(keep);
     api({
-      method: "PUT",
-      url: `/api/${page}`,
-      body: { objects: remove, attribute: "role" },
+      method: "DELETE",
+      url: `/api/dashboard/${page}?remove=${remove
+        .map((a) => a.uid)
+        .toString()}`,
     }).then(() => {
       toast("✅ Successfully Deleted");
     });
@@ -167,7 +168,7 @@ const Toolbar = ({
   const handleReload = async () => {
     api({
       method: "GET",
-      url: `/api/${page}`,
+      url: `/api/dashboard/${page}`,
     }).then(({ items }) => {
       setObjects(items);
       toast("✅ Fetched Data Successfully");

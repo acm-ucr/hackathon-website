@@ -18,7 +18,7 @@ const Feedback = () => {
   const onSubmit = (setLoading) => {
     api({
       method: "POST",
-      url: "/api/feedback",
+      url: "/api/dashboard/feedback",
       body: feedback,
     })
       .then(() => toast(`✅ Submitted successfully!`))

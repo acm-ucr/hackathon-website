@@ -21,7 +21,7 @@ const Participant = () => {
   const handleSubmit = (setLoading, setState) => {
     api({
       method: "POST",
-      url: "/api/participants",
+      url: "/api/dashboard/participants",
       body: participant,
     })
       .then(() => toast(`✅ Submitted successfully!`))

@@ -22,7 +22,7 @@ const Volunteer = () => {
   const handleSubmit = (setLoading) => {
     api({
       method: "POST",
-      url: "/api/volunteers",
+      url: "/api/dashboard/volunteers",
       body: volunteer,
     })
       .then(() => toast(`✅ Submitted successfully!`))

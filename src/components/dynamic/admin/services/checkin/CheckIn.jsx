@@ -5,7 +5,7 @@ import Scanner from "./Scanner";
 import Dropdown from "../Dropdown";
 import Button from "../../Button";
 import toast from "react-hot-toast";
-import { api } from "@/utils/api";
+import axios from "axios";
 
 const CheckIn = () => {
   const [event, setEvent] = useState({ name: "No events" });
@@ -13,16 +13,17 @@ const CheckIn = () => {
   const [code, setCode] = useState(null);
 
   useEffect(() => {
-    api({
-      method: "GET",
-      url: `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime`,
-    }).then(({ items }) => {
-      setEvents(
-        items.map((event) => {
-          return { id: event.id, name: event.summary, hidden: false };
-        })
-      );
-    });
+    axios
+      .get(
+        `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime`
+      )
+      .then((response) => {
+        setEvents(
+          response.data.items.map((event) => {
+            return { id: event.id, name: event.summary, hidden: false };
+          })
+        );
+      });
   }, []);
 
   const setResult = async (result) => {
@@ -56,11 +57,9 @@ const CheckIn = () => {
         return;
       }
 
-      api({
-        method: "PUT",
-        url: "/api/checkin",
-        body: { uid: user, event: event.id, name: event.name },
-      }).then(() => toast(`✅ Checked in for ${event.name}`));
+      axios
+        .put("/api/checkin", { uid: user, event: event.id, name: event.name })
+        .then(() => toast(`✅ Checked in for ${event.name}`));
     } else {
       toast("❌ Expired QR code!");
       return;

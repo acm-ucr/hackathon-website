@@ -21,7 +21,7 @@ const Sponsor = () => {
   const handleSubmit = (setLoading, setState) => {
     api({
       method: "POST",
-      url: "/api/sponsors",
+      url: "/api/dashboard/sponsors",
       body: sponsor,
     })
       .then(() => toast(`✅ Submitted successfully!`))

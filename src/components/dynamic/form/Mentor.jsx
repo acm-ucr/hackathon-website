@@ -22,7 +22,7 @@ const Mentor = () => {
   const handleSubmit = (setLoading, setState) => {
     api({
       method: "POST",
-      url: "/api/mentors",
+      url: "/api/dashboard/mentors",
       body: mentor,
     })
       .then(() => toast(`✅ Submitted successfully!`))

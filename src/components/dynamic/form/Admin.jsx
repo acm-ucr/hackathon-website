@@ -21,7 +21,7 @@ const Admin = () => {
   const handleSubmit = (setLoading, setState) => {
     api({
       method: "POST",
-      url: "/api/admins",
+      url: "/api/dashboard/admins",
       body: admin,
     })
       .then(() => toast(`✅ Submitted successfully!`))

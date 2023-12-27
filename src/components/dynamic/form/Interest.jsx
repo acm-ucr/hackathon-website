@@ -21,7 +21,7 @@ const Interest = () => {
   const onSubmit = (setLoading, setState) => {
     api({
       method: "POST",
-      url: "/api/interests",
+      url: "/api/dashboard/interests",
       body: interest,
     })
       .then(() => toast(`✅ Submitted successfully!`))

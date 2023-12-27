@@ -7,8 +7,7 @@ import Toolbar from "./Toolbar";
 import Event from "./Event";
 import Modal from "./Modal";
 import { LABELS } from "@/data/dynamic/admin/Calendar";
-import { api } from "@/utils/api";
-
+import axios from "axios";
 const mLocalizer = momentLocalizer(moment);
 
 const CalendarEvents = () => {
@@ -29,43 +28,38 @@ const CalendarEvents = () => {
   };
 
   useEffect(() => {
-    const hackathon = api({
-      method: "GET",
-      url: `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime`,
-    });
-
-    const leads = api({
-      method: "GET",
-      url: `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_LEADS}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime`,
-    });
+    const hackathon = axios.get(
+      `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime`
+    );
+    const leads = axios.get(
+      `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_LEADS}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime`
+    );
 
     console.log(hackathon);
     console.log(leads);
 
-    Promise.all([hackathon, leads]).then(
-      ([{ hackathonData }, { leadsData }]) => {
-        const hackathon = hackathonData;
-        const leads = leadsData;
+    Promise.all([hackathon, leads]).then(([hackathonData, leadsData]) => {
+      const hackathon = hackathonData;
+      const leads = leadsData;
 
-        const rawEvents = [...hackathon, ...leads];
+      const rawEvents = [...hackathon, ...leads];
 
-        rawEvents.forEach((item) => {
-          item.start = new Date(item.start.dateTime);
-          item.end = new Date(item.end.dateTime);
-          const [category, assignee] = item.description
-            .split("\n")[0]
-            .split("#")
-            .map((item) => item.trim())
-            .filter((item) => item !== "");
-          item.category = category;
-          item.color = LABELS[item.category].background;
-          item.assignee = assignee;
-          item.hidden = false;
-        });
+      rawEvents.forEach((item) => {
+        item.start = new Date(item.start.dateTime);
+        item.end = new Date(item.end.dateTime);
+        const [category, assignee] = item.description
+          .split("\n")[0]
+          .split("#")
+          .map((item) => item.trim())
+          .filter((item) => item !== "");
+        item.category = category;
+        item.color = LABELS[item.category].background;
+        item.assignee = assignee;
+        item.hidden = false;
+      });
 
-        setEvents(rawEvents);
-      }
-    );
+      setEvents(rawEvents);
+    });
 
     document.addEventListener("keydown", handleShortcuts);
     return () => document.removeEventListener("keydown", handleShortcuts);
