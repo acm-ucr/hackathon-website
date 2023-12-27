@@ -5,10 +5,9 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import Toolbar from "./Toolbar";
 import Event from "./Event";
-import axios from "axios";
 import Modal from "./Modal";
 import { LABELS } from "@/data/dynamic/admin/Calendar";
-
+import axios from "axios";
 const mLocalizer = momentLocalizer(moment);
 
 const CalendarEvents = () => {
@@ -32,14 +31,16 @@ const CalendarEvents = () => {
     const hackathon = axios.get(
       `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime`
     );
-
     const leads = axios.get(
       `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_LEADS}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime`
     );
 
+    console.log(hackathon);
+    console.log(leads);
+
     Promise.all([hackathon, leads]).then(([hackathonData, leadsData]) => {
-      const hackathon = hackathonData.data.items;
-      const leads = leadsData.data.items;
+      const hackathon = hackathonData;
+      const leads = leadsData;
 
       const rawEvents = [...hackathon, ...leads];
 

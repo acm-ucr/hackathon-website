@@ -1,10 +1,11 @@
 import Button from "../Button";
 import Input from "../Input";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import toast from "react-hot-toast";
 import Loading from "../Loading";
 import { BiLink, BiSolidCopy } from "react-icons/bi";
+import axios from "axios";
+import { api } from "@/utils/api";
 
 const Team = ({ user, setUser }) => {
   const [team, setTeam] = useState(null);
@@ -52,9 +53,11 @@ const Team = ({ user, setUser }) => {
         setUser({ ...user, team: id.team });
       })
       .catch(({ response: data }) => {
-        if (data.data.message === "Excceed 4 People Limit")
+        if (data.data.message === "Exceed 4 People Limit")
           toast("❌ Exceeded 4 People Limit");
-        else if (data.data.message === "Invalid Team ID")
+        else if (
+          data.data.message === "Internal Server Error: Error: Invalid Team ID"
+        )
           toast("❌ Invalid Team ID");
         else toast("❌ Internal Server Error");
       });
@@ -86,7 +89,12 @@ const Team = ({ user, setUser }) => {
       toast("❌ Invalid Figma Link");
       return;
     }
-    axios.put("/api/team", team).then(() => {
+
+    api({
+      method: "PUT",
+      url: "/api/team",
+      body: team,
+    }).then(() => {
       toast("✅ Successfully Updated!");
       setEdit(false);
     });
@@ -94,9 +102,11 @@ const Team = ({ user, setUser }) => {
 
   useEffect(() => {
     if (user.team) {
-      axios
-        .get(`/api/team?teamid=${user.team}`)
-        .then((response) => setTeam(response.data.items))
+      api({
+        method: "GET",
+        url: `/api/team?teamid=${user.team}`,
+      })
+        .then(({ items }) => setTeam(items))
         .catch(({ response: data }) => {
           if (data.message === "Invalid Team ID") toast("❌ Invalid Team ID");
           else toast("❌ Internal Server Error");

@@ -47,9 +47,12 @@ const CheckIn = () => {
 
     // TODO: CHANGE TO 5 SECONDS ONCE DEPLOYED
     if (delta < 5000) {
-      const response = await axios.get(`/api/checkin?uid=${user}`);
+      const { items } = await api({
+        method: "GET",
+        url: `/api/checkin?uid=${user}`,
+      });
 
-      if (response.data.items.includes(event.id)) {
+      if (items.includes(event.id)) {
         toast("❌ Already Checked In!");
         return;
       }
