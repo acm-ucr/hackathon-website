@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import Loading from "../Loading";
 import { BiLink, BiSolidCopy } from "react-icons/bi";
+import axios from "axios";
 import { api } from "@/utils/api";
 
 const Team = ({ user, setUser }) => {
@@ -32,10 +33,7 @@ const Team = ({ user, setUser }) => {
   };
 
   const handleLeave = () => {
-    api({
-      method: "DELETE",
-      url: "/api/members",
-    }).then(() => {
+    axios.delete("/api/members").then(() => {
       toast("✅ Successfully left team!");
       setTeam(null);
       setUser({ ...user, team: null });
@@ -48,31 +46,27 @@ const Team = ({ user, setUser }) => {
       toast("❌ Enter a Valid Team ID");
       return;
     }
-    api({
-      method: "PUT",
-      url: "/api/members",
-      body: { team: id.team },
-    })
+    axios
+      .put("/api/members", { team: id.team })
       .then(() => {
         toast("✅ Successfully joined team!");
         setUser({ ...user, team: id.team });
       })
-      .catch(({ message }) => {
-        if (message === "Exceed 4 People Limit")
+      .catch(({ response: data }) => {
+        if (data.data.message === "Exceed 4 People Limit")
           toast("❌ Exceeded 4 People Limit");
-        else if (message === "Internal Server Error: Error: Invalid Team ID")
+        else if (
+          data.data.message === "Internal Server Error: Error: Invalid Team ID"
+        )
           toast("❌ Invalid Team ID");
         else toast("❌ Internal Server Error");
       });
   };
 
   const handleCreate = () => {
-    api({
-      method: "POST",
-      url: "/api/team",
-    }).then(({ items }) => {
+    axios.post("/api/team").then((response) => {
       setTeam(defaultTeam);
-      setUser({ ...user, team: items.team });
+      setUser({ ...user, team: response.data.items.team });
       toast("✅ Successfully created a new team!");
       setEdit(false);
     });
