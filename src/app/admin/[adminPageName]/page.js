@@ -1,5 +1,6 @@
 import ProtectedPage from "@/components/dynamic/ProtectedPage";
 import AdminPagesSpecs from "@/data/dynamic/admin/AdminPagesSpecs";
+import NotFoundError from "@/app/not-found";
 
 const convertToAdminPage = (specs) => {
   return (
@@ -16,6 +17,6 @@ export default function Page({ params }) {
   return AdminPagesSpecs[currentPageName] != undefined ? (
     convertToAdminPage(AdminPagesSpecs[currentPageName])
   ) : (
-    <div>404 error (TO DO: replace with actual 404 page)</div>
+    <NotFoundError />
   );
 }
