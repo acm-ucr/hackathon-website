@@ -15,6 +15,7 @@ import Sponsors from "@/components/dynamic/admin/dashboards/Sponsors";
 import Statistics from "@/components/dynamic/admin/services/statistics/Statistics";
 import Teams from "@/components/dynamic/admin/dashboards/Teams";
 import Volunteers from "@/components/dynamic/admin/dashboards/Volunteers";
+import Fault from "@/utils/error";
 
 const Page = ({ params }) => {
   const components = {
@@ -36,16 +37,17 @@ const Page = ({ params }) => {
     volunteers: <Volunteers />,
   };
 
-  const pageName = params.adminPageName;
-  const displayName = pageName.charAt(0).toUpperCase() + pageName.slice(1);
+  const capitalizeFirstLetter = (word) => {
+    return word[0].toUpperCase() + word.slice(1);
+  };
 
-  if (components[pageName] != undefined) {
+  if (components.hasOwnProperty(params.type)) {
     return (
       <ProtectedPage
-        title={`Admin | ${displayName}`}
-        restrictions={{ admins: 1, committees: 1 }}
+        title={`Admin | ${capitalizeFirstLetter(params.type)}`}
+        restrictions={{ admins: 1 }}
       >
-        {components[pageName]}
+        {components[params.type]}
       </ProtectedPage>
     );
   } else {
