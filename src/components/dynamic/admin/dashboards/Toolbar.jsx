@@ -7,7 +7,7 @@ import { FaUndoAlt } from "react-icons/fa";
 import { COLORS } from "@/data/dynamic/Tags";
 import Popup from "../Popup";
 import Input from "../Input";
-import axios from "axios";
+import { api } from "@/utils/api";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
@@ -34,6 +34,11 @@ const Toolbar = ({
   const [toggle, setToggle] = useState(false);
 
   const onClick = (value) => {
+    if (!objects.some((obj) => obj.selected)) {
+      toast("❌ No items selected.");
+      return;
+    }
+
     const notPending = objects.some((obj) => obj.selected && obj.status !== 0);
 
     if (notPending) {
@@ -73,11 +78,17 @@ const Toolbar = ({
 
     setToggle(false);
     const items = objects.filter((object) => object.selected);
-    axios.put(`/api/${page}`, {
-      objects: items,
-      status: value,
-      attribute: "status",
+
+    api({
+      method: "PUT",
+      url: `/api/dashboard/${page}`,
+      body: {
+        objects: items,
+        status: value,
+        attribute: "status",
+      },
     });
+
     setObjects(
       objects.map((a) => {
         if (a.selected) {
@@ -87,6 +98,20 @@ const Toolbar = ({
         return a;
       })
     );
+  };
+
+  const handleShortcuts = (e) => {
+    if (e.repeat) return;
+    switch (e.key) {
+      case "r": {
+        handleReload();
+        break;
+      }
+      case "Backspace": {
+        handleDelete();
+        break;
+      }
+    }
   };
 
   const handleSubmit = (e) => {
@@ -121,34 +146,47 @@ const Toolbar = ({
   };
 
   const handleDelete = () => {
+    if (!objects.some((obj) => obj.selected)) {
+      toast("❌ No items selected for deletion.");
+      return;
+    }
+
     setToggle(false);
     const remove = objects.filter((object) => object.selected);
     const keep = objects.filter((object) => !object.selected);
     setObjects(keep);
-    axios
-      .put(`/api/${page}`, { objects: remove, attribute: "role" })
-      .then(() => {
-        toast("✅ Successfully Deleted");
-      });
+    api({
+      method: "DELETE",
+      url: `/api/dashboard/${page}?remove=${remove
+        .map((a) => a.uid)
+        .toString()}`,
+    }).then(() => {
+      toast("✅ Successfully Deleted");
+    });
   };
 
-  const handleReload = () => {
-    axios.get(`/api/${page}`).then((response) => {
-      setObjects(response.data.items);
+  const handleReload = async () => {
+    api({
+      method: "GET",
+      url: `/api/dashboard/${page}`,
+    }).then(({ items }) => {
+      setObjects(items);
       toast("✅ Fetched Data Successfully");
     });
   };
 
   useEffect(() => {
     handleReload();
+
+    document.addEventListener("keydown", handleShortcuts);
+
+    return () => document.removeEventListener("keydown", handleShortcuts);
   }, []);
 
   return (
     <div className="w-full flex items-center" data-cy="toolbar">
       <div className="w-11/12 flex items-center">
-        <div className="mr-4" data-cy="select-all">
-          <Checkbox onClick={selectAll} toggle={toggle} />
-        </div>
+        <Checkbox onClick={selectAll} toggle={toggle} />
         <div className="flex flex-row gap-2">
           {tags.map((tag, index) => (
             <Tag

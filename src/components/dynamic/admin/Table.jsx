@@ -126,6 +126,8 @@ const Table = ({
                                       "base64"
                                     )
                                       ? "view"
+                                      : typeof object[header.text] === "string"
+                                      ? object[header.text].toLowerCase()
                                       : object[header.text]
                                   }
                                   color={
@@ -133,7 +135,12 @@ const Table = ({
                                       "base64"
                                     )
                                       ? COLORS["view"]
-                                      : COLORS[object[header.text]]
+                                      : COLORS[
+                                          typeof object[header.text] ===
+                                          "string"
+                                            ? object[header.text].toLowerCase()
+                                            : object[header.text]
+                                        ]
                                   }
                                   onClick={
                                     header.onClick

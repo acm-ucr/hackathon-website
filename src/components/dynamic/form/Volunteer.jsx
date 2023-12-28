@@ -4,7 +4,7 @@ import { useState } from "react";
 import Form from "@/components/dynamic/form/Form.jsx";
 import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/form/Volunteers.js";
 import { useSession } from "next-auth/react";
-import axios from "axios";
+import { api } from "@/utils/api";
 import toast from "react-hot-toast";
 import { STATUSES } from "@/data/dynamic/admin/Volunteers.js";
 
@@ -20,8 +20,11 @@ const Volunteer = () => {
   });
 
   const handleSubmit = (setLoading) => {
-    axios
-      .post("/api/volunteers", volunteer)
+    api({
+      method: "POST",
+      url: "/api/dashboard/volunteers",
+      body: volunteer,
+    })
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
       .finally(() => {

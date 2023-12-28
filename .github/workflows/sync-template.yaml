@@ -1,8 +1,8 @@
 name: Sync Changes from Template
 on:
   schedule:
-    # Run at 6:00 AM every sunday
-    - cron: "0 6 * * 0"
+    # Run at 6:00 AM every two days
+    - cron: "0 6 */2 * *"
 
 jobs:
   sync-from-template:
@@ -17,22 +17,25 @@ jobs:
         with:
           path: ${{ github.repository }}
 
-      - name: Checkout New Branch
-        working-directory: ${{ github.repository }}
-        run: |
-          current_date=$(date '+%m/%d/%Y')
-          git checkout -b sync-template-$current_date
-
-      - name: Fetch and Merge
+      - name: Fetch all
         working-directory: ${{ github.repository }}
         run: |
           git remote add template https://github.com/acm-ucr/hackathon-website
           git fetch --all
-          git merge template/dev sync-template --allow-unrelated-histories
+
+      - name: Checkout and push Template Dev Branch
+        working-directory: ${{ github.repository }}
+        run: |
+          current_date=$(date '+%m/%d/%Y')
+          git checkout -b sync-template-$current_date template/dev
+          git push origin sync-template-$current_date
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create New Pull Request
         working-directory: ${{ github.repository }}
         run: |
-          gh pr create --title "Sync Template Changes" --body "Syncing template changes from $(date +'%m-%d-%Y')"
+          current_date=$(date '+%m/%d/%Y')
+          gh pr create --base dev --head sync-template-$current_date --title "Sync Template Changes $current_date" --body "Syncing template changes from $current_date"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
