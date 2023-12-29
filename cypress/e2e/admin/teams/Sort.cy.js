@@ -12,25 +12,25 @@ describe("Team Sort", () => {
   });
 
   it("Sort Id Up", () => {
-    const sorted = teams.sort((a, b) => (a.id > b.id ? -1 : 1));
+    const sorted = teams.sort((a, b) => (a.uid > b.uid ? -1 : 1));
 
-    cy.get('[data-cy="id-sort-up"]').click();
+    cy.get('[data-cy="uid-sort-up"]').click();
 
     cy.get('[data-cy="table"]').within(() => {
-      cy.get('[data-cy="id"]').each((element, index) => {
-        expect(element.text()).to.equal(sorted[index].id);
+      cy.get('[data-cy="uid"]').each((element, index) => {
+        expect(element.text()).to.equal(sorted[index].uid);
       });
     });
   });
 
   it("Sort Id Down", () => {
-    const sorted = teams.sort((a, b) => (b.id > a.id ? -1 : 1));
+    const sorted = teams.sort((a, b) => (b.uid > a.uid ? -1 : 1));
 
-    cy.get('[data-cy="id-sort-down"]').click();
+    cy.get('[data-cy="uid-sort-down"]').click();
 
     cy.get('[data-cy="table"]').within(() => {
-      cy.get('[data-cy="id"]').each((element, index) => {
-        expect(element.text()).to.equal(sorted[index].id);
+      cy.get('[data-cy="uid"]').each((element, index) => {
+        expect(element.text()).to.equal(sorted[index].uid);
       });
     });
   });
