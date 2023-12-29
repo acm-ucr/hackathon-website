@@ -5,7 +5,7 @@ import {
   STATUSES,
   TAGS,
 } from "@/data/dynamic/admin/Admins.js";
-import Dashboard from "../Dashboard.jsx";
+import Dashboard from "./Dashboard.jsx";
 import { columns } from "@/data/dynamic/admin/Admins.js";
 
 const Admin = () => {

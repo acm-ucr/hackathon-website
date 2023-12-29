@@ -5,7 +5,7 @@ import {
   STATUSES,
   TAGS,
 } from "@/data/dynamic/admin/Interest";
-import Dashboard from "../Dashboard";
+import Dashboard from "./Dashboard";
 
 const Feedback = () => {
   return (

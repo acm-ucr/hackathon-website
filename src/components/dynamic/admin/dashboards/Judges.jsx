@@ -5,7 +5,7 @@ import {
   TAGS,
   STATUSES,
 } from "@/data/dynamic/admin/Judges.js";
-import Dashboard from "../Dashboard.jsx";
+import Dashboard from "./Dashboard.jsx";
 
 const Judges = () => {
   return (

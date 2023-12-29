@@ -62,9 +62,6 @@ export const columns = [
       <Checkbox
         toggle={table.getIsAllRowsSelected()}
         onClick={table.getToggleAllRowsSelectedHandler()}
-        // {...{
-        //   indeterminate: table.getIsSomeRowsSelected(),
-        // }}
       />
     ),
     cell: ({ row }) => (

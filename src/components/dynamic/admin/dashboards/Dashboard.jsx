@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import Filters from "./Filters.jsx";
-import Toolbar from "./dashboards/Toolbar.jsx";
-import Title from "./Title.jsx";
+import Filters from "../Filters.jsx";
+import Toolbar from "./Toolbar.jsx";
+import Title from "../Title.jsx";
 // import Table from "./Table.jsx";
 import DataTable from "./DataTable.jsx";
 
@@ -46,7 +46,6 @@ const Dashboard = ({
         headers={headers}
         page={page}
       />
-      {console.log(objects)}
       <DataTable data={objects} columns={columns} />
       {/* <Table
         headers={headers}

@@ -6,7 +6,7 @@ import {
   STATUSES,
   TAGS,
 } from "@/data/dynamic/admin/Feedback.js";
-import Dashboard from "../Dashboard.jsx";
+import Dashboard from "./Dashboard.jsx";
 
 const Feedback = () => {
   return (

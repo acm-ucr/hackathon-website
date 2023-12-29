@@ -5,7 +5,7 @@ import {
   TAGS,
   STATUSES,
 } from "@/data/dynamic/admin/Committees.js";
-import Dashboard from "../Dashboard.jsx";
+import Dashboard from "./Dashboard.jsx";
 
 const Comittee = () => {
   return (
