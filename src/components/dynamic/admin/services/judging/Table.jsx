@@ -18,16 +18,18 @@ const Table = ({ data }) => {
                 <Tag color={COLORS["grayblue"]} text={name} />
                 <div className="flex justify-start w-full ml-2">
                   {links &&
-                    links.map((link, index) => (
-                      <Link
-                        key={index}
-                        href={link.link}
-                        target="_blank"
-                        className="m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-xl"
-                      >
-                        {ICONS[link.name]}
-                      </Link>
-                    ))}
+                    links
+                      .filter((l) => l.link.length)
+                      .map((link, index) => (
+                        <Link
+                          key={index}
+                          href={link.link}
+                          target="_blank"
+                          className="m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-xl"
+                        >
+                          {ICONS[link.name]}
+                        </Link>
+                      ))}
                 </div>
                 {table && (
                   <p className="mb-0 text-hackathon-green-300 font-semibold whitespace-nowrap">
