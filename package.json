@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@auth/firebase-adapter": "^1.0.3",
+    "@tanstack/react-table": "^8.11.2",
     "axios": "^1.6.0",
     "bootstrap": "^5.3.2",
     "compressorjs": "^1.2.1",

@@ -3,7 +3,8 @@ import { useState } from "react";
 import Filters from "./Filters.jsx";
 import Toolbar from "./dashboards/Toolbar.jsx";
 import Title from "./Title.jsx";
-import Table from "./Table.jsx";
+// import Table from "./Table.jsx";
+import DataTable from "./DataTable.jsx";
 
 const Dashboard = ({
   title,
@@ -14,13 +15,14 @@ const Dashboard = ({
   header,
   statuses,
   tags,
+  columns,
 }) => {
   const [input, setInput] = useState({
     input: "",
   });
   const [filters, setFilters] = useState(filter);
-  const [headers, setHeaders] = useState(header);
-  const [objects, setObjects] = useState(null);
+  const [headers] = useState(header);
+  const [objects, setObjects] = useState([]);
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
@@ -44,7 +46,9 @@ const Dashboard = ({
         headers={headers}
         page={page}
       />
-      <Table
+      {console.log(objects)}
+      <DataTable data={objects} columns={columns} />
+      {/* <Table
         headers={headers}
         empty={empty}
         setHeaders={setHeaders}
@@ -52,7 +56,7 @@ const Dashboard = ({
         objects={objects}
         Dropdown={dropdown}
         statuses={statuses}
-      />
+      /> */}
     </div>
   );
 };

@@ -6,6 +6,7 @@ import {
   TAGS,
 } from "@/data/dynamic/admin/Admins.js";
 import Dashboard from "../Dashboard.jsx";
+import { columns } from "@/data/dynamic/admin/Admins.js";
 
 const Admin = () => {
   return (
@@ -17,6 +18,7 @@ const Admin = () => {
       header={HEADERS}
       statuses={STATUSES}
       tags={TAGS}
+      columns={columns}
     />
   );
 };

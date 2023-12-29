@@ -1,3 +1,7 @@
+import Tag from "@/components/dynamic/admin/Tag";
+import { COLORS } from "../Tags";
+import Checkbox from "@/components/dynamic/Checkbox";
+
 export const FILTERS = {
   pending: {
     state: true,
@@ -49,3 +53,57 @@ export const STATUSES = {
   0: "pending",
   "-1": "rejected",
 };
+
+export const columns = [
+  {
+    id: "select",
+    width: "w-1/12",
+    header: ({ table }) => (
+      <Checkbox
+        toggle={table.getIsAllRowsSelected()}
+        onClick={table.getToggleAllRowsSelectedHandler()}
+        // {...{
+        //   indeterminate: table.getIsSomeRowsSelected(),
+        // }}
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        toggle={row.getIsSelected()}
+        onClick={row.getToggleSelectedHandler()}
+      />
+    ),
+  },
+  {
+    accessorKey: "name",
+    header: "Name",
+    width: "w-2/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
+  },
+  {
+    accessorKey: "email",
+    header: "Email",
+    width: "w-3/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
+  },
+  {
+    accessorKey: "discord",
+    header: "discord",
+    width: "w-3/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
+  },
+  {
+    accessorKey: "affiliation",
+    header: "Affiliation",
+    width: "w-2/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
+    width: "w-1/12",
+    cell: ({ getValue }) => (
+      <Tag text={STATUSES[getValue()]} color={COLORS[getValue()]} />
+    ),
+  },
+];
