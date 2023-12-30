@@ -1,54 +1,85 @@
-export const FILTERS = {
-  pending: {
-    state: true,
-    value: 0,
-  },
-  accept: {
-    state: true,
-    value: 1,
-  },
-  reject: {
-    state: true,
-    value: -1,
-  },
+import Tag from "@/components/dynamic/admin/Tag";
+import { COLORS } from "../Tags";
+import Checkbox from "@/components/dynamic/Checkbox";
+
+export const STATUSES = {
+  1: "accepted",
+  0: "pending",
+  "-1": "rejected",
 };
 
 export const TAGS = [
   {
-    text: "accept",
+    text: "confirm",
     value: 1,
   },
   {
-    text: "reject",
+    text: "not attending",
     value: -1,
   },
 ];
 
-export const HEADERS = [
-  { text: "name", size: "w-2/12", icon: true, sort: "off", limit: 200 },
-  { text: "discord", size: "w-2/12", icon: true, sort: "off" },
-  { text: "team", size: "w-2/12", icon: true, sort: "off" },
-  { text: "major", size: "w-2/12", icon: true, sort: "off" },
+export const COLUMNS = [
   {
-    text: "status",
-    size: "w-1/12",
-    icon: true,
-    sort: "off",
-    hasTag: true,
+    id: "select",
+    width: "w-1/12",
+    header: ({ table }) => (
+      <Checkbox
+        toggle={table.getIsAllRowsSelected()}
+        onClick={table.getToggleAllRowsSelectedHandler()}
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        toggle={row.getIsSelected()}
+        onClick={row.getToggleSelectedHandler()}
+      />
+    ),
   },
   {
-    text: "resume",
-    size: "w-1/12",
-    icon: false,
-    sort: "off",
-    hasTag: true,
-    onClick: (object, setModal) => {
-      setModal({ src: object.resume, title: object.name + "'s Resume" });
+    accessorKey: "name",
+    header: "Name",
+    width: "w-3/12",
+    enableColumnFilter: true,
+    filterFn: "includesString",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
+  },
+  {
+    accessorKey: "email",
+    header: "Email",
+    width: "w-3/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
+  },
+  {
+    accessorKey: "discord",
+    header: "Discord",
+    width: "w-3/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
+  },
+  {
+    accessorKey: "team",
+    header: "Team",
+    width: "w-3/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
+    width: "w-2/12",
+    enableColumnFilter: true,
+    filterFn: (row, col, filter) => {
+      const status = row.getValue(col);
+      return filter.includes(status);
     },
+    cell: ({ getValue }) => (
+      <Tag text={STATUSES[getValue()]} color={COLORS[getValue()]} />
+    ),
   },
   {
-    text: "",
-    size: 1,
+    accessorKey: "Resume",
+    header: "Resume",
+    width: "w-1/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
   },
 ];
 
@@ -80,10 +111,4 @@ export const DROPDOWN = ({ object, icons }) => {
       </div>
     </div>
   );
-};
-
-export const STATUSES = {
-  1: "accepted",
-  0: "pending",
-  "-1": "rejected",
 };

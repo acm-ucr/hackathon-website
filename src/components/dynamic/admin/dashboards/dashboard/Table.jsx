@@ -6,24 +6,45 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
+import Toolbar from "./Toolbar";
+import Filters from "./Filters";
 
-const Data = ({ data, columns }) => {
+const Table = ({ columns, page, tags, statuses }) => {
+  const [data, setData] = useState([]);
+  const [filters, setFilters] = useState([{ id: "status", value: [-1, 0, 1] }]);
   const [selected, setSelected] = useState([]);
 
-  const { getHeaderGroups, getRowModel } = useReactTable({
+  const {
+    getHeaderGroups,
+    getRowModel,
+    getFilteredSelectedRowModel,
+    toggleAllRowsSelected,
+  } = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
-    state: {
-      rowSelection: selected,
-    },
     onRowSelectionChange: setSelected,
     enableRowSelection: true,
+    state: {
+      rowSelection: selected,
+      columnFilters: filters,
+    },
   });
 
   return (
     <div className="w-full overflow-scroll p-2">
+      <Filters statuses={statuses} filters={filters} setFilters={setFilters} />
+      <Toolbar
+        page={page}
+        filters={filters}
+        setFilters={setFilters}
+        data={data}
+        setData={setData}
+        tags={tags}
+        getFilteredSelectedRowModel={getFilteredSelectedRowModel}
+        toggleAllRowsSelected={toggleAllRowsSelected}
+      />
       <div className="text-white bg-hackathon-blue-200 rounded-t-lg">
         {getHeaderGroups().map(({ headers, id }) => (
           <div key={id} className="flex items-center px-3 py-2">
@@ -56,4 +77,4 @@ const Data = ({ data, columns }) => {
   );
 };
 
-export default Data;
+export default Table;

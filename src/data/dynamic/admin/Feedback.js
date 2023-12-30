@@ -1,12 +1,10 @@
-export const FILTERS = {
-  unread: {
-    state: true,
-    value: 0,
-  },
-  read: {
-    state: true,
-    value: 1,
-  },
+import Tag from "@/components/dynamic/admin/Tag";
+import { COLORS } from "../Tags";
+import Checkbox from "@/components/dynamic/Checkbox";
+
+export const STATUSES = {
+  1: "read",
+  0: "unread",
 };
 
 export const TAGS = [
@@ -20,24 +18,59 @@ export const TAGS = [
   },
 ];
 
-export const HEADERS = [
-  { text: "rating", size: "w-1/12", icon: true, sort: "off" },
-  { text: "eventSource", size: "w-2/12" },
-  { text: "improvements", size: "w-3/12" },
+export const COLUMNS = [
   {
-    text: "helpful",
-    size: "w-3/12",
+    id: "select",
+    width: "w-1/12",
+    header: ({ table }) => (
+      <Checkbox
+        toggle={table.getIsAllRowsSelected()}
+        onClick={table.getToggleAllRowsSelectedHandler()}
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        toggle={row.getIsSelected()}
+        onClick={row.getToggleSelectedHandler()}
+      />
+    ),
   },
   {
-    text: "status",
-    size: "w-1/12",
-    icon: true,
-    sort: "off",
-    hasTag: true,
+    accessorKey: "rating",
+    header: "Rating",
+    width: "w-1/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   {
-    text: "",
-    size: "w-1/12",
+    accessorKey: "eventSource",
+    header: "Event Source",
+    width: "w-2/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
+  },
+  {
+    accessorKey: "improvements",
+    header: "Improvements",
+    width: "w-3/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
+  },
+  {
+    accessorKey: "helpful",
+    header: "Helpful",
+    width: "w-3/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
+    width: "w-1/12",
+    enableColumnFilter: true,
+    filterFn: (row, col, filter) => {
+      const status = row.getValue(col);
+      return filter.includes(status);
+    },
+    cell: ({ getValue }) => (
+      <Tag text={STATUSES[getValue()]} color={COLORS[getValue()]} />
+    ),
   },
 ];
 
@@ -56,9 +89,4 @@ export const DROPDOWN = ({ object }) => {
       </div>
     </div>
   );
-};
-
-export const STATUSES = {
-  1: "read",
-  0: "unread",
 };

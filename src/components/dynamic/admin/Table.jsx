@@ -10,7 +10,7 @@ import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { useContext } from "react";
 import Link from "next/link";
 import { COLORS } from "@/data/dynamic/Tags";
-import Modal from "./dashboards/Modal";
+import Modal from "./dashboards/dashboard/Modal";
 import { ICONS } from "@/data/dynamic/admin/Icons";
 import Loading from "../Loading";
 import { FaStar } from "react-icons/fa";

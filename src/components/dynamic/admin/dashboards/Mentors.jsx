@@ -1,26 +1,25 @@
 "use client";
-import Dashboard from "./Dashboard.jsx";
 import {
-  FILTERS,
-  HEADERS,
-  TAGS,
-  DROPDOWN,
   STATUSES,
+  TAGS,
+  COLUMNS,
+  DROPDOWN,
 } from "@/data/dynamic/admin/Mentors.js";
+import Title from "../Title";
+import DataTable from "./dashboard/Table";
 
 const Mentors = () => {
   return (
-    <Dashboard
-      title="Mentors"
-      page="mentors"
-      empty="No Mentors Available"
-      dropdown={DROPDOWN}
-      filter={FILTERS}
-      header={HEADERS}
-      statuses={STATUSES}
-      tags={TAGS}
-    />
+    <div className="h-full font-poppins flex flex-col py-4 gap-3">
+      <Title title="Mentors" />
+      <DataTable
+        columns={COLUMNS}
+        tags={TAGS}
+        page="mentors"
+        statuses={STATUSES}
+        Dropdown={DROPDOWN}
+      />
+    </div>
   );
 };
-
 export default Mentors;

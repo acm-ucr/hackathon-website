@@ -1,26 +1,25 @@
 "use client";
-import Dashboard from "./Dashboard.jsx";
 import {
-  FILTERS,
-  HEADERS,
-  TAGS,
-  DROPDOWN,
   STATUSES,
+  TAGS,
+  COLUMNS,
+  DROPDOWN,
 } from "@/data/dynamic/admin/Volunteers";
+import Title from "../Title";
+import DataTable from "./dashboard/Table";
 
 const Volunteers = () => {
   return (
-    <Dashboard
-      title="Volunteers"
-      page="volunteers"
-      empty="No Volunteers Available"
-      dropdown={DROPDOWN}
-      filter={FILTERS}
-      header={HEADERS}
-      statuses={STATUSES}
-      tags={TAGS}
-    />
+    <div className="h-full font-poppins flex flex-col py-4 gap-3">
+      <Title title="Volunteers" />
+      <DataTable
+        columns={COLUMNS}
+        tags={TAGS}
+        page="volunteers"
+        statuses={STATUSES}
+        Dropdown={DROPDOWN}
+      />
+    </div>
   );
 };
-
 export default Volunteers;

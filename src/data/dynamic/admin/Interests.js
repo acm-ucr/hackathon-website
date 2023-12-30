@@ -5,7 +5,6 @@ import Checkbox from "@/components/dynamic/Checkbox";
 export const STATUSES = {
   1: "accepted",
   0: "pending",
-  "-1": "rejected",
 };
 
 export const TAGS = [
@@ -48,30 +47,6 @@ export const COLUMNS = [
     accessorKey: "email",
     header: "Email",
     width: "w-3/12",
-    cell: ({ getValue }) => <div>{getValue()}</div>,
-  },
-  {
-    accessorKey: "phone",
-    header: "Phone",
-    width: "w-2/12",
-    cell: ({ getValue }) => <div>{getValue()}</div>,
-  },
-  {
-    accessorKey: "company",
-    header: "Company",
-    width: "w-2/12",
-    cell: ({ getValue }) => <div>{getValue()}</div>,
-  },
-  {
-    accessorKey: "position",
-    header: "Position",
-    width: "w-2/12",
-    cell: ({ getValue }) => <div>{getValue()}</div>,
-  },
-  {
-    accessorKey: "tier",
-    header: "Tier",
-    width: "w-2/12",
     cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   {
