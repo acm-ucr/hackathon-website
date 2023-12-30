@@ -11,7 +11,7 @@ export const FIELDS = {
     width: 12,
     texts: [
       "Welcome to HACKATHON_NAME. Thank you for being on the Sponsorship team, we appreciate your efforts to help support HACKATHON_NAME. HACKATHON_NAME is a DESCRIPTION hackathon spanning HACKATHON_LENGTH on HACKATHON_DATE. ",
-      "By sponsoring HAKCATHON_NAME, you help advocate for SPONSOR_REASONS.",
+      "By sponsoring HACKATHON_NAME, you help advocate for SPONSOR_REASONS.",
       "Sponsorship members are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
     ],
   },
