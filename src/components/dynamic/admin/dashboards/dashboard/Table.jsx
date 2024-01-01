@@ -3,6 +3,7 @@ import {
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
+  getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import { useState } from "react";
@@ -19,11 +20,18 @@ const Table = ({ columns, page, tags, statuses }) => {
     getRowModel,
     getFilteredSelectedRowModel,
     toggleAllRowsSelected,
+    getState,
+    previousPage,
+    getCanPreviousPage,
+    nextPage,
+    getCanNextPage,
+    getPageCount,
   } = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
     onRowSelectionChange: setSelected,
     enableRowSelection: true,
     state: {
@@ -72,6 +80,20 @@ const Table = ({ columns, page, tags, statuses }) => {
             ))}
           </div>
         ))}
+      </div>
+
+      <div className="flex">
+        {console.log(getState())}
+        <div className="mx-2">Showing 10 of {data.length}</div>
+        <button onClick={() => previousPage()} disabled={!getCanPreviousPage()}>
+          {"<"}
+        </button>
+        <div>
+          Page {getState().pagination.pageIndex + 1} of {getPageCount()}
+        </div>
+        <button onClick={() => nextPage()} disabled={!getCanNextPage()}>
+          {">"}
+        </button>
       </div>
     </div>
   );
