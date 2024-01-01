@@ -83,7 +83,6 @@ const Table = ({ columns, page, tags, statuses }) => {
       </div>
 
       <div className="flex">
-        {console.log(getState())}
         <div className="mx-2">Showing 10 of {data.length}</div>
         <button onClick={() => previousPage()} disabled={!getCanPreviousPage()}>
           {"<"}
