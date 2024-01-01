@@ -6,13 +6,13 @@ import {
   DROPDOWN,
 } from "@/data/dynamic/admin/Mentors.js";
 import Title from "../Title";
-import DataTable from "./dashboard/Table";
+import Table from "./dashboard/Table";
 
 const Mentors = () => {
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Title title="Mentors" />
-      <DataTable
+      <Table
         columns={COLUMNS}
         tags={TAGS}
         page="mentors"

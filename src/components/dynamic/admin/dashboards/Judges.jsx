@@ -1,18 +1,13 @@
 "use client";
 import { STATUSES, TAGS, COLUMNS } from "@/data/dynamic/admin/Judges.js";
 import Title from "../Title";
-import DataTable from "./dashboard/Table";
+import Table from "./dashboard/Table";
 
 const Judges = () => {
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Title title="Judges" />
-      <DataTable
-        columns={COLUMNS}
-        tags={TAGS}
-        page="judges"
-        statuses={STATUSES}
-      />
+      <Table columns={COLUMNS} tags={TAGS} page="judges" statuses={STATUSES} />
     </div>
   );
 };
