@@ -38,7 +38,7 @@ export const COLUMNS = [
   {
     accessorKey: "name",
     header: "Name",
-    width: "w-2/12",
+    width: "w-5/12",
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: ({ getValue }) => <div>{getValue()}</div>,
@@ -46,7 +46,7 @@ export const COLUMNS = [
   {
     accessorKey: "email",
     header: "Email",
-    width: "w-3/12",
+    width: "w-5/12",
     cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   {

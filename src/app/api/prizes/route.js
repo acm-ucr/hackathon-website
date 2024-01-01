@@ -83,6 +83,8 @@ export async function GET() {
       teams.push({ name, id: doc.id });
     });
 
+    console.log(prizes, teams);
+
     return res.json(
       { message: "OK", items: { prizes, teams } },
       { status: 200 }

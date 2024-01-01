@@ -48,7 +48,7 @@ export const COLUMNS = [
   {
     accessorKey: "email",
     header: "Email",
-    width: "w-3/12",
+    width: "w-4/12",
     cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   {
@@ -60,7 +60,7 @@ export const COLUMNS = [
   {
     accessorKey: "status",
     header: "Status",
-    width: "w-2/12",
+    width: "w-1/12",
     enableColumnFilter: true,
     filterFn: (row, col, filter) => {
       const status = row.getValue(col);

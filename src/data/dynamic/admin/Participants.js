@@ -1,6 +1,7 @@
 import Tag from "@/components/dynamic/admin/Tag";
 import { COLORS } from "../Tags";
 import Checkbox from "@/components/dynamic/Checkbox";
+import View from "@/components/dynamic/admin/dashboards/dashboard/View";
 
 export const STATUSES = {
   1: "accepted",
@@ -39,7 +40,7 @@ export const COLUMNS = [
   {
     accessorKey: "name",
     header: "Name",
-    width: "w-3/12",
+    width: "w-2/12",
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: ({ getValue }) => <div>{getValue()}</div>,
@@ -53,7 +54,7 @@ export const COLUMNS = [
   {
     accessorKey: "discord",
     header: "Discord",
-    width: "w-3/12",
+    width: "w-2/12",
     cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   {
@@ -65,7 +66,7 @@ export const COLUMNS = [
   {
     accessorKey: "status",
     header: "Status",
-    width: "w-2/12",
+    width: "w-1/12",
     enableColumnFilter: true,
     filterFn: (row, col, filter) => {
       const status = row.getValue(col);
@@ -79,7 +80,8 @@ export const COLUMNS = [
     accessorKey: "Resume",
     header: "Resume",
     width: "w-1/12",
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: ({ getValue }) =>
+      getValue() && <View title="Resume" src={getValue()} />,
   },
 ];
 

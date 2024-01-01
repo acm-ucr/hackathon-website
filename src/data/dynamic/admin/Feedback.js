@@ -50,7 +50,7 @@ export const COLUMNS = [
   {
     accessorKey: "improvements",
     header: "Improvements",
-    width: "w-3/12",
+    width: "w-4/12",
     cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   {

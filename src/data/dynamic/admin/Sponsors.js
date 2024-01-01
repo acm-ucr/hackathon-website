@@ -71,8 +71,10 @@ export const COLUMNS = [
   {
     accessorKey: "tier",
     header: "Tier",
-    width: "w-2/12",
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    width: "w-1/12",
+    cell: ({ getValue }) => (
+      <Tag text={getValue()} color={COLORS[getValue()]} />
+    ),
   },
   {
     accessorKey: "status",

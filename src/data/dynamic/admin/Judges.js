@@ -1,6 +1,7 @@
 import Tag from "@/components/dynamic/admin/Tag";
 import { COLORS } from "../Tags";
 import Checkbox from "@/components/dynamic/Checkbox";
+import View from "@/components/dynamic/admin/dashboards/dashboard/View";
 
 export const STATUSES = {
   1: "accepted",
@@ -53,14 +54,16 @@ export const COLUMNS = [
   {
     accessorKey: "title",
     header: "Title",
-    width: "w-2/12",
+    width: "w-3/12",
     cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   {
     accessorKey: "affiliation",
     header: "Affiliation",
-    width: "w-2/12",
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    width: "w-1/12",
+    cell: ({ getValue }) => (
+      <Tag text={getValue()} color={COLORS[getValue()]} />
+    ),
   },
   {
     accessorKey: "status",
@@ -79,6 +82,6 @@ export const COLUMNS = [
     accessorKey: "photo",
     header: "Photo",
     width: "w-1/12",
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: ({ getValue }) => <View src={getValue()} title="Photo" />,
   },
 ];

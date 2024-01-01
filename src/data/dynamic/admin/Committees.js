@@ -39,7 +39,7 @@ export const COLUMNS = [
   {
     accessorKey: "name",
     header: "Name",
-    width: "w-2/12",
+    width: "w-3/12",
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: ({ getValue }) => <div>{getValue()}</div>,
@@ -59,8 +59,10 @@ export const COLUMNS = [
   {
     accessorKey: "affiliation",
     header: "Affiliation",
-    width: "w-2/12",
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    width: "w-1/12",
+    cell: ({ getValue }) => (
+      <Tag text={getValue()} color={COLORS[getValue()]} />
+    ),
   },
   {
     accessorKey: "status",
