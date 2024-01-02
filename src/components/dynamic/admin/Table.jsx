@@ -1,12 +1,9 @@
 "use client";
 import { useState } from "react";
 import SortIcon from "./dashboards/SortIcon";
-import Accordion from "react-bootstrap/Accordion";
 import Checkbox from "../Checkbox";
 import Tag from "./Tag";
 import { IoIosArrowDown } from "react-icons/io";
-import AccordionContext from "react-bootstrap/AccordionContext";
-import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { useContext } from "react";
 import Link from "next/link";
 import { COLORS } from "@/data/dynamic/Tags";
@@ -14,23 +11,7 @@ import Modal from "./dashboards/Modal";
 import { ICONS } from "@/data/dynamic/admin/Icons";
 import Loading from "../Loading";
 import { FaStar } from "react-icons/fa";
-
-const Toggle = ({ eventKey }) => {
-  const { activeEventKey } = useContext(AccordionContext);
-
-  const decoratedOnClick = useAccordionButton(eventKey);
-
-  return (
-    <div className="w-fit">
-      <IoIosArrowDown
-        onClick={decoratedOnClick}
-        className={`hover:text-hackathon-blue-100 transition text-xl cursor-pointer duration-300 ease-in-out ${
-          activeEventKey === eventKey && "rotate-180"
-        }`}
-      />
-    </div>
-  );
-};
+import Accordion from "./Accordion.jsx";
 
 const Table = ({
   headers,
@@ -82,10 +63,7 @@ const Table = ({
           </div>
         ))}
       </div>
-      <Accordion
-        data-cy="table"
-        className="h-full overflow-y-scroll w-full bg-white"
-      >
+      <div data-cy="table" className="h-full overflow-y-scroll w-full bg-white">
         {objects.map(
           (object, index) =>
             !object.hidden && (
@@ -198,14 +176,9 @@ const Table = ({
                           </div>
                         )
                     )}
-                  {Dropdown && <Toggle eventKey={index} />}
                 </div>
 
-                {Dropdown && (
-                  <Accordion.Collapse eventKey={index} className="p-2">
-                    <Dropdown object={object} icons={ICONS} />
-                  </Accordion.Collapse>
-                )}
+                {Dropdown && <Accordion></Accordion>}
               </div>
             )
         )}
@@ -215,7 +188,7 @@ const Table = ({
             {empty}
           </p>
         )}
-      </Accordion>
+      </div>
     </div>
   );
 };
