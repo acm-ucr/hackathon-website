@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 import Upload from "./Upload";
 import { FILTERS, STATUSES } from "@/data/dynamic/admin/Messenger";
 import { CONFIG } from "@/data/Config";
-import axios from "axios";
+import { api } from "@/utils/api";
 import { readFileAsBase64 } from "@/utils/convert";
 
 const Messenger = () => {
@@ -72,9 +72,11 @@ const Messenger = () => {
       },
     };
 
-    axios
-      .put("/api/messenger", data)
-      .then(() => toast(`✅ Email sent successfully!`));
+    api({
+      method: "PUT",
+      url: "/api/messenger",
+      body: data,
+    }).then(() => toast(`✅ Email sent successfully!`));
   };
 
   return (

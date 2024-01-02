@@ -7,7 +7,7 @@ import Toolbar from "./Toolbar";
 import Event from "./Event";
 import Modal from "./Modal";
 import { LABELS } from "@/data/dynamic/admin/Calendar";
-import axios from "axios";
+import { api } from "@/utils/api";
 const mLocalizer = momentLocalizer(moment);
 
 const CalendarEvents = () => {
@@ -28,21 +28,21 @@ const CalendarEvents = () => {
   };
 
   useEffect(() => {
-    const hackathon = axios.get(
-      `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime`
-    );
-    const leads = axios.get(
-      `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_LEADS}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime`
-    );
+    const hackathon = api({
+      method: "GET",
+      url: `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime`,
+    });
 
-    console.log(hackathon);
-    console.log(leads);
+    const leads = api({
+      method: "GET",
+      url: `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_LEADS}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime`,
+    });
 
     Promise.all([hackathon, leads]).then(([hackathonData, leadsData]) => {
-      const hackathon = hackathonData;
-      const leads = leadsData;
+      const hackathonItems = hackathonData.items;
+      const leadsItems = leadsData.items;
 
-      const rawEvents = [...hackathon, ...leads];
+      const rawEvents = [...hackathonItems, ...leadsItems];
 
       rawEvents.forEach((item) => {
         item.start = new Date(item.start.dateTime);

@@ -33,7 +33,10 @@ const Team = ({ user, setUser }) => {
   };
 
   const handleLeave = () => {
-    axios.delete("/api/members").then(() => {
+    api({
+      method: "DELETE",
+      url: "/api/members",
+    }).then(() => {
       toast("✅ Successfully left team!");
       setTeam(null);
       setUser({ ...user, team: null });
@@ -55,18 +58,19 @@ const Team = ({ user, setUser }) => {
       .catch(({ response: data }) => {
         if (data.data.message === "Exceed 4 People Limit")
           toast("❌ Exceeded 4 People Limit");
-        else if (
-          data.data.message === "Internal Server Error: Error: Invalid Team ID"
-        )
+        else if (data.data.message === "Invalid Team ID")
           toast("❌ Invalid Team ID");
         else toast("❌ Internal Server Error");
       });
   };
 
   const handleCreate = () => {
-    axios.post("/api/team").then((response) => {
+    api({
+      method: "POST",
+      url: "/api/team",
+    }).then(({ items }) => {
       setTeam(defaultTeam);
-      setUser({ ...user, team: response.data.items.team });
+      setUser({ ...user, team: items.team });
       toast("✅ Successfully created a new team!");
       setEdit(false);
     });
