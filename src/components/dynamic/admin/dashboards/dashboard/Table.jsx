@@ -9,8 +9,9 @@ import {
 import { useState } from "react";
 import Toolbar from "./Toolbar";
 import Filters from "./Filters";
+import Body from "./Body";
 
-const Table = ({ columns, page, tags, statuses }) => {
+const Table = ({ columns, page, tags, statuses, Dropdown }) => {
   const [data, setData] = useState([]);
   const [filters, setFilters] = useState([{ id: "status", value: [-1, 0, 1] }]);
   const [selected, setSelected] = useState([]);
@@ -65,20 +66,13 @@ const Table = ({ columns, page, tags, statuses }) => {
         ))}
       </div>
       <div>
-        {getRowModel().rows.map(({ id, getVisibleCells }) => (
-          <div
-            className="flex px-3 py-2 border-b-[1px] border-hackathon-gray-200"
+        {getRowModel().rows.map(({ id, getVisibleCells, original }) => (
+          <Body
             key={id}
-          >
-            {getVisibleCells().map(({ id, column, getContext }) => (
-              <div
-                className={`flex items-center ${column.columnDef.width}`}
-                key={id}
-              >
-                {flexRender(column.columnDef.cell, getContext())}
-              </div>
-            ))}
-          </div>
+            getVisibleCells={getVisibleCells}
+            Dropdown={Dropdown}
+            original={original}
+          />
         ))}
       </div>
 

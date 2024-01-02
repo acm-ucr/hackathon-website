@@ -2,6 +2,7 @@ import Tag from "@/components/dynamic/admin/Tag";
 import { COLORS } from "../Tags";
 import Checkbox from "@/components/dynamic/Checkbox";
 import View from "@/components/dynamic/admin/dashboards/dashboard/View";
+import { ICONS } from "./Icons";
 
 export const STATUSES = {
   1: "accepted",
@@ -98,13 +99,13 @@ const attributes = [
   "restriction",
 ];
 
-export const DROPDOWN = ({ object, icons }) => {
+export const DROPDOWN = ({ object }) => {
   return (
     <div className="flex justify-center items-center">
       <div className="grid grid-cols-3 w-11/12">
         {attributes.map((attribute, index) => (
           <div key={index} className="my-1 px-1 flex text-sm">
-            {icons[attribute]}
+            {ICONS[attribute]}
             {Array.isArray(object[attribute])
               ? object[attribute].join(",")
               : object[attribute]}
