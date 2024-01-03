@@ -9,8 +9,9 @@ import { useState } from "react";
 import Toolbar from "./Toolbar";
 import Filters from "./Filters";
 import Table from "./Table";
+import Title from "../../Title";
 
-const Dashboard = ({ columns, page, tags, statuses, Dropdown }) => {
+const Dashboard = ({ title, columns, page, tags, statuses, Dropdown }) => {
   const [data, setData] = useState([]);
   const [filters, setFilters] = useState([{ id: "status", value: [-1, 0, 1] }]);
   const [selected, setSelected] = useState([]);
@@ -41,8 +42,15 @@ const Dashboard = ({ columns, page, tags, statuses, Dropdown }) => {
   });
 
   return (
-    <div className="w-full overflow-scroll p-2">
-      <Filters statuses={statuses} filters={filters} setFilters={setFilters} />
+    <div className="w-full overflow-scroll">
+      <div className="flex items-center my-2">
+        <Title title={title} />
+        <Filters
+          statuses={statuses}
+          filters={filters}
+          setFilters={setFilters}
+        />
+      </div>
       <Toolbar
         page={page}
         filters={filters}

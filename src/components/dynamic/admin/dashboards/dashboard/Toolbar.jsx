@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import Popup from "../../Popup";
 import Tag from "../../Tag";
 import { COLORS } from "@/data/dynamic/Tags";
+import Input from "../../Input";
 
 const Toolbar = ({
   page,
@@ -133,7 +134,7 @@ const Toolbar = ({
     );
 
   return (
-    <div className="flex">
+    <div className="flex items-center my-2 gap-3">
       {tags.map((tag, index) => (
         <Tag
           key={index}
@@ -142,14 +143,16 @@ const Toolbar = ({
           color={COLORS[tag.value]}
         />
       ))}
-      <input
-        type="text"
-        value={value}
+      <Input
+        classes="w-full"
         placeholder="Search"
-        onChange={(e) => onChange("name", e.target.value)}
-        className="focus:outline-none"
+        showLabel={false}
+        maxLength={100}
+        clear={true}
+        value={value}
+        onChangeFn={(e) => onChange("name", e.target.value)}
+        clearFn={() => onChange("name", "")}
       />
-
       <FaUndoAlt
         size={22.5}
         onClick={handleReload}
