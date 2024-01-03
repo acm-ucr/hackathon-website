@@ -1,5 +1,3 @@
-import React from "react";
-
 const Error = ({ code, error, message, dev }) => {
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center fixed">
