@@ -8,7 +8,7 @@ import Interests from "@/components/dynamic/admin/dashboards/Interests";
 import Judges from "@/components/dynamic/admin/dashboards/Judges";
 import Judging from "@/components/dynamic/admin/services/judging/Judging";
 import Mentors from "@/components/dynamic/admin/dashboards/Mentors";
-import Messenger from "@/components/dynamic/admin/services/Messenger";
+import Contacts from "@/components/dynamic/admin/services/contacts/Contacts";
 import Participants from "@/components/dynamic/admin/dashboards/Participants";
 import Prizes from "@/components/dynamic/admin/services/Prizes";
 import Sponsors from "@/components/dynamic/admin/dashboards/Sponsors";
@@ -28,7 +28,7 @@ const Page = ({ params }) => {
     judges: <Judges />,
     judging: <Judging />,
     mentors: <Mentors />,
-    messenger: <Messenger />,
+    contacts: <Contacts />,
     participants: <Participants />,
     prizes: <Prizes />,
     sponsors: <Sponsors />,
