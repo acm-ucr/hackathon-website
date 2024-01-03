@@ -12,9 +12,11 @@ const Error = ({ code, error, message, dev }) => {
       <p className="text-center text-sm md:text-lg  text-hackathon-blue-200 m-0">
         {message}
       </p>
-      <p className="text-center text-sm md:text-lg text-hackathon-blue-200 m-0">
-        Developer Notes: {dev}
-      </p>
+      {dev && (
+        <p className="text-center text-sm md:text-lg text-hackathon-blue-200 m-0">
+          Developer Notes: {dev}
+        </p>
+      )}
     </div>
   );
 };
