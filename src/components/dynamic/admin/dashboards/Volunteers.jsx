@@ -6,7 +6,7 @@ import {
   DROPDOWN,
 } from "@/data/dynamic/admin/Volunteers";
 import Title from "../Title";
-import Table from "./dashboard/Table";
+import Table from "./dashboard/Dashboard";
 
 const Volunteers = () => {
   return (

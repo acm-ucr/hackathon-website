@@ -66,22 +66,8 @@ const Toolbar = ({
   };
 
   const confirmDelete = () => {
-    const winners = rows.some((obj) => obj.status === 2);
-
     if (rows.length === 0) {
       toast("❌ No rows selected for deletion.");
-      return;
-    }
-
-    if (winners) {
-      setPopup({
-        title: "Status Change Restricted",
-        text: "Changing status from 'winner' is restricted. You can check the prizes page for more information.",
-        color: "green",
-        visible: true,
-        onClick: () => router.push("/admin/prizes"),
-        button: "prizes",
-      });
       return;
     }
 
@@ -105,21 +91,6 @@ const Toolbar = ({
 
     if (notPending) {
       toast("❌ Only pending items can be changed!");
-      toggleAllRowsSelected(false);
-      return;
-    }
-
-    const winners = rows.some((obj) => obj.status === 2);
-
-    if (winners) {
-      setPopup({
-        title: "Status Change Restricted",
-        text: "Changing status from 'winner' is restricted. You can check the prizes page for more information.",
-        color: "green",
-        visible: true,
-        onClick: () => router.push("/admin/prizes"),
-        button: "prizes",
-      });
       toggleAllRowsSelected(false);
       return;
     }

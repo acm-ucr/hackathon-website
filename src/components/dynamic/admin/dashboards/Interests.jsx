@@ -1,7 +1,7 @@
 "use client";
 import { STATUSES, TAGS, COLUMNS } from "@/data/dynamic/admin/Interests.js";
 import Title from "../Title";
-import Table from "./dashboard/Table";
+import Table from "./dashboard/Dashboard";
 
 const Interests = () => {
   return (
