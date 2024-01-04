@@ -16,6 +16,7 @@ const Select = ({
   const [show, setShow] = useState(false);
   const [input, setInput] = useState("");
   const ref = useRef(null);
+
   const handleClickOutside = (event) => {
     if (ref.current && !ref.current.contains(event.target)) {
       setShow(false);
@@ -34,12 +35,14 @@ const Select = ({
 
     return () => clearTimeout(timeout);
   }, [input]);
+
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
   const handleInput = (e) => {
     setInput(e.target.value);
   };
