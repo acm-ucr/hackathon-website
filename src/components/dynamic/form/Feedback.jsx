@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Form from "@/components/dynamic/form/Form.jsx";
 import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/form/Feedback.js";
-import axios from "axios";
+import { api } from "@/utils/api";
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 
@@ -16,8 +16,11 @@ const Feedback = () => {
   });
 
   const onSubmit = (setLoading) => {
-    axios
-      .post("/api/feedback", feedback)
+    api({
+      method: "POST",
+      url: "/api/dashboard/feedback",
+      body: feedback,
+    })
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
       .finally(() => setLoading(false));

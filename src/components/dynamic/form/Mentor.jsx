@@ -4,7 +4,7 @@ import { useState } from "react";
 import Form from "@/components/dynamic/form/Form.jsx";
 import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/form/Mentors.js";
 import { useSession } from "next-auth/react";
-import axios from "axios";
+import { api } from "@/utils/api";
 import toast from "react-hot-toast";
 import { STATUSES } from "@/data/dynamic/admin/Mentors.js";
 
@@ -20,8 +20,11 @@ const Mentor = () => {
   });
 
   const handleSubmit = (setLoading, setState) => {
-    axios
-      .post("/api/mentors", mentor)
+    api({
+      method: "POST",
+      url: "/api/dashboard/mentors",
+      body: mentor,
+    })
       .then(() => toast(`✅ Submitted successfully!`))
       .catch(() => toast(`❌ Internal Server Error`))
       .finally(() => {

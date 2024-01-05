@@ -8,7 +8,7 @@ describe("Tag", () => {
     const text = "Accept";
 
     cy.mount(<Tag color={color} text={text} onClick={onClick} />);
-    cy.get('[data-cy="Accept-tag"]').contains("Accept");
+    cy.get('[data-cy="Accept-tag"]').contains("accept");
     cy.get('[data-cy="Accept-tag"]').should(
       "have.class",
       "bg-hackathon-tags-green-bg",
@@ -26,7 +26,7 @@ describe("Tag", () => {
     const text = "Pending";
 
     cy.mount(<Tag color={color} text={text} onClick={onClick} />);
-    cy.get('[data-cy="Pending-tag"]').contains("Pending");
+    cy.get('[data-cy="Pending-tag"]').contains("pending");
     cy.get('[data-cy="Pending-tag"]').should(
       "have.class",
       "bg-hackathon-tags-yellow-bg",
@@ -44,7 +44,7 @@ describe("Tag", () => {
     const text = "Reject";
 
     cy.mount(<Tag color={color} text={text} onClick={onClick} />);
-    cy.get('[data-cy="Reject-tag"]').contains("Reject");
+    cy.get('[data-cy="Reject-tag"]').contains("reject");
     cy.get('[data-cy="Reject-tag"]').should(
       "have.class",
       "bg-hackathon-tags-red-bg",
@@ -69,7 +69,7 @@ describe("Tag", () => {
         classes="border-2 border-black"
       />
     );
-    cy.get('[data-cy="Accept-tag"]').contains("Accept");
+    cy.get('[data-cy="Accept-tag"]').contains("accept");
     cy.get('[data-cy="Accept-tag"]').should(
       "have.class",
       "bg-hackathon-tags-green-bg",
@@ -88,7 +88,7 @@ describe("Tag", () => {
     const text = "Accept";
 
     cy.mount(<Tag color={color} text={text} />);
-    cy.get('[data-cy="Accept-tag"]').contains("Accept");
+    cy.get('[data-cy="Accept-tag"]').contains("accept");
     cy.get('[data-cy="Accept-tag"]').should(
       "have.class",
       "bg-hackathon-tags-green-bg",
