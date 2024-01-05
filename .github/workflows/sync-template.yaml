@@ -16,6 +16,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: ${{ github.repository }}
+          token: ${{ secrets.WORKFLOW_TOKEN }}
 
       - name: Fetch all
         working-directory: ${{ github.repository }}
