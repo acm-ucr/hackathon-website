@@ -16,6 +16,7 @@ import { api } from "@/utils/api";
 const reset = {
   category: "",
   prize: "",
+  team: "",
   status: 0,
 };
 
@@ -245,18 +246,29 @@ const Toolbar = ({ objects, setObjects, teams, setTeams, tags, empty }) => {
         )}
       </form>
       <div className="flex gap-2">
-        <Input
-          setObject={setPrize}
-          object={prize}
-          label="category"
-          maxLength={30}
-        />
-        <Input
-          setObject={setPrize}
-          object={prize}
-          label="prize"
-          maxLength={30}
-        />
+        <div className="w-full flex gap-2">
+          <Input
+            setObject={setPrize}
+            object={prize}
+            label="category"
+            placeholder="Best Overall Hack"
+            maxLength={30}
+          />
+          <Input
+            setObject={setPrize}
+            object={prize}
+            label="prize"
+            placeholder="1st Place"
+            maxLength={30}
+          />
+          <Input
+            setObject={setPrize}
+            object={prize}
+            label="team"
+            placeholder="My Hackathon Team"
+            maxLength={30}
+          />
+        </div>
         <Dropdown
           option={team}
           setOption={setTeam}

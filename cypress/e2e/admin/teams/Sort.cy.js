@@ -11,26 +11,26 @@ describe("Team Sort", () => {
     });
   });
 
-  it("Sort Name Up", () => {
-    const sorted = teams.sort((a, b) => (a.name > b.name ? -1 : 1));
+  it("Sort Id Up", () => {
+    const sorted = teams.sort((a, b) => (a.uid > b.uid ? -1 : 1));
 
-    cy.get('[data-cy="name-sort-up"]').click();
+    cy.get('[data-cy="uid-sort-up"]').click();
 
     cy.get('[data-cy="table"]').within(() => {
-      cy.get('[data-cy="name"]').each((element, index) => {
-        expect(element.text()).to.equal(sorted[index].name);
+      cy.get('[data-cy="uid"]').each((element, index) => {
+        expect(element.text()).to.equal(sorted[index].uid);
       });
     });
   });
 
-  it("Sort Name Down", () => {
-    const sorted = teams.sort((a, b) => (b.name > a.name ? -1 : 1));
+  it("Sort Id Down", () => {
+    const sorted = teams.sort((a, b) => (b.uid > a.uid ? -1 : 1));
 
-    cy.get('[data-cy="name-sort-down"]').click();
+    cy.get('[data-cy="uid-sort-down"]').click();
 
     cy.get('[data-cy="table"]').within(() => {
-      cy.get('[data-cy="name"]').each((element, index) => {
-        expect(element.text()).to.equal(sorted[index].name);
+      cy.get('[data-cy="uid"]').each((element, index) => {
+        expect(element.text()).to.equal(sorted[index].uid);
       });
     });
   });

@@ -19,7 +19,7 @@ const Volunteer = () => {
     form: "volunteers",
   });
 
-  const handleSubmit = (setLoading) => {
+  const handleSubmit = (setLoading, setState) => {
     api({
       method: "POST",
       url: "/api/dashboard/volunteers",

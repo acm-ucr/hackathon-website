@@ -91,8 +91,8 @@ export const TABS = {
           icon: <FaCalendarDay className={iconStyle} />,
         },
         {
-          name: "messenger",
-          link: "/admin/messenger",
+          name: "contacts",
+          link: "/admin/contacts",
           icon: <FaEnvelope className={iconStyle} />,
         },
         {
