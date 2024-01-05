@@ -1,13 +1,42 @@
 import { NextResponse } from "next/server";
 import { db } from "../../../utils/firebase";
-import {
-  where,
-  query,
-  collection,
-  getCountFromServer,
-  getDocs,
-} from "firebase/firestore";
+import { collection, getDocs, getDoc, doc } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
+
+// used for initial setup, in case becomes innacurate
+// async function syncStatsWithDatabase() {
+//   await updateRoleCounts("participants");
+// 	await updateRoleCounts("volunteers");
+// 	await updateRoleCounts("judges");
+// 	await updateRoleCounts("mentors");
+// 	await updateRoleCounts("committees");
+// 	await updateRoleCounts("sponsors");
+// 	await updateRoleCounts("admins");
+//   await updateRoleCounts("teams");
+// }
+// const getRoleCount = async (role, value) => {
+//   return (
+//     await getDocs(
+//       query(
+//         collection(db, "users"),
+//         where(`roles.${role}`, "==", value)
+//       )
+//     )
+//   ).size;
+// };
+// async function updateRoleCounts(role) {
+//   const [roleMinusOneCount, roleZeroCount, roleOneCount] = await Promise.all([
+//     getRoleCount(role, -1),
+//     getRoleCount(role, 0),
+//     getRoleCount(role, 1),
+//   ]);
+
+//   await updateDoc(doc(db, "statistics", "statistics"), {
+//     [`${role}.-1`]: roleMinusOneCount,
+//     [`${role}.0`]: roleZeroCount,
+//     [`${role}.1`]: roleOneCount,
+//   });
+// }
 
 export async function GET() {
   const res = NextResponse;
@@ -23,62 +52,17 @@ export async function GET() {
   }
 
   try {
-    const participants = (
-      await getCountFromServer(
-        query(
-          collection(db, "users"),
-          where("roles.participants", "in", [-1, 0, 1])
-        )
-      )
-    ).data().count;
+    // await syncStatsWithDatabase();
+    const docStats = await getDoc(doc(db, "statistics", "statistics"));
 
-    const teams = (
-      await getCountFromServer(query(collection(db, "teams")))
-    ).data().count;
-
-    const judges = (
-      await getCountFromServer(
-        query(collection(db, "users"), where("roles.judges", "in", [-1, 0, 1]))
-      )
-    ).data().count;
-
-    const volunteers = (
-      await getCountFromServer(
-        query(
-          collection(db, "users"),
-          where("roles.volunteers", "in", [-1, 0, 1])
-        )
-      )
-    ).data().count;
-
-    const mentors = (
-      await getCountFromServer(
-        query(collection(db, "users"), where("roles.mentors", "in", [-1, 0, 1]))
-      )
-    ).data().count;
-
-    const committees = (
-      await getCountFromServer(
-        query(
-          collection(db, "users"),
-          where("roles.committees", "in", [-1, 0, 1])
-        )
-      )
-    ).data().count;
-    const sponsors = (
-      await getCountFromServer(
-        query(
-          collection(db, "users"),
-          where("roles.sponsors", "in", [-1, 0, 1])
-        )
-      )
-    ).data().count;
-
-    const admins = (
-      await getCountFromServer(
-        query(collection(db, "users"), where("roles.admins", "in", [-1, 0, 1]))
-      )
-    ).data().count;
+    const participants = docStats.data().participants["1"];
+    const volunteers = docStats.data().volunteers["1"];
+    const judges = docStats.data().judges["1"];
+    const mentors = docStats.data().mentors["1"];
+    const committees = docStats.data().committees["1"];
+    const sponsors = docStats.data().sponsors["1"];
+    const admins = docStats.data().admins["1"];
+    const teams = docStats.data().teams["1"];
 
     const events = await getDocs(collection(db, "events"));
 
