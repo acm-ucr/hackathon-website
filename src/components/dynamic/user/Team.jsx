@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import Loading from "../Loading";
 import { BiLink, BiSolidCopy } from "react-icons/bi";
-import axios from "axios";
 import { api } from "@/utils/api";
 
 const Team = ({ user, setUser }) => {
@@ -49,19 +48,18 @@ const Team = ({ user, setUser }) => {
       toast("❌ Enter a Valid Team ID");
       return;
     }
-    axios
-      .put("/api/members", { team: id.team })
-      .then(() => {
-        toast("✅ Successfully joined team!");
-        setUser({ ...user, team: id.team });
-      })
-      .catch(({ response: data }) => {
-        if (data.data.message === "Exceed 4 People Limit")
-          toast("❌ Exceeded 4 People Limit");
-        else if (data.data.message === "Invalid Team ID")
-          toast("❌ Invalid Team ID");
-        else toast("❌ Internal Server Error");
-      });
+    api({
+      method: "PUT",
+      url: "/api/members",
+      body: { team: id.team },
+    }).then((response) => {
+      if (response.message !== "OK") {
+        toast(`❌ ${response.message}`);
+        return;
+      }
+      toast("✅ Successfully joined team!");
+      setUser({ ...user, team: id.team });
+    });
   };
 
   const handleCreate = () => {
