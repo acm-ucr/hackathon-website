@@ -3,7 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["plugin:react/recommended", "google", "prettier"],
+  "extends": ["next", "google", "prettier"],
   "overrides": [],
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -11,9 +11,14 @@
   },
   "plugins": ["react"],
   "rules": {
-    "require-jsdoc": "off",
-    "react/react-in-jsx-scope": "off",
-    "react/prop-types": "off"
+    "require-jsdoc": 0,
+    "react/react-in-jsx-scope": 0,
+    "react/prop-types": 0,
+
+    // "import/no-anonymous-default-export": 0,
+    // "react-hooks/exhaustive-deps": 0,
+    "react-hooks/rules-of-hooks": 0
+    // "@next/next/no-img-element":0
   },
   "settings": {
     "react": {
