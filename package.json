@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@auth/firebase-adapter": "^1.0.3",
-    "axios": "^1.6.0",
     "bootstrap": "^5.3.2",
     "compressorjs": "^1.2.1",
     "firebase": "^10.5.2",

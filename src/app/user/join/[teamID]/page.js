@@ -5,49 +5,51 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 import Fault from "@/utils/error";
-import axios from "axios";
+import { api } from "@/utils/api";
 
 export default function page({ params }) {
   const [team, setTeam] = useState(null);
   const router = useRouter();
   const { update: sessionUpdate } = useSession();
   const handleJoin = () => {
-    axios
-      .put("/api/members", { team: params.teamID })
-      .then(() => {
-        toast("✅ Successfully joined team!");
-        sessionUpdate({
-          team: params.teamID,
-        });
-        router.push("/user");
-      })
-      .catch((response) => {
-        if (response.data.message === "Excceed 4 People Limit")
-          toast("❌ Exceeded 4 People Limit");
-        else if (response.data.message === "Invalid Team ID")
-          toast("❌ Invalid Team ID");
-        else toast("❌ Internal Server Error");
+    api({
+      method: "PUT",
+      url: "/api/members",
+      body: { team: params.teamID },
+    }).then((response) => {
+      if (response.message !== "OK") {
+        toast(`❌ ${response.message}`);
+        return;
+      }
+      toast("✅ Successfully joined team!");
+      sessionUpdate({
+        team: params.teamID,
       });
+      router.push("/user");
+    });
   };
   useEffect(() => {
     if (params.teamID) {
-      axios
-        .get(`/api/team?teamid=${params.teamID}`)
-        .then((response) => setTeam(response.data.items))
-        .catch(({ response: data }) => {
-          if (data.data.message === "Invalid Team ID")
-            throw new Fault(
-              404,
-              "Invalid Team ID",
-              "Please get a new team invite"
-            );
-          else
-            throw new Fault(
-              500,
-              "Internal Server Error",
-              "Please contact the software engineering team for assistance"
-            );
-        });
+      api({
+        method: "GET",
+        url: `/api/team?teamid=${params.teamID}`,
+      }).then((response) => {
+        if (response.message === "OK") {
+          setTeam(response.items);
+        } else if (response.message === "Invalid Team ID") {
+          throw new Fault(
+            404,
+            "Invalid Team ID",
+            "Please get a new team invite"
+          );
+        } else {
+          throw new Fault(
+            500,
+            "Internal Server Error",
+            "Please contact the software engineering team for assistance"
+          );
+        }
+      });
     }
   }, []);
 
