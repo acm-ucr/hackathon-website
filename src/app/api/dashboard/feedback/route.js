@@ -32,17 +32,15 @@ export async function POST(req) {
   } = await req.json();
 
   try {
-    await Promise.all(
-      addDoc(collection(db, "feedback"), {
-        rating: parseInt(rating),
-        additionalComments,
-        eventSource,
-        improvements,
-        notBeneficial,
-        helpful,
-        status: 0,
-      })
-    );
+    await addDoc(collection(db, "feedback"), {
+      rating: parseInt(rating),
+      additionalComments,
+      eventSource,
+      improvements,
+      notBeneficial,
+      helpful,
+      status: 0,
+    });
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
@@ -67,7 +65,7 @@ export async function GET() {
 
   try {
     const snapshot = await getDocs(collection(db, "feedback"));
-    const promises = snapshot.docs.map(async (doc) => {
+    snapshot.forEach((doc) => {
       const {
         rating,
         additionalComments,
@@ -77,7 +75,7 @@ export async function GET() {
         helpful,
         status,
       } = doc.data();
-      return {
+      output.push({
         uid: doc.id,
         rating,
         additionalComments,
@@ -86,9 +84,8 @@ export async function GET() {
         notBeneficial,
         helpful,
         status,
-      };
+      });
     });
-    output.push(...(await Promise.all(promises)));
     return res.json({ message: "OK", items: output }, { status: 200 });
   } catch (err) {
     return res.json(
@@ -112,13 +109,11 @@ export async function PUT(req) {
   const { objects, status } = await req.json();
 
   try {
-    await Promise.all(
-      objects.map(async (object) => {
-        await updateDoc(doc(db, "feedback", object.uid), {
-          status: status,
-        });
-      })
-    );
+    objects.map(async (object) => {
+      await updateDoc(doc(db, "feedback", object.uid), {
+        status: status,
+      });
+    });
 
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
@@ -141,11 +136,9 @@ export async function DELETE(req) {
     );
   }
   try {
-    await Promise.all(
-      objects.map(async (object) => {
-        await deleteDoc(doc(db, "feedback", object));
-      })
-    );
+    objects.map(async (object) => {
+      await deleteDoc(doc(db, "feedback", object));
+    });
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(

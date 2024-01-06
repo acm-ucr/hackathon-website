@@ -132,22 +132,20 @@ export async function PUT(req, { params }) {
   }
   try {
     if (types.has(params.type)) {
-      await Promise.all(
-        objects.map(async (object) => {
-          await updateDoc(doc(db, "users", object.uid), {
-            [`roles.${params.type}`]: status,
-          });
-          await EmailService.send({
-            email: object.email,
-            id:
-              status === 1
-                ? process.env.EMAIL_ACCEPTANCE_TEMPLATE
-                : process.env.EMAIL_REJECTION_TEMPLATE,
-            name: object.name,
-            position: params.type.slice(0, -1).toUpperCase(),
-          });
-        })
-      );
+      objects.map(async (object) => {
+        await updateDoc(doc(db, "users", object.uid), {
+          [`roles.${params.type}`]: status,
+        });
+        await EmailService.send({
+          email: object.email,
+          id:
+            status === 1
+              ? process.env.EMAIL_ACCEPTANCE_TEMPLATE
+              : process.env.EMAIL_REJECTION_TEMPLATE,
+          name: object.name,
+          position: params.type.slice(0, -1).toUpperCase(),
+        });
+      });
     }
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
@@ -171,13 +169,11 @@ export async function DELETE(req, { params }) {
   }
   try {
     if (types.has(params.type)) {
-      await Promise.all(
-        objects.map(async (object) => {
-          await updateDoc(doc(db, "users", object), {
-            [`roles.${params.type}`]: deleteField(),
-          });
-        })
-      );
+      objects.map(async (object) => {
+        await updateDoc(doc(db, "users", object), {
+          [`roles.${params.type}`]: deleteField(),
+        });
+      });
     }
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
