@@ -39,6 +39,8 @@ const CalendarEvents = () => {
     });
 
     Promise.all([hackathon, leads]).then(([hackathonData, leadsData]) => {
+      console.log(hackathonData, leadsData);
+
       const hackathonItems = hackathonData.items;
       const leadsItems = leadsData.items;
 
