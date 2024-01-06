@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import LOGO from "../../../public/UCRLOGO.png";
+import LOGO from "@/public/UCRLOGO.png";
 import Image from "next/image";
 import Link from "next/link";
 import { TABS } from "@/data/dynamic/Navigation";
