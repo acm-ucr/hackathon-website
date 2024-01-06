@@ -1,11 +1,14 @@
+import Confetti from "react-confetti";
+import { useWindowSize } from "react-use";
+
 const Confirmation = () => {
+  const { width, height } = useWindowSize();
   return (
-    <div>
-      <p>
-        Thank you for filling out the application form. Please watch out for an
-        email with an application status update.
-      </p>
-    </div>
+    <>
+      <Confetti height={height} width={width} />
+      Thank you for filling out the application form. Please watch out for an
+      email with an application status update.
+    </>
   );
 };
 
