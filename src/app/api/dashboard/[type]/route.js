@@ -58,7 +58,7 @@ export async function POST(req, { params }) {
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
-      { message: `Internal Server Error: ${err}, Stack trace: ${err.stack}` },
+      { message: `Internal Server Error: ${err}, Stack: ${err.stack}` },
       { status: 500 }
     );
   }
