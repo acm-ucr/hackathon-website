@@ -32,19 +32,6 @@ export const HEADERS = [
   },
 ];
 
-export const AUTH = {
-  POST: {},
-  GET: {
-    admins: [1],
-  },
-  PUT: {
-    admins: [1],
-  },
-  DELETE: {
-    admins: [1],
-  },
-};
-
 export const STATUSES = {
   1: "notified",
   0: "unnotified",

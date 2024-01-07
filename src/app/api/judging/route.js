@@ -10,7 +10,7 @@ import {
   deleteField,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
-import { AUTH } from "@/data/dynamic/admin/Judges";
+import { AUTH } from "@/data/dynamic/admin/Dashboard";
 
 export async function GET() {
   const res = NextResponse;

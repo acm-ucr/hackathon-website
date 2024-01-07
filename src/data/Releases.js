@@ -1,13 +1,5 @@
 const DEV = {
   STATIC: {
-    UPCOMING: {
-      START: new Date("10/01/2023"),
-      END: new Date("10/10/2024"),
-    },
-    PRELIVE: {
-      START: new Date("10/01/2023"),
-      END: new Date("10/10/2024"),
-    },
     LIVE: {
       START: new Date("10/01/2023"),
       END: new Date("10/10/2024"),
@@ -52,14 +44,6 @@ const DEV = {
 
 const PRODUCTION = {
   STATIC: {
-    UPCOMING: {
-      START: new Date("10/01/2023"),
-      END: new Date("10/10/2024"),
-    },
-    PRELIVE: {
-      START: new Date("10/01/2023"),
-      END: new Date("10/10/2024"),
-    },
     LIVE: {
       START: new Date("10/01/2023"),
       END: new Date("10/10/2024"),

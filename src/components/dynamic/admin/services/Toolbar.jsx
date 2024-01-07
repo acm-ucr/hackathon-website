@@ -8,14 +8,15 @@ import Popup from "../Popup";
 import { FaTrashAlt } from "react-icons/fa";
 import { FaUndoAlt } from "react-icons/fa";
 import { v4 as uuid } from "uuid";
-import axios from "axios";
 import toast from "react-hot-toast";
 import Tag from "../Tag.jsx";
 import { COLORS } from "@/data/dynamic/Tags";
+import { api } from "@/utils/api";
 
 const reset = {
   category: "",
   prize: "",
+  team: "",
   status: 0,
 };
 
@@ -38,11 +39,17 @@ const Toolbar = ({ objects, setObjects, teams, setTeams, tags, empty }) => {
   const onClick = (value) => {
     setToggle(false);
     const items = objects.filter((object) => object.selected);
-    axios.put(`/api/prizes`, {
-      objects: items,
-      status: value,
-      attribute: "status",
+
+    api({
+      method: "PUT",
+      url: `/api/prizes`,
+      body: {
+        objects: items,
+        status: value,
+        attribute: "status",
+      },
     });
+
     setObjects(
       objects.map((a) => {
         if (a.selected) {
@@ -94,9 +101,10 @@ const Toolbar = ({ objects, setObjects, teams, setTeams, tags, empty }) => {
       .join(",");
 
     setObjects(keep);
-    axios
-      .delete(`/api/prizes?ids=${remove}&teams=${teams}`)
-      .then(() => toast("✅ Successfully deleted!"));
+    api({
+      method: "DELETE",
+      url: `/api/prizes?ids=${remove}&teams=${teams}`,
+    }).then(() => toast("✅ Successfully deleted!"));
   };
 
   const handleAdd = () => {
@@ -111,7 +119,11 @@ const Toolbar = ({ objects, setObjects, teams, setTeams, tags, empty }) => {
 
     if (!Object.values(data).some((val) => val === "")) {
       setObjects([...objects, data]);
-      axios.post("/api/prizes", data).then(() => toast("✅ Prize Added!"));
+      api({
+        method: "POST",
+        url: "/api/prizes",
+        body: data,
+      }).then(() => toast("✅ Prize Added!"));
     } else {
       toast("❌ Please fill out all required fields");
     }
@@ -155,7 +167,11 @@ const Toolbar = ({ objects, setObjects, teams, setTeams, tags, empty }) => {
       })
     );
 
-    axios.put("/api/prizes", data).then(() => toast("✅ Prize Updated"));
+    api({
+      method: "PUT",
+      url: "/api/prizes",
+      body: data,
+    }).then(() => toast("✅ Prize Updated"));
 
     setPrize(reset);
     setTeam({ name: "No Team Selected", id: "" });
@@ -164,9 +180,12 @@ const Toolbar = ({ objects, setObjects, teams, setTeams, tags, empty }) => {
   };
 
   const load = () => {
-    axios.get("/api/prizes").then((response) => {
-      setObjects(response.data.items.prizes);
-      setTeams(response.data.items.teams);
+    api({
+      method: "GET",
+      url: "/api/prizes",
+    }).then(({ items }) => {
+      setObjects(items.prizes);
+      setTeams(items.teams);
     });
   };
 
@@ -227,18 +246,29 @@ const Toolbar = ({ objects, setObjects, teams, setTeams, tags, empty }) => {
         )}
       </form>
       <div className="flex gap-2">
-        <Input
-          setObject={setPrize}
-          object={prize}
-          label="category"
-          maxLength={30}
-        />
-        <Input
-          setObject={setPrize}
-          object={prize}
-          label="prize"
-          maxLength={30}
-        />
+        <div className="w-full flex gap-2">
+          <Input
+            setObject={setPrize}
+            object={prize}
+            label="category"
+            placeholder="Best Overall Hack"
+            maxLength={30}
+          />
+          <Input
+            setObject={setPrize}
+            object={prize}
+            label="prize"
+            placeholder="1st Place"
+            maxLength={30}
+          />
+          <Input
+            setObject={setPrize}
+            object={prize}
+            label="team"
+            placeholder="My Hackathon Team"
+            maxLength={30}
+          />
+        </div>
         <Dropdown
           option={team}
           setOption={setTeam}

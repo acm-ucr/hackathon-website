@@ -24,9 +24,9 @@ export const TAGS = [
 ];
 
 export const HEADERS = [
-  { text: "name", size: "w-2/12", icon: true, sort: "off", symbol: "winner" },
+  { text: "uid", size: "w-2/12", icon: true, sort: "off" },
   { text: "members", size: "w-2/12", icon: false, sort: "off" },
-  { text: "emails", size: "w-3/12", icon: false, sort: "off" },
+  { text: "discords", size: "w-3/12", icon: false, sort: "off" },
   { text: "links", size: "w-3/12", icon: false, sort: "off" },
   {
     text: "status",
@@ -36,19 +36,6 @@ export const HEADERS = [
     hasTag: true,
   },
 ];
-
-export const AUTH = {
-  POST: {},
-  GET: {
-    admins: [1],
-  },
-  PUT: {
-    admins: [1],
-  },
-  DELETE: {
-    admins: [1],
-  },
-};
 
 export const STATUSES = {
   2: "winner",

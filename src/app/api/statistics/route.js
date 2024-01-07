@@ -12,7 +12,7 @@ import { authenticate } from "@/utils/auth";
 export async function GET() {
   const res = NextResponse;
   const { auth } = await authenticate({
-    admins: 1,
+    admins: [1],
   });
 
   if (auth !== 200) {
