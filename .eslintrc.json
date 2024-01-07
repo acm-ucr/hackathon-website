@@ -3,7 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["next", "google", "prettier"],
+  "extends": ["next/core-web-vitals", "google", "prettier"],
   "overrides": [],
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -11,15 +11,10 @@
   },
   "plugins": [],
   "rules": {
-    //setting them to "off" did nothing, need to be set to 0.
     "require-jsdoc": 0,
-
-    //added these bc they're throwing warnings/errors
     "import/no-anonymous-default-export": 0,
-    "react-hooks/exhaustive-deps": 0,
     "react-hooks/rules-of-hooks": 0,
-    "@next/next/no-img-element": 0,
-    "jsx-a11y/alt-text": 0
+    "@next/next/no-img-element": 0
   },
   "settings": {
     "react": {
