@@ -20,7 +20,7 @@ const Status = ({ object, statuses, setState }) => {
         change until approved by an admin.
       </p>
       <p className="text-center">
-        If you believe that your status is incorect, please reach out to us
+        If you believe that your status is incorrect, please reach out to us
         immediately.
       </p>
 
