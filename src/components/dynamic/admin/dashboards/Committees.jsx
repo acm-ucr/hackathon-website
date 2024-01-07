@@ -7,7 +7,7 @@ import {
 } from "@/data/dynamic/admin/Committees.js";
 import Dashboard from "../Dashboard.jsx";
 
-const Comittee = () => {
+const Committee = () => {
   return (
     <Dashboard
       title="Committees"
@@ -20,4 +20,4 @@ const Comittee = () => {
     />
   );
 };
-export default Comittee;
+export default Committee;
