@@ -17,16 +17,16 @@ export async function GET() {
   }
 
   try {
-    const docStats = await getDoc(doc(db, "statistics", "statistics"));
-
-    const participants = docStats.data().participants["1"];
-    const volunteers = docStats.data().volunteers["1"];
-    const judges = docStats.data().judges["1"];
-    const mentors = docStats.data().mentors["1"];
-    const committees = docStats.data().committees["1"];
-    const sponsors = docStats.data().sponsors["1"];
-    const admins = docStats.data().admins["1"];
-    const teams = docStats.data().teams["1"];
+    const {
+      teams: { 1: teams },
+      participants: { 1: participants },
+      volunteers: { 1: volunteers },
+      judges: { 1: judges },
+      mentors: { 1: mentors },
+      committees: { 1: committees },
+      sponsors: { 1: sponsors },
+      admins: { 1: admins },
+    } = (await getDoc(doc(db, "statistics", "statistics"))).data();
 
     const events = await getDocs(collection(db, "events"));
 
