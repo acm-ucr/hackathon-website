@@ -41,18 +41,22 @@ export async function POST(req, { params }) {
       ATTRIBUTES[params.type].forEach((attribute) => {
         element[attribute] = data[attribute];
       });
-      await updateDoc(doc(db, "users", user.id), {
-        ...element,
-        timestamp: Timestamp.now(),
-        [`roles.${params.type}`]: 0,
-      });
+      await Promise.all(
+        updateDoc(doc(db, "users", user.id), {
+          ...element,
+          timestamp: Timestamp.now(),
+          [`roles.${params.type}`]: 0,
+        })
+      );
 
-      await EmailService.send({
-        email: user.email,
-        id: process.env.EMAIL_CONFIRMATION_TEMPLATE,
-        name: user.name,
-        position: params.type.slice(0, -1).toUpperCase(),
-      });
+      await Promise.all(
+        EmailService.send({
+          email: user.email,
+          id: process.env.EMAIL_CONFIRMATION_TEMPLATE,
+          name: user.name,
+          position: params.type.slice(0, -1).toUpperCase(),
+        })
+      );
     }
 
     return res.json({ message: "OK" }, { status: 200 });
@@ -85,21 +89,22 @@ export async function GET(req, { params }) {
           where(`roles.${params.type}`, "in", [-1, 0, 1])
         )
       );
-      snapshot.forEach((doc) => {
+      const promises = snapshot.docs.map(async (doc) => {
         const data = doc.data();
         const element = {};
         ATTRIBUTES[params.type].forEach((attribute) => {
           element[attribute] = data[attribute];
         });
-        output.push({
+        return {
           ...element,
           uid: doc.id,
           timestamp: data.timestamp,
           status: data.roles[params.type],
           selected: false,
           hidden: false,
-        });
+        };
       });
+      output.push(...(await Promise.all(promises)));
     }
 
     const sorted = output.sort((a, b) =>
