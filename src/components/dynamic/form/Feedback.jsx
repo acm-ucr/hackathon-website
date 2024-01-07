@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Form from "@/components/dynamic/form/Form.jsx";
 import { FIELDS, ATTRIBUTES } from "@/data/dynamic/form/Feedback.js";
-import axios from "axios";
 import { api } from "@/utils/api";
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
