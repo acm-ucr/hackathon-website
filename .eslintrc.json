@@ -14,7 +14,8 @@
     "require-jsdoc": 0,
     "import/no-anonymous-default-export": 0,
     "react-hooks/rules-of-hooks": 0,
-    "@next/next/no-img-element": 0
+    "@next/next/no-img-element": 0,
+    "jsx-a11y/alt-text": 0
   },
   "settings": {
     "react": {
