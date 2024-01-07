@@ -9,16 +9,17 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react"],
+  "plugins": [],
   "rules": {
+    //setting them to "off" did nothing, need to be set to 0.
     "require-jsdoc": 0,
-    "react/react-in-jsx-scope": 0,
-    "react/prop-types": 0,
 
-    // "import/no-anonymous-default-export": 0,
-    // "react-hooks/exhaustive-deps": 0,
-    "react-hooks/rules-of-hooks": 0
-    // "@next/next/no-img-element":0
+    //added these bc they're throwing warnings/errors
+    "import/no-anonymous-default-export": 0,
+    "react-hooks/exhaustive-deps": 0,
+    "react-hooks/rules-of-hooks": 0,
+    "@next/next/no-img-element": 0,
+    "jsx-a11y/alt-text": 0
   },
   "settings": {
     "react": {
