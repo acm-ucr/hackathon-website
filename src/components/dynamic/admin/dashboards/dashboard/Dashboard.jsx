@@ -70,7 +70,6 @@ const Dashboard = ({
         toggleAllRowsSelected={toggleAllRowsSelected}
       />
       <Table
-        length={data.length}
         getHeaderGroups={getHeaderGroups}
         getRowModel={getRowModel}
         getState={getState}

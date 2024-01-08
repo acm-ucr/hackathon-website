@@ -2,7 +2,6 @@ import { flexRender } from "@tanstack/react-table";
 import Body from "./Body";
 
 const Table = ({
-  length,
   getHeaderGroups,
   getRowModel,
   getState,
@@ -32,7 +31,7 @@ const Table = ({
         ))}
       </div>
       <div>
-        {length === 0 && empty}
+        {getRowModel().rows.length === 0 && empty}
         {getRowModel().rows.map(
           ({ id, getVisibleCells, original, getIsSelected }) => (
             <Body
@@ -46,7 +45,7 @@ const Table = ({
         )}
       </div>
       <div className="flex">
-        <div className="mx-2">Showing 10 of {length}</div>
+        <div className="mx-2">Showing {getRowModel().rows.length} rows</div>
         <button onClick={() => previousPage()} disabled={!getCanPreviousPage()}>
           {"<"}
         </button>
