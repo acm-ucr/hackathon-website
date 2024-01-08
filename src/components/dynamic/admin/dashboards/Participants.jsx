@@ -17,6 +17,7 @@ const Participants = () => {
         page="participants"
         statuses={STATUSES}
         Dropdown={DROPDOWN}
+        empty="No Participants Available"
       />
     </div>
   );

@@ -11,6 +11,7 @@ const Admin = () => {
         tags={TAGS}
         page="admins"
         statuses={STATUSES}
+        empty="No Admins Available"
       />
     </div>
   );

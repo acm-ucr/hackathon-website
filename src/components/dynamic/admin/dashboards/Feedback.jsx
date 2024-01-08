@@ -17,6 +17,7 @@ const Admin = () => {
         page="feedback"
         statuses={STATUSES}
         dropdown={DROPDOWN}
+        empty="No Feedback Available"
       />
     </div>
   );

@@ -11,7 +11,15 @@ import Filters from "./Filters";
 import Table from "./Table";
 import Title from "../../Title";
 
-const Dashboard = ({ title, columns, page, tags, statuses, Dropdown }) => {
+const Dashboard = ({
+  title,
+  columns,
+  page,
+  tags,
+  statuses,
+  Dropdown,
+  empty,
+}) => {
   const [data, setData] = useState([]);
   const [filters, setFilters] = useState([{ id: "status", value: [-1, 0, 1] }]);
   const [selected, setSelected] = useState([]);
@@ -62,7 +70,7 @@ const Dashboard = ({ title, columns, page, tags, statuses, Dropdown }) => {
         toggleAllRowsSelected={toggleAllRowsSelected}
       />
       <Table
-        data={data}
+        length={data.length}
         getHeaderGroups={getHeaderGroups}
         getRowModel={getRowModel}
         getState={getState}
@@ -72,6 +80,7 @@ const Dashboard = ({ title, columns, page, tags, statuses, Dropdown }) => {
         getCanNextPage={getCanNextPage}
         getPageCount={getPageCount}
         Dropdown={Dropdown}
+        empty={empty}
       />
     </div>
   );

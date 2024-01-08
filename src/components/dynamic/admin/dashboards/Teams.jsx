@@ -11,6 +11,7 @@ const Teams = () => {
         tags={TAGS}
         page="teams"
         statuses={STATUSES}
+        empty="No Teams Available"
       />
     </div>
   );

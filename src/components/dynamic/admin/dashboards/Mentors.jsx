@@ -17,6 +17,7 @@ const Mentors = () => {
         page="mentors"
         statuses={STATUSES}
         Dropdown={DROPDOWN}
+        empty="No Mentors Available"
       />
     </div>
   );

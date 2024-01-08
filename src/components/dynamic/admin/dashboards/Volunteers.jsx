@@ -17,6 +17,7 @@ const Volunteers = () => {
         page="volunteers"
         statuses={STATUSES}
         Dropdown={DROPDOWN}
+        empty="No Volunteers Available"
       />
     </div>
   );

@@ -11,6 +11,7 @@ const Sponsors = () => {
         tags={TAGS}
         page="sponsors"
         statuses={STATUSES}
+        empty="No Sponsors Available"
       />
     </div>
   );

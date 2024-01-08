@@ -11,6 +11,7 @@ const Interests = () => {
         tags={TAGS}
         page="interests"
         statuses={STATUSES}
+        empty="No Interests Available"
       />
     </div>
   );

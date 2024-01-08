@@ -11,6 +11,7 @@ const Judges = () => {
         tags={TAGS}
         page="judges"
         statuses={STATUSES}
+        empty="No Judges Available"
       />
     </div>
   );

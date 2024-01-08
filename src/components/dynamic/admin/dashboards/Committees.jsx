@@ -11,6 +11,7 @@ const Committee = () => {
         tags={TAGS}
         page="committees"
         statuses={STATUSES}
+        empty="No Committees Available"
       />
     </div>
   );
