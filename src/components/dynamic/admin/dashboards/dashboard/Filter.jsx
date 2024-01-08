@@ -32,6 +32,7 @@ const Filter = ({ value, status, isActive, setFilters }) => {
             ? "text-white bg-hackathon-blue-100"
             : "text-hackathon-blue-100 bg-white"
         } cursor-pointer flex items-center justify-between w-full`}
+        data-cy={status + "-filter"}
       >
         <p className="my-0 mx-1 px-1 py-[2px] whitespace-nowrap">{status}</p>
         <TiPlus

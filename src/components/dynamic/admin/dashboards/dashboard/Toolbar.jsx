@@ -144,6 +144,7 @@ const Toolbar = ({
         />
       ))}
       <Input
+        label="search"
         classes="w-full"
         placeholder="Search"
         showLabel={false}

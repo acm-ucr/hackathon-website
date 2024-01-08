@@ -19,7 +19,11 @@ const Table = ({
         {getHeaderGroups().map(({ headers, id }) => (
           <div key={id} className="flex items-center px-3 py-2">
             {headers.map(({ id, column, getContext }) => (
-              <div key={id} className={`${column.columnDef.width}`}>
+              <div
+                key={id}
+                className={`${column.columnDef.width}`}
+                data-cy="header"
+              >
                 {flexRender(column.columnDef.header, getContext())}
               </div>
             ))}
@@ -27,14 +31,18 @@ const Table = ({
         ))}
       </div>
       <div>
-        {getRowModel().rows.map(({ id, getVisibleCells, original }) => (
-          <Body
-            key={id}
-            getVisibleCells={getVisibleCells}
-            Dropdown={Dropdown}
-            original={original}
-          />
-        ))}
+        {console.log(getRowModel().rows)}
+        {getRowModel().rows.map(
+          ({ id, getVisibleCells, original, getIsSelected }) => (
+            <Body
+              getIsSelected={getIsSelected}
+              key={id}
+              getVisibleCells={getVisibleCells}
+              Dropdown={Dropdown}
+              original={original}
+            />
+          )
+        )}
       </div>
 
       <div className="flex">
