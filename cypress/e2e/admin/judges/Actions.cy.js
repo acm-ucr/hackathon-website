@@ -17,7 +17,7 @@ describe("Judges Actions", () => {
     );
 
     cy.action({
-      tag: "confirm",
+      tag: "accept",
       page: "judges",
     });
 
@@ -35,7 +35,7 @@ describe("Judges Actions", () => {
     );
 
     cy.action({
-      tag: "not attending",
+      tag: "reject",
       page: "judges",
     });
 
