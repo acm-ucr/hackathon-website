@@ -15,10 +15,10 @@ describe("Judges Filters", () => {
     cy.get('[data-cy="pending-filter"]')
       .get("div")
       .should("have.class", "bg-hackathon-blue-100", "text-white");
-    cy.get('[data-cy="reject-filter"]')
+    cy.get('[data-cy="rejected-filter"]')
       .get("div")
       .should("have.class", "bg-hackathon-blue-100", "text-white");
-    cy.get('[data-cy="accept-filter"]')
+    cy.get('[data-cy="accepted-filter"]')
       .get("div")
       .should("have.class", "bg-hackathon-blue-100", "text-white");
   });
@@ -28,18 +28,18 @@ describe("Judges Filters", () => {
     cy.get('[data-cy="pending-filter"]')
       .get("div")
       .should("have.class", "text-hackathon-blue-100", "bg-white");
-    cy.get('[data-cy="reject-filter"]').click();
-    cy.get('[data-cy="reject-filter"]')
+    cy.get('[data-cy="rejected-filter"]').click();
+    cy.get('[data-cy="rejected-filter"]')
       .get("div")
       .should("have.class", "text-hackathon-blue-100", "bg-white");
-    cy.get('[data-cy="accept-filter"]').click();
-    cy.get('[data-cy="accept-filter"]')
+    cy.get('[data-cy="accepted-filter"]').click();
+    cy.get('[data-cy="accepted-filter"]')
       .get("div")
       .should("have.class", "text-hackathon-blue-100", "bg-white");
   });
 
   it("Click Confirm", () => {
-    cy.get('[data-cy="accept-filter"]').click();
+    cy.get('[data-cy="accepted-filter"]').click();
     judges.forEach((judge) => {
       if (judge.status === 1)
         cy.get(`[data-cy="${judge.uid}"]`).should("not.exist");
@@ -48,7 +48,7 @@ describe("Judges Filters", () => {
   });
 
   it("Click Not Attending", () => {
-    cy.get('[data-cy="reject-filter"]').click();
+    cy.get('[data-cy="rejected-filter"]').click();
     judges.forEach((judge) => {
       if (judge.status === -1)
         cy.get(`[data-cy="${judge.uid}"]`).should("not.exist");
@@ -66,8 +66,8 @@ describe("Judges Filters", () => {
   });
 
   it("Click 2 Filters", () => {
-    cy.get('[data-cy="accept-filter"]').click();
-    cy.get('[data-cy="reject-filter"]').click();
+    cy.get('[data-cy="accepted-filter"]').click();
+    cy.get('[data-cy="rejected-filter"]').click();
     judges.forEach((judge) => {
       if (judge.status === 1 || judge.status === -1)
         cy.get(`[data-cy="${judge.uid}"]`).should("not.exist");
