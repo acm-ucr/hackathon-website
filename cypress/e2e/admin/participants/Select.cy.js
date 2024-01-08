@@ -13,7 +13,7 @@ describe("Participant Select", () => {
   });
 
   it("Select All", () => {
-    cy.get('[data-cy="toolbar"]').find('[data-cy="checkbox"]').click();
+    cy.get('[data-cy="header"]').find('[data-cy="checkbox"]').click();
     participants.forEach((participant) => {
       cy.get(`[data-cy="${participant.uid}"]`).should(
         "have.class",

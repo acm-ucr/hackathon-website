@@ -13,19 +13,16 @@ describe("Sponsor Search", () => {
 
   it("No Search Results", () => {
     cy.get('[data-cy="toolbar"]').find("input").type("Meow");
-    cy.get('[data-cy="toolbar"]').find("form").submit();
     cy.contains("No Sponsors Available");
   });
 
   it("Search For 1st Entry", () => {
     cy.get('[data-cy="toolbar"]').find("input").type(sponsors[0].name);
-    cy.get('[data-cy="toolbar"]').find("form").submit();
     cy.get(`[data-cy="${sponsors[0].uid}"]`).should("exist");
   });
 
   it("Search For Multiple Entries", () => {
     cy.get('[data-cy="toolbar"]').find("input").type("John Cena");
-    cy.get('[data-cy="toolbar"]').find("form").submit();
     sponsors.forEach((sponsor) => {
       if (sponsor.name.toLowerCase().includes("john cena"))
         cy.get(`[data-cy="${sponsor.uid}"]`).should("exist");

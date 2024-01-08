@@ -1,4 +1,3 @@
-import React from "react";
 import Select from "@/components/dynamic/Select";
 import Radio from "@/components/dynamic/Radio";
 import Checkbox from "@/components/dynamic/Checkbox";

@@ -24,7 +24,7 @@ describe("Judges Actions", () => {
     five.forEach((judge) =>
       cy
         .get(`[data-cy="${judge.uid}"]`)
-        .find('[data-cy="1-tag"]')
+        .find('[data-cy="accepted-tag"]')
         .should("exist")
     );
   });
@@ -42,7 +42,7 @@ describe("Judges Actions", () => {
     five.forEach((judge) =>
       cy
         .get(`[data-cy="${judge.uid}"]`)
-        .find('[data-cy="-1-tag"]')
+        .find('[data-cy="rejected-tag"]')
         .should("exist")
     );
   });

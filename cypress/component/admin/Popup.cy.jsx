@@ -1,5 +1,4 @@
 import Popup from "@/components/dynamic/admin/Popup";
-import React from "react";
 import { useState } from "react";
 
 describe("Popup Component", () => {

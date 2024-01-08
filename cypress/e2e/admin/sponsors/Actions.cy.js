@@ -24,7 +24,7 @@ describe("Sponsors Actions", () => {
     five.forEach((sponsor) =>
       cy
         .get(`[data-cy="${sponsor.uid}"]`)
-        .find('[data-cy="1-tag"]')
+        .find('[data-cy="accepted-tag"]')
         .should("exist")
     );
   });
@@ -42,7 +42,7 @@ describe("Sponsors Actions", () => {
     five.forEach((sponsor) =>
       cy
         .get(`[data-cy="${sponsor.uid}"]`)
-        .find('[data-cy="-1-tag"]')
+        .find('[data-cy="rejected-tag"]')
         .should("exist")
     );
   });

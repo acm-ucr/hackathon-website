@@ -26,7 +26,7 @@ describe("Committee Actions", () => {
     five.forEach((committee) =>
       cy
         .get(`[data-cy="${committee.uid}"]`)
-        .find('[data-cy="1-tag"]')
+        .find('[data-cy="accepted-tag"]')
         .should("exist")
     );
   });
@@ -45,7 +45,7 @@ describe("Committee Actions", () => {
     five.forEach((committee) =>
       cy
         .get(`[data-cy="${committee.uid}"]`)
-        .find('[data-cy="-1-tag"]')
+        .find('[data-cy="rejected-tag"]')
         .should("exist")
     );
   });

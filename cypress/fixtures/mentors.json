@@ -100,66 +100,6 @@
       "availability": ["fridayAfternoon", "sundayMorning"],
       "selected": false,
       "hidden": false
-    },
-    {
-      "uid": 11,
-      "name": "John Cena",
-      "email": "cantseeme@ucr.edu",
-      "discord": "babydonthurtme#2067",
-      "status": 0,
-      "availability": ["fridayAfternoon", "sundayMorning"],
-      "selected": false,
-      "hidden": false
-    },
-    {
-      "uid": 12,
-      "name": "John Cena",
-      "email": "cantseeme@ucr.edu",
-      "discord": "babydonthurtme#2067",
-      "status": 0,
-      "availability": ["fridayAfternoon", "sundayMorning"],
-      "selected": false,
-      "hidden": false
-    },
-    {
-      "uid": 13,
-      "name": "John Cena",
-      "email": "cantseeme@ucr.edu",
-      "discord": "babydonthurtme#2067",
-      "status": 0,
-      "availability": ["fridayAfternoon", "sundayMorning"],
-      "selected": false,
-      "hidden": false
-    },
-    {
-      "uid": 14,
-      "name": "John Cena",
-      "email": "cantseeme@ucr.edu",
-      "discord": "babydonthurtme#2067",
-      "status": 0,
-      "availability": ["fridayAfternoon", "sundayMorning"],
-      "selected": false,
-      "hidden": false
-    },
-    {
-      "uid": 15,
-      "name": "John Cena",
-      "email": "cantseeme@ucr.edu",
-      "discord": "babydonthurtme#2067",
-      "status": 0,
-      "availability": ["fridayAfternoon", "sundayMorning"],
-      "selected": false,
-      "hidden": false
-    },
-    {
-      "uid": 16,
-      "name": "John Cena",
-      "email": "cantseeme@ucr.edu",
-      "discord": "babydonthurtme#2067",
-      "status": 0,
-      "availability": ["fridayAfternoon", "sundayMorning"],
-      "selected": false,
-      "hidden": false
     }
   ]
 }

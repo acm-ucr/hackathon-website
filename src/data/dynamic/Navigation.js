@@ -13,7 +13,6 @@ import {
   FaEnvelope,
   FaLock,
   FaCalendarDay,
-  FaMedal,
   FaExclamation,
 } from "react-icons/fa";
 import { AiOutlineQrcode } from "react-icons/ai";
@@ -104,11 +103,6 @@ export const TABS = {
           name: "judging",
           link: "/admin/judging",
           icon: <FaGavel className={iconStyle} />,
-        },
-        {
-          name: "prizes",
-          link: "/admin/prizes",
-          icon: <FaMedal className={iconStyle} />,
         },
         {
           name: "statistics",

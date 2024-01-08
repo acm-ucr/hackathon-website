@@ -1,12 +1,8 @@
-export const FILTERS = {
-  unread: {
-    state: true,
-    value: 0,
-  },
-  read: {
-    state: true,
-    value: 1,
-  },
+import { generateSelect, generateStatus } from "./Columns";
+
+export const STATUSES = {
+  1: "read",
+  0: "unread",
 };
 
 export const TAGS = [
@@ -20,25 +16,33 @@ export const TAGS = [
   },
 ];
 
-export const HEADERS = [
-  { text: "rating", size: "w-1/12", icon: true, sort: "off" },
-  { text: "eventSource", size: "w-2/12" },
-  { text: "improvements", size: "w-3/12" },
+export const COLUMNS = [
+  generateSelect(),
   {
-    text: "helpful",
-    size: "w-3/12",
+    accessorKey: "rating",
+    header: "Rating",
+    width: "w-1/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   {
-    text: "status",
-    size: "w-1/12",
-    icon: true,
-    sort: "off",
-    hasTag: true,
+    accessorKey: "eventSource",
+    header: "Event Source",
+    width: "w-2/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   {
-    text: "",
-    size: "w-1/12",
+    accessorKey: "improvements",
+    header: "Improvements",
+    width: "w-4/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
   },
+  {
+    accessorKey: "helpful",
+    header: "Helpful",
+    width: "w-3/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
+  },
+  generateStatus(STATUSES),
 ];
 
 export const DROPDOWN = ({ object }) => {
@@ -56,9 +60,4 @@ export const DROPDOWN = ({ object }) => {
       </div>
     </div>
   );
-};
-
-export const STATUSES = {
-  1: "read",
-  0: "unread",
 };
