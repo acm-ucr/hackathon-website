@@ -5,10 +5,12 @@ import {
   updateDoc,
   collection,
   getDocs,
+  getDoc,
   query,
   where,
   deleteField,
   Timestamp,
+  increment,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH, ATTRIBUTES } from "@/data/dynamic/admin/Dashboard";
@@ -45,6 +47,9 @@ export async function POST(req, { params }) {
         ...element,
         timestamp: Timestamp.now(),
         [`roles.${params.type}`]: 0,
+      });
+      await updateDoc(doc(db, "statistics", "statistics"), {
+        [`${params.type}.0`]: increment(1),
       });
 
       await EmailService.send({
@@ -140,6 +145,17 @@ export async function PUT(req, { params }) {
           name: object.name,
           position: params.type.slice(0, -1).toUpperCase(),
         });
+        status === 1 &&
+          (await updateDoc(doc(db, "statistics", "statistics"), {
+            [`${params.type}.1`]: increment(1),
+            [`${params.type}.0`]: increment(-1),
+          }));
+
+        status === -1 &&
+          (await updateDoc(doc(db, "statistics", "statistics"), {
+            [`${params.type}.-1`]: increment(1),
+            [`${params.type}.0`]: increment(-1),
+          }));
       });
     }
     return res.json({ message: "OK" }, { status: 200 });
@@ -165,6 +181,11 @@ export async function DELETE(req, { params }) {
   try {
     if (types.has(params.type)) {
       objects.map(async (object) => {
+        const snapshot = await getDoc(doc(db, "users", object));
+        const status = snapshot.data().roles[params.type];
+        await updateDoc(doc(db, "statistics", "statistics"), {
+          [`${params.type}.${status}`]: increment(-1),
+        });
         await updateDoc(doc(db, "users", object), {
           [`roles.${params.type}`]: deleteField(),
         });
