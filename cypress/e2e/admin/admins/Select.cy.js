@@ -14,7 +14,7 @@ describe("Admin Select", () => {
 
   it("Select All", () => {
     cy.get('[data-cy="header"]').find('[data-cy="checkbox"]').click();
-    admins.slice(0, 10).forEach((admin) => {
+    admins.forEach((admin) => {
       cy.get(`[data-cy="${admin.uid}"]`).should("have.class", "bg-green-100");
     });
   });
@@ -23,7 +23,7 @@ describe("Admin Select", () => {
     five.map((admin) =>
       cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click()
     );
-    admins.slice(0, 10).forEach((admin, index) => {
+    admins.forEach((admin, index) => {
       if (index < 5)
         cy.get(`[data-cy="${admin.uid}"]`).should("have.class", "bg-green-100");
       else cy.get(`[data-cy="${admin.uid}"]`).should("have.class", "bg-white");
