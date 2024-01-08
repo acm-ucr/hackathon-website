@@ -1,7 +1,5 @@
-import Tag from "@/components/dynamic/admin/Tag";
-import { COLORS } from "../Tags";
-import Checkbox from "@/components/dynamic/Checkbox";
 import View from "@/components/dynamic/admin/dashboards/dashboard/View";
+import { generateAffiliation, generateSelect, generateStatus } from "./Columns";
 
 export const STATUSES = {
   1: "accepted",
@@ -21,22 +19,7 @@ export const TAGS = [
 ];
 
 export const COLUMNS = [
-  {
-    id: "select",
-    width: "w-1/12",
-    header: ({ table }) => (
-      <Checkbox
-        toggle={table.getIsAllRowsSelected()}
-        onClick={table.getToggleAllRowsSelectedHandler()}
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        toggle={row.getIsSelected()}
-        onClick={row.getToggleSelectedHandler()}
-      />
-    ),
-  },
+  generateSelect(),
   {
     accessorKey: "name",
     header: "Name",
@@ -57,27 +40,8 @@ export const COLUMNS = [
     width: "w-3/12",
     cell: ({ getValue }) => <div>{getValue()}</div>,
   },
-  {
-    accessorKey: "affiliation",
-    header: "Affiliation",
-    width: "w-1/12",
-    cell: ({ getValue }) => (
-      <Tag text={getValue()} color={COLORS[getValue()]} />
-    ),
-  },
-  {
-    accessorKey: "status",
-    header: "Status",
-    width: "w-1/12",
-    enableColumnFilter: true,
-    filterFn: (row, col, filter) => {
-      const status = row.getValue(col);
-      return filter.includes(status);
-    },
-    cell: ({ getValue }) => (
-      <Tag text={STATUSES[getValue()]} color={COLORS[getValue()]} />
-    ),
-  },
+  generateAffiliation(),
+  generateStatus(STATUSES),
   {
     accessorKey: "photo",
     header: "Photo",

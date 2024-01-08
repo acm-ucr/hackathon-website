@@ -134,7 +134,7 @@ const Toolbar = ({
     );
 
   return (
-    <div className="flex items-center my-2 gap-3">
+    <div className="flex items-center my-2 gap-3" data-cy="toolbar">
       {tags.map((tag, index) => (
         <Tag
           key={index}

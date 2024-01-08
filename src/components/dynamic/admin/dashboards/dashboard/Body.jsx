@@ -12,6 +12,7 @@ const Body = ({ getVisibleCells, Dropdown, original }) => {
           <div
             className={`flex items-center ${column.columnDef.width}`}
             key={id}
+            data-cy={original.uid}
           >
             {flexRender(column.columnDef.cell, getContext())}
           </div>
