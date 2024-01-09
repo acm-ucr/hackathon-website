@@ -18,7 +18,7 @@ describe("Teams Actions", () => {
     );
 
     cy.action({
-      tag: "qualify",
+      tag: "accept",
       page: "teams",
     });
 
@@ -36,7 +36,7 @@ describe("Teams Actions", () => {
     );
 
     cy.action({
-      tag: "disqualify",
+      tag: "reject",
       page: "teams",
     });
 

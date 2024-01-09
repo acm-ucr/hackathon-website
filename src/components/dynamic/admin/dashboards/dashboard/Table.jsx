@@ -32,18 +32,21 @@ const Table = ({
                     className={`mx-2 rotate-90 hover:cursor-pointer ${
                       column.getIsSorted() && "hidden"
                     }`}
+                    data-cy={`${column.id}-sorting`}
                     onClick={column.getToggleSortingHandler()}
                   />
                 )}
                 {column.getIsSorted() === "asc" && (
                   <FaSortAlphaDown
                     onClick={column.getToggleSortingHandler()}
+                    data-cy={`${column.id}-sorting-desc`}
                     className="mx-2 hover:cursor-pointer text-hackathon-green-300"
                   />
                 )}
                 {column.getIsSorted() === "desc" && (
                   <FaSortAlphaUp
                     onClick={column.getToggleSortingHandler()}
+                    data-cy={`${column.columnDef.header}-sorting-asc`}
                     className="mx-2 hover:cursor-pointer text-hackathon-green-300"
                   />
                 )}
