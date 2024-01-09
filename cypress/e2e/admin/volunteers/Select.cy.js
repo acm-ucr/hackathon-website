@@ -24,7 +24,10 @@ describe("Volunteers Select", () => {
 
   it("Select First 5 Entries", () => {
     five.map((volunteer) =>
-      cy.get(`[data-cy="${volunteer.uid}"]`).find('[data-cy="select"]').click()
+      cy
+        .get(`[data-cy="${volunteer.uid}"]`)
+        .find('[data-cy="checkbox"]')
+        .click()
     );
     volunteers.forEach((volunteer, index) => {
       if (index < 5)

@@ -13,7 +13,10 @@ describe("Volunteers Actions", () => {
 
   it("Confirm First 5 Entries", () => {
     five.forEach((volunteer) =>
-      cy.get(`[data-cy="${volunteer.uid}"]`).find('[data-cy="select"]').click()
+      cy
+        .get(`[data-cy="${volunteer.uid}"]`)
+        .find('[data-cy="checkbox"]')
+        .click()
     );
 
     cy.action({
@@ -31,7 +34,10 @@ describe("Volunteers Actions", () => {
 
   it("Not Attending First 5 Entries", () => {
     five.forEach((volunteer) =>
-      cy.get(`[data-cy="${volunteer.uid}"]`).find('[data-cy="select"]').click()
+      cy
+        .get(`[data-cy="${volunteer.uid}"]`)
+        .find('[data-cy="checkbox"]')
+        .click()
     );
 
     cy.action({
@@ -49,7 +55,10 @@ describe("Volunteers Actions", () => {
 
   it("Delete First 5 Entries", () => {
     five.forEach((volunteer) =>
-      cy.get(`[data-cy="${volunteer.uid}"]`).find('[data-cy="select"]').click()
+      cy
+        .get(`[data-cy="${volunteer.uid}"]`)
+        .find('[data-cy="checkbox"]')
+        .click()
     );
 
     cy.delete({

@@ -17,7 +17,7 @@ describe("Sponsors Actions", () => {
     );
 
     cy.action({
-      tag: "confirm",
+      tag: "accept",
       page: "sponsors",
     });
 
@@ -35,7 +35,7 @@ describe("Sponsors Actions", () => {
     );
 
     cy.action({
-      tag: "not attending",
+      tag: "reject",
       page: "sponsors",
     });
 

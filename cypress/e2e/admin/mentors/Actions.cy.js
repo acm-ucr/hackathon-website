@@ -13,7 +13,7 @@ describe("Mentors Actions", () => {
 
   it("Confirm First 5 Entries", () => {
     five.forEach((mentor) =>
-      cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="select"]').click()
+      cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="checkbox"]').click()
     );
     cy.action({
       tag: "confirm",
@@ -29,7 +29,7 @@ describe("Mentors Actions", () => {
 
   it("Not Attending First 5 Entries", () => {
     five.forEach((mentor) =>
-      cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="select"]').click()
+      cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="checkbox"]').click()
     );
     cy.action({
       tag: "not attending",
@@ -46,7 +46,7 @@ describe("Mentors Actions", () => {
 
   it("Delete First 5 Entries", () => {
     five.forEach((mentor) =>
-      cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="select"]').click()
+      cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="checkbox"]').click()
     );
     cy.delete({
       page: "mentors",
