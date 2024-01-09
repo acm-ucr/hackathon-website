@@ -32,6 +32,7 @@ export const COLUMNS = [
     accessorKey: "members",
     header: "Members",
     width: "w-3/12",
+    enableSorting: false,
     cell: ({ getValue }) => (
       <div>
         {getValue().map((data, index) => (
@@ -44,6 +45,7 @@ export const COLUMNS = [
     accessorKey: "discords",
     header: "Discords",
     width: "w-2/12",
+    enableSorting: false,
     cell: ({ getValue }) => (
       <div>
         {getValue().map((data, index) => (
@@ -56,6 +58,7 @@ export const COLUMNS = [
     accessorKey: "links",
     header: "Links",
     width: "w-3/12",
+    enableSorting: false,
     cell: ({ getValue }) => (
       <div>
         {getValue().map(({ name, link }, index) => (

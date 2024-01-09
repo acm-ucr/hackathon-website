@@ -46,6 +46,7 @@ export const COLUMNS = [
     accessorKey: "photo",
     header: "Photo",
     width: "w-1/12",
+    enableSorting: false,
     cell: ({ getValue }) => <View src={getValue()} title="Photo" />,
   },
 ];

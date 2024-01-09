@@ -1,5 +1,7 @@
 import { flexRender } from "@tanstack/react-table";
 import Body from "./Body";
+import { FaArrowRightArrowLeft } from "react-icons/fa6";
+import { FaSortAlphaDown, FaSortAlphaUp } from "react-icons/fa";
 
 const Table = ({
   getHeaderGroups,
@@ -21,10 +23,30 @@ const Table = ({
             {headers.map(({ id, column, getContext }) => (
               <div
                 key={id}
-                className={`${column.columnDef.width}`}
+                className={`${column.columnDef.width} flex items-center`}
                 data-cy="header"
               >
                 {flexRender(column.columnDef.header, getContext())}
+                {column.getCanSort() && (
+                  <FaArrowRightArrowLeft
+                    className={`mx-2 rotate-90 hover:cursor-pointer ${
+                      column.getIsSorted() && "hidden"
+                    }`}
+                    onClick={column.getToggleSortingHandler()}
+                  />
+                )}
+                {column.getIsSorted() === "asc" && (
+                  <FaSortAlphaDown
+                    onClick={column.getToggleSortingHandler()}
+                    className="mx-2 hover:cursor-pointer text-hackathon-green-300"
+                  />
+                )}
+                {column.getIsSorted() === "desc" && (
+                  <FaSortAlphaUp
+                    onClick={column.getToggleSortingHandler()}
+                    className="mx-2 hover:cursor-pointer text-hackathon-green-300"
+                  />
+                )}
               </div>
             ))}
           </div>

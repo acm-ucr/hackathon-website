@@ -52,6 +52,7 @@ export const COLUMNS = [
     accessorKey: "Resume",
     header: "Resume",
     width: "w-1/12",
+    enableSorting: false,
     cell: ({ getValue }) =>
       getValue() && <View title="Resume" src={getValue()} />,
   },
