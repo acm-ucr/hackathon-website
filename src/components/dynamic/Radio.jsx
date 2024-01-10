@@ -9,11 +9,8 @@ const Radio = ({
 }) => {
   const handleClick = (optionKey, option) => {
     if (field === "tier" || field === "affiliation") {
-      // console.log(option)
-      // console.log(optionKey)
       setUser({ ...user, [field]: optionKey });
     } else {
-      // console.log(option)
       setUser({ ...user, [field]: option });
     }
   };

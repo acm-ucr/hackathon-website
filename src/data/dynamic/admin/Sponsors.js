@@ -1,5 +1,3 @@
-// import Tag from "@/components/dynamic/admin/Tag";
-// import { COLORS } from "../Tags";
 import { TIERS } from "@/data/dynamic/form/Sponsors";
 import { generateSelect, generateStatus, generateTiers } from "./Columns";
 
