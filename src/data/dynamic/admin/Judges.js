@@ -1,4 +1,5 @@
 import View from "@/components/dynamic/admin/dashboards/dashboard/View";
+import { AFFILIATIONS } from "../form/Judge";
 import { generateAffiliation, generateSelect, generateStatus } from "./Columns";
 
 export const STATUSES = {
@@ -40,7 +41,7 @@ export const COLUMNS = [
     width: "w-3/12",
     cell: ({ getValue }) => <div>{getValue()}</div>,
   },
-  generateAffiliation(),
+  generateAffiliation(AFFILIATIONS),
   generateStatus(STATUSES),
   {
     accessorKey: "photo",

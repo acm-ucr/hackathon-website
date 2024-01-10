@@ -1,6 +1,7 @@
-import Tag from "@/components/dynamic/admin/Tag";
-import { COLORS } from "../Tags";
-import { generateSelect, generateStatus } from "./Columns";
+// import Tag from "@/components/dynamic/admin/Tag";
+// import { COLORS } from "../Tags";
+import { TIERS } from "@/data/dynamic/form/Sponsors";
+import { generateSelect, generateStatus, generateTiers } from "./Columns";
 
 export const STATUSES = {
   1: "accepted",
@@ -53,13 +54,13 @@ export const COLUMNS = [
     width: "w-2/12",
     cell: ({ getValue }) => <div>{getValue()}</div>,
   },
-  {
-    accessorKey: "tier",
-    header: "Tier",
-    width: "w-1/12",
-    cell: ({ getValue }) => (
-      <Tag text={getValue()} color={COLORS[getValue()]} />
-    ),
-  },
+  generateTiers(TIERS),
   generateStatus(STATUSES),
 ];
+export const DROPDOWN = ({ object }) => {
+  return (
+    <>
+      <p className="ml-5 mt-3">{object.response}</p>
+    </>
+  );
+};

@@ -1,12 +1,12 @@
-export const AFFILIATIONS = [
-  "director",
-  "marketing",
-  "sponsorship",
-  "recruitment",
-  "software",
-  "uiux",
-  "operations",
-];
+export const AFFILIATIONS = {
+  director: "director",
+  marketing: "marketing",
+  sponsorship: "sponsorship",
+  recruitment: "recruitment",
+  software: "software",
+  uiux: "uiux",
+  operations: "operations",
+};
 
 export const FIELDS = {
   description: {

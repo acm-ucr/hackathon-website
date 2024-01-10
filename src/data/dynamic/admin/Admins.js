@@ -1,5 +1,5 @@
 import { generateAffiliation, generateSelect, generateStatus } from "./Columns";
-
+import { AFFILIATIONS } from "../form/Admins";
 export const STATUSES = {
   1: "accepted",
   0: "pending",
@@ -39,6 +39,6 @@ export const COLUMNS = [
     width: "w-3/12",
     cell: ({ getValue }) => <div>{getValue()}</div>,
   },
-  generateAffiliation(),
+  generateAffiliation(AFFILIATIONS),
   generateStatus(STATUSES),
 ];
