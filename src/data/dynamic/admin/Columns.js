@@ -19,11 +19,13 @@ export const generateSelect = () => ({
   ),
 });
 
-export const generateAffiliation = () => ({
+export const generateAffiliation = (affiliations) => ({
   accessorKey: "affiliation",
   header: "Affiliation",
   width: "w-1/12",
-  cell: ({ getValue }) => <Tag text={getValue()} color={COLORS[getValue()]} />,
+  cell: ({ getValue }) => (
+    <Tag text={affiliations[getValue()]} color={COLORS[getValue()]} />
+  ),
 });
 
 export const generateStatus = (statuses) => ({
@@ -37,5 +39,13 @@ export const generateStatus = (statuses) => ({
   },
   cell: ({ getValue }) => (
     <Tag text={statuses[getValue()]} color={COLORS[getValue()]} />
+  ),
+});
+export const generateTiers = (tiers) => ({
+  accessorKey: "tier",
+  header: "Tier",
+  width: "w-1/12",
+  cell: ({ getValue }) => (
+    <Tag text={tiers[getValue()]} color={COLORS[getValue()]} />
   ),
 });

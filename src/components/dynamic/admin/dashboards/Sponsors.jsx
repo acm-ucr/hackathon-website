@@ -1,5 +1,10 @@
 "use client";
-import { STATUSES, TAGS, COLUMNS } from "@/data/dynamic/admin/Sponsors.js";
+import {
+  STATUSES,
+  TAGS,
+  COLUMNS,
+  DROPDOWN,
+} from "@/data/dynamic/admin/Sponsors.js";
 import Table from "./dashboard/Dashboard";
 
 const Sponsors = () => {
@@ -11,6 +16,7 @@ const Sponsors = () => {
         tags={TAGS}
         page="sponsors"
         statuses={STATUSES}
+        Dropdown={DROPDOWN}
         empty="No Sponsors Available"
       />
     </div>
