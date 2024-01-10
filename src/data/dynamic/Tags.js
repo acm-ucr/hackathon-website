@@ -68,6 +68,8 @@ export const COLORS = {
   tier1: mappings["grayblue"],
   tier2: mappings["lightgreen"],
   tier3: mappings["purple"],
+  tier4: mappings["yellow"],
+  tier5: mappings["pink"],
   other: mappings["teal"],
   view: mappings["gray"],
   green: mappings["green"],
