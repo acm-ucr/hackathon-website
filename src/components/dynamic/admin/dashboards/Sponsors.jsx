@@ -1,24 +1,25 @@
 "use client";
-import Dashboard from "../Dashboard.jsx";
 import {
-  FILTERS,
-  HEADERS,
-  TAGS,
   STATUSES,
+  TAGS,
+  COLUMNS,
+  DROPDOWN,
 } from "@/data/dynamic/admin/Sponsors.js";
+import Table from "./dashboard/Dashboard";
 
 const Sponsors = () => {
   return (
-    <Dashboard
-      title="Sponsors"
-      page="sponsors"
-      empty="No Sponsors Available"
-      filter={FILTERS}
-      header={HEADERS}
-      statuses={STATUSES}
-      tags={TAGS}
-    />
+    <div className="h-full font-poppins flex flex-col py-4 gap-3">
+      <Table
+        title="Sponsors"
+        columns={COLUMNS}
+        tags={TAGS}
+        page="sponsors"
+        statuses={STATUSES}
+        Dropdown={DROPDOWN}
+        empty="No Sponsors Available"
+      />
+    </div>
   );
 };
-
 export default Sponsors;

@@ -1,54 +1,60 @@
-export const FILTERS = {
-  pending: {
-    state: true,
-    value: 0,
-  },
-  accept: {
-    state: true,
-    value: 1,
-  },
-  reject: {
-    state: true,
-    value: -1,
-  },
+import View from "@/components/dynamic/admin/dashboards/dashboard/View";
+import { ICONS } from "./Icons";
+import { generateSelect, generateStatus } from "./Columns";
+
+export const STATUSES = {
+  1: "accepted",
+  0: "pending",
+  "-1": "rejected",
 };
 
 export const TAGS = [
   {
-    text: "accept",
+    text: "confirm",
     value: 1,
   },
   {
-    text: "reject",
+    text: "not attending",
     value: -1,
   },
 ];
 
-export const HEADERS = [
-  { text: "name", size: "w-2/12", icon: true, sort: "off", limit: 200 },
-  { text: "discord", size: "w-2/12", icon: true, sort: "off" },
-  { text: "team", size: "w-2/12", icon: true, sort: "off" },
-  { text: "major", size: "w-2/12", icon: true, sort: "off" },
+export const COLUMNS = [
+  generateSelect(),
   {
-    text: "status",
-    size: "w-1/12",
-    icon: true,
-    sort: "off",
-    hasTag: true,
+    accessorKey: "name",
+    header: "Name",
+    width: "w-2/12",
+    enableColumnFilter: true,
+    filterFn: "includesString",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   {
-    text: "resume",
-    size: "w-1/12",
-    icon: false,
-    sort: "off",
-    hasTag: true,
-    onClick: (object, setModal) => {
-      setModal({ src: object.resume, title: object.name + "'s Resume" });
-    },
+    accessorKey: "email",
+    header: "Email",
+    width: "w-3/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   {
-    text: "",
-    size: 1,
+    accessorKey: "discord",
+    header: "Discord",
+    width: "w-2/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
+  },
+  {
+    accessorKey: "team",
+    header: "Team",
+    width: "w-3/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
+  },
+  generateStatus(STATUSES),
+  {
+    accessorKey: "Resume",
+    header: "Resume",
+    width: "w-1/12",
+    enableSorting: false,
+    cell: ({ getValue }) =>
+      getValue() && <View title="Resume" src={getValue()} />,
   },
 ];
 
@@ -65,13 +71,13 @@ const attributes = [
   "restriction",
 ];
 
-export const DROPDOWN = ({ object, icons }) => {
+export const DROPDOWN = ({ object }) => {
   return (
     <div className="flex justify-center items-center">
       <div className="grid grid-cols-3 w-11/12">
         {attributes.map((attribute, index) => (
           <div key={index} className="my-1 px-1 flex text-sm">
-            {icons[attribute]}
+            {ICONS[attribute]}
             {Array.isArray(object[attribute])
               ? object[attribute].join(",")
               : object[attribute]}
@@ -80,10 +86,4 @@ export const DROPDOWN = ({ object, icons }) => {
       </div>
     </div>
   );
-};
-
-export const STATUSES = {
-  1: "accepted",
-  0: "pending",
-  "-1": "rejected",
 };

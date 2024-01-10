@@ -18,14 +18,14 @@ describe("Teams Actions", () => {
     );
 
     cy.action({
-      tag: "qualify",
+      tag: "accept",
       page: "teams",
     });
 
     five.forEach((team) =>
       cy
         .get(`[data-cy="${team.uid}"]`)
-        .find('[data-cy="1-tag"]')
+        .find('[data-cy="accepted-tag"]')
         .should("exist")
     );
   });
@@ -36,14 +36,14 @@ describe("Teams Actions", () => {
     );
 
     cy.action({
-      tag: "disqualify",
+      tag: "reject",
       page: "teams",
     });
 
     five.forEach((team) =>
       cy
         .get(`[data-cy="${team.uid}"]`)
-        .find('[data-cy="-1-tag"]')
+        .find('[data-cy="rejected-tag"]')
         .should("exist")
     );
   });

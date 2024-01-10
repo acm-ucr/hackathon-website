@@ -1,25 +1,25 @@
 "use client";
 import {
-  DROPDOWN,
-  FILTERS,
-  HEADERS,
   STATUSES,
   TAGS,
-} from "@/data/dynamic/admin/Feedback.js";
-import Dashboard from "../Dashboard.jsx";
+  COLUMNS,
+  DROPDOWN,
+} from "@/data/dynamic/admin/Feedback";
+import Table from "./dashboard/Dashboard";
 
-const Feedback = () => {
+const Admin = () => {
   return (
-    <Dashboard
-      title="Feedback"
-      page="feedback"
-      empty="No Feedback Available"
-      filter={FILTERS}
-      header={HEADERS}
-      statuses={STATUSES}
-      tags={TAGS}
-      dropdown={DROPDOWN}
-    />
+    <div className="h-full font-poppins flex flex-col py-4 gap-3">
+      <Table
+        title="Feedback"
+        columns={COLUMNS}
+        tags={TAGS}
+        page="feedback"
+        statuses={STATUSES}
+        dropdown={DROPDOWN}
+        empty="No Feedback Available"
+      />
+    </div>
   );
 };
-export default Feedback;
+export default Admin;

@@ -1,16 +1,9 @@
-export const FILTERS = {
-  pending: {
-    state: true,
-    value: 0,
-  },
-  accept: {
-    state: true,
-    value: 1,
-  },
-  reject: {
-    state: true,
-    value: -1,
-  },
+import { generateAffiliation, generateSelect, generateStatus } from "./Columns";
+import { AFFILIATIONS } from "../form/Admins";
+export const STATUSES = {
+  1: "accepted",
+  0: "pending",
+  "-1": "rejected",
 };
 
 export const TAGS = [
@@ -24,28 +17,28 @@ export const TAGS = [
   },
 ];
 
-export const HEADERS = [
-  { text: "name", size: "w-2/12", icon: true, sort: "off" },
-  { text: "email", size: "w-3/12", icon: true, sort: "off" },
-  { text: "discord", size: "w-2/12", icon: true, sort: "off" },
+export const COLUMNS = [
+  generateSelect(),
   {
-    text: "affiliation",
-    size: "w-2/12",
-    icon: true,
-    sort: "off",
-    hasTag: true,
+    accessorKey: "name",
+    header: "Name",
+    width: "w-3/12",
+    enableColumnFilter: true,
+    filterFn: "includesString",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   {
-    text: "status",
-    size: "w-2/12",
-    icon: true,
-    sort: "off",
-    hasTag: true,
+    accessorKey: "email",
+    header: "Email",
+    width: "w-3/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
   },
+  {
+    accessorKey: "discord",
+    header: "discord",
+    width: "w-3/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
+  },
+  generateAffiliation(AFFILIATIONS),
+  generateStatus(STATUSES),
 ];
-
-export const STATUSES = {
-  1: "accepted",
-  0: "pending",
-  "-1": "rejected",
-};

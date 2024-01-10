@@ -29,7 +29,15 @@ export const ATTRIBUTES = {
     "roles",
     "discord",
   ],
-  sponsors: ["name", "email", "phone", "company", "position", "tier"],
+  sponsors: [
+    "name",
+    "email",
+    "phone",
+    "company",
+    "position",
+    "tier",
+    "response",
+  ],
   feedback: [
     "rating",
     "additionalComments",

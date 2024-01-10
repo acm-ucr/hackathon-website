@@ -1,19 +1,11 @@
 import Checkbox from "@/components/dynamic/Checkbox";
 import { AVAILABILITY } from "../form/Information";
+import { generateSelect, generateStatus } from "./Columns";
 
-export const FILTERS = {
-  pending: {
-    state: true,
-    value: 0,
-  },
-  accept: {
-    state: true,
-    value: 1,
-  },
-  reject: {
-    state: true,
-    value: -1,
-  },
+export const STATUSES = {
+  1: "accepted",
+  0: "pending",
+  "-1": "rejected",
 };
 
 export const TAGS = [
@@ -27,21 +19,29 @@ export const TAGS = [
   },
 ];
 
-export const HEADERS = [
-  { text: "name", size: "w-3/12", icon: true, sort: "off" },
-  { text: "email", size: "w-3/12", icon: true, sort: "off" },
-  { text: "discord", size: "w-2/12", icon: true, sort: "off" },
+export const COLUMNS = [
+  generateSelect(),
   {
-    text: "status",
-    size: "w-2/12",
-    icon: true,
-    sort: "off",
-    hasTag: true,
+    accessorKey: "name",
+    header: "Name",
+    width: "w-3/12",
+    enableColumnFilter: true,
+    filterFn: "includesString",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   {
-    text: "",
-    size: "w-1/12",
+    accessorKey: "email",
+    header: "Email",
+    width: "w-4/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
   },
+  {
+    accessorKey: "discord",
+    header: "discord",
+    width: "w-3/12",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
+  },
+  generateStatus(STATUSES),
 ];
 
 export const DROPDOWN = ({ object }) => {
@@ -61,10 +61,4 @@ export const DROPDOWN = ({ object }) => {
       <p className="ml-5 mt-3">{object.response}</p>
     </>
   );
-};
-
-export const STATUSES = {
-  1: "accepted",
-  0: "pending",
-  "-1": "rejected",
 };
