@@ -119,6 +119,23 @@ const Questions = ({
                   color="bg-hackathon-green-300"
                 />
               ))}
+              <Checkbox
+                className="w-1/2"
+                toggle={field.options.every((option) =>
+                  object[field.field].includes(option)
+                )}
+                text="Select All"
+                onClick={() =>
+                  setObject({
+                    ...object,
+                    [field.field]: field.options.every((option) =>
+                      object[field.field].includes(option)
+                    )
+                      ? []
+                      : [...field.options],
+                  })
+                }
+              />
             </>
           )}
           {field.input === "radio" && (
