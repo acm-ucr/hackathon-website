@@ -206,12 +206,12 @@ const Team = ({ user, setUser }) => {
         </>
       )}
       {!user.team && team && (
-        <div className="flex flex-col justify-start h-full">
-          <div className="text-hackathon-green-300">
-            ask your teammates to share team ID or join link with you to join
-            the team
-          </div>
-          <div className="flex items-center justify-center">
+        <div className="flex flex-col justify-start h-full gap-5">
+          <div className="">
+            <div className="text-hackathon-green-300">
+              Ask your teammates to share team ID or join link with you to join
+              the team
+            </div>
             <Input
               name="id"
               type="text"
@@ -224,14 +224,14 @@ const Team = ({ user, setUser }) => {
             />
             <Button color="green" size="lg" text="join" onClick={handleJoin} />
           </div>
-          <div className="text-hackathon-green-300">
-            type a team name to create a new team
-          </div>
-          <div className="flex items-center justify-center">
+          <div className="">
+            <div className="text-hackathon-green-300">
+              Type a team name to create a new team
+            </div>
             <Input
               name="name"
               type="text"
-              placeholder="type a team name"
+              placeholder="team name"
               title="Create a Team"
               value={team.name}
               user={team}
