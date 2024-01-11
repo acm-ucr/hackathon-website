@@ -19,14 +19,14 @@ describe("Participants Actions", () => {
         .click()
     );
     cy.action({
-      tag: "accept",
+      tag: "confirm",
       page: "participants",
     });
 
     five.forEach((participant) =>
       cy
         .get(`[data-cy="${participant.uid}"]`)
-        .find('[data-cy="1-tag"]')
+        .find('[data-cy="accepted-tag"]')
         .should("exist")
     );
   });
@@ -39,14 +39,14 @@ describe("Participants Actions", () => {
         .click()
     );
     cy.action({
-      tag: "reject",
+      tag: "not attending",
       page: "participants",
     });
 
     five.forEach((participant) =>
       cy
         .get(`[data-cy="${participant.uid}"]`)
-        .find('[data-cy="-1-tag"]')
+        .find('[data-cy="rejected-tag"]')
         .should("exist")
     );
   });

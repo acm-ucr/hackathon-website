@@ -13,7 +13,7 @@ describe("Sponsors Select", () => {
   });
 
   it("Select All", () => {
-    cy.get('[data-cy="select-all"]').click();
+    cy.get('[data-cy="header"]').find('[data-cy="checkbox"]').click();
     sponsors.forEach((sponsor) => {
       cy.get(`[data-cy="${sponsor.uid}"]`).should("have.class", "bg-green-100");
     });

@@ -13,7 +13,10 @@ describe("Volunteers Actions", () => {
 
   it("Confirm First 5 Entries", () => {
     five.forEach((volunteer) =>
-      cy.get(`[data-cy="${volunteer.uid}"]`).find('[data-cy="select"]').click()
+      cy
+        .get(`[data-cy="${volunteer.uid}"]`)
+        .find('[data-cy="checkbox"]')
+        .click()
     );
 
     cy.action({
@@ -24,14 +27,17 @@ describe("Volunteers Actions", () => {
     five.forEach((volunteer) =>
       cy
         .get(`[data-cy="${volunteer.uid}"]`)
-        .find('[data-cy="1-tag"]')
+        .find('[data-cy="accepted-tag"]')
         .should("exist")
     );
   });
 
   it("Not Attending First 5 Entries", () => {
     five.forEach((volunteer) =>
-      cy.get(`[data-cy="${volunteer.uid}"]`).find('[data-cy="select"]').click()
+      cy
+        .get(`[data-cy="${volunteer.uid}"]`)
+        .find('[data-cy="checkbox"]')
+        .click()
     );
 
     cy.action({
@@ -42,14 +48,17 @@ describe("Volunteers Actions", () => {
     five.forEach((volunteer) =>
       cy
         .get(`[data-cy="${volunteer.uid}"]`)
-        .find('[data-cy="-1-tag"]')
+        .find('[data-cy="rejected-tag"]')
         .should("exist")
     );
   });
 
   it("Delete First 5 Entries", () => {
     five.forEach((volunteer) =>
-      cy.get(`[data-cy="${volunteer.uid}"]`).find('[data-cy="select"]').click()
+      cy
+        .get(`[data-cy="${volunteer.uid}"]`)
+        .find('[data-cy="checkbox"]')
+        .click()
     );
 
     cy.delete({

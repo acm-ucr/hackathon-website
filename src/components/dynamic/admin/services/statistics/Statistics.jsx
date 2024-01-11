@@ -2,16 +2,17 @@
 import Title from "@/components/dynamic/admin/Title";
 import { useEffect, useState } from "react";
 import Tabs from "./Tabs";
-import axios from "axios";
 import Loading from "@/components/dynamic/Loading";
+import { api } from "@/utils/api";
 
 const Statistics = () => {
   const [counts, setCounts] = useState(null);
 
   useEffect(() => {
-    axios.get("/api/statistics").then((response) => {
-      setCounts(response.data.items);
-    });
+    api({
+      method: "GET",
+      url: "/api/statistics",
+    }).then(({ items }) => setCounts(items));
   }, []);
 
   return (

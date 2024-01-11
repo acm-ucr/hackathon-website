@@ -1,23 +1,19 @@
 "use client";
-import {
-  FILTERS,
-  HEADERS,
-  STATUSES,
-  TAGS,
-} from "@/data/dynamic/admin/Admins.js";
-import Dashboard from "../Dashboard.jsx";
+import { STATUSES, TAGS, COLUMNS } from "@/data/dynamic/admin/Admins.js";
+import Table from "./dashboard/Dashboard";
 
 const Admin = () => {
   return (
-    <Dashboard
-      title="Admins"
-      page="admins"
-      empty="No Admins Available"
-      filter={FILTERS}
-      header={HEADERS}
-      statuses={STATUSES}
-      tags={TAGS}
-    />
+    <div className="h-full font-poppins flex flex-col py-4 gap-3">
+      <Table
+        title="Admins"
+        columns={COLUMNS}
+        tags={TAGS}
+        page="admins"
+        statuses={STATUSES}
+        empty="No Admins Available"
+      />
+    </div>
   );
 };
 export default Admin;

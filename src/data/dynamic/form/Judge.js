@@ -1,11 +1,11 @@
 import { GENDERS } from "./Information";
 import { SHIRTS } from "./Information";
 
-const AFFILIATIONS = [
-  { name: "Professor", hidden: false },
-  { name: "Student", hidden: false },
-  { name: "Industry", hidden: false },
-];
+export const AFFILIATIONS = {
+  professor: "Professor",
+  student: "Student",
+  industry: "Industry",
+};
 
 export const FIELDS = {
   description: {
@@ -66,11 +66,10 @@ export const FIELDS = {
   },
 
   affiliation: {
-    input: "select",
-    title: "Affiliation",
+    input: "radio",
+    text: "Affiliation",
     options: AFFILIATIONS,
     field: "affiliation",
-    placeholder: "ie. Student",
     width: 12,
     required: true,
   },

@@ -1,10 +1,10 @@
 import Button from "../Button";
 import Input from "../Input";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import toast from "react-hot-toast";
 import Loading from "../Loading";
 import { BiLink, BiSolidCopy } from "react-icons/bi";
+import { api } from "@/utils/api";
 
 const Team = ({ user, setUser }) => {
   const [team, setTeam] = useState(null);
@@ -32,7 +32,10 @@ const Team = ({ user, setUser }) => {
   };
 
   const handleLeave = () => {
-    axios.delete("/api/members").then(() => {
+    api({
+      method: "DELETE",
+      url: "/api/members",
+    }).then(() => {
       toast("✅ Successfully left team!");
       setTeam(null);
       setUser({ ...user, team: null });
@@ -45,25 +48,27 @@ const Team = ({ user, setUser }) => {
       toast("❌ Enter a Valid Team ID");
       return;
     }
-    axios
-      .put("/api/members", { team: id.team })
-      .then(() => {
-        toast("✅ Successfully joined team!");
-        setUser({ ...user, team: id.team });
-      })
-      .catch(({ response: data }) => {
-        if (data.data.message === "Excceed 4 People Limit")
-          toast("❌ Exceeded 4 People Limit");
-        else if (data.data.message === "Invalid Team ID")
-          toast("❌ Invalid Team ID");
-        else toast("❌ Internal Server Error");
-      });
+    api({
+      method: "PUT",
+      url: "/api/members",
+      body: { team: id.team },
+    }).then((response) => {
+      if (response.message !== "OK") {
+        toast(`❌ ${response.message}`);
+        return;
+      }
+      toast("✅ Successfully joined team!");
+      setUser({ ...user, team: id.team });
+    });
   };
 
   const handleCreate = () => {
-    axios.post("/api/team").then((response) => {
+    api({
+      method: "POST",
+      url: "/api/team",
+    }).then(({ items }) => {
       setTeam(defaultTeam);
-      setUser({ ...user, team: response.data.items.team });
+      setUser({ ...user, team: items.team });
       toast("✅ Successfully created a new team!");
       setEdit(false);
     });
@@ -86,7 +91,12 @@ const Team = ({ user, setUser }) => {
       toast("❌ Invalid Figma Link");
       return;
     }
-    axios.put("/api/team", team).then(() => {
+
+    api({
+      method: "PUT",
+      url: "/api/team",
+      body: team,
+    }).then(() => {
       toast("✅ Successfully Updated!");
       setEdit(false);
     });
@@ -94,9 +104,11 @@ const Team = ({ user, setUser }) => {
 
   useEffect(() => {
     if (user.team) {
-      axios
-        .get(`/api/team?teamid=${user.team}`)
-        .then((response) => setTeam(response.data.items))
+      api({
+        method: "GET",
+        url: `/api/team?teamid=${user.team}`,
+      })
+        .then(({ items }) => setTeam(items))
         .catch(({ response: data }) => {
           if (data.message === "Invalid Team ID") toast("❌ Invalid Team ID");
           else toast("❌ Internal Server Error");
