@@ -4,6 +4,7 @@ export const TIERS = {
   tier3: "Gold",
   tier4: "Tier4",
   tier5: "Tier5",
+  other: "Other",
 };
 
 export const FIELDS = {
