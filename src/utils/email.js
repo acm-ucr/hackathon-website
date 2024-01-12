@@ -24,6 +24,4 @@ const send = async ({ email, id, name, position }) => {
   });
 };
 
-export default {
-  send,
-};
+export default send;

@@ -9,12 +9,13 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [],
+  "plugins": ["react"],
   "rules": {
     "require-jsdoc": 0,
-    "import/no-anonymous-default-export": 0,
-    "react-hooks/rules-of-hooks": 0,
-    "@next/next/no-img-element": 0
+    "react-hooks/exhaustive-deps": 0,
+    // "import/no-anonymous-default-export": 0,
+    "react-hooks/rules-of-hooks": 0
+    // "@next/next/no-img-element": 0
   },
   "settings": {
     "react": {

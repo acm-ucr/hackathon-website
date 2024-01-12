@@ -1,6 +1,10 @@
 import { FaTimes } from "react-icons/fa";
+import Image from "next/image.js";
 
 const Modal = ({ data, setModal }) => {
+  console.log(
+    "########################\nhere are modal!!!!!\n##############################"
+  );
   return (
     <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-10 w-1/2 h-3/4 rounded-xl">
       <div className="flex justify-between items-center p-3 rounded-t-xl bg-hackathon-green-300">
@@ -11,7 +15,12 @@ const Modal = ({ data, setModal }) => {
         />
       </div>
       <div className="bg-white px-3 rounded-b-xl py-2 border-x-2 border-b-2 border-hackathon-darkgray h-full w-full flex justify-center">
-        <img className="h-full" src={data.src} />
+        <Image
+          fill={true}
+          className="h-full"
+          src={data.src}
+          alt="user image here"
+        />
       </div>
     </div>
   );
