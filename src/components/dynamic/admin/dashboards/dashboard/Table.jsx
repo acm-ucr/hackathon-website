@@ -22,7 +22,7 @@ const Table = ({
 }) => {
   return (
     <>
-      <div className="bg-white h-[75vh] overflow-y-scroll flex flex-col justify-between relative">
+      <div className="bg-white h-[75vh] overflow-y-scroll flex flex-col justify-between">
         <div>
           <div className="text-white bg-hackathon-blue-200 rounded-t-lg">
             {getHeaderGroups().map(({ headers, id }) => (
