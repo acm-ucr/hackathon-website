@@ -13,7 +13,7 @@ describe("Mentor Select", () => {
   });
 
   it("Select All", () => {
-    cy.get('[data-cy="toolbar"]').find('[data-cy="checkbox"]').click();
+    cy.get('[data-cy="header"]').find('[data-cy="checkbox"]').click();
     judges.forEach((judge) => {
       cy.get(`[data-cy="${judge.uid}"]`).should("have.class", "bg-green-100");
     });

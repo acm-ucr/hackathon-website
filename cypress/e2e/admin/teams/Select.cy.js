@@ -13,7 +13,7 @@ describe("Teams Select", () => {
   });
 
   it("Select All", () => {
-    cy.get('[data-cy="toolbar"]').find('[data-cy="checkbox"]').click();
+    cy.get('[data-cy="header"]').find('[data-cy="checkbox"]').click();
     teams.forEach((team) => {
       cy.get(`[data-cy="${team.uid}"]`).should("have.class", "bg-green-100");
     });

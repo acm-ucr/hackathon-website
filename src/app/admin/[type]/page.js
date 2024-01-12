@@ -10,7 +10,6 @@ import Judging from "@/components/dynamic/admin/services/judging/Judging";
 import Mentors from "@/components/dynamic/admin/dashboards/Mentors";
 import Contacts from "@/components/dynamic/admin/services/contacts/Contacts";
 import Participants from "@/components/dynamic/admin/dashboards/Participants";
-import Prizes from "@/components/dynamic/admin/services/Prizes";
 import Sponsors from "@/components/dynamic/admin/dashboards/Sponsors";
 import Statistics from "@/components/dynamic/admin/services/statistics/Statistics";
 import Teams from "@/components/dynamic/admin/dashboards/Teams";
@@ -30,7 +29,6 @@ const Page = ({ params }) => {
     mentors: <Mentors />,
     contacts: <Contacts />,
     participants: <Participants />,
-    prizes: <Prizes />,
     sponsors: <Sponsors />,
     statistics: <Statistics />,
     teams: <Teams />,

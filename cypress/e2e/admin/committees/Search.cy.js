@@ -12,22 +12,21 @@ describe("Committee Search", () => {
   });
 
   it("No Search Results", () => {
-    cy.get('[data-cy="toolbar"]').find('[data-cy="input-input"]').type("Meow");
-    cy.get('[data-cy="toolbar"]').find("form").submit();
-    cy.contains("No Committee Available");
+    cy.get('[data-cy="toolbar"]').find('[data-cy="search-input"]').type("Meow");
+    cy.contains("No Committees Available");
   });
 
   it("Search For 1st Entry", () => {
     cy.get('[data-cy="toolbar"]')
-      .find('[data-cy="input-input"]')
+      .find('[data-cy="search-input"]')
       .type(committees[0].name);
-    cy.get('[data-cy="toolbar"]').find("form").submit();
     cy.get(`[data-cy="${committees[0].uid}"]`).should("exist");
   });
 
   it("Search For Multiple Entries", () => {
-    cy.get('[data-cy="toolbar"]').find('[data-cy="input-input"]').type("Mario");
-    cy.get('[data-cy="toolbar"]').find("form").submit();
+    cy.get('[data-cy="toolbar"]')
+      .find('[data-cy="search-input"]')
+      .type("Mario");
     committees.forEach((committee) => {
       if (committee.name.toLowerCase().includes("mario"))
         cy.get(`[data-cy="${committee.uid}"]`).should("exist");

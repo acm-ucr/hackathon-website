@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Form from "@/components/dynamic/form/Form.jsx";
-import { FIELDS, ATTRIBUTES } from "../../../data/dynamic/form/Judge.js";
+import { FIELDS, ATTRIBUTES } from "@/data/dynamic/form/Judge.js";
 import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
 import toast from "react-hot-toast";

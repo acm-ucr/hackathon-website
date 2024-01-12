@@ -1,9 +1,11 @@
-export const TIERS = [
-  "tier1", // change for different hackathons
-  "tier2",
-  "tier3",
-  "other",
-];
+export const TIERS = {
+  tier1: "Bronze",
+  tier2: "Silver",
+  tier3: "Gold",
+  tier4: "Tier4",
+  tier5: "Tier5",
+  other: "Other",
+};
 
 export const FIELDS = {
   description: {
@@ -70,6 +72,15 @@ export const FIELDS = {
     text: "Sponsorship Tier (check sponsorship packet)",
     options: TIERS,
     field: "tier",
+    width: 12,
+    required: true,
+  },
+  response: {
+    input: "textarea",
+    name: "response",
+    rows: 4,
+    title: "Additional Comments/Questions",
+    placeholder: "...",
     width: 12,
     required: true,
   },

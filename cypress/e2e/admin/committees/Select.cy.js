@@ -13,7 +13,7 @@ describe("committee Select", () => {
   });
 
   it("Select All", () => {
-    cy.get('[data-cy="toolbar"]').find('[data-cy="checkbox"]').click();
+    cy.get('[data-cy="header"]').find('[data-cy="checkbox"]').click();
     committees.forEach((committee) => {
       cy.get(`[data-cy="${committee.uid}"]`).should(
         "have.class",

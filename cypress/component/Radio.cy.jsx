@@ -20,10 +20,8 @@ describe("Radio", () => {
 
     cy.mount(<Parent />);
 
-    // radio container exists
     cy.get("[data-cy=radio-gender]").should("exist");
 
-    // Has text
     cy.get("[data-cy=radio-Female]").should("have.text", GENDERS[0]);
 
     cy.get("[data-cy=radio-Male]").should("have.text", GENDERS[1]);
@@ -52,33 +50,25 @@ describe("Radio", () => {
 
     cy.get("[data-cy=radio-button-Female]").click();
 
-    // Tests if Female button is clicked
     cy.get("[data-cy=radio-button-Female]").should(
-      "have.css",
-      "background-color",
-      "rgb(87, 204, 153)"
+      "have.class",
+      "bg-hackathon-green-300"
     );
 
-    // Tests if Male button is not clicked
     cy.get("[data-cy=radio-button-Male]").should(
-      "have.css",
-      "background-color",
-      "rgba(0, 0, 0, 0)"
+      "have.class",
+      "bg-transparent"
     );
 
-    // Tests if Male button is clicked
     cy.get("[data-cy=radio-button-Male]").click();
     cy.get("[data-cy=radio-button-Male]").should(
-      "have.css",
-      "background-color",
-      "rgb(87, 204, 153)"
+      "have.class",
+      "bg-hackathon-green-300"
     );
 
-    // Tests if Female button is unselected
     cy.get("[data-cy=radio-button-Female]").should(
-      "have.css",
-      "background-color",
-      "rgba(0, 0, 0, 0)"
+      "have.class",
+      "bg-transparent"
     );
   });
 
@@ -98,10 +88,6 @@ describe("Radio", () => {
     };
 
     cy.mount(<Parent />);
-
-    // Cannot find it when editable is set to false
-    // Only the text is showing up. No buttons
-    // Expected behavior?
     cy.get("[data-cy=radio-button-Female]").should("not.exist");
     cy.get("[data-cy=radio-button-Male]").should("not.exist");
   });

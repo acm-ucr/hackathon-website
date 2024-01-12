@@ -1,23 +1,19 @@
 "use client";
-import {
-  FILTERS,
-  HEADERS,
-  STATUSES,
-  TAGS,
-} from "@/data/dynamic/admin/Interest";
-import Dashboard from "../Dashboard";
+import { STATUSES, TAGS, COLUMNS } from "@/data/dynamic/admin/Interests.js";
+import Table from "./dashboard/Dashboard";
 
-const Feedback = () => {
+const Interests = () => {
   return (
-    <Dashboard
-      title="Interests"
-      page="interests"
-      empty="No Interests Available"
-      filter={FILTERS}
-      header={HEADERS}
-      statuses={STATUSES}
-      tags={TAGS}
-    />
+    <div className="h-full font-poppins flex flex-col py-4 gap-3">
+      <Table
+        title="Interests"
+        columns={COLUMNS}
+        tags={TAGS}
+        page="interests"
+        statuses={STATUSES}
+        empty="No Interests Available"
+      />
+    </div>
   );
 };
-export default Feedback;
+export default Interests;

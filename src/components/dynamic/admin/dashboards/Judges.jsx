@@ -1,23 +1,19 @@
 "use client";
-import {
-  FILTERS,
-  HEADERS,
-  TAGS,
-  STATUSES,
-} from "@/data/dynamic/admin/Judges.js";
-import Dashboard from "../Dashboard.jsx";
+import { STATUSES, TAGS, COLUMNS } from "@/data/dynamic/admin/Judges.js";
+import Table from "./dashboard/Dashboard";
 
 const Judges = () => {
   return (
-    <Dashboard
-      title="Judges"
-      page="judges"
-      empty="No Judges Available"
-      filter={FILTERS}
-      header={HEADERS}
-      statuses={STATUSES}
-      tags={TAGS}
-    />
+    <div className="h-full font-poppins flex flex-col py-4 gap-3">
+      <Table
+        title="Judges"
+        columns={COLUMNS}
+        tags={TAGS}
+        page="judges"
+        statuses={STATUSES}
+        empty="No Judges Available"
+      />
+    </div>
   );
 };
 export default Judges;
