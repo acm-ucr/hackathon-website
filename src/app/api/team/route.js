@@ -4,9 +4,10 @@ import { doc, getDoc, updateDoc, addDoc, collection } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/user/Team";
 
-export async function POST() {
+export async function POST(req) {
   const res = NextResponse;
   const { auth, message, user } = await authenticate(AUTH.POST);
+  const { team } = await req.json();
 
   if (auth !== 200) {
     return res.json(
@@ -16,23 +17,30 @@ export async function POST() {
   }
 
   try {
-    const team = {
+    const newTeam = {
       links: {
         github: "",
         devpost: "",
         figma: "",
       },
+      name: team.name,
       members: [{ discord: user.discord, name: user.name, uid: user.id }],
       status: 0,
     };
-    const docRef = await addDoc(collection(db, "teams"), team);
+    const docRef = await addDoc(collection(db, "teams"), newTeam);
     await updateDoc(doc(db, "users", user.id), {
       team: docRef.id,
     });
     return res.json(
       {
         message: "OK",
-        items: { team: docRef.id },
+        items: {
+          github: newTeam.links.github,
+          devpost: newTeam.links.devpost,
+          figma: newTeam.links.figma,
+          members: newTeam.members,
+          id: docRef.id,
+        },
       },
       { status: 200 }
     );
@@ -55,10 +63,11 @@ export async function PUT(req) {
     );
   }
 
-  const { github, figma, devpost, members } = await req.json();
+  const { github, figma, devpost, members, name } = await req.json();
 
   try {
     await updateDoc(doc(db, "teams", user.team), {
+      name: name,
       links: {
         github: github,
         figma: figma,
@@ -92,7 +101,7 @@ export async function GET(req) {
     const snapshot = await getDoc(doc(db, "teams", team));
     if (!snapshot.exists())
       return res.json({ message: "Invalid Team ID" }, { status: 500 });
-    const { links, members } = snapshot.data();
+    const { links, members, name } = snapshot.data();
     return res.json(
       {
         message: "OK",
@@ -101,6 +110,7 @@ export async function GET(req) {
           devpost: links.devpost,
           figma: links.figma,
           members: members,
+          name: name,
         },
       },
       { status: 200 }
