@@ -28,6 +28,6 @@ Cypress.Commands.add("delete", ({ page }) => {
     status: 200,
   }).as("DELETE");
   cy.get('[data-cy="toolbar"]').find('[data-cy="delete"]').click();
-  cy.get('[data-cy="confirm-button"]').click();
+  cy.get('[data-cy="popup"]').find('[data-cy="confirm-button"]').click();
   cy.wait("@DELETE");
 });

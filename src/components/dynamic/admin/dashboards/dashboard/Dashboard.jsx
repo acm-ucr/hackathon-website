@@ -52,7 +52,7 @@ const Dashboard = ({
   });
 
   return (
-    <div className="w-full overflow-scroll">
+    <div className="w-full">
       <div className="flex items-center my-2">
         <Title title={title} />
         <Filters
