@@ -42,16 +42,6 @@ const Toolbar = ({
     });
   };
 
-  const handleShortcuts = (e) => {
-    if (e.repeat) return;
-    switch (e.key) {
-      case "r": {
-        handleReload();
-        break;
-      }
-    }
-  };
-
   const handleDelete = () => {
     const ids = rows.map(({ uid }) => uid);
     const keep = data.filter(({ uid }) => !ids.includes(uid));
@@ -120,10 +110,6 @@ const Toolbar = ({
 
   useEffect(() => {
     handleReload();
-
-    document.addEventListener("keydown", handleShortcuts);
-
-    return () => document.removeEventListener("keydown", handleShortcuts);
   }, []);
 
   const value = filters.find(({ id }) => id === "name")?.value || "";
