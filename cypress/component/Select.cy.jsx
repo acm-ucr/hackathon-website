@@ -2,11 +2,7 @@ import Select from "@/components/dynamic/Select";
 import { useState } from "react";
 
 describe("Select", () => {
-  const options = [
-    { name: "Option A" },
-    { name: "Option B" },
-    { name: "Option C" },
-  ];
+  const options = ["Option A", "Option B", "Option C"];
   const placeholder = "Select an option";
   const title = "Title";
 
@@ -73,7 +69,7 @@ describe("Select", () => {
 
     cy.get('[data-cy="select-toggle"]').click();
 
-    const selectedOption = options[0].name;
+    const selectedOption = options[0];
     cy.get('[data-cy="select-menu"]').contains(selectedOption).click();
 
     cy.get('[data-cy="select-toggle"]').should("contain", selectedOption);
