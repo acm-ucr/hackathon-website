@@ -79,6 +79,7 @@ const Select = ({
           <div
             ref={ref}
             className="absolute overflow-y-scroll bg-hackathon-green-100 w-full h-fit max-h-[35vh]"
+            data-cy="select-menu"
           >
             {searchable && (
               <input
