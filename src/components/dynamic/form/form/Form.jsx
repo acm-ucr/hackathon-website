@@ -4,7 +4,7 @@ import { useState } from "react";
 import Status from "./Status";
 import Questions from "./Questions";
 import Confirmation from "./Confirmation";
-import Button from "../Button";
+import Button from "../../Button";
 import { signOut } from "next-auth/react";
 
 const Form = ({

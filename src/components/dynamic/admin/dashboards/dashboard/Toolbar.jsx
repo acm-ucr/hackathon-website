@@ -42,16 +42,6 @@ const Toolbar = ({
     });
   };
 
-  const handleShortcuts = (e) => {
-    if (e.repeat) return;
-    switch (e.key) {
-      case "r": {
-        handleReload();
-        break;
-      }
-    }
-  };
-
   const handleDelete = () => {
     const ids = rows.map(({ uid }) => uid);
     const keep = data.filter(({ uid }) => !ids.includes(uid));
@@ -120,10 +110,6 @@ const Toolbar = ({
 
   useEffect(() => {
     handleReload();
-
-    document.addEventListener("keydown", handleShortcuts);
-
-    return () => document.removeEventListener("keydown", handleShortcuts);
   }, []);
 
   const value = filters.find(({ id }) => id === "name")?.value || "";
@@ -154,16 +140,19 @@ const Toolbar = ({
         onChangeFn={(e) => onChange("name", e.target.value)}
         clearFn={() => onChange("name", "")}
       />
+      <div>
+        Rows:<span className="mx-2">{data.length}</span>
+      </div>
       <FaUndoAlt
         size={22.5}
         onClick={handleReload}
-        className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
+        className="text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
       />
       <FaTrashAlt
         data-cy="delete"
         onClick={confirmDelete}
         size={22.5}
-        className="ml-5 text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
+        className="text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer mx-2"
       />
       {popup.visible && (
         <Popup

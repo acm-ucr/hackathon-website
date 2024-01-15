@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Form from "@/components/dynamic/form/Form.jsx";
+import Form from "@/components/dynamic/form/form/Form.jsx";
 import { api } from "@/utils/api";
 import toast from "react-hot-toast";
 import { FIELDS, ATTRIBUTES } from "@/data/dynamic/form/Interest";

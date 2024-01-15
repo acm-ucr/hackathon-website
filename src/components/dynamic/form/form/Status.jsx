@@ -1,4 +1,4 @@
-import Tag from "../admin/Tag";
+import Tag from "../../admin/Tag";
 import { COLORS } from "@/data/dynamic/Tags";
 import Button from "@/components/dynamic/Button.jsx";
 

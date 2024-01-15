@@ -21,8 +21,8 @@ export const TAGS = [
 export const COLUMNS = [
   generateSelect(),
   {
-    accessorKey: "uid",
-    header: "uid",
+    accessorKey: "name",
+    header: "name",
     width: "w-3/12",
     enableColumnFilter: true,
     filterFn: "includesString",

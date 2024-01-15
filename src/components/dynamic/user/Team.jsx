@@ -7,17 +7,13 @@ import { BiLink, BiSolidCopy } from "react-icons/bi";
 import { api } from "@/utils/api";
 
 const Team = ({ user, setUser }) => {
-  const [team, setTeam] = useState(null);
-  const [id, setId] = useState({
-    team: "",
-  });
-  const [edit, setEdit] = useState(false);
   const defaultTeam = {
-    github: "",
-    devpost: "",
-    figma: "",
-    members: [{ email: user.email, name: user.name }],
+    id: "",
+    name: "",
   };
+  const [load, setLoad] = useState(false);
+  const [team, setTeam] = useState(defaultTeam);
+  const [edit, setEdit] = useState(false);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(user.team);
@@ -37,40 +33,46 @@ const Team = ({ user, setUser }) => {
       url: "/api/members",
     }).then(() => {
       toast("✅ Successfully left team!");
-      setTeam(null);
+      setTeam(defaultTeam);
       setUser({ ...user, team: null });
-      setId({ team: "" });
+      setLoad(false);
     });
   };
 
   const handleJoin = () => {
-    if (id.team === "") {
+    if (team.id === "") {
       toast("❌ Enter a Valid Team ID");
       return;
     }
     api({
       method: "PUT",
       url: "/api/members",
-      body: { team: id.team },
+      body: { team: team.id },
     }).then((response) => {
       if (response.message !== "OK") {
         toast(`❌ ${response.message}`);
         return;
       }
       toast("✅ Successfully joined team!");
-      setUser({ ...user, team: id.team });
+      setUser({ ...user, team: team.id });
     });
   };
 
   const handleCreate = () => {
+    if (team.name === "") {
+      toast("❌ Enter a Valid Team Name");
+      return;
+    }
     api({
       method: "POST",
       url: "/api/team",
+      body: { team: team },
     }).then(({ items }) => {
-      setTeam(defaultTeam);
-      setUser({ ...user, team: items.team });
+      setTeam(items);
+      setUser({ ...user, team: items.id });
       toast("✅ Successfully created a new team!");
       setEdit(false);
+      setLoad(true);
     });
   };
 
@@ -108,7 +110,10 @@ const Team = ({ user, setUser }) => {
         method: "GET",
         url: `/api/team?teamid=${user.team}`,
       })
-        .then(({ items }) => setTeam(items))
+        .then(({ items }) => {
+          setTeam(items);
+          setLoad(true);
+        })
         .catch(({ response: data }) => {
           if (data.message === "Invalid Team ID") toast("❌ Invalid Team ID");
           else toast("❌ Internal Server Error");
@@ -118,9 +123,19 @@ const Team = ({ user, setUser }) => {
 
   return (
     <div className="bg-white rounded-lg p-4 gap-3 m-2 overflow-scroll max-h-[70vh] flex flex-col justify-start">
-      {user.team && !team && <Loading />}
-      {team && (
+      {user.team && !load && <Loading />}
+      {user.team && load && (
         <>
+          <Input
+            name="name"
+            type="text"
+            title="Team Name"
+            value={team.name}
+            user={team}
+            editable={edit}
+            setUser={setTeam}
+            placeholder="N/A"
+          />
           <Input
             name="github"
             type="text"
@@ -131,7 +146,6 @@ const Team = ({ user, setUser }) => {
             setUser={setTeam}
             placeholder="N/A"
           />
-
           <Input
             name="devpost"
             type="text"
@@ -142,7 +156,6 @@ const Team = ({ user, setUser }) => {
             setUser={setTeam}
             placeholder="N/A"
           />
-
           <Input
             name="figma"
             type="text"
@@ -170,7 +183,7 @@ const Team = ({ user, setUser }) => {
               share this team ID or join link to your teammates
             </div>
             <p className="pl-3 mb-0 flex items-center">
-              {user.team}{" "}
+              {user.team}
               <BiSolidCopy
                 onClick={handleCopy}
                 className="text-lg text-gray-400 ml-2 hover:cursor-pointer hover:text-hackathon-blue-100"
@@ -192,26 +205,39 @@ const Team = ({ user, setUser }) => {
           </div>
         </>
       )}
-      {!user.team && (
-        <div className="flex flex-col justify-between h-full">
-          <div className="text-hackathon-green-300">
-            ask your teammates to share team ID or join link with you to join
-            the team
-          </div>
-          <div className="flex-grow">
+      {!user.team && team && (
+        <div className="flex flex-col justify-start h-full gap-5">
+          <div className="">
+            <div className="text-hackathon-green-300">
+              Ask your teammates to share team ID or join link with you to join
+              the team
+            </div>
             <Input
-              name="team"
+              name="id"
               type="text"
               placeholder="team ID"
               title="Join a Team"
-              value={id.team}
-              user={id}
+              value={team.id}
+              user={team}
               editable={true}
-              setUser={setId}
+              setUser={setTeam}
             />
-          </div>
-          <div className="flex justify-end gap-2">
             <Button color="green" size="lg" text="join" onClick={handleJoin} />
+          </div>
+          <div className="">
+            <div className="text-hackathon-green-300">
+              Type a team name to create a new team
+            </div>
+            <Input
+              name="name"
+              type="text"
+              placeholder="team name"
+              title="Create a Team"
+              value={team.name}
+              user={team}
+              editable={true}
+              setUser={setTeam}
+            />
             <Button
               color="green"
               size="lg"

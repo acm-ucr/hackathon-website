@@ -28,7 +28,7 @@ export async function GET(req, { params }) {
   try {
     const snapshot = await getDocs(collection(db, "teams"));
     snapshot.forEach((doc) => {
-      const { links, status, members, timestamp } = doc.data();
+      const { links, status, members, timestamp, name } = doc.data();
 
       const formattedNames = members.map((member) => member.name);
       const formattedDiscords = members.map((member) => member.discord);
@@ -40,6 +40,7 @@ export async function GET(req, { params }) {
         });
 
       output.push({
+        name: name,
         links: formattedLinks,
         members: formattedNames,
         discords: formattedDiscords,
