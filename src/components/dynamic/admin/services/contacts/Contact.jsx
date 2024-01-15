@@ -6,11 +6,7 @@ import { useState } from "react";
 import { api } from "@/utils/api";
 import toast from "react-hot-toast";
 
-const STATUSES = [
-  { name: "confirmed", hidden: false },
-  { name: "pending", hidden: false },
-  { name: "not attending", hidden: false },
-];
+const STATUSES = ["confirmed", "pending", "not attending"];
 
 const MAPPINGS = {
   confirmed: 1,

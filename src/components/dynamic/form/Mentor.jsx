@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Form from "@/components/dynamic/form/Form.jsx";
+import Form from "@/components/dynamic/form/form/Form.jsx";
 import { FIELDS, ATTRIBUTES } from "@/data/dynamic/form/Mentors.js";
 import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
