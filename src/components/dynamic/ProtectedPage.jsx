@@ -12,7 +12,7 @@ const ProtectedPage = ({ children, restrictions, title }) => {
   const [confirmed, setConfirmed] = useState(false);
 
   const pathName = usePathname();
-  const initialRestrictions = resitrctions;
+  const initialRestrictions = restrictions;
   const sur = session.user.roles;
   useEffect(() => {
     if (RELEASES.DYNAMIC[pathName] > new Date()) {
