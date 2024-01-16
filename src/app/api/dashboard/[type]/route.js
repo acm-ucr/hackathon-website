@@ -182,18 +182,17 @@ export async function DELETE(req, { params }) {
   }
   try {
     if (types.has(params.type)) {
-      await Promise.all(
-        objects.map(async (object) => {
-          const snapshot = await getDoc(doc(db, "users", object));
-          const status = snapshot.data().roles[params.type];
-          await updateDoc(doc(db, "statistics", "statistics"), {
-            [`${params.type}.${status}`]: increment(-1),
-          });
-          await updateDoc(doc(db, "users", object), {
-            [`roles.${params.type}`]: deleteField(),
-          });
-        })
-      );
+      const promises = objects.map(async (object) => {
+        const snapshot = await getDoc(doc(db, "users", object));
+        const status = snapshot.data().roles[params.type];
+        await updateDoc(doc(db, "statistics", "statistics"), {
+          [`${params.type}.${status}`]: increment(-1),
+        });
+        await updateDoc(doc(db, "users", object), {
+          [`roles.${params.type}`]: deleteField(),
+        });
+      });
+      await Promise.all(promises);
     }
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
