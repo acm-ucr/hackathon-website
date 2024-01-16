@@ -8,7 +8,7 @@ const Radio = ({
   required,
 }) => {
   const handleClick = (optionKey, option) => {
-    if (field === "tier" || field === "affiliation") {
+    if (field === "tier" || field === "affiliation" || field === "panelist") {
       setUser({ ...user, [field]: optionKey });
     } else {
       setUser({ ...user, [field]: option });

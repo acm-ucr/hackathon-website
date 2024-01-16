@@ -27,6 +27,14 @@ export const generateAffiliation = (affiliations) => ({
     <Tag text={affiliations[getValue()]} color={COLORS[getValue()]} />
   ),
 });
+export const generatePanelist = (panelists) => ({
+  accessorKey: "panelist",
+  header: "Panelist Type",
+  width: "w-1/12",
+  cell: ({ getValue }) => (
+    <Tag text={panelists[getValue()]} color={COLORS[getValue()]} />
+  ),
+});
 
 export const generateStatus = (statuses) => ({
   accessorKey: "status",

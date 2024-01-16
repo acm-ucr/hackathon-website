@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { BsUpload } from "react-icons/bs";
-import { FaFilePdf, FaImage, FaTimes } from "react-icons/fa";
+import { FaEye, FaFilePdf, FaImage, FaTimes } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import { BYTES } from "@/data/dynamic/Bytes";
 import { readFileAsBase64, compress } from "@/utils/convert";
-
+import PhotoModal from "./PhotoModal";
 const getSize = (maxSize) => BYTES[maxSize[1]] * maxSize[0];
 const getType = (types) => "." + types.join(",.");
 
 const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState(
+    user && user[field]
+      ? { preview: user[field], type: "photo", name: `${user.name}.png` }
+      : null
+  );
   const [uploading, setUploading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleInput = async (e) => {
     setUploading(true);
@@ -22,6 +27,11 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
     setFile(blob);
     const base64 = await readFileAsBase64(blob);
     setUser({ ...user, [field]: base64 });
+    setFile({
+      preview: base64,
+      name: blob.name,
+      type: blob.type,
+    });
     setUploading(false);
   };
 
@@ -67,12 +77,22 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
               )}
               {file.name}
             </div>
-            <FaTimes
-              className="text-gray-500 hover:cursor-pointer hover:text-red-600"
-              onClick={() => setFile(null)}
-              data-cy="upload-cancel"
-            />
+            <div className="flex flex-row">
+              <FaEye
+                onClick={() => setShowModal(true)}
+                className="text-gray-500 hover:cursor-pointer hover:text-gray-800 mr-2"
+              />
+
+              <FaTimes
+                className="text-gray-500 hover:cursor-pointer hover:text-red-600"
+                onClick={() => setFile(null)}
+                data-cy="upload-cancel"
+              />
+            </div>
           </div>
+        )}
+        {showModal && (
+          <PhotoModal imageString={file.preview} setState={setShowModal} />
         )}
       </div>
       {uploading && "UPLOADING ..."}
