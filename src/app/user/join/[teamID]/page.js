@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 import Fault from "@/utils/error";
 import { api } from "@/utils/api";
 
-export default function page({ params }) {
+export default function Page({ params }) {
   const [team, setTeam] = useState(null);
   const router = useRouter();
   const { update: sessionUpdate } = useSession();
@@ -28,11 +28,14 @@ export default function page({ params }) {
       router.push("/user");
     });
   };
+
+  const teamid = params.teamID;
+
   useEffect(() => {
-    if (params.teamID) {
+    if (teamid) {
       api({
         method: "GET",
-        url: `/api/team?teamid=${params.teamID}`,
+        url: `/api/team?teamid=${teamid}`,
       }).then((response) => {
         if (response.message === "OK") {
           setTeam(response.items);
@@ -51,7 +54,7 @@ export default function page({ params }) {
         }
       });
     }
-  }, []);
+  }, [teamid]);
 
   return (
     <div>

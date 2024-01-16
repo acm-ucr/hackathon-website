@@ -1,6 +1,6 @@
 "use client";
 import { api } from "@/utils/api";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaTrashAlt, FaUndoAlt } from "react-icons/fa";
 import toast from "react-hot-toast";
 import Popup from "../../Popup";
@@ -108,9 +108,15 @@ const Toolbar = ({
     toggleAllRowsSelected(false);
   };
 
-  useEffect(() => {
+  async function f1() {
     handleReload();
-  }, []);
+  }
+
+  const [ran, setran] = useState(false);
+  if (ran == false) {
+    setran(true);
+    f1();
+  }
 
   const value = filters.find(({ id }) => id === "name")?.value || "";
 
