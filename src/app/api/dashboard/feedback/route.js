@@ -23,6 +23,7 @@ export async function POST(req) {
   }
 
   const {
+    rating,
     additionalComments,
     eventSource,
     improvements,
@@ -33,6 +34,7 @@ export async function POST(req) {
   try {
     await Promise.all(
       await addDoc(collection(db, "feedback"), {
+        rating: parseInt(rating),
         additionalComments,
         eventSource,
         improvements,
