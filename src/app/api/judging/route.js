@@ -120,13 +120,15 @@ export async function PUT(req) {
   const { teams } = await req.json();
 
   try {
-    teams.forEach(async (object) => {
-      const rounds = JSON.stringify(object.rounds);
-      await updateDoc(doc(db, "teams", object.uid), {
-        table: object.table,
-        rounds: rounds,
-      });
-    });
+    await Promise.all(
+      teams.map(async (object) => {
+        const rounds = JSON.stringify(object.rounds);
+        await updateDoc(doc(db, "teams", object.uid), {
+          table: object.table,
+          rounds: rounds,
+        });
+      })
+    );
 
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
