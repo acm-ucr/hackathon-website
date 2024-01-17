@@ -1,9 +1,16 @@
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  updateDoc,
+  doc,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "../../../utils/firebase";
 import { NextResponse } from "next/server";
 import { authenticate } from "@/utils/auth";
 
-async function syncStatsWithDatabase() {
+const syncStatsWithDatabase = async () => {
   await updateRoleCounts("participants");
   await updateRoleCounts("volunteers");
   await updateRoleCounts("judges");
@@ -12,7 +19,7 @@ async function syncStatsWithDatabase() {
   await updateRoleCounts("sponsors");
   await updateRoleCounts("admins");
   await updateRoleCounts("teams");
-}
+};
 const getRoleCount = async (role, value) => {
   return (
     await getDocs(
@@ -20,7 +27,7 @@ const getRoleCount = async (role, value) => {
     )
   ).size;
 };
-async function updateRoleCounts(role) {
+const updateRoleCounts = async (role) => {
   const [roleMinusOneCount, roleZeroCount, roleOneCount] = await Promise.all([
     getRoleCount(role, -1),
     getRoleCount(role, 0),
@@ -32,7 +39,7 @@ async function updateRoleCounts(role) {
     [`${role}.0`]: roleZeroCount,
     [`${role}.1`]: roleOneCount,
   });
-}
+};
 export async function GET() {
   const res = NextResponse;
   const { auth } = await authenticate({
@@ -47,6 +54,7 @@ export async function GET() {
   }
   try {
     syncStatsWithDatabase();
+    return res.json({ status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
