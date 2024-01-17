@@ -62,7 +62,7 @@ const Questions = ({
                 {index === field.texts.length - 1 && (
                   <p>
                     Fields with
-                    <span className="text-hackathon-green-300"> * </span>
+                    <span className="text-hackathon-red-500"> * </span>
                     are required.
                   </p>
                 )}
