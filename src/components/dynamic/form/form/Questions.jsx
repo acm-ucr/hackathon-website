@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import Link from "next/link";
 import { FaLink } from "react-icons/fa";
 import { CONFIG } from "@/data/Config";
+import SelectAll from "../selectAll";
 
 const Questions = ({
   fields,
@@ -117,6 +118,32 @@ const Questions = ({
                   color="bg-hackathon-green-300"
                 />
               ))}
+            </>
+          )}
+          {field.input === "selectAll" && (
+            <>
+              <p className="mb-1 font-semibold">
+                {field.text}
+                {field.required && (
+                  <span className="text-hackathon-green-300">*</span>
+                )}
+              </p>
+              <SelectAll
+                className="w-1/2"
+                toggle={object[field.field].length === field.options.length}
+                text={field.options}
+                onClick={() => {
+                  setObject({
+                    ...object,
+                    [field.field]:
+                      object[field.field].length === field.options.length
+                        ? []
+                        : [...field.options],
+                  });
+                }}
+                required={field.required}
+                color="bg-hackathon-green-300"
+              />
             </>
           )}
           {field.input === "radio" && (

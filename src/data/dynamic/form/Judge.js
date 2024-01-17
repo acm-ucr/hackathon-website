@@ -95,7 +95,7 @@ export const FIELDS = {
   },
   requirements: {
     text: "Terms and Conditions",
-    input: "checkboxes",
+    input: "selectAll",
     width: 12,
     field: "requirements",
     required: true,
