@@ -1,31 +1,33 @@
 import {
   collection,
-  getDocs,
   updateDoc,
   doc,
   query,
   where,
+  getCountFromServer,
 } from "firebase/firestore";
 import { db } from "../../../utils/firebase";
 import { NextResponse } from "next/server";
 import { authenticate } from "@/utils/auth";
 
 const syncStatsWithDatabase = async () => {
-  await updateRoleCounts("participants");
-  await updateRoleCounts("volunteers");
-  await updateRoleCounts("judges");
-  await updateRoleCounts("mentors");
-  await updateRoleCounts("committees");
-  await updateRoleCounts("sponsors");
-  await updateRoleCounts("admins");
-  await updateRoleCounts("teams");
+  await Promise.all([
+    updateRoleCounts("participants"),
+    updateRoleCounts("volunteers"),
+    updateRoleCounts("judges"),
+    updateRoleCounts("mentors"),
+    updateRoleCounts("committees"),
+    updateRoleCounts("sponsors"),
+    updateRoleCounts("admins"),
+    updateRoleCounts("teams"),
+  ]);
 };
 const getRoleCount = async (role, value) => {
   return (
-    await getDocs(
+    await getCountFromServer(
       query(collection(db, "users"), where(`roles.${role}`, "==", value))
     )
-  ).size;
+  ).data().count;
 };
 const updateRoleCounts = async (role) => {
   const [roleMinusOneCount, roleZeroCount, roleOneCount] = await Promise.all([
@@ -40,7 +42,7 @@ const updateRoleCounts = async (role) => {
     [`${role}.1`]: roleOneCount,
   });
 };
-export async function GET() {
+export const GET = async () => {
   const res = NextResponse;
   const { auth } = await authenticate({
     admins: [1],
@@ -61,4 +63,4 @@ export async function GET() {
       { status: 500 }
     );
   }
-}
+};
