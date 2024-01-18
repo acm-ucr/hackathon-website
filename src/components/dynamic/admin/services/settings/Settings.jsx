@@ -23,7 +23,7 @@ const Settings = () => {
         size="xl"
         onClick={syncStatsWithDatabase}
       />
-      {message && <p>{message}</p>}
+      <p>{message}</p>
     </div>
   );
 };
