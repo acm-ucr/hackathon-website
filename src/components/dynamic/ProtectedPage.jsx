@@ -12,8 +12,7 @@ const ProtectedPage = ({ children, restrictions, title }) => {
   const [confirmed, setConfirmed] = useState(false);
 
   const pathName = usePathname();
-  const initialRestrictions = restrictions;
-  const sur = session.user.roles;
+
   useEffect(() => {
     if (RELEASES.DYNAMIC[pathName] > new Date()) {
       throw new Fault(
@@ -29,7 +28,7 @@ const ProtectedPage = ({ children, restrictions, title }) => {
       return;
     }
 
-    if (!sur && Object.keys(initialRestrictions).length > 0) {
+    if (!session.user.roles && Object.keys(restrictions).length > 0) {
       throw new Fault(
         403,
         "Unauthorized",
@@ -37,16 +36,17 @@ const ProtectedPage = ({ children, restrictions, title }) => {
       );
     }
 
-    const authorized = Object.entries(initialRestrictions).some(
-      ([key, values]) =>
-        Array.isArray(values) ? values.includes(sur[key]) : sur[key] === values
+    const authorized = Object.entries(restrictions).some(([key, values]) =>
+      Array.isArray(values)
+        ? values.includes(session.user.roles[key])
+        : session.user.roles[key] === values
     );
 
-    if (!authorized && Object.keys(initialRestrictions).length > 0) {
+    if (!authorized && Object.keys(restrictions).length > 0) {
       throw new Fault(403, "Unauthorized", "You do not have access this page");
     }
     setConfirmed(true);
-  }, [status, pathName, initialRestrictions, sur]);
+  }, [status, session.user.roles, pathName, restrictions]);
 
   const navigation = RegExp(/user\/|admin\//).test(pathName);
 
