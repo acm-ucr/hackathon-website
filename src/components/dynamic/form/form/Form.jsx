@@ -21,16 +21,12 @@ const Form = ({
     typeof object.roles[object.form] !== "undefined" && !bypass ? 0 : 1
   );
 
-  const handleSignOut = () => {
-    signOut({ callbackUrl: "/", redirect: true });
-  };
-
   return (
     <div className="w-full h-full overflow-scroll-y flex flex-col items-center font-poppins">
       <div className="w-full flex flex-row justify-end mr-[10%]">
         <Button
           text="Sign Out"
-          onClick={handleSignOut}
+          onClick={() => signOut({ callbackUrl: "/", redirect: true })}
           loading={loading}
           color="green"
         />
