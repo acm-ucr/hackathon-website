@@ -37,7 +37,7 @@ export const COLUMNS = [
   },
   {
     accessorKey: "discord",
-    header: "discord",
+    header: "Discord",
     width: "w-3/12",
     cell: ({ getValue }) => <div>{getValue()}</div>,
   },
