@@ -28,7 +28,7 @@ const Checkbox = ({
           } text-lg`}
         />
       </div>
-      {text && <p className="pl-3 my-0 pt-0">{text}</p>}
+      {text && <p className="my-0 pt-0">{text}</p>}
     </div>
   );
 };

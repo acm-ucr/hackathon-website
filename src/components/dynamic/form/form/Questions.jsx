@@ -102,7 +102,6 @@ const Questions = ({
               </p>
               {field.options.map((option, i) => (
                 <Checkbox
-                  className="w-1/2"
                   key={i}
                   toggle={object[field.field].includes(option)}
                   text={option}
