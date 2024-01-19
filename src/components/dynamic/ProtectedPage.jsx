@@ -46,7 +46,7 @@ const ProtectedPage = ({ children, restrictions, title }) => {
       throw new Fault(403, "Unauthorized", "You do not have access this page");
     }
     setConfirmed(true);
-  }, [status, session.user.roles, pathName, restrictions]);
+  }, [status]);
 
   const navigation = RegExp(/user\/|admin\//).test(pathName);
 
