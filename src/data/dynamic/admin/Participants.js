@@ -79,7 +79,9 @@ export const DROPDOWN = ({ object }) => {
           <div key={index} className="my-1 px-1 flex text-sm">
             {ICONS[attribute]}
             {Array.isArray(object[attribute])
-              ? object[attribute].join(",")
+              ? object[attribute].length !== 0
+                ? object[attribute].join(",")
+                : "N/A"
               : object[attribute]}
           </div>
         ))}
