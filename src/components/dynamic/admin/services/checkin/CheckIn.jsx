@@ -25,7 +25,7 @@ const CheckIn = () => {
     });
   }, []);
   const setResult = async (result) => {
-    if (result != code) {
+    if (result !== code) {
       setCode(result);
       toast("✅ QR Code Scanned");
     }
