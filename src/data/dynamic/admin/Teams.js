@@ -22,7 +22,7 @@ export const COLUMNS = [
   generateSelect(),
   {
     accessorKey: "name",
-    header: "name",
+    header: "Name",
     width: "w-3/12",
     enableColumnFilter: true,
     filterFn: "includesString",
