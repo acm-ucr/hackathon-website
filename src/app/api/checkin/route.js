@@ -13,7 +13,7 @@ import { authenticate } from "@/utils/auth";
 export async function GET(req) {
   const res = NextResponse;
   const { auth, message } = await authenticate({
-    admins: 1,
+    admins: [1],
   });
 
   if (auth !== 200) {
@@ -40,7 +40,7 @@ export async function GET(req) {
 export async function PUT(req) {
   const res = NextResponse;
   const { auth, message } = await authenticate({
-    admins: 1,
+    admins: [1],
   });
 
   if (auth !== 200) {
