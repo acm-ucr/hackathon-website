@@ -28,12 +28,12 @@ export async function GET() {
 
   try {
     const teamsSnapshot = await getDocs(
-      query(collection(db, "teams"), where("status", "==", 1))
+      query(collection(db, "teams"), where("status", ">=", 0))
     );
     teamsSnapshot.forEach((doc) => {
       const { links, name, rounds, table } = doc.data();
 
-      if (links.devpost !== "") {
+      if (links.devpost.includes("devpost.com/")) {
         const formattedRounds = rounds === undefined ? [] : JSON.parse(rounds);
         const formattedTable = table === undefined ? "" : table;
         const formattedLinks = Object.entries(links).map(([key, value]) => {
@@ -50,6 +50,7 @@ export async function GET() {
         });
       }
     });
+    console.log(teams);
 
     const judgesSnapshot = await getDocs(
       query(collection(db, "users"), where("roles.judges", "==", 1))
