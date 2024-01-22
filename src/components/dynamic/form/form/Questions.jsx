@@ -63,7 +63,7 @@ const Questions = ({
                 {index === field.texts.length - 1 && (
                   <p>
                     Fields with
-                    <span className="text-hackathon-green-300"> * </span>
+                    <span className="text-red-500"> * </span>
                     are required.
                   </p>
                 )}
@@ -103,7 +103,6 @@ const Questions = ({
               </p>
               {field.options.map((option, i) => (
                 <Checkbox
-                  className="w-1/2"
                   key={i}
                   toggle={object[field.field].includes(option)}
                   text={option}
