@@ -27,6 +27,9 @@ export const authOptions = {
       clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET,
     }),
   ],
+  pages: {
+    error: "/auth/error",
+  },
   callbacks: {
     async session({ session, user }) {
       session.user = user;

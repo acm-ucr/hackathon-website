@@ -3,8 +3,8 @@ import Radio from "@/components/dynamic/Radio";
 import Checkbox from "@/components/dynamic/Checkbox";
 import Input from "@/components/dynamic/Input";
 import Button from "@/components/dynamic/Button.jsx";
-import Textarea from "@/components/dynamic/form/Textarea.jsx";
-import Upload from "@/components/dynamic/form/Upload";
+import Textarea from "@/components/dynamic/form/form/Textarea.jsx";
+import Upload from "@/components/dynamic/form/form/Upload";
 import toast from "react-hot-toast";
 import Link from "next/link";
 import { FaLink } from "react-icons/fa";
@@ -62,7 +62,7 @@ const Questions = ({
                 {index === field.texts.length - 1 && (
                   <p>
                     Fields with
-                    <span className="text-hackathon-green-300"> * </span>
+                    <span className="text-red-500"> * </span>
                     are required.
                   </p>
                 )}
@@ -98,13 +98,10 @@ const Questions = ({
             <>
               <p className="mb-1 font-semibold">
                 {field.text}
-                {field.required && (
-                  <span className="text-hackathon-green-300">*</span>
-                )}
+                {field.required && <span className="text-red-500">*</span>}
               </p>
               {field.options.map((option, i) => (
                 <Checkbox
-                  className="w-1/2"
                   key={i}
                   toggle={object[field.field].includes(option)}
                   text={option}

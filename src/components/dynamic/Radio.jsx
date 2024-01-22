@@ -19,7 +19,7 @@ const Radio = ({
     <div data-cy={`radio-${field}`} className="flex flex-col">
       <p className="mb-1 font-semibold">
         {text}
-        {required && <span className="text-hackathon-green-300">*</span>}
+        {required && <span className="text-red-500">*</span>}
       </p>
       {!editable && (
         <div data-cy={`radio-${field}-default`} className="pl-3">
