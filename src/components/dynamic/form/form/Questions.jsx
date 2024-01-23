@@ -9,7 +9,6 @@ import toast from "react-hot-toast";
 import Link from "next/link";
 import { FaLink } from "react-icons/fa";
 import { CONFIG } from "@/data/Config";
-import SelectAll from "../selectAll";
 
 const Questions = ({
   fields,
@@ -119,18 +118,28 @@ const Questions = ({
               ))}
             </>
           )}
-          {field.input === "selectAll" && (
+          {field.input === "checkbox" && (
             <>
-              <p className="mb-1 font-semibold">
+              <p className="mb-1 mt-3 font-semibold">
                 {field.text}
-                {field.required && (
-                  <span className="text-hackathon-green-300">*</span>
-                )}
+                {field.required && <span className="text-red-500">*</span>}
               </p>
-              <SelectAll
+              <ul className="pl-5 list-disc mb-4">
+                {field.options.map((option, index) => (
+                  <li key={index} className="pl-3">
+                    {option}
+                  </li>
+                ))}
+              </ul>
+              <Checkbox
                 className="w-1/2"
                 toggle={object[field.field].length === field.options.length}
-                text={field.options}
+                text={
+                  <>
+                    By selecting this I agree to all of the above terms
+                    {field.required && <span className="text-red-500">*</span>}
+                  </>
+                }
                 onClick={() => {
                   setObject({
                     ...object,
