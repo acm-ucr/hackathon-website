@@ -31,7 +31,7 @@ jobs:
           git checkout -b sync-template-$current_date template/dev
           git push origin sync-template-$current_date
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
 
       - name: Create New Pull Request
         working-directory: ${{ github.repository }}
@@ -39,4 +39,4 @@ jobs:
           current_date=$(date '+%m/%d/%Y')
           gh pr create --base dev --head sync-template-$current_date --title "Sync Template Changes $current_date" --body "Syncing template changes from $current_date"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
