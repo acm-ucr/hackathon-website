@@ -30,6 +30,14 @@ export const COLUMNS = [
     cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   {
+    accessorKey: "preferredName",
+    header: "Preferred Name",
+    width: "w-3/12",
+    enableColumnFilter: true,
+    filterFn: "includesString",
+    cell: ({ getValue }) => <div>{getValue()}</div>,
+  },
+  {
     accessorKey: "email",
     header: "Email",
     width: "w-4/12",

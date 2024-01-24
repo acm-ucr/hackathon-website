@@ -28,6 +28,16 @@ export const FIELDS = {
     editable: false,
     required: true,
   },
+  preferredName: {
+    input: "input",
+    name: "preferredName",
+    type: "text",
+    title: "Preferred Name",
+    maxLength: 50,
+    width: 12,
+    editable: true,
+    required: false,
+  },
   email: {
     input: "input",
     name: "email",
