@@ -38,6 +38,16 @@ export const ATTRIBUTES = {
     "tier",
     "response",
   ],
+  panels: [
+    "name",
+    "email",
+    "title",
+    "gender",
+    "title",
+    "panelist",
+    "shirt",
+    "photo",
+  ],
   feedback: [
     "rating",
     "additionalComments",

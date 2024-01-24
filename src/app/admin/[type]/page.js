@@ -11,6 +11,7 @@ import Mentors from "@/components/dynamic/admin/dashboards/Mentors";
 import Contacts from "@/components/dynamic/admin/services/contacts/Contacts";
 import Participants from "@/components/dynamic/admin/dashboards/Participants";
 import Sponsors from "@/components/dynamic/admin/dashboards/Sponsors";
+import Panels from "@/components/dynamic/admin/dashboards/Panels";
 import Statistics from "@/components/dynamic/admin/services/statistics/Statistics";
 import Teams from "@/components/dynamic/admin/dashboards/Teams";
 import Volunteers from "@/components/dynamic/admin/dashboards/Volunteers";
@@ -30,6 +31,7 @@ const Page = ({ params }) => {
     contacts: <Contacts />,
     participants: <Participants />,
     sponsors: <Sponsors />,
+    panels: <Panels />,
     statistics: <Statistics />,
     teams: <Teams />,
     volunteers: <Volunteers />,

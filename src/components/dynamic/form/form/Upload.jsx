@@ -4,7 +4,7 @@ import { FaEye, FaFilePdf, FaImage, FaTimes } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import { BYTES } from "@/data/dynamic/Bytes";
 import { readFileAsBase64, compress } from "@/utils/convert";
-import PhotoModal from "./PhotoModal";
+import PhotoModal from "../PhotoModal";
 const getSize = (maxSize) => BYTES[maxSize[1]] * maxSize[0];
 const getType = (types) => "." + types.join(",.");
 

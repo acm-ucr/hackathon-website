@@ -18,7 +18,7 @@ import {
 import { AiOutlineQrcode } from "react-icons/ai";
 import { signOut } from "next-auth/react";
 import { SiHandshake } from "react-icons/si";
-
+import { IoIosPeople } from "react-icons/io";
 const iconStyle = "mr-2";
 
 export const TABS = {
@@ -67,6 +67,11 @@ export const TABS = {
           name: "sponsors",
           link: "/admin/sponsors",
           icon: <GoSponsorTiers className={iconStyle} />,
+        },
+        {
+          name: "panels",
+          link: "/admin/panels",
+          icon: <IoIosPeople className={iconStyle} />,
         },
         {
           name: "interests",
