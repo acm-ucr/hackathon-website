@@ -32,6 +32,7 @@ export const FIELDS = {
     name: "preferredName",
     type: "text",
     title: "Preferred Name",
+    placeholder: "Preferred Name",
     maxLength: 50,
     width: 12,
     editable: true,
