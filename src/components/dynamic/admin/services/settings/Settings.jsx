@@ -11,7 +11,7 @@ const Settings = () => {
     api({
       method: "GET",
       url: "/api/settings",
-    }).then(setMessage("Stats Synced!"));
+    }).then(() => setMessage("Stats Synced!"));
   };
 
   return (
