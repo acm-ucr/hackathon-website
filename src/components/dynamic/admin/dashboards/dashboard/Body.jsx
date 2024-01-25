@@ -8,7 +8,7 @@ const Body = ({ getIsSelected, getVisibleCells, Dropdown, original }) => {
   return (
     <>
       <div
-        className={`flex px-3 py-2 border-b-[1px] border-hackathon-gray-200 ${
+        className={`flex px-3 py-2 border-b-[1px] border-hackathon-gray-200 items-center ${
           getIsSelected() ? "bg-green-100" : "bg-white"
         }`}
         data-cy={original.uid}
