@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import Link from "next/link";
 import { FaLink } from "react-icons/fa";
 import { CONFIG } from "@/data/Config";
+import TermsConditions from "../TermsConditions";
 
 const Questions = ({
   fields,
@@ -118,21 +119,11 @@ const Questions = ({
               ))}
             </>
           )}
-          {field.input === "checkbox" && (
+          {field.input === "terms" && (
             <>
-              <p className="mb-1 mt-3 font-semibold">
-                {field.text}
-                {field.required && <span className="text-red-500">*</span>}
-              </p>
-              <ul className="pl-5 list-disc mb-4">
-                {field.options.map((option, index) => (
-                  <li key={index} className="pl-3">
-                    {option}
-                  </li>
-                ))}
-              </ul>
-              <Checkbox
-                className="w-1/2"
+              <TermsConditions
+                star={field.required}
+                options={field.options}
                 toggle={object[field.field].length === field.options.length}
                 text={
                   <>
@@ -150,7 +141,7 @@ const Questions = ({
                   });
                 }}
                 required={field.required}
-                color="bg-hackathon-green-300"
+                color={"bg-hackathon-green-300"}
               />
             </>
           )}
