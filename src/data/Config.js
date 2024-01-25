@@ -13,6 +13,13 @@ export const MANIFEST = {
   start_url: "/",
 };
 
+export const METADATA = {
+  name: "HACKATHON_NAME",
+  description: "DESCRIPTION",
+  length: "HACKATHON_LENGTH",
+  date: "HACKATHON_DATE",
+};
+
 export const SITEMAP = {
   domain: "https://www.placeholder.com",
 };
