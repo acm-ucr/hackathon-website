@@ -36,7 +36,7 @@ const Table = ({
                     {flexRender(column.columnDef.header, getContext())}
                     {column.getCanSort() && (
                       <FaArrowRightArrowLeft
-                        className={`mx-2 rotate-90 hover:cursor-pointer ${
+                        className={`mx-2 rotate-90 hover:cursor-pointer text-white/30 ${
                           column.getIsSorted() && "hidden"
                         }`}
                         data-cy={`${column.id}-sorting`}
