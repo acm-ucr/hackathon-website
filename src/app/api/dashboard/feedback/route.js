@@ -32,17 +32,15 @@ export async function POST(req) {
   } = await req.json();
 
   try {
-    await Promise.all(
-      await addDoc(collection(db, "feedback"), {
-        rating: parseInt(rating),
-        additionalComments,
-        eventSource,
-        improvements,
-        notBeneficial,
-        helpful,
-        status: 0,
-      })
-    );
+    await addDoc(collection(db, "feedback"), {
+      rating: parseInt(rating),
+      additionalComments,
+      eventSource,
+      improvements,
+      notBeneficial,
+      helpful,
+      status: 0,
+    });
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
