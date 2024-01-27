@@ -28,7 +28,7 @@ export async function GET() {
 
   try {
     const teamsSnapshot = await getDocs(
-      query(collection(db, "teams"), where("status", ">=", 0))
+      query(collection(db, "teams"), where("status", "+=", 0))
     );
     teamsSnapshot.forEach((doc) => {
       const { links, name, rounds, table } = doc.data();
@@ -50,7 +50,6 @@ export async function GET() {
         });
       }
     });
-    console.log(teams);
 
     const judgesSnapshot = await getDocs(
       query(collection(db, "users"), where("roles.judges", "==", 1))
