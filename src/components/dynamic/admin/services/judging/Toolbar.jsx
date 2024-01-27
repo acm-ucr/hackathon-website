@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Input from "../../Input";
 import Button from "../../Button";
 import Tag from "../../Tag";
@@ -226,16 +226,9 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
     });
   };
 
-  const [ran, setran] = useState(false);
-
-  async function f1() {
+  useEffect(() => {
     load();
-  }
-
-  if (ran == false) {
-    setran(true);
-    f1();
-  }
+  }, []);
 
   return (
     <>
