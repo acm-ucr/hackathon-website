@@ -24,10 +24,11 @@ const CheckIn = () => {
       );
     });
   }, []);
-
   const setResult = async (result) => {
-    setCode(result);
-    toast("✅ QR Code Scanned");
+    if (result !== code) {
+      setCode(result);
+      toast("✅ QR Code Scanned");
+    }
   };
 
   const handleCheckIn = async () => {
@@ -82,6 +83,7 @@ const CheckIn = () => {
             />
           )}
           <Scanner setResult={setResult} />
+          <div>{code && code.split("&")[2]}</div>
           <Button
             text="Check In"
             color="green"
