@@ -2,8 +2,6 @@ import { memo } from "react";
 import { TiPlus } from "react-icons/ti";
 
 const Filter = ({ value, status, isActive, setFilters }) => {
-  console.log("Filter Component Called", value);
-
   const onClick = () => {
     setFilters((prev) => {
       const statuses = prev.find(({ id }) => id === "status")?.value;
