@@ -29,10 +29,8 @@ export default function Page({ params }) {
     });
   };
 
-  const teamid = params.teamID;
-
   useEffect(() => {
-    if (teamid) {
+    if (params.teamID) {
       api({
         method: "GET",
         url: `/api/team?teamid=${teamid}`,
@@ -54,7 +52,7 @@ export default function Page({ params }) {
         }
       });
     }
-  }, [teamid]);
+  }, [params.teamID]);
 
   return (
     <div>
