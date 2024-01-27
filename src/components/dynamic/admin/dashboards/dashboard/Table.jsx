@@ -36,7 +36,7 @@ const Table = ({
                     {flexRender(column.columnDef.header, getContext())}
                     {column.getCanSort() && (
                       <FaArrowRightArrowLeft
-                        className={`mx-2 rotate-90 hover:cursor-pointer ${
+                        className={`mx-2 rotate-90 hover:cursor-pointer text-hackathon-gray-200 ${
                           column.getIsSorted() && "hidden"
                         }`}
                         data-cy={`${column.id}-sorting`}
@@ -47,14 +47,14 @@ const Table = ({
                       <FaSortAlphaDown
                         onClick={column.getToggleSortingHandler()}
                         data-cy={`${column.id}-sorting-desc`}
-                        className="mx-2 hover:cursor-pointer text-hackathon-green-300"
+                        className="mx-2 hover:cursor-pointer text-white"
                       />
                     )}
                     {column.getIsSorted() === "desc" && (
                       <FaSortAlphaUp
                         onClick={column.getToggleSortingHandler()}
                         data-cy={`${column.columnDef.header}-sorting-asc`}
-                        className="mx-2 hover:cursor-pointer text-hackathon-green-300"
+                        className="mx-2 hover:cursor-pointer text-white"
                       />
                     )}
                   </div>
