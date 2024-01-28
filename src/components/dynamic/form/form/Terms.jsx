@@ -13,7 +13,6 @@ const Terms = ({ options, toggle, onClick }) => {
         ))}
       </ul>
       <Checkbox
-        className="w-1/2"
         toggle={toggle}
         text="By selecting this I agree to all of the above terms"
         onClick={onClick}
