@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 import Link from "next/link";
 import { FaLink } from "react-icons/fa";
 import { CONFIG } from "@/data/Config";
-import TermsConditions from "../TermsConditions";
+import Terms from "./Terms";
 
 const Questions = ({
   fields,
@@ -120,30 +120,19 @@ const Questions = ({
             </>
           )}
           {field.input === "terms" && (
-            <>
-              <TermsConditions
-                star={field.required}
-                options={field.options}
-                toggle={object[field.field].length === field.options.length}
-                text={
-                  <>
-                    By selecting this I agree to all of the above terms
-                    {field.required && <span className="text-red-500">*</span>}
-                  </>
-                }
-                onClick={() => {
-                  setObject({
-                    ...object,
-                    [field.field]:
-                      object[field.field].length === field.options.length
-                        ? []
-                        : [...field.options],
-                  });
-                }}
-                required={field.required}
-                color={"bg-hackathon-green-300"}
-              />
-            </>
+            <Terms
+              options={field.options}
+              toggle={object[field.field].length === field.options.length}
+              onClick={() => {
+                setObject({
+                  ...object,
+                  [field.field]:
+                    object[field.field].length === field.options.length
+                      ? []
+                      : [...field.options],
+                });
+              }}
+            />
           )}
           {field.input === "radio" && (
             <Radio
@@ -180,7 +169,7 @@ const Questions = ({
           )}
         </div>
       ))}
-      <div className="font-semibold">Resources</div>
+      <p className="font-semibold mt-3">Resources</p>
       <Link
         href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
         target="_blank"
