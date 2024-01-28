@@ -4,7 +4,7 @@ import Button from "../../Button";
 import Select from "@/components/dynamic/Select";
 import { useState } from "react";
 import { api } from "@/utils/api";
-import toast from "react-hot-toast";
+import toaster from "@/utils/toaster";
 
 const STATUSES = ["confirmed", "pending", "not attending"];
 
@@ -30,7 +30,7 @@ const Contact = ({ role, disabled, setDisabled }) => {
 
     navigator.clipboard.writeText(items);
 
-    toast("✅ Copied all email addresses!");
+    toaster("Copied all email addresses!", "success");
 
     setDisabled(false);
   };

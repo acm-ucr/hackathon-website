@@ -4,7 +4,7 @@ import { useState } from "react";
 import Form from "@/components/dynamic/form/form/Form.jsx";
 import { FIELDS, ATTRIBUTES } from "@/data/dynamic/form/Feedback.js";
 import { api } from "@/utils/api";
-import toast from "react-hot-toast";
+import toaster from "@/utils/toaster";
 import { useSession } from "next-auth/react";
 
 const Feedback = () => {
@@ -21,8 +21,8 @@ const Feedback = () => {
       url: "/api/dashboard/feedback",
       body: feedback,
     })
-      .then(() => toast(`✅ Submitted successfully!`))
-      .catch(() => toast(`❌ Internal Server Error`))
+      .then(() => toaster(`Submitted successfully!`, "success"))
+      .catch(() => toaster(`Internal Server Error`, "error"))
       .finally(() => setLoading(false));
   };
 

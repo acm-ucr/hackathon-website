@@ -5,7 +5,7 @@ import Input from "@/components/dynamic/Input";
 import Button from "@/components/dynamic/Button.jsx";
 import Textarea from "@/components/dynamic/form/form/Textarea.jsx";
 import Upload from "@/components/dynamic/form/form/Upload";
-import toast from "react-hot-toast";
+import toaster from "@/utils/toaster";
 import Link from "next/link";
 import { FaLink } from "react-icons/fa";
 import { CONFIG } from "@/data/Config";
@@ -29,7 +29,7 @@ const Questions = ({
         ([key, value]) => value.required && (!object[key] || object[key] === "")
       )
     ) {
-      toast("❌ Please complete all required fields!");
+      toaster("Please complete all required fields!", "error");
       setLoading(false);
       return;
     }
@@ -39,12 +39,12 @@ const Questions = ({
         (requirement) => !object.requirements.includes(requirement)
       )
     ) {
-      toast("❌ Please agree to all the terms!");
+      toaster("Please agree to all the terms!", "error");
       setLoading(false);
       return;
     }
     if (fields.availability && object.availability.length === 0) {
-      toast("❌ Please select at least one available time!");
+      toaster("Please select at least one available time!", "error");
       setLoading(false);
       return;
     }
