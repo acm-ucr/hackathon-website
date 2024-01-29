@@ -1,9 +1,11 @@
+import { METADATA } from "@/data/Config";
+
 export const FIELDS = {
   description: {
     input: "description",
     width: 12,
     texts: [
-      "Welcome to HACKATHON_NAME. Thank you for taking interest in HACKATHON_NAME, we appreciate your efforts to help support HACKATHON_NAME. HACKATHON_NAME is a DESCRIPTION hackathon spanning HACKATHON_LENGTH on HACKATHON_DATE.",
+      `Welcome to ${METADATA.name}. Thank you for taking interest in ${METADATA.name}, we appreciate your efforts to help support ${METADATA.name}. ${METADATA.name} is a ${METADATA.description} hackathon spanning ${METADATA.length} on ${METADATA.date}.`,
       "This is simply an interest form, once applications are released, you will be notified immediately and will be required to register again. We hope to see you there!",
     ],
   },
