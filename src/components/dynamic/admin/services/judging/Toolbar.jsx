@@ -261,7 +261,12 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
             onClick={handleReset}
             disabled={!data || data.some(({ rounds }) => rounds.length === 0)}
           />
-          <Button color="green" text="view" onClick={handleView} />
+          <Button
+            color="green"
+            text="view"
+            onClick={handleView}
+            disabled={!data || data.some(({ rounds }) => rounds.length === 0)}
+          />
         </div>
         <div className="flex">
           {tags.map((tag, index) => (
