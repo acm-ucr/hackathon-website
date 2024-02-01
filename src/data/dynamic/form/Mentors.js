@@ -41,6 +41,8 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     required: true,
+    regexValidation:
+      /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
   },
   discord: {
     input: "input",
