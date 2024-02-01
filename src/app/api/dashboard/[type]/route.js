@@ -52,7 +52,7 @@ export async function POST(req, { params }) {
         [`${params.type}.0`]: increment(1),
       });
 
-      await send.send({
+      await send({
         email: user.email,
         id: process.env.EMAIL_CONFIRMATION_TEMPLATE,
         name: user.name,
@@ -137,7 +137,7 @@ export async function PUT(req, { params }) {
           await updateDoc(doc(db, "users", object.uid), {
             [`roles.${params.type}`]: status,
           });
-          await send.send({
+          await send({
             email: object.email,
             id:
               status === 1
