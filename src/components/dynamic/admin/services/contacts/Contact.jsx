@@ -28,9 +28,12 @@ const Contact = ({ role, disabled, setDisabled }) => {
       url: `/api/contacts?role=${role}&status=${number}`,
     });
 
-    navigator.clipboard.writeText(items);
-
-    toast("✅ Copied all email addresses!");
+    if (!items.length) {
+      toast("🚫 The email list is empty!");
+    } else {
+      navigator.clipboard.writeText(items);
+      toast("✅ Copied all email addresses!");
+    }
 
     setDisabled(false);
   };
