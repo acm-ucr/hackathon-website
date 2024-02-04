@@ -4,6 +4,8 @@ import { GENDERS } from "./Information";
 import { SHIRTS } from "./Information";
 import { SCHOOLS } from "./Schools";
 import { METADATA } from "@/data/Config";
+import { REGEX } from "@/data/Validation";
+const phoneValidation = REGEX.phone;
 
 export const FIELDS = {
   description: {
@@ -43,8 +45,7 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     required: true,
-    regexValidation:
-      /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
+    regexValidation: phoneValidation,
   },
   discord: {
     input: "input",

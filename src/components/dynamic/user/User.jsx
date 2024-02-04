@@ -14,8 +14,8 @@ import Button from "../Button";
 import Checkbox from "../Checkbox";
 import { api } from "@/utils/api";
 import toast from "react-hot-toast";
-import { FIELDS } from "@/data/dynamic/form/Participant";
-const phoneValidation = FIELDS.phone.regexValidation;
+import { REGEX } from "@/data/Validation";
+const phoneValidation = REGEX.phone;
 
 const User = ({ user, setUser, edit, setEdit }) => {
   const handleEdit = () => {

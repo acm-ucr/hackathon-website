@@ -1,6 +1,8 @@
 import { GENDERS } from "./Information";
 import { SHIRTS } from "./Information";
 import { METADATA } from "@/data/Config";
+import { REGEX } from "@/data/Validation";
+const phoneValidation = REGEX.phone;
 
 export const AFFILIATIONS = {
   professor: "Professor",
@@ -48,8 +50,8 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     required: true,
-    regexValidation:
-      /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
+
+    regexValidation: phoneValidation,
   },
   gender: {
     input: "radio",
