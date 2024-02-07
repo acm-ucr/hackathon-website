@@ -13,6 +13,7 @@ const Judge = () => {
   const [judge, setJudge] = useState({
     ...ATTRIBUTES,
     name: session.user.name,
+    preferredName: session.user.name,
     email: session.user.email,
     roles: session.user.roles,
     form: "judges",

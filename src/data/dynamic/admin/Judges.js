@@ -22,17 +22,9 @@ export const TAGS = [
 export const COLUMNS = [
   generateSelect(),
   {
-    accessorKey: "name",
+    accessorKey: "preferredName",
     header: "Name",
     width: "w-2/12",
-    enableColumnFilter: true,
-    filterFn: "includesString",
-    cell: ({ getValue }) => <div>{getValue()}</div>,
-  },
-  {
-    accessorKey: "preferredName",
-    header: "Preferred Name",
-    width: "w-3/12",
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: ({ getValue }) => <div>{getValue()}</div>,

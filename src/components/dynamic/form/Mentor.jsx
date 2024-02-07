@@ -14,6 +14,7 @@ const Mentor = () => {
   const [mentor, setMentor] = useState({
     ...ATTRIBUTES,
     name: session.user.name,
+    preferredName: session.user.name,
     email: session.user.email,
     roles: session.user.roles,
     form: "mentors",

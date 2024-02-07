@@ -38,7 +38,7 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     editable: true,
-    required: false,
+    required: true,
   },
   email: {
     input: "input",
@@ -85,7 +85,6 @@ export const FIELDS = {
     width: 12,
     required: true,
   },
-
   title: {
     input: "input",
     name: "title",

@@ -13,6 +13,7 @@ const Committee = () => {
   const [committee, setCommittee] = useState({
     ...ATTRIBUTES,
     name: session.user.name,
+    preferredName: session.user.name,
     email: session.user.email,
     roles: session.user.roles,
     form: "committees",

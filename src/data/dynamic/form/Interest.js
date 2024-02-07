@@ -28,7 +28,7 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     editable: true,
-    required: false,
+    required: true,
   },
   email: {
     input: "input",
