@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import LOGO from "@/public/UCRLOGO.png";
+import LOGO from "@/app/favicon.ico";
 import Image from "next/image";
 import Link from "next/link";
 import { TABS } from "@/data/dynamic/Navigation";
@@ -43,9 +43,6 @@ const Navigation = () => {
               className="w-10 h-10 mx-2"
               alt={`${CONFIG.name} Logo`}
             />
-            <p className="text-white font-bold text-lg pr-2 m-0">
-              {CONFIG.name.toUpperCase()}
-            </p>
           </div>
           <div className="w-full flex flex-col items-center h-full">
             {Object.entries(tabs)

@@ -26,22 +26,6 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
     input: "",
   });
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-
-    setData(
-      data.map((group) => {
-        let boolean = false;
-
-        if (group.name.toLowerCase().match(input.input.toLowerCase())) {
-          boolean = true;
-        }
-
-        return { ...group, hidden: !boolean };
-      })
-    );
-  };
-
   const generate = (e) => {
     e.preventDefault();
     if (
@@ -261,7 +245,12 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
             onClick={handleReset}
             disabled={!data || data.some(({ rounds }) => rounds.length === 0)}
           />
-          <Button color="green" text="view" onClick={handleView} />
+          <Button
+            color="green"
+            text="view"
+            onClick={handleView}
+            disabled={!data || data.some(({ rounds }) => rounds.length === 0)}
+          />
         </div>
         <div className="flex">
           {tags.map((tag, index) => (
@@ -269,18 +258,6 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
           ))}
         </div>
       </div>
-      <form className="flex items-center" onSubmit={handleSearch}>
-        <Input
-          classes="w-full"
-          object={input}
-          setObject={setInput}
-          clear={true}
-          label="input"
-          maxLength={60}
-          placeholder="search"
-          showLabel={false}
-        />
-      </form>
     </>
   );
 };

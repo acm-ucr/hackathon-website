@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { TiPlus } from "react-icons/ti";
 
 const Filter = ({ value, status, isActive, setFilters }) => {
@@ -45,4 +46,4 @@ const Filter = ({ value, status, isActive, setFilters }) => {
   );
 };
 
-export default Filter;
+export default memo(Filter);

@@ -16,6 +16,7 @@ import Statistics from "@/components/dynamic/admin/services/statistics/Statistic
 import Teams from "@/components/dynamic/admin/dashboards/Teams";
 import Volunteers from "@/components/dynamic/admin/dashboards/Volunteers";
 import Fault from "@/utils/error";
+import Settings from "@/components/dynamic/admin/services/settings/Settings";
 
 const Page = ({ params }) => {
   const components = {
@@ -30,6 +31,7 @@ const Page = ({ params }) => {
     mentors: <Mentors />,
     contacts: <Contacts />,
     participants: <Participants />,
+    settings: <Settings />,
     sponsors: <Sponsors />,
     panels: <Panels />,
     statistics: <Statistics />,
