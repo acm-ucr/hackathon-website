@@ -30,7 +30,7 @@ export async function DELETE() {
     else
       await updateDoc(doc(db, "teams", user.team), {
         members: arrayRemove({
-          email: user.email,
+          discord: user.discord,
           name: user.name,
           uid: user.id,
         }),
@@ -68,7 +68,7 @@ export async function PUT(req) {
     if (members.length < 4) {
       await updateDoc(doc(db, "teams", team), {
         members: arrayUnion({
-          email: user.email,
+          discord: user.discord,
           name: user.name,
           uid: user.id,
         }),

@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import Link from "next/link";
 import { FaLink } from "react-icons/fa";
 import { CONFIG } from "@/data/Config";
+import Terms from "./Terms";
 
 const Questions = ({
   fields,
@@ -118,6 +119,21 @@ const Questions = ({
               ))}
             </>
           )}
+          {field.input === "terms" && (
+            <Terms
+              options={field.options}
+              toggle={object[field.field].length === field.options.length}
+              onClick={() => {
+                setObject({
+                  ...object,
+                  [field.field]:
+                    object[field.field].length === field.options.length
+                      ? []
+                      : [...field.options],
+                });
+              }}
+            />
+          )}
           {field.input === "radio" && (
             <Radio
               text={field.text}
@@ -153,7 +169,7 @@ const Questions = ({
           )}
         </div>
       ))}
-      <div className="font-semibold">Resources</div>
+      <p className="font-semibold mt-3">Resources</p>
       <Link
         href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
         target="_blank"

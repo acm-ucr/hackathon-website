@@ -1,11 +1,12 @@
 import { MAJORS, GRADES, GENDERS, SHIRTS, AVAILABILITY } from "./Information";
+import { METADATA } from "@/data/Config";
 
 export const FIELDS = {
   description: {
     input: "description",
     width: 12,
     texts: [
-      "Welcome to HACKATHON_NAME. Thank you for considering to become a volunteer, we appreciate your efforts to help support HACKATHON_NAME. HACKATHON_NAME is a DESCRIPTION hackathon spanning HACKATHON_LENGTH on HACKATHON_DATE.",
+      `Welcome to ${METADATA.name}. Thank you for considering to become a mentor, we appreciate your efforts to help support ${METADATA.name}. ${METADATA.name} is a ${METADATA.description} hackathon spanning ${METADATA.length} on ${METADATA.date}.`,
       "Mentors are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
       "Mentor duties include but are not limited to providing expertise and assistance to hackers throughout the hackathon without jeopardizing their chances at winning.",
       "Note: Mentors are not permitted to become participants for the hackathon.",
@@ -104,7 +105,7 @@ export const FIELDS = {
   },
   requirements: {
     text: "Terms and Conditions",
-    input: "checkboxes",
+    input: "terms",
     width: 12,
     field: "requirements",
     required: true,
