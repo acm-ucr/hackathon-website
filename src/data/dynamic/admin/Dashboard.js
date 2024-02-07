@@ -47,6 +47,19 @@ export const ATTRIBUTES = {
     "helpful",
     "status",
   ],
+  leads: [
+    "name",
+    "email",
+    "grade",
+    "gender",
+    "major",
+    "discord",
+    "response",
+    "eventSource",
+    "school",
+    "priorExperience",
+    "priorHackathons",
+  ],
 };
 
 export const AUTH = {

@@ -14,6 +14,7 @@ import Sponsors from "@/components/dynamic/admin/dashboards/Sponsors";
 import Statistics from "@/components/dynamic/admin/services/statistics/Statistics";
 import Teams from "@/components/dynamic/admin/dashboards/Teams";
 import Volunteers from "@/components/dynamic/admin/dashboards/Volunteers";
+import Leads from "@/components/dynamic/admin/dashboards/Leads";
 import Fault from "@/utils/error";
 
 const Page = ({ params }) => {
@@ -33,6 +34,7 @@ const Page = ({ params }) => {
     statistics: <Statistics />,
     teams: <Teams />,
     volunteers: <Volunteers />,
+    leads: <Leads />,
   };
 
   const capitalizeFirstLetter = (word) => {
