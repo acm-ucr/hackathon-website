@@ -30,10 +30,11 @@ const Contact = ({ role, disabled, setDisabled }) => {
 
     if (!items.length) {
       toast("🚫 The email list is empty!");
-    } else {
-      navigator.clipboard.writeText(items);
-      toast("✅ Copied all email addresses!");
+      return;
     }
+
+    navigator.clipboard.writeText(items);
+    toast("✅ Copied all email addresses!");
 
     setDisabled(false);
   };
