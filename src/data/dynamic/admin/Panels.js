@@ -1,7 +1,7 @@
 import View from "@/components/dynamic/admin/dashboards/dashboard/View";
-import { PANELISTS } from "../form/Panels";
-import { generatePanelist, generateSelect, generateStatus } from "./Columns";
-
+import { generateSelect, generateStatus } from "./Columns";
+import Tag from "@/components/dynamic/admin/Tag";
+import { COLORS } from "@/data/dynamic/Tags";
 export const STATUSES = {
   1: "accepted",
   0: "pending",
@@ -41,7 +41,14 @@ export const COLUMNS = [
     width: "w-3/12",
     cell: ({ getValue }) => <div>{getValue()}</div>,
   },
-  generatePanelist(PANELISTS),
+  {
+    accessorKey: "panelist",
+    header: "Panelist",
+    width: "w-3/12",
+    cell: ({ getValue }) => (
+      <Tag text={getValue()} color={COLORS[getValue()]} />
+    ),
+  },
   generateStatus(STATUSES),
   {
     accessorKey: "photo",

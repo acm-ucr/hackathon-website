@@ -4,18 +4,18 @@ import { FaEye, FaFilePdf, FaImage, FaTimes } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import { BYTES } from "@/data/dynamic/Bytes";
 import { readFileAsBase64, compress } from "@/utils/convert";
-import PhotoModal from "../PhotoModal";
+import Modal from "@/components/dynamic/admin/dashboards/dashboard/Modal";
 const getSize = (maxSize) => BYTES[maxSize[1]] * maxSize[0];
 const getType = (types) => "." + types.join(",.");
 
 const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
   const [file, setFile] = useState(
     user && user[field]
-      ? { preview: user[field], type: "photo", name: `${user.name}.png` }
+      ? { src: user[field], type: "photo", title: `${user.name}.png` }
       : null
   );
   const [uploading, setUploading] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(null);
 
   const handleInput = async (e) => {
     setUploading(true);
@@ -24,13 +24,13 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
       toast(`❌ File too big, exceeds ${maxSize[0]} ${maxSize[1]}!`);
       return;
     }
-    setFile(blob);
+
     const base64 = await readFileAsBase64(blob);
     setUser({ ...user, [field]: base64 });
     setFile({
-      preview: base64,
-      name: blob.name,
+      title: blob.name,
       type: blob.type,
+      src: base64,
     });
     setUploading(false);
   };
@@ -75,7 +75,7 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
               ) : (
                 <FaFilePdf className="text-xl mr-2" />
               )}
-              {file.name}
+              {file.title}
             </div>
             <div className="flex flex-row">
               <FaEye
@@ -91,9 +91,7 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
             </div>
           </div>
         )}
-        {showModal && (
-          <PhotoModal imageString={file.preview} setState={setShowModal} />
-        )}
+        {showModal && <Modal data={file} setModal={setShowModal} />}
       </div>
       {uploading && "UPLOADING ..."}
     </div>
