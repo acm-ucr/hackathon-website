@@ -85,7 +85,7 @@ const Questions = ({
               setUser={setObject}
               required={field.required}
               editable={field.editable}
-              regexValidation={field.regexValidation}
+              regex={field.regex}
             />
           )}
           {field.input === "select" && (

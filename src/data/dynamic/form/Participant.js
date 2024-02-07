@@ -4,8 +4,7 @@ import { GENDERS } from "./Information";
 import { SHIRTS } from "./Information";
 import { SCHOOLS } from "./Schools";
 import { METADATA } from "@/data/Config";
-import { REGEX } from "@/data/Validation";
-const phoneValidation = REGEX.phone;
+import { phone } from "@/data/dynamic/form/Regex";
 
 export const FIELDS = {
   description: {
@@ -45,7 +44,7 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     required: true,
-    regexValidation: phoneValidation,
+    regex: phone,
   },
   discord: {
     input: "input",

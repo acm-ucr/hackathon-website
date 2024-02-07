@@ -1,8 +1,7 @@
 import { GENDERS } from "./Information";
 import { SHIRTS } from "./Information";
 import { METADATA } from "@/data/Config";
-import { REGEX } from "@/data/Validation";
-const phoneValidation = REGEX.phone;
+import { phone } from "@/data/dynamic/form/Regex";
 
 export const AFFILIATIONS = {
   professor: "Professor",
@@ -50,8 +49,7 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     required: true,
-
-    regexValidation: phoneValidation,
+    regex: phone,
   },
   gender: {
     input: "radio",

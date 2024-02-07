@@ -9,7 +9,7 @@ const Input = ({
   editable = true,
   maxLength,
   required,
-  regexValidation,
+  regex,
 }) => {
   return (
     <div className="flex flex-col w-full">
@@ -26,7 +26,7 @@ const Input = ({
         value={value}
         maxLength={maxLength}
         onBlur={(e) => {
-          if (regexValidation && !regexValidation.test(e.target.value)) {
+          if (regex && !regex.test(e.target.value)) {
             setUser({ ...user, [name]: "Invalid " + title });
           }
         }}

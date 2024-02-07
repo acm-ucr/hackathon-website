@@ -14,8 +14,7 @@ import Button from "../Button";
 import Checkbox from "../Checkbox";
 import { api } from "@/utils/api";
 import toast from "react-hot-toast";
-import { REGEX } from "@/data/Validation";
-const phoneValidation = REGEX.phone;
+import { phone } from "@/data/dynamic/form/Regex";
 
 const User = ({ user, setUser, edit, setEdit }) => {
   const handleEdit = () => {
@@ -80,7 +79,7 @@ const User = ({ user, setUser, edit, setEdit }) => {
           user={user}
           setUser={setUser}
           editable={edit}
-          regexValidation={phoneValidation}
+          regex={phone}
         />
         <Select
           title="Age"
