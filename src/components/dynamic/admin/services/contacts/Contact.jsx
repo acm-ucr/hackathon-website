@@ -28,7 +28,7 @@ const Contact = ({ role, disabled, setDisabled }) => {
       url: `/api/contacts?role=${role}&status=${number}`,
     });
 
-    if (!items.length) {
+    if (items.length === 0) {
       toast("🚫 The email list is empty!");
       return;
     }
