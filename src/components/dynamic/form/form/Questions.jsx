@@ -26,7 +26,11 @@ const Questions = ({
 
     if (
       Object.entries(fields).some(
-        ([key, value]) => value.required && (!object[key] || object[key] === "")
+        ([key, value]) =>
+          value.required &&
+          (!object[key] ||
+            object[key] === "" ||
+            object[key].includes("Invalid"))
       )
     ) {
       toaster("Please complete all required fields!", "error");
@@ -81,6 +85,7 @@ const Questions = ({
               setUser={setObject}
               required={field.required}
               editable={field.editable}
+              regex={field.regex}
             />
           )}
           {field.input === "select" && (

@@ -170,7 +170,7 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
     api({
       method: "DELETE",
       url: `/api/judging?ids=${uids}`,
-    }).then(() => toast("✅ Successfully Reset"));
+    }).then(() => toaster("Successfully Reset", "success"));
   };
 
   const handleView = () => {
