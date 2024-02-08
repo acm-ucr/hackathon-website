@@ -41,17 +41,13 @@ const Table = ({ data }) => {
                 <div key={index} className="flex items-center my-2">
                   <p className="font-semibold mb-0 mr-2">{index + 1}</p>
                   <div className="flex items-center">
-                    {judges.map(({ name, table, affiliation }, i) => {
-                      const judgeName = table
-                        ? name + " : " + table.toString().padStart(2, "0")
-                        : name;
-
+                    {judges.map(({ name, affiliation }, i) => {
                       return (
                         <Tag
                           classes="mx-1"
                           color={COLORS[affiliation]}
                           key={i}
-                          text={judgeName}
+                          text={name}
                         />
                       );
                     })}
