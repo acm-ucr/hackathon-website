@@ -181,9 +181,12 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
       judge.rounds = Array.from(Array(data[0].rounds.length), () => []);
 
       data.forEach((team) => {
+        const name = team.table
+          ? team.table.toString().padStart(2, "0") + " : " + team.name
+          : team.name;
         team.rounds.forEach((round, index) => {
           if (round.some((individual) => individual.name === judge.name))
-            judge.rounds[index] = [{ name: team.name, affiliation: "student" }];
+            judge.rounds[index] = [{ name: name, affiliation: "student" }];
         });
       });
     });
