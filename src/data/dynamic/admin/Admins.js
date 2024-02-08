@@ -60,7 +60,6 @@ const attributes = [
 export const DROPDOWN = ({ object }) => {
   return (
     <div className="flex justify-center items-center">
-      {console.log(object)}
       <div className="grid grid-cols-3 w-11/12">
         {attributes.map((attribute, index) => (
           <div key={index} className="my-1 px-1 flex text-sm">
