@@ -45,7 +45,7 @@ export const COLUMNS = [
     accessorKey: "team",
     header: "Team",
     width: "w-3/12",
-    cell: ({ getValue }) => <div>{getValue() ? getValue() : "N/A"}</div>,
+    cell: ({ getValue }) => <div>{getValue() ?? "N/A"}</div>,
   },
   generateStatus(STATUSES),
   {
