@@ -1,4 +1,5 @@
 import { METADATA } from "@/data/Config";
+import { phone } from "@/data/dynamic/form/Regex";
 
 export const TIERS = {
   tier1: "Bronze",
@@ -48,6 +49,7 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     required: true,
+    regex: phone,
   },
   company: {
     input: "input",

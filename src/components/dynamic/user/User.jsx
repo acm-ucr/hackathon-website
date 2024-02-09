@@ -14,6 +14,7 @@ import Button from "../Button";
 import Checkbox from "../Checkbox";
 import { api } from "@/utils/api";
 import toast from "react-hot-toast";
+import { phone } from "@/data/dynamic/form/Regex";
 
 const User = ({ user, setUser, edit, setEdit }) => {
   const handleEdit = () => {
@@ -21,6 +22,14 @@ const User = ({ user, setUser, edit, setEdit }) => {
   };
 
   const handleSave = async () => {
+    if (
+      Object.values(user).some(
+        (value) => typeof value === "string" && value.includes("Invalid")
+      )
+    ) {
+      toast("❌ Please complete all required fields!");
+      return;
+    }
     api({
       method: "POST",
       url: "/api/participant",
@@ -70,6 +79,7 @@ const User = ({ user, setUser, edit, setEdit }) => {
           user={user}
           setUser={setUser}
           editable={edit}
+          regex={phone}
         />
         <Select
           title="Age"
