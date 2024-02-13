@@ -47,4 +47,12 @@ export const LABELS = {
     color: "yellow",
     background: "!bg-hackathon-tags-yellow-text",
   },
+  social: {
+    color: "red",
+    background: "!bg-hackathon-tags-red-text",
+  },
+  activities: {
+    color: "yellow",
+    background: "!bg-hackathon-tags-yellow-text",
+  },
 };
