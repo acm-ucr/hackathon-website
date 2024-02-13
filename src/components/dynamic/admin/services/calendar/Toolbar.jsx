@@ -89,10 +89,8 @@ const CustomToolbar = ({
       </div>
 
       <div className="flex flex-col">
-        <div className="flex flex-row justify-center">
-          <p>Leads Events:</p>
-        </div>
         <div className="flex justify-evenly items-center flex-wrap">
+          <p>Leads Events:</p>
           {Object.entries(LABELS)
             .filter(function (obj) {
               return obj[1].eventType == "leads";
@@ -108,11 +106,8 @@ const CustomToolbar = ({
             ))}
         </div>
 
-        <div className="flex flex-row justify-center">
-          <p>Hackathon Events:</p>
-        </div>
-
         <div className="flex justify-evenly items-center flex-wrap">
+          <p>Hackathon: </p>
           {Object.entries(LABELS)
             .filter(function (obj) {
               return obj[1].eventType != "leads";
