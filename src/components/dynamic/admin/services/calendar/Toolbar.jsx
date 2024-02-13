@@ -87,16 +87,46 @@ const CustomToolbar = ({
           className="hover:cursor-pointer mx-2"
         />
       </div>
-      <div className="flex justify-evenly items-center flex-wrap">
-        {Object.entries(LABELS).map(([label, value], index) => (
-          <Tag
-            key={index}
-            text={label}
-            color={COLORS[value.color]}
-            classes="my-1"
-            onClick={() => onClick(label)}
-          />
-        ))}
+
+      <div className="flex flex-col">
+        <div className="flex flex-row justify-center">
+          <p>Leads Events:</p>
+        </div>
+        <div className="flex justify-evenly items-center flex-wrap">
+          {Object.entries(LABELS)
+            .filter(function (obj) {
+              return obj[1].eventType == "leads";
+            })
+            .map(([label, value], index) => (
+              <Tag
+                key={index}
+                text={label}
+                color={COLORS[value.color]}
+                classes="my-1"
+                onClick={() => onClick(label)}
+              />
+            ))}
+        </div>
+
+        <div className="flex flex-row justify-center">
+          <p>Hackathon Events:</p>
+        </div>
+
+        <div className="flex justify-evenly items-center flex-wrap">
+          {Object.entries(LABELS)
+            .filter(function (obj) {
+              return obj[1].eventType != "leads";
+            })
+            .map(([label, value], index) => (
+              <Tag
+                key={index}
+                text={label}
+                color={COLORS[value.color]}
+                classes="my-1"
+                onClick={() => onClick(label)}
+              />
+            ))}
+        </div>
       </div>
     </div>
   );
