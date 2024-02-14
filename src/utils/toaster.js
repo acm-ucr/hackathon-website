@@ -1,13 +1,13 @@
 import { toast } from "react-hot-toast";
-import { Checkmark } from "react-checkmark";
 import { MdError } from "react-icons/md";
+import { FaCheckCircle } from "react-icons/fa";
 
 const toaster = (message, type) => {
   switch (type) {
     case "success":
       toast.custom(
         <div className="flex items-center justify-center bg-white pl-2 pr-5 md:pr-6 py-4 w-4/12 md:w-2/12 shadow-md rounded">
-          <Checkmark size="medium" />
+          <FaCheckCircle className="animate-pulse text-green-500" />
           <div className="inline ps-4 text-sm font-normal text-black">
             {message}
           </div>
