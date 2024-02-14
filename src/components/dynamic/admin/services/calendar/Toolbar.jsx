@@ -92,9 +92,7 @@ const CustomToolbar = ({
         <div className="flex justify-evenly items-center flex-wrap">
           <p>Leads Events:</p>
           {Object.entries(LABELS)
-            .filter((obj) => {
-              return obj[1].eventType == "leads";
-            })
+            .filter((obj) => obj[1].eventType === "leads")
             .map(([label, value], index) => (
               <Tag
                 key={index}
@@ -109,9 +107,7 @@ const CustomToolbar = ({
         <div className="flex justify-evenly items-center flex-wrap">
           <p>Hackathon: </p>
           {Object.entries(LABELS)
-            .filter((obj) => {
-              return obj[1].eventType != "leads";
-            })
+            .filter((obj) => obj[1].eventType !== "leads")
             .map(([label, value], index) => (
               <Tag
                 key={index}
