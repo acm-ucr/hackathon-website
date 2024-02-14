@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BsUpload } from "react-icons/bs";
 import { FaFilePdf, FaImage, FaTimes } from "react-icons/fa";
-import { toast } from "react-hot-toast";
+import toaster from "@/utils/toaster";
 import { BYTES } from "@/data/dynamic/Bytes";
 import { readFileAsBase64, compress } from "@/utils/convert";
 
@@ -16,7 +16,7 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
     setUploading(true);
     const blob = await compress(e.target.files[0]);
     if (blob.size > getSize(maxSize)) {
-      toast(`❌ File too big, exceeds ${maxSize[0]} ${maxSize[1]}!`);
+      toaster(`File too big, exceeds ${maxSize[0]} ${maxSize[1]}!`, "error");
       return;
     }
     setFile(blob);

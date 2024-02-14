@@ -4,7 +4,7 @@ import Title from "../../Title";
 import Scanner from "./Scanner";
 import Dropdown from "../Dropdown";
 import Button from "../../Button";
-import toast from "react-hot-toast";
+import toaster from "@/utils/toaster";
 import { api } from "@/utils/api";
 
 const CheckIn = () => {
@@ -27,18 +27,18 @@ const CheckIn = () => {
   const setResult = async (result) => {
     if (result !== code) {
       setCode(result);
-      toast("✅ QR Code Scanned");
+      toaster("QR Code Scanned", "success");
     }
   };
 
   const handleCheckIn = async () => {
     if (event === "No Event Selected") {
-      toast("❌ Please select an event!");
+      toaster("Please select an event!", "error");
       return;
     }
 
     if (!code) {
-      toast("❌ Please scan a valid QR code!");
+      toaster("Please scan a valid QR code!", "error");
       return;
     }
 
@@ -53,7 +53,7 @@ const CheckIn = () => {
       });
 
       if (items.includes(event.id)) {
-        toast("❌ Already Checked In!");
+        toaster("Already Checked In!", "error");
         return;
       }
 
@@ -61,9 +61,9 @@ const CheckIn = () => {
         method: "PUT",
         url: "/api/checkin",
         body: { uid: user, event: event.id, name: event.name },
-      }).then(() => toast(`✅ Checked in for ${event.name}`));
+      }).then(() => toaster(`Checked in for ${event.name}`, "success"));
     } else {
-      toast("❌ Expired QR code!");
+      toaster("Expired QR code!", "error");
       return;
     }
   };
