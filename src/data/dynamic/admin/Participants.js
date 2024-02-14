@@ -45,16 +45,16 @@ export const COLUMNS = [
     accessorKey: "team",
     header: "Team",
     width: "w-3/12",
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: ({ getValue }) => <div>{getValue() ?? "N/A"}</div>,
   },
   generateStatus(STATUSES),
   {
-    accessorKey: "Resume",
+    accessorKey: "resume",
     header: "Resume",
     width: "w-1/12",
     enableSorting: false,
     cell: ({ getValue }) =>
-      getValue() && <View title="Resume" src={getValue()} />,
+      getValue() ? <View title="Resume" src={getValue()} /> : <div>N/A</div>,
   },
 ];
 

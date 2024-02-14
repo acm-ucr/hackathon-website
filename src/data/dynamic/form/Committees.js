@@ -1,3 +1,4 @@
+import { MAJORS, GRADES, SHIRTS, GENDERS } from "./Information";
 import { METADATA } from "@/data/Config";
 
 export const AFFILIATIONS = {
@@ -58,6 +59,42 @@ export const FIELDS = {
     title: "Discord Username",
     placeholder: "john_doe#1234",
     maxLength: 50,
+    width: 12,
+    required: true,
+  },
+  major: {
+    input: "select",
+    title: "Major",
+    options: MAJORS,
+    field: "major",
+    placeholder: "ie. Computer Science",
+    width: 12,
+    required: true,
+    searchable: true,
+  },
+  grade: {
+    input: "select",
+    title: "Grade",
+    options: GRADES,
+    field: "grade",
+    placeholder: "ie. Undergraduate",
+    width: 12,
+    required: true,
+    searchable: true,
+  },
+  gender: {
+    input: "radio",
+    text: "Gender",
+    options: GENDERS,
+    field: "gender",
+    width: 12,
+    required: true,
+  },
+  shirt: {
+    input: "radio",
+    text: "Shirt Size",
+    options: SHIRTS,
+    field: "shirt",
     width: 12,
     required: true,
   },

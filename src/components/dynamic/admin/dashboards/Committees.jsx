@@ -1,5 +1,10 @@
 "use client";
-import { STATUSES, TAGS, COLUMNS } from "@/data/dynamic/admin/Committees";
+import {
+  STATUSES,
+  TAGS,
+  COLUMNS,
+  DROPDOWN,
+} from "@/data/dynamic/admin/Committees";
 import Table from "./dashboard/Dashboard";
 
 const Committee = () => {
@@ -11,6 +16,7 @@ const Committee = () => {
         tags={TAGS}
         page="committees"
         statuses={STATUSES}
+        Dropdown={DROPDOWN}
         empty="No Committees Available"
       />
     </div>
