@@ -107,9 +107,9 @@ const Toolbar = ({
 
         toggleAllRowsSelected(false);
 
-        toast("✅ Operation Completed");
+        toaster("Operation Completed", "success");
       })
-      .catch(() => toast("❌ Operation Failed"));
+      .catch(() => toaster("Operation Failed", "error"));
   };
 
   useEffect(() => {
