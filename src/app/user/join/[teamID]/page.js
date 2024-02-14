@@ -11,11 +11,14 @@ export default function Page({ params }) {
   const [team, setTeam] = useState(null);
   const router = useRouter();
   const { update: sessionUpdate } = useSession();
+
+  const { teamID } = params;
+
   const handleJoin = () => {
     api({
       method: "PUT",
       url: "/api/members",
-      body: { team: params.teamID },
+      body: { team: teamID },
     }).then((response) => {
       if (response.message !== "OK") {
         toast(`❌ ${response.message}`);
@@ -23,17 +26,17 @@ export default function Page({ params }) {
       }
       toast("✅ Successfully joined team!");
       sessionUpdate({
-        team: params.teamID,
+        team: teamID,
       });
       router.push("/user");
     });
   };
 
   useEffect(() => {
-    if (params.teamID) {
+    if (teamID) {
       api({
         method: "GET",
-        url: `/api/team?teamid=${teamid}`,
+        url: `/api/team?teamid=${teamID}`,
       }).then((response) => {
         if (response.message === "OK") {
           setTeam(response.items);
@@ -52,7 +55,7 @@ export default function Page({ params }) {
         }
       });
     }
-  }, [params.teamID]);
+  }, [teamID]);
 
   return (
     <div>
