@@ -15,7 +15,7 @@ const Feedback = () => {
     form: "feedback",
   });
 
-  const onSubmit = (setLoading) => {
+  const handleSubmit = (setLoading, setState) => {
     api({
       method: "POST",
       url: "/api/dashboard/feedback",
@@ -23,7 +23,10 @@ const Feedback = () => {
     })
       .then(() => toaster(`Submitted successfully!`, "success"))
       .catch(() => toaster(`Internal Server Error`, "error"))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+        setState(2);
+      });
   };
 
   return (
@@ -32,7 +35,7 @@ const Feedback = () => {
       object={feedback}
       setObject={setfeedback}
       header="FEEDBACK APPLICATION"
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit}
       bypass={true}
     />
   );

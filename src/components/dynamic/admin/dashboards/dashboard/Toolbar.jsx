@@ -94,18 +94,22 @@ const Toolbar = ({
         status: value,
         attribute: "status",
       },
-    });
+    })
+      .then(() => {
+        const ids = rows.map(({ uid }) => uid);
 
-    const ids = rows.map(({ uid }) => uid);
+        setData(
+          data.map((a) => {
+            if (ids.includes(a.uid)) a.status = value;
+            return a;
+          })
+        );
 
-    setData(
-      data.map((a) => {
-        if (ids.includes(a.uid)) a.status = value;
-        return a;
+        toggleAllRowsSelected(false);
+
+        toast("✅ Operation Completed");
       })
-    );
-
-    toggleAllRowsSelected(false);
+      .catch(() => toast("❌ Operation Failed"));
   };
 
   useEffect(() => {
