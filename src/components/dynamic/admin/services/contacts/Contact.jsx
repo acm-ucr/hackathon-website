@@ -4,7 +4,7 @@ import Button from "../../Button";
 import Select from "@/components/dynamic/Select";
 import { useState } from "react";
 import { api } from "@/utils/api";
-import toast from "react-hot-toast";
+import toaster from "@/utils/toaster";
 
 const STATUSES = ["confirmed", "pending", "not attending"];
 
@@ -29,12 +29,12 @@ const Contact = ({ role, disabled, setDisabled }) => {
     });
 
     if (items.length === 0) {
-      toast("🚫 The email list is empty!");
+      toaster("The email list is empty!", "error");
       return;
     }
 
     navigator.clipboard.writeText(items);
-    toast("✅ Copied all email addresses!");
+    toaster("Copied all email addresses!", "success");
 
     setDisabled(false);
   };

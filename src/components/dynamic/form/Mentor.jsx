@@ -5,7 +5,7 @@ import Form from "@/components/dynamic/form/form/Form.jsx";
 import { FIELDS, ATTRIBUTES } from "@/data/dynamic/form/Mentors.js";
 import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
-import toast from "react-hot-toast";
+import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/dynamic/admin/Mentors.js";
 
 const Mentor = () => {
@@ -25,8 +25,8 @@ const Mentor = () => {
       url: "/api/dashboard/mentors",
       body: mentor,
     })
-      .then(() => toast(`✅ Submitted successfully!`))
-      .catch(() => toast(`❌ Internal Server Error`))
+      .then(() => toaster(`Submitted successfully!`, "success"))
+      .catch(() => toaster(`Internal Server Error`, "error"))
       .finally(() => {
         setLoading(false);
         setState(2);

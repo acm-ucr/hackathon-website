@@ -2,7 +2,7 @@
 import { api } from "@/utils/api";
 import { useEffect, useState } from "react";
 import { FaTrashAlt, FaUndoAlt } from "react-icons/fa";
-import toast from "react-hot-toast";
+import toaster from "@/utils/toaster";
 import Popup from "../../Popup";
 import Tag from "../../Tag";
 import { COLORS } from "@/data/dynamic/Tags";
@@ -38,7 +38,7 @@ const Toolbar = ({
       url: `/api/dashboard/${page}`,
     }).then(({ items }) => {
       setData(items);
-      toast("✅ Fetched Data Successfully");
+      toaster("Fetched Data Successfully", "success");
     });
   };
 
@@ -51,14 +51,14 @@ const Toolbar = ({
       method: "DELETE",
       url: `/api/dashboard/${page}?remove=${ids.join(",")}`,
     }).then(() => {
-      toast("✅ Successfully Deleted");
+      toaster("Successfully Deleted", "success");
       toggleAllRowsSelected(false);
     });
   };
 
   const confirmDelete = () => {
     if (rows.length === 0) {
-      toast("❌ No rows selected for deletion.");
+      toaster("No rows selected for deletion.", "error");
       return;
     }
 
@@ -74,14 +74,14 @@ const Toolbar = ({
 
   const onClick = (value) => {
     if (rows.length === 0) {
-      toast("❌ No items selected.");
+      toaster("No items selected.", "error");
       return;
     }
 
     const notPending = rows.some((obj) => obj.status !== 0);
 
     if (notPending) {
-      toast("❌ Only pending items can be changed!");
+      toaster("Only pending items can be changed!", "error");
       toggleAllRowsSelected(false);
       return;
     }
@@ -107,9 +107,9 @@ const Toolbar = ({
 
         toggleAllRowsSelected(false);
 
-        toast("✅ Operation Completed");
+        toaster("Operation Completed", "success");
       })
-      .catch(() => toast("❌ Operation Failed"));
+      .catch(() => toaster("Operation Failed", "error"));
   };
 
   useEffect(() => {
