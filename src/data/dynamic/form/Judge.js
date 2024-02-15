@@ -82,7 +82,7 @@ export const FIELDS = {
     name: "title",
     type: "text",
     title: "Title",
-    placeholder: "ie. Graduate Student",
+    placeholder: "ie. Hackathon Director",
     maxLength: 50,
     width: 12,
     required: true,
