@@ -1,4 +1,5 @@
 import { FaTimes } from "react-icons/fa";
+import Image from "next/image";
 
 const Modal = ({ data, setModal }) => {
   return (
@@ -11,7 +12,12 @@ const Modal = ({ data, setModal }) => {
         />
       </div>
       <div className="bg-white px-3 rounded-b-xl py-2 border-x-2 border-b-2 border-hackathon-darkgray h-full w-full flex justify-center">
-        <img className="h-full" src={data.src} />
+        <Image
+          fill={true}
+          className="h-full"
+          src={data.src}
+          alt="Photo of the Judge"
+        />
       </div>
     </div>
   );
