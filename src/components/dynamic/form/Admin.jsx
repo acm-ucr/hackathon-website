@@ -22,7 +22,7 @@ const Admin = () => {
     api({
       method: "POST",
       url: "/api/dashboard/admins",
-      body: admin,
+      body: admins,
     })
       .then(() => toaster(`Submitted successfully!`, "success"))
       .catch(() => toaster(`Internal Server Error`, "error"))
