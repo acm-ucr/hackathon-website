@@ -10,8 +10,8 @@ const getType = (types) => "." + types.join(",.");
 
 const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
   const [file, setFile] = useState(
-    user && user[field]
-      ? { src: user[field], type: "photo", title: `${user.name}.png` }
+    user[field].startsWith("data:image")
+      ? { src: user[field], type: "image", title: `${user.name}.png` }
       : null
   );
   const [uploading, setUploading] = useState(false);
@@ -24,13 +24,12 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
       toaster(`File too big, exceeds ${maxSize[0]} ${maxSize[1]}!`, "error");
       return;
     }
-
     const base64 = await readFileAsBase64(blob);
     setUser({ ...user, [field]: base64 });
     setFile({
-      title: blob.name,
-      type: blob.type,
       src: base64,
+      type: blob.type,
+      title: blob.name,
     });
     setUploading(false);
   };
@@ -78,10 +77,12 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
               {file.title}
             </div>
             <div className="flex flex-row">
-              <FaEye
-                onClick={() => setShowModal(true)}
-                className="text-gray-500 hover:cursor-pointer hover:text-gray-800 mr-2"
-              />
+              {file.type.split("/")[0] === "image" && (
+                <FaEye
+                  onClick={() => setShowModal(true)}
+                  className="text-gray-500 hover:cursor-pointer hover:text-gray-800 mr-2"
+                />
+              )}
 
               <FaTimes
                 className="text-gray-500 hover:cursor-pointer hover:text-red-600"

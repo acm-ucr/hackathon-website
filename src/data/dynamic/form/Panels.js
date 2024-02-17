@@ -1,5 +1,7 @@
 import { GENDERS } from "./Information";
 import { SHIRTS } from "./Information";
+import { METADATA } from "@/data/Config";
+import { phone } from "@/data/dynamic/form/Regex";
 
 export const PANELISTS = {
   professor: "Professor",
@@ -12,7 +14,8 @@ export const FIELDS = {
     input: "description",
     width: 12,
     texts: [
-      "Welcome to HACKATHON_NAME. Thank you for considering participating in our panel! We appreciate your efforts to help support HACKATHON_NAME. HACKATHON_NAME is a DESCRIPTION hackathon spanning HACKATHON_LENGTH on HACKATHON_DATE.",
+      `Welcome to ${METADATA.name}. Thank you for considering to become a panelist. We appreciate your efforts to help support ${METADATA.name}. ${METADATA.name} is a ${METADATA.description} hackathon spanning ${METADATA.length} on ${METADATA.date}.`,
+      "Panelists are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
     ],
   },
   name: {
@@ -34,6 +37,17 @@ export const FIELDS = {
     width: 12,
     editable: false,
     required: true,
+  },
+  phone: {
+    input: "input",
+    name: "phone",
+    type: "phone",
+    title: "Phone Number",
+    placeholder: "123 456 7890",
+    maxLength: 50,
+    width: 12,
+    required: true,
+    regex: phone,
   },
   panelist: {
     input: "radio",
@@ -92,7 +106,7 @@ export const FIELDS = {
   },
   requirements: {
     text: "Terms and Conditions",
-    input: "checkboxes",
+    input: "terms",
     width: 12,
     field: "requirements",
     required: true,
@@ -102,7 +116,7 @@ export const FIELDS = {
       "I consent to providing a safe space for hackers to learn and grow their interests in computing",
       "I consent to following the provided guidelines and rules instructed by the organizing team",
       "I understand that failure to comply with guidelines or creating an unsafe space will result in my removal from the event",
-      "I understand this is an in person event taking place in UCR and I must attend the panel in person.",
+      "I understand this is an in person event taking place in UCR and I must attend in person in order to judge",
     ],
   },
 };
