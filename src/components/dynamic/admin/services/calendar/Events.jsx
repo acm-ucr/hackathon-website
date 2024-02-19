@@ -28,24 +28,20 @@ const CalendarEvents = () => {
   };
 
   useEffect(() => {
-    const now = new Date();
-    const twentyWeeksAgo = new Date(
-      now.getTime() - 20 * 7 * 24 * 60 * 60 * 1000
-    );
-    const twentyWeeksAhead = new Date(
-      now.getTime() + 20 * 7 * 24 * 60 * 60 * 1000
-    );
-    const timeMin = twentyWeeksAgo.toISOString();
-    const timeMax = twentyWeeksAhead.toISOString();
+    const min = new Date(new Date().getTime() - 20 * 7 * 24 * 60 * 60 * 1000)
+      .toISOString;
+    const max = new Date(
+      new Date().getTime() + 20 * 7 * 24 * 60 * 60 * 1000
+    ).toISOString();
 
     const hackathon = api({
       method: "GET",
-      url: `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime&timeMin=${timeMin}&timeMax=${timeMax}`,
+      url: `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime&timeMin=${min}&timeMax=${max}`,
     });
 
     const leads = api({
       method: "GET",
-      url: `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_LEADS}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime&timeMin=${timeMin}&timeMax=${timeMax}`,
+      url: `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_LEADS}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime&timeMin=${min}&timeMax=${max}`,
     });
 
     Promise.all([hackathon, leads]).then(([hackathonData, leadsData]) => {
