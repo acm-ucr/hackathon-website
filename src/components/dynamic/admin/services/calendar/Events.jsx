@@ -28,8 +28,10 @@ const CalendarEvents = () => {
   };
 
   useEffect(() => {
-    const min = new Date(new Date().getTime() - 20 * 7 * 24 * 60 * 60 * 1000)
-      .toISOString;
+    const min = new Date(
+      new Date().getTime() - 20 * 7 * 24 * 60 * 60 * 1000
+    ).toISOString();
+
     const max = new Date(
       new Date().getTime() + 20 * 7 * 24 * 60 * 60 * 1000
     ).toISOString();
@@ -87,9 +89,16 @@ const CalendarEvents = () => {
           onNavigate={(newDate) => setDate(newDate)}
           onView={(newView) => setView(newView)}
           components={{
-            event: (props) => <Event {...props} view={view} />,
-            toolbar: (props) => (
-              <Toolbar {...props} events={events} setEvents={setEvents} />
+            event: ({ event }) => <Event event={event} view={view} />,
+            toolbar: ({ onView, onNavigate, date, view }) => (
+              <Toolbar
+                onView={onView}
+                onNavigate={onNavigate}
+                date={date}
+                view={view}
+                events={events}
+                setEvents={setEvents}
+              />
             ),
           }}
           eventPropGetter={(event) => {
