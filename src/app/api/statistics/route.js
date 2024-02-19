@@ -20,7 +20,7 @@ export async function GET() {
     const {
       teams: { 1: teams },
       participants: { 1: participants },
-      volunteers: { 1: volunteers },
+      // volunteers: { 1: volunteers },
       judges: { 1: judges },
       mentors: { 1: mentors },
       committees: { 1: committees },
@@ -53,9 +53,6 @@ export async function GET() {
       { status: 200 }
     );
   } catch (err) {
-    return res.json(
-      { message: `Internal Server Error: ${err}` },
-      { status: 500 }
-    );
+    return res.json({ error: err.message }, { status: 500 });
   }
 }
