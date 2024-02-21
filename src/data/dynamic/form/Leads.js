@@ -1,13 +1,14 @@
 import { AGES, MAJORS } from "./Information";
-import { GRADES, GENDERS, SHIRTS, SOURCES } from "./Information";
+import { GRADES, GENDERS, SOURCES } from "./Information";
 import { SCHOOLS } from "./Schools";
+import { METADATA } from "@/data/Config";
 
 export const FIELDS = {
   description: {
     input: "description",
     width: 12,
     texts: [
-      "Welcome to HACKATHON_NAME. Thank you for considering to become a lead, we appreciate your enthusiasm to join HACKATHON_NAME. HACKATHON_NAME is a DESCRIPTION hackathon spanning HACKATHON_LENGTH on HACKATHON_DATE.",
+      `Welcome to ${METADATA.name}. Thank you for considering to become a lead, we appreciate your enthusiasm to join ${METADATA.name}. ${METADATA.name} is a ${METADATA.description} hackathon spanning ${METADATA.length} on ${METADATA.date}.`,
     ],
   },
   name: {
@@ -108,14 +109,6 @@ export const FIELDS = {
     width: 12,
     required: true,
   },
-  shirt: {
-    input: "radio",
-    text: "Shirt Size",
-    options: SHIRTS,
-    field: "shirt",
-    width: 12,
-    required: true,
-  },
   eventSource: {
     input: "select",
     title: "How did you find the event?",
@@ -134,9 +127,11 @@ export const FIELDS = {
     options: [
       "Cutie Hack",
       "Rose Hack",
-      "Designverse",
+      "DesignVerse",
       "Bear Hack",
       "Citrus Hack",
+      "MLH",
+      "Other",
     ],
   },
   priorExperience: {
@@ -152,7 +147,7 @@ export const FIELDS = {
     input: "textarea",
     name: "response",
     rows: 4,
-    title: "Why do you want to join HACKATHON_NAME?",
+    title: `Why do you want to join ${METADATA.name}?`,
     placeholder: "I want to join because...",
     width: 12,
     required: true,
@@ -192,7 +187,6 @@ export const ATTRIBUTES = {
   school: "",
   grade: "",
   gender: "",
-  shirt: "",
   resume: "",
   requirements: [],
   priorHackathons: [],
