@@ -10,7 +10,7 @@ const getType = (types) => "." + types.join(",.");
 
 const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
   const [file, setFile] = useState(
-    user[field].startsWith("data:image")
+    user[field] && user[field].startsWith("data:image")
       ? { src: user[field], type: "image", title: `${user.name}.png` }
       : null
   );
