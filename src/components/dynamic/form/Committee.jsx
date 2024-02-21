@@ -5,7 +5,7 @@ import Form from "@/components/dynamic/form/form/Form.jsx";
 import { FIELDS, ATTRIBUTES } from "@/data/dynamic/form/Committees";
 import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
-import toast from "react-hot-toast";
+import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/dynamic/admin/Committees";
 
 const Committee = () => {
@@ -24,8 +24,8 @@ const Committee = () => {
       url: "/api/dashboard/committees",
       body: committee,
     })
-      .then(() => toast(`✅ Submitted successfully!`))
-      .catch(() => toast(`❌ Internal Server Error`))
+      .then(() => toaster(`Submitted successfully!`, "success"))
+      .catch(() => toaster(`Internal Server Error`, "error"))
       .finally(() => {
         setLoading(false);
         setState(2);

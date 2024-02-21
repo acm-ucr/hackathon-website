@@ -1,11 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import Input from "../../Input";
 import Button from "../../Button";
 import Tag from "../../Tag";
 import { COLORS } from "@/data/dynamic/Tags";
 import Popup from "../../Popup";
-import { toast } from "react-hot-toast";
+import toaster from "@/utils/toaster";
 import { useRouter } from "next/navigation";
 import { api } from "@/utils/api";
 
@@ -34,7 +34,7 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
       parseInt(input.rotations) < 1 ||
       parseInt(input.rotations) > 99
     ) {
-      toast("❌ Please enter a valid integer value between 1 and 99");
+      toaster("Please enter a valid integer value between 1 and 99", "error");
       return;
     }
 
@@ -145,7 +145,7 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
       method: "PUT",
       url: "/api/judging",
       body: { teams },
-    }).then(() => toast("✅ Rounds Saved!"));
+    }).then(() => toaster("Rounds Saved!", "success"));
 
     setInput({
       ...input,
@@ -155,7 +155,7 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
 
   const handleReset = () => {
     if (data.some((team) => team.rounds.length === 0)) {
-      toast("❌ Already Reset!");
+      toaster("Already Reset!", "error");
       return;
     }
     setData(
@@ -170,7 +170,7 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
     api({
       method: "DELETE",
       url: `/api/judging?ids=${uids}`,
-    }).then(() => toast("✅ Successfully Reset"));
+    }).then(() => toaster("Successfully Reset", "success"));
   };
 
   const handleView = () => {
@@ -181,9 +181,12 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
       judge.rounds = Array.from(Array(data[0].rounds.length), () => []);
 
       data.forEach((team) => {
+        const name = team.table
+          ? team.table.toString().padStart(2, "0") + " : " + team.name
+          : team.name;
         team.rounds.forEach((round, index) => {
           if (round.some((individual) => individual.name === judge.name))
-            judge.rounds[index] = [{ name: team.name, affiliation: "student" }];
+            judge.rounds[index] = [{ name: name, affiliation: "student" }];
         });
       });
     });
