@@ -28,15 +28,29 @@ jobs:
         working-directory: ${{ github.repository }}
         run: |
           current_date=$(date '+%m/%d/%Y')
-          git checkout -b sync-template-$current_date template/dev
-          git push origin sync-template-$current_date
+          branch_exists=$(git branch --list --remote | grep -F "origin/sync-template")
+          if [ -z "$branch_exists" ]
+          then
+            git checkout -b sync-template template/dev
+            git push origin sync-template
+          else
+            git checkout -b sync-template origin/sync-template
+            git merge template/dev
+            git commit -m "Merge changes from $current_date"
+            git push origin sync-tamplate
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
 
-      - name: Create New Pull Request
+      - name: Update or Create Pull Request
         working-directory: ${{ github.repository }}
         run: |
           current_date=$(date '+%m/%d/%Y')
-          gh pr create --base dev --head sync-template-$current_date --title "Sync Template Changes $current_date" --body "Syncing template changes from $current_date"
+          pr_number=$(gh pr list --base dev --state open --json number --jq ".[] | select(.title == \"Sync Template Changes\") | .number")
+          if [ -z "$pr_number" ]
+          then
+            gh pr create --base dev --head sync-template --title "Sync Template Changes" --body "Syncing template changes from $current_date"
+          else
+            gh pr update $pr_number --base dev --head sync-template --title "Sync Template Changes" --body "Syncing template changes from $current_date"
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
