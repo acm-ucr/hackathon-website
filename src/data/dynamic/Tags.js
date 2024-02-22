@@ -58,6 +58,8 @@ export const COLORS = {
   professor: mappings["grayblue"],
   student: mappings["teal"],
   industry: mappings["lightgreen"],
+  intern: mappings["purple"],
+  researcher: mappings["pink"],
   director: mappings["purple"],
   marketing: mappings["teal"],
   operations: mappings["grayblue"],
