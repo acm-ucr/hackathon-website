@@ -13,8 +13,7 @@ import Select from "../Select";
 import Button from "../Button";
 import Checkbox from "../Checkbox";
 import { api } from "@/utils/api";
-import toast from "react-hot-toast";
-import { phone } from "@/data/dynamic/form/Regex";
+import toaster from "@/utils/toaster";
 
 const User = ({ user, setUser, edit, setEdit }) => {
   const handleEdit = () => {
@@ -27,7 +26,7 @@ const User = ({ user, setUser, edit, setEdit }) => {
         (value) => typeof value === "string" && value.includes("Invalid")
       )
     ) {
-      toast("❌ Please complete all required fields!");
+      toaster("Please complete all required fields!", "error");
       return;
     }
     api({
@@ -36,11 +35,11 @@ const User = ({ user, setUser, edit, setEdit }) => {
       body: user,
     })
       .then(() => {
-        toast("✅ Successfully Updated!");
+        toaster("Successfully Updated!", "success");
         setEdit(false);
       })
       .catch(() => {
-        toast("❌ Internal Server Error");
+        toaster("Internal Server Error", "error");
         setEdit(false);
       });
   };
