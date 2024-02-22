@@ -24,6 +24,18 @@ jobs:
       - name: Use ACM Linting
         uses: acm-ucr/linting@v2
 
+  images:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use ACM Images Optimization
+        uses: acm-ucr/images@v2
+        with:
+          branch: ${{ github.head_ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   build:
     name: build
     runs-on: ubuntu-latest
