@@ -25,6 +25,7 @@ const types = new Set([
   "interests",
   "sponsors",
   "panels",
+  "leads",
 ]);
 export async function POST(req, { params }) {
   const res = NextResponse;

@@ -15,6 +15,7 @@ import Panels from "@/components/dynamic/admin/dashboards/Panels";
 import Statistics from "@/components/dynamic/admin/services/statistics/Statistics";
 import Teams from "@/components/dynamic/admin/dashboards/Teams";
 import Volunteers from "@/components/dynamic/admin/dashboards/Volunteers";
+import Leads from "@/components/dynamic/admin/dashboards/Leads";
 import Fault from "@/utils/error";
 import Settings from "@/components/dynamic/admin/services/settings/Settings";
 
@@ -37,6 +38,7 @@ const Page = ({ params }) => {
     statistics: <Statistics />,
     teams: <Teams />,
     volunteers: <Volunteers />,
+    leads: <Leads />,
   };
 
   const capitalizeFirstLetter = (word) => {

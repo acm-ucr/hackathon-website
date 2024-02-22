@@ -4,6 +4,7 @@ import {
   BsBarChartFill,
   BsGlobe2,
   BsBoxArrowInRight,
+  BsPersonRaisedHand,
 } from "react-icons/bs";
 import { MdVolunteerActivism, MdFeedback } from "react-icons/md";
 import { BiSolidHelpCircle } from "react-icons/bi";
@@ -82,6 +83,11 @@ export const TABS = {
           name: "feedback",
           link: "/admin/feedback",
           icon: <MdFeedback className={iconStyle} />,
+        },
+        {
+          name: "leads",
+          link: "/admin/leads",
+          icon: <BsPersonRaisedHand className={iconStyle} />,
         },
       ],
     },
