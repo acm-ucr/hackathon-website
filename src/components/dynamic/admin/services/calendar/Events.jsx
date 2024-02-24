@@ -118,7 +118,6 @@ const CalendarEvents = () => {
               },
             };
           }}
-          onSelectEvent={(event) => console.log(event)}
           onDrillDown={() => setView("week")}
         />
       )}
