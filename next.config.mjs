@@ -1,5 +1,15 @@
-const withMDX = require("@next/mdx")();
-/** @type {import('next').NextConfig} */
+import nextMDX from "@next/mdx";
+import rehypePrettyCode from "rehype-pretty-code";
+
+const options = {};
+
+const withMDX = nextMDX({
+  extension: /\.mdx?$/,
+  options: {
+    rehypePlugins: [[rehypePrettyCode, , options]],
+  },
+});
+
 const nextConfig = {
   async redirects() {
     return [
@@ -30,7 +40,6 @@ const nextConfig = {
       },
     ],
   },
-  pageExtensions: ["js", "jsx", "mdx"],
 };
 
-module.exports = withMDX(nextConfig);
+export default withMDX(nextConfig);

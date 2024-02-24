@@ -1,5 +1,6 @@
 import Tailwind from "@/engineering/tailwind.mdx";
 import Fault from "@/utils/error";
+
 const Page = ({ params }) => {
   const MDX = {
     tailwind: <Tailwind />,
@@ -11,9 +12,9 @@ const Page = ({ params }) => {
 
   if (MDX.hasOwnProperty(params.type)) {
     return (
-      <div className="prose">
+      <div className="w-full flex items-start justify-center my-8 font-poppins">
         <title>{`Engineering | ${capitalizeFirstLetter(params.type)}`}</title>
-        {MDX[params.type]}
+        <div className="prose min-h-screen"> {MDX[params.type]}</div>
       </div>
     );
   } else {
