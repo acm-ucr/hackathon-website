@@ -1,0 +1,28 @@
+import Tailwind from "@/engineering/tailwind.mdx";
+import Fault from "@/utils/error";
+const Page = ({ params }) => {
+  const MDX = {
+    tailwind: <Tailwind />,
+  };
+
+  const capitalizeFirstLetter = (word) => {
+    return word[0].toUpperCase() + word.slice(1);
+  };
+
+  if (MDX.hasOwnProperty(params.type)) {
+    return (
+      <div className="prose">
+        <title>{`Engineering | ${capitalizeFirstLetter(params.type)}`}</title>
+        {MDX[params.type]}
+      </div>
+    );
+  } else {
+    throw new Fault(
+      404,
+      "Page Not Found",
+      "The page you are looking for does not seem to exist"
+    );
+  }
+};
+
+export default Page;
