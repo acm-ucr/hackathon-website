@@ -14,7 +14,7 @@ const Page = ({ params }) => {
     return (
       <div className="w-full flex items-start justify-center my-8 font-poppins">
         <title>{`Engineering | ${capitalizeFirstLetter(params.type)}`}</title>
-        <div className="prose min-h-screen"> {MDX[params.type]}</div>
+        <div className="prose min-h-screen">{MDX[params.type]}</div>
       </div>
     );
   } else {
