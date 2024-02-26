@@ -79,9 +79,9 @@ export const FIELDS = {
     width: 12,
     required: true,
   },
-  response: {
+  comments: {
     input: "textarea",
-    name: "response",
+    name: "comments",
     rows: 4,
     title: "Additional Comments/Questions",
     placeholder: "...",
