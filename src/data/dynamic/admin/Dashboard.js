@@ -54,7 +54,7 @@ export const ATTRIBUTES = {
     "company",
     "position",
     "tier",
-    "response",
+    "comments",
   ],
   panels: [
     "name",
