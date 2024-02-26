@@ -24,6 +24,7 @@ const Dashboard = ({
   const [data, setData] = useState([]);
   const [filters, setFilters] = useState([{ id: "status", value: [-1, 0, 1] }]);
   const [selected, setSelected] = useState([]);
+  const [loadState, setLoadState] = useState(1);
 
   const {
     getHeaderGroups,
@@ -70,6 +71,7 @@ const Dashboard = ({
         tags={tags}
         getFilteredSelectedRowModel={getFilteredSelectedRowModel}
         toggleAllRowsSelected={toggleAllRowsSelected}
+        setLoadState={setLoadState}
       />
       <Table
         getHeaderGroups={getHeaderGroups}
@@ -80,8 +82,10 @@ const Dashboard = ({
         nextPage={nextPage}
         getCanNextPage={getCanNextPage}
         getPageCount={getPageCount}
+        dataExists={data.length > 0}
         Dropdown={Dropdown}
         empty={empty}
+        loadState={loadState}
       />
     </div>
   );
