@@ -78,6 +78,10 @@ const CalendarEvents = () => {
           localizer={mLocalizer}
           defaultView="month"
           views={["month", "week"]}
+          formats={{
+            eventTimeRangeFormat: ({ start }) =>
+              mLocalizer.format(start, "hh:mm A\n"),
+          }}
           onNavigate={(newDate) => setDate(newDate)}
           onView={(newView) => setView(newView)}
           components={{
@@ -87,7 +91,12 @@ const CalendarEvents = () => {
             ),
           }}
           eventPropGetter={(event) => {
-            return { className: event.color };
+            return {
+              style: {
+                border: "0px",
+              },
+              className: event.color,
+            };
           }}
           dayPropGetter={(event) => {
             const bg =
