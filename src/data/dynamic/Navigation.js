@@ -18,8 +18,10 @@ import {
 } from "react-icons/fa";
 import { AiOutlineQrcode } from "react-icons/ai";
 import { signOut } from "next-auth/react";
-import { SiHandshake } from "react-icons/si";
+import { SiDevpost, SiHandshake } from "react-icons/si";
 import { IoIosPeople } from "react-icons/io";
+import { CONFIG } from "@/data/Config";
+
 const iconStyle = "mr-2";
 
 export const TABS = {
@@ -124,6 +126,11 @@ export const TABS = {
     },
     " ": [
       {
+        name: "devpost",
+        link: CONFIG.devpost,
+        icon: <SiDevpost className={iconStyle} />,
+      },
+      {
         name: "website",
         link: "/",
         icon: <BsGlobe2 className={iconStyle} />,
@@ -158,6 +165,11 @@ export const TABS = {
       ],
     },
     " ": [
+      {
+        name: "devpost",
+        link: CONFIG.devpost,
+        icon: <SiDevpost className={iconStyle} />,
+      },
       {
         name: "website",
         link: "/",
