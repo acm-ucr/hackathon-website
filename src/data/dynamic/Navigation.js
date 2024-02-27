@@ -16,6 +16,7 @@ import {
   FaCalendarDay,
   FaExclamation,
 } from "react-icons/fa";
+import { FaGear } from "react-icons/fa6";
 import { AiOutlineQrcode } from "react-icons/ai";
 import { signOut } from "next-auth/react";
 import { SiHandshake } from "react-icons/si";
@@ -119,6 +120,11 @@ export const TABS = {
           name: "statistics",
           link: "/admin/statistics",
           icon: <BsBarChartFill className={iconStyle} />,
+        },
+        {
+          name: "settings",
+          link: "/admin/settings",
+          icon: <FaGear className={iconStyle} />,
         },
       ],
     },
