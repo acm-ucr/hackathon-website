@@ -1,11 +1,13 @@
 import Tailwind from "@/engineering/tailwind.mdx";
 import Component from "@/engineering/component.mdx";
+import CodeQualityFlow from "@/engineering/codequalityflow.mdx";
 import Fault from "@/utils/error";
 
 const Page = ({ params }) => {
   const MDX = {
     tailwind: <Tailwind />,
     component: <Component />,
+    codequalityflow: <CodeQualityFlow />,
   };
 
   const capitalizeFirstLetter = (word) => {
