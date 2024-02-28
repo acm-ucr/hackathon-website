@@ -1,27 +1,36 @@
 import { useState } from "react";
 import { BsUpload } from "react-icons/bs";
-import { FaFilePdf, FaImage, FaTimes } from "react-icons/fa";
-import { toast } from "react-hot-toast";
+import { FaFilePdf, FaImage, FaTimes, FaEye } from "react-icons/fa";
+import toaster from "@/utils/toaster";
 import { BYTES } from "@/data/dynamic/Bytes";
 import { readFileAsBase64, compress } from "@/utils/convert";
-
+import Modal from "@/components/dynamic/admin/dashboards/dashboard/Modal";
 const getSize = (maxSize) => BYTES[maxSize[1]] * maxSize[0];
 const getType = (types) => "." + types.join(",.");
 
 const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState(
+    user[field] && user[field].startsWith("data:image")
+      ? { src: user[field], type: "image", title: `${user.name}.png` }
+      : null
+  );
   const [uploading, setUploading] = useState(false);
+  const [showModal, setShowModal] = useState(null);
 
   const handleInput = async (e) => {
     setUploading(true);
     const blob = await compress(e.target.files[0]);
     if (blob.size > getSize(maxSize)) {
-      toast(`❌ File too big, exceeds ${maxSize[0]} ${maxSize[1]}!`);
+      toaster(`File too big, exceeds ${maxSize[0]} ${maxSize[1]}!`, "error");
       return;
     }
-    setFile(blob);
     const base64 = await readFileAsBase64(blob);
     setUser({ ...user, [field]: base64 });
+    setFile({
+      src: base64,
+      type: blob.type,
+      title: blob.name,
+    });
     setUploading(false);
   };
 
@@ -65,15 +74,25 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
               ) : (
                 <FaFilePdf className="text-xl mr-2" />
               )}
-              {file.name}
+              {file.title}
             </div>
-            <FaTimes
-              className="text-gray-500 hover:cursor-pointer hover:text-red-600"
-              onClick={() => setFile(null)}
-              data-cy="upload-cancel"
-            />
+            <div className="flex flex-row">
+              {file.type.split("/")[0] === "image" && (
+                <FaEye
+                  onClick={() => setShowModal(true)}
+                  className="text-gray-500 hover:cursor-pointer hover:text-gray-800 mr-2"
+                />
+              )}
+
+              <FaTimes
+                className="text-gray-500 hover:cursor-pointer hover:text-red-600"
+                onClick={() => setFile(null)}
+                data-cy="upload-cancel"
+              />
+            </div>
           </div>
         )}
+        {showModal && <Modal data={file} setModal={setShowModal} />}
       </div>
       {uploading && "UPLOADING ..."}
     </div>

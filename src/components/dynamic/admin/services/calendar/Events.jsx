@@ -28,14 +28,22 @@ const CalendarEvents = () => {
   };
 
   useEffect(() => {
+    const min = new Date(
+      new Date().getTime() - 20 * 7 * 24 * 60 * 60 * 1000
+    ).toISOString();
+
+    const max = new Date(
+      new Date().getTime() + 20 * 7 * 24 * 60 * 60 * 1000
+    ).toISOString();
+
     const hackathon = api({
       method: "GET",
-      url: `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime`,
+      url: `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime&timeMin=${min}&timeMax=${max}`,
     });
 
     const leads = api({
       method: "GET",
-      url: `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_LEADS}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime`,
+      url: `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_LEADS}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime&timeMin=${min}&timeMax=${max}`,
     });
 
     Promise.all([hackathon, leads]).then(([hackathonData, leadsData]) => {
@@ -78,16 +86,32 @@ const CalendarEvents = () => {
           localizer={mLocalizer}
           defaultView="month"
           views={["month", "week"]}
+          formats={{
+            eventTimeRangeFormat: ({ start }) =>
+              mLocalizer.format(start, "hh:mm A\n"),
+          }}
           onNavigate={(newDate) => setDate(newDate)}
           onView={(newView) => setView(newView)}
           components={{
-            event: (props) => <Event {...props} view={view} />,
-            toolbar: (props) => (
-              <Toolbar {...props} events={events} setEvents={setEvents} />
+            event: ({ event }) => <Event event={event} view={view} />,
+            toolbar: ({ onView, onNavigate, date, view }) => (
+              <Toolbar
+                onView={onView}
+                onNavigate={onNavigate}
+                date={date}
+                view={view}
+                events={events}
+                setEvents={setEvents}
+              />
             ),
           }}
           eventPropGetter={(event) => {
-            return { className: event.color };
+            return {
+              style: {
+                border: "0px",
+              },
+              className: event.color,
+            };
           }}
           dayPropGetter={(event) => {
             const bg =
@@ -104,6 +128,7 @@ const CalendarEvents = () => {
             };
           }}
           onSelectEvent={(event) => setEvent(event)}
+          onDrillDown={() => setView("week")}
         />
       )}
     </div>

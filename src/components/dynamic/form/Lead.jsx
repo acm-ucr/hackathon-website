@@ -2,47 +2,45 @@
 
 import { useState } from "react";
 import Form from "@/components/dynamic/form/form/Form.jsx";
-import { FIELDS, ATTRIBUTES } from "@/data/dynamic/form/Judge.js";
+import { FIELDS, ATTRIBUTES } from "@/data/dynamic/form/Leads";
 import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
-import toaster from "@/utils/toaster";
-import { STATUSES } from "@/data/dynamic/admin/Judges.js";
+import toast from "react-hot-toast";
+import { STATUSES } from "@/data/dynamic/admin/Leads";
 
-const Judge = () => {
+const Lead = () => {
   const { data: session } = useSession();
-  const [judge, setJudge] = useState({
+  const [lead, setLead] = useState({
     ...ATTRIBUTES,
     name: session.user.name,
+    preferredName: session.user.name,
     email: session.user.email,
-    roles: session.user.roles,
-    photo: session.user.photo ?? null,
-    form: "judges",
+    form: "leads",
   });
 
   const handleSubmit = (setLoading, setState) => {
     api({
       method: "POST",
-      url: "/api/dashboard/judges",
-      body: judge,
+      url: "/api/dashboard/leads",
+      body: lead,
     })
-      .then(() => toaster(`Submitted successfully!`, "success"))
-      .catch(() => toaster(`Internal Server Error`, "error"))
+      .then(() => toast(`✅ Submitted successfully!`))
+      .catch(() => toast(`❌ Internal Server Error`))
       .finally(() => {
         setLoading(false);
         setState(2);
       });
   };
-
   return (
     <Form
       fields={FIELDS}
-      object={judge}
-      setObject={setJudge}
-      header="JUDGE APPLICATION"
+      object={lead}
+      setObject={setLead}
+      header="LEAD APPLICATION"
       onSubmit={handleSubmit}
       statuses={STATUSES}
     />
   );
 };
 
-export default Judge;
+export default Lead;

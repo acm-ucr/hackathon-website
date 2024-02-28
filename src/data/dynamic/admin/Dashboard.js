@@ -54,7 +54,17 @@ export const ATTRIBUTES = {
     "company",
     "position",
     "tier",
-    "response",
+    "comments",
+  ],
+  panels: [
+    "name",
+    "email",
+    "title",
+    "gender",
+    "title",
+    "panelist",
+    "shirt",
+    "photo",
   ],
   feedback: [
     "rating",
@@ -64,6 +74,19 @@ export const ATTRIBUTES = {
     "notBeneficial",
     "helpful",
     "status",
+  ],
+  leads: [
+    "name",
+    "email",
+    "grade",
+    "gender",
+    "major",
+    "discord",
+    "response",
+    "eventSource",
+    "school",
+    "priorExperience",
+    "priorHackathons",
   ],
 };
 

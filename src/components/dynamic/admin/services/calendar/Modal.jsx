@@ -31,11 +31,6 @@ const CalendarModal = ({ event, setEvent }) => {
               hour: "numeric",
               minute: "2-digit",
             })}
-            {" - "}
-            {event.end.toLocaleString("default", {
-              hour: "numeric",
-              minute: "2-digit",
-            })}
           </div>
           <div>
             <Tag

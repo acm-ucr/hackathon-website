@@ -25,6 +25,7 @@ export async function GET() {
       mentors: { 1: mentors },
       committees: { 1: committees },
       sponsors: { 1: sponsors },
+      panels: { 1: panels },
       admins: { 1: admins },
     } = (await getDoc(doc(db, "statistics", "statistics"))).data();
 
@@ -45,6 +46,7 @@ export async function GET() {
       mentors,
       committees,
       sponsors,
+      panels,
       admins,
     };
 

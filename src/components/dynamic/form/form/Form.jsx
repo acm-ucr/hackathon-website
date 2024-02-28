@@ -17,6 +17,7 @@ const Form = ({
   bypass = false,
 }) => {
   const [loading, setLoading] = useState(false);
+
   const [state, setState] = useState(
     typeof object.roles[object.form] !== "undefined" && !bypass ? 0 : 1
   );

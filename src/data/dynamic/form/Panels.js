@@ -3,10 +3,10 @@ import { SHIRTS } from "./Information";
 import { METADATA } from "@/data/Config";
 import { phone } from "@/data/dynamic/form/Regex";
 
-export const AFFILIATIONS = {
+export const PANELISTS = {
   professor: "Professor",
-  student: "Student",
-  industry: "Industry",
+  intern: "Intern",
+  researcher: "Researcher",
 };
 
 export const FIELDS = {
@@ -14,10 +14,8 @@ export const FIELDS = {
     input: "description",
     width: 12,
     texts: [
-      `Welcome to ${METADATA.name}. Thank you for considering to become a judge, we appreciate your efforts to help support ${METADATA.name}. ${METADATA.name} is a ${METADATA.description} hackathon spanning ${METADATA.length} on ${METADATA.date}.`,
-      "Judges are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
-      "Judge duties include but are not limited to visiting various teams to assess teams on their idea, technical complexities, and overall presentation after which they will decide the winners.",
-      "Note: Judges are not permitted to become participants for the hackathon.",
+      `Welcome to ${METADATA.name}. Thank you for considering to become a panelist. We appreciate your efforts to help support ${METADATA.name}. ${METADATA.name} is a ${METADATA.description} hackathon spanning ${METADATA.length} on ${METADATA.date}.`,
+      "Panelists are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
     ],
   },
   name: {
@@ -51,6 +49,35 @@ export const FIELDS = {
     required: true,
     regex: phone,
   },
+  panelist: {
+    input: "radio",
+    text: "Panelist Role",
+    options: PANELISTS,
+    field: "panelist",
+    width: 12,
+    required: true,
+  },
+  company: {
+    input: "input",
+    name: "company",
+    type: "text",
+    title: "Company",
+    placeholder: "ie. UBER",
+    maxLength: 50,
+    width: 12,
+    required: true,
+  },
+
+  title: {
+    input: "input",
+    name: "title",
+    type: "text",
+    title: "Title",
+    placeholder: "ie. SWE",
+    maxLength: 50,
+    width: 12,
+    required: true,
+  },
   gender: {
     input: "radio",
     text: "Gender",
@@ -68,25 +95,6 @@ export const FIELDS = {
     required: true,
   },
 
-  affiliation: {
-    input: "radio",
-    text: "Affiliation",
-    options: AFFILIATIONS,
-    field: "affiliation",
-    width: 12,
-    required: true,
-  },
-
-  title: {
-    input: "input",
-    name: "title",
-    type: "text",
-    title: "Title",
-    placeholder: "ie. Hackathon Director",
-    maxLength: 50,
-    width: 12,
-    required: true,
-  },
   photo: {
     input: "upload",
     field: "photo",
