@@ -71,7 +71,7 @@ const Navigation = () => {
                     subTabs.tabs.map((tab, index) => (
                       <Link
                         key={index}
-                        href={tab.link}
+                        href={`${tab.link}?index=${tab.name}`}
                         className="no-underline p-0 w-full"
                       >
                         <div
@@ -94,7 +94,7 @@ const Navigation = () => {
             {tabs[" "].map((tab, index) => (
               <Link
                 key={index}
-                href={tab.link}
+                href={`${tab.link}?index=${tab.name}`}
                 onClick={() => tab.onClick()}
                 className="no-underline w-full"
               >
