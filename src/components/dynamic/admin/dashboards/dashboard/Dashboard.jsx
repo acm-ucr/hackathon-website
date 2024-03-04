@@ -82,7 +82,6 @@ const Dashboard = ({
         nextPage={nextPage}
         getCanNextPage={getCanNextPage}
         getPageCount={getPageCount}
-        dataExists={data.length > 0}
         Dropdown={Dropdown}
         empty={empty}
         loading={loading}
