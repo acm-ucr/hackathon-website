@@ -24,7 +24,7 @@ const Dashboard = ({
   const [data, setData] = useState([]);
   const [filters, setFilters] = useState([{ id: "status", value: [-1, 0, 1] }]);
   const [selected, setSelected] = useState([]);
-  const [loading, setLoading] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   const {
     getHeaderGroups,
