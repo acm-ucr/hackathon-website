@@ -17,6 +17,7 @@ const Toolbar = ({
   tags,
   getFilteredSelectedRowModel,
   toggleAllRowsSelected,
+  setLoading,
 }) => {
   const selectedRows = getFilteredSelectedRowModel();
 
@@ -38,6 +39,7 @@ const Toolbar = ({
       url: `/api/dashboard/${page}`,
     }).then(({ items }) => {
       setData(items);
+      setLoading(false);
       toaster("Fetched Data Successfully", "success");
     });
   };
