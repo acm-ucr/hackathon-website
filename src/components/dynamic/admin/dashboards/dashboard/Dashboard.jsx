@@ -24,7 +24,7 @@ const Dashboard = ({
   const [data, setData] = useState([]);
   const [filters, setFilters] = useState([{ id: "status", value: [-1, 0, 1] }]);
   const [selected, setSelected] = useState([]);
-  const [loadState, setLoadState] = useState(1);
+  const [loading, setLoading] = useState(1);
 
   const {
     getHeaderGroups,
@@ -71,7 +71,7 @@ const Dashboard = ({
         tags={tags}
         getFilteredSelectedRowModel={getFilteredSelectedRowModel}
         toggleAllRowsSelected={toggleAllRowsSelected}
-        setLoadState={setLoadState}
+        setLoading={setLoading}
       />
       <Table
         getHeaderGroups={getHeaderGroups}
@@ -85,7 +85,7 @@ const Dashboard = ({
         dataExists={data.length > 0}
         Dropdown={Dropdown}
         empty={empty}
-        loadState={loadState}
+        loading={loading}
       />
     </div>
   );

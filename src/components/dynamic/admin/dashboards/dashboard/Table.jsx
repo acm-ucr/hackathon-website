@@ -20,7 +20,7 @@ const Table = ({
   getPageCount,
   Dropdown,
   empty,
-  loadState,
+  loading,
 }) => {
   return (
     <>
@@ -65,7 +65,7 @@ const Table = ({
             ))}
           </div>
           <>
-            {loadState ? (
+            {loading ? (
               <Loading />
             ) : (
               <>
