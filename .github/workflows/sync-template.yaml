@@ -1,7 +1,7 @@
 name: Sync Changes from Template
 on:
   schedule:
-    # Run at 6:00 AM every two days
+    # Run at 6:00 AM every day
     - cron: "0 14 * * *"
 
 jobs:
