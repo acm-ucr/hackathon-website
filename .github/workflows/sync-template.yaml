@@ -2,7 +2,7 @@ name: Sync Changes from Template
 on:
   schedule:
     # Run at 6:00 AM every two days
-    - cron: "0 6 */2 * *"
+    - cron: "0 14 * * *"
 
 jobs:
   sync-from-template:
@@ -27,7 +27,7 @@ jobs:
       - name: Checkout and push Template Dev Branch
         working-directory: ${{ github.repository }}
         run: |
-          branch_exists=$(git branch --list --remote | { grep -F "origin/sync-template || true; }")
+          branch_exists=$(git branch --list --remote | { grep -F "origin/sync-template" || true; } )
           if [ -z "$branch_exists" ]
           then
             git checkout -b sync-template template/dev
@@ -37,5 +37,6 @@ jobs:
             git checkout -b sync-template origin/sync-template
             git pull template dev
             git push
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
