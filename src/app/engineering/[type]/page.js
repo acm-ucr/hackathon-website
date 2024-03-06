@@ -1,6 +1,7 @@
 import Tailwind from "@/engineering/tailwind.mdx";
 import Toast from "@/engineering/toast.mdx";
 import Component from "@/engineering/component.mdx";
+import ReactVirtual from "@/engineering/react-virtual.mdx";
 import Fault from "@/utils/error";
 
 const Page = ({ params }) => {
@@ -8,6 +9,7 @@ const Page = ({ params }) => {
     tailwind: <Tailwind />,
     component: <Component />,
     toast: <Toast />,
+    "react-virtual": <ReactVirtual />,
   };
 
   const capitalizeFirstLetter = (word) => {
