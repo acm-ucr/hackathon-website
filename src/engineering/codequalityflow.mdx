@@ -1,4 +1,4 @@
-# Integrating ESLint, Prettier, and Husky in Your Project
+# ESLint, Prettier, and Husky
 
 ## What are these tools?
 
@@ -16,43 +16,36 @@ Husky is a tool that facilitates the integration of Git hooks into your workflow
 
 ## Integration into Workflows
 
-### ESLint and Prettier Integration
+### ESLint and Prettier Integration in hackathon website
 
-To integrate ESLint and Prettier into your project:
+**Configuration**: We configured Configure ESLint with rules from google and next in a `.eslintrc.json` file. Similarly, we set up Prettier configurations in a `.prettierrc` file to define code formatting preferences.
 
-1. **Install Packages**: Begin by installing ESLint and Prettier as development dependencies.
+**Plugins**:
 
-2. **Configuration**: Configure ESLint with rules that match your coding standards in a `.eslintrc.json` file. Similarly, set up Prettier configurations in a `.prettierrc` file to define code formatting preferences.
+- We utilized the following plugins:
+  - `eslint-config-google`
+  - `eslint-config-next`
+  - `eslint-plugin-react`
+  - `eslint-config-prettier`
 
-3. **Plugins**:
+**Scripts**:
 
-   - Utilize ESLint plugins to seamlessly integrate Prettier into your ESLint workflow. Some examples include:
-     - `eslint-config-google`
-     - `eslint-config-next`
-     - `eslint-plugin-react`
-     - `eslint-config-prettier`
-
-4. **Scripts**:
-   - Add scripts in your `package.json` to run ESLint and Prettier easily. For instance:
-     - `"lint": "next lint"`
-     - `"format": "npx prettier --write ."`
+- We used the following scripts for lining and formatting:
+  - `"lint": "next lint"`
+  - `"format": "npx prettier --write ."`
 
 ### Husky Integration
 
-To integrate Husky into your project:
+How we integrated Husky:
 
-1. **Install Husky**: Install Husky as a development dependency.
+**Prevent Commits with Errors**: We configured a pre-commit Husky hook to run ESLint and Prettier before allowing commits, preventing code with errors or formatting issues from being committed.
 
-2. **Hooks Configuration**: Add hooks in your `package.json` file, specifying the scripts you want to run at different stages of the Git lifecycle.
-
-3. **Prevent Commits with Errors**: Configure Husky hooks to run ESLint and Prettier before allowing commits, preventing code with errors or formatting issues from being committed.
-
-## Why are these tools needed?
+## Why did we choose these tools?
 
 1. **Code Consistency and Readability**:
 
    - **ESLint**: Enforces consistent coding standards, ensuring that all developers follow the same coding practices.
-   - **Prettier**: Automatically formats code, eliminating debates over styling preferences and improving code readability.
+   - **Prettier**: Automatically formats code, eliminating debates over styling preferences and improving code readability while also reducing merge conflicts.
 
 2. **Code Quality Assurance**:
 
@@ -66,4 +59,4 @@ To integrate Husky into your project:
 4. **Git Workflow Enhancements**:
    - **Husky**: Enforces code quality and formatting checks before allowing commits or pushes, preventing low-quality code from entering the repository.
 
-By integrating these tools, you establish a robust development environment that promotes code consistency, quality, and collaboration. These tools become essential components of your workflow, contributing to the overall success of your project.
+By integrating these tools, we established a robust development environment that promotes code consistency, quality, and collaboration. These tools became essential components of our workflow, contributing to the overall success of our project.
