@@ -7,6 +7,7 @@ import {
   FaSortAlphaDown,
   FaSortAlphaUp,
 } from "react-icons/fa";
+import Loading from "@/components/dynamic/Loading";
 
 const Table = ({
   getHeaderGroups,
@@ -19,6 +20,7 @@ const Table = ({
   getPageCount,
   Dropdown,
   empty,
+  loading,
 }) => {
   return (
     <>
@@ -63,19 +65,25 @@ const Table = ({
             ))}
           </div>
           <>
-            {getRowModel().rows.length === 0 && (
-              <p className="w-full text-center py-8 bg-white">{empty}</p>
-            )}
-            {getRowModel().rows.map(
-              ({ id, getVisibleCells, original, getIsSelected }) => (
-                <Body
-                  getIsSelected={getIsSelected}
-                  key={id}
-                  getVisibleCells={getVisibleCells}
-                  Dropdown={Dropdown}
-                  original={original}
-                />
-              )
+            {loading ? (
+              <Loading />
+            ) : (
+              <>
+                {getRowModel().rows.length === 0 && (
+                  <p className="w-full text-center py-8 bg-white">{empty}</p>
+                )}
+                {getRowModel().rows.map(
+                  ({ id, getVisibleCells, original, getIsSelected }) => (
+                    <Body
+                      getIsSelected={getIsSelected}
+                      key={id}
+                      getVisibleCells={getVisibleCells}
+                      Dropdown={Dropdown}
+                      original={original}
+                    />
+                  )
+                )}
+              </>
             )}
           </>
         </div>
