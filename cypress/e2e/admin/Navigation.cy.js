@@ -9,6 +9,16 @@ describe("Admin Portal Navigation", () => {
     cy.get(".text-2xl").contains("Participants");
   });
 
+  it("Visit Panelists Page", () => {
+    cy.fetch({
+      role: "admins",
+      portal: "admin",
+      page: "panelists",
+    });
+
+    cy.get(".text-2xl").contains("Panelists");
+  });
+
   it("Visit Teams Page", () => {
     cy.fetch({
       role: "admins",
