@@ -1,9 +1,4 @@
 export const LABELS = {
-  all: {
-    color: "gray",
-    background: "!bg-hackathon-tags-gray-text",
-    eventType: "leads",
-  },
   directors: {
     color: "red",
     background: "!bg-hackathon-tags-red-text",

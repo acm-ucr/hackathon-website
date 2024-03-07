@@ -88,9 +88,15 @@ const CustomToolbar = ({
         />
       </div>
 
-      <div className="flex flex-col">
-        <div className="flex justify-evenly items-center flex-wrap">
-          <p>Leads Events:</p>
+      <div className="flex flex-col items-end">
+        <Tag
+          text="all"
+          color={COLORS["gray"]}
+          classes="my-1"
+          onClick={() => onClick("all")}
+        />
+        <div className="flex justify-end items-center flex-wrap gap-x-2">
+          <p className="font-bold">Leads Events:</p>
           {Object.entries(LABELS)
             .filter((obj) => obj[1].eventType === "leads")
             .map(([label, value], index) => (
@@ -105,7 +111,7 @@ const CustomToolbar = ({
         </div>
 
         <div className="flex justify-evenly items-center flex-wrap">
-          <p>Hackathon: </p>
+          <p className="font-bold">Hackathon: </p>
           {Object.entries(LABELS)
             .filter((obj) => obj[1].eventType !== "leads")
             .map(([label, value], index) => (
