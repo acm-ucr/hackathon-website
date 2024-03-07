@@ -1,0 +1,44 @@
+# Next Auth
+
+#### 6th March by Theo Fernandez
+
+[Next Auth](https://next-auth.js.org/) is an authentication library for Next.js applications. It provides a flexible API for authentication, and is designed to work with Next.js and any O-Auth provider.
+
+Unlike Auth services like Auth0 and Amazon Cognito, Next Auth allows us to own our data and full control over the authentication process. The current scale of our hackathon website is also not large enough to warrant the additional fees of external providers.
+
+Hooking up Next Auth to GoogleProvider allows us to quickly log in users and maintain user sessions through secure cookies.
+
+## User Authentication Workflow
+
+Here is an example of our authentication in the ProtectedPage component. This component is our solution for redirecting any user who is not authenticated to the login page.
+
+```js title="src/components/dynamic/ProtectedPage.jsx"
+import { signIn, useSession } from "next-auth/react";
+
+const ProtectedPage = ({ children, restrictions, title }) => {
+  const { data: session, status } = useSession();
+useEffect(() => {
+    if (status === "loading") return;
+    if (status !== "authenticated") {
+      // redirect any users who are not authenticated to the login page
+      void signIn("google");
+      return;
+    }
+    setConfirmed(true);
+	}, [status]);
+
+
+}
+return (
+    <>
+      {status === "loading" && <Loading />}
+      {confirmed && (
+        <>
+        {... Render Page}
+        <>
+      )}
+
+      )
+
+
+```
