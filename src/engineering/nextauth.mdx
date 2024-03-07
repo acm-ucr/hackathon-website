@@ -1,0 +1,82 @@
+# Next Auth
+
+#### 6th March by Theo Fernandez
+
+[Next Auth](https://next-auth.js.org/) is an authentication library for Next.js applications. It provides a flexible API for authentication, and is designed to work with Next.js and any O-Auth provider.
+
+Unlike Auth services like Auth0 and Amazon Cognito, Next Auth allows us to own our data and full control over the authentication process.
+
+Hackathons faced a bottleneck when users would register and need to select their current school. To ensure [Major League Hacking](https://mlh.io) registration compliance, a total of [2225 schools](https://github.com/MLH/mlh-policies/blob/main/schools.csv)
+must be available for users to select from. Rendering a list of 2225 items, where users can scroll, search, and select from seemed to be an easy task, where a developer can iterate through the schools to render them and have `onClick` event handlers
+to store the paricular school a user selects. For search, a simple `useState` hook that would filter the list of 2225 items and the functionality is complete. However, this has drastic performance issues.
+
+## Rendering Too Many items
+
+At any given time, the user would only be able to view 5-8 items at a time, ALL 2225 were being rendered, they were just not visible. Checking the rendered content, it was very easy to spot the bottleneck.
+
+The user did not at any point see all 2225 schools at the same time, and rendering them all was deemed pointless. A solution was needed such that only the currently visible schools were being rendered,
+reducing the total number of rendered elements from 2225 to 5-8. As a result, the browser would have a much easier time working with rendering, scrolling, searching, and filtering.
+
+## User Authentication Workflow
+
+Here is an example of our Next Auth integration in the ProtectedPage component. This component is our solution to redirect any user who is not authenticated to the login page.
+
+```js title="src/components/dynamic/ProtectedPage.jsx"
+import { signIn, useSession } from "next-auth/react";
+
+const ProtectedPage = ({ children, restrictions, title }) => {
+  const { data: session, status } = useSession();
+useEffect(() => {
+    if (status === "loading") return;
+    if (status !== "authenticated") {
+      // redirect any users who are not authenticated to the login page
+      void signIn("google");
+      return;
+    }
+    setConfirmed(true);
+	}, [status]);
+
+
+}
+return (
+    <>
+      {status === "loading" && <Loading />}
+      {confirmed && (
+        <>
+        {... Render Page}
+        <>
+      )}
+
+      )
+
+
+```
+
+The above specifies the config options allowing us to change the size of the rendered container based on particular parameters.
+Most importantly, it gave access to `getVirtualItems` which would later be used to iterate through the rendered elements only.
+Iterating through the items was as simple as calling `.map()` on `getVirtualItems`:
+
+```js title="src/components/dynamic/ProtectedPage.jsx"
+getVirtualItems().map((virtualRow) => {
+  const name = options[virtualRow.index];
+
+  return (
+    <div
+      className="absolute top-0 left-0 w-full hover:bg-hackathon-green-200 hover:cursor-pointer flex items-center px-2"
+      key={virtualRow.index}
+      data-index={virtualRow.index}
+      ref={measureElement}
+      onClick={() => {
+        setUser({ ...user, [field]: name });
+        setShow(false);
+      }}
+      style={{
+        height: `${virtualRow.size}px`,
+        transform: `translateY(${virtualRow.start}px)`,
+      }}
+    >
+      {name}
+    </div>
+  );
+});
+```
