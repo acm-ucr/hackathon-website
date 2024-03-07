@@ -34,7 +34,7 @@ const Page = ({ params }) => {
     participants: <Participants />,
     settings: <Settings />,
     sponsors: <Sponsors />,
-    Panelists: <Panelists />,
+    panelists: <Panelists />,
     statistics: <Statistics />,
     teams: <Teams />,
     volunteers: <Volunteers />,
