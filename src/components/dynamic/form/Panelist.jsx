@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import Form from "@/components/dynamic/form/form/Form.jsx";
-import { FIELDS, ATTRIBUTES } from "@/data/dynamic/form/Panels.js";
+import { FIELDS, ATTRIBUTES } from "@/data/dynamic/form/Panelists.js";
 import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
 import toast from "react-hot-toast";
-import { STATUSES } from "@/data/dynamic/admin/Panels";
+import { STATUSES } from "@/data/dynamic/admin/Panelists";
 
 const Panel = () => {
   const { data: session } = useSession();

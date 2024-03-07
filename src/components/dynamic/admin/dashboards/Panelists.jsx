@@ -1,5 +1,5 @@
 "use client";
-import { STATUSES, TAGS, COLUMNS } from "@/data/dynamic/admin/Panels.js";
+import { STATUSES, TAGS, COLUMNS } from "@/data/dynamic/admin/Panelists.js";
 import Table from "./dashboard/Dashboard";
 
 const Panels = () => {
