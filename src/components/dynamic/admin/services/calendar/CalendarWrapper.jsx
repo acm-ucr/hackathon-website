@@ -5,10 +5,9 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import Toolbar from "./Toolbar";
 import Event from "./Event";
 import Modal from "./Modal";
-// import { event } from "cypress/types/jquery";
 const mLocalizer = momentLocalizer(moment);
 
-const EventsWrapper = ({ events }) => {
+const CalendarWrapper = ({ events }) => {
   const handleShortcuts = (e) => {
     switch (e.key) {
       case "m":
@@ -85,4 +84,4 @@ const EventsWrapper = ({ events }) => {
   );
 };
 
-export default EventsWrapper;
+export default CalendarWrapper;
