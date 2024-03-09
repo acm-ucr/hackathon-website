@@ -94,7 +94,9 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
         )}
         {showModal && <Modal data={file} setModal={setShowModal} />}
       </div>
-      {toaster.type==='error' ? uploading && "UPLOADING ..." : uploading && "UPLOAD FAILED"}
+      {toaster.type === "error"
+        ? uploading && "UPLOADING ..."
+        : uploading && "UPLOAD FAILED"}
     </div>
   );
 };
