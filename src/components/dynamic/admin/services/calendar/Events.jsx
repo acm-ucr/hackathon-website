@@ -1,4 +1,3 @@
-"use client";
 // import { useEffect, useState } from "react";
 // import moment from "moment";
 // import { Calendar, momentLocalizer } from "react-big-calendar";
@@ -8,7 +7,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 // import Modal from "./Modal";
 import { LABELS } from "@/data/dynamic/admin/Calendar";
 import { api } from "@/utils/api";
-import CalendarWrapper from "./EventsWrapper";
+import CalendarWrapper from "./CalendarWrapper";
 // import { event } from "cypress/types/jquery";
 // import { event } from "cypress/types/jquery";
 // const mLocalizer = momentLocalizer(moment);

@@ -9,19 +9,19 @@ import Modal from "./Modal";
 const mLocalizer = momentLocalizer(moment);
 
 const EventsWrapper = ({ events }) => {
-  //   const handleShortcuts = (e) => {
-  //     switch (e.key) {
-  //       case "m":
-  //         setView("month");
-  //         break;
-  //       case "w":
-  //         setView("week");
-  //         break;
-  //     }
-  //   };
+  const handleShortcuts = (e) => {
+    switch (e.key) {
+      case "m":
+        setView("month");
+        break;
+      case "w":
+        setView("week");
+        break;
+    }
+  };
 
-  // document.addEventListener("keydown", handleShortcuts);
-  // document.removeEventListener("keydown", handleShortcuts);
+  document.addEventListener("keydown", handleShortcuts);
+  document.removeEventListener("keydown", handleShortcuts);
 
   return (
     <>
