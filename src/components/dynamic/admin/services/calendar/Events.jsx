@@ -8,9 +8,10 @@ import Event from "./Event";
 import Modal from "./Modal";
 import { LABELS } from "@/data/dynamic/admin/Calendar";
 import { api } from "@/utils/api";
+
 const mLocalizer = momentLocalizer(moment);
 
-const CalendarEvents = () => {
+async function CalendarEvents({ children }) {
   const [events, setEvents] = useState([]);
   const [event, setEvent] = useState();
   const [date, setDate] = useState(new Date());
@@ -27,6 +28,7 @@ const CalendarEvents = () => {
     }
   };
 
+  //  Move this to seperate component
   useEffect(() => {
     const min = new Date(
       new Date().getTime() - 20 * 7 * 24 * 60 * 60 * 1000
@@ -65,8 +67,6 @@ const CalendarEvents = () => {
         item.assignee = assignee;
         item.hidden = false;
       });
-
-      setEvents(rawEvents);
     });
 
     document.addEventListener("keydown", handleShortcuts);
@@ -74,6 +74,7 @@ const CalendarEvents = () => {
   }, []);
 
   return (
+    /*  {children}  */
     <div className="relative h-screen">
       {event && <Modal event={event} setEvent={setEvent} />}
       {events && (
@@ -133,6 +134,6 @@ const CalendarEvents = () => {
       )}
     </div>
   );
-};
+}
 
 export default CalendarEvents;
