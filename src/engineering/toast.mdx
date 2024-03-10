@@ -4,13 +4,13 @@
 
 ## Why React Hot Toast?
 
-[React Hot Toast](https://react-hot-toast.com/) is a React library that creates customizable push notifications (called toasts) in our project. You will typically see these notifications when submitting a form, or when given an error message.
+Users will typically run into problems when interacting with any website. For instance, if a user submits a form, we need a way to inform the user what has happened and how to resolve the issue if something goes wrong. For this reason, we utilized React Hot Toast for our hackathon website.
 
-React Hot Toast allows us to customize the notification just like any other React component. The library also provides a simple API making them easy to implement.
+[React Hot Toast](https://react-hot-toast.com/) is a React library that creates customizable push notifications (called toasts) in our project. React Hot Toast allows us to customize the notification like any other React component. The library also provides a simple API making them easy to implement.
 
 ## Toast Implementation
 
-The `Toaster` component renders all of the toast notifications on the screen. Since we want these notifications to be available on all pages of our website, we put the Toaster component in the layout of our website.
+The `Toaster` component renders all toast notifications on the screen. Since we want these notifications to be available on all pages of our website, we put the Toaster component in the layout of our website.
 
 ```js title="src/app/layout.js"
 import { Toaster } from "react-hot-toast";
@@ -40,8 +40,15 @@ The React Hot Toast library allows us to customize our toast notifications using
 
 ```js title="src/utils/toaster.js"
 import { toast } from "react-hot-toast";
+import { MdError } from "react-icons/md";
+import { FaCheckCircle } from "react-icons/fa";
 
 const toaster = (message, type) => {
+  const icons = {
+    success: <FaCheckCircle className="text-green-500" size="35px" />,
+    error: <MdError className="text-red-500" size="35px" />,
+  };
+
   return toast.custom(
     <div className="flex items-center justify-center bg-white pl-2 pr-5 md:pr-6 py-4 w-4/12 md:w-2/12 shadow-md rounded">
       {icons[type]}
@@ -55,7 +62,7 @@ const toaster = (message, type) => {
 export default toaster;
 ```
 
-We can import this utility function elsewhere in the project. In the file, when the user hits submit it will make a POST request. Toaster will then display either `Submitted successfully!` or `Internal Server Error` if the POST request is valid.
+We can import this utility function elsewhere in the project. Suppose a user wants to apply for the admin role. When the user hits submit, it will make a POST request. The `toaster` function will display `Submitted successfully!` if the POST request is valid. Otherwise, it will return `Internal Server Error`.
 
 ```jsx title="src/components/dynamic/form/Admin.jsx"
 import toaster from "@/utils/toaster.js";
@@ -73,3 +80,5 @@ const handleSubmit = (setLoading, setState) => {
     });
 };
 ```
+
+In general, React Hot Toast allows us to create customizable push notifications for our website.
