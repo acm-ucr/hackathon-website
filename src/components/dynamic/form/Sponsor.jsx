@@ -36,7 +36,7 @@ const Sponsor = () => {
       fields={FIELDS}
       object={sponsor}
       setObject={setSponsor}
-      header="SPONSORSHIP INTEREST FORM"
+      header="SPONSORSHIP INQUIRY"
       onSubmit={handleSubmit}
       statuses={STATUSES}
       packet={true}
