@@ -15,7 +15,7 @@ const Checkbox = ({
     >
       <div
         data-cy="checkbox-bg"
-        className={`w-4 h-4 rounded-sm mr-4 ${
+        className={`w-4 h-4 rounded-sm mr-2 ${
           toggle
             ? `${color ? color : "bg-hackathon-blue-100"}`
             : "bg-hackathon-gray-100"
