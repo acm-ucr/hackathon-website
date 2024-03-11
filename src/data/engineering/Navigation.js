@@ -9,10 +9,6 @@ export const TABS = [
   },
   {
     label: "blogs",
-    link: "/engineering/blogs",
-  },
-  {
-    label: "github",
-    link: "https://github.com/acm-ucr/hackathon-website",
+    link: "/engineering/blog",
   },
 ];
