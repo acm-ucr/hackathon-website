@@ -11,6 +11,15 @@ export const FIELDS = {
       `Hello! Thank you for your participation in ${CONFIG.name}. We hope you enjoyed and learned new things from this ${CONFIG.name}. Please fill out this anonymous feedback form below!`,
     ],
   },
+  eventSource: {
+    input: "select",
+    title: `How did you find ${CONFIG.name}?`,
+    options: SOURCES,
+    field: "eventSource",
+    placeholder: "Event Source",
+    width: 12,
+    required: true,
+  },
   helpful: {
     input: "textarea",
     name: "helpful",
@@ -43,16 +52,6 @@ export const FIELDS = {
     text: `Please rate ${CONFIG.name} on a scale of 1 - 10. 1 being the worst experience and 10 being the best experience`,
     options: RATE,
     field: "rating",
-    width: 12,
-    required: true,
-  },
-
-  eventSource: {
-    input: "select",
-    title: `How did you find ${CONFIG.name}?`,
-    options: SOURCES,
-    field: "eventSource",
-    placeholder: "Event Source",
     width: 12,
     required: true,
   },
