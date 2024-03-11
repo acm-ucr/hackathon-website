@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { generateSelect, generateStatus } from "./Columns";
-import { SiGithub, SiDevpost, SiFigma } from "react-icons/si";
-
+import {ICONS} from "./Icons"
 export const STATUSES = {
   1: "accepted",
   0: "pending",
@@ -64,9 +63,9 @@ export const COLUMNS = [
       <div>
         {getValue().map(({ name, link }, index) => (
           <Link key={index} href={link} className="mx-2 inline-flex">
-            {name === "github" && <SiGithub />}{" "}
-            {name === "devpost" && <SiDevpost />}{" "}
-            {name === "figma" && <SiFigma />}{" "}
+            {name === "github" && ICONS.github}{" "}
+            {name === "devpost" && ICONS.devpost}{" "}
+            {name === "figma" && ICONS.figma}{" "}
           </Link>
         ))}
       </div>
