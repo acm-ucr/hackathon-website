@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { generateSelect, generateStatus } from "./Columns";
-import {ICONS} from "./Icons"
+import { ICONS } from "./Icons";
 export const STATUSES = {
   1: "accepted",
   0: "pending",
