@@ -63,9 +63,7 @@ export const COLUMNS = [
       <div>
         {getValue().map(({ name, link }, index) => (
           <Link key={index} href={link} className="mx-2 inline-flex">
-            {name === "github" && ICONS.github}{" "}
-            {name === "devpost" && ICONS.devpost}{" "}
-            {name === "figma" && ICONS.figma}{" "}
+            {ICONS[name]}
           </Link>
         ))}
       </div>
