@@ -5,6 +5,7 @@ import Select from "@/components/dynamic/Select";
 import { useState } from "react";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
 
 const STATUSES = ["confirmed", "pending", "not attending"];
 
@@ -14,13 +15,20 @@ const MAPPINGS = {
   "not attending": -1,
 };
 
-const Contact = ({ role, disabled, setDisabled }) => {
+const Contact = ({ role, disabled }) => {
   const [status, setStatus] = useState({
     status: "confirmed",
   });
 
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
+
   const onClick = async () => {
-    setDisabled(true);
+    const params = new URLSearchParams(searchParams);
+    params.set("disabled", true);
+    replace(`${pathname}?${params.toString()}`);
+
     const number = MAPPINGS[status.status];
 
     const { items } = await api({
@@ -30,13 +38,16 @@ const Contact = ({ role, disabled, setDisabled }) => {
 
     if (items.length === 0) {
       toaster("The email list is empty!", "error");
+      params.set("disabled", false);
+      replace(`${pathname}?${params.toString()}`);
       return;
     }
 
     navigator.clipboard.writeText(items);
     toaster("Copied all email addresses!", "success");
 
-    setDisabled(false);
+    params.set("disabled", false);
+    replace(`${pathname}?${params.toString()}`);
   };
 
   return (
