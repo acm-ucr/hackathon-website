@@ -11,7 +11,7 @@ import { api } from "@/utils/api";
 
 const mLocalizer = momentLocalizer(moment);
 
-async function CalendarEvents({ children }) {
+const CalendarEvents = () => {
   const [events, setEvents] = useState([]);
   const [event, setEvent] = useState();
   const [date, setDate] = useState(new Date());
@@ -28,7 +28,6 @@ async function CalendarEvents({ children }) {
     }
   };
 
-  //  Move this to seperate component
   useEffect(() => {
     const hackathon = api({
       method: "GET",
@@ -59,6 +58,8 @@ async function CalendarEvents({ children }) {
         item.assignee = assignee;
         item.hidden = false;
       });
+
+      setEvents(rawEvents);
     });
 
     document.addEventListener("keydown", handleShortcuts);
@@ -66,7 +67,6 @@ async function CalendarEvents({ children }) {
   }, []);
 
   return (
-    /*  {children}  */
     <div className="relative h-screen">
       {event && <Modal event={event} setEvent={setEvent} />}
       {events && (
@@ -118,6 +118,6 @@ async function CalendarEvents({ children }) {
       )}
     </div>
   );
-}
+};
 
 export default CalendarEvents;
