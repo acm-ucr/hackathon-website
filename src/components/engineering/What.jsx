@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Vertical from "@/public/vertical.png";
+import Vertical from "@/public/vertical.webp";
 import Image from "next/image";
 
 const What = () => {

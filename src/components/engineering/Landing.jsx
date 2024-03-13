@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { SiGithub } from "react-icons/si";
-import Pages from "@/public/pages.png";
+import Pages from "@/public/pages.webp";
 import Image from "next/image";
 
 const Landing = () => {
