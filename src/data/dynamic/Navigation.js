@@ -73,8 +73,8 @@ export const TABS = {
           icon: <GoSponsorTiers className={iconStyle} />,
         },
         {
-          name: "panels",
-          link: "/admin/panels",
+          name: "panelists",
+          link: "/admin/panelists",
           icon: <IoIosPeople className={iconStyle} />,
         },
         {
