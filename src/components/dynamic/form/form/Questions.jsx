@@ -63,7 +63,7 @@ const Questions = ({
           {field.input === "description" &&
             field.texts.map((description, index) => (
               <div key={index}>
-                <p>{description}</p>
+                <p>{description}</p> <br />
                 {index === field.texts.length - 1 && (
                   <p>
                     Fields with
