@@ -15,7 +15,7 @@ const Landing = () => {
           eiusmod tempor
         </div>
         <Link
-          href="www.roblox.com"
+          href="https://github.com/acm-ucr/hackathon-website"
           className="bg-hackathon-green-300 text-white p-4 rounded-xl flex w-fit items-center gap-3 duration-300 text-2xl"
         >
           <SiGithub className="text-3xl" />
