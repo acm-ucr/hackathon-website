@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { useState } from "react";
 import Form from "@/components/dynamic/form/form/Form.jsx";
 import { FIELDS, ATTRIBUTES } from "@/data/dynamic/form/Volunteers.js";
