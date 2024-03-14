@@ -26,6 +26,7 @@ export const COLUMNS = [
     width: "w-3/12",
     enableColumnFilter: true,
     filterFn: "includesString",
+    searchable: true,
     cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   {
