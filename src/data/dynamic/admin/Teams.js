@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { generateSelect, generateStatus } from "./Columns";
-
+import { ICONS } from "./Icons";
 export const STATUSES = {
   1: "accepted",
   0: "pending",
@@ -62,8 +62,8 @@ export const COLUMNS = [
     cell: ({ getValue }) => (
       <div>
         {getValue().map(({ name, link }, index) => (
-          <Link key={index} href={link} className="mx-2">
-            {name}
+          <Link key={index} href={link} className="mx-2 inline-flex">
+            {ICONS[name]}
           </Link>
         ))}
       </div>
