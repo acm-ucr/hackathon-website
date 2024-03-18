@@ -1,3 +1,4 @@
+"use client";
 import ProtectedPage from "@/components/dynamic/ProtectedPage";
 import Admins from "@/components/dynamic/admin/dashboards/Admins";
 import Events from "@/components/dynamic/admin/services/calendar/Events";
