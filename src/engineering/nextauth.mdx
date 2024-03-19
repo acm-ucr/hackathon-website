@@ -50,3 +50,36 @@ return (
 
 
 ```
+
+## Authenticating API Routes Based on User Roles
+
+Each API endpoint we call is authenticated by a verification of the user's role status. Each role can have a status of pending (0), denied (-1) or approved (1). Both a user's role and the role's status is verified in our `authenticate` function:
+
+```js title="src/utils/auth.js"
+import { getServerSession } from "next-auth/next";
+
+export const authenticate = async (restrictions = {}) => {
+  const session = await getServerSession(authOptions);
+
+  if (!session.user) {
+    return { message: "Invalid Authentication Credentials.", auth: 401 };
+  }
+
+  const authorized = Object.entries(restrictions).some(([key, value]) =>
+    value.includes(session.user.roles[key])
+  );
+
+  if (!authorized && Object.keys(restrictions).length > 0) {
+    return { message: `Forbidden Access`, auth: 403 };
+  }
+
+  return {
+    message: null,
+    auth: 200,
+    uid: session.user.id,
+    user: session.user,
+  };
+};
+```
+
+The Next Auth getServerSession prop authenticates if the user has an active server side session. The "restrictions" prop lists what role status the user needs to access this specific API endpoint. For example, a user with an "admins" role with status [-1] or [0] cannot access admin functionality. Any users with a "participants" role with status [-1] were denied access to the hackathon and cannot access the participant dashboard. This is our solution for managing user permissions.
