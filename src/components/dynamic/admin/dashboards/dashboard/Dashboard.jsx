@@ -52,6 +52,10 @@ const Dashboard = ({
     },
   });
 
+  const searchableItems = columns
+    .filter(({ searchable }) => searchable)
+    .map(({ accessorKey }) => accessorKey);
+
   return (
     <div className="w-full">
       <div className="flex items-center my-2">
@@ -72,6 +76,7 @@ const Dashboard = ({
         getFilteredSelectedRowModel={getFilteredSelectedRowModel}
         toggleAllRowsSelected={toggleAllRowsSelected}
         setLoading={setLoading}
+        searchableItems={searchableItems}
       />
       <Table
         getHeaderGroups={getHeaderGroups}

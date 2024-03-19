@@ -1,3 +1,4 @@
+"use client";
 import ProtectedPage from "@/components/dynamic/ProtectedPage";
 import Admins from "@/components/dynamic/admin/dashboards/Admins";
 import Events from "@/components/dynamic/admin/services/calendar/Events";
@@ -11,7 +12,7 @@ import Mentors from "@/components/dynamic/admin/dashboards/Mentors";
 import Contacts from "@/components/dynamic/admin/services/contacts/Contacts";
 import Participants from "@/components/dynamic/admin/dashboards/Participants";
 import Sponsors from "@/components/dynamic/admin/dashboards/Sponsors";
-import Panels from "@/components/dynamic/admin/dashboards/Panels";
+import Panelists from "@/components/dynamic/admin/dashboards/Panelists";
 import Statistics from "@/components/dynamic/admin/services/statistics/Statistics";
 import Teams from "@/components/dynamic/admin/dashboards/Teams";
 import Volunteers from "@/components/dynamic/admin/dashboards/Volunteers";
@@ -34,7 +35,7 @@ const Page = ({ params }) => {
     participants: <Participants />,
     settings: <Settings />,
     sponsors: <Sponsors />,
-    panels: <Panels />,
+    panelists: <Panelists />,
     statistics: <Statistics />,
     teams: <Teams />,
     volunteers: <Volunteers />,

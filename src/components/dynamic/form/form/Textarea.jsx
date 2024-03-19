@@ -38,7 +38,7 @@ const Textarea = ({
       <textarea
         data-cy={`${title}-textarea`}
         disabled={editable && !edit}
-        className="border-2 border-black pl-3 w-full focus:outline-none placeholder:text-hackathon-gray-200 resize-none"
+        className="border border-1 border-black pl-3 w-full focus:outline-none placeholder:text-hackathon-gray-200 resize-none"
         name={name}
         placeholder={placeholder}
         value={value}

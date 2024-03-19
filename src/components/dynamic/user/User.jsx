@@ -138,7 +138,7 @@ const User = ({ user, setUser, edit, setEdit }) => {
       </div>
       <div className="w-full flex justify-center">
         {edit && (
-          <Button color="green" size="xl" text="done" onClick={handleSave} />
+          <Button color="green" size="xl" text="save" onClick={handleSave} />
         )}
         {!edit && (
           <Button color="green" size="xl" text="edit" onClick={handleEdit} />
