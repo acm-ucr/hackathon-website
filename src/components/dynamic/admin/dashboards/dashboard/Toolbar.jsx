@@ -45,7 +45,10 @@ const Toolbar = ({
     }).then(({ items }) => {
       setData(items);
       setLoading(false);
-      toaster("Fetched Data Successfully", "success");
+      toaster(
+        `Fetched ${page.charAt(0).toUpperCase() + page.slice(1)} Successfully`,
+        "success"
+      );
     });
   };
 
@@ -65,7 +68,7 @@ const Toolbar = ({
 
   const confirmDelete = () => {
     if (rows.length === 0) {
-      toaster("No rows selected for deletion.", "error");
+      toaster("No rows selected for deletion", "error");
       return;
     }
 
