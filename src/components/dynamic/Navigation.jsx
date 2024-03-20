@@ -95,6 +95,7 @@ const Navigation = () => {
               <Link
                 key={index}
                 href={tab.link}
+                target="_blank"
                 onClick={() => tab.onClick()}
                 className="no-underline w-full"
               >
