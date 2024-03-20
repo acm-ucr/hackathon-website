@@ -11,8 +11,8 @@ const Landing = () => {
           <div className="text-6xl text-hackathon-blue-200 mb-4 font-bold">
             Hackathon Website
           </div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor
+          A template website simplifying the management process for UC
+          Riverside&apos; hackathon events.
         </div>
         <Link
           href="https://github.com/acm-ucr/hackathon-website"

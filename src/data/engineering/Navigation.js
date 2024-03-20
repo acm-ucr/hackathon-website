@@ -1,11 +1,11 @@
 export const TABS = [
   {
     label: "examples",
-    link: "/engineering",
+    link: "/examples",
   },
   {
     label: "start",
-    link: "/engineering",
+    link: "/start",
   },
   {
     label: "blogs",
