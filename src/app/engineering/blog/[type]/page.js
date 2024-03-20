@@ -3,7 +3,9 @@ import Toast from "@/engineering/toast.mdx";
 import Component from "@/engineering/component.mdx";
 import CodeQualityFlow from "@/engineering/codequalityflow.mdx";
 import ReactVirtual from "@/engineering/react-virtual.mdx";
+import NextAuth from "@/engineering/nextauth.mdx";
 import Calendar from "@/engineering/calendar.mdx";
+import Compressor from "@/engineering/compressor.mdx";
 import Fault from "@/utils/error";
 
 const Page = ({ params }) => {
@@ -13,7 +15,10 @@ const Page = ({ params }) => {
     toast: <Toast />,
     codequalityflow: <CodeQualityFlow />,
     "react-virtual": <ReactVirtual />,
+
     calendar: <Calendar />,
+    nextauth: <NextAuth />,
+    compressor: <Compressor />,
   };
 
   const capitalizeFirstLetter = (word) => {

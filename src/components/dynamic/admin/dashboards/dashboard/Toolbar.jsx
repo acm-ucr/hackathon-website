@@ -7,6 +7,7 @@ import Popup from "../../Popup";
 import Tag from "../../Tag";
 import { COLORS } from "@/data/dynamic/Tags";
 import Input from "../../Input";
+import Select from "@/components/dynamic/Select";
 
 const Toolbar = ({
   page,
@@ -18,8 +19,12 @@ const Toolbar = ({
   getFilteredSelectedRowModel,
   toggleAllRowsSelected,
   setLoading,
+  searchableItems,
 }) => {
   const selectedRows = getFilteredSelectedRowModel();
+  const [search, setSearch] = useState({
+    search: "name",
+  });
 
   const rows = selectedRows.rows.map(({ original }) => original);
 
@@ -40,7 +45,10 @@ const Toolbar = ({
     }).then(({ items }) => {
       setData(items);
       setLoading(false);
-      toaster("Fetched Data Successfully", "success");
+      toaster(
+        `Fetched ${page.charAt(0).toUpperCase() + page.slice(1)} Successfully`,
+        "success"
+      );
     });
   };
 
@@ -60,7 +68,7 @@ const Toolbar = ({
 
   const confirmDelete = () => {
     if (rows.length === 0) {
-      toaster("No rows selected for deletion.", "error");
+      toaster("No rows selected for deletion", "error");
       return;
     }
 
@@ -118,11 +126,11 @@ const Toolbar = ({
     handleReload();
   }, []);
 
-  const value = filters.find(({ id }) => id === "name")?.value || "";
+  const value = filters.find(({ id }) => id === search.search)?.value || "";
 
   const onChange = (id, value) =>
     setFilters((prev) =>
-      prev.filter(({ id }) => id !== "name").concat({ id, value })
+      prev.filter(({ id }) => id !== search.search).concat({ id, value })
     );
 
   return (
@@ -135,17 +143,27 @@ const Toolbar = ({
           color={COLORS[tag.value]}
         />
       ))}
-      <Input
-        label="search"
-        classes="w-full"
-        placeholder="Search"
-        showLabel={false}
-        maxLength={100}
-        clear={true}
-        value={value}
-        onChangeFn={(e) => onChange("name", e.target.value)}
-        clearFn={() => onChange("name", "")}
-      />
+      <div className="flex items-center w-full">
+        <div className="w-2/12 z-10 mx-2">
+          <Select
+            items={searchableItems}
+            user={search}
+            setUser={setSearch}
+            field="search"
+          />
+        </div>
+        <Input
+          label="search"
+          classes="w-full"
+          placeholder="Search"
+          showLabel={false}
+          maxLength={100}
+          clear={true}
+          value={value}
+          onChangeFn={(e) => onChange(search.search, e.target.value)}
+          clearFn={() => onChange(search.search, "")}
+        />
+      </div>
       <div>
         Rows:<span className="mx-2">{data.length}</span>
       </div>
