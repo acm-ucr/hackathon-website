@@ -7,7 +7,7 @@ import NextAuth from "@/engineering/nextauth.mdx";
 import Calendar from "@/engineering/calendar.mdx";
 import Compressor from "@/engineering/compressor.mdx";
 import Fault from "@/utils/error";
-
+import Nextjs from "@/engineering/nextjs.mdx";
 const Page = ({ params }) => {
   const MDX = {
     tailwind: <Tailwind />,
@@ -15,6 +15,7 @@ const Page = ({ params }) => {
     toast: <Toast />,
     codequalityflow: <CodeQualityFlow />,
     "react-virtual": <ReactVirtual />,
+    nextjs: <Nextjs />,
 
     calendar: <Calendar />,
     nextauth: <NextAuth />,
