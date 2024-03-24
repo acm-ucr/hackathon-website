@@ -25,7 +25,8 @@ const Dashboard = ({
   const [selected, setSelected] = useState([]);
   const [loading, setLoading] = useState(true);
   const [meta, setMeta] = useState({
-    count: 0,
+    total: 0,
+    first: "",
     last: "",
   });
 
