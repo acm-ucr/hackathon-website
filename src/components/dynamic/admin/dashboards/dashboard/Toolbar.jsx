@@ -20,6 +20,8 @@ const Toolbar = ({
   toggleAllRowsSelected,
   setLoading,
   searchableItems,
+  searchParams,
+  setMeta,
 }) => {
   const selectedRows = getFilteredSelectedRowModel();
   const [search, setSearch] = useState({
@@ -38,11 +40,16 @@ const Toolbar = ({
   });
 
   const handleReload = async () => {
+    const { index, size, first, last, direction } = searchParams;
+
     setData([]);
     api({
       method: "GET",
-      url: `/api/dashboard/${page}`,
-    }).then(({ items }) => {
+      url: `/api/dashboard/${page}?direction=${direction}&index=${
+        index ?? 1
+      }&size=${size ?? 10}&first=${first}&last=${last}`,
+    }).then(({ items, total, first, last }) => {
+      setMeta({ total, first, last });
       setData(items);
       setLoading(false);
       toaster(
@@ -124,7 +131,7 @@ const Toolbar = ({
 
   useEffect(() => {
     handleReload();
-  }, []);
+  }, [searchParams]);
 
   const value = filters.find(({ id }) => id === search.search)?.value || "";
 

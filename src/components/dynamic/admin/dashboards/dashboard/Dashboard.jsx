@@ -15,28 +15,28 @@ import Title from "../../Title";
 const Dashboard = ({
   title,
   columns,
-  page,
   tags,
   statuses,
   Dropdown,
-  empty,
+  searchParams,
 }) => {
   const [data, setData] = useState([]);
   const [filters, setFilters] = useState([{ id: "status", value: [-1, 0, 1] }]);
   const [selected, setSelected] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [meta, setMeta] = useState({
+    count: 0,
+    last: "",
+  });
+
+  const page = title.toLowerCase();
+  const empty = `No ${title} Available`;
 
   const {
     getHeaderGroups,
     getRowModel,
     getFilteredSelectedRowModel,
     toggleAllRowsSelected,
-    getState,
-    previousPage,
-    getCanPreviousPage,
-    nextPage,
-    getCanNextPage,
-    getPageCount,
   } = useReactTable({
     data,
     columns,
@@ -67,6 +67,8 @@ const Dashboard = ({
         />
       </div>
       <Toolbar
+        setMeta={setMeta}
+        searchParams={searchParams}
         page={page}
         filters={filters}
         setFilters={setFilters}
@@ -79,14 +81,11 @@ const Dashboard = ({
         searchableItems={searchableItems}
       />
       <Table
+        page={page}
+        searchParams={searchParams}
+        meta={meta}
         getHeaderGroups={getHeaderGroups}
         getRowModel={getRowModel}
-        getState={getState}
-        previousPage={previousPage}
-        getCanPreviousPage={getCanPreviousPage}
-        nextPage={nextPage}
-        getCanNextPage={getCanNextPage}
-        getPageCount={getPageCount}
         Dropdown={Dropdown}
         empty={empty}
         loading={loading}
