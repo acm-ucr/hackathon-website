@@ -23,6 +23,13 @@ const syncStatsWithDatabase = async () => {
   ]);
 };
 const getRoleCount = async (role, value) => {
+  if (role === "teams") {
+    return (
+      await getCountFromServer(
+        query(collection(db, "teams"), where(`status`, "==", value))
+      )
+    ).data().count;
+  }
   return (
     await getCountFromServer(
       query(collection(db, "users"), where(`roles.${role}`, "==", value))
