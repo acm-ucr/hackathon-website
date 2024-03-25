@@ -1,4 +1,5 @@
 import nextMDX from "@next/mdx";
+import nextBundleAnalyzer from "@next/bundle-analyzer";
 import rehypePrettyCode from "rehype-pretty-code";
 
 const options = {};
@@ -8,6 +9,10 @@ const withMDX = nextMDX({
   options: {
     rehypePlugins: [[rehypePrettyCode, , options]],
   },
+});
+
+const withBundleAnalyzer = nextBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
 });
 
 const nextConfig = {
@@ -42,4 +47,4 @@ const nextConfig = {
   },
 };
 
-export default withMDX(nextConfig);
+export default withBundleAnalyzer(withMDX(nextConfig));
