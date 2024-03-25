@@ -11,6 +11,12 @@ import {
   deleteField,
   Timestamp,
   increment,
+  limit,
+  startAfter,
+  getCountFromServer,
+  endBefore,
+  orderBy,
+  limitToLast,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH, ATTRIBUTES } from "@/data/dynamic/admin/Dashboard";
@@ -72,6 +78,12 @@ export async function POST(req, { params }) {
 }
 
 export async function GET(req, { params }) {
+  const direction = req.nextUrl.searchParams.get("direction");
+  const index = req.nextUrl.searchParams.get("index");
+  const size = req.nextUrl.searchParams.get("size");
+  const first = req.nextUrl.searchParams.get("first");
+  const last = req.nextUrl.searchParams.get("last");
+
   const res = NextResponse;
   const { auth, message } = await authenticate(AUTH.GET);
 
@@ -86,12 +98,41 @@ export async function GET(req, { params }) {
   try {
     let snapshot;
     if (types.has(params.type)) {
-      snapshot = await getDocs(
-        query(
-          collection(db, "users"),
-          where(`roles.${params.type}`, "in", [-1, 0, 1])
-        )
-      );
+      if (direction === "next" && last !== "undefined") {
+        const lastDocument = await getDoc(doc(db, "users", last));
+
+        snapshot = await getDocs(
+          query(
+            collection(db, "users"),
+            orderBy(`roles.${params.type}`),
+            where(`roles.${params.type}`, "in", [-1, 0, 1]),
+            startAfter(lastDocument),
+            limit(size)
+          )
+        );
+      } else if (direction === "prev" && first !== "undefined") {
+        const firstDocument = await getDoc(doc(db, "users", first));
+
+        snapshot = await getDocs(
+          query(
+            collection(db, "users"),
+            orderBy(`roles.${params.type}`),
+            where(`roles.${params.type}`, "in", [-1, 0, 1]),
+            endBefore(firstDocument),
+            limitToLast(size)
+          )
+        );
+      } else {
+        snapshot = await getDocs(
+          query(
+            collection(db, "users"),
+            orderBy(`roles.${params.type}`),
+            where(`roles.${params.type}`, "in", [-1, 0, 1]),
+            limit(size)
+          )
+        );
+      }
+
       snapshot.forEach((doc) => {
         const data = doc.data();
         const element = {};
@@ -109,10 +150,28 @@ export async function GET(req, { params }) {
       });
     }
 
-    const sorted = output.sort((a, b) =>
-      a.timestamp.seconds < b.timestamp.seconds ? 1 : -1
+    const countFromServer = await getCountFromServer(
+      query(
+        collection(db, "users"),
+        where(`roles.${params.type}`, "in", [-1, 0, 1])
+      )
     );
-    return res.json({ message: "OK", items: sorted }, { status: 200 });
+
+    const total = countFromServer.data().count;
+    const lastDoc = output.length > 0 ? output[output.length - 1].uid : "";
+    const firstDoc = output.length > 0 ? output[0].uid : "";
+
+    return res.json(
+      {
+        message: "OK",
+        items: output,
+        total: total,
+        first: firstDoc,
+        last: lastDoc,
+        page: parseInt(index) + 1,
+      },
+      { status: 200 }
+    );
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
