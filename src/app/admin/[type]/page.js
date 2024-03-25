@@ -37,7 +37,7 @@ const Page = ({ params, searchParams }) => {
     sponsors: <Sponsors searchParams={searchParams} />,
     panelists: <Panelists searchParams={searchParams} />,
     statistics: <Statistics />,
-    teams: <Teams />,
+    teams: <Teams searchParams={searchParams} />,
     volunteers: <Volunteers searchParams={searchParams} />,
     leads: <Leads searchParams={searchParams} />,
   };
