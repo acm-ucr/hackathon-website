@@ -1,7 +1,7 @@
 "use client";
-import { useState } from "react";
 import Title from "../../Title";
 import Contact from "./Contact";
+import { useSearchParams } from "next/navigation";
 
 const contacts = [
   "participants",
@@ -13,18 +13,19 @@ const contacts = [
 ];
 
 const Contacts = () => {
-  const [disabled, setDisabled] = useState(false);
+  const searchParams = useSearchParams();
+  let disabled = searchParams.get("disabled");
+  if (disabled == "true") {
+    disabled = true;
+  } else {
+    disabled = false;
+  }
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Title title="Contacts" />
       {contacts.map((role, index) => (
-        <Contact
-          key={index}
-          role={role}
-          disabled={disabled}
-          setDisabled={setDisabled}
-        />
+        <Contact key={index} role={role} disabled={disabled} />
       ))}
     </div>
   );
