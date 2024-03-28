@@ -163,14 +163,14 @@ export const TABS = {
           link: "/user/checkin",
           icon: <AiOutlineQrcode className={iconStyle} />,
         },
-        {
-          name: "feedback",
-          link: "/form/feedback",
-          icon: <MdFeedback className={iconStyle} />,
-        },
       ],
     },
     " ": [
+      {
+        name: "feedback",
+        link: "/form/feedback",
+        icon: <MdFeedback className={iconStyle} />,
+      },
       {
         name: "devpost",
         link: CONFIG.devpost,
