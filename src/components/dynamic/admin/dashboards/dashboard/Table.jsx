@@ -65,7 +65,7 @@ const Table = ({
             ))}
           </div>
           <>
-            {!loading ? (
+            {loading ? (
               <div className="h-full">
                 <Loading />
               </div>
