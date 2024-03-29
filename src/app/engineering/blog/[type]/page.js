@@ -1,42 +1,40 @@
 import Fault from "@/utils/error";
-import Blog from "@/components/dynamic/engineering/Blog";
 import fs from "fs";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 
-async function getBlogPosts() {
-  const dirPath = process.cwd() + "/src/engineering/";
-  const blogFiles = fs.readdirSync(dirPath);
-  const markdownContents = blogFiles.map((file) => {
-    const filepath = `${dirPath}/${file}`;
-    const fileContents = fs.readFileSync(filepath);
-    const parsedMarkdown = matter(fileContents);
-    return [file.replace(/\.[^/.]+$/, ""), parsedMarkdown];
-  });
-  return Object.fromEntries(markdownContents);
-}
+const getBlogPosts = () => {
+  const directory = process.cwd() + "/src/engineering/";
+  const files = fs.readdirSync(directory);
 
-const convertMarkdownToHtml = async (content) => {
-  const processedContent = await remark().use(html).process(content);
-  return processedContent.toString();
+  const contents = files.map((file) => {
+    const path = `${directory}/${file}`;
+    const blog = fs.readFileSync(path);
+    const markdown = matter(blog);
+    return [file.replace(/\.[^/.]+$/, ""), markdown];
+  });
+
+  return Object.fromEntries(contents);
 };
 
-const Page = async ({ params }) => {
-  const blogData = await getBlogPosts();
+const convertMarkdownToHtml = async (content) =>
+  (await remark().use(html).process(content)).toString();
 
-  if (params.type == "blog" || params.type == null) {
-    return <Blog />;
-  } else if (blogData.hasOwnProperty(params.type)) {
-    const blog = blogData[params.type];
-    const postData = await convertMarkdownToHtml(blog.content);
+const Page = async ({ params }) => {
+  const article = await getBlogPosts();
+
+  if (article.hasOwnProperty(params.type)) {
+    const { content, data } = article[params.type];
+    const markdown = await convertMarkdownToHtml(content);
+
     return (
       <div
         className={"w-full flex items-start justify-center font-poppins my-8"}
       >
-        <title>{`Engineering | ${blog.data.title}`}</title>
+        <title>{`Engineering | ${data.title}`}</title>
         <div className="prose min-h-screen">
-          <div dangerouslySetInnerHTML={{ __html: postData }}></div>
+          <article dangerouslySetInnerHTML={{ __html: markdown }} />
         </div>
       </div>
     );

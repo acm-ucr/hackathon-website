@@ -1,5 +1,3 @@
-const Page = () => {
-  return <>Blog</>;
-};
+import Blog from "@/components/engineering/Blog";
 
-export default Page;
+export default Blog;
