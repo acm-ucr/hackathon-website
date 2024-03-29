@@ -28,7 +28,7 @@ const Table = ({
   return (
     <>
       <div className="bg-white h-[75vh] overflow-y-scroll flex flex-col justify-between">
-        <div>
+        <div className="h-full">
           <div className="text-white bg-hackathon-blue-200 rounded-t-lg">
             {getHeaderGroups().map(({ headers, id }) => (
               <div key={id} className="flex items-center px-3 py-2">
@@ -69,7 +69,9 @@ const Table = ({
           </div>
           <>
             {loading ? (
-              <Loading />
+              <div className="h-full">
+                <Loading />
+              </div>
             ) : (
               <>
                 {getRowModel().rows.length === 0 && (
