@@ -24,10 +24,8 @@ const Table = ({
 }) => {
   return (
     <>
-      <div
-        className={`bg-white h-[75vh] overflow-y-scroll flex flex-col justify-between`}
-      >
-        <div>
+      <div className="bg-white h-[75vh] overflow-y-scroll flex flex-col justify-between">
+        <div className="h-full">
           <div className="text-white bg-hackathon-blue-200 rounded-t-lg">
             {getHeaderGroups().map(({ headers, id }) => (
               <div key={id} className="flex items-center px-3 py-2">
@@ -67,8 +65,8 @@ const Table = ({
             ))}
           </div>
           <>
-            {loading ? (
-              <div className="h-screen flex items-center justify-center absolute top-0 left-1/2">
+            {!loading ? (
+              <div className="h-full">
                 <Loading />
               </div>
             ) : (
