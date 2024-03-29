@@ -1,38 +1,43 @@
-import Tailwind from "@/engineering/tailwind.mdx";
-import Toast from "@/engineering/toast.mdx";
-import Component from "@/engineering/component.mdx";
-import CodeQualityFlow from "@/engineering/codequalityflow.mdx";
-import ReactVirtual from "@/engineering/react-virtual.mdx";
-import NextAuth from "@/engineering/nextauth.mdx";
-import Calendar from "@/engineering/calendar.mdx";
-import Compressor from "@/engineering/compressor.mdx";
 import Fault from "@/utils/error";
-import Nextjs from "@/engineering/nextjs.mdx";
-import AdminDashboard from "@/engineering/admin-dashboard.mdx";
+import Blog from "@/components/dynamic/engineering/Blog";
+import fs from "fs";
+import matter from "gray-matter";
+import { remark } from "remark";
+import html from "remark-html";
 
-const Page = ({ params }) => {
-  const MDX = {
-    tailwind: <Tailwind />,
-    component: <Component />,
-    toast: <Toast />,
-    codequalityflow: <CodeQualityFlow />,
-    "react-virtual": <ReactVirtual />,
-    nextjs: <Nextjs />,
-    "admin-dashboard": <AdminDashboard />,
-    calendar: <Calendar />,
-    nextauth: <NextAuth />,
-    compressor: <Compressor />,
-  };
+async function getBlogPosts() {
+  const dirPath = process.cwd() + "/src/engineering/";
+  const blogFiles = fs.readdirSync(dirPath);
+  const markdownContents = blogFiles.map((file) => {
+    const filepath = `${dirPath}/${file}`;
+    const fileContents = fs.readFileSync(filepath);
+    const parsedMarkdown = matter(fileContents);
+    return [file.replace(/\.[^/.]+$/, ""), parsedMarkdown];
+  });
+  return Object.fromEntries(markdownContents);
+}
 
-  const capitalizeFirstLetter = (word) => {
-    return word[0].toUpperCase() + word.slice(1);
-  };
+const convertMarkdownToHtml = async (content) => {
+  const processedContent = await remark().use(html).process(content);
+  return processedContent.toString();
+};
 
-  if (MDX.hasOwnProperty(params.type)) {
+const Page = async ({ params }) => {
+  const blogData = await getBlogPosts();
+
+  if (params.type == "blog" || params.type == null) {
+    return <Blog />;
+  } else if (blogData.hasOwnProperty(params.type)) {
+    const blog = blogData[params.type];
+    const postData = await convertMarkdownToHtml(blog.content);
     return (
-      <div className="w-full flex items-start justify-center my-8 font-poppins">
-        <title>{`Engineering | ${capitalizeFirstLetter(params.type)}`}</title>
-        <div className="prose min-h-screen">{MDX[params.type]}</div>
+      <div
+        className={"w-full flex items-start justify-center font-poppins my-8"}
+      >
+        <title>{`Engineering | ${blog.data.title}`}</title>
+        <div className="prose min-h-screen">
+          <div dangerouslySetInnerHTML={{ __html: postData }}></div>
+        </div>
       </div>
     );
   } else {
