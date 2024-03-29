@@ -16,7 +16,7 @@ const Landing = () => {
         </div>
         <Link
           href="https://github.com/acm-ucr/hackathon-website"
-          className="bg-hackathon-green-300 text-white p-4 rounded-xl flex w-fit items-center gap-3 duration-300 text-2xl"
+          className="text-black rounded-xl flex items-center gap-3 text-2xl hover:opacity-50 my-4"
         >
           <SiGithub className="text-3xl" />
           GitHub
