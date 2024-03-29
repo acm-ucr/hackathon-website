@@ -8,6 +8,8 @@ import Calendar from "@/engineering/calendar.mdx";
 import Compressor from "@/engineering/compressor.mdx";
 import Fault from "@/utils/error";
 import Nextjs from "@/engineering/nextjs.mdx";
+import AdminDashboard from "@/engineering/admin-dashboard.mdx";
+
 const Page = ({ params }) => {
   const MDX = {
     tailwind: <Tailwind />,
@@ -16,7 +18,7 @@ const Page = ({ params }) => {
     codequalityflow: <CodeQualityFlow />,
     "react-virtual": <ReactVirtual />,
     nextjs: <Nextjs />,
-
+    "admin-dashboard": <AdminDashboard />,
     calendar: <Calendar />,
     nextauth: <NextAuth />,
     compressor: <Compressor />,
