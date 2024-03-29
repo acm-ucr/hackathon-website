@@ -1,3 +1,10 @@
+---
+title: Admin Dashboard
+author: Menthy Wu
+date: March 27 2024
+link: admin-dashboard
+---
+
 # Admin Dashboard
 
 #### 27th March 2024 by Menthy Wu
@@ -20,7 +27,7 @@ We use the same Table component for all pages to ensure consistency. This compon
 
 To maintain consistency across all dashboards, we extract the dashboard page into a Dashboard Wrapper. This wrapper handles the fundamental layout of the dashboard page and can render different tables based on the user's type. This approach streamlines development by centralizing layout management while allowing for flexibility in displaying tailored content for different user roles.
 
-```js title = "src/components/dynamic/admin/dashboards/dashboard/Dashboard.jsx"
+```jsx title = "src/components/dynamic/admin/dashboards/dashboard/Dashboard.jsx"
 "use client";
 import {
   getCoreRowModel,
