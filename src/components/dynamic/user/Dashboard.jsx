@@ -28,7 +28,7 @@ const Dashboard = () => {
               link="https://transportation.ucr.edu/visitor-parking#parking-options-how-to-pay"
             />
           </div>
-          <Rooms rooms={["WCH 127", "WCH 110", "WCH 130", "Byte", "WCH 129"]} />
+          <Rooms />
           <Packing />
         </div>
 

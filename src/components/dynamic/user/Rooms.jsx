@@ -1,4 +1,6 @@
-const Rooms = ({ rooms }) => {
+const Rooms = () => {
+  const rooms = ["WCH 127", "WCH 110", "WCH 130", "Byte", "WCH 129"];
+
   return (
     <div className="font-bold p-3 rounded-lg mt-3 mb-3 bg-white shadow-xl">
       <div className="p-2">💻 Hackrooms</div>
