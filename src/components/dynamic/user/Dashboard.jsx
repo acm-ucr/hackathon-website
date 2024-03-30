@@ -3,6 +3,8 @@ import Countdown from "./Countdown";
 import Header from "./Header";
 import { useSession } from "next-auth/react";
 import Tile from "./Tile";
+import { BsQrCode } from "react-icons/bs";
+import { LuParkingCircle } from "react-icons/lu";
 import Rooms from "./Rooms";
 import Packing from "./Packing";
 import Judging from "./Judging";
@@ -18,9 +20,13 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
         <div className="col-span-2">
           <Countdown />
-          <div className="flex">
-            <Tile />
-            <Tile />
+          <div className="flex gap-8">
+            <Tile icon={<BsQrCode />} text="Check In" link="/user/checkin" />
+            <Tile
+              icon={<LuParkingCircle />}
+              text="Parking Info"
+              link="https://transportation.ucr.edu/visitor-parking#parking-options-how-to-pay"
+            />
           </div>
           <Rooms />
           <Packing />
