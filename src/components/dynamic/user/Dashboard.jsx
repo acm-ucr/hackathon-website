@@ -21,15 +21,11 @@ const Dashboard = () => {
         <div className="col-span-2">
           <Countdown />
           <div className="flex gap-8">
-            <Tile
-              icon={<BsQrCode />}
-              text="Check In"
-              destination="/user/checkin"
-            />
+            <Tile icon={<BsQrCode />} text="Check In" link="/user/checkin" />
             <Tile
               icon={<LuParkingCircle />}
               text="Parking Info"
-              destination="https://transportation.ucr.edu/visitor-parking#parking-options-how-to-pay"
+              link="https://transportation.ucr.edu/visitor-parking#parking-options-how-to-pay"
             />
           </div>
           <Rooms />
