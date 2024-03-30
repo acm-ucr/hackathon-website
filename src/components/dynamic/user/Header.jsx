@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import Tag from "../admin/Tag";
 import { COLORS } from "@/data/dynamic/Tags";
 
-const Header = ({ horizontal = true }) => {
+const Header = () => {
   const { data: session } = useSession();
 
   const color =
@@ -21,11 +21,7 @@ const Header = ({ horizontal = true }) => {
       : "pending";
 
   return (
-    <div
-      className={`flex ${
-        horizontal ? "flex-row" : "flex-col"
-      } items-center justify-center w-fit`}
-    >
+    <div className="flex flex-row items-center justify-center w-fit">
       <Image
         src={session.user.image}
         width={125}
