@@ -3,6 +3,9 @@ import Countdown from "./Countdown";
 import Header from "./Header";
 import { useSession } from "next-auth/react";
 import Tile from "./Tile";
+import Link from "next/link";
+import { BsQrCode } from "react-icons/bs";
+import { LuParkingCircle } from "react-icons/lu";
 import Rooms from "./Rooms";
 import Packing from "./Packing";
 import Judging from "./Judging";
@@ -18,9 +21,22 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
         <div className="col-span-2">
           <Countdown />
-          <div className="flex">
-            <Tile />
-            <Tile />
+          <div className="flex gap-8">
+            <Link className="w-1/2" href="/user/checkin">
+              <Tile
+                icon={<BsQrCode className="text-black" size={85} />}
+                text="Check In"
+              />
+            </Link>
+            <Link
+              className="w-1/2"
+              href="https://transportation.ucr.edu/visitor-parking#parking-options-how-to-pay"
+            >
+              <Tile
+                icon={<LuParkingCircle className="text-black" size={85} />}
+                text="Parking Info"
+              />
+            </Link>
           </div>
           <Rooms />
           <Packing />
