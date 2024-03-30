@@ -13,9 +13,13 @@ import {
 import { MdContactPage } from "react-icons/md";
 
 export const ICONS = {
-  github: <SiGithub className="mr-2" />,
-  devpost: <SiDevpost className="mr-2" />,
-  figma: <SiFigma className="mr-2" />,
+  github: (
+    <SiGithub className="mr-2 hover:text-hackathon-green-300" size={20} />
+  ),
+  devpost: (
+    <SiDevpost className="mr-2 hover:text-hackathon-green-300" size={20} />
+  ),
+  figma: <SiFigma className="mr-2 hover:text-hackathon-green-300" size={20} />,
   winner: <FaCrown className="ml-1 text-hackathon-yellow-100 text-lg" />,
   phone: <FaPhoneAlt className="text-hackathon-blue-200 mr-2" />,
   email: <IoIosMail className="text-hackathon-blue-200 mr-2 text-lg" />,

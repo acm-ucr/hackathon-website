@@ -1,29 +1,78 @@
-export const COLORS = {
-  green: {
-    bg: "bg-hackathon-green-300",
-    text: "text-gray-800",
-    border: "border-0",
-  },
-  grayOutline: {
-    bg: "bg-white",
-    text: "text-gray-400",
-    border: "border-gray-400 border-2",
-  },
-  gray: {
-    bg: "bg-gray-300",
-    text: "text-gray-500",
-    border: "border-0",
-  },
-  red: {
-    bg: "bg-hackathon-tags-red-text",
-    text: "text-white",
-    border: "border-0",
-  },
+import Link from "next/link";
+import { generateSelect, generateStatus } from "./Columns";
+import { ICONS } from "./Icons";
+export const STATUSES = {
+  1: "accepted",
+  0: "pending",
+  "-1": "rejected",
 };
-export const SIZES = {
-  xs: "text-xs",
-  sm: "text-sm",
-  md: "text-base",
-  lg: "text-lg",
-  xl: "text-xl",
-};
+
+export const TAGS = [
+  {
+    text: "accept",
+    value: 1,
+  },
+  {
+    text: "reject",
+    value: -1,
+  },
+];
+
+export const COLUMNS = [
+  generateSelect(),
+  {
+    accessorKey: "name",
+    header: "Name",
+    width: "w-3/12",
+    enableColumnFilter: true,
+    filterFn: "includesString",
+    searchable: true,
+    cell: ({ getValue }) => <div>{getValue()}</div>,
+  },
+  {
+    accessorKey: "members",
+    header: "Members",
+    width: "w-3/12",
+    enableSorting: false,
+    cell: ({ getValue }) => (
+      <div>
+        {getValue().map((data, index) => (
+          <p key={index}>{data}</p>
+        ))}
+      </div>
+    ),
+  },
+  {
+    accessorKey: "discords",
+    header: "Discords",
+    width: "w-2/12",
+    enableSorting: false,
+    cell: ({ getValue }) => (
+      <div>
+        {getValue().map((data, index) => (
+          <p key={index}>{data}</p>
+        ))}
+      </div>
+    ),
+  },
+  {
+    accessorKey: "links",
+    header: "Links",
+    width: "w-3/12",
+    enableSorting: false,
+    cell: ({ getValue }) => (
+      <div>
+        {getValue().map(({ name, link }, index) => (
+          <Link
+            key={index}
+            href={link}
+            className="mx-2 inline-flex hover:opacity-75"
+          >
+            {ICONS[name]}
+          </Link>
+        ))}
+      </div>
+    ),
+  },
+  generateStatus(STATUSES),
+];
