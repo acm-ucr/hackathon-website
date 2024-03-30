@@ -14,22 +14,13 @@ import { MdContactPage } from "react-icons/md";
 
 export const ICONS = {
   github: (
-    <SiGithub
-      className="mr-2 hover:text-hackathon-green-300 hover:opacity-75"
-      size={20}
-    />
+    <SiGithub className="mr-2 text-lg hover:text-hackathon-green-300 hover:opacity-75" />
   ),
   devpost: (
-    <SiDevpost
-      className="mr-2 hover:text-hackathon-green-300 hover:opacity-75"
-      size={20}
-    />
+    <SiDevpost className="mr-2 text-lg hover:text-hackathon-green-300 hover:opacity-75" />
   ),
   figma: (
-    <SiFigma
-      className="mr-2 hover:text-hackathon-green-300 hover:opacity-75"
-      size={20}
-    />
+    <SiFigma className="mr-2 text-lg hover:text-hackathon-green-300 hover:opacity-75" />
   ),
   winner: <FaCrown className="ml-1 text-hackathon-yellow-100 text-lg" />,
   phone: <FaPhoneAlt className="text-hackathon-blue-200 mr-2" />,
