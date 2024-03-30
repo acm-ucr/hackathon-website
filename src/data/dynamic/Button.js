@@ -8,7 +8,6 @@ export const COLORS = {
     bg: "bg-white",
     text: "text-gray-400",
     border: "border-gray-400 border-2",
-    hover: "hover:opacity-75",
   },
   gray: {
     bg: "bg-gray-300",
