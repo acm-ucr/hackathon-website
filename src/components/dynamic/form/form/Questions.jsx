@@ -8,7 +8,7 @@ import Upload from "@/components/dynamic/form/form/Upload";
 import toaster from "@/utils/toaster";
 import Link from "next/link";
 import { FaLink } from "react-icons/fa";
-import DATA from "@/data/Config";
+import { DATA } from "@/data/Config";
 import Terms from "./Terms";
 
 const Questions = ({
@@ -185,7 +185,7 @@ const Questions = ({
       </Link>
       {packet && (
         <Link
-          href={DATA.CONFIG.packet}
+          href={DATA.packet}
           target="_blank"
           rel="noreferrer noopener"
           className="no-underline flex items-center"

@@ -1,26 +1,28 @@
-const DATA = {
-  CONFIG: {
-    name: "Hackathon",
-    email: "contact.acmucr@gmail.com",
-    year: "2024",
-    date: new Date("November 4, 2023 9:00:00"),
-    packet: "",
-    devpost: "https://devpost.com/",
-  },
-  MANIFEST: {
-    name: "Hackathon Site",
-    short_name: "Hackathon Site",
-    description: "Hackathon Site",
-    start_url: "/",
-  },
-  METADATA: {
-    name: "HACKATHON_NAME",
-    description: "DESCRIPTION",
-    length: "HACKATHON_LENGTH",
-    date: "HACKATHON_DATE",
-  },
-  SITEMAP: {
-    domain: "https://www.placeholder.com",
-  },
+const CONFIG = {
+  name: "Hackathon",
+  email: "contact.acmucr@gmail.com",
+  year: "2024",
+  date: new Date("November 4, 2023 9:00:00"),
+  packet: "",
+  devpost: "https://devpost.com/",
 };
-export default DATA;
+
+const MANIFEST = {
+  name: "Hackathon Site",
+  short_name: "Hackathon Site",
+  description: "Hackathon Site",
+  start_url: "/",
+};
+
+const METADATA = {
+  name: "HACKATHON_NAME",
+  description: "DESCRIPTION",
+  length: "HACKATHON_LENGTH",
+  date: "HACKATHON_DATE",
+};
+
+const SITEMAP = {
+  domain: "https://www.placeholder.com",
+};
+
+export const DATA = { ...CONFIG, ...MANIFEST, ...METADATA, ...SITEMAP };

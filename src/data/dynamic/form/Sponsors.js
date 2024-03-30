@@ -1,4 +1,4 @@
-import DATA from "@/data/Config";
+import { DATA } from "@/data/Config";
 import { phone } from "@/data/dynamic/form/Regex";
 
 export const TIERS = {
@@ -15,8 +15,8 @@ export const FIELDS = {
     input: "description",
     width: 12,
     texts: [
-      `Welcome to ${DATA.METADATA.name}. Thank you for being on the Sponsorship team, we appreciate your efforts to help support ${DATA.METADATA.name}. ${DATA.METADATA.name} is a ${DATA.METADATA.description} hackathon spanning ${DATA.METADATA.length} on ${DATA.METADATA.date}.`,
-      `By sponsoring ${DATA.METADATA.name}, you help advocate for SPONSOR_REASONS.`,
+      `Welcome to ${DATA.name}. Thank you for being on the Sponsorship team, we appreciate your efforts to help support ${DATA.name}. ${DATA.name} is a ${DATA.description} hackathon spanning ${DATA.length} on ${DATA.date}.`,
+      `By sponsoring ${DATA.name}, you help advocate for SPONSOR_REASONS.`,
       "Sponsorship members are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
     ],
   },

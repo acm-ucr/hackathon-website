@@ -21,7 +21,7 @@ import { AiOutlineQrcode } from "react-icons/ai";
 import { signOut } from "next-auth/react";
 import { SiDevpost, SiHandshake } from "react-icons/si";
 import { IoIosPeople } from "react-icons/io";
-import DATA from "@/data/Config";
+import { DATA } from "@/data/Config";
 
 const iconStyle = "mr-2";
 
@@ -133,7 +133,7 @@ export const TABS = {
     " ": [
       {
         name: "devpost",
-        link: DATA.CONFIG.devpost,
+        link: DATA.devpost,
         icon: <SiDevpost className={iconStyle} />,
       },
       {
@@ -173,7 +173,7 @@ export const TABS = {
       },
       {
         name: "devpost",
-        link: DATA.CONFIG.devpost,
+        link: DATA.devpost,
         icon: <SiDevpost className={iconStyle} />,
       },
       {

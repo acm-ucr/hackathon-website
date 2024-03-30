@@ -1,75 +1,75 @@
-import DATA from "@/data/Config";
+import { DATA } from "@/data/Config";
 
 const sitemap = () => {
   return [
     {
-      url: `${DATA.SITEMAP.domain}/`,
+      url: `${DATA.domain}/`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
     },
     {
-      url: `${DATA.SITEMAP.domain}/form/admin`,
+      url: `${DATA.domain}/form/admin`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${DATA.SITEMAP.domain}/form/committee`,
+      url: `${DATA.domain}/form/committee`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${DATA.SITEMAP.domain}/form/feedback`,
+      url: `${DATA.domain}/form/feedback`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${DATA.SITEMAP.domain}/form/judge`,
+      url: `${DATA.domain}/form/judge`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${DATA.SITEMAP.domain}/form/mentor`,
+      url: `${DATA.domain}/form/mentor`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${DATA.SITEMAP.domain}/form/participant`,
+      url: `${DATA.domain}/form/participant`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${DATA.SITEMAP.domain}/form/volunteer`,
+      url: `${DATA.domain}/form/volunteer`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${DATA.SITEMAP.domain}/form/sponsor`,
+      url: `${DATA.domain}/form/sponsor`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${DATA.SITEMAP.domain}/form/panel`,
+      url: `${DATA.domain}/form/panel`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${DATA.SITEMAP.domain}/user/checkin`,
+      url: `${DATA.domain}/user/checkin`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${DATA.SITEMAP.domain}/user/dashboard`,
+      url: `${DATA.domain}/user/dashboard`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,

@@ -1,5 +1,5 @@
 import { MAJORS, GRADES, GENDERS, SHIRTS, AVAILABILITY } from "./Information";
-import DATA from "@/data/Config";
+import { DATA } from "@/data/Config";
 import { phone } from "@/data/dynamic/form/Regex";
 
 export const FIELDS = {
@@ -7,7 +7,7 @@ export const FIELDS = {
     input: "description",
     width: 12,
     texts: [
-      `Welcome to ${DATA.METADATA.name}. Thank you for considering to become a mentor, we appreciate your efforts to help support ${DATA.METADATA.name}. ${DATA.METADATA.name} is a ${DATA.METADATA.description} hackathon spanning ${DATA.METADATA.length} on ${DATA.METADATA.date}.`,
+      `Welcome to ${DATA.name}. Thank you for considering to become a mentor, we appreciate your efforts to help support ${DATA.name}. ${DATA.name} is a ${DATA.description} hackathon spanning ${DATA.length} on ${DATA.date}.`,
       "Mentors are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
       "Mentor duties include but are not limited to providing expertise and assistance to hackers throughout the hackathon without jeopardizing their chances at winning.",
       "Note: Mentors are not permitted to become participants for the hackathon.",

@@ -3,7 +3,7 @@ import { GRADES } from "./Information";
 import { GENDERS } from "./Information";
 import { SHIRTS } from "./Information";
 import { SCHOOLS } from "./Schools";
-import DATA from "@/data/Config";
+import { DATA } from "@/data/Config";
 import { phone } from "@/data/dynamic/form/Regex";
 
 export const FIELDS = {
@@ -11,7 +11,7 @@ export const FIELDS = {
     input: "description",
     width: 12,
     texts: [
-      `Welcome to ${DATA.METADATA.name}. Thank you for considering to become a participant, we appreciate your enthusiasm to join ${DATA.METADATA.name}. ${DATA.METADATA.name} is a ${DATA.METADATA.description} hackathon spanning ${DATA.METADATA.length} on ${DATA.METADATA.date}.`,
+      `Welcome to ${DATA.name}. Thank you for considering to become a participant, we appreciate your enthusiasm to join ${DATA.name}. ${DATA.name} is a ${DATA.description} hackathon spanning ${DATA.length} on ${DATA.date}.`,
       "Participants are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
     ],
   },

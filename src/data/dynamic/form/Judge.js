@@ -1,6 +1,6 @@
 import { GENDERS } from "./Information";
 import { SHIRTS } from "./Information";
-import DATA from "@/data/Config";
+import { DATA } from "@/data/Config";
 import { phone } from "@/data/dynamic/form/Regex";
 
 export const AFFILIATIONS = {
@@ -14,7 +14,7 @@ export const FIELDS = {
     input: "description",
     width: 12,
     texts: [
-      `Welcome to ${DATA.METADATA.name}. Thank you for considering to become a judge, we appreciate your efforts to help support ${DATA.METADATA.name}. ${DATA.METADATA.name} is a ${DATA.METADATA.description} hackathon spanning ${DATA.METADATA.length} on ${DATA.METADATA.date}.`,
+      `Welcome to ${DATA.name}. Thank you for considering to become a judge, we appreciate your efforts to help support ${DATA.name}. ${DATA.name} is a ${DATA.description} hackathon spanning ${DATA.length} on ${DATA.date}.`,
       "Judges are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
       "Judge duties include but are not limited to visiting various teams to assess teams on their idea, technical complexities, and overall presentation after which they will decide the winners.",
       "Note: Judges are not permitted to become participants for the hackathon.",
