@@ -63,11 +63,7 @@ export const COLUMNS = [
     cell: ({ getValue }) => (
       <div>
         {getValue().map(({ name, link }, index) => (
-          <Link
-            key={index}
-            href={link}
-            className="mx-2 inline-flex hover:opacity-75"
-          >
+          <Link key={index} href={link} className="mx-2 inline-flex">
             {ICONS[name]}
           </Link>
         ))}
