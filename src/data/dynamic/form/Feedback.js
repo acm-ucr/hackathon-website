@@ -24,7 +24,7 @@ export const FIELDS = {
     input: "textarea",
     name: "helpful",
     rows: 4,
-    title: `What was most helpful about ${CONFIG.name}?`,
+    title: `What was most helpful about ${DATA.CONFIG.name}?`,
     placeholder: "N/A",
     width: 12,
     required: true,
