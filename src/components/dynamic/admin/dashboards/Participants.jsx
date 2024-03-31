@@ -7,17 +7,16 @@ import {
 } from "@/data/dynamic/admin/Participants";
 import Table from "./dashboard/Dashboard";
 
-const Participants = () => {
+const Participants = ({ searchParams }) => {
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Table
+        searchParams={searchParams}
         title="Participants"
         columns={COLUMNS}
         tags={TAGS}
-        page="participants"
         statuses={STATUSES}
         Dropdown={DROPDOWN}
-        empty="No Participants Available"
       />
     </div>
   );

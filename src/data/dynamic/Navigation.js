@@ -73,8 +73,8 @@ export const TABS = {
           icon: <GoSponsorTiers className={iconStyle} />,
         },
         {
-          name: "panels",
-          link: "/admin/panels",
+          name: "panelists",
+          link: "/admin/panelists",
           icon: <IoIosPeople className={iconStyle} />,
         },
         {
@@ -163,14 +163,14 @@ export const TABS = {
           link: "/user/checkin",
           icon: <AiOutlineQrcode className={iconStyle} />,
         },
-        {
-          name: "feedback",
-          link: "/form/feedback",
-          icon: <MdFeedback className={iconStyle} />,
-        },
       ],
     },
     " ": [
+      {
+        name: "feedback",
+        link: "/form/feedback",
+        icon: <MdFeedback className={iconStyle} />,
+      },
       {
         name: "devpost",
         link: CONFIG.devpost,

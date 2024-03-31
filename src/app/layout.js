@@ -11,17 +11,19 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
-export default function RootLayout({ children, session }) {
+export const RootLayout = ({ children, session }) => {
   return (
     <html lang="en" className="h-full">
       <body className={`${poppins.variable} flex flex-col lg:flex-row h-full`}>
-        <Session session={session} refetchInterval={5 * 60} className="h-full">
-          <div className="flex w-full">
+        <div className="flex w-full h-full">
+          <Session session={session} refetchInterval={5 * 60}>
             <Toaster />
             {children}
-          </div>
-        </Session>
+          </Session>
+        </div>
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

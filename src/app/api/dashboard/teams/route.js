@@ -9,11 +9,24 @@ import {
   deleteField,
   updateDoc,
   deleteDoc,
+  getDoc,
+  orderBy,
+  limit,
+  endBefore,
+  limitToLast,
+  startAfter,
+  getCountFromServer,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/dynamic/admin/Dashboard";
 
-export async function GET(req, { params }) {
+export async function GET(req) {
+  const direction = req.nextUrl.searchParams.get("direction");
+  const index = req.nextUrl.searchParams.get("index");
+  const size = req.nextUrl.searchParams.get("size");
+  const first = req.nextUrl.searchParams.get("first");
+  const last = req.nextUrl.searchParams.get("last");
+
   const res = NextResponse;
   const { auth, message } = await authenticate(AUTH.GET);
 
@@ -26,7 +39,43 @@ export async function GET(req, { params }) {
 
   const output = [];
   try {
-    const snapshot = await getDocs(collection(db, "teams"));
+    let snapshot;
+
+    if (direction === "next" && last !== "undefined") {
+      const lastDocument = await getDoc(doc(db, "teams", last));
+
+      snapshot = await getDocs(
+        query(
+          collection(db, "teams"),
+          orderBy(`status`),
+          where(`status`, "in", [-1, 0, 1]),
+          startAfter(lastDocument),
+          limit(size)
+        )
+      );
+    } else if (direction === "prev" && first !== "undefined") {
+      const firstDocument = await getDoc(doc(db, "teams", first));
+
+      snapshot = await getDocs(
+        query(
+          collection(db, "teams"),
+          orderBy(`status`),
+          where(`status`, "in", [-1, 0, 1]),
+          endBefore(firstDocument),
+          limitToLast(size)
+        )
+      );
+    } else {
+      snapshot = await getDocs(
+        query(
+          collection(db, "teams"),
+          orderBy(`status`),
+          where(`status`, "in", [-1, 0, 1]),
+          limit(size)
+        )
+      );
+    }
+
     snapshot.forEach((doc) => {
       const { links, status, members, timestamp, name } = doc.data();
 
@@ -52,10 +101,26 @@ export async function GET(req, { params }) {
         timestamp: timestamp || new Date(),
       });
     });
-    const sorted = output.sort((a, b) =>
-      a.timestamp.seconds < b.timestamp.seconds ? 1 : -1
+
+    const countFromServer = await getCountFromServer(
+      query(collection(db, "teams"), where(`status`, "in", [-1, 0, 1]))
     );
-    return res.json({ message: "OK", items: sorted }, { status: 200 });
+
+    const total = countFromServer.data().count;
+    const lastDoc = output.length > 0 ? output[output.length - 1].uid : "";
+    const firstDoc = output.length > 0 ? output[0].uid : "";
+
+    return res.json(
+      {
+        message: "OK",
+        items: output,
+        total: total,
+        first: firstDoc,
+        last: lastDoc,
+        page: parseInt(index) + 1,
+      },
+      { status: 200 }
+    );
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
@@ -64,7 +129,7 @@ export async function GET(req, { params }) {
   }
 }
 
-export async function PUT(req, { params }) {
+export async function PUT(req) {
   const res = NextResponse;
   const { objects, status } = await req.json();
   const { auth, message } = await authenticate(AUTH.PUT);
@@ -90,7 +155,7 @@ export async function PUT(req, { params }) {
   }
 }
 
-export async function DELETE(req, { params }) {
+export async function DELETE(req) {
   const res = NextResponse;
   const { auth, message } = await authenticate(AUTH.DELETE);
   const objects = req.nextUrl.searchParams.get("remove").split(",");

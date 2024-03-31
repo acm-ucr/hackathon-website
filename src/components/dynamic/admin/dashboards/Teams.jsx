@@ -2,16 +2,15 @@
 import { STATUSES, TAGS, COLUMNS } from "@/data/dynamic/admin/Teams.js";
 import Table from "./dashboard/Dashboard";
 
-const Teams = () => {
+const Teams = ({ searchParams }) => {
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Table
+        searchParams={searchParams}
         title="Teams"
         columns={COLUMNS}
         tags={TAGS}
-        page="teams"
         statuses={STATUSES}
-        empty="No Teams Available"
       />
     </div>
   );

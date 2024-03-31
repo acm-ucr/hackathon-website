@@ -62,6 +62,7 @@ export const FIELDS = {
     placeholder: "ie. Computer Science",
     width: 12,
     required: true,
+    searchable: true,
   },
   grade: {
     input: "select",
@@ -71,6 +72,7 @@ export const FIELDS = {
     placeholder: "ie. Undergraduate",
     width: 12,
     required: true,
+    searchable: true,
   },
   availability: {
     input: "checkboxes",
