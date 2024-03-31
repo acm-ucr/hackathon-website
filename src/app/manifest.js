@@ -1,11 +1,11 @@
-import { DATA } from "@/data/Config";
+import data from "@/data/Config";
 
 const manifest = () => {
   return {
-    name: DATA.name,
-    short_name: DATA.short_name,
-    description: DATA.description,
-    start_url: DATA.start_url,
+    name: data.name,
+    short_name: data.short_name,
+    description: data.description,
+    start_url: data.start_url,
   };
 };
 

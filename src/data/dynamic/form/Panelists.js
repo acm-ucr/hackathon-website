@@ -1,6 +1,6 @@
 import { GENDERS } from "./Information";
 import { SHIRTS } from "./Information";
-import { DATA } from "@/data/Config";
+import data from "@/data/Config";
 import { phone } from "@/data/dynamic/form/Regex";
 
 export const PANELISTS = {
@@ -14,7 +14,7 @@ export const FIELDS = {
     input: "description",
     width: 12,
     texts: [
-      `Welcome to ${DATA.name}. Thank you for considering to become a panelist. We appreciate your efforts to help support ${DATA.name}. ${DATA.name} is a ${DATA.description} hackathon spanning ${DATA.length} on ${DATA.date}.`,
+      `Welcome to ${data.name}. Thank you for considering to become a panelist. We appreciate your efforts to help support ${data.name}. ${data.name} is a ${data.description} hackathon spanning ${data.length} on ${data.date}.`,
       "Panelists are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
     ],
   },
