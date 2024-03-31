@@ -4,7 +4,7 @@ import Tag from "../admin/Tag";
 import { COLORS } from "@/data/dynamic/Tags";
 import { signOut } from "next-auth/react";
 
-const Header = ({ horizontal = true }) => {
+const Header = () => {
   const { data: session } = useSession();
 
   const color =
@@ -23,11 +23,7 @@ const Header = ({ horizontal = true }) => {
 
   return (
     <div className="grid grid-cols-2 items-center">
-      <div
-        className={`flex ${
-          horizontal ? "flex-row" : "flex-col"
-        } items-center justify-center}`}
-      >
+      <div className="flex flex-row items-center">
         <Image
           src={session.user.image}
           width={125}
