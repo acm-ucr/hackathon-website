@@ -7,17 +7,16 @@ import {
 } from "@/data/dynamic/admin/Committees";
 import Table from "./dashboard/Dashboard";
 
-const Committee = () => {
+const Committee = ({ searchParams }) => {
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Table
+        searchParams={searchParams}
         title="Committees"
         columns={COLUMNS}
         tags={TAGS}
-        page="committees"
         statuses={STATUSES}
         Dropdown={DROPDOWN}
-        empty="No Committees Available"
       />
     </div>
   );

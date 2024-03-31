@@ -7,17 +7,16 @@ import {
 } from "@/data/dynamic/admin/Mentors.js";
 import Table from "./dashboard/Dashboard";
 
-const Mentors = () => {
+const Mentors = ({ searchParams }) => {
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Table
+        searchParams={searchParams}
         title="Mentors"
         columns={COLUMNS}
         tags={TAGS}
-        page="mentors"
         statuses={STATUSES}
         Dropdown={DROPDOWN}
-        empty="No Mentors Available"
       />
     </div>
   );

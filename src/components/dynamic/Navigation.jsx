@@ -50,7 +50,7 @@ const Navigation = () => {
               .map(([title, subTabs], index) => (
                 <div key={index} className="w-full">
                   <p
-                    className={`text-white text-xl font-poppin font-bold w-full px-2 mb-0 flex items-center justify-between hover:cursor-pointer ${subTabs.mt}`}
+                    className={`text-white text-xl font-poppin font-bold w-full px-2 mb-0 flex items-center justify-between hover:cursor-pointer ${subTabs.mt} opacity-100 hover:opacity-40 transition-opacity`}
                     onClick={() =>
                       setTabs({
                         ...tabs,
@@ -95,6 +95,7 @@ const Navigation = () => {
               <Link
                 key={index}
                 href={tab.link}
+                target="_blank"
                 onClick={() => tab.onClick()}
                 className="no-underline w-full"
               >
