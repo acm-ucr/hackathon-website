@@ -1,14 +1,14 @@
 import { AGES, MAJORS } from "./Information";
 import { GRADES, GENDERS, SOURCES } from "./Information";
 import { SCHOOLS } from "./Schools";
-import { METADATA } from "@/data/Config";
+import data from "@/data/Config";
 
 export const FIELDS = {
   description: {
     input: "description",
     width: 12,
     texts: [
-      `Welcome to ${METADATA.name}. Thank you for considering to become a lead, we appreciate your enthusiasm to join ${METADATA.name}. ${METADATA.name} is a ${METADATA.description} hackathon spanning ${METADATA.length} on ${METADATA.date}.`,
+      `Welcome to ${data.name}. Thank you for considering to become a lead, we appreciate your enthusiasm to join ${data.name}. ${data.name} is a ${data.description} hackathon spanning ${data.length} on ${data.date}.`,
     ],
   },
   name: {
@@ -147,7 +147,7 @@ export const FIELDS = {
     input: "textarea",
     name: "response",
     rows: 4,
-    title: `Why do you want to join ${METADATA.name}?`,
+    title: `Why do you want to join ${data.name}?`,
     placeholder: "I want to join because...",
     width: 12,
     required: true,

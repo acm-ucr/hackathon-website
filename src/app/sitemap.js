@@ -1,75 +1,75 @@
-import { SITEMAP } from "@/data/Config";
+import data from "@/data/Config";
 
 const sitemap = () => {
   return [
     {
-      url: `${SITEMAP.domain}/`,
+      url: `${data.domain}/`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 1,
     },
     {
-      url: `${SITEMAP.domain}/form/admin`,
+      url: `${data.domain}/form/admin`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${SITEMAP.domain}/form/committee`,
+      url: `${data.domain}/form/committee`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${SITEMAP.domain}/form/feedback`,
+      url: `${data.domain}/form/feedback`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${SITEMAP.domain}/form/judge`,
+      url: `${data.domain}/form/judge`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${SITEMAP.domain}/form/mentor`,
+      url: `${data.domain}/form/mentor`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${SITEMAP.domain}/form/participant`,
+      url: `${data.domain}/form/participant`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${SITEMAP.domain}/form/volunteer`,
+      url: `${data.domain}/form/volunteer`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${SITEMAP.domain}/form/sponsor`,
+      url: `${data.domain}/form/sponsor`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${SITEMAP.domain}/form/panel`,
+      url: `${data.domain}/form/panel`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${SITEMAP.domain}/user/checkin`,
+      url: `${data.domain}/user/checkin`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: `${SITEMAP.domain}/user/dashboard`,
+      url: `${data.domain}/user/dashboard`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,

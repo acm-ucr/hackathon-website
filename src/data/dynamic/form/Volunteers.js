@@ -1,5 +1,5 @@
 import { MAJORS, GRADES, GENDERS, SHIRTS, AVAILABILITY } from "./Information";
-import { METADATA } from "@/data/Config";
+import data from "@/data/Config";
 import { phone } from "@/data/dynamic/form/Regex";
 
 export const FIELDS = {
@@ -7,7 +7,7 @@ export const FIELDS = {
     input: "description",
     width: 12,
     texts: [
-      `Welcome to ${METADATA.name}. Thank you for considering to become a volunteer, we appreciate your efforts to help support ${METADATA.name}. ${METADATA.name} is a ${METADATA.description} hackathon spanning ${METADATA.length} on ${METADATA.date}.`,
+      `Welcome to ${data.name}. Thank you for considering to become a volunteer, we appreciate your efforts to help support ${data.name}. ${data.name} is a ${data.description} hackathon spanning ${data.length} on ${data.date}.`,
       "Volunteers are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
       "Volunteer duties include but are not limited to setup, workshop organization, food handling, cleanup and more.",
       "Note: Volunteers are not permitted to become participants for the hackathon.",

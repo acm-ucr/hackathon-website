@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { TABS } from "@/data/dynamic/Navigation";
 import { usePathname } from "next/navigation";
-import { CONFIG } from "@/data/Config";
+import data from "@/data/Config";
 import { BiSolidDownArrow } from "react-icons/bi";
 
 const Navigation = () => {
@@ -24,7 +24,7 @@ const Navigation = () => {
           <Image
             src={LOGO}
             className="w-10 h-10 mx-2"
-            alt={`${CONFIG.name} Logo`}
+            alt={`${data.name} Logo`}
           />
           <div className="text-white text-xl font-semibold">
             {pathName.split("/")[2]}
@@ -41,7 +41,7 @@ const Navigation = () => {
             <Image
               src={LOGO}
               className="w-10 h-10 mx-2"
-              alt={`${CONFIG.name} Logo`}
+              alt={`${data.name} Logo`}
             />
           </div>
           <div className="w-full flex flex-col items-center h-full">
