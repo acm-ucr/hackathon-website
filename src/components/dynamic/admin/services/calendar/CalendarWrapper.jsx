@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import moment from "moment";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import Toolbar from "./Toolbar";
@@ -7,7 +7,12 @@ import Event from "./Event";
 import Modal from "./Modal";
 const mLocalizer = momentLocalizer(moment);
 
-const CalendarWrapper = () => {
+const CalendarWrapper = ({ events }) => {
+  const [event, setEvent] = useState(null);
+  const [view, setView] = useState("month");
+  const [date, setDate] = useState(new Date());
+  const [tag, setTag] = useState("all");
+
   const handleShortcuts = (e) => {
     switch (e.key) {
       case "m":
@@ -35,7 +40,19 @@ const CalendarWrapper = () => {
         view={view}
         className="py-4"
         step={15}
-        events={events.filter((event) => !event.hidden)}
+        events={
+          tag === "all"
+            ? events
+            : events.filter(
+                ({ description }) =>
+                  description
+                    .split("\n")[0]
+                    .split("#")
+                    .filter((item) => item !== "")[0]
+                    .trim()
+                    .toLowerCase() === tag
+              )
+        }
         localizer={mLocalizer}
         defaultView="month"
         views={["month", "week"]}
@@ -53,8 +70,7 @@ const CalendarWrapper = () => {
               onNavigate={onNavigate}
               date={date}
               view={view}
-              events={events}
-              setEvents={setEvents}
+              setTag={setTag}
             />
           ),
         }}

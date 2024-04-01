@@ -43,7 +43,7 @@ const CalendarEvents = async () => {
 
   return (
     <div className="relative h-screen">
-      <CalendarWrapper data={rawEvents} />
+      <CalendarWrapper events={rawEvents} />
     </div>
   );
 };

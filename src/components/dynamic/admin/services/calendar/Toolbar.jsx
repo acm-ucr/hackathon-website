@@ -2,125 +2,90 @@ import { LABELS } from "@/data/dynamic/admin/Calendar.js";
 import Tag from "../../Tag.jsx";
 import { COLORS } from "@/data/dynamic/Tags.js";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 
-const CustomToolbar = ({
-  onView,
-  onNavigate,
-  date,
-  events,
-  setEvents,
-  view,
-}) => {
-  const onClick = (value) => {
-    if (value === "all") {
-      setEvents(
-        events.map((event) => {
-          event.hidden = false;
-          return event;
-        })
-      );
-    } else {
-      setEvents(
-        events.map((event) => {
-          if (
-            event.description
-              .split("\n")[0]
-              .split("#")
-              .filter((item) => item !== "")[0]
-              .trim()
-              .toLowerCase() === value
-          ) {
-            event.hidden = false;
-          } else {
-            event.hidden = true;
-          }
-          return event;
-        })
-      );
-    }
-  };
-
-  const handleShortcuts = (e) => {
-    switch (e.key) {
-      case "ArrowRight":
-        onNavigate("NEXT");
-        break;
-      case "ArrowLeft":
-        onNavigate("PREV");
-        break;
-    }
-  };
+const CustomToolbar = ({ onView, onNavigate, date, view, setTag }) => {
+  const handleShortcuts = useCallback(
+    (e) => {
+      switch (e.key) {
+        case "ArrowRight":
+          onNavigate("NEXT");
+          break;
+        case "ArrowLeft":
+          onNavigate("PREV");
+          break;
+      }
+    },
+    [onNavigate]
+  );
 
   useEffect(() => {
     document.addEventListener("keydown", handleShortcuts);
     return () => document.removeEventListener("keydown", handleShortcuts);
-  }, []);
+  }, [handleShortcuts]);
 
   return (
-    <div className="grid grid-cols-3">
-      <div className="flex items-center">
-        <Tag
-          onClick={() => onView("month")}
-          text="month"
-          color={view === "month" ? COLORS["green"] : COLORS["gray"]}
-          classes="mx-2"
-        />
-        <Tag
-          onClick={() => onView("week")}
-          text="week"
-          color={view === "week" ? COLORS["green"] : COLORS["gray"]}
-          classes="mx-2"
-        />
+    <div className="flex items-center justify-between">
+      <div className="flex flex-col items-center">
+        <div className="flex justify-center items-center my-2">
+          <FaChevronLeft
+            onClick={() => onNavigate("PREV")}
+            className="hover:cursor-pointer mx-2"
+          />
+          <p className="mb-0 text-3xl font-semibold">
+            {date.toLocaleString("default", { month: "short" })}{" "}
+            {date.getFullYear()}
+          </p>
+          <FaChevronRight
+            onClick={() => onNavigate("NEXT")}
+            className="hover:cursor-pointer mx-2"
+          />
+        </div>
+        <div className="flex justify-center items-center">
+          <Tag
+            onClick={() => onView("month")}
+            text="month"
+            color={view === "month" ? COLORS["green"] : COLORS["gray"]}
+            classes="mx-2"
+          />
+          <Tag
+            onClick={() => onView("week")}
+            text="week"
+            color={view === "week" ? COLORS["green"] : COLORS["gray"]}
+            classes="mx-2"
+          />
+        </div>
       </div>
-      <div className="flex justify-center items-center">
-        <FaChevronLeft
-          onClick={() => onNavigate("PREV")}
-          className="hover:cursor-pointer mx-2"
-        />
-        <p className="mb-0 text-3xl font-semibold">
-          {date.toLocaleString("default", { month: "short" })}{" "}
-          {date.getFullYear()}
-        </p>
-        <FaChevronRight
-          onClick={() => onNavigate("NEXT")}
-          className="hover:cursor-pointer mx-2"
-        />
-      </div>
-
       <div className="flex flex-col items-end">
         <Tag
-          text="all"
+          text="all events"
           color={COLORS["gray"]}
           classes="my-1"
-          onClick={() => onClick("all")}
+          onClick={() => setTag("all")}
         />
         <div className="flex justify-end items-center flex-wrap gap-x-2">
-          <p className="font-bold">Leads Events:</p>
           {Object.entries(LABELS)
-            .filter((obj) => obj[1].eventType === "leads")
-            .map(([label, value], index) => (
+            .filter(([_, { type }]) => type === "leads")
+            .map(([key, { color }], index) => (
               <Tag
                 key={index}
-                text={label}
-                color={COLORS[value.color]}
+                text={key}
+                color={COLORS[color]}
                 classes="my-1"
-                onClick={() => onClick(label)}
+                onClick={() => setTag(key)}
               />
             ))}
         </div>
-
-        <div className="flex justify-evenly items-center flex-wrap">
-          <p className="font-bold">Hackathon: </p>
+        <div className="flex justify-evenly items-center flex-wrap gap-x-2">
           {Object.entries(LABELS)
-            .filter((obj) => obj[1].eventType !== "leads")
-            .map(([label, value], index) => (
+            .filter(([_, { type }]) => type !== "leads")
+            .map(([key, { color }], index) => (
               <Tag
                 key={index}
-                text={label}
-                color={COLORS[value.color]}
+                text={key}
+                color={COLORS[color]}
                 classes="my-1"
-                onClick={() => onClick(label)}
+                onClick={() => setTag(key)}
               />
             ))}
         </div>
