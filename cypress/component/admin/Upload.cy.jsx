@@ -1,4 +1,4 @@
-import Upload from "@/components/dynamic/admin/services/Upload";
+import Upload from "@/components/admin/services/Upload";
 import { useState } from "react";
 
 describe("Upload", () => {

@@ -1,4 +1,4 @@
-import Button from "@/components/dynamic/admin/Button";
+import Button from "@/components/admin/Button";
 import { useState } from "react";
 
 describe("Button", () => {

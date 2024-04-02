@@ -1,15 +1,15 @@
-import Release from "@/components/static/Release";
+import Release from "@/components/Release";
 import RELEASES from "@/data/Releases";
-import Live from "@/components/static/live/Live";
-import Postlive from "@/components/static/postlive/Postlive";
+import Live from "@/components/live/Live";
+import Postlive from "@/components/postlive/Postlive";
 
 const Home = () => {
   return (
     <div className="w-full">
-      <Release release={RELEASES.STATIC.LIVE}>
+      <Release release={RELEASES.LIVE}>
         <Live />
       </Release>
-      <Release release={RELEASES.STATIC.POSTLIVE}>
+      <Release release={RELEASES.POSTLIVE}>
         <Postlive />
       </Release>
     </div>

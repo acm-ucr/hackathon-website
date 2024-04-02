@@ -1,5 +1,5 @@
-import Tag from "@/components/dynamic/admin/Tag";
-import { COLORS } from "@/data/dynamic/Tags";
+import Tag from "@/components/admin/Tag";
+import { COLORS } from "@/data/Tags";
 
 describe("Tag", () => {
   it("Accept", () => {

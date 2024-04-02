@@ -1,7 +1,7 @@
 /* eslint-disable new-cap */
 import "./globals.css";
 import { Poppins } from "next/font/google";
-import Session from "@/components/dynamic/Session";
+import Session from "@/components/Session";
 import { Toaster } from "react-hot-toast";
 
 const poppins = Poppins({

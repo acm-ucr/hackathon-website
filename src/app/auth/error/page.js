@@ -1,5 +1,5 @@
 "use client";
-import Error from "@/components/dynamic/Error";
+import Error from "@/components/Error";
 import { useParams } from "next/navigation";
 
 const AuthError = () => {

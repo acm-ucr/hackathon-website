@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { db } from "../../../utils/firebase";
 import { doc, getDoc, updateDoc, addDoc, collection } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
-import { AUTH } from "@/data/dynamic/user/Team";
+import { AUTH } from "@/data/user/Team";
 
 export async function POST(req) {
   const res = NextResponse;

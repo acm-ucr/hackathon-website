@@ -1,5 +1,5 @@
-import Radio from "@/components/dynamic/Radio";
-import { GENDERS } from "@/data/dynamic/form/Information";
+import Radio from "@/components/Radio";
+import { GENDERS } from "@/data/form/Information";
 import { useState } from "react";
 
 describe("Radio", () => {
