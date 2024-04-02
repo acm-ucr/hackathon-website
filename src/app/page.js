@@ -1,7 +1,7 @@
-import Release from "@/components/static/Release";
+import Release from "@/components/Release";
 import RELEASES from "@/data/Releases";
-import Live from "@/components/static/live/Live";
-import Postlive from "@/components/static/postlive/Postlive";
+import Live from "@/components/live/Live";
+import Postlive from "@/components/postlive/Postlive";
 
 const Home = () => {
   return (
