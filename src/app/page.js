@@ -6,10 +6,10 @@ import Postlive from "@/components/postlive/Postlive";
 const Home = () => {
   return (
     <div className="w-full">
-      <Release release={RELEASES.STATIC.LIVE}>
+      <Release release={RELEASES.LIVE}>
         <Live />
       </Release>
-      <Release release={RELEASES.STATIC.POSTLIVE}>
+      <Release release={RELEASES.POSTLIVE}>
         <Postlive />
       </Release>
     </div>

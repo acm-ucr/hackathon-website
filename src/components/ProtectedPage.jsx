@@ -14,7 +14,7 @@ const ProtectedPage = ({ children, restrictions, title }) => {
   const pathName = usePathname();
 
   useEffect(() => {
-    if (RELEASES.DYNAMIC[pathName] > new Date()) {
+    if (RELEASES[pathName] > new Date()) {
       throw new Fault(
         423,
         "Locked Resource",
