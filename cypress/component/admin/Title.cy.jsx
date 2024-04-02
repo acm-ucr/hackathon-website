@@ -1,4 +1,4 @@
-import Title from "@/components/dynamic/admin/Title";
+import Title from "@/components/admin/Title";
 
 describe("Title test", () => {
   it("Title", () => {

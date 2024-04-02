@@ -1,4 +1,4 @@
-import Input from "@/components/dynamic/Input";
+import Input from "@/components/Input";
 import { useState } from "react";
 
 describe("Input", () => {

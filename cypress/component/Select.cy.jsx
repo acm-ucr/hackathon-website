@@ -1,4 +1,4 @@
-import Select from "@/components/dynamic/Select";
+import Select from "@/components/Select";
 import { useState } from "react";
 
 describe("Select", () => {

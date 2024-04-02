@@ -19,7 +19,7 @@ import {
   limitToLast,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
-import { AUTH, ATTRIBUTES } from "@/data/dynamic/admin/Dashboard";
+import { AUTH, ATTRIBUTES } from "@/data/admin/Dashboard";
 import send from "@/utils/email";
 const types = new Set([
   "admins",

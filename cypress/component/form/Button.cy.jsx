@@ -1,4 +1,4 @@
-import Button from "@/components/dynamic/Button";
+import Button from "@/components/Button";
 
 describe("Forms Button", () => {
   it("text", () => {

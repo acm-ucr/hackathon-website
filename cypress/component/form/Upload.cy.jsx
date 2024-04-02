@@ -1,4 +1,4 @@
-import Upload from "@/components/dynamic/form/form/Upload";
+import Upload from "@/components/form/form/Upload";
 import { useState } from "react";
 
 describe("Forms Upload", () => {

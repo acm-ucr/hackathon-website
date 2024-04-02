@@ -1,15 +1,15 @@
-import Admin from "@/components/dynamic/form/Admin";
-import Committee from "@/components/dynamic/form/Committee";
-import Feedback from "@/components/dynamic/form/Feedback";
-import Interest from "@/components/dynamic/form/Interest";
-import Judge from "@/components/dynamic/form/Judge";
-import Mentor from "@/components/dynamic/form/Mentor";
-import Participant from "@/components/dynamic/form/Participant";
-import Sponsor from "@/components/dynamic/form/Sponsor";
-import Volunteer from "@/components/dynamic/form/Volunteer";
-import Panel from "@/components/dynamic/form/Panelist";
-import Lead from "@/components/dynamic/form/Lead";
-import ProtectedPage from "@/components/dynamic/ProtectedPage";
+import Admin from "@/components/form/Admin";
+import Committee from "@/components/form/Committee";
+import Feedback from "@/components/form/Feedback";
+import Interest from "@/components/form/Interest";
+import Judge from "@/components/form/Judge";
+import Mentor from "@/components/form/Mentor";
+import Participant from "@/components/form/Participant";
+import Sponsor from "@/components/form/Sponsor";
+import Volunteer from "@/components/form/Volunteer";
+import Panel from "@/components/form/Panelist";
+import Lead from "@/components/form/Lead";
+import ProtectedPage from "@/components/ProtectedPage";
 import Fault from "@/utils/error";
 
 const Page = ({ params }) => {
