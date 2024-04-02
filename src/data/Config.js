@@ -7,10 +7,14 @@ const data = {
   date: "HACKATHON_DATE",
   start_url: "/",
   year: "2024",
-  date: new Date("November 4, 2023 9:00:00"),
+  date: "November 4th 2024",
   packet: "",
   devpost: "https://devpost.com/",
   domain: "https://www.placeholder.com",
+  instagram: "https://www.instagram.com",
+  linkedin: "https://www.linkedin.com",
+  discord: "https://www.discord.com",
+  heart: "🤎",
 };
 
 export default data;
