@@ -15,7 +15,6 @@ describe("Admin Search", () => {
     cy.get('[data-cy="toolbar"]').find('[data-cy="search-input"]').type("Meow");
     cy.get('[data-cy="loading-text"]').should("contain", "Loading...");
     cy.get('[data-cy="loading-icon"]').should("exist");
-    // cy.contains("No Admins Available"); check for loading component
   });
 
   it("Search For 1st Entry", () => {
