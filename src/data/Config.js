@@ -8,6 +8,7 @@ const data = {
   start_url: "/",
   year: "2024",
   date: "November 4th 2024",
+  end_date: "April 10th 2024",
   packet: "",
   devpost: "https://devpost.com/",
   domain: "https://www.placeholder.com",
