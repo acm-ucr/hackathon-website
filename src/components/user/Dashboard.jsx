@@ -7,12 +7,16 @@ import { BsQrCode } from "react-icons/bs";
 import { LuParkingCircle } from "react-icons/lu";
 import Rooms from "./Rooms";
 import Packing from "./Packing";
-import Judging from "./Judging";
-import Rules from "./Rules";
 import Hackpacks from "./Hackpacks";
+import Collapse from "./Collapse";
+import { useState } from "react";
+import BulletPoints from "./BulletPoints";
+import { JUDGING } from "@/data/user/Judging";
+import { RULES } from "@/data/user/Rules";
 
 const Dashboard = () => {
   const { data: session } = useSession();
+  const [expand, setExpand] = useState(null);
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
@@ -20,7 +24,7 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
         <div className="col-span-2">
           <Countdown />
-          <div className="flex gap-8">
+          <div className="flex gap-4">
             <Tile icon={<BsQrCode />} text="Check In" link="/user/checkin" />
             <Tile
               icon={<LuParkingCircle />}
@@ -32,10 +36,16 @@ const Dashboard = () => {
           <Packing />
         </div>
 
-        <div>
-          <Judging />
-          <Rules />
-          <Hackpacks />
+        <div className="flex flex-col gap-4">
+          <Collapse setExpand={setExpand} expand={expand} text="Judging">
+            <BulletPoints list={JUDGING} />
+          </Collapse>
+          <Collapse setExpand={setExpand} expand={expand} text="Rules">
+            <BulletPoints list={RULES} />
+          </Collapse>
+          <Collapse setExpand={setExpand} expand={expand} text="Hackpacks">
+            <Hackpacks />
+          </Collapse>
         </div>
 
         {/* <User user={user} setUser={setUser} edit={edit} setEdit={setEdit} />
