@@ -1,4 +1,4 @@
-import Vertical from "@/public/vertical.webp";
+import Vertical from "@/public/engineering/vertical.webp";
 import Image from "next/image";
 
 const What = () => {
