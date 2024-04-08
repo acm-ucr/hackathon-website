@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/public/engineering/hackathon/citruslogo.png";
-import Citrus from "@/public/engineering/hackathon/citrus.png";
+import Logo from "@/public/engineering/hackathon/citruslogo.webp";
+import Citrus from "@/public/engineering/hackathon/citrus.webp";
 
 const Citrushack = () => {
   return (

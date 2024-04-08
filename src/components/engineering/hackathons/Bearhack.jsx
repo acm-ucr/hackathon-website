@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/public/engineering/hackathon/bearlogo.png";
-import Bear from "@/public/engineering/hackathon/bear.png";
+import Logo from "@/public/engineering/hackathon/bearlogo.webp";
+import Bear from "@/public/engineering/hackathon/bear.webp";
 
 const Bearhack = () => {
   return (
