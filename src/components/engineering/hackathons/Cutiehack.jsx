@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/public/engineering/hackathon/cutielogo.png";
-import Cutie from "@/public/engineering/hackathon/cutie.png";
+import Logo from "@/public/engineering/hackathon/cutielogo.webp";
+import Cutie from "@/public/engineering/hackathon/cutie.webp";
 
 const Cutiehack = () => {
   return (
