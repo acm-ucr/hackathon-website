@@ -6,13 +6,13 @@ import Cutie from "@/public/engineering/hackathon/cutie.webp";
 const Cutiehack = () => {
   return (
     <div className="flex flex-row bg-hackathon-gray-100">
-      <Image src={Cutie} />
-      <div className="flex flex-col gap-y-5 w-1/2 p-5">
-        <Image src={Logo} />
+      <Image src={Cutie} alt="Photo of hackathon participants" />
+      <div className="flex flex-col gap-y-8 justify-center px-[5%]">
+        <Image src={Logo} alt="Cutie Hack Logo" />
         <div className="text-hackathon-blue-100 text-6xl font-bold">
           Cutiehack
         </div>
-        <div>
+        <div className="text-2xl">
           Cutie Hack is a 12-hour, beginner-oriented hackathon hosted by
           students at University of California, Riverside where hackers are
           challenged to create a cool project within the time frame to demo in
@@ -20,8 +20,8 @@ const Cutiehack = () => {
           and networking.
         </div>
         <Link
-          className="w-fit rounded bg-hackathon-green-300 px-4 py-2 text-white"
-          href="www.roblox.com"
+          className="w-fit rounded bg-hackathon-green-400 px-4 py-1 text-lg text-white"
+          href="/"
         >
           Details
         </Link>
