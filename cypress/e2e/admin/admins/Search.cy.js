@@ -13,8 +13,7 @@ describe("Admin Search", () => {
 
   it("No Search Results", () => {
     cy.get('[data-cy="toolbar"]').find('[data-cy="search-input"]').type("Meow");
-    cy.get('[data-cy="loading-text"]').should("contain", "Loading...");
-    cy.get('[data-cy="loading-icon"]').should("exist");
+    cy.contains("No Admins Available");
   });
 
   it("Search For 1st Entry", () => {

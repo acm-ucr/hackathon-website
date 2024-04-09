@@ -75,9 +75,7 @@ const Table = ({
             ) : (
               <>
                 {getRowModel().rows.length === 0 && (
-                  <div className="h-full">
-                    <Loading />
-                  </div>
+                  <p className="w-full text-center py-8 bg-white">{empty}</p>
                 )}
                 {getRowModel().rows.map(
                   ({ id, getVisibleCells, original, getIsSelected }) => (

@@ -13,8 +13,7 @@ describe("Panelist Search", () => {
 
   it("No Search Results", () => {
     cy.get('[data-cy="toolbar"]').find("input").type("Meow");
-    cy.get('[data-cy="loading-text"]').should("contain", "Loading...");
-    cy.get('[data-cy="loading-icon"]').should("exist");
+    cy.contains("No Panelists Available");
   });
 
   it("Search For 1st Entry", () => {
