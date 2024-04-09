@@ -19,7 +19,7 @@ const Digits = ({ value, unit }) => {
           .split("")
           .map((digit, index) => (
             <div
-              className="text-lg lg:text-3xl font-bold text-white bg-white bg-opacity-40 p-3 lg:p-3 rounded-lg"
+              className="text-lg lg:text-3xl font-bold text-white bg-white bg-opacity-40 p-3 lg:min-w-11 lg:p-3 rounded-lg"
               key={index}
             >
               {digit}
