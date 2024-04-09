@@ -9,6 +9,7 @@ const data = {
   year: "2024",
   date: "November 4th 2024",
   end_date: "April 10th 2024",
+  end_time: "13:00:00",
   packet: "",
   devpost: "https://devpost.com/",
   domain: "https://www.placeholder.com",

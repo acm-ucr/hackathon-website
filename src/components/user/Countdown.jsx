@@ -3,11 +3,12 @@ import React, { useState, useEffect } from "react";
 import data from "/src/data/Config.js";
 
 const parts = data.end_date.split(" ");
+const sec = data.end_time.split(":");
 const day = parseInt(parts[1]);
 const month = parts[0];
 const year = parseInt(parts[2]);
 const monthIndex = new Date(Date.parse(month + " 1, " + year)).getMonth() + 1;
-const endDate = new Date(year, monthIndex - 1, day, 23, 59, 59);
+const endDate = new Date(year, monthIndex - 1, day, sec[0], sec[1], sec[2]);
 
 const Digits = ({ value, unit }) => {
   return (
