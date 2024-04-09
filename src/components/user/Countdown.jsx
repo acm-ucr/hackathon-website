@@ -41,17 +41,17 @@ const Countdown = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const now = new Date().getTime();
-      const timeLeft = endDate - now;
-      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+      const timeLeft = endDate - new Date().getTime();
       timeLeft <= 0
         ? setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-        : setCountdown({ days, hours, minutes, seconds });
+        : setCountdown({
+            days: Math.floor(timeLeft / (1000 * 60 * 60 * 24)),
+            hours: Math.floor(
+              (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+            ),
+            minutes: Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)),
+            seconds: Math.floor((timeLeft % (1000 * 60)) / 1000),
+          });
     }, 1000);
     return () => clearInterval(interval);
   }, []);
