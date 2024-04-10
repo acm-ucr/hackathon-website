@@ -2,14 +2,14 @@ import Header from "./Header";
 import Hacks from "./Hacks";
 import CutieLogo from "@/public/engineering/hackathon/cutielogo.webp";
 import Cutie from "@/public/engineering/hackathon/cutie.webp";
-import RoseLogo from "@/public/engineering/hackathon/roselogo.png";
-import Rose from "@/public/engineering/hackathon/rose.png";
+import RoseLogo from "@/public/engineering/hackathon/roselogo.webp";
+import Rose from "@/public/engineering/hackathon/rose.webp";
 import BearLogo from "@/public/engineering/hackathon/bearlogo.webp";
 import Bear from "@/public/engineering/hackathon/bear.webp";
 import CitrusLogo from "@/public/engineering/hackathon/citruslogo.webp";
 import Citrus from "@/public/engineering/hackathon/citrus.webp";
-import DesignLogo from "@/public/engineering/hackathon/designlogo.png";
-import Design from "@/public/engineering/hackathon/design.png";
+import DesignLogo from "@/public/engineering/hackathon/designlogo.webp";
+import Design from "@/public/engineering/hackathon/design.webp";
 
 const Hackathons = () => {
   return (
