@@ -57,7 +57,7 @@ const Hackathons = () => {
         alt1="Photo of hackathon participants"
         logo={CitrusLogo}
         alt2="Citrus Hack Logo"
-        title="DesignVerse"
+        title="Citrus Hack"
         text="Citrus Hack is a 36-hour hackathon hosted by the University of California, Riverside. Hackers are challenged to create a project on the spot and demo it to compete for prizes. Our goal is to provide learning and networking opportunities for our community of hackers."
       />
       <div className="h-52 w-full bg-hackathon-blue-200" />
