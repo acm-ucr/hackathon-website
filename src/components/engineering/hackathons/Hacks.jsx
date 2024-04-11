@@ -1,14 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import { HackathonsData } from "@/data/engineering/HackathonsData";
 
-const Hacks = ({ id, img, alt1, logo, alt2, title, text }) => {
+const Hacks = () => {
   return !(id % 2 === 0) ? (
     <div className="flex flex-row bg-hackathon-gray-100 py-10">
-      <Image src={img} alt={alt1} />
+      <Image src={img} alt={HackathonsData.BearHack.alt1} />
       <div className="flex flex-col gap-y-8 justify-center px-[5%]">
-        <Image src={logo} alt={alt2} />
+        <Image src={logo} alt={HackathonsData.BearHack.alt2} />
         <div className="text-hackathon-blue-100 text-6xl font-bold">
-          {title}
+          {HackathonsData.BearHack.title}
         </div>
         <div className="text-2xl">{text}</div>
         <Link
