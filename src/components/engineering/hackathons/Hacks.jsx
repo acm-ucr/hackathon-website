@@ -13,7 +13,7 @@ const Hacks = () => {
         </div>
         <div className="text-2xl">{text}</div>
         <Link
-          className="w-fit rounded bg-hackathon-green-400 px-4 py-1 text-lg text-white"
+          className="w-fit rounded bg-hackathon-green-400 px-4 py-1 text-lg text-white hover:opacity-80"
           href="/"
         >
           Details
@@ -22,20 +22,20 @@ const Hacks = () => {
     </div>
   ) : (
     <div className="flex">
-      <div className="flex flex-col gap-y-8 justify-center px-[5%] py-10">
+      <div className="flex flex-col gap-y-8 justify-center px-[5%] py-10 w-3/4">
         <Image src={logo} alt={alt2} />
         <div className="text-hackathon-blue-100 text-6xl font-bold">
           {title}
         </div>
         <div className="text-2xl">{text}</div>
         <Link
-          className="w-fit rounded bg-hackathon-green-400 px-4 py-1 text-lg text-white"
+          className="w-fit rounded bg-hackathon-green-400 px-4 py-1 text-lg text-white hover:opacity-80"
           href="/"
         >
           Details
         </Link>
       </div>
-      <Image src={img} alt={alt1} />
+      <Image src={img} alt={alt1} className="w-1/4" />
     </div>
   );
 };
