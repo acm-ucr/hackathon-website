@@ -42,6 +42,7 @@ const Toolbar = ({
   const handleReload = async () => {
     const { index, size, first, last, direction } = searchParams;
 
+    setLoading(true);
     setData([]);
     api({
       method: "GET",
