@@ -10,20 +10,20 @@ export const HackathonsData = {
   },
   RoseHack: {
     id: 2,
-    image: "/engineering/hackathon/rose.png",
+    image: "/engineering/hackathon/rose.webp",
     alt1: "Photo of hackathon speaker",
-    logo: "/engineering/hackathon/roselogo.png",
+    logo: "/engineering/hackathon/roselogo.webp",
     alt2: "Rose Hack Logo",
     title: "Rosehack",
     text: "Rose Hack is UC Riverside's 24-hour hackathon, one of the few women-centric hackathons in California! Founded by the female leaders of the Association for Computing Machinery (ACM-W) and the Society of Women Engineers (SWE).",
   },
   DesignVerse: {
     id: 3,
-    image: "/engineering/hackathon/design.png",
+    image: "/engineering/hackathon/design.webp",
     alt1: "Photo of hackathon participants",
-    logo: "/engineering/hackathon/designlogo.png",
+    logo: "/engineering/hackathon/designlogo.webp",
     alt2: "DesignVerse Logo",
-
+    title: "DesignVerse",
     text: "At DesignVerse, our goal is to empower our community of students who are interested in design-like thinking and provide career developmental opportunities through our workshops, mentorship, and networking events.",
   },
   CitrusHack: {
