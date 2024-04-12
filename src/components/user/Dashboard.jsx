@@ -16,7 +16,7 @@ import { RULES } from "@/data/user/Rules";
 
 const Dashboard = () => {
   const { data: session } = useSession();
-  const [expand, setExpand] = useState(null);
+  const [expand, setExpand] = useState("");
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
