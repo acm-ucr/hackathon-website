@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import data from "/src/data/Config.js";
 
-const parts = data.end_date.split(" ");
-const sec = data.end_time.split(":");
+const parts = data.end.split(" ");
+const sec = parts[3].split(":");
 const day = parseInt(parts[1]);
 const month = parts[0];
 const year = parseInt(parts[2]);
