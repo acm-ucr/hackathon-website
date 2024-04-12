@@ -4,7 +4,7 @@ const Collapse = ({ text, children, setExpand, expand }) => {
     <div className="w-full bg-white rounded-xl p-4 drop-shadow-md">
       <div
         className="flex items-center justify-between cursor-pointer text-xl font-bold"
-        onClick={() => setExpand(text === expand ? null : text)}
+        onClick={() => setExpand(text === expand ? "" : text)}
       >
         {text}
         <RiArrowDownSLine
