@@ -36,7 +36,7 @@ const types = new Set([
   "leads",
 ]);
 
-export async function POST(req, { params }) {
+export const POST = async (req, { params }) => {
   const res = NextResponse;
   const { auth, message, user } = await authenticate(AUTH.POST);
 
@@ -80,9 +80,9 @@ export async function POST(req, { params }) {
       { status: 500 }
     );
   }
-}
+};
 
-export async function GET(req, { params }) {
+export const GET = async (req, { params }) => {
   const direction = req.nextUrl.searchParams.get("direction");
   const index = req.nextUrl.searchParams.get("index");
   const size = req.nextUrl.searchParams.get("size");
@@ -183,9 +183,9 @@ export async function GET(req, { params }) {
       { status: 500 }
     );
   }
-}
+};
 
-export async function PUT(req, { params }) {
+export const PUT = async (req, { params }) => {
   const res = NextResponse;
   const { objects, status } = await req.json();
   const { auth, message } = await authenticate(AUTH.PUT);
@@ -246,9 +246,9 @@ export async function PUT(req, { params }) {
       { status: 500 }
     );
   }
-}
+};
 
-export async function DELETE(req, { params }) {
+export const DELETE = async (req, { params }) => {
   const res = NextResponse;
   const { auth, message } = await authenticate(AUTH.DELETE);
   const objects = req.nextUrl.searchParams.get("remove").split(",");
@@ -281,4 +281,4 @@ export async function DELETE(req, { params }) {
       { status: 500 }
     );
   }
-}
+};

@@ -4,7 +4,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/user/Participant";
 
-export async function POST(req) {
+export const POST = async (req) => {
   const res = NextResponse;
   const { auth, message, user } = await authenticate(AUTH.POST);
 
@@ -35,4 +35,4 @@ export async function POST(req) {
       { status: 500 }
     );
   }
-}
+};

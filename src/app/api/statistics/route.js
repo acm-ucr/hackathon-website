@@ -3,7 +3,7 @@ import { db } from "../../../utils/firebase";
 import { collection, getDocs, getDoc, doc } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 
-export async function GET() {
+export const GET = async () => {
   const res = NextResponse;
   const { auth } = await authenticate({
     admins: [1],
@@ -60,4 +60,4 @@ export async function GET() {
       { status: 500 }
     );
   }
-}
+};

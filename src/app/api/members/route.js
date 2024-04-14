@@ -12,7 +12,7 @@ import {
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/user/Members";
 
-export async function DELETE() {
+export const DELETE = async () => {
   const res = NextResponse;
   const { auth, message, user } = await authenticate(AUTH.DELETE);
 
@@ -45,9 +45,9 @@ export async function DELETE() {
       { status: 500 }
     );
   }
-}
+};
 
-export async function PUT(req) {
+export const PUT = async (req) => {
   const res = NextResponse;
   const { auth, message, user } = await authenticate(AUTH.PUT);
 
@@ -85,4 +85,4 @@ export async function PUT(req) {
       { status: 500 }
     );
   }
-}
+};

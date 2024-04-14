@@ -2,7 +2,7 @@ import matter from "gray-matter";
 import fs from "fs";
 import Link from "next/link";
 
-async function getBlogPost() {
+const getBlogPost = async () => {
   const directory = process.cwd() + "/src/engineering/";
   const files = fs.readdirSync(directory);
 
@@ -13,7 +13,7 @@ async function getBlogPost() {
 
     return markdown.data;
   });
-}
+};
 const Blog = async () => {
   const blogs = await getBlogPost();
 
