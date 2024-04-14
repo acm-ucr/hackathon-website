@@ -32,11 +32,11 @@ const Navigation = () => {
         </div>
       </div>
       <div
-        className={`overflow-auto z-10 lg:flex lg:w-[12%] ${
+        className={`overflow-y-scroll z-10 lg:flex lg:w-[12%] ${
           expand ? "left-0 h-screen w-1/2 fixed pt-5" : `hidden`
         }`}
       >
-        <div className="overflow-auto bg-hackathon-blue-200 h-full flex flex-col justify-between items-center w-full">
+        <div className="overflow-y-scroll bg-hackathon-blue-200 h-full flex flex-col justify-between items-center w-full">
           <div className="hidden lg:flex items-center my-3">
             <Image
               src={LOGO}
