@@ -20,7 +20,7 @@ import {
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/admin/Dashboard";
 
-export async function GET(req) {
+export const GET = async (req) => {
   const direction = req.nextUrl.searchParams.get("direction");
   const index = req.nextUrl.searchParams.get("index");
   const size = req.nextUrl.searchParams.get("size");
@@ -127,9 +127,9 @@ export async function GET(req) {
       { status: 500 }
     );
   }
-}
+};
 
-export async function PUT(req) {
+export const PUT = async (req) => {
   const res = NextResponse;
   const { objects, status } = await req.json();
   const { auth, message } = await authenticate(AUTH.PUT);
@@ -153,9 +153,9 @@ export async function PUT(req) {
       { status: 500 }
     );
   }
-}
+};
 
-export async function DELETE(req) {
+export const DELETE = async (req) => {
   const res = NextResponse;
   const { auth, message } = await authenticate(AUTH.DELETE);
   const objects = req.nextUrl.searchParams.get("remove").split(",");
@@ -185,4 +185,4 @@ export async function DELETE(req) {
       { status: 500 }
     );
   }
-}
+};

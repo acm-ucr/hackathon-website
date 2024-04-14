@@ -9,8 +9,7 @@ import {
   setDoc,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
-
-export async function GET(req) {
+export const GET = async (req) => {
   const res = NextResponse;
   const { auth, message } = await authenticate({
     admins: [1],
@@ -35,9 +34,8 @@ export async function GET(req) {
       { status: 500 }
     );
   }
-}
-
-export async function PUT(req) {
+};
+export const PUT = async (req) => {
   const res = NextResponse;
   const { auth, message } = await authenticate({
     admins: [1],
@@ -76,4 +74,4 @@ export async function PUT(req) {
       { status: 500 }
     );
   }
-}
+};

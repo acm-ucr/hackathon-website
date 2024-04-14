@@ -12,7 +12,7 @@ import {
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/admin/Dashboard";
 
-export async function GET() {
+export const GET = async () => {
   const res = NextResponse;
   const { auth, message } = await authenticate(AUTH.GET);
 
@@ -74,9 +74,9 @@ export async function GET() {
       { status: 500 }
     );
   }
-}
+};
 
-export async function DELETE(req) {
+export const DELETE = async (req) => {
   const res = NextResponse;
   const { auth, message } = await authenticate(AUTH.DELETE);
 
@@ -104,9 +104,9 @@ export async function DELETE(req) {
       { status: 500 }
     );
   }
-}
+};
 
-export async function PUT(req) {
+export const PUT = async (req) => {
   const res = NextResponse;
   const { auth, message } = await authenticate(AUTH.PUT);
 
@@ -137,4 +137,4 @@ export async function PUT(req) {
       { status: 500 }
     );
   }
-}
+};
