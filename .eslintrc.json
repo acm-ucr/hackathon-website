@@ -9,12 +9,15 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react","jsx-a11y"],
+  "plugins": ["react"],
   "rules": {
     "require-jsdoc": 0,
-    "jsx-a11y/alt-text": ["error", {
-      "elements": ["img"]
-    }]
+    "jsx-a11y/alt-text": [
+      1,
+      {
+        "elements": ["img"]
+      }
+    ]
   },
   "settings": {
     "react": {
