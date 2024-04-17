@@ -12,12 +12,7 @@
   "plugins": ["react"],
   "rules": {
     "require-jsdoc": 0,
-    "jsx-a11y/alt-text": [
-      1,
-      {
-        "elements": ["img"]
-      }
-    ]
+    "jsx-a11y/alt-text": 1
   },
   "settings": {
     "react": {
