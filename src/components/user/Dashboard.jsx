@@ -16,7 +16,7 @@ import { RULES } from "@/data/user/Rules";
 
 const Dashboard = () => {
   const { data: session } = useSession();
-  const [expand, setExpand] = useState("");
+  const [expand, setExpand] = useState("Rules");
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
@@ -37,11 +37,11 @@ const Dashboard = () => {
         </div>
 
         <div className="flex flex-col gap-4">
-          <Collapse setExpand={setExpand} expand={expand} text="Judging">
-            <BulletPoints list={JUDGING} />
-          </Collapse>
           <Collapse setExpand={setExpand} expand={expand} text="Rules">
             <BulletPoints list={RULES} />
+          </Collapse>
+          <Collapse setExpand={setExpand} expand={expand} text="Judging">
+            <BulletPoints list={JUDGING} />
           </Collapse>
           <Collapse setExpand={setExpand} expand={expand} text="Hackpacks">
             <Hackpacks />
