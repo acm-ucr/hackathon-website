@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import data from "/src/data/Config.js";
 
 const parts = data.end.split(" ");
