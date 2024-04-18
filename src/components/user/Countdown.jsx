@@ -57,7 +57,7 @@ const Countdown = () => {
   }, []);
 
   return (
-    <div className=" rounded-lg inline-flex-col inline-block bg-hackathon-green-300 mb-3 shadow-xl">
+    <div className=" rounded-lg inline-flex-col inline-block bg-hackathon-green-300 mb-3 shadow-xl w-full text-center">
       <div className="font-bold text-white m-2 mb-0">HACKING ENDS IN</div>
       <div className="inline-flex font-bold">
         {Object.entries(countdown).map(([unit, value], index) => (
