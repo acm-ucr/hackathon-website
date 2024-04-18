@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { RiAttachment2 } from "react-icons/ri";
 import { FaTimes } from "react-icons/fa";
 import toaster from "@/utils/toaster";
