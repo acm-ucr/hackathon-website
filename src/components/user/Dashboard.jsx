@@ -29,7 +29,7 @@ const Dashboard = () => {
             <Tile
               icon={<LuParkingCircle />}
               text="Parking Info"
-              link="https://transportation.ucr.edu/visitor-parking#parking-options-how-to-pay"
+              link="https://transportation.ucr.edu/visitor-parking"
             />
           </div>
           <Rooms />
