@@ -27,7 +27,7 @@ const Blog = async () => {
           bottlenecks. Our engineering blogs captures how our engineers approach
           problems and bring innovative solutions to the table.
         </p>
-        <div className="w-full my-8 grid grid-cols-5 gap-4">
+        <div className="w-full my-8 grid grid-cols-1 xl:grid-cols-5 md:grid-cols-3 gap-4">
           {blogs.map(({ title, author, date, link }, index) => (
             <Link
               href={`/engineering/blog/${link}`}
