@@ -16,12 +16,12 @@ export const HACKPACKS = [
   {
     link: "https://github.com",
     text: "Full Stack Web App",
-    techs: ["JavaScript", "Next.js", "firebase", "tailwind"],
+    techs: ["Javascript", "Next.js", "Firebase", "Tailwind"],
   },
   {
     link: "https://github.com",
     text: "Full Stack Web App",
-    techs: ["JavaScript", "Next.js", "MongoDB", "tailwind"],
+    techs: ["Javascript", "Next.js", "MongoDB", "Tailwind"],
   },
   { link: "https://github.com", text: "Hardware", techs: ["Arduino", "C++"] },
 ];
