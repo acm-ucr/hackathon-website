@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Form from "@/components/form/form/Form.jsx";
+import Form from "@/components/form/form/Form.js";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Leads";
 import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";

@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import Title from "../../Title.jsx";
-import Table from "./Table.jsx";
-import Toolbar from "./Toolbar.jsx";
+import Title from "../../Title.js";
+import Table from "./Table.js";
+import Toolbar from "./Toolbar.js";
 
 const Judging = () => {
   const [teams, setTeams] = useState(null);

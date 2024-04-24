@@ -1,5 +1,5 @@
 import { LABELS } from "@/data/admin/Calendar.js";
-import Tag from "../../Tag.jsx";
+import Tag from "../../Tag.js";
 import { COLORS } from "@/data/Tags.js";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import { useCallback, useEffect } from "react";
