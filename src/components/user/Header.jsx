@@ -12,7 +12,7 @@ const Header = () => {
       <div className="flex justify-end mr-6">
         <button
           onClick={() => signOut({ callbackUrl: "/", redirect: true })}
-          className="bg-hackathon-tags-red-text text-white py-1 px-4 rounded-lg font-bold"
+          className="bg-hackathon-tags-red-text text-white py-1 px-4 rounded-lg font-bold opacity-100 hover:opacity-50 transition-opacity"
         >
           logout
         </button>
