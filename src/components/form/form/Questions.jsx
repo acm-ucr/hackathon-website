@@ -183,6 +183,22 @@ const Questions = ({
         MLH Code of Conduct
         <FaLink className="mx-2" />
       </Link>
+      <Link
+        href="https://mlh.io/privacy"
+        target="_blank"
+        className="no-underline flex items-center text-hackathon-green-300"
+      >
+        MLH Privacy Policy
+        <FaLink className="mx-2" />
+      </Link>
+      <Link
+        href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md"
+        target="_blank"
+        className="no-underline flex items-center text-hackathon-green-300"
+      >
+        MLH Contest Terms and Conditions
+        <FaLink className="mx-2" />
+      </Link>
       {packet && (
         <Link
           href={data.packet}
