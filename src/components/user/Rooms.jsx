@@ -3,7 +3,7 @@ const Rooms = () => {
 
   return (
     <div className="font-bold p-3 rounded-lg mt-3 mb-3 bg-white shadow-xl">
-      <div className="p-2">💻 Hackrooms</div>
+      <div className="p-2">🚪Hackrooms</div>
       {rooms.map((room, index) => (
         <div
           key={index}
