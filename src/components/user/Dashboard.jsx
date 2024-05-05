@@ -22,9 +22,9 @@ const Dashboard = () => {
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Header email={session.user.email} name={session.user.name} />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
-        <div className="col-span-2">
+        <div className="col-span-1 md:col-span-2">
           <Countdown />
-          <div className="flex gap-4">
+          <div className="md:flex gap-4">
             <Tile icon={<BsQrCode />} text="Check In" link="/user/checkin" />
             <Tile
               icon={<LuParkingCircle />}
