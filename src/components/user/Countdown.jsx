@@ -2,8 +2,6 @@
 import { useState, useEffect } from "react";
 import data from "/src/data/Config.js";
 
-const endDate = data.end;
-
 const Digits = ({ value, unit }) => {
   return (
     <div className="flex flex-col items-center gap-4 last:hidden  sm:last:flex">
@@ -35,7 +33,7 @@ const Countdown = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const timeLeft = endDate - new Date().getTime();
+      const timeLeft = data.end - new Date().getTime();
       timeLeft <= 0
         ? setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 })
         : setCountdown({
