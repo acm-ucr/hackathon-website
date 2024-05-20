@@ -4,7 +4,7 @@ import data from "/src/data/Config.js";
 
 const Digits = ({ value, unit }) => {
   return (
-    <div className="flex flex-col items-center gap-4 last:hidden  sm:last:flex">
+    <div className="flex flex-col items-center gap-4 last:hidden sm:last:flex">
       <div className="flex gap-1 m-3 mb-0 lg:!gap-1">
         {value
           .toString()
@@ -12,14 +12,14 @@ const Digits = ({ value, unit }) => {
           .split("")
           .map((digit, index) => (
             <div
-              className="text-lg lg:text-3xl font-bold text-white bg-white bg-opacity-40 p-3 lg:min-w-11 lg:p-3 rounded-lg"
+              className="flex items-center justify-center text-lg lg:text-3xl font-bold text-white bg-white bg-opacity-40 p-3 lg:min-w-11 lg:p-3 rounded-lg"
               key={index}
             >
               {digit}
             </div>
           ))}
       </div>
-      <div className="text-white m-2 mt-0 text-xs ">{unit}</div>
+      <div className="text-white m-2 mt-0 text-xs">{unit}</div>
     </div>
   );
 };
