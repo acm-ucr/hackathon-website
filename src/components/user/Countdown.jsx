@@ -26,9 +26,9 @@ const Digits = ({ value, unit }) => {
 const Countdown = () => {
   const [countdown, setCountdown] = useState({
     days: 0,
-    hours: 12,
+    hours: 0,
     minutes: 0,
-    seconds: 21,
+    seconds: 0,
   });
 
   useEffect(() => {
