@@ -11,7 +11,7 @@ const Modal = ({ data, setModal }) => {
           className="hover:cursor-pointer text-white hover:!text-red-500 text-xl"
         />
       </div>
-      <div className="px-3 rounded-b-xl py-2 border-x-2 border-b-2 border-hackathon-darkgray relative flex w-full h-full justify-center">
+      <div className="px-3 rounded-b-xl py-2 border-x-2 border-b-2 border-hackathon-darkgray bg-hackathon-page relative flex w-full h-full justify-center">
         <embed
           fill={true}
           className="object-cover"
