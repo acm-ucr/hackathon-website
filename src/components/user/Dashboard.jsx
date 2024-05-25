@@ -24,7 +24,7 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
         <div className="col-span-1 md:col-span-2">
           <Countdown />
-          <div className="md:flex gap-4">
+          <div className="flex flex-col md:flex-row gap-4 mt-4">
             <Tile icon={<BsQrCode />} text="Check In" link="/user/checkin" />
             <Tile
               icon={<LuParkingCircle />}
