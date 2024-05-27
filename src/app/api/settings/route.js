@@ -10,18 +10,6 @@ import { db } from "../../../utils/firebase";
 import { NextResponse } from "next/server";
 import { authenticate } from "@/utils/auth";
 
-const syncStatsWithDatabase = async () => {
-  await Promise.all([
-    updateRoleCounts("participants"),
-    updateRoleCounts("volunteers"),
-    updateRoleCounts("judges"),
-    updateRoleCounts("mentors"),
-    updateRoleCounts("committees"),
-    updateRoleCounts("sponsors"),
-    updateRoleCounts("admins"),
-    updateRoleCounts("teams"),
-  ]);
-};
 const getRoleCount = async (role, value) => {
   if (role === "teams") {
     return (
@@ -36,6 +24,7 @@ const getRoleCount = async (role, value) => {
     )
   ).data().count;
 };
+
 const updateRoleCounts = async (role) => {
   const [roleMinusOneCount, roleZeroCount, roleOneCount] = await Promise.all([
     getRoleCount(role, -1),
@@ -49,6 +38,7 @@ const updateRoleCounts = async (role) => {
     [`${role}.1`]: roleOneCount,
   });
 };
+
 export const GET = async () => {
   const res = NextResponse;
   const { auth } = await authenticate({
@@ -62,7 +52,16 @@ export const GET = async () => {
     );
   }
   try {
-    syncStatsWithDatabase();
+    await Promise.all([
+      updateRoleCounts("participants"),
+      updateRoleCounts("volunteers"),
+      updateRoleCounts("judges"),
+      updateRoleCounts("mentors"),
+      updateRoleCounts("committees"),
+      updateRoleCounts("sponsors"),
+      updateRoleCounts("admins"),
+      updateRoleCounts("teams"),
+    ]);
     return res.json({ status: 200 });
   } catch (err) {
     return res.json(
