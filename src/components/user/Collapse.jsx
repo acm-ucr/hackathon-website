@@ -16,7 +16,7 @@ const Collapse = ({ text, children, setExpand, expand }) => {
           text === expand ? "max-h-[1000px]" : "max-h-0"
         } duration-500 transition-[max-height] overflow-hidden`}
         style={{
-          transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+          transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
         }}
       >
         {children}
