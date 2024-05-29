@@ -42,7 +42,7 @@ export const COLUMNS = [
   {
     accessorKey: "discord",
     header: "Discord",
-    width: "w-2/12",
+    width: "w-3/12",
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -60,7 +60,7 @@ export const COLUMNS = [
   {
     accessorKey: "shirt",
     header: "Shirt",
-    width: "w-1/12",
+    width: "w-2/12",
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
