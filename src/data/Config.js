@@ -7,7 +7,6 @@ const data = {
   date: "HACKATHON_DATE",
   start_url: "/",
   year: "2024",
-  date: "November 4th 2024",
   end: new Date("2024-04-12T13:20:00"),
   packet: "",
   devpost: "https://devpost.com/",
