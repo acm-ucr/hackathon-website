@@ -8,7 +8,8 @@ const Judging = () => {
   const [teams, setTeams] = useState(null);
   const [judges, setJudges] = useState(null);
   const [view, setView] = useState(false);
-
+  console.log("TEAMS");
+  console.log(teams);
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Title title="Judging" />
@@ -20,6 +21,7 @@ const Judging = () => {
         judgesView={judges}
         setJudgesView={setJudges}
       />
+      {(teams === null || teams.length === 0) && <p>No teams available</p>}
       <Table data={view === false ? teams : judges} />
     </div>
   );
