@@ -7,7 +7,7 @@ const Packing = () => {
     "There will be a resting area within the venue itself, but we can't provide sleeping materials to hackers.",
   ];
   return (
-    <div className="bg-white rounded-lg shadow-xl p-3 my-3">
+    <div className="bg-blue-200 rounded-lg shadow-xl p-3 my-3">
       <div className="font-bold p-2">🎒Packing List</div>
 
       <ul className="font-light list-disc pl-9 mb-2">
