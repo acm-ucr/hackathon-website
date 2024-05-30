@@ -8,7 +8,7 @@ const Judging = () => {
   const [teams, setTeams] = useState(null);
   const [judges, setJudges] = useState(null);
   const [view, setView] = useState(false);
-  
+
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Title title="Judging" />
