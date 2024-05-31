@@ -7,14 +7,6 @@ const Radio = ({
   editable = true,
   required,
 }) => {
-  const handleClick = (optionKey, option) => {
-    if (field === "tier" || field === "affiliation" || field === "panelist") {
-      setUser({ ...user, [field]: optionKey });
-    } else {
-      setUser({ ...user, [field]: option });
-    }
-  };
-
   return (
     <div data-cy={`radio-${field}`} className="flex flex-col">
       <p className="mb-1 font-semibold">
@@ -33,7 +25,17 @@ const Radio = ({
               data-cy={`radio-${option}`}
               className="flex items-center whitespace-nowrap hover:cursor-pointer"
               key={index}
-              onClick={() => handleClick(optionKey, option)}
+              onClick={() => {
+                if (
+                  field === "tier" ||
+                  field === "affiliation" ||
+                  field === "panelist"
+                ) {
+                  setUser({ ...user, [field]: optionKey });
+                } else {
+                  setUser({ ...user, [field]: option });
+                }
+              }}
             >
               <div className="rounded-full w-4 border-black border aspect-square bg-transparent p-0.5 mr-1">
                 <div
