@@ -7,7 +7,7 @@ describe("Radio", () => {
     const Parent = () => {
       const [user, setUser] = useState({ name: "" });
       const handleClick = (option) => {
-        setUser({ ...user, [field]: option[1].toString() });
+        setUser({ ...user, ["gender"]: option[1] });
       };
       return (
         <Radio
@@ -39,7 +39,7 @@ describe("Radio", () => {
       const [user, setUser] = useState({ name: "" });
 
       const handleClick = (option) => {
-        setUser({ ...user, [field]: option[1].toString() });
+        setUser({ ...user, ["gender"]: option[1] });
       };
       return (
         <Radio
@@ -84,7 +84,7 @@ describe("Radio", () => {
       const [user, setUser] = useState({ name: "" });
 
       const handleClick = (option) => {
-        setUser({ ...user, [field]: option[1].toString() });
+        setUser({ ...user, ["gender"]: option[1] });
       };
       return (
         <Radio
