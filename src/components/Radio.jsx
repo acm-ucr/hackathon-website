@@ -22,7 +22,7 @@ const Radio = ({
         <div className="grid grid-cols-2 md:grid-cols-3 w-full">
           {Object.entries(options).map((option, index) => (
             <div
-              data-cy={`radio-${option}`}
+              data-cy={`radio-${option[1].toString()}`}
               className="flex items-center whitespace-nowrap hover:cursor-pointer"
               key={index}
               onChange={() => onChange(option)}
