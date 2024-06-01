@@ -25,19 +25,19 @@ const Radio = ({
               data-cy={`radio-${option}`}
               className="flex items-center whitespace-nowrap hover:cursor-pointer"
               key={index}
-              onChange={() => onChange(option.toString().toLowerCase())}
+              onChange={() => onChange(option)}
             >
               <div className="rounded-full w-4 border-black border aspect-square bg-transparent p-0.5 mr-1">
                 <div
-                  data-cy={`radio-button-${option}`}
+                  data-cy={`radio-button-${option[1].toString().toLowerCase()}`}
                   className={`rounded-full w-full aspect-square duration-100 ${
-                    user[field] == option.toString().toLowerCase()
+                    user[field] === option[1].tosString().toLowerCase()
                       ? "bg-hackathon-green-300"
                       : "bg-transparent"
                   }`}
                 />
               </div>
-              {option}
+              {option[1].toString().toLowerCase()}
             </div>
           ))}
         </div>
