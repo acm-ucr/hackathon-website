@@ -1,13 +1,12 @@
 const Radio = ({
-    text,
-    field,
-    options,
-    user,
-    editable = true,
-    required,
-    onChange,
+  text,
+  field,
+  options,
+  user,
+  editable = true,
+  required,
+  onChange,
 }) => {
-
   return (
     <div data-cy={`radio-${field}`} className="flex flex-col">
       <p className="mb-1 font-semibold">
@@ -21,7 +20,7 @@ const Radio = ({
       )}
       {editable && (
         <div className="grid grid-cols-2 md:grid-cols-3 w-full">
-          {Object.entries(options).map(( option, index) => (
+          {Object.entries(options).map((option, index) => (
             <div
               data-cy={`radio-${option}`}
               className="flex items-center whitespace-nowrap hover:cursor-pointer"
