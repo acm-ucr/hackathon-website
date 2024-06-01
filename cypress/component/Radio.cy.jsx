@@ -6,14 +6,17 @@ describe("Radio", () => {
   it("renders text", () => {
     const Parent = () => {
       const [user, setUser] = useState({ name: "" });
+      const handleClick = (option) => {
+        setUser({ ...user, [field]: option });
+      };
       return (
         <Radio
           text="Gender"
           options={GENDERS}
           field="gender"
           user={user}
-          setUser={setUser}
           editable={true}
+          onChange={handleClick}
         />
       );
     };
@@ -34,14 +37,18 @@ describe("Radio", () => {
   it("selects options when editable", () => {
     const Parent = () => {
       const [user, setUser] = useState({ name: "" });
+
+      const handleClick = (option) => {
+        setUser({ ...user, [field]: option });
+      };
       return (
         <Radio
           text="Gender"
           options={GENDERS}
           field="gender"
           user={user}
-          setUser={setUser}
           editable={true}
+          onChange={handleClick}
         />
       );
     };
@@ -75,14 +82,18 @@ describe("Radio", () => {
   it("cannot select options when uneditable", () => {
     const Parent = () => {
       const [user, setUser] = useState({ name: "" });
+
+      const handleClick = (option) => {
+        setUser({ ...user, [field]: option });
+      };
       return (
         <Radio
           text="Gender"
           options={GENDERS}
           field="gender"
           user={user}
-          setUser={setUser}
           editable={false}
+          onChange={handleClick}
         />
       );
     };
