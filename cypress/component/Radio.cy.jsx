@@ -7,7 +7,7 @@ describe("Radio", () => {
     const Parent = () => {
       const [user, setUser] = useState({ name: "" });
       const handleClick = (option) => {
-        setUser({ ...user, [field]: option.toString().toLowerCase() });
+        setUser({ ...user, [field]: option[1].toString() });
       };
       return (
         <Radio
@@ -39,7 +39,7 @@ describe("Radio", () => {
       const [user, setUser] = useState({ name: "" });
 
       const handleClick = (option) => {
-        setUser({ ...user, [field]: option[1].toString().toLowerCase() });
+        setUser({ ...user, [field]: option[1].toString() });
       };
       return (
         <Radio
@@ -84,7 +84,7 @@ describe("Radio", () => {
       const [user, setUser] = useState({ name: "" });
 
       const handleClick = (option) => {
-        setUser({ ...user, [field]: option[1].toString().toLowerCase() });
+        setUser({ ...user, [field]: option[1].toString() });
       };
       return (
         <Radio
