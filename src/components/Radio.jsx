@@ -29,7 +29,7 @@ const Radio = ({
             >
               <div className="rounded-full w-4 border-black border aspect-square bg-transparent p-0.5 mr-1">
                 <div
-                  data-cy={`radio-button-${option[1].toString().toLowerCase()}`}
+                  data-cy={`radio-button-${option[1].toString()}`}
                   className={`rounded-full w-full aspect-square duration-100 ${
                     user[field] === option[1].toString()
                       ? "bg-hackathon-green-300"
