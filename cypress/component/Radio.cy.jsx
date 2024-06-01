@@ -6,8 +6,14 @@ describe("Radio", () => {
   it("renders text", () => {
     const Parent = () => {
       const [user, setUser] = useState({ name: "" });
-      const handleClick = (option) => {
-        setUser({ ...user, ["gender"]: option[1] });
+      const handleClick = ([key, option], field) => {
+        setUser({
+          ...user,
+          [field]:
+            field === "tier" || field === "affiliation" || field === "panelist"
+              ? key
+              : option,
+        });
       };
       return (
         <Radio
@@ -38,9 +44,16 @@ describe("Radio", () => {
     const Parent = () => {
       const [user, setUser] = useState({ name: "" });
 
-      const handleClick = (option) => {
-        setUser({ ...user, ["gender"]: option[1] });
+      const handleClick = ([key, option], field) => {
+        setUser({
+          ...user,
+          [field]:
+            field === "tier" || field === "affiliation" || field === "panelist"
+              ? key
+              : option,
+        });
       };
+
       return (
         <Radio
           text="Gender"
@@ -83,8 +96,14 @@ describe("Radio", () => {
     const Parent = () => {
       const [user, setUser] = useState({ name: "" });
 
-      const handleClick = (option) => {
-        setUser({ ...user, ["gender"]: option[1] });
+      const handleClick = ([key, option], field) => {
+        setUser({
+          ...user,
+          [field]:
+            field === "tier" || field === "affiliation" || field === "panelist"
+              ? key
+              : option,
+        });
       };
       return (
         <Radio

@@ -25,7 +25,7 @@ const Radio = ({
               data-cy={`radio-${option[1].toString()}`}
               className="flex items-center whitespace-nowrap hover:cursor-pointer"
               key={index}
-              onChange={() => onChange(option)}
+              onChange={() => onChange(option, field)}
             >
               <div className="rounded-full w-4 border-black border aspect-square bg-transparent p-0.5 mr-1">
                 <div
