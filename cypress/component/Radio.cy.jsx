@@ -3,6 +3,15 @@ import { GENDERS } from "@/data/form/Information";
 import { useState } from "react";
 
 describe("Radio", () => {
+  const handleClick = (user, option, field, setUser) => {
+    setUser({
+      ...user,
+      [field]:
+        field === "tier" || field === "affiliation" || field === "panelist"
+          ? option[0]
+          : option[1],
+    });
+  };
   it("renders text", () => {
     const Parent = () => {
       const [user, setUser] = useState({ name: "" });
@@ -14,6 +23,7 @@ describe("Radio", () => {
           user={user}
           setUser={setUser}
           editable={true}
+          onClick={handleClick}
         />
       );
     };
@@ -42,6 +52,7 @@ describe("Radio", () => {
           user={user}
           setUser={setUser}
           editable={true}
+          onClick={handleClick}
         />
       );
     };
@@ -83,6 +94,7 @@ describe("Radio", () => {
           user={user}
           setUser={setUser}
           editable={false}
+          onClick={handleClick}
         />
       );
     };
