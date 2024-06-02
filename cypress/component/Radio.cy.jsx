@@ -3,18 +3,17 @@ import { GENDERS } from "@/data/form/Information";
 import { useState } from "react";
 
 describe("Radio", () => {
+  const handleClick = ([_, option], field, setter) => {
+    setter({
+      ...user,
+      [field]: option,
+    });
+  };
+
   it("renders text", () => {
     const Parent = () => {
       const [user, setUser] = useState({ name: "" });
-      const handleClick = ([key, option], field) => {
-        setUser({
-          ...user,
-          [field]:
-            field === "tier" || field === "affiliation" || field === "panelist"
-              ? key
-              : option,
-        });
-      };
+
       return (
         <Radio
           text="Gender"
@@ -23,6 +22,7 @@ describe("Radio", () => {
           user={user}
           editable={true}
           onChange={handleClick}
+          setUser={setUser}
         />
       );
     };
@@ -44,13 +44,6 @@ describe("Radio", () => {
     const Parent = () => {
       const [user, setUser] = useState({ name: "" });
 
-      const handleClick = ([_, option], field) => {
-        setUser({
-          ...user,
-          [field]: option,
-        });
-      };
-
       return (
         <Radio
           text="Gender"
@@ -59,6 +52,7 @@ describe("Radio", () => {
           user={user}
           editable={true}
           onChange={handleClick}
+          setUser={setUser}
         />
       );
     };
@@ -93,15 +87,6 @@ describe("Radio", () => {
     const Parent = () => {
       const [user, setUser] = useState({ name: "" });
 
-      const handleClick = ([key, option], field) => {
-        setUser({
-          ...user,
-          [field]:
-            field === "tier" || field === "affiliation" || field === "panelist"
-              ? key
-              : option,
-        });
-      };
       return (
         <Radio
           text="Gender"
@@ -110,6 +95,7 @@ describe("Radio", () => {
           user={user}
           editable={false}
           onChange={handleClick}
+          setFunc={setUser}
         />
       );
     };

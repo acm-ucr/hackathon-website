@@ -6,6 +6,7 @@ const Radio = ({
   editable = true,
   required,
   onChange,
+  setUser,
 }) => {
   return (
     <div data-cy={`radio-${field}`} className="flex flex-col">
@@ -25,13 +26,18 @@ const Radio = ({
               data-cy={`radio-${option[1]}`}
               className="flex items-center whitespace-nowrap hover:cursor-pointer"
               key={index}
-              onChange={() => onChange(option, field)}
+              onChange={() => onChange(option, field, setUser)}
             >
               <div className="rounded-full w-4 border-black border aspect-square bg-transparent p-0.5 mr-1">
                 <div
                   data-cy={`radio-button-${option[1]}`}
                   className={`rounded-full w-full aspect-square duration-100 ${
-                    user[field] === option[1]
+                    user[field].toString().toLowerCase() ===
+                      option[1].toString().toLowerCase() ||
+                    user[field].toString().toLowerCase() ===
+                      option[0].toString().toLowerCase() ||
+                    user[field] === option[1] ||
+                    user[field] === option[0]
                       ? "bg-hackathon-green-300"
                       : "bg-transparent"
                   }`}
