@@ -6,8 +6,8 @@ describe("Radio", () => {
   it("renders text", () => {
     const Parent = () => {
       const [user, setUser] = useState({ name: "" });
-      const handleClick = (user, [_, optionName], field) => {
-        setUser({
+      const handleClick = (user, [_, optionName], field, setter) => {
+        setter({
           ...user,
           [field]: optionName,
         });
@@ -20,6 +20,7 @@ describe("Radio", () => {
           user={user}
           editable={true}
           onChange={handleClick}
+          setUser={setUser}
         />
       );
     };
@@ -41,8 +42,8 @@ describe("Radio", () => {
     const Parent = () => {
       const [user, setUser] = useState({ name: "" });
 
-      const handleClick = (user, [_, optionName], field) => {
-        setUser({
+      const handleClick = (user, [_, optionName], field, setter) => {
+        setter({
           ...user,
           [field]: optionName,
         });
@@ -56,6 +57,7 @@ describe("Radio", () => {
           user={user}
           editable={true}
           onChange={handleClick}
+          setUser={setUser}
         />
       );
     };
@@ -90,8 +92,8 @@ describe("Radio", () => {
     const Parent = () => {
       const [user, setUser] = useState({ name: "" });
 
-      const handleClick = (user, [_, optionName], field) => {
-        setUser({
+      const handleClick = (user, [_, optionName], field, setter) => {
+        setter({
           ...user,
           [field]: optionName,
         });
@@ -104,6 +106,7 @@ describe("Radio", () => {
           user={user}
           editable={false}
           onChange={handleClick}
+          setUser={setUser}
         />
       );
     };

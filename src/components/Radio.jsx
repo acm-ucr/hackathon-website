@@ -6,6 +6,7 @@ const Radio = ({
   editable = true,
   required,
   onChange,
+  setUser,
 }) => {
   return (
     <div data-cy={`radio-${field}`} className="flex flex-col">
@@ -25,7 +26,7 @@ const Radio = ({
               data-cy={`radio-${option[1]}`}
               className="flex items-center whitespace-nowrap hover:cursor-pointer"
               key={index}
-              onChange={() => onChange(user, option, field)}
+              onChange={() => onChange(user, option, field, setUser)}
             >
               <div className="rounded-full w-4 border-black border aspect-square bg-transparent p-0.5 mr-1">
                 <div
