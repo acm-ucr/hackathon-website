@@ -44,13 +44,10 @@ describe("Radio", () => {
     const Parent = () => {
       const [user, setUser] = useState({ name: "" });
 
-      const handleClick = ([key, option], field) => {
+      const handleClick = ([_, option], field) => {
         setUser({
           ...user,
-          [field]:
-            field === "tier" || field === "affiliation" || field === "panelist"
-              ? key
-              : option,
+          [field]: option,
         });
       };
 
