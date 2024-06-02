@@ -31,7 +31,7 @@ const Radio = ({
                 <div
                   data-cy={`radio-button-${option[1]}`}
                   className={`rounded-full w-full aspect-square duration-100 ${
-                    user[field] === option[4]
+                    user[field] === option[1]
                       ? "bg-hackathon-green-300"
                       : "bg-transparent"
                   }`}
