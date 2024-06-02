@@ -25,7 +25,7 @@ const CustomToolbar = ({ onView, onNavigate, date, view, setTag }) => {
   }, [handleShortcuts]);
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between mb-2">
       <div className="flex flex-col items-center">
         <div className="flex justify-center items-center my-2">
           <FaChevronLeft
@@ -56,38 +56,40 @@ const CustomToolbar = ({ onView, onNavigate, date, view, setTag }) => {
           />
         </div>
       </div>
-      <div className="flex flex-col items-end">
+      <div className="flex flex-col items-center md:items-end">
         <Tag
           text="all events"
           color={COLORS["gray"]}
           classes="my-1"
           onClick={() => setTag("all")}
         />
-        <div className="flex justify-end items-center flex-wrap gap-x-2">
-          {Object.entries(LABELS)
-            .filter(([_, { type }]) => type === "leads")
-            .map(([key, { color }], index) => (
-              <Tag
-                key={index}
-                text={key}
-                color={COLORS[color]}
-                classes="my-1"
-                onClick={() => setTag(key)}
-              />
-            ))}
-        </div>
-        <div className="flex justify-evenly items-center flex-wrap gap-x-2">
-          {Object.entries(LABELS)
-            .filter(([_, { type }]) => type !== "leads")
-            .map(([key, { color }], index) => (
-              <Tag
-                key={index}
-                text={key}
-                color={COLORS[color]}
-                classes="my-1"
-                onClick={() => setTag(key)}
-              />
-            ))}
+        <div className=" flex md:block flex-row">
+          <div className="flex flex-col md:flex-row justify-end items-center flex-wrap gap-x-2">
+            {Object.entries(LABELS)
+              .filter(([_, { type }]) => type === "leads")
+              .map(([key, { color }], index) => (
+                <Tag
+                  key={index}
+                  text={key}
+                  color={COLORS[color]}
+                  classes="my-1"
+                  onClick={() => setTag(key)}
+                />
+              ))}
+          </div>
+          <div className="flex flex-col md:flex-row justify-start md:justify-end items-center flex-wrap gap-x-2">
+            {Object.entries(LABELS)
+              .filter(([_, { type }]) => type !== "leads")
+              .map(([key, { color }], index) => (
+                <Tag
+                  key={index}
+                  text={key}
+                  color={COLORS[color]}
+                  classes="my-1"
+                  onClick={() => setTag(key)}
+                />
+              ))}
+          </div>
         </div>
       </div>
     </div>
