@@ -1,5 +1,4 @@
 import data from "@/data/Config";
-import { phone } from "@/data/form/Regex";
 
 export const TIERS = {
   tier1: "Bronze",
@@ -39,17 +38,6 @@ export const FIELDS = {
     width: 12,
     editable: false,
     required: true,
-  },
-  phone: {
-    input: "input",
-    name: "phone",
-    type: "phone",
-    title: "Phone Number",
-    placeholder: "123 456 7890",
-    maxLength: 50,
-    width: 12,
-    required: true,
-    regex: phone,
   },
   company: {
     input: "input",
@@ -111,7 +99,6 @@ export const FIELDS = {
 export const ATTRIBUTES = {
   name: "",
   email: "",
-  phone: "",
   company: "",
   position: "",
   tier: "",

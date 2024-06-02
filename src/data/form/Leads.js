@@ -31,16 +31,6 @@ export const FIELDS = {
     editable: false,
     required: true,
   },
-  phone: {
-    input: "input",
-    name: "phone",
-    type: "phone",
-    title: "Phone Number",
-    placeholder: "123 456 7890",
-    maxLength: 50,
-    width: 12,
-    required: true,
-  },
   discord: {
     input: "input",
     name: "discord",
@@ -173,7 +163,6 @@ export const FIELDS = {
 export const ATTRIBUTES = {
   name: "",
   email: "",
-  phone: "",
   major: "",
   age: "",
   school: "",

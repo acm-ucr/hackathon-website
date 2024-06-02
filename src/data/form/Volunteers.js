@@ -1,6 +1,5 @@
 import { MAJORS, GRADES, GENDERS, SHIRTS, AVAILABILITY } from "./Information";
 import data from "@/data/Config";
-import { phone } from "@/data/form/Regex";
 
 export const FIELDS = {
   description: {
@@ -33,18 +32,6 @@ export const FIELDS = {
     editable: false,
     required: true,
   },
-  phone: {
-    input: "input",
-    name: "phone",
-    type: "phone",
-    title: "Phone Number",
-    placeholder: "123 456 7890",
-    maxLength: 50,
-    width: 12,
-    required: true,
-    regex: phone,
-  },
-
   discord: {
     input: "input",
     name: "discord",
@@ -121,7 +108,6 @@ export const FIELDS = {
 export const ATTRIBUTES = {
   name: "",
   email: "",
-  phone: "",
   discord: "",
   major: "",
   grade: "",
