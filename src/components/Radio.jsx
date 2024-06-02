@@ -7,12 +7,8 @@ const Radio = ({
   editable = true,
   required,
 }) => {
-  const handleClick = (optionKey, option) => {
-    if (field === "tier" || field === "affiliation" || field === "panelist") {
-      setUser({ ...user, [field]: optionKey });
-    } else {
-      setUser({ ...user, [field]: option });
-    }
+  const handleClick = (option) => {
+    setUser({ ...user, [field]: option[1] });
   };
 
   return (
@@ -39,7 +35,7 @@ const Radio = ({
                 <div
                   data-cy={`radio-button-${option[1]}`}
                   className={`rounded-full w-full aspect-square duration-100 ${
-                    user[field] === option[0] || user[field] === option[1]
+                    user[field] === option[1] || user[field] === option[0]
                       ? "bg-hackathon-green-300"
                       : "bg-transparent"
                   }`}
