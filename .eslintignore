@@ -35,6 +35,3 @@ yarn-error.log*
 next-env.d.ts
 
 .env
-
-#for Neovim users
-~/
