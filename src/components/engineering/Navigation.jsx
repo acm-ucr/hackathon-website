@@ -1,6 +1,8 @@
 import { TABS } from "@/data/engineering/Navigation";
 import { SiGithub } from "react-icons/si";
 import Link from "next/link";
+import Image from "next/image";
+import LOGO from "@/app/favicon.ico";
 
 const Navigation = () => {
   return (
