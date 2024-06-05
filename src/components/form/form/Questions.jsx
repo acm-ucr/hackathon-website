@@ -56,6 +56,13 @@ const Questions = ({
     onSubmit(setLoading, setState);
   };
 
+  const handleClick = (user, option, field, setUser) => {
+    setUser({
+      ...user,
+      [field]: option,
+    });
+  };
+
   return (
     <div className="flex flex-col w-full gap-5">
       {Object.values(fields).map((field, index) => (
@@ -147,6 +154,7 @@ const Questions = ({
               user={object}
               setUser={setObject}
               required={field.required}
+              onClick={handleClick}
             />
           )}
           {field.input === "textarea" && (

@@ -6,10 +6,7 @@ describe("Radio", () => {
   const handleClick = (user, option, field, setUser) => {
     setUser({
       ...user,
-      [field]:
-        field === "tier" || field === "affiliation" || field === "panelist"
-          ? option[0]
-          : option[1],
+      [field]: option,
     });
   };
   it("renders text", () => {
@@ -32,13 +29,13 @@ describe("Radio", () => {
 
     cy.get("[data-cy=radio-gender]").should("exist");
 
-    cy.get("[data-cy=radio-Female]").should("have.text", GENDERS[0]);
+    cy.get("[data-cy=radio-female]").should("have.text", GENDERS[0]);
 
-    cy.get("[data-cy=radio-Male]").should("have.text", GENDERS[1]);
+    cy.get("[data-cy=radio-male]").should("have.text", GENDERS[1]);
 
-    cy.get("[data-cy=radio-Transgender]").should("have.text", GENDERS[2]);
+    cy.get("[data-cy=radio-transgender]").should("have.text", GENDERS[2]);
 
-    cy.get("[data-cy=radio-Nonbinary]").should("have.text", GENDERS[3]);
+    cy.get("[data-cy=radio-nonbinary]").should("have.text", GENDERS[3]);
   });
 
   it("selects options when editable", () => {
@@ -59,25 +56,25 @@ describe("Radio", () => {
 
     cy.mount(<Parent />);
 
-    cy.get("[data-cy=radio-button-Female]").click();
+    cy.get("[data-cy=radio-button-female]").click();
 
-    cy.get("[data-cy=radio-button-Female]").should(
+    cy.get("[data-cy=radio-button-female]").should(
       "have.class",
       "bg-hackathon-green-300"
     );
 
-    cy.get("[data-cy=radio-button-Male]").should(
+    cy.get("[data-cy=radio-button-male]").should(
       "have.class",
       "bg-transparent"
     );
 
-    cy.get("[data-cy=radio-button-Male]").click();
-    cy.get("[data-cy=radio-button-Male]").should(
+    cy.get("[data-cy=radio-button-male]").click();
+    cy.get("[data-cy=radio-button-male]").should(
       "have.class",
       "bg-hackathon-green-300"
     );
 
-    cy.get("[data-cy=radio-button-Female]").should(
+    cy.get("[data-cy=radio-button-female]").should(
       "have.class",
       "bg-transparent"
     );

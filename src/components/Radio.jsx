@@ -21,24 +21,24 @@ const Radio = ({
       )}
       {editable && (
         <div className="grid grid-cols-2 md:grid-cols-3 w-full">
-          {Object.entries(options).map((option, index) => (
+          {Object.entries(options).map(([_, option], index) => (
             <div
-              data-cy={`radio-${option[1]}`}
+              data-cy={`radio-${option.toLowerCase()}`}
               className="flex items-center whitespace-nowrap hover:cursor-pointer"
               key={index}
               onClick={() => onClick(user, option, field, setUser)}
             >
               <div className="rounded-full w-4 border-black border aspect-square bg-transparent p-0.5 mr-1">
                 <div
-                  data-cy={`radio-button-${option[1]}`}
+                  data-cy={`radio-button-${option.toLowerCase()}`}
                   className={`rounded-full w-full aspect-square duration-100 ${
-                    user[field] === option[0] || user[field] === option[1]
+                    user[field] === option
                       ? "bg-hackathon-green-300"
                       : "bg-transparent"
                   }`}
                 />
               </div>
-              {option[1]}
+              {option}
             </div>
           ))}
         </div>

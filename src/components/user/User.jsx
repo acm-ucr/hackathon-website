@@ -21,6 +21,13 @@ const User = ({ user, setUser, edit, setEdit }) => {
     setEdit(true);
   };
 
+  const handleClick = (user, option, field, setUser) => {
+    setUser({
+      ...user,
+      [field]: option,
+    });
+  };
+
   const handleSave = async () => {
     if (
       Object.values(user).some(
@@ -96,6 +103,7 @@ const User = ({ user, setUser, edit, setEdit }) => {
           user={user}
           setUser={setUser}
           editable={edit}
+          onClick={handleClick}
         />
         <Radio
           text="Shirt"
@@ -104,6 +112,7 @@ const User = ({ user, setUser, edit, setEdit }) => {
           user={user}
           setUser={setUser}
           editable={edit}
+          onClick={handleClick}
         />
         <div>
           <p className="mb-1 font-semibold">Diet</p>
