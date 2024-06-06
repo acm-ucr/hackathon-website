@@ -1,21 +1,16 @@
-import { ITEMS } from "@/data/FAQ";
-import { Accordion } from "react-bootstrap";
+"use client";
+import { QUESTIONS } from "@/data/FAQ";
 import Item from "./Item";
+
 const FAQ = () => {
   return (
-    <div className=" text-black flex justify-center w-full">
-      <div className="flex justify-center items-center flex-col w-8/12 bg-hackathon-green-100">
-        <div className="text-3xl font-bold text-black">FAQ</div>
-        <Accordion className="w-full mt-8 text-sm md:text-base" alwaysOpen>
-          {ITEMS.map(({ question, answer }, index) => (
-            <Item
-              question={question}
-              answer={answer}
-              key={index}
-              index={index}
-            />
-          ))}
-        </Accordion>
+    <div className="w-full h-full flex flex-col items-center ">
+      <div className="flex w-8/12 overflow-hidden flex-col">
+        {QUESTIONS.map((faq, index) => (
+          <Item key={index} index={index} title={faq.question}>
+            {faq.answer}
+          </Item>
+        ))}
       </div>
     </div>
   );

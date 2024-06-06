@@ -13,8 +13,6 @@ const Events = ({ events, totalDays }) => {
 
   return (
     <div className=" flex flex-col justify-center items-center ">
-      <p className="text-3xl font-bold inline-block">SCHEDULE</p>
-
       <div className="text-base w-10/12 justify-between items-center mx-auto grid grid-cols-6 rounded border-2 border-black">
         {totalDays.map((day) => (
           <button

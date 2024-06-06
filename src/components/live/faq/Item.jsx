@@ -1,35 +1,25 @@
-"use client";
-import { FaChevronDown } from "react-icons/fa6";
-import { Accordion } from "react-bootstrap";
 import { useState } from "react";
+import { FaChevronDown } from "react-icons/fa6";
 
-const Item = ({ question, answer, index }) => {
+const Item = ({ title, children }) => {
   const [state, setState] = useState(false);
-
   return (
-    <Accordion.Item
-      eventKey={index}
-      className="!text-black bg-transparent !border-x-0 !border-t-0 !border-b-2"
-    >
-      <Accordion.Button
-        className="after:!bg-none !text-black !bg-transparent !shadow-none flex justify-between w-full"
+    <div>
+      <button
         onClick={() => setState(!state)}
+        className="flex items-center justify-between w-full py-3 text-lg whitespace-nowrap"
       >
-        <div className=" flex justify-start w-full font-semibold">
-          {question}
-        </div>
-        <FaChevronDown
-          className={`${
-            state && "rotate-180"
-          } duration-200 ml-2 text-xl lg:text-2xl`}
-        />
-      </Accordion.Button>
-      {state && (
-        <Accordion.Body className="!border-none py-4 font-semibold">
-          {answer}
-        </Accordion.Body>
-      )}
-    </Accordion.Item>
+        {title}
+        <FaChevronDown className={`${state && "rotate-180"} duration-500 `} />
+      </button>
+      <div
+        className={`transition-opacity duration-500 ease-in-out ${
+          state ? "opacity-100 " : "opacity-0 "
+        }`}
+      >
+        {state && <div className={` text-black text-base `}>{children}</div>}
+      </div>
+    </div>
   );
 };
 

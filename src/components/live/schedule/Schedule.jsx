@@ -7,14 +7,17 @@ const Schedule = async () => {
     method: "GET",
   });
 
-  items.forEach((event) => {
-    event.start = new Date(event.start.dateTime);
-    event.end = new Date(event.end.dateTime);
-    event.day = event.start.toLocaleString("en-US", {
-      timeZone: "America/Los_Angeles",
-      weekday: "long",
-    });
-  });
+  {
+    items &&
+      items.forEach((event) => {
+        event.start = new Date(event.start.dateTime);
+        event.end = new Date(event.end.dateTime);
+        event.day = event.start.toLocaleString("en-US", {
+          timeZone: "America/Los_Angeles",
+          weekday: "long",
+        });
+      });
+  }
 
   const totalDays = [...new Set(items.map(({ day }) => day))];
 

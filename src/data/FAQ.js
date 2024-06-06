@@ -1,4 +1,4 @@
-export const ITEMS = [
+export const QUESTIONS = [
   {
     question: "What is hackathon website?",
     answer:
