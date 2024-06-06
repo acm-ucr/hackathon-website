@@ -62,6 +62,7 @@ export const FIELDS = {
     title: `Is there anything else you'd like to let us know about ${data.name}?`,
     placeholder: "N/A",
     width: 12,
+    required: true,
   },
 };
 

@@ -8,11 +8,12 @@ import { LuParkingCircle } from "react-icons/lu";
 import Rooms from "./Rooms";
 import Packing from "./Packing";
 import Hackpacks from "./Hackpacks";
-import Collapse from "./Collapse";
+import BulletList from "./BulletList";
 import { useState } from "react";
 import BulletPoints from "./BulletPoints";
 import { JUDGING } from "@/data/user/Judging";
 import { RULES } from "@/data/user/Rules";
+import Collapse from "./Collapse";
 
 const Dashboard = () => {
   const { data: session } = useSession();
@@ -37,12 +38,12 @@ const Dashboard = () => {
         </div>
 
         <div className="flex flex-col gap-4">
-          <Collapse setExpand={setExpand} expand={expand} text="Rules">
+          <BulletList text="Rules">
             <BulletPoints list={RULES} />
-          </Collapse>
-          <Collapse setExpand={setExpand} expand={expand} text="Judging">
+          </BulletList>
+          <BulletList text="Judging">
             <BulletPoints list={JUDGING} />
-          </Collapse>
+          </BulletList>
           <Collapse setExpand={setExpand} expand={expand} text="Hackpacks">
             <Hackpacks />
           </Collapse>
