@@ -17,11 +17,11 @@ const Schedule = async () => {
           weekday: "long",
         });
       });
+
+    const totalDays = [...new Set(items.map(({ day }) => day))];
+
+    return <Events events={items} totalDays={totalDays} />;
   }
-
-  const totalDays = [...new Set(items.map(({ day }) => day))];
-
-  return <Events events={items} totalDays={totalDays} />;
 };
 
 export default Schedule;
