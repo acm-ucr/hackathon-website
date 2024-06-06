@@ -59,7 +59,7 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
     let judge = 0;
     let round = 0;
 
-    // assign everyting.
+    // assign judges
     for (let j = 0; j < input.rotations; j += 1) {
       for (let i = 0; i < teams.length; i += 1) {
         if (round === parseInt(input.rotations)) continue;
