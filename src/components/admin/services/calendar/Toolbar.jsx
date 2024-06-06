@@ -63,7 +63,7 @@ const CustomToolbar = ({ onView, onNavigate, date, view, setTag }) => {
           classes="my-1"
           onClick={() => setTag("all")}
         />
-        <div className=" flex md:block flex-row">
+        <div className="flex md:block flex-col">
           <div className="flex flex-col md:flex-row justify-end items-center flex-wrap gap-x-2">
             {Object.entries(LABELS)
               .filter(([_, { type }]) => type === "leads")
