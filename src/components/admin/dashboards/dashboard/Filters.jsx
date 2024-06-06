@@ -5,7 +5,7 @@ const Filters = ({ statuses, filters, setFilters }) => {
     filters.find(({ id }) => id === "status")?.value || [];
 
   return (
-    <div className="w-fit grid grid-cols-6 gap-2">
+    <div className="flex gap-2">
       {Object.entries(statuses).map(([key, value]) => (
         <Filter
           key={key}

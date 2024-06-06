@@ -27,9 +27,7 @@ const Toolbar = ({
   const [search, setSearch] = useState({
     search: "name",
   });
-
   const rows = selectedRows.rows.map(({ original }) => original);
-
   const [popup, setPopup] = useState({
     title: "",
     text: "",
@@ -38,10 +36,8 @@ const Toolbar = ({
     onClick: () => {},
     button: "",
   });
-
   const handleReload = async () => {
     const { index, size, first, last, direction } = searchParams;
-
     setLoading(true);
     setData([]);
     api({
@@ -142,17 +138,22 @@ const Toolbar = ({
     );
 
   return (
-    <div className="flex items-center my-2 gap-3" data-cy="toolbar">
-      {tags.map((tag, index) => (
-        <Tag
-          key={index}
-          text={tag.text}
-          onClick={() => onClick(tag.value)}
-          color={COLORS[tag.value]}
-        />
-      ))}
-      <div className="flex items-center w-full">
-        <div className="w-2/12 z-10 mx-2">
+    <div
+      className="grid grid-col-6 md:grid-cols-12 items-center my-2 gap-3"
+      data-cy="toolbar"
+    >
+      <div className="flex col-span-3">
+        {tags.map((tag, index) => (
+          <Tag
+            key={index}
+            text={tag.text}
+            onClick={() => onClick(tag.value)}
+            color={COLORS[tag.value]}
+          />
+        ))}
+      </div>
+      <div className="hidden md:flex col-span-6 space-x-1 items-center">
+        <div className="w-2/12 z-10 mx-2>">
           <Select
             items={searchableItems}
             user={search}
@@ -172,20 +173,43 @@ const Toolbar = ({
           clearFn={() => onChange(search.search, "")}
         />
       </div>
-      <div>
-        Rows:<span className="mx-2">{data.length}</span>
+      <div className="flex col-span-3 items-center justify-end">
+        <div>
+          Rows:<span className="mx-2">{data.length}</span>
+        </div>
+        <FaUndoAlt
+          size={22.5}
+          onClick={handleReload}
+          className="text-hackathon-grey-300 hover:opacity-70 duration-150 hover:cursor-pointer"
+        />
+        <FaTrashAlt
+          data-cy="delete"
+          onClick={confirmDelete}
+          size={22.5}
+          className="text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer mx-2"
+        />
       </div>
-      <FaUndoAlt
-        size={22.5}
-        onClick={handleReload}
-        className="text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
-      />
-      <FaTrashAlt
-        data-cy="delete"
-        onClick={confirmDelete}
-        size={22.5}
-        className="text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer mx-2"
-      />
+      <div className="flex col-span-6 md:hidden space-x-1 items-cente">
+        <div className="w-2/12 z-10 mx-2>">
+          <Select
+            items={searchableItems}
+            user={search}
+            setUser={setSearch}
+            field="search"
+          />
+        </div>
+        <Input
+          label="search"
+          classes="w-full"
+          placeholder="Search"
+          showLabel={false}
+          maxLength={100}
+          clear={true}
+          value={value}
+          onChangeFn={(e) => onChange(search.search, e.target.value)}
+          clearFn={() => onChange(search.search, "")}
+        />
+      </div>
       {popup.visible && (
         <Popup
           popup={popup}
