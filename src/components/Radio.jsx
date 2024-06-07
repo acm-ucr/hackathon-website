@@ -21,7 +21,7 @@ const Radio = ({
       )}
       {editable && (
         <div className="grid grid-cols-2 md:grid-cols-3 w-full">
-          {Object.entries(options).map(([_, option], index) => (
+          {Object.values(options).map((option, index) => (
             <div
               data-cy={`radio-${option.toLowerCase()}`}
               className="flex items-center whitespace-nowrap hover:cursor-pointer"
