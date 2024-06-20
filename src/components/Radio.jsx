@@ -26,7 +26,7 @@ const Radio = ({
               data-cy={`radio-${option.toLowerCase()}`}
               className="flex items-center whitespace-nowrap hover:cursor-pointer"
               key={index}
-              onClick={() => onClick(user, option, field, setUser)}
+              onClick={() => onClick(option, field)}
             >
               <div className="rounded-full w-4 border-black border aspect-square bg-transparent p-0.5 mr-1">
                 <div

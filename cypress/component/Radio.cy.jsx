@@ -3,15 +3,15 @@ import { GENDERS } from "@/data/form/Information";
 import { useState } from "react";
 
 describe("Radio", () => {
-  const handleClick = (user, option, field, setUser) => {
-    setUser({
-      ...user,
-      [field]: option,
-    });
-  };
   it("renders text", () => {
     const Parent = () => {
       const [user, setUser] = useState({ name: "" });
+      const handleClick = (option, field) => {
+        setUser({
+          ...user,
+          [field]: option,
+        });
+      };
       return (
         <Radio
           text="Gender"
@@ -41,6 +41,12 @@ describe("Radio", () => {
   it("selects options when editable", () => {
     const Parent = () => {
       const [user, setUser] = useState({ name: "" });
+      const handleClick = (option, field) => {
+        setUser({
+          ...user,
+          [field]: option,
+        });
+      };
       return (
         <Radio
           text="Gender"
@@ -83,6 +89,12 @@ describe("Radio", () => {
   it("cannot select options when uneditable", () => {
     const Parent = () => {
       const [user, setUser] = useState({ name: "" });
+      const handleClick = (option, field) => {
+        setUser({
+          ...user,
+          [field]: option,
+        });
+      };
       return (
         <Radio
           text="Gender"

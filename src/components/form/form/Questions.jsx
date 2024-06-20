@@ -56,9 +56,9 @@ const Questions = ({
     onSubmit(setLoading, setState);
   };
 
-  const handleClick = (user, option, field, setUser) => {
-    setUser({
-      ...user,
+  const handleClick = (option, field) => {
+    setObject({
+      ...object,
       [field]: option,
     });
   };
