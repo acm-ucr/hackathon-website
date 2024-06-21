@@ -4,8 +4,26 @@ import Title from "../../Title.jsx";
 import Table from "./Table.jsx";
 import Toolbar from "./Toolbar.jsx";
 
+const generateTEAMS = () => {
+  const TEAMS = [];
+  const charSet =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:',.<>?/";
+
+  for (let i = 0; i < 1000; i++) {
+    const charIndex = i % charSet.length;
+    TEAMS.push({
+      hidden: false,
+      name: `${charSet[charIndex]}Name${i + 1}`,
+      members: "stream brat",
+      rounds: [],
+    });
+  }
+  console.log(TEAMS);
+  return TEAMS;
+};
+
 const Judging = () => {
-  const [teams, setTeams] = useState(null);
+  const [teams, setTeams] = useState(generateTEAMS);
   const [judges, setJudges] = useState(null);
   const [view, setView] = useState(false);
 

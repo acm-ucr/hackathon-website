@@ -25,6 +25,10 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
     rotations: "",
     input: "",
   });
+  const [search, setSearch] = useState({
+    search: "",
+    input: "",
+  });
 
   const generate = (e) => {
     e.preventDefault();
@@ -149,7 +153,6 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
       method: "GET",
       url: "/api/judging",
     }).then(({ items }) => {
-      setData(items.teams);
       setJudges(items.judges);
 
       if (items.judges.length === 0) {
@@ -204,6 +207,17 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
               text="view"
               onClick={handleView}
               disabled={!data || data.some(({ rounds }) => rounds.length === 0)}
+            />
+          </div>
+          <div className="pl-2">
+            <Input
+              setObject={setSearch}
+              object={search}
+              label="search"
+              showLabel={false}
+              maxLength={100}
+              placeholder="Search"
+              clear={true}
             />
           </div>
         </div>
