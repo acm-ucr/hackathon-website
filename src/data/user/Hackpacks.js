@@ -4,10 +4,10 @@ import { IoLogoFirebase } from "react-icons/io5";
 import { BiLogoCPlusPlus, BiLogoMongodb } from "react-icons/bi";
 
 export const TECHSTACKS = {
-  JavaScript: <RiJavascriptFill />,
+  Javascript: <RiJavascriptFill />,
   "Next.js": <SiNextdotjs />,
-  firebase: <IoLogoFirebase />,
-  tailwind: <SiTailwindcss />,
+  Firebase: <IoLogoFirebase />,
+  Tailwind: <SiTailwindcss />,
   MongoDB: <BiLogoMongodb />,
   Arduino: <SiArduino />,
   "C++": <BiLogoCPlusPlus />,

@@ -57,6 +57,15 @@ export const COLUMNS = [
     searchable: true,
     cell: ({ getValue }) => <div>{getValue() ?? "N/A"}</div>,
   },
+  {
+    accessorKey: "shirt",
+    header: "Shirt",
+    width: "w-1/12",
+    enableColumnFilter: true,
+    filterFn: "includesString",
+    searchable: true,
+    cell: ({ getValue }) => <div>{getValue() ?? "N/A"}</div>,
+  },
   generateStatus(STATUSES),
   {
     accessorKey: "resume",

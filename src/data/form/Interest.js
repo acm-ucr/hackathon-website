@@ -1,4 +1,5 @@
 import data from "@/data/Config";
+import { SOURCES } from "./Information";
 
 export const FIELDS = {
   description: {
@@ -27,6 +28,15 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     editable: false,
+    required: true,
+  },
+  eventSource: {
+    input: "select",
+    title: `How did you find ${data.name}?`,
+    options: SOURCES,
+    field: "eventSource",
+    placeholder: "Event Source",
+    width: 12,
     required: true,
   },
   requirements: {
