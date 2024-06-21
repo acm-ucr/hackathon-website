@@ -14,7 +14,7 @@ export const TECHSTACKS = {
 };
 export const HACKPACKS = [
   {
-    link: "https://github.com",
+    link: "https://github.com/acm-ucr/firebase-nextjs-hackpack",
     text: "Full Stack Web App",
     techs: ["Javascript", "Next.js", "Firebase", "Tailwind"],
   },
@@ -23,5 +23,9 @@ export const HACKPACKS = [
     text: "Full Stack Web App",
     techs: ["Javascript", "Next.js", "MongoDB", "Tailwind"],
   },
-  { link: "https://github.com", text: "Hardware", techs: ["Arduino", "C++"] },
+  {
+    link: "https://github.com/acm-ucr/arduino-hackpack",
+    text: "Hardware",
+    techs: ["Arduino", "C++"],
+  },
 ];
