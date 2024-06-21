@@ -9,7 +9,7 @@ export const FIELDS = {
     width: 12,
     texts: [
       `Welcome to ${data.name} ${
-        parseInt(data.year) + 1
+        data.date.getFullYear() + 1
       }. Thank you for considering to become a lead, we appreciate your enthusiasm to join ${
         data.name
       }, a ${data.description} hackathon.`,
