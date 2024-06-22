@@ -15,7 +15,24 @@ A schedule is essential for any hackathon as it allows for a concise and organiz
 
 ## How did we implement it?
 
-so server components with gcal api
+In its initial implementation, the schedule was a client component, but we eventually transitioned it to a server component with the Google Calendar API, allowing events to be loaded asynchronously.
+
+The latest iteration uses React Server Components, creating a calendar wrapper that calls the API server-side and loads all the data.
+
+```js title="src\components\admin\services\calendar\CalendarWrapper.jsx"
+const CalendarEvents = async () => {
+  return (
+    <div className="relative h-screen">
+      <CalendarWrapper events={rawEvents} />
+    </div>
+  );
+};
+
+export default CalendarEvents;
+```
+
+The benefit of using Google Calendar is its seamless event updating, as organizers only need to update the Google Calendar, and these changes are immediately reflected in the schedule component.
+
 it used to be client side
 and now its server side
 and u can also talk bout the dynamic side of things
