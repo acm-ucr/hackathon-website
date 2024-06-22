@@ -12,7 +12,6 @@ const Navigation = () => {
             key={index}
             href={tab.link}
             className="mx-6 hover:text-white/50 duration-300"
-            title={tab.title}
           >
             {tab.label}
           </Link>

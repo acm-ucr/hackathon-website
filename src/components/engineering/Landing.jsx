@@ -8,6 +8,7 @@ const Landing = () => {
     <div className="flex flex-col md:flex-row items-center justify-center w-full pt-12 md:pt-0 md:min-h-screen">
       <div className="w-9/12 md:w-5/12 ml-0 md:ml-12">
         <div className="border-l-8 border-hackathon-blue-100 px-5 text-hackathon-green-300 mb-6">
+          <title>Hackathon Website</title>
           <div className="text-3xl md:text-5xl text-hackathon-blue-200 mb-4 font-bold">
             Hackathon Website
           </div>
