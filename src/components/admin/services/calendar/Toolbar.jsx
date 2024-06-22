@@ -25,7 +25,7 @@ const CustomToolbar = ({ onView, onNavigate, date, view, setTag }) => {
   }, [handleShortcuts]);
 
   return (
-    <div className="flex items-center justify-between mb-2">
+    <div className="flex flex-col md:flex-row items-center justify-between mb-2">
       <div className="flex flex-col items-center">
         <div className="flex justify-center items-center my-2">
           <FaChevronLeft
@@ -64,7 +64,7 @@ const CustomToolbar = ({ onView, onNavigate, date, view, setTag }) => {
           onClick={() => setTag("all")}
         />
         <div className="flex md:block flex-col">
-          <div className="flex flex-col md:flex-row justify-end items-center flex-wrap gap-x-2">
+          <div className="flex justify-center md:justify-end items-center flex-wrap gap-x-2">
             {Object.entries(LABELS)
               .filter(([_, { type }]) => type === "leads")
               .map(([key, { color }], index) => (
@@ -77,7 +77,7 @@ const CustomToolbar = ({ onView, onNavigate, date, view, setTag }) => {
                 />
               ))}
           </div>
-          <div className="flex flex-col md:flex-row justify-start md:justify-end items-center flex-wrap gap-x-2">
+          <div className="flex  justify-center md:justify-end items-center flex-wrap gap-x-2">
             {Object.entries(LABELS)
               .filter(([_, { type }]) => type !== "leads")
               .map(([key, { color }], index) => (
