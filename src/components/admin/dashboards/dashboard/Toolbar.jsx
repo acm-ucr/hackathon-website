@@ -139,7 +139,7 @@ const Toolbar = ({
 
   return (
     <div
-      className="grid grid-col-6 md:grid-cols-12 items-center my-2 gap-3"
+      className="grid md:grid-cols-12 items-center my-2 gap-3"
       data-cy="toolbar"
     >
       <div className="flex col-span-3">
@@ -173,7 +173,7 @@ const Toolbar = ({
           clearFn={() => onChange(search.search, "")}
         />
       </div>
-      <div className="flex col-span-3 items-center justify-end">
+      <div className="grid col-span-3 items-center justify-end">
         <div>
           Rows:<span className="mx-2">{data.length}</span>
         </div>
