@@ -40,7 +40,7 @@ export const HACKPACKS = [
   },
   {
     link: "https://github.com/acm-ucr/discord_python_hackpack",
-    text: "General-Purpose Python",
+    text: "Python Application",
     techs: ["Python"],
   },
 ];
