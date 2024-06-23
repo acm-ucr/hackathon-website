@@ -14,7 +14,7 @@ const Modal = ({ data, setModal }) => {
       <div className="px-3 rounded-b-xl py-2 border-x-2 border-b-2 border-hackathon-darkgray relative flex w-full h-full justify-center">
         <embed
           fill={true}
-          className="object-cover"
+          className="object-cover w-full h-full"
           src={data.src}
           alt="Photo of the Judge"
         />
