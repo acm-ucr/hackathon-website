@@ -7,7 +7,17 @@ export const FIELDS = {
     input: "description",
     width: 12,
     texts: [
-      `Welcome to ${data.name}. Thank you for considering to become a mentor, we appreciate your efforts to help support ${data.name}. ${data.name} is a ${data.description} hackathon spanning ${data.length} on ${data.date}.`,
+      `Welcome to ${
+        data.name
+      }. Thank you for considering to become a mentor, we appreciate your efforts to help support ${
+        data.name
+      }. ${data.name} is a ${data.description} hackathon spanning ${
+        data.length
+      } on ${data.date.toLocaleString("default", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      })}.`,
       "Mentors are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
       "Mentor duties include but are not limited to providing expertise and assistance to hackers throughout the hackathon without jeopardizing their chances at winning.",
       "Note: Mentors are not permitted to become participants for the hackathon.",

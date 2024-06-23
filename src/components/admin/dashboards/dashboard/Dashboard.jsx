@@ -68,6 +68,7 @@ const Dashboard = ({
         />
       </div>
       <Toolbar
+        meta={meta}
         setMeta={setMeta}
         searchParams={searchParams}
         page={page}
