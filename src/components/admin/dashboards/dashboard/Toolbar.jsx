@@ -22,6 +22,7 @@ const Toolbar = ({
   searchableItems,
   searchParams,
   setMeta,
+  meta,
 }) => {
   const selectedRows = getFilteredSelectedRowModel();
   const [search, setSearch] = useState({
@@ -173,7 +174,7 @@ const Toolbar = ({
         />
       </div>
       <div>
-        Rows:<span className="mx-2">{data.length}</span>
+        Rows:<span className="mx-2">{meta.total}</span>
       </div>
       <FaUndoAlt
         size={22.5}
