@@ -51,13 +51,13 @@ const updateRoleCounts = async (role) => {
 };
 export const GET = async () => {
   const res = NextResponse;
-  const { auth } = await authenticate({
+  const { auth, message } = await authenticate({
     admins: [1],
   });
 
   if (auth !== 200) {
     return res.json(
-      { message: `Authentication Error: ${"MESSAGE VARIABLE SHOULD BE HERE"}` },
+      { message: `Authentication Error: ${message}` },
       { status: auth }
     );
   }

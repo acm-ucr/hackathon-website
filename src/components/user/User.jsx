@@ -14,7 +14,6 @@ import Button from "../Button";
 import Checkbox from "../Checkbox";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
-import { phone } from "@/data/form/Regex";
 
 const User = ({ user, setUser, edit, setEdit }) => {
   const handleEdit = () => {
@@ -86,7 +85,6 @@ const User = ({ user, setUser, edit, setEdit }) => {
           user={user}
           setUser={setUser}
           editable={edit}
-          regex={phone}
         />
         <Select
           title="Age"

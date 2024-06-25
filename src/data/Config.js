@@ -4,7 +4,7 @@ const data = {
   email: "contact.acmucr@gmail.com",
   description: "DESCRIPTION",
   length: "HACKATHON_LENGTH",
-  date: "HACKATHON_DATE",
+  date: new Date("2024-04-12T13:20:00"),
   start_url: "/",
   year: "2024",
   end: new Date("2024-04-12T13:20:00"),
