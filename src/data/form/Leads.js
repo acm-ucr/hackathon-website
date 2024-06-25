@@ -43,7 +43,7 @@ export const FIELDS = {
     placeholder: "123 456 7890",
     maxLength: 50,
     width: 12,
-    required: false,
+    required: true,
   },
   discord: {
     input: "input",
