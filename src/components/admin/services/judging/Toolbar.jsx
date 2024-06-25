@@ -153,6 +153,7 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
       method: "GET",
       url: "/api/judging",
     }).then(({ items }) => {
+      // setData(items.teams);
       setJudges(items.judges);
 
       if (items.judges.length === 0) {
