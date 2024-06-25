@@ -28,12 +28,19 @@ export const GET = async () => {
   const judges = [];
 
   try {
-    const teamsSnapshot = await getDocs(
+    const teamsPromise = getDocs(
       query(
         collection(db, "teams"),
         or(where("status", "==", 1), where("status", "==", 0))
       )
     );
+
+    const judgesPromise = getDocs(
+      query(collection(db, "users"), where("roles.judges", "==", 1))
+    );
+
+    const [teamsSnapshot, judgesSnapshot] = await Promise.all([teamsPromise, judgesPromise]);
+
     teamsSnapshot.forEach((doc) => {
       const { links, name, rounds, table } = doc.data();
 
@@ -55,9 +62,6 @@ export const GET = async () => {
       }
     });
 
-    const judgesSnapshot = await getDocs(
-      query(collection(db, "users"), where("roles.judges", "==", 1))
-    );
     judgesSnapshot.forEach((doc) => {
       const { affiliation, name } = doc.data();
 
@@ -94,12 +98,14 @@ export const DELETE = async (req) => {
   const ids = req.nextUrl.searchParams.get("ids").split(",");
 
   try {
-    ids.forEach(async (id) => {
-      await updateDoc(doc(db, "teams", id), {
-        table: deleteField(),
-        rounds: deleteField(),
-      });
-    });
+    await Promise.all(
+      ids.map((id) => {
+        return updateDoc(doc(db, "teams", id), {
+          table: deleteField(),
+          rounds: deleteField(),
+        });
+      })
+    );
 
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
@@ -125,9 +131,9 @@ export const PUT = async (req) => {
 
   try {
     await Promise.all(
-      teams.map(async (object) => {
+      teams.map((object) => {
         const rounds = JSON.stringify(object.rounds);
-        await updateDoc(doc(db, "teams", object.uid), {
+        return updateDoc(doc(db, "teams", object.uid), {
           table: object.table,
           rounds: rounds,
         });
@@ -142,3 +148,4 @@ export const PUT = async (req) => {
     );
   }
 };
+
