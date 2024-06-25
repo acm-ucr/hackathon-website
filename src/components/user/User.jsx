@@ -20,7 +20,7 @@ const User = ({ user, setUser, edit, setEdit }) => {
     setEdit(true);
   };
 
-  const handleClick = (user, option, field, setUser) => {
+  const handleClick = (option, field) => {
     setUser({
       ...user,
       [field]: option,
