@@ -137,6 +137,7 @@ export const FIELDS = {
 export const ATTRIBUTES = {
   name: "",
   email: "",
+  phone: "",
   discord: "",
   major: "",
   grade: "",
