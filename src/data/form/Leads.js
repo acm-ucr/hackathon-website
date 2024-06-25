@@ -8,7 +8,11 @@ export const FIELDS = {
     input: "description",
     width: 12,
     texts: [
-      `Welcome to ${data.name}. Thank you for considering to become a lead, we appreciate your enthusiasm to join ${data.name}. ${data.name} is a ${data.description} hackathon spanning ${data.length} on ${data.date}.`,
+      `Welcome to ${data.name} ${
+        data.date.getFullYear() + 1
+      }. Thank you for considering to become a lead, we appreciate your enthusiasm to join ${
+        data.name
+      }, a ${data.description} hackathon.`,
     ],
   },
   name: {
@@ -30,6 +34,16 @@ export const FIELDS = {
     width: 12,
     editable: false,
     required: true,
+  },
+  phone: {
+    input: "input",
+    name: "phone",
+    type: "phone",
+    title: "Phone Number",
+    placeholder: "123 456 7890",
+    maxLength: 50,
+    width: 12,
+    required: false,
   },
   discord: {
     input: "input",
