@@ -114,29 +114,27 @@ export const GET = async (req) => {
       );
     }
 
-    await Promise.all(
-      snapshot.docs.map(async (doc) => {
-        const {
-          rating,
-          additionalComments,
-          eventSource,
-          improvements,
-          notBeneficial,
-          helpful,
-          status,
-        } = doc.data();
-        output.push({
-          uid: doc.id,
-          rating,
-          additionalComments,
-          eventSource,
-          improvements,
-          notBeneficial,
-          helpful,
-          status,
-        });
-      })
-    );
+    snapshot.forEach((doc) => {
+      const {
+        rating,
+        additionalComments,
+        eventSource,
+        improvements,
+        notBeneficial,
+        helpful,
+        status,
+      } = doc.data();
+      output.push({
+        uid: doc.id,
+        rating,
+        additionalComments,
+        eventSource,
+        improvements,
+        notBeneficial,
+        helpful,
+        status,
+      });
+    });
 
     const countFromServer = await getCountFromServer(
       query(collection(db, "feedback"), where(`status`, "in", [-1, 0, 1]))
