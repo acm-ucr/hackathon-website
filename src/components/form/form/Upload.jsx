@@ -107,7 +107,7 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
 export default Upload;
 
 import React from "react";
-import Confirmation from "@/components/admin/Confirmation";
+import Confirmation from "@/components/email/Confirmation.jsx";
 
 describe("Confirmation", () => {
   it("should render and display correct message", () => {
