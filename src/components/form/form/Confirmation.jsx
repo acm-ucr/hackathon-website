@@ -5,7 +5,7 @@ const Confirmation = () => {
   const { width, height } = useWindowSize();
   return (
     <>
-      <Confetti height={height} width={width} />
+      <Confetti height={height} width={width} data-cy="confirmation-message" />
       Thank you for filling out the application form. Please watch out for an
       email with an application status update.
     </>

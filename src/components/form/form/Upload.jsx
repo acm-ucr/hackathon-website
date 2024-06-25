@@ -50,7 +50,6 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
               <BsUpload className=" text-3xl mb-2 text-hackathon-green-300" />
               <p
                 className="text-sm text-gray-500 font-semibold"
-                data-cy="confirmation-message"
               >
                 Upload from my computer
               </p>
@@ -105,22 +104,3 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
 };
 
 export default Upload;
-
-import React from "react";
-import Confirmation from "@/components/email/Confirmation.jsx";
-
-describe("Confirmation", () => {
-  it("should render and display correct message", () => {
-    const expectedText = "Thank you for applying!";
-    const Parent = () => {
-      return <Confirmation expectedText={expectedText} />;
-    };
-
-    cy.mount(<Parent />);
-    cy.get('[data-cy="confirmation-message"]').should("exist");
-    cy.get('[data-cy="confirmation-message"]').should(
-      "have.text",
-      expectedText
-    );
-  });
-});
