@@ -3,8 +3,8 @@ export const SHIRTS = ["XS", "S", "M", "L", "XL", "XXL"];
 export const GRADES = [
   "Less than High School",
   "High School",
-  "Undergraduate University",
-  "Graduate University (Masters, Doctoral, etc)",
+  "Undergraduate",
+  "Graduate (Masters, Doctoral, etc)",
   "Code School / Bootcamp",
   "Other Vocational / Trade Program / Apprenticeship",
   "Post Doctorate",
