@@ -9,13 +9,26 @@ const generateTEAMS = () => {
   const charSet =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:',.<>?/";
 
-  for (let i = 0; i < 1000; i++) {
+  for (let i = 0; i < 75; i++) {
     const charIndex = i % charSet.length;
     TEAMS.push({
       hidden: false,
       name: `${charSet[charIndex]}Name${i + 1}`,
-      members: "stream brat",
       rounds: [],
+      link: [
+        {
+          name: "github",
+          link: "https://github.com",
+        },
+        {
+          name: "devpost",
+          link: "https://rose-hack-2021.devpost.com",
+        },
+        {
+          name: "figma",
+          link: "https://figma.com",
+        },
+      ],
     });
   }
   console.log(TEAMS);

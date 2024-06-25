@@ -12,7 +12,13 @@ const Table = ({ data }) => {
   const { measureElement, getTotalSize, getVirtualItems } = useVirtualizer({
     count: team.length,
     getScrollElement: () => ref.current,
-    estimateSize: () => 15,
+    estimateSize: () => 50,
+    lanes: 4,
+    overscan: 3,
+    measureElement: (el) => {
+      if (el.innerText.length > 45) return 50;
+      else return 35;
+    },
   });
   console.log(getVirtualItems());
   return team === null ? (
@@ -20,7 +26,7 @@ const Table = ({ data }) => {
   ) : (
     <div
       ref={ref}
-      className="grid grid-cols-4 overflow-y-scroll"
+      className="overflow-y-scroll grid grid-cols-4"
       style={{
         height: `${getTotalSize()}px`,
       }}
@@ -29,9 +35,9 @@ const Table = ({ data }) => {
         const group = team[virtualItem.index];
         return (
           <div
-            key={virtualItem.index}
+            key={virtualItem.key}
             data-index={virtualItem.index}
-            className="flex justify-between items-start p-2"
+            className="flex items-start p-2"
             ref={measureElement}
             style={{
               height: `${virtualItem.size}px`,
