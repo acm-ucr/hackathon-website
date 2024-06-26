@@ -7,6 +7,7 @@ const Interests = ({ searchParams }) => {
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Table
         searchParams={searchParams}
+        title="Interests"
         columns={COLUMNS}
         tags={TAGS}
         statuses={STATUSES}

@@ -8,6 +8,7 @@ import {
   query,
   where,
   deleteField,
+  or,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/admin/Dashboard";
@@ -28,7 +29,10 @@ export const GET = async () => {
 
   try {
     const teamsSnapshot = await getDocs(
-      query(collection(db, "teams"), where("status", "==", 1))
+      query(
+        collection(db, "teams"),
+        or(where("status", "==", 1), where("status", "==", 0))
+      )
     );
     teamsSnapshot.forEach((doc) => {
       const { links, name, rounds, table } = doc.data();

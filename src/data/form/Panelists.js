@@ -1,7 +1,6 @@
 import { GENDERS } from "./Information";
 import { SHIRTS } from "./Information";
 import data from "@/data/Config";
-import { phone } from "@/data/form/Regex";
 
 export const PANELISTS = {
   professor: "Professor",
@@ -14,7 +13,17 @@ export const FIELDS = {
     input: "description",
     width: 12,
     texts: [
-      `Welcome to ${data.name}. Thank you for considering to become a panelist. We appreciate your efforts to help support ${data.name}. ${data.name} is a ${data.description} hackathon spanning ${data.length} on ${data.date}.`,
+      `Welcome to ${
+        data.name
+      }. Thank you for considering to become a panelist. We appreciate your efforts to help support ${
+        data.name
+      }. ${data.name} is a ${data.description} hackathon spanning ${
+        data.length
+      } on ${data.date.toLocaleString("default", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      })}.`,
       "Panelists are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
     ],
   },
@@ -47,7 +56,6 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     required: true,
-    regex: phone,
   },
   panelist: {
     input: "radio",
@@ -112,11 +120,13 @@ export const FIELDS = {
     required: true,
     options: [
       "I have read the MLH code of conduct and agree to the terms and conditions listed",
-      "I consent to photographs being taken and being used for future marketing purposes",
+      "I consent to photographs being taken and being used for marketing purposes",
       "I consent to providing a safe space for hackers to learn and grow their interests in computing",
       "I consent to following the provided guidelines and rules instructed by the organizing team",
       "I understand that failure to comply with guidelines or creating an unsafe space will result in my removal from the event",
       "I understand this is an in person event taking place in UCR and I must attend in person in order to judge",
+      "I authorize you to share my application/registration information with Major League Hacking for event administration, ranking, and MLH administration in-line with the MLH Privacy Policy",
+      "I further agree to the terms of both the MLH Contest Terms and Conditions and the MLH Privacy Policy",
     ],
   },
 };
