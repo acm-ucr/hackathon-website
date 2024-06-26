@@ -12,7 +12,7 @@ const Table = ({ data }) => {
   const { getTotalSize, getVirtualItems } = useVirtualizer({
     count: team.length,
     getScrollElement: () => ref.current,
-    estimateSize: () => 40,
+    estimateSize: () => 25,
   });
   console.log(getVirtualItems());
   return team === null ? (
@@ -31,11 +31,11 @@ const Table = ({ data }) => {
         return (
           <div
             key={`row: ${Math.floor(virtualItem.index / 4)}`}
-            className="flex flex-row justify-between"
+            className="grid grid-cols-4"
           >
             {row.map((group, index) => (
               <div
-                key={`column: ${virtualItem.index + index}`}
+                key={`column: ${index}`}
                 className="flex items-start p-2"
                 style={{
                   height: `${virtualItem.size}px`,
