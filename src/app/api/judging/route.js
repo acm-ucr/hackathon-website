@@ -39,7 +39,10 @@ export const GET = async () => {
       query(collection(db, "users"), where("roles.judges", "==", 1))
     );
 
-    const [teamsSnapshot, judgesSnapshot] = await Promise.all([teamsPromise, judgesPromise]);
+    const [teamsSnapshot, judgesSnapshot] = await Promise.all([
+      teamsPromise,
+      judgesPromise,
+    ]);
 
     teamsSnapshot.forEach((doc) => {
       const { links, name, rounds, table } = doc.data();
@@ -148,4 +151,3 @@ export const PUT = async (req) => {
     );
   }
 };
-
