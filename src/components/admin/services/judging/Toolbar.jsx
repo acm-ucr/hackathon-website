@@ -11,7 +11,14 @@ import { api } from "@/utils/api";
 
 const tags = ["professor", "industry", "student"];
 
-const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
+const Toolbar = ({
+  data,
+  setData,
+  setFilters,
+  view,
+  setView,
+  setJudgesView,
+}) => {
   const router = useRouter();
 
   const [judges, setJudges] = useState(null);
@@ -25,10 +32,7 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
     rotations: "",
     input: "",
   });
-  const [search, setSearch] = useState({
-    search: "",
-    input: "",
-  });
+  const [search, setSearch] = useState("");
 
   const generate = (e) => {
     e.preventDefault();
@@ -148,6 +152,18 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
     setJudgesView(totalJudges);
   };
 
+  const handleInput = (e) => {
+    setFilters(
+      data.filter(({ name }) =>
+        name.toLowerCase().search(e.target.value.toLowerCase()) === -1
+          ? false
+          : true
+      )
+    );
+
+    setSearch(e.target.value);
+  };
+
   const load = () => {
     api({
       method: "GET",
@@ -212,13 +228,14 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
           </div>
           <div className="pl-2">
             <Input
-              setObject={setSearch}
-              object={search}
+              value={search}
               label="search"
               showLabel={false}
               maxLength={100}
               placeholder="Search"
               clear={true}
+              clearFn={() => setSearch("")}
+              onChangeFn={handleInput}
             />
           </div>
         </div>

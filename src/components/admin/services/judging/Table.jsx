@@ -12,7 +12,7 @@ const Table = ({ data }) => {
   const { getTotalSize, getVirtualItems } = useVirtualizer({
     count: team.length,
     getScrollElement: () => ref.current,
-    estimateSize: () => 25,
+    estimateSize: () => 30,
   });
   console.log(getVirtualItems());
   return team === null ? (
