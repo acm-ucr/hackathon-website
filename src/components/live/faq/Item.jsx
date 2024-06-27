@@ -17,7 +17,7 @@ const Item = ({ title, children }) => {
           state ? "opacity-100 " : "opacity-0 "
         }`}
       >
-        {state && <div className={` text-black text-base `}>{children}</div>}
+        {state && <div className=" text-black text-base">{children}</div>}
       </div>
     </div>
   );

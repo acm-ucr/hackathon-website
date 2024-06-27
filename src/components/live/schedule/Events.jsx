@@ -37,7 +37,7 @@ const Events = ({ events, totalDays }) => {
                 key={index}
                 className="text-lg w-full py-3 font-semibold font-workSans bg-hackathon-green-100 px-4 grid grid-cols-4 justify-center items-center"
               >
-                <p className="">
+                <p>
                   {new Date(start).toLocaleTimeString("en-US", {
                     hour: "2-digit",
                     minute: "2-digit",
@@ -45,7 +45,7 @@ const Events = ({ events, totalDays }) => {
                   })}
                 </p>
                 <p className="w-full flex justify-center ">{summary}</p>
-                <p className=" flex justify-center ">
+                <p className="flex justify-center">
                   {description.split("\n")[0].substr(1)}
                 </p>
                 <p className="flex justify-center ">{location}</p>
