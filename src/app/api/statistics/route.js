@@ -18,12 +18,9 @@ export const GET = async () => {
   }
 
   try {
-    const statisticsDocRef = doc(db, "statistics", "statistics");
-    const eventsCollectionRef = collection(db, "events");
-
     const [statisticsDoc, eventsSnapshot] = await Promise.all([
-      getDoc(statisticsDocRef),
-      getDocs(eventsCollectionRef),
+      getDoc(doc(db, "statistics", "statistics")),
+      getDocs(collection(db, "events")),
     ]);
 
     const {
