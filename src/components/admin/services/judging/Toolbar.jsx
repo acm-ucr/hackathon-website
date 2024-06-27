@@ -48,14 +48,6 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
       return;
     }
 
-    // Filter Professors vs Students + Industry
-    const professors = judges.filter(
-      (judge) => judge.affiliation === "professor"
-    );
-    const studentsAndIndustry = judges.filter(
-      (judge) => judge.affiliation !== "professor"
-    );
-
     const teams = [...data];
 
     // Reset Rounds
@@ -67,73 +59,31 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
     let judge = 0;
     let round = 0;
 
-    // Assign Professors
+    // assign judges
     for (let j = 0; j < input.rotations; j += 1) {
       for (let i = 0; i < teams.length; i += 1) {
         if (round === parseInt(input.rotations)) continue;
         if (
           teams[i].rounds.some((judges) =>
-            judges.some(
-              (individual) => individual.name === professors[judge].name
-            )
+            judges.some((individual) => individual.name === judges[judge].name)
           )
         )
           continue;
-        if (judge < professors.length) {
-          teams[i].rounds[round].push(professors[judge]);
+        if (judge < judges.length) {
+          teams[i].rounds[round].push(judges[judge]);
           judge += 1;
         }
-        if (judge === professors.length) {
+        if (judge === judges.length) {
           judge = 0;
           round += 1;
         }
       }
     }
 
-    judge = 0;
-    round = 0;
-
-    // Assign Students + Industry
-    for (let j = 0; j < input.rotations; j += 1) {
-      for (let i = teams.length - 1; i > -1; i -= 1) {
-        if (round === parseInt(input.rotations)) continue;
-        if (
-          teams[i].rounds.some((judges) =>
-            judges.some(
-              (individual) =>
-                individual.name === studentsAndIndustry[judge].name
-            )
-          )
-        )
-          continue;
-        if (judge < studentsAndIndustry.length) {
-          teams[i].rounds[round].push(studentsAndIndustry[judge]);
-          judge += 1;
-        }
-        if (judge === studentsAndIndustry.length) {
-          judge = 0;
-          round += 1;
-        }
-      }
-    }
-
-    if (professors.length * input.rotations < teams.length) {
-      setPopup({
-        title: "Insufficient Professors",
-        text: "There are not enough professors to go around to each team. Please consider adding more professors via the judge dashboard. ",
-        color: "green",
-        visible: true,
-      });
-    }
-
-    if (
-      professors.length * input.rotations +
-        studentsAndIndustry.length * input.rotations <
-      teams.length
-    ) {
+    if (judges.length * input.rotations < teams.length) {
       setPopup({
         title: "Insufficient Judges",
-        text: "There are not enough judges, causing one or more teams to have no judges. Please consider adding more judges via the judges dashboard.",
+        text: "There are not enough judges to go around to each team. Please consider adding more judges via the judge dashboard. ",
         color: "green",
         visible: true,
       });

@@ -14,11 +14,17 @@ import Button from "../Button";
 import Checkbox from "../Checkbox";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
-import { phone } from "@/data/form/Regex";
 
 const User = ({ user, setUser, edit, setEdit }) => {
   const handleEdit = () => {
     setEdit(true);
+  };
+
+  const handleClick = (option, field) => {
+    setUser({
+      ...user,
+      [field]: option,
+    });
   };
 
   const handleSave = async () => {
@@ -79,7 +85,6 @@ const User = ({ user, setUser, edit, setEdit }) => {
           user={user}
           setUser={setUser}
           editable={edit}
-          regex={phone}
         />
         <Select
           title="Age"
@@ -96,6 +101,7 @@ const User = ({ user, setUser, edit, setEdit }) => {
           user={user}
           setUser={setUser}
           editable={edit}
+          onClick={handleClick}
         />
         <Radio
           text="Shirt"
@@ -104,6 +110,7 @@ const User = ({ user, setUser, edit, setEdit }) => {
           user={user}
           setUser={setUser}
           editable={edit}
+          onClick={handleClick}
         />
         <div>
           <p className="mb-1 font-semibold">Diet</p>
