@@ -14,7 +14,6 @@ const Table = ({ data }) => {
     getScrollElement: () => ref.current,
     estimateSize: () => 60,
   });
-  console.log(team);
   return team === null ? (
     <Loading />
   ) : (
