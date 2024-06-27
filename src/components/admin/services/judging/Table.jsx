@@ -7,24 +7,18 @@ import { useVirtualizer } from "@tanstack/react-virtual";
 import { useRef } from "react";
 
 const Table = ({ data }) => {
-  const team = data.filter((group) => !group.hidden);
+  const team = data?.filter((group) => !group.hidden);
   const ref = useRef(null);
-  const { getTotalSize, getVirtualItems } = useVirtualizer({
-    count: team.length,
+  const { getVirtualItems } = useVirtualizer({
+    count: team?.length,
     getScrollElement: () => ref.current,
-    estimateSize: () => 30,
+    estimateSize: () => 60,
   });
-  console.log(getVirtualItems());
+  console.log(team);
   return team === null ? (
     <Loading />
   ) : (
-    <div
-      ref={ref}
-      className="overflow-y-scroll"
-      style={{
-        height: `${getTotalSize()}px`,
-      }}
-    >
+    <div ref={ref} className="overflow-y-scroll h-full">
       {getVirtualItems().map((virtualItem, index) => {
         if (virtualItem.index % 4) return null;
         const row = team.slice(virtualItem.index, virtualItem.index + 4);
@@ -46,8 +40,8 @@ const Table = ({ data }) => {
                   <div className="flex justify-between items-center">
                     <Tag color={COLORS["grayblue"]} text={group.name} />
                     <div className="flex justify-start w-full ml-2">
-                      {group.link &&
-                        group.link
+                      {group.links &&
+                        group.links
                           .filter((l) => l.link.length)
                           .map((link, index) => (
                             <Link

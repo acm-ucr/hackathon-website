@@ -169,7 +169,8 @@ const Toolbar = ({
       method: "GET",
       url: "/api/judging",
     }).then(({ items }) => {
-      // setData(items.teams);
+      setData(items.teams);
+      setFilters(items.teams);
       setJudges(items.judges);
 
       if (items.judges.length === 0) {
