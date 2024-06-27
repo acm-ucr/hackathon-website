@@ -14,7 +14,6 @@ const Table = ({ data }) => {
     getScrollElement: () => ref.current,
     estimateSize: () => 30,
     measureElement: (el) => {
-      console.log(el);
       if (el.clientHeight > 300) return 80;
       else if (el.clientHeight > 200) return 60;
       else return 30;
