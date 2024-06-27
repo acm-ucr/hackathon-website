@@ -28,7 +28,9 @@ const Toolbar = ({
   const [search, setSearch] = useState({
     search: "name",
   });
+
   const rows = selectedRows.rows.map(({ original }) => original);
+
   const [popup, setPopup] = useState({
     title: "",
     text: "",
@@ -37,8 +39,10 @@ const Toolbar = ({
     onClick: () => {},
     button: "",
   });
+
   const handleReload = async () => {
     const { index, size, first, last, direction } = searchParams;
+
     setLoading(true);
     setData([]);
     api({
@@ -139,11 +143,11 @@ const Toolbar = ({
     );
 
   return (
-    <div
-      className="grid md:grid-cols-12 items-center my-2 gap-3"
-      data-cy="toolbar"
-    >
-      <div className="flex col-span-3">
+    // I moved the icons and rows into one div with the search stuff, and added a div for the tags
+    // what you can do now is manipulate how these are displayed on desktop vs laptop
+    // rn the divs are displayed in a full row on a laptop. We want them to be essentially in a column on mobile
+    <div className="flex items-center my-2 gap-3 w-full" data-cy="toolbar">
+      <div className="flex gap-3 ">
         {tags.map((tag, index) => (
           <Tag
             key={index}
@@ -153,8 +157,9 @@ const Toolbar = ({
           />
         ))}
       </div>
-      <div className="hidden md:flex col-span-6 space-x-1 items-center">
-        <div className="w-2/12 z-10 mx-2>">
+
+      <div className="flex items-center w-full">
+        <div className="w-2/12 z-10 mx-2">
           <Select
             items={searchableItems}
             user={search}
@@ -173,15 +178,13 @@ const Toolbar = ({
           onChangeFn={(e) => onChange(search.search, e.target.value)}
           clearFn={() => onChange(search.search, "")}
         />
-      </div>
-      <div className="grid col-span-3 items-center justify-end">
         <div>
-          Rows:<span className="mx-2">{data.length}</span>
+          Rows:<span className="mx-2">{meta.total}</span>
         </div>
         <FaUndoAlt
           size={22.5}
           onClick={handleReload}
-          className="text-hackathon-grey-300 hover:opacity-70 duration-150 hover:cursor-pointer"
+          className="text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
         />
         <FaTrashAlt
           data-cy="delete"
@@ -190,27 +193,7 @@ const Toolbar = ({
           className="text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer mx-2"
         />
       </div>
-      <div className="flex col-span-6 md:hidden space-x-1 items-cente">
-        <div className="w-2/12 z-10 mx-2>">
-          <Select
-            items={searchableItems}
-            user={search}
-            setUser={setSearch}
-            field="search"
-          />
-        </div>
-        <Input
-          label="search"
-          classes="w-full"
-          placeholder="Search"
-          showLabel={false}
-          maxLength={100}
-          clear={true}
-          value={value}
-          onChangeFn={(e) => onChange(search.search, e.target.value)}
-          clearFn={() => onChange(search.search, "")}
-        />
-      </div>
+
       {popup.visible && (
         <Popup
           popup={popup}
