@@ -39,15 +39,6 @@ export const COLUMNS = [
     cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   {
-    accessorKey: "phone",
-    header: "Phone",
-    width: "w-2/12",
-    enableColumnFilter: true,
-    filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
-  },
-  {
     accessorKey: "company",
     header: "Company",
     width: "w-2/12",
