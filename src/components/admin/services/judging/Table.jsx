@@ -9,10 +9,16 @@ import { useRef } from "react";
 const Table = ({ data }) => {
   const team = data?.filter((group) => !group.hidden);
   const ref = useRef(null);
-  const { getVirtualItems } = useVirtualizer({
+  const { measureElement, getVirtualItems } = useVirtualizer({
     count: team?.length,
     getScrollElement: () => ref.current,
-    estimateSize: () => 60,
+    estimateSize: () => 30,
+    measureElement: (el) => {
+      console.log(el);
+      if (el.clientHeight > 300) return 80;
+      else if (el.clientHeight > 200) return 60;
+      else return 30;
+    },
   });
   return team === null ? (
     <Loading />
@@ -25,15 +31,17 @@ const Table = ({ data }) => {
           <div
             key={`row: ${Math.floor(virtualItem.index / 4)}`}
             className="grid grid-cols-4"
+            style={{
+              height: `${virtualItem.size}px`,
+              transform: `translateY(${virtualItem.start}px)`,
+            }}
           >
             {row.map((group, index) => (
               <div
                 key={`column: ${index}`}
                 className="flex items-start p-2"
-                style={{
-                  height: `${virtualItem.size}px`,
-                  transform: `translateY(${virtualItem.start}px)`,
-                }}
+                ref={measureElement}
+                data-index={virtualItem.index + index}
               >
                 <div className="bg-white w-full p-3 rounded-xl">
                   <div className="flex justify-between items-center">
