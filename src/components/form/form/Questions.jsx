@@ -56,6 +56,13 @@ const Questions = ({
     onSubmit(setLoading, setState);
   };
 
+  const handleClick = (option, field) => {
+    setObject({
+      ...object,
+      [field]: option,
+    });
+  };
+
   return (
     <div className="flex flex-col w-full gap-5">
       {Object.values(fields).map((field, index) => (
@@ -85,7 +92,6 @@ const Questions = ({
               setUser={setObject}
               required={field.required}
               editable={field.editable}
-              regex={field.regex}
             />
           )}
           {field.input === "select" && (
@@ -147,6 +153,7 @@ const Questions = ({
               user={object}
               setUser={setObject}
               required={field.required}
+              onClick={handleClick}
             />
           )}
           {field.input === "textarea" && (

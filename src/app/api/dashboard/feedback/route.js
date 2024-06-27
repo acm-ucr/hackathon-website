@@ -76,7 +76,6 @@ export const GET = async (req) => {
   }
 
   const output = [];
-
   try {
     let snapshot;
 
@@ -114,6 +113,7 @@ export const GET = async (req) => {
         )
       );
     }
+
     snapshot.forEach((doc) => {
       const {
         rating,
@@ -177,11 +177,13 @@ export const PUT = async (req) => {
   const { objects, status } = await req.json();
 
   try {
-    objects.map(async (object) => {
-      await updateDoc(doc(db, "feedback", object.uid), {
-        status: status,
-      });
-    });
+    await Promise.all(
+      objects.map(async (object) => {
+        await updateDoc(doc(db, "feedback", object.uid), {
+          status: status,
+        });
+      })
+    );
 
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
@@ -204,9 +206,11 @@ export const DELETE = async (req) => {
     );
   }
   try {
-    objects.map(async (object) => {
-      await deleteDoc(doc(db, "feedback", object));
-    });
+    await Promise.all(
+      objects.map(async (object) => {
+        await deleteDoc(doc(db, "feedback", object));
+      })
+    );
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(

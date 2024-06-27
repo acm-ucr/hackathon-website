@@ -22,6 +22,7 @@ const Toolbar = ({
   searchableItems,
   searchParams,
   setMeta,
+  meta,
 }) => {
   const selectedRows = getFilteredSelectedRowModel();
   const [search, setSearch] = useState({

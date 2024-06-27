@@ -32,7 +32,7 @@ const CheckIn = () => {
   };
 
   const handleCheckIn = async () => {
-    if (event === "No Event Selected") {
+    if (event.name === "No events") {
       toaster("Please select an event!", "error");
       return;
     }
