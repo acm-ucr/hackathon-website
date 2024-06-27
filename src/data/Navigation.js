@@ -163,6 +163,11 @@ export const TABS = {
           link: "/user/checkin",
           icon: <AiOutlineQrcode className={iconStyle} />,
         },
+        {
+          name: "schedule",
+          link: "/user/schedule",
+          icon: <FaCalendarDay className={iconStyle} />,
+        },
       ],
     },
     " ": [

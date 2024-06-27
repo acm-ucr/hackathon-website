@@ -1,7 +1,6 @@
 import { GENDERS } from "./Information";
 import { SHIRTS } from "./Information";
 import data from "@/data/Config";
-import { phone } from "@/data/form/Regex";
 
 export const PANELISTS = {
   professor: "Professor",
@@ -57,7 +56,6 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     required: true,
-    regex: phone,
   },
   panelist: {
     input: "radio",
