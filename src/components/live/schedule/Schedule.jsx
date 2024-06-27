@@ -7,21 +7,18 @@ const Schedule = async () => {
     method: "GET",
   });
 
-  {
-    items &&
-      items.forEach((event) => {
-        event.start = new Date(event.start.dateTime);
-        event.end = new Date(event.end.dateTime);
-        event.day = event.start.toLocaleString("en-US", {
-          timeZone: "America/Los_Angeles",
-          weekday: "long",
-        });
-      });
-  }
+  items.forEach((event) => {
+    event.start = new Date(event.start.dateTime);
+    event.end = new Date(event.end.dateTime);
+    event.day = event.start.toLocaleString("en-US", {
+      timeZone: "America/Los_Angeles",
+      weekday: "long",
+    });
+  });
 
   const totalDays = items ? [...new Set(items.map(({ day }) => day))] : [];
 
-  return items && <Events events={items} totalDays={totalDays} />;
+  return <Events events={items} totalDays={totalDays} />;
 };
 
 export default Schedule;
