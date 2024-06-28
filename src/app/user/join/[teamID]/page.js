@@ -13,11 +13,9 @@ const Page = ({ params }) => {
         participants: [-1, 0, 1],
       }}
     >
-      <Join 
-        params={params}
-      />
+      <Join params={params} />
     </ProtectedPage>
-  )
+  );
 };
 
 export default Page;
