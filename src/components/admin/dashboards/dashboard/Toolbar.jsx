@@ -143,10 +143,10 @@ const Toolbar = ({
     );
 
   return (
-    // I moved the icons and rows into one div with the search stuff, and added a div for the tags
-    // what you can do now is manipulate how these are displayed on desktop vs laptop
-    // rn the divs are displayed in a full row on a laptop. We want them to be essentially in a column on mobile
-    <div className="flex items-center my-2 gap-3 w-full" data-cy="toolbar">
+    <div
+      className="flex flex-col lg:flex-row items-center my-2 gap-3 w-full"
+      data-cy="toolbar"
+    >
       <div className="flex gap-3 ">
         {tags.map((tag, index) => (
           <Tag
@@ -158,7 +158,7 @@ const Toolbar = ({
         ))}
       </div>
 
-      <div className="flex items-center w-full">
+      <div className="flex lg:flex-row items-center w-full">
         <div className="w-2/12 z-10 mx-2">
           <Select
             items={searchableItems}
