@@ -20,7 +20,7 @@ const Filter = ({ value, status, isActive, setFilters }) => {
                 ? statuses.filter((s) => s !== value)
                 : statuses.concat(value),
             }
-          : f
+          : f,
       );
     });
   };

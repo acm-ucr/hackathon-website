@@ -56,7 +56,7 @@ const Toolbar = ({
       setLoading(false);
       toaster(
         `Fetched ${page.charAt(0).toUpperCase() + page.slice(1)} Successfully`,
-        "success"
+        "success",
       );
     });
   };
@@ -121,7 +121,7 @@ const Toolbar = ({
           data.map((a) => {
             if (ids.includes(a.uid)) a.status = value;
             return a;
-          })
+          }),
         );
 
         toggleAllRowsSelected(false);
@@ -139,7 +139,7 @@ const Toolbar = ({
 
   const onChange = (id, value) =>
     setFilters((prev) =>
-      prev.filter(({ id }) => id !== search.search).concat({ id, value })
+      prev.filter(({ id }) => id !== search.search).concat({ id, value }),
     );
 
   return (

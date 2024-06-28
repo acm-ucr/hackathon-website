@@ -6,7 +6,7 @@ describe("Forms Button", () => {
     cy.mount(<Button text={text} color="green" />);
     cy.get('[data-cy="Hello world-button"]').should(
       "contains.text",
-      "Hello world"
+      "Hello world",
     );
   });
 

@@ -16,7 +16,7 @@ describe("Panelists Actions", () => {
       cy
         .get(`[data-cy="${panelists.uid}"]`)
         .find('[data-cy="checkbox"]')
-        .click()
+        .click(),
     );
 
     cy.action({
@@ -28,13 +28,16 @@ describe("Panelists Actions", () => {
       cy
         .get(`[data-cy="${panelist.uid}"]`)
         .find('[data-cy="accepted-tag"]')
-        .should("exist")
+        .should("exist"),
     );
   });
 
   it("Not Attending First 5 Entries", () => {
     five.forEach((panelist) =>
-      cy.get(`[data-cy="${panelist.uid}"]`).find('[data-cy="checkbox"]').click()
+      cy
+        .get(`[data-cy="${panelist.uid}"]`)
+        .find('[data-cy="checkbox"]')
+        .click(),
     );
 
     cy.action({
@@ -46,13 +49,16 @@ describe("Panelists Actions", () => {
       cy
         .get(`[data-cy="${panelist.uid}"]`)
         .find('[data-cy="rejected-tag"]')
-        .should("exist")
+        .should("exist"),
     );
   });
 
   it("Delete First 5 Entries", () => {
     five.forEach((panelist) =>
-      cy.get(`[data-cy="${panelist.uid}"]`).find('[data-cy="checkbox"]').click()
+      cy
+        .get(`[data-cy="${panelist.uid}"]`)
+        .find('[data-cy="checkbox"]')
+        .click(),
     );
 
     cy.delete({
@@ -60,7 +66,7 @@ describe("Panelists Actions", () => {
     });
 
     five.forEach((panelist) =>
-      cy.get(`[data-cy="${panelist.uid}"]`).should("not.exist")
+      cy.get(`[data-cy="${panelist.uid}"]`).should("not.exist"),
     );
   });
 });

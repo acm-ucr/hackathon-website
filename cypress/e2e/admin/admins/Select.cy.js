@@ -21,7 +21,7 @@ describe("Admin Select", () => {
 
   it("Select First 5 Entries", () => {
     five.map((admin) =>
-      cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click()
+      cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click(),
     );
     admins.forEach((admin, index) => {
       if (index < 5)

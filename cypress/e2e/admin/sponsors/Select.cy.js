@@ -21,13 +21,13 @@ describe("Sponsors Select", () => {
 
   it("Select First 5 Entries", () => {
     five.map((sponsor) =>
-      cy.get(`[data-cy="${sponsor.uid}"]`).find('[data-cy="checkbox"]').click()
+      cy.get(`[data-cy="${sponsor.uid}"]`).find('[data-cy="checkbox"]').click(),
     );
     sponsors.forEach((sponsor, index) => {
       if (index < 5)
         cy.get(`[data-cy="${sponsor.uid}"]`).should(
           "have.class",
-          "bg-green-100"
+          "bg-green-100",
         );
       else
         cy.get(`[data-cy="${sponsor.uid}"]`).should("have.class", "bg-white");

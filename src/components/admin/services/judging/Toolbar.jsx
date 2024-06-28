@@ -65,7 +65,7 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
         if (round === parseInt(input.rotations)) continue;
         if (
           teams[i].rounds.some((judges) =>
-            judges.some((individual) => individual.name === judges[judge].name)
+            judges.some((individual) => individual.name === judges[judge].name),
           )
         )
           continue;
@@ -112,7 +112,7 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
       data.map((team) => {
         team.rounds = [];
         return team;
-      })
+      }),
     );
 
     const uids = data.map((team) => team.uid).join(",");

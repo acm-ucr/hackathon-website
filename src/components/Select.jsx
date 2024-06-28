@@ -40,8 +40,8 @@ const Select = ({
       items.filter((name) =>
         name.toLowerCase().search(e.target.value.toLowerCase()) === -1
           ? false
-          : true
-      )
+          : true,
+      ),
     );
 
     setInput(e.target.value);
