@@ -1,6 +1,5 @@
 import { MAJORS, GRADES, GENDERS, SHIRTS, AVAILABILITY } from "./Information";
 import data from "@/data/Config";
-import { phone } from "@/data/form/Regex";
 
 export const FIELDS = {
   description: {
@@ -52,7 +51,6 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     required: true,
-    regex: phone,
   },
 
   discord: {
