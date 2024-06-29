@@ -10,7 +10,6 @@ const CalendarModal = ({ event, setEvent }) => {
     <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-10 w-1/2 rounded-xl">
       <div
         className={`flex justify-between items-center p-3 rounded-t-xl bg-hackathon-red-200 ${event.color}`}
-        data-cy="calendar-modal"
       >
         <span className="text-3xl text-white font-bold">{event.summary}</span>
         <FaTimes
