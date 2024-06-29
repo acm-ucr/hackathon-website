@@ -1,33 +1,22 @@
 import Modal from "@/components/admin/dashboards/dashboard/Modal";
 import { useState } from "react";
-import mockevents from "../../fixtures/events.json";
 
 describe("Modal", () => {
-  it("Dashboard-Modal", () => {
+  it("Default", () => {
     const Parent = () => {
       const data = {
         title: "Sample Modal",
         src: "https://via.placeholder.com/150",
       };
-      const setModal = useState(true);
+      const [modal, setModal] = useState(data);
 
-      return <Modal data={data} setModal={setModal} />;
+      return modal && <Modal data={modal} setModal={setModal} />;
     };
 
     cy.mount(<Parent />);
-    cy.get('[data-cy="modal"]').should(
-      "be.visible",
+    cy.get('[data-cy="modal"]').should("be.visible", "have.class");
+    cy.get('[data-cy="modal-title"]').should(
       "have.class",
-      "absolute",
-      "rounded-xl"
-    );
-    cy.get('[data-cy="modal-bar"]').should(
-      "have.class",
-      "flex",
-      "justify-between",
-      "items-center",
-      "p-3",
-      "rounded-t-xl",
       "bg-hackathon-green-300"
     );
     cy.get('[data-cy="modal-close"]').should(
@@ -43,10 +32,8 @@ describe("Modal", () => {
     );
     cy.get('[data-cy="image-border"]').should(
       "have.class",
-      "rounded-b-xl",
       "border-hackathon-darkgray",
-      "bg-hackathon-page",
-      "justify-center"
+      "bg-hackathon-page"
     );
   });
 
@@ -56,13 +43,14 @@ describe("Modal", () => {
         title: "Sample Modal",
         src: "https://via.placeholder.com/150",
       };
-      const setEvent = useState(mockevents.events[0]);
 
-      return <Modal data={data} setModal={setEvent} />;
+      const [modal, setModal] = useState(data);
+
+      return modal && <Modal data={modal} setModal={setModal} />;
     };
 
     cy.mount(<Parent />);
     cy.get('[data-cy="modal-close"]').click();
-    cy.get('[data-cy="modal"]');
+    cy.get('[data-cy="modal"]').should("not.exist");
   });
 });

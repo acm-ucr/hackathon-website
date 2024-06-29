@@ -1,5 +1,4 @@
 import { FaTimes } from "react-icons/fa";
-// import Image from "next/image";
 
 const Modal = ({ data, setModal }) => {
   return (
@@ -9,7 +8,7 @@ const Modal = ({ data, setModal }) => {
     >
       <div
         className="flex justify-between items-center p-3 rounded-t-xl bg-hackathon-green-300"
-        data-cy="modal-bar"
+        data-cy="modal-title"
       >
         <span className="text-3xl text-white font-bold">{data.title}</span>
         <FaTimes
