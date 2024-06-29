@@ -91,27 +91,53 @@ const Navigation = () => {
               ))}
           </div>
           <div className="w-full flex flex-col items-center mb-3">
-            {tabs[" "].map((tab, index) => (
-              <Link
-                key={index}
-                href={tab.link}
-                target="_blank"
-                onClick={() => tab.onClick()}
-                className="no-underline w-full"
-              >
-                <div
-                  onClick={() => setExpand(false)}
-                  className={`w-full flex [&>*]:text-white items-center justify-start pl-[10%] py-1 ${
-                    pathName.endsWith(tab.link)
-                      ? "bg-hackathon-blue-100"
-                      : "[&>*]:hover:text-hackathon-blue-100"
-                  }`}
+            {tabs[" "]
+              .filter((value) => !value.iconOnly)
+              .map((tab, index) => (
+                <Link
+                  key={index}
+                  href={tab.link}
+                  target="_blank"
+                  onClick={() => tab.onClick()}
+                  className="no-underline w-full"
                 >
-                  {tab.icon}
-                  <div className="text-lg">{tab.name}</div>
-                </div>
-              </Link>
-            ))}
+                  <div
+                    onClick={() => setExpand(false)}
+                    className={`w-full flex [&>*]:text-white items-center justify-start pl-[10%] py-1 ${
+                      pathName.endsWith(tab.link)
+                        ? "bg-hackathon-blue-100"
+                        : "[&>*]:hover:text-hackathon-blue-100"
+                    }`}
+                  >
+                    {tab.icon}
+                    <div className="text-lg">{tab.name}</div>
+                  </div>
+                </Link>
+              ))}
+          </div>
+          <div className="w-full flex flex-row items-center mb-3 ">
+            {tabs[" "]
+              .filter((value) => value.iconOnly)
+              .map((tab, index) => (
+                <Link
+                  key={index}
+                  href={tab.link}
+                  target="_blank"
+                  onClick={() => ("onClick" in tab ? tab.onClick() : {})}
+                  className="no-underline w-full"
+                >
+                  <div
+                    onClick={() => setExpand(false)}
+                    className={`w-full flex [&>*]:text-white items-center justify-center pl-[10%] py-1 ${
+                      pathName.endsWith(tab.link)
+                        ? "bg-hackathon-blue-100"
+                        : "[&>*]:hover:text-hackathon-blue-100"
+                    }`}
+                  >
+                    {tab.icon}
+                  </div>
+                </Link>
+              ))}
           </div>
         </div>
       </div>
