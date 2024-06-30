@@ -5,11 +5,11 @@ import CalendarWrapper from "./CalendarWrapper";
 
 const CalendarEvents = async () => {
   const min = new Date(
-    new Date().getTime() - 20 * 7 * 24 * 60 * 60 * 1000,
+    new Date().getTime() - 20 * 7 * 24 * 60 * 60 * 1000
   ).toISOString();
 
   const max = new Date(
-    new Date().getTime() + 20 * 7 * 24 * 60 * 60 * 1000,
+    new Date().getTime() + 20 * 7 * 24 * 60 * 60 * 1000
   ).toISOString();
 
   const hackathon = await api({

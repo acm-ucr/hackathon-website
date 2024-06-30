@@ -44,13 +44,13 @@ const Page = ({ params }) => {
           throw new Fault(
             404,
             "Invalid Team ID",
-            "Please get a new team invite",
+            "Please get a new team invite"
           );
         } else {
           throw new Fault(
             500,
             "Internal Server Error",
-            "Please contact the software engineering team for assistance",
+            "Please contact the software engineering team for assistance"
           );
         }
       });

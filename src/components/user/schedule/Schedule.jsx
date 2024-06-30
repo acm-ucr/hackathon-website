@@ -11,7 +11,7 @@ const Schedule = () => {
       setFilteredEvents(mockEvents);
     } else {
       setFilteredEvents(
-        mockEvents.filter((event) => event.type === filterType),
+        mockEvents.filter((event) => event.type === filterType)
       );
     }
   };

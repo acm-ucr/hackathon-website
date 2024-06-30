@@ -74,7 +74,7 @@ describe("Dropdown", () => {
     cy.get('[data-cy="dropdown-option-0"]').click();
     cy.get('[data-cy="dropdown-selected"]').should(
       "contain",
-      "GitHub Workshop",
+      "GitHub Workshop"
     );
   });
 
@@ -100,7 +100,7 @@ describe("Dropdown", () => {
     cy.get('[data-cy="dropdown-input"]').type(mockevents.events[2].name);
     cy.get('[data-cy="dropdown-option-0"]').should(
       "contain",
-      mockevents.events[2].name,
+      mockevents.events[2].name
     );
   });
 });

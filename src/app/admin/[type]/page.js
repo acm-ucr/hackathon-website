@@ -59,7 +59,7 @@ const Page = ({ params, searchParams }) => {
     throw new Fault(
       404,
       "Page Not Found",
-      "The page you are looking for does not seem to exist",
+      "The page you are looking for does not seem to exist"
     );
   }
 };

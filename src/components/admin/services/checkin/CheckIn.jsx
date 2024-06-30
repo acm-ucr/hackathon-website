@@ -20,7 +20,7 @@ const CheckIn = () => {
       setEvents(
         items.map((event) => {
           return { id: event.id, name: event.summary, hidden: false };
-        }),
+        })
       );
     });
   }, []);

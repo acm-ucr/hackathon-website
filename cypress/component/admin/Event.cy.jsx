@@ -13,7 +13,7 @@ describe("Event test", () => {
       "have.class",
       "text-xs",
       "have.timeString",
-      "have.summary",
+      "have.summary"
     );
     cy.get('[data-cy="Event"]').contains("Event");
   });
@@ -39,7 +39,7 @@ describe("Event test", () => {
       "have.class",
       "text-xs",
       "have.timeString",
-      "have.summary",
+      "have.summary"
     );
   });
 

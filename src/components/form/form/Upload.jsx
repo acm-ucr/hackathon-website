@@ -12,7 +12,7 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
   const [file, setFile] = useState(
     user[field] && user[field].startsWith("data:image")
       ? { src: user[field], type: "image", title: `${user.name}.png` }
-      : null,
+      : null
   );
   const [uploading, setUploading] = useState(false);
   const [showModal, setShowModal] = useState(null);

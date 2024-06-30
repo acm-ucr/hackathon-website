@@ -17,7 +17,7 @@ describe("Volunteers Select", () => {
     volunteers.forEach((volunteer) => {
       cy.get(`[data-cy="${volunteer.uid}"]`).should(
         "have.class",
-        "bg-green-100",
+        "bg-green-100"
       );
     });
   });
@@ -27,13 +27,13 @@ describe("Volunteers Select", () => {
       cy
         .get(`[data-cy="${volunteer.uid}"]`)
         .find('[data-cy="checkbox"]')
-        .click(),
+        .click()
     );
     volunteers.forEach((volunteer, index) => {
       if (index < 5)
         cy.get(`[data-cy="${volunteer.uid}"]`).should(
           "have.class",
-          "bg-green-100",
+          "bg-green-100"
         );
       else
         cy.get(`[data-cy="${volunteer.uid}"]`).should("have.class", "bg-white");

@@ -26,13 +26,13 @@ const getRoleCount = async (role, value) => {
   if (role === "teams") {
     return (
       await getCountFromServer(
-        query(collection(db, "teams"), where(`status`, "==", value)),
+        query(collection(db, "teams"), where(`status`, "==", value))
       )
     ).data().count;
   }
   return (
     await getCountFromServer(
-      query(collection(db, "users"), where(`roles.${role}`, "==", value)),
+      query(collection(db, "users"), where(`roles.${role}`, "==", value))
     )
   ).data().count;
 };
@@ -58,7 +58,7 @@ export const GET = async () => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth },
+      { status: auth }
     );
   }
   try {
@@ -67,7 +67,7 @@ export const GET = async () => {
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 },
+      { status: 500 }
     );
   }
 };

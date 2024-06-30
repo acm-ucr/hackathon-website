@@ -33,7 +33,7 @@ export const GET = async (req) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth },
+      { status: auth }
     );
   }
 
@@ -50,8 +50,8 @@ export const GET = async (req) => {
           orderBy(`status`),
           where(`status`, "in", [-1, 0, 1]),
           startAfter(lastDocument),
-          limit(size),
-        ),
+          limit(size)
+        )
       );
     } else if (direction === "prev" && first !== "undefined") {
       const firstDocument = await getDoc(doc(db, "teams", first));
@@ -62,8 +62,8 @@ export const GET = async (req) => {
           orderBy(`status`),
           where(`status`, "in", [-1, 0, 1]),
           endBefore(firstDocument),
-          limitToLast(size),
-        ),
+          limitToLast(size)
+        )
       );
     } else {
       snapshot = await getDocs(
@@ -71,8 +71,8 @@ export const GET = async (req) => {
           collection(db, "teams"),
           orderBy(`status`),
           where(`status`, "in", [-1, 0, 1]),
-          limit(size),
-        ),
+          limit(size)
+        )
       );
     }
 
@@ -103,7 +103,7 @@ export const GET = async (req) => {
     });
 
     const countFromServer = await getCountFromServer(
-      query(collection(db, "teams"), where(`status`, "in", [-1, 0, 1])),
+      query(collection(db, "teams"), where(`status`, "in", [-1, 0, 1]))
     );
 
     const total = countFromServer.data().count;
@@ -119,12 +119,12 @@ export const GET = async (req) => {
         last: lastDoc,
         page: parseInt(index) + 1,
       },
-      { status: 200 },
+      { status: 200 }
     );
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 },
+      { status: 500 }
     );
   }
 };
@@ -137,7 +137,7 @@ export const PUT = async (req) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth },
+      { status: auth }
     );
   }
   try {
@@ -150,7 +150,7 @@ export const PUT = async (req) => {
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 },
+      { status: 500 }
     );
   }
 };
@@ -163,13 +163,13 @@ export const DELETE = async (req) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth },
+      { status: auth }
     );
   }
   try {
     objects.map(async (object) => {
       const members = await getDocs(
-        query(collection(db, "users"), where("team", "==", object)),
+        query(collection(db, "users"), where("team", "==", object))
       );
       members.docs.forEach(async (member) => {
         await updateDoc(doc(db, "users", member.id), {
@@ -182,7 +182,7 @@ export const DELETE = async (req) => {
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 },
+      { status: 500 }
     );
   }
 };

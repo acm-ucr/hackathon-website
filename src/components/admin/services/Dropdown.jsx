@@ -14,7 +14,7 @@ const DropDown = ({ options, setOptions, option, setOption, empty }) => {
         hidden: !option.name
           .toLowerCase()
           .includes(e.target.value.toLowerCase()),
-      })),
+      }))
     );
   };
 

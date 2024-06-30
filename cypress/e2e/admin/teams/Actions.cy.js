@@ -14,7 +14,7 @@ describe("Teams Actions", () => {
 
   it("Qualify First 5 Entries", () => {
     five.forEach((team) =>
-      cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click(),
+      cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
     );
 
     cy.action({
@@ -26,13 +26,13 @@ describe("Teams Actions", () => {
       cy
         .get(`[data-cy="${team.uid}"]`)
         .find('[data-cy="accepted-tag"]')
-        .should("exist"),
+        .should("exist")
     );
   });
 
   it("Disqualify First 5 Entries", () => {
     five.forEach((team) =>
-      cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click(),
+      cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
     );
 
     cy.action({
@@ -44,13 +44,13 @@ describe("Teams Actions", () => {
       cy
         .get(`[data-cy="${team.uid}"]`)
         .find('[data-cy="rejected-tag"]')
-        .should("exist"),
+        .should("exist")
     );
   });
 
   it("Delete First 5 Entries", () => {
     five.forEach((team) =>
-      cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click(),
+      cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
     );
 
     cy.delete({
@@ -58,7 +58,7 @@ describe("Teams Actions", () => {
     });
 
     five.forEach((team) =>
-      cy.get(`[data-cy="${team.uid}"]`).should("not.exist"),
+      cy.get(`[data-cy="${team.uid}"]`).should("not.exist")
     );
   });
 });

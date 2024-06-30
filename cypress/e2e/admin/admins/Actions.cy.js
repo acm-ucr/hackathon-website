@@ -13,7 +13,7 @@ describe("Admin Actions", () => {
 
   it("Accept First 5 Entries", () => {
     five.forEach((admin) =>
-      cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click(),
+      cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click()
     );
 
     cy.action({
@@ -24,13 +24,13 @@ describe("Admin Actions", () => {
       cy
         .get(`[data-cy="${admin.uid}"]`)
         .find('[data-cy="accepted-tag"]')
-        .should("exist"),
+        .should("exist")
     );
   });
 
   it("Reject First 5 Entries", () => {
     five.forEach((admin) =>
-      cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click(),
+      cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click()
     );
     cy.action({
       tag: "reject",
@@ -40,19 +40,19 @@ describe("Admin Actions", () => {
       cy
         .get(`[data-cy="${admin.uid}"]`)
         .find('[data-cy="rejected-tag"]')
-        .should("exist"),
+        .should("exist")
     );
   });
 
   it("Delete First 5 Entries", () => {
     five.forEach((admin) =>
-      cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click(),
+      cy.get(`[data-cy="${admin.uid}"]`).find('[data-cy="checkbox"]').click()
     );
     cy.delete({
       page: "admins",
     });
     five.forEach((admin) =>
-      cy.get(`[data-cy="${admin.uid}"]`).should("not.exist"),
+      cy.get(`[data-cy="${admin.uid}"]`).should("not.exist")
     );
   });
 });
