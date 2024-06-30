@@ -9,13 +9,13 @@ describe("Event test", () => {
     const view = "month";
 
     cy.mount(<Event event={event} view={view} />);
-    cy.get('[data-cy="Event"]').should(
+    cy.get('[data-cy="event"]').should(
       "have.class",
       "text-xs",
       "have.timeString",
       "have.summary"
     );
-    cy.get('[data-cy="Event"]').contains("Event");
+    cy.get('[data-cy="event"]').contains("Event");
   });
 
   it("Empty view", () => {
@@ -24,7 +24,7 @@ describe("Event test", () => {
     };
 
     cy.mount(<Event event={event} />);
-    cy.get('[data-cy="Event"]').should("have.class", "text-xs", "have.summary");
+    cy.get('[data-cy="event"]').should("have.class", "text-xs", "have.summary");
   });
 
   it("Empty summary", () => {
@@ -35,7 +35,7 @@ describe("Event test", () => {
     const view = "month";
 
     cy.mount(<Event event={event} view={view} />);
-    cy.get('[data-cy="Event"]').should(
+    cy.get('[data-cy="event"]').should(
       "have.class",
       "text-xs",
       "have.timeString",
@@ -50,6 +50,6 @@ describe("Event test", () => {
     const view = "not month";
 
     cy.mount(<Event event={event} view={view} />);
-    cy.get('[data-cy="Event"]').should("have.class", "text-xs", "have.summary");
+    cy.get('[data-cy="event"]').should("have.class", "text-xs", "have.summary");
   });
 });
