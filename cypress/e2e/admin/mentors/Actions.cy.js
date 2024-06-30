@@ -13,7 +13,7 @@ describe("Mentors Actions", () => {
 
   it("Confirm First 5 Entries", () => {
     five.forEach((mentor) =>
-      cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="checkbox"]').click()
+      cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="checkbox"]').click(),
     );
     cy.action({
       tag: "confirm",
@@ -23,13 +23,13 @@ describe("Mentors Actions", () => {
       cy
         .get(`[data-cy="${mentor.uid}"]`)
         .find('[data-cy="accepted-tag"]')
-        .should("exist")
+        .should("exist"),
     );
   });
 
   it("Not Attending First 5 Entries", () => {
     five.forEach((mentor) =>
-      cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="checkbox"]').click()
+      cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="checkbox"]').click(),
     );
     cy.action({
       tag: "not attending",
@@ -40,19 +40,19 @@ describe("Mentors Actions", () => {
       cy
         .get(`[data-cy="${mentor.uid}"]`)
         .find('[data-cy="rejected-tag"]')
-        .should("exist")
+        .should("exist"),
     );
   });
 
   it("Delete First 5 Entries", () => {
     five.forEach((mentor) =>
-      cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="checkbox"]').click()
+      cy.get(`[data-cy="${mentor.uid}"]`).find('[data-cy="checkbox"]').click(),
     );
     cy.delete({
       page: "mentors",
     });
     five.forEach((mentor) =>
-      cy.get(`[data-cy="${mentor.uid}"]`).should("not.exist")
+      cy.get(`[data-cy="${mentor.uid}"]`).should("not.exist"),
     );
   });
 });

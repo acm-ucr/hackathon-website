@@ -17,7 +17,7 @@ describe("committee Select", () => {
     committees.forEach((committee) => {
       cy.get(`[data-cy="${committee.uid}"]`).should(
         "have.class",
-        "bg-green-100"
+        "bg-green-100",
       );
     });
   });
@@ -27,13 +27,13 @@ describe("committee Select", () => {
       cy
         .get(`[data-cy="${committee.uid}"]`)
         .find('[data-cy="checkbox"]')
-        .click()
+        .click(),
     );
     committees.forEach((committee, index) => {
       if (index < 5)
         cy.get(`[data-cy="${committee.uid}"]`).should(
           "have.class",
-          "bg-green-100"
+          "bg-green-100",
         );
       else
         cy.get(`[data-cy="${committee.uid}"]`).should("have.class", "bg-white");

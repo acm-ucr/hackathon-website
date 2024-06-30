@@ -1,7 +1,7 @@
 const Event = ({ event, view }) => {
   return (
     <div className="p-0.5">
-      <p className="inline text-xs">
+      <p className="inline text-xs" data-cy="Event">
         {view === "month" && (
           <>
             {new Date(event.start).toLocaleTimeString(navigator.language, {
