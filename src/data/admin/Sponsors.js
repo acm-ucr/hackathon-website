@@ -41,7 +41,7 @@ export const COLUMNS = [
   {
     accessorKey: "company",
     header: "Company",
-    width: "w-2/12",
+    width: "w-3/12",
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
