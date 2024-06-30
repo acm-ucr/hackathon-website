@@ -18,7 +18,7 @@ export const GET = async () => {
   }
 
   try {
-    const [statisticsDoc, eventsSnapshot] = await Promise.all([
+    const [statistics, events] = await Promise.all([
       getDoc(doc(db, "statistics", "statistics")),
       getDocs(collection(db, "events")),
     ]);
@@ -33,12 +33,13 @@ export const GET = async () => {
       sponsors: { 1: sponsors },
       panels: { 1: panels },
       admins: { 1: admins },
-    } = statisticsDoc.data();
+    } = statistics.data();
 
-    const eventAttendees = {};
-    eventsSnapshot.forEach((doc) => {
+    const attendees = {};
+
+    events.forEach((doc) => {
       const { name, attendance } = doc.data();
-      eventAttendees[name] = attendance;
+      attendees[name] = attendance;
     });
 
     const users = {
@@ -53,10 +54,7 @@ export const GET = async () => {
       admins,
     };
 
-    return res.json(
-      { items: { users, events: eventAttendees } },
-      { status: 200 }
-    );
+    return res.json({ items: { users, events: attendees } }, { status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
