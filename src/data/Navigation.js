@@ -131,24 +131,6 @@ export const TABS = {
         },
       ],
     },
-    " ": [
-      {
-        name: "devpost",
-        link: data.devpost,
-        icon: <SiDevpost className={iconStyle} />,
-      },
-      {
-        name: "website",
-        link: "/",
-        icon: <BsGlobe2 className={iconStyle} />,
-      },
-      {
-        name: "sign out",
-        link: "/",
-        onClick: () => signOut({ callbackUrl: "/", redirect: true }),
-        icon: <BsBoxArrowInRight className={iconStyle} />,
-      },
-    ],
   },
   user: {
     Portal: {
@@ -176,28 +158,5 @@ export const TABS = {
         },
       ],
     },
-    " ": [
-      {
-        name: "feedback",
-        link: "/form/feedback",
-        icon: <MdFeedback className={iconStyle} />,
-      },
-      {
-        name: "devpost",
-        link: data.devpost,
-        icon: <SiDevpost className={iconStyle} />,
-      },
-      {
-        name: "website",
-        link: "/",
-        icon: <BsGlobe2 className={iconStyle} />,
-      },
-      {
-        name: "sign out",
-        link: "/",
-        onClick: () => signOut({ callbackUrl: "/", redirect: true }),
-        icon: <BsBoxArrowInRight className={iconStyle} />,
-      },
-    ],
   },
 };

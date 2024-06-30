@@ -8,11 +8,32 @@ import { TABS } from "@/data/Navigation";
 import { usePathname } from "next/navigation";
 import data from "@/data/Config";
 import { BiSolidDownArrow } from "react-icons/bi";
+import { BsBoxArrowInRight, BsGlobe2 } from "react-icons/bs";
+import { SiDevpost } from "react-icons/si";
+import { MdFeedback } from "react-icons/md";
+import { signOut } from "next-auth/react";
 
 const Navigation = () => {
   const [expand, setExpand] = useState(false);
   const pathName = usePathname();
   const [tabs, setTabs] = useState(TABS[pathName.split("/")[1]]);
+  const globalTabs = [
+    {
+      name: "feedback",
+      link: "/form/feedback",
+      icon: <MdFeedback className="mr-2" />,
+    },
+    {
+      name: "devpost",
+      link: data.devpost,
+      icon: <SiDevpost className="mr-2" />,
+    },
+    {
+      name: "website",
+      link: "/",
+      icon: <BsGlobe2 className="mr-2" />,
+    },
+  ];
 
   return (
     <>
@@ -91,7 +112,7 @@ const Navigation = () => {
               ))}
           </div>
           <div className="w-full flex flex-row items-center mb-3">
-            {tabs[" "].map((tab, index) => (
+            {globalTabs.map((tab, index) => (
               <Link
                 key={index}
                 href={tab.link}
@@ -111,6 +132,14 @@ const Navigation = () => {
                 </div>
               </Link>
             ))}
+            <div className="w-full">
+              <div
+                onClick={() => signOut({ callbackUrl: "/", redirect: true })}
+                className={`w-full flex [&>*]:text-white items-center justify-center pl-[10%] py-1 [&>*]:hover:text-hackathon-blue-100 hover:cursor-pointer`}
+              >
+                <BsBoxArrowInRight className="mr-2" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
