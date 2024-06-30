@@ -24,6 +24,7 @@ const Packing = () => {
               <ul className="list-disc pl-9">
                 <li>ToothBrush / toothpaste</li>
                 <li>Shower Supplies (soap, towel, shower shoes)</li>
+                <li>Face Wash</li>
               </ul>
             )}
           </li>
