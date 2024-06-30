@@ -13,6 +13,7 @@ const Judging = () => {
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Title title="Judging" />
+      <Title title="Teams" />
       <Toolbar
         data={teams}
         setData={setTeams}
