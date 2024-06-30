@@ -18,7 +18,7 @@ const ProtectedPage = ({ children, restrictions, title }) => {
       throw new Fault(
         423,
         "Locked Resource",
-        "This resource has not been released",
+        "This resource has not been released"
       );
     }
 
@@ -32,14 +32,14 @@ const ProtectedPage = ({ children, restrictions, title }) => {
       throw new Fault(
         403,
         "Unauthorized",
-        "You do not have any assigned roles",
+        "You do not have any assigned roles"
       );
     }
 
     const authorized = Object.entries(restrictions).some(([key, values]) =>
       Array.isArray(values)
         ? values.includes(session.user.roles[key])
-        : session.user.roles[key] === values,
+        : session.user.roles[key] === values
     );
 
     if (!authorized && Object.keys(restrictions).length > 0) {

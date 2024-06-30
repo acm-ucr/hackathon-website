@@ -16,7 +16,7 @@ describe("Committee Actions", () => {
       cy
         .get(`[data-cy="${committee.uid}"]`)
         .find('[data-cy="checkbox"]')
-        .click(),
+        .click()
     );
 
     cy.action({
@@ -27,7 +27,7 @@ describe("Committee Actions", () => {
       cy
         .get(`[data-cy="${committee.uid}"]`)
         .find('[data-cy="accepted-tag"]')
-        .should("exist"),
+        .should("exist")
     );
   });
 
@@ -36,7 +36,7 @@ describe("Committee Actions", () => {
       cy
         .get(`[data-cy="${committee.uid}"]`)
         .find('[data-cy="checkbox"]')
-        .click(),
+        .click()
     );
     cy.action({
       tag: "reject",
@@ -46,7 +46,7 @@ describe("Committee Actions", () => {
       cy
         .get(`[data-cy="${committee.uid}"]`)
         .find('[data-cy="rejected-tag"]')
-        .should("exist"),
+        .should("exist")
     );
   });
 
@@ -55,13 +55,13 @@ describe("Committee Actions", () => {
       cy
         .get(`[data-cy="${committee.uid}"]`)
         .find('[data-cy="checkbox"]')
-        .click(),
+        .click()
     );
     cy.delete({
       page: "committees",
     });
     five.forEach((committee) =>
-      cy.get(`[data-cy="${committee.uid}"]`).should("not.exist"),
+      cy.get(`[data-cy="${committee.uid}"]`).should("not.exist")
     );
   });
 });

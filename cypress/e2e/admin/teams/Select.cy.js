@@ -21,7 +21,7 @@ describe("Teams Select", () => {
 
   it("Select First 5 Entries", () => {
     five.map((team) =>
-      cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click(),
+      cy.get(`[data-cy="${team.uid}"]`).find('[data-cy="checkbox"]').click()
     );
     teams.forEach((team, index) => {
       if (index < 5)

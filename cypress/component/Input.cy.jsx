@@ -21,7 +21,7 @@ describe("Input", () => {
     cy.get('[data-cy="first-input"]').should(
       "have.attr",
       "placeholder",
-      "John",
+      "John"
     );
   });
 

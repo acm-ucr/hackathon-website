@@ -17,23 +17,23 @@ describe("Modal", () => {
     cy.get('[data-cy="modal"]').should("be.visible", "have.class");
     cy.get('[data-cy="modal-title"]').should(
       "have.class",
-      "bg-hackathon-green-300",
+      "bg-hackathon-green-300"
     );
     cy.get('[data-cy="modal-close"]').should(
       "have.class",
       "hover:cursor-pointer",
       "text-white",
-      "hover:!text-red-500",
+      "hover:!text-red-500"
     );
     cy.get('[data-cy="modal-image"]').should(
       "have.attr",
       "src",
-      "https://via.placeholder.com/150",
+      "https://via.placeholder.com/150"
     );
     cy.get('[data-cy="image-border"]').should(
       "have.class",
       "border-hackathon-darkgray",
-      "bg-hackathon-page",
+      "bg-hackathon-page"
     );
   });
 

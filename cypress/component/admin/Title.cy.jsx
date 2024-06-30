@@ -6,7 +6,7 @@ describe("Title test", () => {
     cy.get('[data-cy="Dashboard-title"]').should(
       "have.class",
       "text-2xl",
-      "font-extrabold",
+      "font-extrabold"
     );
     cy.get('[data-cy="Dashboard-title"]').contains("Dashboard");
   });
@@ -16,7 +16,7 @@ describe("Title test", () => {
     cy.get('[data-cy="-title"]').should(
       "have.class",
       "text-2xl",
-      "font-extrabold",
+      "font-extrabold"
     );
     cy.get('[data-cy="-title"]').should("have.value", "");
   });

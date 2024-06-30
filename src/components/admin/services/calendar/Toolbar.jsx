@@ -16,7 +16,7 @@ const CustomToolbar = ({ onView, onNavigate, date, view, setTag }) => {
           break;
       }
     },
-    [onNavigate],
+    [onNavigate]
   );
 
   useEffect(() => {

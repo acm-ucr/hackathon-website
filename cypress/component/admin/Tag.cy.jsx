@@ -13,7 +13,7 @@ describe("Tag", () => {
       "have.class",
       "bg-hackathon-tags-green-bg",
       "text-hackathon-tags-green-text",
-      "hover:shadow-[inset_0px_0px_0px_2px_#00AFB9]",
+      "hover:shadow-[inset_0px_0px_0px_2px_#00AFB9]"
     );
     cy.get('[data-cy="Accept-tag"]')
       .click()
@@ -31,7 +31,7 @@ describe("Tag", () => {
       "have.class",
       "bg-hackathon-tags-yellow-bg",
       "text-hackathon-tags-yellow-text",
-      "hover:shadow-[inset_0px_0px_0px_2px_#FFB81C]",
+      "hover:shadow-[inset_0px_0px_0px_2px_#FFB81C]"
     );
     cy.get('[data-cy="Pending-tag"]')
       .click()
@@ -49,7 +49,7 @@ describe("Tag", () => {
       "have.class",
       "bg-hackathon-tags-red-bg",
       "text-hackathon-tags-red-text",
-      "hover:shadow-[inset_0px_0px_0px_2px_#F07167]",
+      "hover:shadow-[inset_0px_0px_0px_2px_#F07167]"
     );
     cy.get('[data-cy="Reject-tag"]')
       .click()
@@ -67,7 +67,7 @@ describe("Tag", () => {
         text={text}
         onClick={onClick}
         classes="border-2 border-black"
-      />,
+      />
     );
     cy.get('[data-cy="Accept-tag"]').contains("Accept");
     cy.get('[data-cy="Accept-tag"]').should(
@@ -76,7 +76,7 @@ describe("Tag", () => {
       "text-hackathon-tags-green-text",
       "border-2",
       "border-black",
-      "hover:shadow-[inset_0px_0px_0px_2px_#00AFB9]",
+      "hover:shadow-[inset_0px_0px_0px_2px_#00AFB9]"
     );
     cy.get('[data-cy="Accept-tag"]')
       .click()
@@ -92,11 +92,11 @@ describe("Tag", () => {
     cy.get('[data-cy="Accept-tag"]').should(
       "have.class",
       "bg-hackathon-tags-green-bg",
-      "text-hackathon-tags-green-text",
+      "text-hackathon-tags-green-text"
     );
     cy.get('[data-cy="Accept-tag"]').should(
       "not.have.class",
-      "hover:shadow-[inset_0px_0px_0px_2px_#00AFB9]",
+      "hover:shadow-[inset_0px_0px_0px_2px_#00AFB9]"
     );
   });
 });

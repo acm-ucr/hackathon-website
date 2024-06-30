@@ -66,7 +66,7 @@ describe("Upload", () => {
 
     files.map((file) => {
       cy.get(`[data-cy="${file}"]`).should(
-        file === "extra.pdf" ? "not.exist" : "exist",
+        file === "extra.pdf" ? "not.exist" : "exist"
       );
     });
   });
@@ -133,7 +133,7 @@ describe("Upload", () => {
 
     files.map((file) => {
       cy.get(`[data-cy="${file}"]`).should(
-        file === "sample.pdf" ? "not.exist" : "exist",
+        file === "sample.pdf" ? "not.exist" : "exist"
       );
     });
   });

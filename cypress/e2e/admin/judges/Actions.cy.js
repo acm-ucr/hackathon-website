@@ -13,7 +13,7 @@ describe("Judges Actions", () => {
 
   it("Confirm First 5 Entries", () => {
     five.forEach((judge) =>
-      cy.get(`[data-cy="${judge.uid}"]`).find('[data-cy="checkbox"]').click(),
+      cy.get(`[data-cy="${judge.uid}"]`).find('[data-cy="checkbox"]').click()
     );
 
     cy.action({
@@ -25,13 +25,13 @@ describe("Judges Actions", () => {
       cy
         .get(`[data-cy="${judge.uid}"]`)
         .find('[data-cy="accepted-tag"]')
-        .should("exist"),
+        .should("exist")
     );
   });
 
   it("Not Attending First 5 Entries", () => {
     five.forEach((judge) =>
-      cy.get(`[data-cy="${judge.uid}"]`).find('[data-cy="checkbox"]').click(),
+      cy.get(`[data-cy="${judge.uid}"]`).find('[data-cy="checkbox"]').click()
     );
 
     cy.action({
@@ -43,13 +43,13 @@ describe("Judges Actions", () => {
       cy
         .get(`[data-cy="${judge.uid}"]`)
         .find('[data-cy="rejected-tag"]')
-        .should("exist"),
+        .should("exist")
     );
   });
 
   it("Delete First 5 Entries", () => {
     five.forEach((judge) =>
-      cy.get(`[data-cy="${judge.uid}"]`).find('[data-cy="checkbox"]').click(),
+      cy.get(`[data-cy="${judge.uid}"]`).find('[data-cy="checkbox"]').click()
     );
 
     cy.delete({
@@ -57,7 +57,7 @@ describe("Judges Actions", () => {
     });
 
     five.forEach((judge) =>
-      cy.get(`[data-cy="${judge.uid}"]`).should("not.exist"),
+      cy.get(`[data-cy="${judge.uid}"]`).should("not.exist")
     );
   });
 });
