@@ -117,3 +117,13 @@ export const AVAILABILITY = [
   "Sunday Evening",
   "Sunday Night",
 ];
+
+export const AFFILIATIONS = {
+  director: "director",
+  marketing: "marketing",
+  sponsorship: "sponsorship",
+  recruitment: "recruitment",
+  software: "software",
+  uiux: "uiux",
+  operations: "operations",
+};
