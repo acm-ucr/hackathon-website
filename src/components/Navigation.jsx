@@ -120,7 +120,6 @@ const Navigation = () => {
                 className="no-underline w-full"
               >
                 <div
-                  onClick={() => setExpand(false)}
                   className={`w-full flex [&>*]:text-white items-center justify-center pl-[10%] py-1 ${
                     pathName.endsWith(tab.link)
                       ? "bg-hackathon-blue-100"
