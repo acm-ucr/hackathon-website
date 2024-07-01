@@ -117,7 +117,6 @@ const Navigation = () => {
                 key={index}
                 href={tab.link}
                 target="_blank"
-                onClick={() => ("onClick" in tab ? tab.onClick() : {})}
                 className="no-underline w-full"
               >
                 <div
