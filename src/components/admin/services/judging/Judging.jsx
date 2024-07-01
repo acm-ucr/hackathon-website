@@ -13,7 +13,6 @@ const Judging = () => {
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Title title="Judging" />
-      <Title title="Teams" />
       <Toolbar
         data={teams}
         setData={setTeams}
@@ -23,6 +22,7 @@ const Judging = () => {
         judgesView={judges}
         setJudgesView={setJudges}
       />
+      {view ? <Title title="Judges" /> : <Title title="Teams" />}
       {(filters === null || filters.length === 0) && <p>No teams available</p>}
       <Table data={view === false ? filters : judges} />
     </div>
