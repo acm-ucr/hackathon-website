@@ -4,7 +4,7 @@ import { LiaTimesSolid } from "react-icons/lia";
 const Popup = ({ popup, onClick, setPopup, text }) => {
   return (
     <div
-      className="fixed inset-0 bg-black/40 w-screen h-screen flex items-center justify-center"
+      className="z-10 fixed inset-0 bg-black/40 w-screen h-screen flex items-center justify-center"
       data-cy="popup"
     >
       <div className="bg-white flex flex-col items-center rounded-lg p-3 gap-3">
