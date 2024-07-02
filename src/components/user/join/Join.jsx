@@ -4,10 +4,12 @@ import JoinClient from "@/components/user/join/JoinClient";
 const Join = async ({ params }) => {
   // const [team, setTeam] = useState(null);
 
-  const { id } = params;
-  const team = await fetchTeamData(id);
+  const { teamID: id } = params;
 
-  return <div>{team ? <JoinClient /> : <p>team not found</p>}</div>;
+  const team = await fetchTeamData(id);
+  console.log("team", team);
+
+  return <div>{team ? <JoinClient team={team} id={id} /> : ""}</div>;
 };
 
 export default Join;

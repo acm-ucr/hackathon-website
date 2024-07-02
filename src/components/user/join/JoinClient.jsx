@@ -1,10 +1,31 @@
-// import { useRouter } from "next/navigation";
-// import { useSession } from "next-auth/react";
+"use client";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 import Button from "@/components/Button";
+import { api } from "@/utils/api";
+import toaster from "@/utils/toaster";
 
-const JoinClient = ({ team }) => {
-  // const router = useRouter();
-  // const { update: sessionUpdate } = useSession();
+const JoinClient = ({ team, id }) => {
+  const router = useRouter();
+  const { update: sessionUpdate } = useSession();
+
+  const handleJoin = async () => {
+    await api({
+      method: "PUT",
+      url: "/api/members",
+      body: { team: id },
+    }).then((response) => {
+      if (response.message !== "OK") {
+        toaster(`${response.message}`, "error");
+        return;
+      }
+      toaster("Successfully joined team!", "success");
+      sessionUpdate({
+        team: id,
+      });
+      router.push("/user");
+    });
+  };
 
   return (
     <div>
