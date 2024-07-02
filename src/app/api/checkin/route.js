@@ -51,11 +51,13 @@ export const PUT = async (req) => {
   const { uid, event, name } = await req.json();
 
   try {
-    await updateDoc(doc(db, "users", uid), {
-      events: arrayUnion(event),
-    });
+    const [data] = await Promise.all([
+      updateDoc(doc(db, "users", uid), {
+        events: arrayUnion(event),
+      }),
+      getDoc(doc(db, "events", event)),
+    ]);
 
-    const data = await getDoc(doc(db, "events", event));
     if (data.exists()) {
       await updateDoc(doc(db, "events", event), {
         attendance: increment(1),
