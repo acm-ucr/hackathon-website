@@ -6,7 +6,7 @@ const Page = ({ params }) => {
     <ProtectedPage
       title="User | Join"
       restrictions={{
-        participants: [-1, 0, 1],
+        participants: [1],
       }}
     >
       <Join params={params} />
