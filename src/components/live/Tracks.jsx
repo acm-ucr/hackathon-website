@@ -1,9 +1,5 @@
 const Tracks = () => {
-  return (
-    <div className="flex justify-center items-center bg-hackathon-yellow-100">
-      Tracks
-    </div>
-  );
+  return <div className="flex justify-center items-center ">Tracks</div>;
 };
 
 export default Tracks;

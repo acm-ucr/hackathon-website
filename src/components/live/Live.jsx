@@ -7,7 +7,7 @@ import Team from "./Team";
 import Committees from "./Committees";
 import Judges from "./Judges";
 import FAQ from "./faq/FAQ";
-import Footer from "../Footer";
+import Footer from "./Footer";
 const Live = () => {
   return (
     <div>

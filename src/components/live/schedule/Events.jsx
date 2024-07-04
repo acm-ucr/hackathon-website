@@ -29,29 +29,25 @@ const Events = ({ events, totalDays }) => {
       <div className="mt-6 h-full w-10/12 ">
         {events
           .filter(({ day }) => day === selectedDay)
-          .map((event, index) => {
-            const { start, summary, description, location } = event;
-
-            return (
-              <div
-                key={index}
-                className="text-lg w-full py-3 font-semibold font-workSans bg-hackathon-green-100 px-4 grid grid-cols-4 justify-center items-center"
-              >
-                <p>
-                  {new Date(start).toLocaleTimeString("en-US", {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    timeZone: "America/Los_Angeles",
-                  })}
-                </p>
-                <p className="w-full flex justify-center ">{summary}</p>
-                <p className="flex justify-center">
-                  {description.split("\n")[0].substr(1)}
-                </p>
-                <p className="flex justify-center ">{location}</p>
-              </div>
-            );
-          })}
+          .map(({ start, summary, description, location }, index) => (
+            <div
+              key={index}
+              className="text-lg w-full py-3 font-semibold font-workSans px-4 grid grid-cols-4 justify-center items-center"
+            >
+              <p>
+                {new Date(start).toLocaleTimeString("en-US", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  timeZone: "America/Los_Angeles",
+                })}
+              </p>
+              <p className="w-full flex justify-center ">{summary}</p>
+              <p className="flex justify-center">
+                {description.split("\n")[0].substr(1)}
+              </p>
+              <p className="flex justify-center ">{location}</p>
+            </div>
+          ))}
       </div>
     </div>
   );

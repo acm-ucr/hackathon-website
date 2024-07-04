@@ -1,9 +1,5 @@
 const Judges = () => {
-  return (
-    <div className="flex justify-center items-center bg-hackathon-blue-100">
-      Judges
-    </div>
-  );
+  return <div className="flex justify-center items-center ">Judges</div>;
 };
 
 export default Judges;

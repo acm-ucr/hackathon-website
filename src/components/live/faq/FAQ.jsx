@@ -1,4 +1,3 @@
-"use client";
 import { QUESTIONS } from "@/data/FAQ";
 import Item from "./Item";
 

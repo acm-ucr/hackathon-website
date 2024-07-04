@@ -1,9 +1,5 @@
 const Landing = () => {
-  return (
-    <div className="flex justify-center items-center bg-hackathon-yellow-100">
-      Landing
-    </div>
-  );
+  return <div className="flex justify-center items-center ">Landing</div>;
 };
 
 export default Landing;
