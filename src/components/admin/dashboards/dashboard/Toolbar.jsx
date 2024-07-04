@@ -143,16 +143,22 @@ const Toolbar = ({
     );
 
   return (
-    <div className="flex items-center my-2 gap-3" data-cy="toolbar">
-      {tags.map((tag, index) => (
-        <Tag
-          key={index}
-          text={tag.text}
-          onClick={() => onClick(tag.value)}
-          color={COLORS[tag.value]}
-        />
-      ))}
-      <div className="flex items-center w-full">
+    <div
+      className="flex flex-col lg:flex-row items-center my-2 gap-3 w-full"
+      data-cy="toolbar"
+    >
+      <div className="flex gap-3 ">
+        {tags.map((tag, index) => (
+          <Tag
+            key={index}
+            text={tag.text}
+            onClick={() => onClick(tag.value)}
+            color={COLORS[tag.value]}
+          />
+        ))}
+      </div>
+
+      <div className="flex lg:flex-row items-center w-full">
         <div className="w-2/12 z-10 mx-2">
           <Select
             items={searchableItems}
@@ -172,21 +178,22 @@ const Toolbar = ({
           onChangeFn={(e) => onChange(search.search, e.target.value)}
           clearFn={() => onChange(search.search, "")}
         />
+        <div>
+          Rows:<span className="mx-2">{meta.total}</span>
+        </div>
+        <FaUndoAlt
+          size={22.5}
+          onClick={handleReload}
+          className="text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
+        />
+        <FaTrashAlt
+          data-cy="delete"
+          onClick={confirmDelete}
+          size={22.5}
+          className="text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer mx-2"
+        />
       </div>
-      <div>
-        Rows:<span className="mx-2">{meta.total}</span>
-      </div>
-      <FaUndoAlt
-        size={22.5}
-        onClick={handleReload}
-        className="text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
-      />
-      <FaTrashAlt
-        data-cy="delete"
-        onClick={confirmDelete}
-        size={22.5}
-        className="text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer mx-2"
-      />
+
       {popup.visible && (
         <Popup
           popup={popup}

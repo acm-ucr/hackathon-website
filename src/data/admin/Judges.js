@@ -1,5 +1,5 @@
 import View from "@/components/admin/dashboards/dashboard/View";
-import { AFFILIATIONS } from "../form/Judge";
+import { AFFILIATIONS } from "../form/Information";
 import { generateAffiliation, generateSelect, generateStatus } from "./Columns";
 
 export const STATUSES = {

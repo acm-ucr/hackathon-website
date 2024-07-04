@@ -22,10 +22,8 @@ const Judging = () => {
         judgesView={judges}
         setJudgesView={setJudges}
       />
-      {(filters === null || filters.length === 0) && (
-        <p className="center-text">No teams available</p>
-      )}
-      <Table data={view === false ? teams : judges} />
+      {(filters === null || filters.length === 0) && <p>No teams available</p>}
+      <Table data={view === false ? filters : judges} />
     </div>
   );
 };

@@ -11,7 +11,14 @@ import { api } from "@/utils/api";
 
 const tags = ["professor", "industry", "student"];
 
-const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
+const Toolbar = ({
+  data,
+  setData,
+  setFilters,
+  view,
+  setView,
+  setJudgesView,
+}) => {
   const router = useRouter();
 
   const [judges, setJudges] = useState(null);
@@ -25,6 +32,7 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
     rotations: "",
     input: "",
   });
+  const [search, setSearch] = useState("");
 
   const generate = (e) => {
     e.preventDefault();
@@ -144,12 +152,25 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
     setJudgesView(totalJudges);
   };
 
+  const handleInput = (e) => {
+    setFilters(
+      data.filter(({ name }) =>
+        name.toLowerCase().search(e.target.value.toLowerCase()) === -1
+          ? false
+          : true
+      )
+    );
+
+    setSearch(e.target.value);
+  };
+
   const load = () => {
     api({
       method: "GET",
       url: "/api/judging",
     }).then(({ items }) => {
       setData(items.teams);
+      setFilters(items.teams);
       setJudges(items.judges);
 
       if (items.judges.length === 0) {
@@ -204,6 +225,18 @@ const Toolbar = ({ data, setData, view, setView, setJudgesView }) => {
               text="view"
               onClick={handleView}
               disabled={!data || data.some(({ rounds }) => rounds.length === 0)}
+            />
+          </div>
+          <div className="pl-2">
+            <Input
+              value={search}
+              label="search"
+              showLabel={false}
+              maxLength={100}
+              placeholder="Search"
+              clear={true}
+              clearFn={() => setSearch("")}
+              onChangeFn={handleInput}
             />
           </div>
         </div>
