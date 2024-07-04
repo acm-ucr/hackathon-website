@@ -6,6 +6,7 @@ import Toolbar from "./Toolbar.jsx";
 
 const Judging = () => {
   const [teams, setTeams] = useState(null);
+  const [filters, setFilters] = useState(teams);
   const [judges, setJudges] = useState(null);
   const [view, setView] = useState(false);
 
@@ -15,12 +16,13 @@ const Judging = () => {
       <Toolbar
         data={teams}
         setData={setTeams}
+        setFilters={setFilters}
         view={view}
         setView={setView}
         judgesView={judges}
         setJudgesView={setJudges}
       />
-      {(teams === null || teams.length === 0) && (
+      {(filters === null || filters.length === 0) && (
         <p className="center-text">No teams available</p>
       )}
       <Table data={view === false ? teams : judges} />
