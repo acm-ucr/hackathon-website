@@ -4,7 +4,6 @@ import Tag from "@/components/admin/Tag";
 import { COLORS } from "@/data/Tags";
 
 describe("Status Component", () => {
-  const color = COLORS["accept"];
   it("Display greeting messages", () => {
     const object = { name: "Alex", roles: { form: 1 }, form: "form" };
     cy.mount(<Status object={object} statuses={STATUSES} />);
@@ -15,7 +14,7 @@ describe("Status Component", () => {
     const text = "accepted";
     const classes = "mb-2";
     const onClick = cy.stub();
-
+    const color = COLORS["accept"];
     cy.mount(
       <Tag color={color} text={text} onClick={onClick} classes={classes} />
     );

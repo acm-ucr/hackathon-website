@@ -15,6 +15,7 @@ import {
   FaLock,
   FaCalendarDay,
   FaExclamation,
+  FaSearch,
 } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
 import { AiOutlineQrcode } from "react-icons/ai";
@@ -162,6 +163,16 @@ export const TABS = {
           name: "checkin",
           link: "/user/checkin",
           icon: <AiOutlineQrcode className={iconStyle} />,
+        },
+        {
+          name: "schedule",
+          link: "/user/schedule",
+          icon: <FaCalendarDay className={iconStyle} />,
+        },
+        {
+          name: "find a team",
+          link: "/user/find",
+          icon: <FaSearch className={iconStyle} />,
         },
       ],
     },

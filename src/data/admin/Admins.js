@@ -1,5 +1,5 @@
 import { generateAffiliation, generateSelect, generateStatus } from "./Columns";
-import { AFFILIATIONS } from "../form/Admins";
+import { AFFILIATIONS } from "../form/Information";
 import { ICONS } from "./Icons";
 export const STATUSES = {
   1: "accepted",

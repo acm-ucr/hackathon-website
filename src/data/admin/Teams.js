@@ -34,6 +34,9 @@ export const COLUMNS = [
     header: "Members",
     width: "w-3/12",
     enableSorting: false,
+    filterFn: "includesString",
+    enableColumnFilter: true,
+    searchable: true,
     cell: ({ getValue }) => (
       <div>
         {getValue().map((data, index) => (
@@ -47,6 +50,9 @@ export const COLUMNS = [
     header: "Discords",
     width: "w-2/12",
     enableSorting: false,
+    searchable: true,
+    enableColumnFilter: true,
+    filterFn: "includesString",
     cell: ({ getValue }) => (
       <div>
         {getValue().map((data, index) => (

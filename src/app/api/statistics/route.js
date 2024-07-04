@@ -5,6 +5,7 @@ import { authenticate } from "@/utils/auth";
 
 export const GET = async () => {
   const res = NextResponse;
+
   const { auth } = await authenticate({
     admins: [1],
   });
@@ -17,6 +18,11 @@ export const GET = async () => {
   }
 
   try {
+    const [statistics, events] = await Promise.all([
+      getDoc(doc(db, "statistics", "statistics")),
+      getDocs(collection(db, "events")),
+    ]);
+
     const {
       teams: { 1: teams },
       participants: { 1: participants },
@@ -27,15 +33,13 @@ export const GET = async () => {
       sponsors: { 1: sponsors },
       panels: { 1: panels },
       admins: { 1: admins },
-    } = (await getDoc(doc(db, "statistics", "statistics"))).data();
+    } = statistics.data();
 
-    const events = await getDocs(collection(db, "events"));
-
-    const eventAttendees = {};
+    const attendees = {};
 
     events.forEach((doc) => {
       const { name, attendance } = doc.data();
-      eventAttendees[name] = attendance;
+      attendees[name] = attendance;
     });
 
     const users = {
@@ -50,10 +54,7 @@ export const GET = async () => {
       admins,
     };
 
-    return res.json(
-      { items: { users, events: eventAttendees } },
-      { status: 200 }
-    );
+    return res.json({ items: { users, events: attendees } }, { status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },

@@ -8,6 +8,7 @@ import Button from "../../Button";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
 import LOGO from "@/app/favicon.ico";
+import { useRouter } from "next/navigation";
 
 const Form = ({
   object,
@@ -18,6 +19,8 @@ const Form = ({
   statuses,
   bypass = false,
 }) => {
+  const router = useRouter();
+
   const [loading, setLoading] = useState(false);
 
   const [state, setState] = useState(
@@ -26,7 +29,13 @@ const Form = ({
 
   return (
     <div className="w-full h-full overflow-scroll-y flex flex-col items-center font-poppins">
-      <div className="w-full flex flex-row justify-end mr-[10%]">
+      <div className="w-full flex flex-row justify-end space-x-8 mr-[10%]">
+        <Button
+          text="Back to Home"
+          onClick={() => router.push("/")}
+          loading={loading}
+          color="green"
+        />
         <Button
           text="Sign Out"
           onClick={() => signOut({ callbackUrl: "/", redirect: true })}

@@ -56,6 +56,13 @@ const Questions = ({
     onSubmit(setLoading, setState);
   };
 
+  const handleClick = (option, field) => {
+    setObject({
+      ...object,
+      [field]: option,
+    });
+  };
+
   return (
     <div className="flex flex-col w-full gap-5">
       {Object.values(fields).map((field, index) => (
@@ -85,7 +92,6 @@ const Questions = ({
               setUser={setObject}
               required={field.required}
               editable={field.editable}
-              regex={field.regex}
             />
           )}
           {field.input === "select" && (
@@ -106,22 +112,26 @@ const Questions = ({
                 {field.text}
                 {field.required && <span className="text-red-500">*</span>}
               </p>
-              {field.options.map((option, i) => (
-                <Checkbox
-                  key={i}
-                  toggle={object[field.field].includes(option)}
-                  text={option}
-                  onClick={() =>
-                    setObject({
-                      ...object,
-                      [field.field]: object[field.field].includes(option)
-                        ? object[field.field].filter((item) => item !== option)
-                        : [...object[field.field], option],
-                    })
-                  }
-                  color="bg-hackathon-green-300"
-                />
-              ))}
+              <div className="grid md:grid-cols-2">
+                {field.options.map((option, i) => (
+                  <Checkbox
+                    key={i}
+                    toggle={object[field.field].includes(option)}
+                    text={option}
+                    onClick={() =>
+                      setObject({
+                        ...object,
+                        [field.field]: object[field.field].includes(option)
+                          ? object[field.field].filter(
+                              (item) => item !== option
+                            )
+                          : [...object[field.field], option],
+                      })
+                    }
+                    color="bg-hackathon-green-300"
+                  />
+                ))}
+              </div>
             </>
           )}
           {field.input === "terms" && (
@@ -147,6 +157,7 @@ const Questions = ({
               user={object}
               setUser={setObject}
               required={field.required}
+              onClick={handleClick}
             />
           )}
           {field.input === "textarea" && (
