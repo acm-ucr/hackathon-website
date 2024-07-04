@@ -35,7 +35,7 @@ export const FIELDS = {
     title: `How did you find ${data.name}?`,
     options: SOURCES,
     field: "eventSource",
-    placeholder: "ie. Event Source",
+    placeholder: "ie. Social Media",
     width: 12,
     required: true,
   },

@@ -84,7 +84,7 @@ export const FIELDS = {
     name: "comments",
     rows: 4,
     title: "Additional Comments/Questions",
-    placeholder: "ie. ...",
+    placeholder: "ie. The food was good...",
     width: 12,
     required: true,
   },
