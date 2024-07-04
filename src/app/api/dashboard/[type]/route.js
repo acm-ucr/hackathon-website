@@ -54,23 +54,42 @@ export const POST = async (req, { params }) => {
       ATTRIBUTES[params.type].forEach((attribute) => {
         element[attribute] = body[attribute];
       });
-      await updateDoc(doc(db, "users", user.id), {
-        ...element,
-        timestamp: Timestamp.now(),
-        [`roles.${params.type}`]: 0,
-      });
-      await updateDoc(doc(db, "statistics", "statistics"), {
-        [`${params.type}.0`]: increment(1),
-      });
 
-      await send({
-        email: user.email,
-        id: "confirmation",
-        name: user.name,
-        position: params.type.slice(0, -1),
-        subject: `[${data.name}] Thank you for applying!`,
-        preview: `Thank you for applying to ${data.name}`,
-      });
+      await Promise.all([
+        updateDoc(doc(db, "users", user.id), {
+          ...element,
+          timestamp: Timestamp.now(),
+          [`roles.${params.type}`]: 0,
+        }),
+        updateDoc(doc(db, "statistics", "statistics"), {
+          [`${params.type}.0`]: increment(1),
+        }),
+        send({
+          email: user.email,
+          id: "confirmation",
+          name: user.name,
+          position: params.type.slice(0, -1),
+          subject: `[${data.name}] Thank you for applying!`,
+          preview: `Thank you for applying to ${data.name}`,
+        }),
+      ]);
+      // await updateDoc(doc(db, "users", user.id), {
+      //   ...element,
+      //   timestamp: Timestamp.now(),
+      //   [`roles.${params.type}`]: 0,
+      // });
+      // await updateDoc(doc(db, "statistics", "statistics"), {
+      //   [`${params.type}.0`]: increment(1),
+      // });
+
+      // await send({
+      //   email: user.email,
+      //   id: "confirmation",
+      //   name: user.name,
+      //   position: params.type.slice(0, -1),
+      //   subject: `[${data.name}] Thank you for applying!`,
+      //   preview: `Thank you for applying to ${data.name}`,
+      // });
     }
 
     return res.json({ message: "OK" }, { status: 200 });
