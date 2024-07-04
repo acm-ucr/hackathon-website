@@ -9,7 +9,6 @@ const Judging = () => {
   const [filters, setFilters] = useState(teams);
   const [judges, setJudges] = useState(null);
   const [view, setView] = useState(false);
-  const [title, setTitle] = useState("Teams");
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
@@ -22,9 +21,8 @@ const Judging = () => {
         setView={setView}
         judgesView={judges}
         setJudgesView={setJudges}
-        setTitle={setTitle}
       />
-      <Title title={title} />
+      <Title title={view ? "Judges" : "Teams"} />
       {(filters === null || filters.length === 0) && <p>No teams available</p>}
       <Table data={view === false ? filters : judges} />
     </div>

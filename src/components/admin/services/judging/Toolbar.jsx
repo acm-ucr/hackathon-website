@@ -134,10 +134,6 @@ const Toolbar = ({
 
   const handleView = () => {
     setView(!view);
-    {
-      view ? setTitle("Teams") : setTitle("Judges");
-    }
-
     const totalJudges = [...judges];
 
     totalJudges.forEach((judge) => {
