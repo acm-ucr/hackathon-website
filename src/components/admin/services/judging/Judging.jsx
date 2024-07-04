@@ -20,7 +20,9 @@ const Judging = () => {
         judgesView={judges}
         setJudgesView={setJudges}
       />
-      {(teams === null || teams.length === 0) && <p>No teams available</p>}
+      {(teams === null || teams.length === 0) && (
+        <p className="center-text">No teams available</p>
+      )}
       <Table data={view === false ? teams : judges} />
     </div>
   );
