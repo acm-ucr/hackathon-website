@@ -22,6 +22,7 @@ const Judging = () => {
         judgesView={judges}
         setJudgesView={setJudges}
       />
+      <Title title={view ? "Judges" : "Teams"} />
       {(filters === null || filters.length === 0) && <p>No teams available</p>}
       <Table data={view === false ? filters : judges} />
     </div>
