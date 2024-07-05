@@ -27,7 +27,7 @@ describe("Status Component", () => {
     cy.mount(<Status object={user} statuses={STATUSES} />);
     const expectedText =
       "You have already filled out the form. If you wish to change any information, please fill out the form again. Note that your status will change until approved by an admin.";
-    cy.get('[data-cy="confirmation-texts"]')
+    cy.get('[data-cy="status-confirmation"]')
       .should("exist")
       .and("have.class", "text-center")
       .and("contain.text", expectedText);
@@ -38,7 +38,7 @@ describe("Status Component", () => {
     cy.mount(<Status object={user} statuses={STATUSES} />);
     const confirmText =
       "If you believe that your status is incorrect, please reach out to us immediately.";
-    cy.get("[data-cy=if-wrong-status]")
+    cy.get("[data-cy=status-incorrect]")
       .should("have.class", "text-center")
       .and("contain.text", confirmText);
   });
