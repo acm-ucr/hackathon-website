@@ -18,7 +18,6 @@ const Toolbar = ({
   view,
   setView,
   setJudgesView,
-  setTitle,
 }) => {
   const router = useRouter();
 
