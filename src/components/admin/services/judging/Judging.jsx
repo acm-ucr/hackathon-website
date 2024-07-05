@@ -22,6 +22,7 @@ const Judging = () => {
         judgesView={judges}
         setJudgesView={setJudges}
       />
+      <Title title={view ? "Judges" : "Teams"} />
       {filters === null || filters.length === 0 ? (
         <div className="flex-grow flex items-center justify-center">
           No teams available
