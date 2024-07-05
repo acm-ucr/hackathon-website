@@ -23,8 +23,13 @@ const Judging = () => {
         setJudgesView={setJudges}
       />
       <Title title={view ? "Judges" : "Teams"} />
-      {(filters === null || filters.length === 0) && <p>No teams available</p>}
-      <Table data={view === false ? filters : judges} />
+      {filters === null || filters.length === 0 ? (
+        <div className="flex-grow flex items-center justify-center">
+          No teams available
+        </div>
+      ) : (
+        <Table data={view === false ? filters : judges} />
+      )}
     </div>
   );
 };
