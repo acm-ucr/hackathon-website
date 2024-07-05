@@ -23,7 +23,16 @@ export const COLUMNS = [
   {
     accessorKey: "name",
     header: "Name",
-    width: "w-3/12",
+    width: "w-2/12",
+    enableColumnFilter: true,
+    filterFn: "includesString",
+    searchable: true,
+    cell: ({ getValue }) => <div>{getValue()}</div>,
+  },
+  {
+    accessorKey: "teamid",
+    header: "Team ID",
+    width: "w-2/12",
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -32,7 +41,7 @@ export const COLUMNS = [
   {
     accessorKey: "members",
     header: "Members",
-    width: "w-3/12",
+    width: "w-2/12",
     enableSorting: false,
     filterFn: "includesString",
     enableColumnFilter: true,
