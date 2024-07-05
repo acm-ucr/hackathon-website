@@ -24,7 +24,7 @@ const Judging = () => {
       />
       {filters === null || filters.length === 0 ? (
         <div className="flex-grow flex items-center justify-center">
-          <p className="text-center">No teams available</p>
+          No teams available
         </div>
       ) : (
         <Table data={view === false ? filters : judges} />
