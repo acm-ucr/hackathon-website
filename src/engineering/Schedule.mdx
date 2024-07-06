@@ -11,7 +11,7 @@ link: schedule
 
 ## What is it?
 
-A schedule is essential for any hackathon as it allows for a concise and organized plan of events. Having a well-structured schedule helps participants manage their time effectively and provides clear information about the start and end times of the hackathon, workshops, meal breaks, and deadlines for project submissions. Additionally, this allows the organizers to run the event smoothly, avoid any overlaps, and ensure that all necessary resources are available at the right time.
+A schedule is essential for any hackathon as it provides a concise and organized plan of events. A well-structured schedule helps participants manage their time effectively and offers clear information about the hackathon's start and end times, workshops, meal breaks, and project submission deadlines. Additionally, it enables organizers to run the event smoothly, prevent overlaps, and ensure all necessary resources are available when needed.
 
 ## How did we implement it?
 
@@ -40,15 +40,6 @@ and how since the schedule is always on gcal, its always updated
 go deeper into implementation
 this implementation was only possible cause of RSC
 
-## How did we do it before?
-
-## What was the new change?
-
 ## Issues encountered
 
-there was a small timezone bug we ran into
-with UTC vs PST
-that was messing up our parsing
-and we had to pick a standard and run with it
-cause we were miss classifiying events after 5-6pm PST
-cause thats when UTC enters a new day
+We encountered a minor timezone issue involving UTC and PST that was affecting our data parsing. Events occurring after 5-6pm PST were being misclassified due to the transition to a new day in UTC, prompting us to address the discrepancy. We resolved the issue by choosing a standard timezone approach and implementing it consistently, ensuring accurate event classification moving forward.
