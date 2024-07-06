@@ -17,21 +17,22 @@ const Navigation = () => {
   const [expand, setExpand] = useState(false);
   const pathName = usePathname();
   const [tabs, setTabs] = useState(TABS[pathName.split("/")[1]]);
-  const globalTabs = [
+
+  const global = [
     {
       name: "feedback",
       link: "/form/feedback",
-      icon: <MdFeedback className="mr-2" />,
+      icon: <MdFeedback />,
     },
     {
       name: "devpost",
       link: data.devpost,
-      icon: <SiDevpost className="mr-2" />,
+      icon: <SiDevpost />,
     },
     {
       name: "website",
       link: "/",
-      icon: <BsGlobe2 className="mr-2" />,
+      icon: <BsGlobe2 />,
     },
   ];
 
@@ -111,16 +112,16 @@ const Navigation = () => {
                 </div>
               ))}
           </div>
-          <div className="w-full flex flex-row items-center mb-3">
-            {globalTabs.map((tab, index) => (
+          <div className="w-full flex flex-row justify-center items-center mb-3">
+            {global.map((tab, index) => (
               <Link
                 key={index}
                 href={tab.link}
                 target="_blank"
-                className="no-underline w-full"
+                className="no-underline w-full bg-red-"
               >
                 <div
-                  className={`w-full flex [&>*]:text-white items-center justify-center pl-[10%] py-1 ${
+                  className={`w-full flex [&>*]:text-white items-center justify-center py-1 ${
                     pathName.endsWith(tab.link)
                       ? "bg-hackathon-blue-100"
                       : "[&>*]:hover:text-hackathon-blue-100"
@@ -130,13 +131,11 @@ const Navigation = () => {
                 </div>
               </Link>
             ))}
-            <div className="w-full">
-              <div
-                onClick={() => signOut({ callbackUrl: "/", redirect: true })}
-                className={`w-full flex [&>*]:text-white items-center justify-center pl-[10%] py-1 [&>*]:hover:text-hackathon-blue-100 hover:cursor-pointer`}
-              >
-                <BsBoxArrowInRight className="mr-2" />
-              </div>
+            <div
+              onClick={() => signOut({ callbackUrl: "/", redirect: true })}
+              className={`w-full flex text-white items-center justify-center py-1 hover:text-hackathon-blue-100 hover:cursor-pointer`}
+            >
+              <BsBoxArrowInRight className="mr-2" />
             </div>
           </div>
         </div>
