@@ -90,6 +90,7 @@ export const GET = async (req) => {
 
       output.push({
         name: name,
+        teamid: doc.id,
         links: formattedLinks,
         members: formattedNames,
         discords: formattedDiscords,
