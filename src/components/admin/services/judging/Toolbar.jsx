@@ -222,7 +222,7 @@ const Toolbar = ({
           <div className="pl-2">
             <Button
               color="green"
-              text="view"
+              text="change view"
               onClick={handleView}
               disabled={!data || data.some(({ rounds }) => rounds.length === 0)}
             />

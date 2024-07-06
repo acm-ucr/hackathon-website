@@ -45,7 +45,6 @@ const CheckIn = () => {
     const [user, date] = code.split("&");
     const delta = Math.round((new Date() - new Date(date)) / 1000);
 
-    // TODO: CHANGE TO 5 SECONDS ONCE DEPLOYED
     if (delta < 5000) {
       const { items } = await api({
         method: "GET",
