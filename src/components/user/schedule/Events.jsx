@@ -1,6 +1,7 @@
 import React from "react";
 
 const Events = ({ event, setEvents }) => {
+  setEvents(null);
   return (
     <div
       className={` bg-white text-black flex flex-col p-3 rounded-lg w-full shadow-sm`}
