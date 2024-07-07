@@ -8,10 +8,6 @@ const ScheduleWrapper = async () => {
     method: "GET",
   });
 
-  items.forEach((event) => {
-    event.start = new Date(event.start.dateTime);
-  });
-
   return (
     <div>
       <Schedule eventList={items} />
