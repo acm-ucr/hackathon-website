@@ -10,7 +10,6 @@ const ScheduleWrapper = async () => {
 
   items.forEach((event) => {
     event.start = new Date(event.start.dateTime);
-    event.end = new Date(event.end.dateTime);
     event.day = event.start.getDay();
   });
 
