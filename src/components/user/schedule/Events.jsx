@@ -1,26 +1,9 @@
 import React from "react";
 
-const colors = {
-  meeting: {
-    bg: "bg-white",
-    text: "text-red-400",
-  },
-  food: {
-    bg: "bg-hackathon-yellow-100",
-    text: "text-black",
-  },
-  social: { bg: "bg-hackathon-blue-100", text: "text-white" },
-  workshop: {
-    bg: "bg-white",
-    text: "text-black",
-  },
-};
-
-const Events = ({ event }) => {
-  const color = colors[event.filter];
+const Events = ({ event, setEvents }) => {
   return (
     <div
-      className={` ${color.text} ${color.bg} flex flex-col p-3 rounded-lg w-full shadow-sm`}
+      className={` bg-white text-black flex flex-col p-3 rounded-lg w-full shadow-sm`}
     >
       <div className="font-bold text-sm">{event.summary}</div>
       <div className="flex gap-0 items-center justify-center w-full py-1">
