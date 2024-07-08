@@ -1,4 +1,3 @@
-import React from "react";
 import { api } from "@/utils/api";
 import Schedule from "./Schedule";
 
