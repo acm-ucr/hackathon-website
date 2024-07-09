@@ -170,4 +170,5 @@ export const ATTRIBUTES = {
   diet: [],
   resume: "",
   requirements: [],
+  team: "",
 };
