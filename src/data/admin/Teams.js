@@ -23,7 +23,16 @@ export const COLUMNS = [
   {
     accessorKey: "name",
     header: "Name",
-    width: "w-3/12",
+    width: "w-2/12",
+    enableColumnFilter: true,
+    filterFn: "includesString",
+    searchable: true,
+    cell: ({ getValue }) => <div>{getValue()}</div>,
+  },
+  {
+    accessorKey: "teamid",
+    header: "Team ID",
+    width: "w-2/12",
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -32,8 +41,11 @@ export const COLUMNS = [
   {
     accessorKey: "members",
     header: "Members",
-    width: "w-3/12",
+    width: "w-2/12",
     enableSorting: false,
+    filterFn: "includesString",
+    enableColumnFilter: true,
+    searchable: true,
     cell: ({ getValue }) => (
       <div>
         {getValue().map((data, index) => (
@@ -47,6 +59,9 @@ export const COLUMNS = [
     header: "Discords",
     width: "w-2/12",
     enableSorting: false,
+    searchable: true,
+    enableColumnFilter: true,
+    filterFn: "includesString",
     cell: ({ getValue }) => (
       <div>
         {getValue().map((data, index) => (

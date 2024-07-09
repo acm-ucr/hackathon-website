@@ -102,8 +102,8 @@ export const DELETE = async (req) => {
 
   try {
     await Promise.all(
-      ids.map((id) => {
-        return updateDoc(doc(db, "teams", id), {
+      ids.map(async (id) => {
+        await updateDoc(doc(db, "teams", id), {
           table: deleteField(),
           rounds: deleteField(),
         });
@@ -134,9 +134,9 @@ export const PUT = async (req) => {
 
   try {
     await Promise.all(
-      teams.map((object) => {
+      teams.map(async (object) => {
         const rounds = JSON.stringify(object.rounds);
-        return updateDoc(doc(db, "teams", object.uid), {
+        await updateDoc(doc(db, "teams", object.uid), {
           table: object.table,
           rounds: rounds,
         });

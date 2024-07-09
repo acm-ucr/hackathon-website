@@ -2,8 +2,6 @@ import {
   BsFillPersonFill,
   BsPeopleFill,
   BsBarChartFill,
-  BsGlobe2,
-  BsBoxArrowInRight,
   BsPersonRaisedHand,
 } from "react-icons/bs";
 import { MdVolunteerActivism, MdFeedback } from "react-icons/md";
@@ -15,13 +13,12 @@ import {
   FaLock,
   FaCalendarDay,
   FaExclamation,
+  FaSearch,
 } from "react-icons/fa";
 import { FaGear } from "react-icons/fa6";
 import { AiOutlineQrcode } from "react-icons/ai";
-import { signOut } from "next-auth/react";
-import { SiDevpost, SiHandshake } from "react-icons/si";
+import { SiHandshake } from "react-icons/si";
 import { IoIosPeople } from "react-icons/io";
-import data from "@/data/Config";
 
 const iconStyle = "mr-2";
 
@@ -130,24 +127,6 @@ export const TABS = {
         },
       ],
     },
-    " ": [
-      {
-        name: "devpost",
-        link: data.devpost,
-        icon: <SiDevpost className={iconStyle} />,
-      },
-      {
-        name: "website",
-        link: "/",
-        icon: <BsGlobe2 className={iconStyle} />,
-      },
-      {
-        name: "sign out",
-        link: "/",
-        onClick: () => signOut({ callbackUrl: "/", redirect: true }),
-        icon: <BsBoxArrowInRight className={iconStyle} />,
-      },
-    ],
   },
   user: {
     Portal: {
@@ -168,30 +147,12 @@ export const TABS = {
           link: "/user/schedule",
           icon: <FaCalendarDay className={iconStyle} />,
         },
+        {
+          name: "find a team",
+          link: "/user/find",
+          icon: <FaSearch className={iconStyle} />,
+        },
       ],
     },
-    " ": [
-      {
-        name: "feedback",
-        link: "/form/feedback",
-        icon: <MdFeedback className={iconStyle} />,
-      },
-      {
-        name: "devpost",
-        link: data.devpost,
-        icon: <SiDevpost className={iconStyle} />,
-      },
-      {
-        name: "website",
-        link: "/",
-        icon: <BsGlobe2 className={iconStyle} />,
-      },
-      {
-        name: "sign out",
-        link: "/",
-        onClick: () => signOut({ callbackUrl: "/", redirect: true }),
-        icon: <BsBoxArrowInRight className={iconStyle} />,
-      },
-    ],
   },
 };
