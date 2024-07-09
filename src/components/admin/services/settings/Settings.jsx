@@ -11,8 +11,8 @@ const Settings = () => {
       method: "GET",
       url: "/api/settings",
     })
-    .then(() => showToast("Stats Synced!", "success"))
-    .catch(() => showToast("Failed to sync stats.", "error"));
+      .then(() => showToast("Stats Synced!", "success"))
+      .catch(() => showToast("Failed to sync stats.", "error"));
   };
 
   return (
