@@ -181,15 +181,17 @@ const Questions = ({
           )}
         </div>
       ))}
-      <p className="font-semibold mt-3">Resources</p>
-      <Link
-        href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
-        target="_blank"
-        className="no-underline flex items-center text-hackathon-green-300"
-      >
-        MLH Code of Conduct
-        <FaLink className="mx-2" />
-      </Link>
+      <p>
+        <p className="font-semibold mt-3">Resources</p>
+        <Link
+          href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
+          target="_blank"
+          className="no-underline flex items-center text-hackathon-green-300 mt-2"
+        >
+          MLH Code of Conduct
+          <FaLink className="mx-2" />
+        </Link>
+      </p>
       <Link
         href="https://mlh.io/privacy"
         target="_blank"
