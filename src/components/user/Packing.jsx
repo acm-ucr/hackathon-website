@@ -6,7 +6,7 @@ const Packing = () => {
     "Sleep-related things (sleeping bags, pillow, blankets, etc.)",
     "There will be a resting area within the venue itself, but we can't provide sleeping materials to hackers.",
     "A change of clothes (including something warm such as a jacket or sweatshirt)",
-    "Toiletries:",
+    "Toiletries: toothbrush, toothpaste, soap, towels, face wash",
     "Medication (if needed)",
     "Refillable water bottle",
   ];
@@ -18,16 +18,7 @@ const Packing = () => {
 
       <ul className="font-light list-disc pl-9 mb-2" data-cy="packing-items">
         {list.map((list, index) => (
-          <li key={index}>
-            {list}
-            {list == "Toiletries:" && (
-              <ul className="list-disc pl-9">
-                <li>ToothBrush / toothpaste</li>
-                <li>Shower Supplies (soap, towel, shower shoes)</li>
-                <li>Face Wash</li>
-              </ul>
-            )}
-          </li>
+          <li key={index}>{list}</li>
         ))}
       </ul>
     </div>
