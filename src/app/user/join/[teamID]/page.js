@@ -6,7 +6,7 @@ import toaster from "@/utils/toaster";
 import { useSession } from "next-auth/react";
 import Fault from "@/utils/error";
 import { api } from "@/utils/api";
-
+import { useQuery, useMutation } from "@tanstack/react-query";
 const Page = ({ params }) => {
   const [team, setTeam] = useState(null);
   const router = useRouter();
@@ -14,48 +14,47 @@ const Page = ({ params }) => {
 
   const { teamID } = params;
 
-  const handleJoin = () => {
-    api({
+  const { data, error } = useQuery({
+    queryKey: ["teamData"],
+    queryFn: api({
+      method: "GET",
+      url: `/api/team?teamid=${teamID}`,
+    }).then((response) => response.data),
+  });
+
+  const handleJoin = useMutation({
+    mutationFn: api({
       method: "PUT",
       url: "/api/members",
       body: { team: teamID },
-    }).then((response) => {
+    }),
+    onSuccess: (response) => {
       if (response.message !== "OK") {
         toaster(`${response.message}`, "error");
         return;
       }
       toaster("Successfully joined team!", "success");
-      sessionUpdate({
-        team: teamID,
-      });
+      sessionUpdate({ team: teamID });
       router.push("/user");
-    });
-  };
+    },
+    onError: (error) => {
+      toaster(`Failed to join team: ${error.message}`, "error");
+    },
+  });
 
   useEffect(() => {
-    if (teamID) {
-      api({
-        method: "GET",
-        url: `/api/team?teamid=${teamID}`,
-      }).then((response) => {
-        if (response.message === "OK") {
-          setTeam(response.items);
-        } else if (response.message === "Invalid Team ID") {
-          throw new Fault(
-            404,
-            "Invalid Team ID",
-            "Please get a new team invite"
-          );
-        } else {
-          throw new Fault(
-            500,
-            "Internal Server Error",
-            "Please contact the software engineering team for assistance"
-          );
-        }
-      });
+    if (!error && data?.message === "OK") {
+      setTeam(data.items);
+    } else if (data?.message === "Invalid Team ID") {
+      throw new Fault(404, "Invalid Team ID", "Please get a new team invite");
+    } else {
+      throw new Fault(
+        500,
+        "Internal Server Error",
+        "Please contact the software engineering team for assistance"
+      );
     }
-  }, [teamID]);
+  }, [data, error]);
 
   return (
     <div>
@@ -74,7 +73,12 @@ const Page = ({ params }) => {
               </span>
             </p>
           ))}
-          <Button color="green" size="xl" text="Join" onClick={handleJoin} />
+          <Button
+            color="green"
+            size="xl"
+            text="Join"
+            onClick={handleJoin.mutate()}
+          />
         </div>
       )}
     </div>
