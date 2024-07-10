@@ -3,7 +3,7 @@ import Loading from "../../src/components/Loading";
 describe("Loading Component", () => {
   it("renders Loading component correctly", () => {
     // Mount the Loading component
-    mount(<Loading />);
+    cy.mount(<Loading />);
 
     // test "loading..." text and style
     cy.contains("Loading...")
