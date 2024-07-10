@@ -10,21 +10,20 @@ const JoinClient = ({ team, id }) => {
   const { update: sessionUpdate } = useSession();
 
   const handleJoin = async () => {
-    await api({
+    const response = await api({
       method: "PUT",
       url: "/api/members",
       body: { team: id },
-    }).then((response) => {
-      if (response.message !== "OK") {
-        toaster(`${response.message}`, "error");
-        return;
-      }
-      toaster("Successfully joined team!", "success");
-      sessionUpdate({
-        team: id,
-      });
-      router.push("/user");
     });
+    if (response.message !== "OK") {
+      toaster(`${response.message}`, "error");
+      return;
+    }
+    toaster("Successfully joined team!", "success");
+    sessionUpdate({
+      team: id,
+    });
+    router.push("/user");
   };
 
   return (
