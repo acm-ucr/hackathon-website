@@ -2,17 +2,17 @@
 import Title from "@/components/admin/Title";
 import { api } from "@/utils/api";
 import Button from "../../Button";
-import { showToast } from "@/utils/toaster";
+import { toaster } from "@/utils/toaster";
 
 const Settings = () => {
   const syncStatsWithDatabase = () => {
-    showToast("Syncing Stats...", "info");
+    toaster("Syncing Stats...", "info");
     api({
       method: "GET",
       url: "/api/settings",
     })
-      .then(() => showToast("Stats Synced!", "success"))
-      .catch(() => showToast("Failed to sync stats.", "error"));
+      .then(() => toaster("Stats Synced!", "success"))
+      .catch(() => toaster("Failed to sync stats.", "error"));
   };
 
   return (

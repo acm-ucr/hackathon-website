@@ -185,7 +185,7 @@ const Questions = ({
           )}
         </div>
       ))}
-      <p>
+      <div>
         <p className="font-semibold mt-3">Resources</p>
         <Link
           href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
@@ -195,7 +195,7 @@ const Questions = ({
           MLH Code of Conduct
           <FaLink className="mx-2" />
         </Link>
-      </p>
+      </div>
       <Link
         href="https://mlh.io/privacy"
         target="_blank"
@@ -212,6 +212,7 @@ const Questions = ({
         MLH Contest Terms and Conditions
         <FaLink className="mx-2" />
       </Link>
+      
       {packet && (
         <Link
           href={data.packet}
