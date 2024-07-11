@@ -212,7 +212,6 @@ const Questions = ({
         MLH Contest Terms and Conditions
         <FaLink className="mx-2" />
       </Link>
-      
       {packet && (
         <Link
           href={data.packet}
