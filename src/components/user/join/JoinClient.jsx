@@ -27,7 +27,7 @@ const JoinClient = ({ team, id }) => {
   };
 
   return (
-    <div>
+    <>
       {team && (
         <div className="flex flex-col w-screen h-screen items-center justify-center font-poppins">
           <p className="text-3xl">
@@ -46,7 +46,7 @@ const JoinClient = ({ team, id }) => {
           <Button color="green" size="xl" text="Join" onClick={handleJoin} />
         </div>
       )}
-    </div>
+    </>
   );
 };
 
