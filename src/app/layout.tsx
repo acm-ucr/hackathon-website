@@ -1,7 +1,7 @@
 /* eslint-disable new-cap */
 import "./globals.css";
 import { Poppins } from "next/font/google";
-import SessionProvider from "@/components/Session";
+import Session from "@/components/Session";
 import { Toaster } from "react-hot-toast";
 import { getServerSession } from "next-auth";
 
@@ -23,10 +23,10 @@ const RootLayout = async ({ children }: Props) => {
     <html lang="en" className="h-full">
       <body className={`${poppins.variable} flex flex-col lg:flex-row h-full`}>
         <div className="flex w-full h-full">
-          <SessionProvider session={session}>
+          <Session session={session}>
             <Toaster />
             {children}
-          </SessionProvider>
+          </Session>
         </div>
       </body>
     </html>
