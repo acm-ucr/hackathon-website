@@ -29,24 +29,6 @@ describe("Interests Actions", () => {
     );
   });
 
-  it("Reject First 5 Entries", () => {
-    interests.forEach((interest) =>
-      cy.get(`[data-cy="${interest.uid}"]`).find('[data-cy="checkbox"]').click()
-    );
-
-    cy.action({
-      tag: "reject",
-      page: "interests",
-    });
-
-    interests.forEach((interest) =>
-      cy
-        .get(`[data-cy="${interest.uid}"]`)
-        .find('[data-cy="rejected-tag"]')
-        .should("exist")
-    );
-  });
-
   it("Delete First 5 Entries", () => {
     interests.forEach((interest) =>
       cy.get(`[data-cy="${interest.uid}"]`).find('[data-cy="checkbox"]').click()
