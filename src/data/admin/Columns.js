@@ -24,7 +24,10 @@ export const generateAffiliation = (affiliations) => ({
   header: "Affiliation",
   width: "w-1/12",
   cell: ({ getValue }) => (
-    <Tag text={affiliations[getValue()]} color={COLORS[getValue()]} />
+    <Tag
+      text={affiliations[getValue().toLowerCase()]}
+      color={COLORS[getValue().toLowerCase()]}
+    />
   ),
 });
 

@@ -2,7 +2,7 @@
 import Title from "@/components/admin/Title";
 import { api } from "@/utils/api";
 import Button from "../../Button";
-import { toaster } from "@/utils/toaster";
+import toaster from "@/utils/toaster";
 
 const Settings = () => {
   const syncStatsWithDatabase = () => {
