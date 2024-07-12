@@ -4,7 +4,7 @@ import { BsQrCode } from "react-icons/bs";
 import { LuParkingCircle } from "react-icons/lu";
 
 describe("Tile", () => {
-  it("renders correctly when given Check-In prop", () => {
+  it("Checkin", () => {
     const icon = <BsQrCode />;
     const text = "Check In";
     const link = "/checkin";
@@ -16,7 +16,7 @@ describe("Tile", () => {
     cy.get('[data-cy="tile-text"]').should("contain.text", text);
   });
 
-  it("renders correctly when given Parking prop", () => {
+  it("Parking", () => {
     const icon = <LuParkingCircle />;
     const text = "Parking";
     const link = "/parking";
