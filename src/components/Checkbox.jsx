@@ -10,6 +10,7 @@ const Checkbox = ({ toggle, onClick = () => {}, text = "", color }) => {
       <Check
         checked={toggle}
         onChange={onClick}
+        data-cy="checkbox-bg"
         className={`w-4 h-4 rounded-sm mr-2 ${
           toggle
             ? `${color ? color : "bg-hackathon-blue-100"}`
