@@ -15,8 +15,13 @@ const Checkbox = ({ toggle, onClick = () => {}, text = "", color }) => {
             ? `${color ? color : "bg-hackathon-blue-100"}`
             : "bg-hackathon-gray-100"
         }`}
+        data-cy="checkbox-bg"
       />
-      {text && <p className="my-0 pt-0">{text}</p>}
+      {text && (
+        <p className="my-0 pt-0" data-cy="checkbox-text">
+          {text}
+        </p>
+      )}
     </div>
   );
 };
