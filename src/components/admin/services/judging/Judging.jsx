@@ -25,7 +25,7 @@ const Judging = () => {
       <Title title={view ? "Judges" : "Teams"} />
       {filters === null || filters.length === 0 ? (
         <div className="flex-grow flex items-center justify-center">
-          No judges available
+          {view ? "No judges available" : "No teams available"}
         </div>
       ) : (
         <Table data={view === false ? filters : judges} />
