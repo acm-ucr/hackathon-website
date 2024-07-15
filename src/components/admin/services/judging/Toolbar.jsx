@@ -199,48 +199,59 @@ const Toolbar = ({
         />
       )}
       <div className="flex items-center justify-between w-full">
-        <div className="flex items-center">
+        <div className="flex items-center ">
           <form className="flex items-center pr-2" onSubmit={generate}>
-            <Input
-              setObject={setInput}
-              object={input}
-              label="rotations"
-              showLabel={false}
-              maxLength={2}
-              placeholder="ie. 5"
-              clear={true}
-            />
-            <p className="mb-0 font-semibold mx-2"># of rotations</p>
-            <Button color="green" text="generate" onClick={generate} />
+            <div className="flex flex-col align-baseline sm:flex-row sm:items-center">
+              <Input
+                setObject={setInput}
+                object={input}
+                label="rotations"
+                showLabel={false}
+                maxLength={2}
+                placeholder="ie. 5"
+                clear={true}
+              />
+              <p className="mb-0 font-semibold mx-2"># of rotations</p>
+              <div className="pl-2">
+                <Button color="green" text="generate" onClick={generate} />
+              </div>
+              <div className="pl-2">
+                <Button
+                  color="red"
+                  text="reset"
+                  onClick={handleReset}
+                  disabled={
+                    !data || data.some(({ rounds }) => rounds.length === 0)
+                  }
+                />
+              </div>
+              <div className="pl-2">
+                <Button
+                  color="green"
+                  text="change view"
+                  onClick={handleView}
+                  disabled={
+                    !data || data.some(({ rounds }) => rounds.length === 0)
+                  }
+                />
+              </div>
+              <div className="pl-2">
+                <Input
+                  value={search}
+                  label="search"
+                  showLabel={false}
+                  maxLength={100}
+                  placeholder="Search"
+                  clear={true}
+                  clearFn={() => setSearch("")}
+                  onChangeFn={handleInput}
+                />
+              </div>
+            </div>
           </form>
-          <Button
-            color="red"
-            text="reset"
-            onClick={handleReset}
-            disabled={!data || data.some(({ rounds }) => rounds.length === 0)}
-          />
-          <div className="pl-2">
-            <Button
-              color="green"
-              text="change view"
-              onClick={handleView}
-              disabled={!data || data.some(({ rounds }) => rounds.length === 0)}
-            />
-          </div>
-          <div className="pl-2">
-            <Input
-              value={search}
-              label="search"
-              showLabel={false}
-              maxLength={100}
-              placeholder="Search"
-              clear={true}
-              clearFn={() => setSearch("")}
-              onChangeFn={handleInput}
-            />
-          </div>
         </div>
-        <div className="flex">
+
+        <div className="flex flex-col sm:flex-row">
           {tags.map((tag, index) => (
             <Tag key={index} color={COLORS[tag]} text={tag} classes="mx-2" />
           ))}
