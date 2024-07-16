@@ -199,7 +199,7 @@ const Toolbar = ({
         />
       )}
       <div className="flex items-center justify-between w-full">
-        <div className="flex items-center">
+        <div className="flex items-center ">
           <form className="flex items-center pr-2" onSubmit={generate}>
             <Input
               setObject={setInput}
@@ -211,14 +211,18 @@ const Toolbar = ({
               clear={true}
             />
             <p className="mb-0 font-semibold mx-2"># of rotations</p>
-            <Button color="green" text="generate" onClick={generate} />
+            <div className="pl-2">
+              <Button color="green" text="generate" onClick={generate} />
+            </div>
           </form>
-          <Button
-            color="red"
-            text="reset"
-            onClick={handleReset}
-            disabled={!data || data.some(({ rounds }) => rounds.length === 0)}
-          />
+          <div className="pl-2">
+            <Button
+              color="red"
+              text="reset"
+              onClick={handleReset}
+              disabled={!data || data.some(({ rounds }) => rounds.length === 0)}
+            />
+          </div>
           <div className="pl-2">
             <Button
               color="green"
@@ -240,7 +244,8 @@ const Toolbar = ({
             />
           </div>
         </div>
-        <div className="flex">
+
+        <div className="flex flex-row">
           {tags.map((tag, index) => (
             <Tag key={index} color={COLORS[tag]} text={tag} classes="mx-2" />
           ))}
