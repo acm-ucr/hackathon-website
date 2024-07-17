@@ -42,7 +42,6 @@ const Chart = ({ title, data }) => {
         >
           <PieChart>
             <ChartTooltip
-              active={true}
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />
