@@ -29,9 +29,6 @@ const Chart = ({ title, data }) => {
     };
   });
 
-  console.log("config:", chartConfig);
-
-  console.log(chartData);
   const total = React.useMemo(() => {
     return chartData.reduce((acc, curr) => acc + curr.value, 0);
   }, [chartData]);
@@ -45,6 +42,7 @@ const Chart = ({ title, data }) => {
         >
           <PieChart>
             <ChartTooltip
+              active={true}
               cursor={false}
               content={<ChartTooltipContent hideLabel />}
             />

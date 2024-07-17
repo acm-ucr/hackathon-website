@@ -1,7 +1,6 @@
 import Chart from "./Chart";
 
 const Charts = ({ counts }) => {
-  console.log(counts);
   return (
     <>
       <div className="w-full mt-3 grid md:grid-cols-4 grid-cols-2 p-4 gap-4">
