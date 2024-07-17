@@ -71,7 +71,7 @@ const CheckIn = () => {
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
       <Title title="Check In" />
       <div className="grid grid-cols-1">
-        <div className="p-3 flex flex-col items-center">
+        <div className="p-3 flex flex-col items-center gap-3">
           {events && (
             <Dropdown
               option={event}
