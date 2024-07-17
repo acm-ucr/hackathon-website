@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import Tabs from "./Tabs";
 import Loading from "@/components/Loading";
 import { api } from "@/utils/api";
-import Chart from "./Chart";
+
+import Charts from "./Charts";
 
 const Statistics = () => {
   const [counts, setCounts] = useState(null);
@@ -24,7 +25,7 @@ const Statistics = () => {
       ) : (
         <div>
           <Tabs counts={counts.users} events={counts.events} />
-          <Chart />
+          <Charts counts={counts.users} />
         </div>
       )}
     </div>
