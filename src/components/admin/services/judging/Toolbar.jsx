@@ -209,6 +209,7 @@ const Toolbar = ({
               maxLength={2}
               placeholder="ie. 5"
               clear={true}
+              classes="w-20"
             />
             <p className="mb-0 font-semibold mx-2"># of rotations</p>
             <Button color="green" text="generate" onClick={generate} />
