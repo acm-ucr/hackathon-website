@@ -10,9 +10,19 @@ import { STATUSES } from "@/data/admin/Sponsors";
 
 const Sponsor = () => {
   const { data: session } = useSession();
+  function extractFirstName(str) {
+    return str.trim().split(" ")[0];
+  }
+
+  function extractLastName(str) {
+    return str.trim().split(" ")[1];
+  }
+
   const [sponsor, setSponsor] = useState({
     ...ATTRIBUTES,
     name: session.user.name,
+    firstName: extractFirstName(session.user.name),
+    lastName: extractLastName(session.user.name),
     email: session.user.email,
     roles: session.user.roles,
     form: "sponsors",

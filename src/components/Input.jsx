@@ -1,5 +1,6 @@
 const Input = ({
   name,
+  lastName,
   type,
   title,
   placeholder,
@@ -21,6 +22,7 @@ const Input = ({
         className="truncate disabled:border-0 border-b-2 border-black pl-3 w-full focus:outline-none placeholder:text-hackathon-gray-200 bg-transparent"
         type={type}
         name={name}
+        lastName={lastName}
         placeholder={placeholder}
         value={value}
         maxLength={maxLength}

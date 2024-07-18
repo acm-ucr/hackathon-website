@@ -83,6 +83,7 @@ const Questions = ({
           {field.input === "input" && (
             <Input
               name={field.name}
+              lastName={field.lastName}
               type={field.type}
               title={field.title}
               placeholder={field.placeholder}

@@ -11,9 +11,19 @@ import { STATUSES } from "@/data/admin/Mentors.js";
 const Mentor = () => {
   const { data: session } = useSession();
 
+  function extractFirstName(str) {
+    return str.trim().split(" ")[0];
+  }
+
+  function extractLastName(str) {
+    return str.trim().split(" ")[1];
+  }
+
   const [mentor, setMentor] = useState({
     ...ATTRIBUTES,
     name: session.user.name,
+    firstName: extractFirstName(session.user.name),
+    lastName: extractLastName(session.user.name),
     email: session.user.email,
     roles: session.user.roles,
     form: "mentors",
