@@ -20,8 +20,8 @@ const Blog = async () => {
   return (
     <>
       <div className="w-10/12 mt-[10%] m-auto">
-        <p className="m-0 text-3xl font-bold">Engineering Blogs</p>
-        <p className="my-3 w-3/4">
+        <p className="m-0 text-3xl font-bold text-center">Engineering Blogs</p>
+        <p className="text-center">
           Check out our engineering blogs to learn more about the behind the
           scenes as engineers discuss various challenges, migrations,
           bottlenecks. Our engineering blogs captures how our engineers approach
