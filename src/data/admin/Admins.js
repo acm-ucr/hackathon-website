@@ -30,15 +30,6 @@ export const COLUMNS = [
     cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   {
-    accessorKey: "firstName",
-    header: "First Name",
-    width: "w-3/12",
-    enableColumnFilter: true,
-    filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
-  },
-  {
     accessorKey: "lastName",
     header: "Last Name",
     width: "w-3/12",
