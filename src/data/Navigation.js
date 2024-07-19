@@ -20,6 +20,7 @@ import { FaGear } from "react-icons/fa6";
 import { AiOutlineQrcode } from "react-icons/ai";
 import { signOut } from "next-auth/react";
 import { SiDevpost, SiHandshake } from "react-icons/si";
+import { RxLapTimer } from "react-icons/rx";
 import { IoIosPeople } from "react-icons/io";
 import data from "@/data/Config";
 
@@ -127,6 +128,11 @@ export const TABS = {
           name: "settings",
           link: "/admin/settings",
           icon: <FaGear className={iconStyle} />,
+        },
+        {
+          name: "timer",
+          link: "/admin/timer",
+          icon: <RxLapTimer className={iconStyle} />,
         },
       ],
     },

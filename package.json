@@ -37,6 +37,7 @@
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
+    "react-timer-hook": "^3.0.7",
     "react-use": "^17.4.2",
     "react-zxing": "^2.0.0",
     "rehype-pretty-code": "^0.13.0",
