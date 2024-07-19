@@ -213,7 +213,7 @@ const Toolbar = ({
             <p className="mb-0 font-semibold mx-2"># of rotations</p>
           </div>
 
-          <div className="flex flex-row pl-2 pb-3">
+          <div className="flex flex-row pb-3 pl-2">
             <div>
               <Button color="green" text="generate" onClick={generate} />
             </div>
