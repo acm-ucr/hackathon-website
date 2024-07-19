@@ -198,9 +198,9 @@ const Toolbar = ({
           text="add judges"
         />
       )}
-      <div className="flex items-center justify-between w-full">
-        <div className="flex items-center ">
-          <form className="flex items-center pr-2" onSubmit={generate}>
+      <form className="flex items-center pr-2" onSubmit={generate}>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between w-full">
+          <div className="flex flex-row pl-2 pb-3">
             <Input
               setObject={setInput}
               object={input}
@@ -211,19 +211,24 @@ const Toolbar = ({
               clear={true}
             />
             <p className="mb-0 font-semibold mx-2"># of rotations</p>
-            <div className="pl-2">
+          </div>
+
+          <div className="flex flex-row pl-2 pb-3">
+            <div>
               <Button color="green" text="generate" onClick={generate} />
             </div>
-          </form>
-          <div className="pl-2">
-            <Button
-              color="red"
-              text="reset"
-              onClick={handleReset}
-              disabled={!data || data.some(({ rounds }) => rounds.length === 0)}
-            />
-          </div>
-          <div className="pl-2">
+
+            <div>
+              <Button
+                color="red"
+                text="reset"
+                onClick={handleReset}
+                disabled={
+                  !data || data.some(({ rounds }) => rounds.length === 0)
+                }
+              />
+            </div>
+
             <Button
               color="green"
               text="change view"
@@ -231,7 +236,7 @@ const Toolbar = ({
               disabled={!data || data.some(({ rounds }) => rounds.length === 0)}
             />
           </div>
-          <div className="pl-2">
+          <div className="pl-2 pb-3">
             <Input
               value={search}
               label="search"
@@ -243,14 +248,14 @@ const Toolbar = ({
               onChangeFn={handleInput}
             />
           </div>
-        </div>
 
-        <div className="flex flex-row">
-          {tags.map((tag, index) => (
-            <Tag key={index} color={COLORS[tag]} text={tag} classes="mx-2" />
-          ))}
+          <div className="flex flex-row">
+            {tags.map((tag, index) => (
+              <Tag key={index} color={COLORS[tag]} text={tag} classes="mx-2" />
+            ))}
+          </div>
         </div>
-      </div>
+      </form>
     </>
   );
 };
