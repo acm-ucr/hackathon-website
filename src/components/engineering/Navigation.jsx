@@ -1,32 +1,51 @@
+"use client";
 import { TABS } from "@/data/engineering/Navigation";
-import { SiGithub } from "react-icons/si";
+import { GiHamburgerMenu } from "react-icons/gi";
 import Link from "next/link";
-import LOGO from "@/app/favicon.ico";
+import { useState } from "react";
 import Image from "next/image";
+import Logo from "@/app/favicon.ico";
 
 const Navigation = () => {
+  const [show, setShow] = useState(false);
   return (
-    <div className="fixed top-0 z-10 flex items-center justify-between bg-hackathon-blue-200 w-full text-2xl text-white py-4 px-4">
-      <Image src={LOGO} className="fixed w-8" alt="Logo" />
-      <Link href="/engineering" className="mx-11">
-        Hackathon Engineering
-      </Link>
-      <div className="flex">
+    <div className="fixed top-0 z-10 w-screen text-2xl text-white">
+      <div className="flex items-center justify-between bg-hackathon-blue-200 w-full  py-4 px-4">
+        <div className="flex gap-2">
+          <Image src={Logo} className="w-8" alt="Logo" />
+          <Link href="/engineering">Hackathon Engineering</Link>
+        </div>
+        <div className="hidden md:flex">
+          {TABS.map((tab, index) => (
+            <Link
+              key={index}
+              href={tab.link}
+              className="mx-6 hover:text-white/50 duration-300"
+            >
+              {tab.label}
+            </Link>
+          ))}
+        </div>
+        <GiHamburgerMenu
+          className="cursor-pointer flex md:hidden"
+          onClick={() => setShow(!show)}
+        />
+      </div>
+
+      <div className="flex flex-col md:hidden">
         {TABS.map((tab, index) => (
           <Link
             key={index}
             href={tab.link}
-            className="mx-6 hover:text-white/50 duration-300"
+            className={
+              show
+                ? "active:text-white/50 text-center flex justify-center w-full bg-hackathon-blue-200 py-2"
+                : "hidden"
+            }
           >
             {tab.label}
           </Link>
         ))}
-        <Link
-          href="https://github.com/acm-ucr/hackathon-website"
-          className="mx-6 hover:text-white/50 duration-300 text-3xl"
-        >
-          <SiGithub />
-        </Link>
       </div>
     </div>
   );
