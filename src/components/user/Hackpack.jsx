@@ -9,17 +9,17 @@ const Hackpack = ({ text, techs, link }) => {
       href={link}
       target="_black"
     >
-      <div data-cy="Header-test" className="font-bold">
+      <div data-cy="header-test" className="font-bold">
         {text}
       </div>
-      <div data-cy="Techs-test" className="flex flex-wrap">
+      <div data-cy="techs-test" className="flex flex-wrap">
         {techs.map((tech, index) => (
           <div
             data-cy="tech-variable-component"
             key={index}
             className="text-gray-400 rounded-full flex items-center px-1"
           >
-            <div data-cy="favicon" className="text-hackathon-blue-100 mr-1">
+            <div data-cy="icon" className="text-hackathon-blue-100 mr-1">
               {TECHSTACKS[tech]}
             </div>
             {tech}

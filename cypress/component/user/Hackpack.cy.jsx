@@ -12,41 +12,40 @@ describe("HackPacks", () => {
       "C++",
     ];
     const link = "https://www.example.com/";
-    const headerClasses = "font-bold";
-    const techClasses = "flex flex-wrap";
-    const linkClass =
-      "w-full bg-gray-100 rounded-xl p-4 hover:border-gray-300 border-gray-100 border-2 duration-300";
-    const techvariableClass =
-      "text-gray-400 rounded-full flex items-center px-1";
-    const techfaviconClass = "text-hackathon-blue-100 mr-1";
-    ("w-full bg-gray-100 rounded-xl p-4 hover:border-gray-300 border-gray-100 border-2 duration-300");
+
     cy.mount(<Hackpack text={text} techs={techs} link={link} />);
 
     cy.get('[data-cy="link-component-test"]')
-      .should("have.class", linkClass)
+      .should(
+        "have.class",
+        "w-full bg-gray-100 rounded-xl p-4 hover:border-gray-300 border-gray-100 border-2 duration-300"
+      )
       .should("have.attr", "href", link)
       .should("have.attr", "target", "_black");
 
-    cy.get('[data-cy="Header-test"]').should(
+    cy.get('[data-cy="header-test"]').should(
       "have.class",
-      headerClasses,
+      "font-bold",
       "contain.text",
       text
     );
 
-    cy.get('[data-cy="Techs-test"]')
-      .should("have.class", techClasses, "have.length", techs.length)
+    cy.get('[data-cy="techs-test"]')
+      .should("have.class", "flex flex-wrap", "have.length", techs.length)
       .children('[data-cy="tech-variable-component"]');
 
     techs.forEach((tech, index) => {
-      cy.get('[data-cy="Techs-test"] [data-cy="tech-variable-component"]')
+      cy.get('[data-cy="techs-test"] [data-cy="tech-variable-component"]')
         .eq(index)
         .should("contain.text", tech)
-        .should("have.class", techvariableClass);
+        .should(
+          "have.class",
+          "text-gray-400 rounded-full flex items-center px-1"
+        );
 
-      cy.get('[data-cy="Techs-test"] [data-cy="favicon"]')
+      cy.get('[data-cy="techs-test"] [data-cy="icon"]')
         .eq(index)
-        .should("have.class", techfaviconClass);
+        .should("have.class", "text-hackathon-blue-100 mr-1");
     });
   });
 });
