@@ -158,7 +158,7 @@ const Toolbar = ({
         ))}
       </div>
 
-      <div className="flex lg:flex-row items-center w-full">
+      <div className="flex lg:flex-row items-center gap-5 w-full">
         <div className="w-2/12 z-10 mx-2">
           <Select
             items={searchableItems}
