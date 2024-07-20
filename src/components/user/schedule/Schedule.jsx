@@ -20,7 +20,7 @@ const Schedule = ({ eventList }) => {
   return (
     <>
       <Toolbar onFilterChange={filterChange} />
-      <div className="flex sticky top-0 text-white w-full">
+      <div className="flex sticky top-0 text-white bg-gray-100 z-50 w-full">
         {days.map((day, index) => (
           <div
             className="text-black font-montserrat font-light text-sm md:text-lg items-center justify-start flex flex-grow border-b-[1px] border-black m-5 ml-0"
@@ -30,7 +30,7 @@ const Schedule = ({ eventList }) => {
           </div>
         ))}
       </div>
-      <div className="flex mr-4">
+      <div className="bg-black flex mr-4">
         {days.map((day, dayIndex) => (
           <div
             key={dayIndex}
