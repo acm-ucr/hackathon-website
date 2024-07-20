@@ -7,17 +7,18 @@ import { BsQrCode } from "react-icons/bs";
 import { LuParkingCircle } from "react-icons/lu";
 import Rooms from "./Rooms";
 import Packing from "./Packing";
-import Hackpacks from "./Hackpacks";
+// import Hackpacks from "./Hackpacks";
 import BulletList from "./BulletList";
-import { useState } from "react";
+// import { useState } from "react";
 import BulletPoints from "./BulletPoints";
 import { JUDGING } from "@/data/user/Judging";
 import { RULES } from "@/data/user/Rules";
-import Collapse from "./Collapse";
+import ResourcesLink from "./ResourcesLink";
+// import Collapse from "./Collapse";
 
 const Dashboard = () => {
   const { data: session } = useSession();
-  const [expand, setExpand] = useState("Rules");
+  // const [expand, setExpand] = useState("Rules");
 
   return (
     <div className="h-full font-poppins flex flex-col py-4 gap-3">
@@ -44,9 +45,10 @@ const Dashboard = () => {
           <BulletList text="Judging">
             <BulletPoints list={JUDGING} />
           </BulletList>
-          <Collapse setExpand={setExpand} expand={expand} text="Hackpacks">
+          <ResourcesLink />
+          {/* <Collapse setExpand={setExpand} expand={expand} text="Hackpacks">
             <Hackpacks />
-          </Collapse>
+          </Collapse> */}
         </div>
 
         {/* <User user={user} setUser={setUser} edit={edit} setEdit={setEdit} />

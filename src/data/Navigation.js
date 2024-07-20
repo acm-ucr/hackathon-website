@@ -4,7 +4,11 @@ import {
   BsBarChartFill,
   BsPersonRaisedHand,
 } from "react-icons/bs";
-import { MdVolunteerActivism, MdFeedback } from "react-icons/md";
+import {
+  MdVolunteerActivism,
+  MdFeedback,
+  MdLibraryBooks,
+} from "react-icons/md";
 import { BiSolidHelpCircle } from "react-icons/bi";
 import { GoSponsorTiers } from "react-icons/go";
 import {
@@ -152,6 +156,11 @@ export const TABS = {
           name: "team",
           link: "/user/team",
           icon: <RiTeamFill className={iconStyle} />,
+        },
+        {
+          name: "resources",
+          link: "/user/resources",
+          icon: <MdLibraryBooks className={iconStyle} />,
         },
         {
           name: "find a team",
