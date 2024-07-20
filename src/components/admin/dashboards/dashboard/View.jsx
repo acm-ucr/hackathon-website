@@ -5,6 +5,7 @@ import Modal from "./Modal";
 import { COLORS } from "@/data/Tags";
 import { FaDownload } from "react-icons/fa";
 import Popup from "../../Popup";
+import { performDownload } from "@/utils/utils";
 
 const View = ({ title, src }) => {
   const [modal, setModal] = useState(null);
@@ -35,7 +36,7 @@ const View = ({ title, src }) => {
       {popup.visible && (
         <Popup
           popup={popup}
-          onClick={() => window.open(src)}
+          onClick={() => performDownload(src)}
           setPopup={setPopup}
           text={popup.button}
         />
