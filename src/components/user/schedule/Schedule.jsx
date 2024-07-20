@@ -30,7 +30,7 @@ const Schedule = ({ eventList }) => {
           </div>
         ))}
       </div>
-      <div className="bg-black flex mr-4">
+      <div className="flex mr-4">
         {days.map((day, dayIndex) => (
           <div
             key={dayIndex}
