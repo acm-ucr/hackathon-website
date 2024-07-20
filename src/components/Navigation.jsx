@@ -8,11 +8,33 @@ import { TABS } from "@/data/Navigation";
 import { usePathname } from "next/navigation";
 import data from "@/data/Config";
 import { BiSolidDownArrow } from "react-icons/bi";
+import { BsBoxArrowInRight, BsGlobe2 } from "react-icons/bs";
+import { SiDevpost } from "react-icons/si";
+import { MdFeedback } from "react-icons/md";
+import { signOut } from "next-auth/react";
 
 const Navigation = () => {
   const [expand, setExpand] = useState(false);
   const pathName = usePathname();
   const [tabs, setTabs] = useState(TABS[pathName.split("/")[1]]);
+
+  const global = [
+    {
+      name: "feedback",
+      link: "/form/feedback",
+      icon: <MdFeedback />,
+    },
+    {
+      name: "devpost",
+      link: data.devpost,
+      icon: <SiDevpost />,
+    },
+    {
+      name: "website",
+      link: "/",
+      icon: <BsGlobe2 />,
+    },
+  ];
 
   return (
     <>
@@ -90,28 +112,31 @@ const Navigation = () => {
                 </div>
               ))}
           </div>
-          <div className="w-full flex flex-col items-center mb-3">
-            {tabs[" "].map((tab, index) => (
+          <div className="w-full flex flex-row justify-center items-center mb-3">
+            {global.map((tab, index) => (
               <Link
                 key={index}
                 href={tab.link}
                 target="_blank"
-                onClick={() => tab.onClick()}
-                className="no-underline w-full"
+                className="no-underline w-full bg-red-"
               >
                 <div
-                  onClick={() => setExpand(false)}
-                  className={`w-full flex [&>*]:text-white items-center justify-start pl-[10%] py-1 ${
+                  className={`w-full flex [&>*]:text-white items-center justify-center py-1 ${
                     pathName.endsWith(tab.link)
                       ? "bg-hackathon-blue-100"
                       : "[&>*]:hover:text-hackathon-blue-100"
                   }`}
                 >
                   {tab.icon}
-                  <div className="text-lg">{tab.name}</div>
                 </div>
               </Link>
             ))}
+            <div
+              onClick={() => signOut({ callbackUrl: "/", redirect: true })}
+              className={`w-full flex text-white items-center justify-center py-1 hover:text-hackathon-blue-100 hover:cursor-pointer`}
+            >
+              <BsBoxArrowInRight className="mr-2" />
+            </div>
           </div>
         </div>
       </div>

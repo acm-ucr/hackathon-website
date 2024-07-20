@@ -2,16 +2,17 @@
 import Title from "@/components/admin/Title";
 import { api } from "@/utils/api";
 import Button from "../../Button";
-import { useState } from "react";
+import toaster from "@/utils/toaster";
 
 const Settings = () => {
-  const [message, setMessage] = useState();
   const syncStatsWithDatabase = () => {
-    setMessage("Syncing Stats...");
+    toaster("Syncing Stats...", "info");
     api({
       method: "GET",
       url: "/api/settings",
-    }).then(() => setMessage("Stats Synced!"));
+    })
+      .then(() => toaster("Stats Synced!", "success"))
+      .catch(() => toaster("Failed to sync stats.", "error"));
   };
 
   return (
@@ -23,7 +24,6 @@ const Settings = () => {
         size="xl"
         onClick={syncStatsWithDatabase}
       />
-      <p>{message}</p>
     </div>
   );
 };

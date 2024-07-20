@@ -112,22 +112,26 @@ const Questions = ({
                 {field.text}
                 {field.required && <span className="text-red-500">*</span>}
               </p>
-              {field.options.map((option, i) => (
-                <Checkbox
-                  key={i}
-                  toggle={object[field.field].includes(option)}
-                  text={option}
-                  onClick={() =>
-                    setObject({
-                      ...object,
-                      [field.field]: object[field.field].includes(option)
-                        ? object[field.field].filter((item) => item !== option)
-                        : [...object[field.field], option],
-                    })
-                  }
-                  color="bg-hackathon-green-300"
-                />
-              ))}
+              <div className="grid md:grid-cols-2">
+                {field.options.map((option, i) => (
+                  <Checkbox
+                    key={i}
+                    toggle={object[field.field].includes(option)}
+                    text={option}
+                    onClick={() =>
+                      setObject({
+                        ...object,
+                        [field.field]: object[field.field].includes(option)
+                          ? object[field.field].filter(
+                              (item) => item !== option
+                            )
+                          : [...object[field.field], option],
+                      })
+                    }
+                    color="bg-hackathon-green-300"
+                  />
+                ))}
+              </div>
             </>
           )}
           {field.input === "terms" && (
@@ -181,37 +185,39 @@ const Questions = ({
           )}
         </div>
       ))}
-      <p className="font-semibold mt-3">Resources</p>
-      <Link
-        href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
-        target="_blank"
-        className="no-underline flex items-center text-hackathon-green-300"
-      >
-        MLH Code of Conduct
-        <FaLink className="mx-2" />
-      </Link>
-      <Link
-        href="https://mlh.io/privacy"
-        target="_blank"
-        className="no-underline flex items-center text-hackathon-green-300"
-      >
-        MLH Privacy Policy
-        <FaLink className="mx-2" />
-      </Link>
-      <Link
-        href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md"
-        target="_blank"
-        className="no-underline flex items-center text-hackathon-green-300"
-      >
-        MLH Contest Terms and Conditions
-        <FaLink className="mx-2" />
-      </Link>
+      <div>
+        <p className="font-semibold mt-3">Resources</p>
+        <Link
+          href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
+          target="_blank"
+          className="no-underline flex items-center text-hackathon-green-300 mt-1"
+        >
+          MLH Code of Conduct
+          <FaLink className="mx-2" />
+        </Link>
+        <Link
+          href="https://mlh.io/privacy"
+          target="_blank"
+          className="no-underline flex items-center text-hackathon-green-300 hover:text-opacity-65 mt-3"
+        >
+          MLH Privacy Policy
+          <FaLink className="mx-2" />
+        </Link>
+        <Link
+          href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md"
+          target="_blank"
+          className="no-underline flex items-center text-hackathon-green-300 hover:text-opacity-65 mt-3"
+        >
+          MLH Contest Terms and Conditions
+          <FaLink className="mx-2" />
+        </Link>
+      </div>
       {packet && (
         <Link
           href={data.packet}
           target="_blank"
           rel="noreferrer noopener"
-          className="no-underline flex items-center"
+          className="no-underline flex items-center "
         >
           Sponsorship Packet
           <FaLink className="mx-2" />

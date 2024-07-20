@@ -15,7 +15,9 @@ const getBlogPost = async () => {
   });
 };
 const Blog = async () => {
-  const blogs = await getBlogPost();
+  const data = await getBlogPost();
+
+  const blogs = data.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return (
     <>
@@ -37,7 +39,13 @@ const Blog = async () => {
             >
               <p className="font-semibold text-lg">{title}</p>
               <p className="text-sm text-gray-300">{author}</p>
-              <p className="text-sm flex justify-end text-gray-300">{date}</p>
+              <p className="text-sm flex justify-end text-gray-300">
+                {new Date(date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </p>
             </Link>
           ))}
         </div>

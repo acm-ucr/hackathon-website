@@ -1,5 +1,5 @@
 import ProtectedPage from "@/components/ProtectedPage";
-import Schedule from "@/components/user/schedule/Schedule";
+import ScheduleWrapper from "@/components/user/schedule/Wrapper";
 
 const Page = () => {
   return (
@@ -9,9 +9,11 @@ const Page = () => {
         participants: [1, 0, -1],
       }}
     >
-      <Schedule />
+      <ScheduleWrapper />
     </ProtectedPage>
   );
 };
 
 export default Page;
+
+export const dynamic = "force-dynamic";
