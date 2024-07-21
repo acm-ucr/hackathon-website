@@ -1,20 +1,7 @@
-import { encode } from "next-auth/jwt";
-
-const user = {
-  name: {
-    first: "USER",
-    last: "TEST",
-  },
-  email: "user@test.com",
-  image: "https://---.---",
-  roles: {
-    admins: 1,
-    participants: 1,
-  },
-};
-
 Cypress.Commands.add("fetch", ({ role, portal, page }) => {
-  cy.intercept("/api/auth/session", user).as("session");
+  cy.intercept("/api/auth/session", { fixture: `${role}_role.json` }).as(
+    "session"
+  );
   cy.intercept(
     "GET",
     `/api/dashboard/${page}?direction=undefined&index=1&size=10&first=undefined&last=undefined`,
@@ -22,17 +9,6 @@ Cypress.Commands.add("fetch", ({ role, portal, page }) => {
       fixture: `${page}.json`,
     }
   ).as("GET");
-
-  cy.log("HELLO", Cypress.env("NEXTAUTH_SECRET"));
-
-  cy.wrap(null)
-    .then(() =>
-      encode({
-        token: user,
-        secret: Cypress.env("NEXTAUTH_SECRET"),
-      })
-    )
-    .then((token) => cy.setCookie("next-auth.session-token", token));
 
   cy.visit("/");
   cy.wait("@session");

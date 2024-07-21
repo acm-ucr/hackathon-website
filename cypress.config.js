@@ -9,10 +9,6 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {},
   },
 
-  env: {
-    NEXTAUTH_SECRET: "",
-  },
-
   component: {
     devServer: {
       framework: "next",
