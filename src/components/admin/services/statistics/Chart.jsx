@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/chart";
 
 const Chart = ({ title, data }) => {
-  console.log(title, data);
   const chartData = Object.entries(data).map(([type, value]) => ({
     type: ROLES[type]?.label || SIZES[type]?.label,
     value: value,
