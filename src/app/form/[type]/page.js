@@ -26,7 +26,7 @@ const Page = ({ params }) => {
     panel: <Panel />,
     volunteer: <Volunteer />,
     lead: <Lead />,
-    ideas: <Ideas />,
+    idea: <Ideas />,
   };
 
   const capitalizeFirstLetter = (word) => {

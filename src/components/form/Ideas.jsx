@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Form from "@/components/form/form/Form.jsx";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Ideas";
-import { api } from "@/utils/api";
-import toaster from "@/utils/toaster";
+// import { api } from "@/utils/api";
+// import toaster from "@/utils/toaster";
 import { useSession } from "next-auth/react";
 
 const Ideas = () => {
@@ -16,18 +16,23 @@ const Ideas = () => {
     roles: session.user.roles,
     form: "idea",
   });
+
+  console.log(FIELDS);
+
   const onSubmit = (setLoading, setState) => {
-    api({
-      method: "POST",
-      url: "/api/dashboard/interests",
-      body: interest,
-    })
-      .then(() => toaster(`Submitted successfully!`, "success"))
-      .catch(() => toaster(`Internal Server Error`, "error"))
-      .finally(() => {
-        setLoading(false);
-        setState(2);
-      });
+    console.log(idea);
+
+    // api({
+    //   method: "POST",
+    //   url: "/api/dashboard/interests",
+    //   body: interest,
+    // })
+    //   .then(() => toaster(`Submitted successfully!`, "success"))
+    //   .catch(() => toaster(`Internal Server Error`, "error"))
+    //   .finally(() => {
+    //     setLoading(false);
+    //     setState(2);
+    //   });
   };
 
   return (
@@ -37,6 +42,7 @@ const Ideas = () => {
       setObject={setIdea}
       header="TEAM IDEA APPLICATION"
       onSubmit={onSubmit}
+      bypass={true}
     />
   );
 };
