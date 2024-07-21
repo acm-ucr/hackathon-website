@@ -28,8 +28,6 @@ const ProtectedPage = ({ children, restrictions, title }) => {
       return;
     }
 
-    console.log(session, status);
-
     if (!session.user.roles && Object.keys(restrictions).length > 0) {
       throw new Fault(
         403,
