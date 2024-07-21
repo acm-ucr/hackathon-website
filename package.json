@@ -10,8 +10,7 @@
     "format": "npx prettier --write .",
     "check": "npx prettier --check .",
     "eslint": "npx eslint . --ext js --ext jsx",
-    "cypress": "cypress open",
-    "test": "start-server-and-test dev 3000 cypress",
+    "cypress": "cypress open -b chrome",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -56,17 +55,19 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.16",
     "cypress": "^13.12.0",
     "eslint": "^8.53.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-next": "^13.5.6",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-react": "^7.33.2",
     "husky": "^8.0.0",
     "postcss": "^8.4.31",
     "prettier": "^2.8.8",
-    "start-server-and-test": "^2.0.2",
-    "tailwindcss": "^3.3.5"
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.5.3"
   }
 }
