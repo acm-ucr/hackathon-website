@@ -18,11 +18,23 @@ export const GET = async () => {
   }
 
   try {
-    const [statistics, events] = await Promise.all([
+    const roles = [
+      "participants",
+      "judges",
+      "volunteers",
+      "mentors",
+      "committees",
+      "sponsors",
+      "panels",
+      "admins",
+    ];
+    const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
+
+    const [statistics, events, shirts] = await Promise.all([
       getDoc(doc(db, "statistics", "statistics")),
       getDocs(collection(db, "events")),
+      getDocs(collection(db, "users")),
     ]);
-
     const {
       teams,
       participants,
@@ -34,6 +46,27 @@ export const GET = async () => {
       panels,
       admins,
     } = statistics.data();
+
+    const shirt = {};
+
+    roles.forEach((role) => {
+      shirt[role] = sizes.reduce((acc, size) => {
+        acc[size] = 0;
+        return acc;
+      }, {});
+    });
+
+    shirts.forEach((doc) => {
+      const data = doc.data();
+      const userRoles = Object.keys(data.roles);
+      const size = data.shirt;
+
+      if (sizes.includes(size)) {
+        userRoles.forEach((role) => {
+          shirt[role][size]++;
+        });
+      }
+    });
 
     const attendees = {};
 
@@ -54,7 +87,10 @@ export const GET = async () => {
       admins,
     };
 
-    return res.json({ items: { users, events: attendees } }, { status: 200 });
+    return res.json(
+      { items: { users, events: attendees, shirt } },
+      { status: 200 }
+    );
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
