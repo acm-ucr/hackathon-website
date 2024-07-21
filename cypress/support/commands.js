@@ -10,6 +10,12 @@ Cypress.Commands.add("fetch", ({ role, portal, page }) => {
     }
   ).as("GET");
 
+  // expires August 25th 2025
+  cy.setCookie(
+    "next-auth.session-token",
+    "51f03b6d-71ea-4b02-aad8-a8a2165689ee"
+  );
+
   cy.visit("/");
   cy.wait("@session");
 
