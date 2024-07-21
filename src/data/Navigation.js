@@ -18,6 +18,7 @@ import {
 import { FaGear } from "react-icons/fa6";
 import { AiOutlineQrcode } from "react-icons/ai";
 import { SiHandshake } from "react-icons/si";
+import { RiTeamFill } from "react-icons/ri";
 import { IoIosPeople } from "react-icons/io";
 
 const iconStyle = "mr-2";
@@ -146,6 +147,11 @@ export const TABS = {
           name: "schedule",
           link: "/user/schedule",
           icon: <FaCalendarDay className={iconStyle} />,
+        },
+        {
+          name: "team",
+          link: "/user/team",
+          icon: <RiTeamFill className={iconStyle} />,
         },
         {
           name: "find a team",

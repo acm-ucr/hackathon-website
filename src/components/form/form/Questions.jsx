@@ -185,32 +185,33 @@ const Questions = ({
           )}
         </div>
       ))}
-      <p className="font-semibold mt-3">Resources</p>
-
-      <Link
-        href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
-        target="_blank"
-        className="no-underline flex items-center text-hackathon-green-300 hover:text-opacity-65"
-      >
-        MLH Code of Conduct
-        <FaLink className="mx-2" />
-      </Link>
-      <Link
-        href="https://mlh.io/privacy"
-        target="_blank"
-        className="no-underline flex items-center text-hackathon-green-300 hover:text-opacity-65"
-      >
-        MLH Privacy Policy
-        <FaLink className="mx-2" />
-      </Link>
-      <Link
-        href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md"
-        target="_blank"
-        className="no-underline flex items-center text-hackathon-green-300 hover:text-opacity-65"
-      >
-        MLH Contest Terms and Conditions
-        <FaLink className="mx-2" />
-      </Link>
+      <div>
+        <p className="font-semibold mt-3">Resources</p>
+        <Link
+          href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
+          target="_blank"
+          className="no-underline flex items-center text-hackathon-green-300 hover:text-opacity-65 mt-1"
+        >
+          MLH Code of Conduct
+          <FaLink className="mx-2" />
+        </Link>
+        <Link
+          href="https://mlh.io/privacy"
+          target="_blank"
+          className="no-underline flex items-center text-hackathon-green-300 hover:text-opacity-65 mt-3"
+        >
+          MLH Privacy Policy
+          <FaLink className="mx-2" />
+        </Link>
+        <Link
+          href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md"
+          target="_blank"
+          className="no-underline flex items-center text-hackathon-green-300 hover:text-opacity-65 mt-3"
+        >
+          MLH Contest Terms and Conditions
+          <FaLink className="mx-2" />
+        </Link>
+      </div>
       {packet && (
         <Link
           href={data.packet}
