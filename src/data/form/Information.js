@@ -127,5 +127,3 @@ export const AFFILIATIONS = {
   uiux: "uiux",
   operations: "operations",
 };
-
-export const LANGUAGES = ["Arduino", "Next.js", "PyTorch", "Unity"];

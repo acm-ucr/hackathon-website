@@ -1,13 +1,12 @@
-import { LANGUAGES } from "./Information";
+export const LANGUAGES = ["Arduino", "Next.js", "PyTorch", "Unity"];
 
 export const FIELDS = {
   idea: {
-    input: "input",
+    input: "textarea",
     name: "idea",
-    type: "text",
-    title: "Idea",
+    rows: 4,
+    title: "Title of Idea",
     placeholder: "ie. Idea 1",
-    maxLength: 50,
     width: 12,
     required: true,
   },
@@ -20,23 +19,28 @@ export const FIELDS = {
     options: LANGUAGES,
   },
   description: {
-    input: "input",
+    input: "textarea",
     name: "description",
-    type: "text",
     title: "Describe your idea",
     placeholder: "My idea is to...",
-    maxLength: 150,
+    rows: 4,
     width: 12,
     required: true,
   },
   contact: {
-    input: "input",
+    input: "textarea",
     name: "contact",
-    type: "text",
+    rows: 4,
     title: "Contact Information",
     placeholder: "ie. Discord: webdiv",
-    maxLength: 50,
     width: 12,
     required: true,
   },
+};
+
+export const ATTRIBUTES = {
+  idea: "",
+  languages: [],
+  description: "",
+  contact: "",
 };
