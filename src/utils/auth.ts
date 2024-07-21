@@ -40,7 +40,11 @@ export const options: NextAuthOptions = {
   },
 };
 
-export const authenticate = async (restrictions = {}) => {
+type Restrictions = {
+  [key: string]: Number[];
+};
+
+export const authenticate = async (restrictions: Restrictions = {}) => {
   const session: Session | null = await getServerSession(options);
 
   if (!session?.user) {

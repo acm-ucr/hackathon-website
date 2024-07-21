@@ -190,7 +190,7 @@ const Questions = ({
         <Link
           href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
           target="_blank"
-          className="no-underline flex items-center text-hackathon-green-300 mt-1"
+          className="no-underline flex items-center text-hackathon-green-300 hover:text-opacity-65 mt-1"
         >
           MLH Code of Conduct
           <FaLink className="mx-2" />
