@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google";
 import Session from "@/components/Session";
 import { Toaster } from "react-hot-toast";
 import { getServerSession } from "next-auth";
+import { options } from "@/utils/auth";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -17,7 +18,7 @@ type Props = {
 };
 
 const RootLayout = async ({ children }: Props) => {
-  const session = getServerSession();
+  const session = await getServerSession(options);
 
   return (
     <html lang="en" className="h-full">
