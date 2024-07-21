@@ -23,6 +23,8 @@ Cypress.Commands.add("fetch", ({ role, portal, page }) => {
     }
   ).as("GET");
 
+  cy.log(Cypress.env("NEXTAUTH_SECRET"));
+
   cy.wrap(null)
     .then(() =>
       encode({
