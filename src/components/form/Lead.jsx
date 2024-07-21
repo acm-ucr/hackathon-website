@@ -5,7 +5,7 @@ import Form from "@/components/form/form/Form.jsx";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Leads";
 import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
-import toast from "react-hot-toast";
+import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/admin/Leads";
 
 const Lead = () => {
@@ -24,8 +24,8 @@ const Lead = () => {
       url: "/api/dashboard/leads",
       body: lead,
     })
-      .then(() => toast(`✅ Submitted successfully!`))
-      .catch(() => toast(`❌ Internal Server Error`))
+      .then(() => toaster(`✅ Submitted successfully!`))
+      .catch(() => toaster(`❌ Internal Server Error`))
       .finally(() => {
         setLoading(false);
         setState(2);

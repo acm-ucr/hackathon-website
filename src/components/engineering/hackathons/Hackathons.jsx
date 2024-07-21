@@ -5,6 +5,7 @@ import { HackathonsData } from "@/data/engineering/HackathonsData";
 export const Hackathons = () => {
   return (
     <div className="text-center md:text-left">
+      <title>Engineering | Hackathons at UCR</title>
       <div className="flex font-bold justify-center text-hackathon-blue-200 text-4xl md:text-5xl md:my-10 pt-6 pb-4">
         Hackathons at UCR
       </div>

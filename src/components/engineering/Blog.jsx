@@ -15,13 +15,18 @@ const getBlogPost = async () => {
   });
 };
 const Blog = async () => {
-  const blogs = await getBlogPost();
+  const data = await getBlogPost();
+
+  const blogs = data.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return (
     <>
       <div className="w-10/12 mt-[10%] m-auto">
-        <p className="m-0 text-3xl font-bold text-center">Engineering Blogs</p>
-        <p className="lg:my-3 lg:w-3/4 sm:text-center md:text-center">
+        <title>Engineering | Engineering Blogs</title>
+        <p className="m-0 text-3xl font-bold text-center md:text-left">
+          Engineering Blogs
+        </p>
+        <p className="my-3 w-full md:w-3/4 text-center md:text-left">
           Check out our engineering blogs to learn more about the behind the
           scenes as engineers discuss various challenges, migrations,
           bottlenecks. Our engineering blogs captures how our engineers approach
@@ -36,7 +41,13 @@ const Blog = async () => {
             >
               <p className="font-semibold text-lg">{title}</p>
               <p className="text-sm text-gray-300">{author}</p>
-              <p className="text-sm flex justify-end text-gray-300">{date}</p>
+              <p className="text-sm flex justify-end text-gray-300">
+                {new Date(date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </p>
             </Link>
           ))}
         </div>

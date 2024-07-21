@@ -26,7 +26,7 @@ const Filter = ({ value, status, isActive, setFilters }) => {
   };
 
   return (
-    <div className="flex justify-center" onClick={onClick}>
+    <div className="flex justify-center w-full" onClick={onClick}>
       <div
         className={`rounded hover:opacity-70 duration-300 ${
           isActive

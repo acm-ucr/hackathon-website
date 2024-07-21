@@ -6,7 +6,17 @@ export const FIELDS = {
     input: "description",
     width: 12,
     texts: [
-      `Welcome to ${data.name}. Thank you for taking interest in ${data.name}, we appreciate your efforts to help support ${data.name}. ${data.name} is a ${data.description} hackathon spanning ${data.length} on ${data.date}.`,
+      `Welcome to ${data.name}. Thank you for taking interest in ${
+        data.name
+      }, we appreciate your efforts to help support ${data.name}. ${
+        data.name
+      } is a ${data.description} hackathon spanning ${
+        data.length
+      } on ${data.date.toLocaleString("default", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      })}.`,
       "This is simply an interest form, once applications are released, you will be notified immediately and will be required to register again. We hope to see you there!",
     ],
   },

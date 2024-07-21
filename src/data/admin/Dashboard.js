@@ -46,6 +46,7 @@ export const ATTRIBUTES = {
     "email",
     "roles",
     "discord",
+    "team",
   ],
   sponsors: [
     "name",

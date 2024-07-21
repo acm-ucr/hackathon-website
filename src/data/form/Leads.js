@@ -8,7 +8,11 @@ export const FIELDS = {
     input: "description",
     width: 12,
     texts: [
-      `Welcome to ${data.name}. Thank you for considering to become a lead, we appreciate your enthusiasm to join ${data.name}. ${data.name} is a ${data.description} hackathon spanning ${data.length} on ${data.date}.`,
+      `Welcome to ${data.name} ${
+        data.date.getFullYear() + 1
+      }. Thank you for considering to become a lead, we appreciate your enthusiasm to join ${
+        data.name
+      }, a ${data.description} hackathon.`,
     ],
   },
   name: {
