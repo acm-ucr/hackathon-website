@@ -4,6 +4,7 @@ import Link from "next/link";
 const Hackpack = ({ text, techs, link }) => {
   return (
     <Link
+      data-cy="hackpack-link"
       className="w-full bg-gray-100 rounded-xl p-4 hover:border-gray-300 border-gray-100 border-2 duration-300"
       href={link}
       target="_black"
@@ -28,10 +29,14 @@ const Hackpack = ({ text, techs, link }) => {
       <div className="flex flex-wrap">
         {techs.map((tech, index) => (
           <div
+            data-cy="hackpack-tech"
             key={index}
             className="text-gray-400 rounded-full flex items-center px-1"
           >
-            <div className="text-hackathon-blue-100 mr-1">
+            <div
+              data-cy="hackpack-icon"
+              className="text-hackathon-blue-100 mr-1"
+            >
               {TECHSTACKS[tech]}
             </div>
             {tech}
