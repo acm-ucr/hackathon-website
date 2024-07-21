@@ -9,7 +9,25 @@ const Hackpack = ({ text, techs, link }) => {
       href={link}
       target="_black"
     >
-      <div className="col-span-1 bg-white p-3 rounded-lg">
+      <div className="bg-white p-3 rounded-lg min-h-72">
+      <p className="text-lg font-semibold">{text}</p>
+      <div className="flex flex-col my-2">
+        {techs.map((tech, index) => (
+          <div
+          key={index}
+          className="text-gray-400 rounded-full flex items-center px-1"
+        >
+          <div className="text-hackathon-blue-100 mr-1">
+            {TECHSTACKS[tech]}
+          </div>
+          {tech}
+        </div>
+        ))}
+      </div>
+    </div>
+
+
+      {/* <div className="col-span-1 bg-white p-3 rounded-lg">
         <p className="text-lg font-semibold">{text}</p>
         <div className="inline-block gap-3 my-2">
           {techs.map((tech, index) => (
@@ -24,7 +42,7 @@ const Hackpack = ({ text, techs, link }) => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
       {/* <div className="font-bold">{text}</div>
       <div className="flex flex-wrap">
         {techs.map((tech, index) => (
