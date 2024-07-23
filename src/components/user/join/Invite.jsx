@@ -23,7 +23,7 @@ import {
 import Link from "next/link";
 import { useState } from "react";
 
-const JoinClient = ({ team, id }) => {
+const Invite = ({ team, id }) => {
   const [alert, setAlert] = useState(false);
 
   const handleJoin = async () => {
@@ -84,4 +84,4 @@ const JoinClient = ({ team, id }) => {
   );
 };
 
-export default JoinClient;
+export default Invite;
