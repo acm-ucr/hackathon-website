@@ -1,7 +1,21 @@
-import { RiArrowDownSLine } from "react-icons/ri";
-import { useState, useEffect, useRef } from "react";
-import { useVirtualizer } from "@tanstack/react-virtual";
+import { useState, useRef } from "react";
+// import { useVirtualizer } from "@tanstack/react-virtual";
 
+import {
+  Command,
+  CommandEmpty,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
+
+import { ChevronsUpDown } from "lucide-react";
 const Select = ({
   items,
   user,
@@ -9,124 +23,63 @@ const Select = ({
   setUser,
   placeholder,
   title,
-  editable = true,
   required,
-  searchable = false,
 }) => {
-  const [options, setOptions] = useState(items);
-  const [show, setShow] = useState(false);
-  const [input, setInput] = useState("");
-  const ref = useRef(null);
+  const [options] = useState(items);
+  const [open, setOpen] = useState(false);
+  const [current, setCurrent] = useState(null);
   const parent = useRef(null);
-
-  const { getTotalSize, getVirtualItems, measureElement } = useVirtualizer({
-    count: options.length,
-    getScrollElement: () => ref.current,
-    estimateSize: () => 50,
-    measureElement: (el) => {
-      if (el.innerText.length > 45) return 50;
-      else return 35;
-    },
-  });
-
-  const handleClickOutside = ({ target }) => {
-    if (parent.current && !parent.current.contains(target)) {
-      setShow(false);
-    }
-  };
-
-  const handleInput = (e) => {
-    setOptions(
-      items.filter((name) =>
-        name.toLowerCase().search(e.target.value.toLowerCase()) === -1
-          ? false
-          : true
-      )
-    );
-
-    setInput(e.target.value);
-  };
-
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
-  }, []);
+  // const { getTotalSize, getVirtualItems, measureElement } = useVirtualizer({
+  //   count: options.length,
+  //   getScrollElement: () => ref.current,
+  //   estimateSize: () => 50,
+  //   measureElement: (el) => {
+  //     if (el.innerText.length > 45) return 50;
+  //     else return 35;
+  //   },
+  // });
 
   return (
-    <div ref={parent}>
-      <p className="mb-1 font-semibold">
+    <div>
+      <div className="font-semibold">
         {title}
         {required && <span className="text-red-500">*</span>}
-      </p>
-      <button
-        disabled={!editable}
-        onClick={() => setShow(!show)}
-        className={`${
-          !user[field] && "text-hackathon-gray-200"
-        } bg-transparent flex items-center justify-between w-full pb-1`}
-        data-cy="select-toggle"
-      >
-        {user[field] || placeholder}
-        {editable && (
-          <RiArrowDownSLine
-            className={`${show && "rotate-180"} duration-300 text-black`}
-            data-cy="select-arrow"
-          />
-        )}
-      </button>
-      {show && (
-        <div className="relative">
-          <div
-            ref={ref}
-            className="absolute overflow-y-scroll bg-hackathon-green-100 w-full h-fit max-h-[35vh]"
-            data-cy="select-menu"
+      </div>
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            role="combobox"
+            aria-expanded={open}
+            className="w-full justify-between"
           >
-            {searchable && (
-              <input
-                value={input}
-                autoFocus
-                className="my-1 w-full ring-0 outline-none px-2 py-2 bg-hackathon-green-100 sticky top-0 left-0 z-10"
-                placeholder="search"
-                onChange={handleInput}
-              />
-            )}
-            {options.length === 0 && (
-              <div className="p-2 text-hackathon-gray-200">
-                No Options Available
-              </div>
-            )}
-            <div
-              className="w-full relative"
-              style={{
-                height: `${getTotalSize()}px`,
-              }}
-            >
-              {getVirtualItems().map((virtualRow) => {
-                const name = options[virtualRow.index];
-
-                return (
-                  <div
-                    className="absolute top-0 left-0 w-full hover:bg-hackathon-green-200 hover:cursor-pointer flex items-center px-2"
-                    key={virtualRow.index}
-                    data-index={virtualRow.index}
-                    ref={measureElement}
-                    onClick={() => {
-                      setUser({ ...user, [field]: name });
-                      setShow(false);
-                    }}
-                    style={{
-                      height: `${virtualRow.size}px`,
-                      transform: `translateY(${virtualRow.start}px)`,
-                    }}
-                  >
-                    {name}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      )}
+            {current ? current : placeholder}
+            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-96 p-0 text-lg ">
+          <Command>
+            <CommandInput placeholder="search" className="text-lg " />
+            <CommandEmpty>No Options Available.</CommandEmpty>
+            <CommandList ref={parent}>
+              {options.map((option, index) => (
+                <CommandItem
+                  key={index}
+                  value={option}
+                  className="text-lg"
+                  onSelect={(value) => {
+                    setCurrent(current === value ? null : option);
+                    setUser({ ...user, [field]: option });
+                    setOpen(false);
+                  }}
+                >
+                  {option}
+                </CommandItem>
+              ))}
+            </CommandList>
+          </Command>
+        </PopoverContent>
+      </Popover>
     </div>
   );
 };
