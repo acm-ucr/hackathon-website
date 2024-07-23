@@ -1,13 +1,30 @@
 "use client";
-import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
-import Button from "@/components/Button";
+import { Button } from "@/components/ui/button";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import Link from "next/link";
+import { useState } from "react";
 
 const JoinClient = ({ team, id }) => {
-  const router = useRouter();
-  const { update: sessionUpdate } = useSession();
+  const [alert, setAlert] = useState(false);
 
   const handleJoin = async () => {
     const response = await api({
@@ -15,37 +32,54 @@ const JoinClient = ({ team, id }) => {
       url: "/api/members",
       body: { team: id },
     });
+
     if (response.message !== "OK") {
       toaster(`${response.message}`, "error");
       return;
     }
+
+    setAlert(true);
     toaster("Successfully joined team!", "success");
-    sessionUpdate({
-      team: id,
-    });
-    router.push("/user");
   };
 
   return (
     <>
-      {team && (
-        <div className="flex flex-col w-screen h-screen items-center justify-center font-poppins">
-          <p className="text-3xl">
-            Are you sure you want to join{" "}
-            <span className="font-bold">{team.name}</span>
-          </p>
-          <p className="mb-1 font-semibold">Members</p>
+      <AlertDialog open={alert}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Welcome to your new team!</AlertDialogTitle>
+            <AlertDialogDescription>
+              Using the team dashboard, you can add team members, upload
+              submission links and view critical information for judging!
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <Link href={`/user/team`}>
+              <AlertDialogAction>Visit New Team</AlertDialogAction>
+            </Link>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>{team.name}</CardTitle>
+          <CardDescription>
+            You have recieved an invite to join this team.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Label>Current Members</Label>
           {team.members.map((member, index) => (
             <p className="pl-3 m-0 flex items-center" key={index}>
-              {member.name}
-              <span className="ml-3 text-sm text-hackathon-green-300">
-                {member.email}
-              </span>
+              {member.name} - {member.discord}
             </p>
           ))}
-          <Button color="green" size="xl" text="Join" onClick={handleJoin} />
-        </div>
-      )}
+        </CardContent>
+        <CardFooter>
+          <Button onClick={handleJoin}>Join Team</Button>
+        </CardFooter>
+      </Card>
     </>
   );
 };
