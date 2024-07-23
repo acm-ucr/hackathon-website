@@ -66,3 +66,9 @@ export const authenticate = async (restrictions: Restrictions = {}) => {
     user: session.user,
   };
 };
+
+export const getSession = async () => {
+  const session = await getServerSession(options);
+
+  return session;
+};
