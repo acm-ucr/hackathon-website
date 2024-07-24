@@ -1,15 +1,29 @@
-const Textarea = ({ object, setObject, label, maxLength }) => {
+import { Textarea } from "../../ui/textarea";
+
+const TextArea = ({
+  value,
+  label,
+  maxLength,
+  placeholder,
+  disabled,
+  name,
+  onChange,
+  rows,
+  className,
+}) => {
   return (
-    <textarea
+    <Textarea
       data-cy={`${label}-textarea`}
+      className={className}
       maxLength={maxLength}
-      className="w-full h-full border-2 rounded-md p-2 outline-none resize-none"
-      value={object[label]}
-      onChange={(e) => {
-        setObject({ ...object, [label]: e.target.value });
-      }}
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+      disabled={disabled}
+      name={name}
+      rows={rows}
     />
   );
 };
 
-export default Textarea;
+export default TextArea;
