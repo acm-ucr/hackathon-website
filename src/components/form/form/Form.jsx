@@ -29,7 +29,7 @@ const Form = ({
 
   return (
     <div className="w-full h-full overflow-scroll-y flex flex-col items-center font-poppins">
-      <div className="w-full flex flex-row justify-end space-x-8 mr-[10%]">
+      <div className="w-full flex flex-row justify-end space-x-4 mr-[10%]">
         <Button
           text="Back to Home"
           onClick={() => router.push("/")}
