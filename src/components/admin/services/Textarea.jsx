@@ -1,4 +1,4 @@
-import { Textarea } from "../../ui/textarea";
+import { TextareaCN } from "../../ui/textarea";
 
 const TextArea = ({
   value,
@@ -12,7 +12,7 @@ const TextArea = ({
   className,
 }) => {
   return (
-    <Textarea
+    <TextareaCN
       data-cy={`${label}-textarea`}
       className={className}
       maxLength={maxLength}
