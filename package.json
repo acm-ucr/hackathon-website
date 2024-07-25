@@ -34,6 +34,7 @@
     "firebase": "^10.8.0",
     "firebase-admin": "^11.11.0",
     "gray-matter": "^4.0.3",
+    "input-otp": "^1.2.4",
     "lucide-react": "^0.408.0",
     "next": "^14.0.1",
     "next-auth": "^4.24.4",
