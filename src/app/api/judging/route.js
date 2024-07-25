@@ -20,7 +20,7 @@ export const GET = async () => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
 
@@ -31,12 +31,12 @@ export const GET = async () => {
     const teamsPromise = getDocs(
       query(
         collection(db, "teams"),
-        or(where("status", "==", 1), where("status", "==", 0))
-      )
+        or(where("status", "==", 1), where("status", "==", 0)),
+      ),
     );
 
     const judgesPromise = getDocs(
-      query(collection(db, "users"), where("roles.judges", "==", 1))
+      query(collection(db, "users"), where("roles.judges", "==", 1)),
     );
 
     const [teamsSnapshot, judgesSnapshot] = await Promise.all([
@@ -77,12 +77,12 @@ export const GET = async () => {
 
     return res.json(
       { message: "OK", items: { teams, judges } },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };
@@ -94,7 +94,7 @@ export const DELETE = async (req) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
 
@@ -107,14 +107,14 @@ export const DELETE = async (req) => {
           table: deleteField(),
           rounds: deleteField(),
         });
-      })
+      }),
     );
 
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };
@@ -126,7 +126,7 @@ export const PUT = async (req) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
 
@@ -140,14 +140,14 @@ export const PUT = async (req) => {
           table: object.table,
           rounds: rounds,
         });
-      })
+      }),
     );
 
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };

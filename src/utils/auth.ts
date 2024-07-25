@@ -52,7 +52,7 @@ export const authenticate = async (restrictions: Restrictions = {}) => {
   }
 
   const authorized = Object.entries(restrictions).some(([key, value]) =>
-    value.includes(session?.user?.roles[key])
+    value.includes(session?.user?.roles[key]),
   );
 
   if (!authorized && Object.keys(restrictions).length > 0) {

@@ -18,7 +18,7 @@ describe("HackPacks", () => {
     cy.get('[data-cy="hackpack-link"]')
       .should(
         "have.class",
-        "w-full bg-gray-100 rounded-xl p-4 hover:border-gray-300 border-gray-100 border-2 duration-300"
+        "w-full bg-gray-100 rounded-xl p-4 hover:border-gray-300 border-gray-100 border-2 duration-300",
       )
       .should("have.attr", "href", link)
       .should("have.attr", "target", "_black");
@@ -27,7 +27,7 @@ describe("HackPacks", () => {
       "have.class",
       "font-bold",
       "contain.text",
-      "Hackpack"
+      "Hackpack",
     );
 
     cy.get('[data-cy="hackpack-techs"]')
@@ -40,7 +40,7 @@ describe("HackPacks", () => {
         .should("contain.text", tech)
         .should(
           "have.class",
-          "text-gray-400 rounded-full flex items-center px-1"
+          "text-gray-400 rounded-full flex items-center px-1",
         );
 
       cy.get('[data-cy="hackpack-tech"] [data-cy="hackpack-icon"]')
