@@ -1,13 +1,13 @@
 Cypress.Commands.add("fetch", ({ role, portal, page }) => {
   cy.intercept("/api/auth/session", { fixture: `${role}_role.json` }).as(
-    "session"
+    "session",
   );
   cy.intercept(
     "GET",
     `/api/dashboard/${page}?direction=undefined&index=1&size=10&first=undefined&last=undefined`,
     {
       fixture: `${page}.json`,
-    }
+    },
   ).as("GET");
 
   cy.visit("/");

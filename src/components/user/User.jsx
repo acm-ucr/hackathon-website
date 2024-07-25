@@ -30,7 +30,7 @@ const User = ({ user, setUser, edit, setEdit }) => {
   const handleSave = async () => {
     if (
       Object.values(user).some(
-        (value) => typeof value === "string" && value.includes("Invalid")
+        (value) => typeof value === "string" && value.includes("Invalid"),
       )
     ) {
       toaster("Please complete all required fields!", "error");
