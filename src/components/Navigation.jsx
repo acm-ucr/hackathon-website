@@ -7,10 +7,13 @@ import Link from "next/link";
 import { TABS } from "@/data/Navigation";
 import { usePathname } from "next/navigation";
 import data from "@/data/Config";
-import { BiSolidDownArrow } from "react-icons/bi";
-import { BsBoxArrowInRight, BsGlobe2 } from "react-icons/bs";
-import { SiDevpost } from "react-icons/si";
-import { MdFeedback } from "react-icons/md";
+import {
+  ArrowDownCircle,
+  LogIn,
+  Globe,
+  Code,
+  MessageSquare,
+} from "lucide-react";
 import { signOut } from "next-auth/react";
 
 const Navigation = () => {
@@ -22,17 +25,17 @@ const Navigation = () => {
     {
       name: "feedback",
       link: "/form/feedback",
-      icon: <MdFeedback />,
+      icon: <MessageSquare />,
     },
     {
       name: "devpost",
       link: data.devpost,
-      icon: <SiDevpost />,
+      icon: <Code />,
     },
     {
       name: "website",
       link: "/",
-      icon: <BsGlobe2 />,
+      icon: <Globe />,
     },
   ];
 
@@ -82,7 +85,7 @@ const Navigation = () => {
                   >
                     {title}
                     {tabs.dropdown && (
-                      <BiSolidDownArrow
+                      <ArrowDownCircle
                         className={`text-sm duration-300 ${
                           subTabs.expand && "rotate-180"
                         }`}
@@ -135,7 +138,7 @@ const Navigation = () => {
               onClick={() => signOut({ callbackUrl: "/", redirect: true })}
               className={`w-full flex text-white items-center justify-center py-1 hover:text-hackathon-blue-100 hover:cursor-pointer`}
             >
-              <BsBoxArrowInRight className="mr-2" />
+              <LogIn className="mr-2" />
             </div>
           </div>
         </div>

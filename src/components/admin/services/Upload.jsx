@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { RiAttachment2 } from "react-icons/ri";
-import { FaTimes } from "react-icons/fa";
+import { Paperclip, X } from "lucide-react";
 import toaster from "@/utils/toaster";
 import { BYTES } from "@/data/Bytes";
 import { compress } from "@/utils/convert";
@@ -61,7 +60,7 @@ const Upload = ({ text, setObjects, objects, size, types }) => {
               >
                 {displayFile(file)}
               </p>
-              <FaTimes
+              <X
                 className="text-hackathon-gray-300 text-sm ml-2 hover:cursor-pointer hover:text-red-600"
                 onClick={() => {
                   setObjects({
@@ -79,7 +78,7 @@ const Upload = ({ text, setObjects, objects, size, types }) => {
           className="flex items-center justify-center w-git border-2 border-gray-300 rounded cursor-pointer bg-gray-50 hover:bg-gray-100 px-2 py-1 m-0"
           data-cy="upload-input"
         >
-          <RiAttachment2 className="text-xl text-gray-500 mr-1" />
+          <Paperclip className="text-xl text-gray-500 mr-1" />
           <p className="text-sm text-gray-500 font-semibold m-0">attach</p>
           <input
             id="dropzone-file"

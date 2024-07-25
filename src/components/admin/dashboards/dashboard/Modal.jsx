@@ -1,4 +1,4 @@
-import { FaTimes } from "react-icons/fa";
+import { X } from "lucide-react";
 
 const Modal = ({ data, setModal }) => {
   return (
@@ -11,7 +11,7 @@ const Modal = ({ data, setModal }) => {
         data-cy="modal-title"
       >
         <span className="text-3xl text-white font-bold">{data.title}</span>
-        <FaTimes
+        <X
           onClick={() => setModal(null)}
           className="hover:cursor-pointer text-white hover:!text-red-500 text-xl"
           data-cy="modal-close"

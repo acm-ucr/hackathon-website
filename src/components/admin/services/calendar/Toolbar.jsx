@@ -1,7 +1,7 @@
 import { LABELS } from "@/data/admin/Calendar.js";
 import Tag from "../../Tag.jsx";
 import { COLORS } from "@/data/Tags.js";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect } from "react";
 
 const CustomToolbar = ({ onView, onNavigate, date, view, setTag }) => {
@@ -28,7 +28,7 @@ const CustomToolbar = ({ onView, onNavigate, date, view, setTag }) => {
     <div className="flex flex-col md:flex-row items-center justify-between mb-2">
       <div className="flex flex-col items-center">
         <div className="flex justify-center items-center my-2">
-          <FaChevronLeft
+          <ChevronLeft
             onClick={() => onNavigate("PREV")}
             className="hover:cursor-pointer mx-2"
           />
@@ -36,7 +36,7 @@ const CustomToolbar = ({ onView, onNavigate, date, view, setTag }) => {
             {date.toLocaleString("default", { month: "short" })}{" "}
             {date.getFullYear()}
           </p>
-          <FaChevronRight
+          <ChevronRight
             onClick={() => onNavigate("NEXT")}
             className="hover:cursor-pointer mx-2"
           />

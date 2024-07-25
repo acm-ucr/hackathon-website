@@ -1,6 +1,6 @@
 import { flexRender } from "@tanstack/react-table";
 import { useState } from "react";
-import { FaChevronDown } from "react-icons/fa6";
+import { ChevronDown } from "lucide-react";
 
 const Body = ({ getIsSelected, getVisibleCells, Dropdown, original }) => {
   const [dropdown, setDropdown] = useState(false);
@@ -22,7 +22,7 @@ const Body = ({ getIsSelected, getVisibleCells, Dropdown, original }) => {
           </div>
         ))}
         {Dropdown && (
-          <FaChevronDown
+          <ChevronDown
             className={`${
               dropdown && "rotate-180"
             } duration-300 hover:cursor-pointer`}

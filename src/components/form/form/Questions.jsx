@@ -7,7 +7,7 @@ import Textarea from "@/components/form/form/Textarea.jsx";
 import Upload from "@/components/form/form/Upload";
 import toaster from "@/utils/toaster";
 import Link from "next/link";
-import { FaLink } from "react-icons/fa";
+import { Link as LucideLink } from "lucide-react";
 import data from "@/data/Config";
 import Terms from "./Terms";
 
@@ -193,7 +193,7 @@ const Questions = ({
           className="no-underline flex items-center text-hackathon-green-300 hover:text-opacity-65 mt-1"
         >
           MLH Code of Conduct
-          <FaLink className="mx-2" />
+          <LucideLink className="mx-2" />
         </Link>
         <Link
           href="https://mlh.io/privacy"
@@ -201,7 +201,7 @@ const Questions = ({
           className="no-underline flex items-center text-hackathon-green-300 hover:text-opacity-65 mt-3"
         >
           MLH Privacy Policy
-          <FaLink className="mx-2" />
+          <LucideLink className="mx-2" />
         </Link>
         <Link
           href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md"
@@ -209,7 +209,7 @@ const Questions = ({
           className="no-underline flex items-center text-hackathon-green-300 hover:text-opacity-65 mt-3"
         >
           MLH Contest Terms and Conditions
-          <FaLink className="mx-2" />
+          <LucideLink className="mx-2" />
         </Link>
       </div>
       {packet && (
@@ -220,7 +220,7 @@ const Questions = ({
           className="no-underline flex items-center "
         >
           Sponsorship Packet
-          <FaLink className="mx-2" />
+          <LucideLink className="mx-2" />
         </Link>
       )}
       <div className="flex justify-center">

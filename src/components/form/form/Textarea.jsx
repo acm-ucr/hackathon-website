@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaPencil, FaCheck } from "react-icons/fa6";
+import { Pencil, Check } from "lucide-react";
 
 const Textarea = ({
   name,
@@ -30,10 +30,10 @@ const Textarea = ({
         {required && <span className="text-red-500">*</span>}
       </p>
       {editable && !edit && (
-        <FaPencil className="hover:cursor-pointer" onClick={handleEdit} />
+        <Pencil className="hover:cursor-pointer" onClick={handleEdit} />
       )}
       {editable && edit && (
-        <FaCheck className="hover:cursor-pointer" onClick={handleSave} />
+        <Check className="hover:cursor-pointer" onClick={handleSave} />
       )}
       <textarea
         data-cy={`${title}-textarea`}

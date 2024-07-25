@@ -1,6 +1,6 @@
 "use client";
 import { TABS } from "@/data/engineering/Navigation";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
@@ -26,7 +26,7 @@ const Navigation = () => {
             </Link>
           ))}
         </div>
-        <GiHamburgerMenu
+        <Menu
           className="cursor-pointer flex md:hidden"
           onClick={() => setShow(!show)}
         />

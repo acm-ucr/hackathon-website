@@ -1,4 +1,4 @@
-import { SiGithub } from "react-icons/si";
+import { Github } from "lucide-react";
 
 export const TABS = [
   {
@@ -10,7 +10,7 @@ export const TABS = [
     link: "/engineering/blog",
   },
   {
-    label: <SiGithub className="text-4xl self-center" />,
+    label: <Github className="text-4xl self-center" />,
     link: "https://github.com/acm-ucr/hackathon-website",
   },
 ];

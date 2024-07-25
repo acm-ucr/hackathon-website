@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { RiArrowDownSLine } from "react-icons/ri";
+import { ChevronDown } from "lucide-react";
 
 const DropDown = ({ options, setOptions, option, setOption, empty }) => {
   const [show, setShow] = useState(false);
@@ -45,7 +45,7 @@ const DropDown = ({ options, setOptions, option, setOption, empty }) => {
           data-cy="dropdown-selected"
         >
           {option.name}
-          <RiArrowDownSLine
+          <ChevronDown
             className={`${show && "rotate-180"} duration-300`}
             data-cy="dropdown-arrow"
           />

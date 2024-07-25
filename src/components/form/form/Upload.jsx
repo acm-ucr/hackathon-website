@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { BsUpload } from "react-icons/bs";
-import { FaFilePdf, FaImage, FaTimes, FaEye } from "react-icons/fa";
+import { Upload as LucideUpload, FileText, Image, X, Eye } from "lucide-react";
 import toaster from "@/utils/toaster";
 import { BYTES } from "@/data/Bytes";
 import { readFileAsBase64, compress } from "@/utils/convert";
@@ -47,7 +46,7 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
             className="flex flex-col items-center justify-center w-full h-fit border-2 border-gray-300 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100"
           >
             <div className="flex flex-col items-center justify-center py-4">
-              <BsUpload className=" text-3xl mb-2 text-hackathon-green-300" />
+              <LucideUpload className=" text-3xl mb-2 text-hackathon-green-300" />
               <p className="text-sm text-gray-500 font-semibold">
                 Upload from my computer
               </p>
@@ -70,21 +69,21 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
           >
             <div className="flex items-center">
               {file.type.split("/")[0] === "image" ? (
-                <FaImage className="text-xl mr-2" />
+                <Image className="text-xl mr-2" />
               ) : (
-                <FaFilePdf className="text-xl mr-2" />
+                <FileText className="text-xl mr-2" />
               )}
               {file.title}
             </div>
             <div className="flex flex-row">
               {file.type.split("/")[0] === "image" && (
-                <FaEye
+                <Eye
                   onClick={() => setShowModal(true)}
                   className="text-gray-500 hover:cursor-pointer hover:text-gray-800 mr-2"
                 />
               )}
 
-              <FaTimes
+              <X
                 className="text-gray-500 hover:cursor-pointer hover:text-red-600"
                 onClick={() => setFile(null)}
                 data-cy="upload-cancel"

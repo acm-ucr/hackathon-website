@@ -3,8 +3,7 @@ import Countdown from "./Countdown";
 import Header from "./Header";
 import { useSession } from "next-auth/react";
 import Tile from "./Tile";
-import { BsQrCode } from "react-icons/bs";
-import { LuParkingCircle } from "react-icons/lu";
+import { QrCode, ParkingCircle } from "lucide-react";
 import Rooms from "./Rooms";
 import Packing from "./Packing";
 import Hackpacks from "./Hackpacks";
@@ -26,9 +25,9 @@ const Dashboard = () => {
         <div className="col-span-1 md:col-span-2">
           <Countdown />
           <div className="flex flex-col md:flex-row gap-4 mt-4">
-            <Tile icon={<BsQrCode />} text="Check In" link="/user/checkin" />
+            <Tile icon={<QrCode />} text="Check In" link="/user/checkin" />
             <Tile
-              icon={<LuParkingCircle />}
+              icon={<ParkingCircle />}
               text="Parking Info"
               link="https://transportation.ucr.edu/visitor-parking"
             />
