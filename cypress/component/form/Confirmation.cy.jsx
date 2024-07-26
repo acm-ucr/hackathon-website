@@ -1,4 +1,4 @@
-import Confirmation from "@/components/form/form/Confirmation.jsx";
+import Confirmation from "@/components/form/form/Confirmation";
 
 describe("Confirmation", () => {
   it("should render and display correct message", () => {

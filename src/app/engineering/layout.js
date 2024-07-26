@@ -1,6 +1,6 @@
 import Navigation from "@/components/engineering/Navigation";
 
-export const Layout = ({ children }) => {
+const Layout = ({ children }) => {
   return (
     <div className="w-full">
       <Navigation />

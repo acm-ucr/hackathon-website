@@ -1,8 +1,8 @@
 export const RULES = [
-  "You may not submit a project that has already been submitted or started before our hackathon period.",
-  "Your project must be an original and not copied from someone else's work.",
-  "Teams of 1-4 are required.",
-  "A Github is required for submission.",
-  "Github commits may not be dated before the hackathon period has started.",
-  "We will not judge any late projects.",
+  "Max team size is 4 people",
+  "Previous projects may not be submitted",
+  "All work must be original and sources cited if used",
+  "A Devpost is required for submission",
+  "All team members must have checked-in",
+  "Ideation before the event is allowed, but all coding/building must take place during the event",
 ];
