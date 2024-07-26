@@ -4,10 +4,10 @@ import { useState } from "react";
 describe("Textarea", () => {
   it("Typing...", () => {
     const Parent = () => {
-      const [object, setObject] = useState({
+      const [user, setUser] = useState({
         name: "",
       });
-      return <Textarea label="name" object={object} setObject={setObject} />;
+      return <Textarea title="name" user={user} setUser={setUser} />;
     };
 
     cy.mount(<Parent />);
