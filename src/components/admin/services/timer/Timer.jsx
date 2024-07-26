@@ -3,15 +3,15 @@ import TimerDisplay from "./TimerDisplay";
 import TimerStatus from "./TimerStatus";
 import TimerControls from "./TimerControls";
 import TimerEditMode from "./TimerEditMode";
-import ProgressBar from "./ProgressBar";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { Progress } from "@/components/ui/progress";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 export default function Timer({ name, onRemove }) {
   const [paused, setPaused] = useState(true);
-  const [totalSeconds, setTotalSeconds] = useState(0);
+  const [total, setTotal] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
   const [isEditMode, setEditMode] = useState(false);
-  const [ogTotalSeconds, setOgTotalSeconds] = useState(0);
+  const [original, setOriginal] = useState(0);
   const [editedValue, setEditedValue] = useState("");
   const [invalid, setInvalid] = useState(true);
   const [collapsed, setCollapsed] = useState(false);
@@ -38,9 +38,9 @@ export default function Timer({ name, onRemove }) {
       };
     };
 
-    setTime(calculateTime(totalSeconds));
+    setTime(calculateTime(total));
 
-    if (totalSeconds === 0) {
+    if (total === 0) {
       setPaused(true);
       setIsComplete(true);
       return;
@@ -53,11 +53,11 @@ export default function Timer({ name, onRemove }) {
     }
 
     timerRef.current = setTimeout(() => {
-      setTotalSeconds((prevSeconds) => prevSeconds - 1);
+      setTotal((prevSeconds) => prevSeconds - 1);
     }, 1000);
 
     return () => clearTimeout(timerRef.current);
-  }, [paused, isComplete, totalSeconds]);
+  }, [paused, isComplete, total]);
 
   const pauseTimer = () => {
     setPaused(true);
@@ -72,7 +72,7 @@ export default function Timer({ name, onRemove }) {
   };
 
   const resetTimer = () => {
-    setTotalSeconds(ogTotalSeconds);
+    setTotal(original);
     setIsComplete(false);
     setPaused(true);
   };
@@ -103,8 +103,8 @@ export default function Timer({ name, onRemove }) {
 
     const total =
       dateObject.hours * 3600 + dateObject.minutes * 60 + dateObject.seconds;
-    setOgTotalSeconds(total);
-    setTotalSeconds(total);
+    setOriginal(total);
+    setTotal(total);
   };
 
   const inputOnChange = (value) => {
@@ -133,7 +133,7 @@ export default function Timer({ name, onRemove }) {
     <div className="flex flex-col items-center justify-between bg-white p-4 rounded-xl mb-4 snap-start scroll-m-4 w-full mx-auto">
       <div className="w-full flex justify-between items-center">
         <button onClick={toggleCollapse} className="mx-1 text-2xl">
-          {collapsed ? <FaChevronDown /> : <FaChevronUp />}
+          {collapsed ? <ChevronDown /> : <ChevronUp />}
         </button>
         <input
           className="text-3xl bg-transparent font-semibold outline-none pl-2 flex-grow"
@@ -161,19 +161,16 @@ export default function Timer({ name, onRemove }) {
       {!collapsed && (
         <>
           {isEditMode ? (
-            <TimerEditMode
-              editedValue={editedValue}
-              inputOnChange={inputOnChange}
-            />
+            <TimerEditMode value={editedValue} OnChange={inputOnChange} />
           ) : (
             <TimerDisplay time={time} />
           )}
           <TimerStatus isComplete={isComplete} paused={paused} />
         </>
       )}
-      <ProgressBar
-        ogTotalSeconds={ogTotalSeconds}
-        totalSeconds={totalSeconds}
+      <Progress
+        value={((original - total) / original) * 100}
+        className="w-full mt-4"
       />
     </div>
   );
