@@ -161,7 +161,7 @@ export default function Timer({ name, onRemove }) {
       {!collapsed && (
         <>
           {isEditMode ? (
-            <TimerEditMode value={editedValue} OnChange={inputOnChange} />
+            <TimerEditMode value={editedValue} onChange={inputOnChange} />
           ) : (
             <TimerDisplay time={time} />
           )}

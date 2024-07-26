@@ -5,10 +5,10 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 
-const TimerEditMode = ({ value, OnChange }) => (
+const TimerEditMode = ({ value, onChange }) => (
   <InputOTP
     maxLength={6}
-    onChange={(value) => OnChange(value)}
+    onChange={(value) => onChange(value)}
     value={value}
     className="mt-4"
   >
