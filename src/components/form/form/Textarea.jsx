@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaPencil, FaCheck } from "react-icons/fa6";
-import TextArea from "@/components/admin/services/TextArea";
+import TextArea from "@/components/admin/services/Textarea";
 
 const Textarea = ({
   name,
