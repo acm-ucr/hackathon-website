@@ -22,18 +22,18 @@ export const ICONS = {
   figma: (
     <SiFigma className="mr-2 text-lg hover:text-hackathon-green-300 hover:opacity-75" />
   ),
-  winner: <FaCrown className="ml-1 text-hackathon-yellow-100 text-lg" />,
-  phone: <FaPhoneAlt className="text-hackathon-blue-200 mr-2" />,
-  email: <IoIosMail className="text-hackathon-blue-200 mr-2 text-lg" />,
-  shirt: <IoIosShirt className="text-hackathon-blue-200 mr-2 text-lg" />,
-  diet: <FaAppleAlt className="text-hackathon-blue-200 mr-2" />,
-  age: <FaBirthdayCake className="text-hackathon-blue-200 mr-2 text-lg" />,
-  gender: <FaVenusMars className="text-hackathon-blue-200 mr-2 text-lg" />,
-  grade: <IoIosSchool className="text-hackathon-blue-200 mr-2 text-lg" />,
-  major: <FaBook className="text-hackathon-blue-200 mr-2 text-lg" />,
-  school: <FaSchool className="text-hackathon-blue-200 mr-2 text-lg" />,
+  winner: <FaCrown className="ml-1 text-lg text-hackathon-yellow-100" />,
+  phone: <FaPhoneAlt className="mr-2 text-hackathon-blue-200" />,
+  email: <IoIosMail className="mr-2 text-lg text-hackathon-blue-200" />,
+  shirt: <IoIosShirt className="mr-2 text-lg text-hackathon-blue-200" />,
+  diet: <FaAppleAlt className="mr-2 text-hackathon-blue-200" />,
+  age: <FaBirthdayCake className="mr-2 text-lg text-hackathon-blue-200" />,
+  gender: <FaVenusMars className="mr-2 text-lg text-hackathon-blue-200" />,
+  grade: <IoIosSchool className="mr-2 text-lg text-hackathon-blue-200" />,
+  major: <FaBook className="mr-2 text-lg text-hackathon-blue-200" />,
+  school: <FaSchool className="mr-2 text-lg text-hackathon-blue-200" />,
   eventSource: (
-    <MdContactPage className="text-hackathon-blue-200 mr-2 text-lg" />
+    <MdContactPage className="mr-2 text-lg text-hackathon-blue-200" />
   ),
-  priorHackathons: <FaClock className="text-hackathon-blue-200 mr-2 text-lg" />,
+  priorHackathons: <FaClock className="mr-2 text-lg text-hackathon-blue-200" />,
 };

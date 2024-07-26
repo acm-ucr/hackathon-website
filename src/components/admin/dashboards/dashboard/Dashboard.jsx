@@ -59,7 +59,7 @@ const Dashboard = ({
 
   return (
     <div className="w-full">
-      <div className="flex items-center my-2">
+      <div className="my-2 flex items-center">
         <Title title={title} />
         <Filters
           statuses={statuses}

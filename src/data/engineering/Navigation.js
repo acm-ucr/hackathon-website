@@ -10,7 +10,7 @@ export const TABS = [
     link: "/engineering/blog",
   },
   {
-    label: <SiGithub className="text-4xl self-center" />,
+    label: <SiGithub className="self-center text-4xl" />,
     link: "https://github.com/acm-ucr/hackathon-website",
   },
 ];

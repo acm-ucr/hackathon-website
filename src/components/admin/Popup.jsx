@@ -4,19 +4,19 @@ import { LiaTimesSolid } from "react-icons/lia";
 const Popup = ({ popup, onClick, setPopup, text }) => {
   return (
     <div
-      className="z-10 fixed inset-0 bg-black/40 w-screen h-screen flex items-center justify-center"
+      className="fixed inset-0 z-10 flex h-screen w-screen items-center justify-center bg-black/40"
       data-cy="popup"
     >
-      <div className="bg-white flex flex-col items-center rounded-lg p-3 gap-3">
-        <div className="flex justify-between items-center w-full">
-          <p className="text-lg font-bold m-0">{popup.title}</p>
+      <div className="flex flex-col items-center gap-3 rounded-lg bg-white p-3">
+        <div className="flex w-full items-center justify-between">
+          <p className="m-0 text-lg font-bold">{popup.title}</p>
           <LiaTimesSolid
-            className="hover:cursor-pointer text-lg"
+            className="text-lg hover:cursor-pointer"
             onClick={() => setPopup({ ...popup, visible: false })}
           />
         </div>
         <p>{popup.text}</p>
-        <div className="w-full flex justify-end gap-3">
+        <div className="flex w-full justify-end gap-3">
           <Button
             color="grayOutline"
             text="cancel"
