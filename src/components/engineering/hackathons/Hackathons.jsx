@@ -6,19 +6,19 @@ export const Hackathons = () => {
   return (
     <div className="text-center md:text-left">
       <title>Engineering | Hackathons at UCR</title>
-      <div className="flex font-bold justify-center text-hackathon-blue-200 text-4xl md:text-5xl md:my-10 pt-6 pb-4">
+      <div className="flex justify-center pb-4 pt-6 text-4xl font-bold text-hackathon-blue-200 md:my-10 md:text-5xl">
         Hackathons at UCR
       </div>
       {HackathonsData.map((data, index) => (
         <div
           key={index}
-          className={`flex relative ${
+          className={`relative flex ${
             data.id % 2 === 0
-              ? "bg-white flex-col md:flex-row "
-              : "bg-hackathon-gray-100 flex-col md:flex-row-reverse"
+              ? "flex-col bg-white md:flex-row"
+              : "flex-col bg-hackathon-gray-100 md:flex-row-reverse"
           }`}
         >
-          <div className="flex flex-col items-center gap-y-4 md:gap-y-8 justify-center px-[5%]">
+          <div className="flex flex-col items-center justify-center gap-y-4 px-[5%] md:gap-y-8">
             <Image
               src={data.logo}
               objectFit="cover"
@@ -27,12 +27,12 @@ export const Hackathons = () => {
               height={200}
               className="mt-4"
             />
-            <div className="text-hackathon-blue-100 text-5xl md:text-6xl font-bold">
+            <div className="text-5xl font-bold text-hackathon-blue-100 md:text-6xl">
               {data.title}
             </div>
             <div className="text-xl md:text-2xl">{data.text}</div>
             <Link
-              className="w-fit rounded bg-hackathon-green-400 px-4 py-1 text-lg text-white mb-4"
+              className="mb-4 w-fit rounded bg-hackathon-green-400 px-4 py-1 text-lg text-white"
               href="/"
             >
               Details
@@ -47,7 +47,7 @@ export const Hackathons = () => {
           />
         </div>
       ))}
-      <div className="w-full h-52 bg-hackathon-blue-200" />
+      <div className="h-52 w-full bg-hackathon-blue-200" />
     </div>
   );
 };

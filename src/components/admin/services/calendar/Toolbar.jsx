@@ -16,7 +16,7 @@ const CustomToolbar = ({ onView, onNavigate, date, view, setTag }) => {
           break;
       }
     },
-    [onNavigate]
+    [onNavigate],
   );
 
   useEffect(() => {
@@ -25,12 +25,12 @@ const CustomToolbar = ({ onView, onNavigate, date, view, setTag }) => {
   }, [handleShortcuts]);
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between mb-2">
+    <div className="mb-2 flex flex-col items-center justify-between md:flex-row">
       <div className="flex flex-col items-center">
-        <div className="flex justify-center items-center my-2">
+        <div className="my-2 flex items-center justify-center">
           <FaChevronLeft
             onClick={() => onNavigate("PREV")}
-            className="hover:cursor-pointer mx-2"
+            className="mx-2 hover:cursor-pointer"
           />
           <p className="mb-0 text-3xl font-semibold">
             {date.toLocaleString("default", { month: "short" })}{" "}
@@ -38,10 +38,10 @@ const CustomToolbar = ({ onView, onNavigate, date, view, setTag }) => {
           </p>
           <FaChevronRight
             onClick={() => onNavigate("NEXT")}
-            className="hover:cursor-pointer mx-2"
+            className="mx-2 hover:cursor-pointer"
           />
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex items-center justify-center">
           <Tag
             onClick={() => onView("month")}
             text="month"
@@ -63,8 +63,8 @@ const CustomToolbar = ({ onView, onNavigate, date, view, setTag }) => {
           classes="my-1"
           onClick={() => setTag("all")}
         />
-        <div className="flex md:block flex-col">
-          <div className="flex justify-center md:justify-end items-center flex-wrap gap-x-2">
+        <div className="flex flex-col md:block">
+          <div className="flex flex-wrap items-center justify-center gap-x-2 md:justify-end">
             {Object.entries(LABELS)
               .filter(([_, { type }]) => type === "leads")
               .map(([key, { color }], index) => (
@@ -77,7 +77,7 @@ const CustomToolbar = ({ onView, onNavigate, date, view, setTag }) => {
                 />
               ))}
           </div>
-          <div className="flex  justify-center md:justify-end items-center flex-wrap gap-x-2">
+          <div className="flex flex-wrap items-center justify-center gap-x-2 md:justify-end">
             {Object.entries(LABELS)
               .filter(([_, { type }]) => type !== "leads")
               .map(([key, { color }], index) => (

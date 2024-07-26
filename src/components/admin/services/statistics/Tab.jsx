@@ -1,6 +1,6 @@
 const Tab = ({ title, value }) => {
   return (
-    <div className="text-center w-full rounded-lg drop-shadow-md flex flex-col justify-center bg-white p-2">
+    <div className="flex w-full flex-col justify-center rounded-lg bg-white p-2 text-center drop-shadow-md">
       <div data-cy={`${title}-tab`} className="text-2xl font-medium">
         {title}
       </div>

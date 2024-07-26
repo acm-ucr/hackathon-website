@@ -25,9 +25,9 @@ const RootLayout = async ({ children }: Props) => {
     <ReactQueryClientProvider>
       <html lang="en" className="h-full">
         <body
-          className={`${poppins.variable} flex flex-col lg:flex-row h-full`}
+          className={`${poppins.variable} flex h-full flex-col lg:flex-row`}
         >
-          <div className="flex w-full h-full">
+          <div className="flex h-full w-full">
             <Session session={session}>
               <Toaster />
               {children}

@@ -3,7 +3,7 @@ import Hackpack from "./Hackpack";
 
 const Hackpacks = () => {
   return (
-    <div className="flex flex-col items-center justify-center gap-2 mt-2">
+    <div className="mt-2 flex flex-col items-center justify-center gap-2">
       {HACKPACKS.map((hackpack, index) => (
         <Hackpack
           key={index}

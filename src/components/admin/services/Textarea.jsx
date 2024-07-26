@@ -3,7 +3,7 @@ const Textarea = ({ object, setObject, label, maxLength }) => {
     <textarea
       data-cy={`${label}-textarea`}
       maxLength={maxLength}
-      className="w-full h-full border-2 rounded-md p-2 outline-none resize-none"
+      className="h-full w-full resize-none rounded-md border-2 p-2 outline-none"
       value={object[label]}
       onChange={(e) => {
         setObject({ ...object, [label]: e.target.value });

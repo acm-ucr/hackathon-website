@@ -1,5 +1,5 @@
 const Judges = () => {
-  return <div className="flex justify-center items-center ">Judges</div>;
+  return <div className="flex items-center justify-center">Judges</div>;
 };
 
 export default Judges;

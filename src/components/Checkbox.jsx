@@ -3,14 +3,14 @@ import { Checkbox as Check } from "./ui/checkbox";
 const Checkbox = ({ toggle, onClick = () => {}, text = "", color }) => {
   return (
     <div
-      className="flex items-center hover:cursor-pointer w-fit"
+      className="flex w-fit items-center hover:cursor-pointer"
       onClick={onClick}
       data-cy="checkbox"
     >
       <Check
         checked={toggle}
         onChange={onClick}
-        className={`w-4 h-4 rounded-sm mr-2 ${
+        className={`mr-2 h-4 w-4 rounded-sm ${
           toggle
             ? `${color ? color : "bg-hackathon-blue-100"}`
             : "bg-hackathon-gray-100"

@@ -106,10 +106,10 @@ const CheckIn = () => {
   }, [userData]);
 
   return (
-    <div className="h-full font-poppins flex flex-col py-4 gap-3">
+    <div className="flex h-full flex-col gap-3 py-4 font-poppins">
       <Title title="Check In" />
       <div className="grid grid-cols-1">
-        <div className="p-3 flex flex-col items-center gap-3">
+        <div className="flex flex-col items-center gap-3 p-3">
           {isLoading ? (
             <div>Loading...</div>
           ) : (
