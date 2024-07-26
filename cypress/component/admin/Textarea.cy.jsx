@@ -4,10 +4,14 @@ import { useState } from "react";
 describe("Textarea", () => {
   it("Typing...", () => {
     const Parent = () => {
-      const [user, setUser] = useState({
-        name: "",
-      });
-      return <Textarea title="name" user={user} setUser={setUser} />;
+      const [user, setUser] = useState("");
+      return (
+        <Textarea
+          title="name"
+          value={user}
+          setUser={(e) => setUser(e.target.value)}
+        />
+      );
     };
 
     cy.mount(<Parent />);
@@ -17,10 +21,14 @@ describe("Textarea", () => {
 
   it("Clear", () => {
     const Parent = () => {
-      const [object, setObject] = useState({
-        name: "",
-      });
-      return <Textarea label="name" object={object} setObject={setObject} />;
+      const [user, setUser] = useState("");
+      return (
+        <Textarea
+          title="name"
+          value={user}
+          setUser={(e) => setUser(e.target.value)}
+        />
+      );
     };
 
     cy.mount(<Parent />);
@@ -31,10 +39,14 @@ describe("Textarea", () => {
 
   it("Backspace", () => {
     const Parent = () => {
-      const [object, setObject] = useState({
-        name: "",
-      });
-      return <Textarea label="name" object={object} setObject={setObject} />;
+      const [user, setUser] = useState("");
+      return (
+        <Textarea
+          title="name"
+          value={user}
+          setUser={(e) => setUser(e.target.value)}
+        />
+      );
     };
 
     cy.mount(<Parent />);

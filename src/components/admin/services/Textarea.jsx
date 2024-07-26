@@ -2,22 +2,22 @@ import { TextareaCN } from "../../ui/textarea";
 
 const TextArea = ({
   value,
-  label,
+  title,
   maxLength,
   placeholder,
   disabled,
   name,
-  onChange,
+  setUser,
   rows,
   className,
 }) => {
   return (
     <TextareaCN
-      data-cy={`${label}-textarea`}
+      data-cy={`${title}-textarea`}
       className={className}
       maxLength={maxLength}
       value={value}
-      onChange={onChange}
+      onChange={setUser}
       placeholder={placeholder}
       disabled={disabled}
       name={name}
