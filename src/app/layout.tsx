@@ -5,6 +5,7 @@ import Session from "@/components/Session";
 import { Toaster } from "react-hot-toast";
 import { getServerSession } from "next-auth";
 import { options } from "@/utils/auth";
+import { ReactQueryClientProvider } from "@/components/ReactQueryClientProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -21,16 +22,20 @@ const RootLayout = async ({ children }: Props) => {
   const session = await getServerSession(options);
 
   return (
-    <html lang="en" className="h-full">
-      <body className={`${poppins.variable} flex flex-col lg:flex-row h-full`}>
-        <div className="flex w-full h-full">
-          <Session session={session}>
-            <Toaster />
-            {children}
-          </Session>
-        </div>
-      </body>
-    </html>
+    <ReactQueryClientProvider>
+      <html lang="en" className="h-full">
+        <body
+          className={`${poppins.variable} flex flex-col lg:flex-row h-full`}
+        >
+          <div className="flex w-full h-full">
+            <Session session={session}>
+              <Toaster />
+              {children}
+            </Session>
+          </div>
+        </body>
+      </html>
+    </ReactQueryClientProvider>
   );
 };
 
