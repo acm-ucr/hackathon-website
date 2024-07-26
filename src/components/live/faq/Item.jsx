@@ -8,17 +8,17 @@ const Item = ({ title, children }) => {
     <div>
       <button
         onClick={() => setState(!state)}
-        className="flex items-center justify-between w-full py-3 text-lg whitespace-nowrap"
+        className="flex w-full items-center justify-between whitespace-nowrap py-3 text-lg"
       >
         {title}
-        <FaChevronDown className={`${state && "rotate-180"} duration-500 `} />
+        <FaChevronDown className={`${state && "rotate-180"} duration-500`} />
       </button>
       <div
         className={`transition-opacity duration-500 ease-in-out ${
-          state ? "opacity-100 " : "opacity-0 "
+          state ? "opacity-100" : "opacity-0"
         }`}
       >
-        {state && <div className=" text-black text-base">{children}</div>}
+        {state && <div className="text-base text-black">{children}</div>}
       </div>
     </div>
   );

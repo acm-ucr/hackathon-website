@@ -12,7 +12,7 @@ const Team = async () => {
   const details = await fetchTeam(team);
 
   return (
-    <div className="h-full flex flex-col py-4 gap-3">
+    <div className="flex h-full flex-col gap-3 py-4">
       <Title title="Team" />
       {team === "" ? <NewTeam /> : <Details team={details} />}
     </div>

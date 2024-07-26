@@ -5,21 +5,21 @@ import data from "/src/data/Config.js";
 const Digits = ({ value, unit }) => {
   return (
     <div className="flex flex-col items-center gap-4 last:hidden sm:last:flex">
-      <div className="flex gap-1 m-3 mb-0 lg:!gap-1">
+      <div className="m-3 mb-0 flex gap-1 lg:!gap-1">
         {value
           .toString()
           .padStart(2, "0")
           .split("")
           .map((digit, index) => (
             <div
-              className="flex items-center justify-center text-lg lg:text-3xl font-bold text-white bg-white bg-opacity-40 p-3 lg:min-w-11 lg:p-3 rounded-lg"
+              className="flex items-center justify-center rounded-lg bg-white bg-opacity-40 p-3 text-lg font-bold text-white lg:min-w-11 lg:p-3 lg:text-3xl"
               key={index}
             >
               {digit}
             </div>
           ))}
       </div>
-      <div className="text-white m-2 mt-0 text-xs">{unit}</div>
+      <div className="m-2 mt-0 text-xs text-white">{unit}</div>
     </div>
   );
 };
@@ -49,8 +49,8 @@ const Countdown = () => {
   }, []);
 
   return (
-    <div className=" rounded-lg inline-flex-col inline-block bg-hackathon-green-300 mb-3 shadow-xl w-full text-center">
-      <div className="font-bold text-white m-2 mb-0">HACKING ENDS IN</div>
+    <div className="inline-flex-col mb-3 inline-block w-full rounded-lg bg-hackathon-green-300 text-center shadow-xl">
+      <div className="m-2 mb-0 font-bold text-white">HACKING ENDS IN</div>
       <div className="inline-flex font-bold">
         {Object.entries(countdown).map(([unit, value], index) => (
           <Digits key={index} unit={unit} value={value} />

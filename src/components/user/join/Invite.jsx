@@ -71,7 +71,7 @@ const Invite = ({ team, id }) => {
         <CardContent>
           <Label>Current Members</Label>
           {team.members.map((member, index) => (
-            <p className="pl-3 m-0 flex items-center" key={index}>
+            <p className="m-0 flex items-center pl-3" key={index}>
               {member.name} - {member.discord}
             </p>
           ))}
