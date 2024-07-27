@@ -1,12 +1,4 @@
-import {
-  FaPlay,
-  FaPause,
-  FaUndo,
-  FaTrashAlt,
-  FaPen,
-  FaCheck,
-  FaTimes,
-} from "react-icons/fa";
+import { Play, Pause, Undo2, Trash2, Pen, Check, X } from "lucide-react";
 import Tooltip from "./Tooltip";
 
 const TimerControls = ({
@@ -28,37 +20,37 @@ const TimerControls = ({
       <>
         {paused || isComplete ? (
           <Tooltip text="Resume">
-            <FaPlay onClick={resumeTimer} className="text-2xl mx-1" />
+            <Play onClick={resumeTimer} className="text-2xl mx-1" />
           </Tooltip>
         ) : (
           <Tooltip text="Pause">
-            <FaPause onClick={pauseTimer} className="text-2xl mx-1" />
+            <Pause onClick={pauseTimer} className="text-2xl mx-1" />
           </Tooltip>
         )}
         {!collapsed && (
           <>
             <Tooltip text="Edit">
-              <FaPen onClick={openEditMode} className="text-2xl mx-1" />
+              <Pen onClick={openEditMode} className="text-2xl mx-1" />
             </Tooltip>
             <Tooltip text="Reset">
-              <FaUndo onClick={resetTimer} className="text-2xl mx-1" />
+              <Undo2 onClick={resetTimer} className="text-2xl mx-1" />
             </Tooltip>
           </>
         )}
         <Tooltip text="Delete">
-          <FaTrashAlt onClick={onRemove} className="text-2xl mx-1" />
+          <Trash2 onClick={onRemove} className="text-2xl mx-1" />
         </Tooltip>
       </>
     ) : (
       <>
         <Tooltip text="Save">
-          <FaCheck
+          <Check
             onClick={!invalid ? saveChanges : () => {}}
             className={`text-2xl mx-1 ${invalid ? "text-gray-500" : ""}`}
           />
         </Tooltip>
         <Tooltip text="Discard">
-          <FaTimes onClick={discardChanges} className="text-2xl mx-1" />
+          <X onClick={discardChanges} className="text-2xl mx-1" />
         </Tooltip>
       </>
     )}
