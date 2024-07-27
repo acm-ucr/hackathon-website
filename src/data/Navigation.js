@@ -18,7 +18,7 @@ import {
 import { FaGear } from "react-icons/fa6";
 import { AiOutlineQrcode } from "react-icons/ai";
 import { SiHandshake } from "react-icons/si";
-import { RxLapTimer } from "react-icons/rx";
+import { Timer } from "lucide-react";
 import { RiTeamFill } from "react-icons/ri";
 import { IoIosPeople } from "react-icons/io";
 
@@ -130,7 +130,7 @@ export const TABS = {
         {
           name: "timer",
           link: "/admin/timer",
-          icon: <RxLapTimer className={iconStyle} />,
+          icon: <Timer className={iconStyle} />,
         },
       ],
     },
