@@ -5,7 +5,7 @@ import Modal from "./Modal";
 import { COLORS } from "@/data/Tags";
 import { FaDownload } from "react-icons/fa";
 import Popup from "../../Popup";
-import { performDownload } from "@/utils/utils";
+import { performDownload } from "@/utils/download";
 
 const View = ({ title, src }) => {
   const [modal, setModal] = useState(null);

@@ -1,4 +1,4 @@
-const Tag = ({ color = {}, text, onClick, classes, statuses }) => {
+const Tag = ({ color, text, onClick, classes, statuses }) => {
   return (
     <div
       data-cy={`${text}-tag`}

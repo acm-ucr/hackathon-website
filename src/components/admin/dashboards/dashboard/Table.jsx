@@ -6,6 +6,7 @@ import {
   FaChevronRight,
   FaSortAlphaDown,
   FaSortAlphaUp,
+  FaDownload,
 } from "react-icons/fa";
 import Loading from "@/components/Loading";
 import Link from "next/link";
@@ -60,6 +61,14 @@ const Table = ({
                         onClick={column.getToggleSortingHandler()}
                         data-cy={`${column.columnDef.header}-sorting-asc`}
                         className="mx-2 text-white hover:cursor-pointer hover:opacity-50"
+                      />
+                    )}
+                    {column.columnDef.customAction && (
+                      <FaDownload
+                        className="mx-2 text-hackathon-gray-200 hover:cursor-pointer hover:opacity-50"
+                        onClick={() =>
+                          column.columnDef.customAction(getRowModel().rows)
+                        }
                       />
                     )}
                   </div>
