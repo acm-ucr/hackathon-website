@@ -20,7 +20,7 @@ const Radio = ({
         </div>
       )}
       {editable && (
-        <div className="grid grid-cols-2 md:grid-cols-3 w-full">
+        <div className="grid w-full grid-cols-2 md:grid-cols-3">
           {Object.values(options).map((option, index) => (
             <div
               data-cy={`radio-${option.toLowerCase()}`}
@@ -28,10 +28,10 @@ const Radio = ({
               key={index}
               onClick={() => onClick(option, field)}
             >
-              <div className="rounded-full w-4 border-black border aspect-square bg-transparent p-0.5 mr-1">
+              <div className="mr-1 aspect-square w-4 rounded-full border border-black bg-transparent p-0.5">
                 <div
                   data-cy={`radio-button-${option.toLowerCase()}`}
-                  className={`rounded-full w-full aspect-square duration-100 ${
+                  className={`aspect-square w-full rounded-full duration-100 ${
                     user[field] === option
                       ? "bg-hackathon-green-300"
                       : "bg-transparent"

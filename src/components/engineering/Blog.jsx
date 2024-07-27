@@ -21,27 +21,27 @@ const Blog = async () => {
 
   return (
     <>
-      <div className="w-10/12 mt-[10%] m-auto">
+      <div className="m-auto mt-[10%] w-10/12">
         <title>Engineering | Engineering Blogs</title>
-        <p className="m-0 text-3xl font-bold text-center md:text-left">
+        <p className="m-0 text-center text-3xl font-bold md:text-left">
           Engineering Blogs
         </p>
-        <p className="my-3 w-full md:w-3/4 text-center md:text-left">
+        <p className="my-3 w-full text-center md:w-3/4 md:text-left">
           Check out our engineering blogs to learn more about the behind the
           scenes as engineers discuss various challenges, migrations,
           bottlenecks. Our engineering blogs captures how our engineers approach
           problems and bring innovative solutions to the table.
         </p>
-        <div className="w-full my-8 grid grid-cols-1 xl:grid-cols-5 md:grid-cols-3 gap-4">
+        <div className="my-8 grid w-full grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-5">
           {blogs.map(({ title, author, date, link }, index) => (
             <Link
               href={`/engineering/blog/${link}`}
               key={index}
-              className="bg-hackathon-blue-200 rounded-lg px-3 py-2 hover:opacity-80 text-white hover:cursor-pointer"
+              className="rounded-lg bg-hackathon-blue-200 px-3 py-2 text-white hover:cursor-pointer hover:opacity-80"
             >
-              <p className="font-semibold text-lg">{title}</p>
+              <p className="text-lg font-semibold">{title}</p>
               <p className="text-sm text-gray-300">{author}</p>
-              <p className="text-sm flex justify-end text-gray-300">
+              <p className="flex justify-end text-sm text-gray-300">
                 {new Date(date).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",

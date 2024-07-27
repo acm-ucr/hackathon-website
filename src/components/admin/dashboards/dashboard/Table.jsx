@@ -27,9 +27,9 @@ const Table = ({
 
   return (
     <>
-      <div className="bg-white h-[75vh] overflow-y-scroll flex flex-col justify-between">
+      <div className="flex h-[75vh] flex-col justify-between overflow-y-scroll bg-white">
         <div className="h-full">
-          <div className="text-white bg-hackathon-blue-200 rounded-t-lg">
+          <div className="rounded-t-lg bg-hackathon-blue-200 text-white">
             {getHeaderGroups().map(({ headers, id }) => (
               <div key={id} className="flex items-center px-3 py-2">
                 {headers.map(({ id, column, getContext }) => (
@@ -41,7 +41,7 @@ const Table = ({
                     {flexRender(column.columnDef.header, getContext())}
                     {column.getCanSort() && (
                       <FaArrowRightArrowLeft
-                        className={`mx-2 rotate-90 hover:cursor-pointer hover:opacity-50 text-hackathon-gray-200 ${
+                        className={`mx-2 rotate-90 text-hackathon-gray-200 hover:cursor-pointer hover:opacity-50 ${
                           column.getIsSorted() && "hidden"
                         }`}
                         data-cy={`${column.id}-sorting`}
@@ -52,14 +52,14 @@ const Table = ({
                       <FaSortAlphaDown
                         onClick={column.getToggleSortingHandler()}
                         data-cy={`${column.id}-sorting-desc`}
-                        className="mx-2 hover:cursor-pointer hover:opacity-50 text-white"
+                        className="mx-2 text-white hover:cursor-pointer hover:opacity-50"
                       />
                     )}
                     {column.getIsSorted() === "desc" && (
                       <FaSortAlphaUp
                         onClick={column.getToggleSortingHandler()}
                         data-cy={`${column.columnDef.header}-sorting-asc`}
-                        className="mx-2 hover:cursor-pointer hover:opacity-50 text-white"
+                        className="mx-2 text-white hover:cursor-pointer hover:opacity-50"
                       />
                     )}
                   </div>
@@ -75,7 +75,7 @@ const Table = ({
             ) : (
               <>
                 {getRowModel().rows.length === 0 && (
-                  <p className="w-full text-center py-8 bg-white">{empty}</p>
+                  <p className="w-full bg-white py-8 text-center">{empty}</p>
                 )}
                 {getRowModel().rows.map(
                   ({ id, getVisibleCells, original, getIsSelected }) => (
@@ -86,14 +86,14 @@ const Table = ({
                       Dropdown={Dropdown}
                       original={original}
                     />
-                  )
+                  ),
                 )}
               </>
             )}
           </>
         </div>
       </div>
-      <div className="flex justify-end items-center p-4 text-lg bg-white w-full rounded-b-lg">
+      <div className="flex w-full items-center justify-end rounded-b-lg bg-white p-4 text-lg">
         <div className="mx-2">{getRowModel().rows.length} row(s)</div>
         <Link
           href={`/admin/${page}?direction=prev&index=${

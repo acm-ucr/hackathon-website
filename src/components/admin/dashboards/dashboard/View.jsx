@@ -21,7 +21,7 @@ const View = ({ title, src }) => {
   const confirmDownload = () => setPopup({ ...popup, visible: true });
 
   return (
-    <div className="w-full flex justify-between items-center">
+    <div className="flex w-full items-center justify-between">
       {modal && <Modal data={modal} setModal={setModal} />}
       <Tag
         onClick={() => setModal({ src, title })}
