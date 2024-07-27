@@ -1,9 +1,26 @@
+/* eslint "@tanstack/query/exhaustive-deps": "off" */
+
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { LABELS } from "@/data/admin/Calendar";
 import { api } from "@/utils/api";
 import CalendarWrapper from "./CalendarWrapper";
+import { useQuery } from "@tanstack/react-query";
 
-const CalendarEvents = async () => {
+const fetchHackathon = (min, max) => {
+  return api({
+    method: "GET",
+    url: `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime&timeMin=${min}&timeMax=${max}`,
+  }).then((res) => res.items);
+};
+
+const fetchLeads = (min, max) => {
+  return api({
+    method: "GET",
+    url: `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_LEADS}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime&timeMin=${min}&timeMax=${max}`,
+  }).then((res) => res.items);
+};
+
+const CalendarEvents = () => {
   const min = new Date(
     new Date().getTime() - 20 * 7 * 24 * 60 * 60 * 1000,
   ).toISOString();
@@ -12,20 +29,19 @@ const CalendarEvents = async () => {
     new Date().getTime() + 20 * 7 * 24 * 60 * 60 * 1000,
   ).toISOString();
 
-  const hackathon = await api({
-    method: "GET",
-    url: `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime&timeMin=${min}&timeMax=${max}`,
+  const { data: hackathon } = useQuery({
+    queryKey: ["hacakthon"],
+    queryFn: () => fetchHackathon(min, max),
   });
 
-  const leads = await api({
-    method: "GET",
-    url: `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_LEADS}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime&timeMin=${min}&timeMax=${max}`,
+  console.log("hackathon", hackathon);
+
+  const { data: leads } = useQuery({
+    queryKey: ["leads"],
+    queryFn: () => fetchLeads(min, max),
   });
 
-  const hackathonItems = hackathon.items;
-  const leadsItems = leads.items;
-
-  const rawEvents = [...hackathonItems, ...leadsItems];
+  const rawEvents = [...hackathon, ...leads];
 
   rawEvents.forEach((item) => {
     item.start = new Date(item.start.dateTime);
