@@ -1,21 +1,16 @@
-import {
-  Javascript,
-  Arduino,
-  Nextjs,
-  Tailwind,
-  Firebase,
-  CPlusPlus,
-  Mongodb,
-} from "lucide-react";
+import { RiJavascriptFill } from "react-icons/ri";
+import { SiArduino, SiNextdotjs, SiTailwindcss } from "react-icons/si";
+import { IoLogoFirebase } from "react-icons/io5";
+import { BiLogoCPlusPlus, BiLogoMongodb } from "react-icons/bi";
 
 export const TECHSTACKS = {
-  Javascript: <Javascript />,
-  "Next.js": <Nextjs />,
-  Firebase: <Firebase />,
-  Tailwind: <Tailwind />,
-  MongoDB: <Mongodb />,
-  Arduino: <Arduino />,
-  "C++": <CPlusPlus />,
+  Javascript: <RiJavascriptFill />,
+  "Next.js": <SiNextdotjs />,
+  Firebase: <IoLogoFirebase />,
+  Tailwind: <SiTailwindcss />,
+  MongoDB: <BiLogoMongodb />,
+  Arduino: <SiArduino />,
+  "C++": <BiLogoCPlusPlus />,
 };
 export const HACKPACKS = [
   {
