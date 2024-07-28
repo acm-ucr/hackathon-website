@@ -1,4 +1,4 @@
-const TimerDisplay = ({ time }) => (
+const Display = ({ time }) => (
   <div className="mt-10 flex items-center space-x-2">
     {["Hours", "Minutes", "Seconds"].map((label) => (
       <div key={label} className="flex flex-col items-center text-center">
@@ -11,4 +11,4 @@ const TimerDisplay = ({ time }) => (
   </div>
 );
 
-export default TimerDisplay;
+export default Display;

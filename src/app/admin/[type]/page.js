@@ -19,7 +19,7 @@ import Volunteers from "@/components/admin/dashboards/Volunteers";
 import Leads from "@/components/admin/dashboards/Leads";
 import Fault from "@/utils/error";
 import Settings from "@/components/admin/services/settings/Settings";
-import TimerPage from "@/components/admin/services/timer/TimerPage";
+import Timer from "@/components/admin/services/timer/Timer";
 
 const Page = ({ params, searchParams }) => {
   const components = {
@@ -41,7 +41,7 @@ const Page = ({ params, searchParams }) => {
     teams: <Teams searchParams={searchParams} />,
     volunteers: <Volunteers searchParams={searchParams} />,
     leads: <Leads searchParams={searchParams} />,
-    timer: <TimerPage searchParams={searchParams} />,
+    timer: <Timer searchParams={searchParams} />,
   };
 
   const capitalizeFirstLetter = (word) => {

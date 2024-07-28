@@ -1,7 +1,7 @@
 import { Play, Pause, Undo2, Trash2, Pen, Check, X } from "lucide-react";
 import Tooltip from "./Tooltip";
 
-const TimerControls = ({
+const Controls = ({
   isEditMode,
   paused,
   isComplete,
@@ -53,4 +53,4 @@ const TimerControls = ({
   </div>
 );
 
-export default TimerControls;
+export default Controls;

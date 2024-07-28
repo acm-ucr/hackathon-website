@@ -1,4 +1,4 @@
-const TimerStatus = ({ isComplete, paused }) => {
+const Status = ({ isComplete, paused }) => {
   if (isComplete) {
     return (
       <div className="mt-4 rounded-full border-2 border-hackathon-tags-teal-text bg-hackathon-tags-teal-bg p-1 px-3 text-center text-lg text-hackathon-tags-teal-text">
@@ -20,4 +20,4 @@ const TimerStatus = ({ isComplete, paused }) => {
   );
 };
 
-export default TimerStatus;
+export default Status;
