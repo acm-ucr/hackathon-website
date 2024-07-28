@@ -64,7 +64,7 @@ const Questions = ({
   };
 
   return (
-    <div className="flex flex-col w-full gap-5">
+    <div className="flex w-full flex-col gap-5">
       {Object.values(fields).map((field, index) => (
         <div key={index}>
           {field.input === "description" &&
@@ -186,11 +186,11 @@ const Questions = ({
         </div>
       ))}
       <div>
-        <p className="font-semibold mt-3">Resources</p>
+        <p className="mt-3 font-semibold">Resources</p>
         <Link
           href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
           target="_blank"
-          className="no-underline flex items-center text-hackathon-green-300 hover:text-opacity-65 mt-1"
+          className="mt-1 flex items-center text-hackathon-green-300 no-underline hover:text-opacity-65"
         >
           MLH Code of Conduct
           <FaLink className="mx-2" />
@@ -198,7 +198,7 @@ const Questions = ({
         <Link
           href="https://mlh.io/privacy"
           target="_blank"
-          className="no-underline flex items-center text-hackathon-green-300 hover:text-opacity-65 mt-3"
+          className="mt-3 flex items-center text-hackathon-green-300 no-underline hover:text-opacity-65"
         >
           MLH Privacy Policy
           <FaLink className="mx-2" />
@@ -206,7 +206,7 @@ const Questions = ({
         <Link
           href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md"
           target="_blank"
-          className="no-underline flex items-center text-hackathon-green-300 hover:text-opacity-65 mt-3"
+          className="mt-3 flex items-center text-hackathon-green-300 no-underline hover:text-opacity-65"
         >
           MLH Contest Terms and Conditions
           <FaLink className="mx-2" />
@@ -217,7 +217,7 @@ const Questions = ({
           href={data.packet}
           target="_blank"
           rel="noreferrer noopener"
-          className="no-underline flex items-center "
+          className="flex items-center no-underline"
         >
           Sponsorship Packet
           <FaLink className="mx-2" />

@@ -57,7 +57,7 @@ const toaster = (message, type) => {
   };
 
   return toast.custom(
-    <div className="flex items-center justify-center bg-white pl-2 pr-5 md:pr-6 py-4 w-4/12 md:w-2/12 shadow-md rounded">
+    <div className="flex w-4/12 items-center justify-center rounded bg-white py-4 pl-2 pr-5 shadow-md md:w-2/12 md:pr-6">
       {icons[type]}
       <div className="inline ps-4 text-sm font-normal text-black">
         {message}
