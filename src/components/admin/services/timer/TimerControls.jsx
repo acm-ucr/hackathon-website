@@ -12,7 +12,6 @@ const TimerControls = ({
   onRemove,
   saveChanges,
   discardChanges,
-  invalid,
   collapsed,
 }) => (
   <div className="flex items-center *:px-4">
@@ -44,10 +43,7 @@ const TimerControls = ({
     ) : (
       <>
         <Tooltip text="Save">
-          <Check
-            onClick={!invalid ? saveChanges : () => {}}
-            className={`text-2xl mx-1 ${invalid ? "text-gray-500" : ""}`}
-          />
+          <Check onClick={saveChanges} className={`text-2xl mx-1 `} />
         </Tooltip>
         <Tooltip text="Discard">
           <X onClick={discardChanges} className="text-2xl mx-1" />

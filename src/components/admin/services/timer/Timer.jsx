@@ -5,6 +5,7 @@ import TimerControls from "./TimerControls";
 import TimerEditMode from "./TimerEditMode";
 import { Progress } from "@/components/ui/progress";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { toast } from "react-hot-toast";
 
 const Timer = ({ name, onRemove }) => {
   const [paused, setPaused] = useState(true);
@@ -13,7 +14,6 @@ const Timer = ({ name, onRemove }) => {
   const [isEditMode, setEditMode] = useState(false);
   const [original, setOriginal] = useState(0);
   const [editedValue, setEditedValue] = useState("");
-  const [invalid, setInvalid] = useState(true);
   const [collapsed, setCollapsed] = useState(false);
 
   const timerRef = useRef(null);
@@ -23,6 +23,12 @@ const Timer = ({ name, onRemove }) => {
     minutes: 0,
     seconds: 0,
   });
+
+  const resetTimer = () => {
+    setTotal(original);
+    setIsComplete(false);
+    setPaused(true);
+  };
 
   useEffect(() => {
     resetTimer();
@@ -48,6 +54,7 @@ const Timer = ({ name, onRemove }) => {
     if (isComplete) {
       return;
     }
+
     if (paused) {
       return;
     }
@@ -71,16 +78,9 @@ const Timer = ({ name, onRemove }) => {
     }
   };
 
-  const resetTimer = () => {
-    setTotal(original);
-    setIsComplete(false);
-    setPaused(true);
-  };
-
   const openEditMode = () => {
     setEditMode(true);
     setEditedValue("");
-    setInvalid(true);
   };
 
   const numberToDate = (num) => {
@@ -93,12 +93,12 @@ const Timer = ({ name, onRemove }) => {
   };
 
   const saveChanges = () => {
-    const { hours, minutes, seconds } = numberToDate(editedValue);
-
-    if (minutes > 59 || seconds > 59) {
-      setInvalid(true);
+    if (editedValue.length !== 6) {
+      toast.error("Invalid time");
       return;
     }
+    const { hours, minutes, seconds } = numberToDate(editedValue);
+
     setEditMode(false);
 
     const total = hours * 3600 + minutes * 60 + seconds;
@@ -107,17 +107,6 @@ const Timer = ({ name, onRemove }) => {
   };
 
   const inputOnChange = (value) => {
-    if (value.length === 6) {
-      const { minutes, seconds } = numberToDate(value);
-
-      if (minutes > 59 || seconds > 59) {
-        setInvalid(true);
-      } else {
-        setInvalid(false);
-      }
-    } else {
-      setInvalid(true);
-    }
     setEditedValue(value);
   };
 
@@ -152,7 +141,6 @@ const Timer = ({ name, onRemove }) => {
             onRemove={onRemove}
             saveChanges={saveChanges}
             discardChanges={discardChanges}
-            invalid={invalid}
             collapsed={collapsed}
           />
         </div>
