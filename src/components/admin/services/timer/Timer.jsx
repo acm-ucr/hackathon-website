@@ -27,7 +27,7 @@ const Timer = ({ name, onRemove }) => {
   useEffect(() => {
     resetTimer();
     setEditedValue("");
-  }, [isEditMode, resetTimer]);
+  }, [isEditMode]);
 
   useEffect(() => {
     const calculateTime = (seconds) => {
