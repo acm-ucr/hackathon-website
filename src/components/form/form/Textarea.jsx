@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaPencil, FaCheck } from "react-icons/fa6";
-import TextArea from "@/components/admin/services/Textarea";
+import { TextareaCN } from "@/components/ui/textarea";
 
 const Textarea = ({
   name,
@@ -36,15 +36,15 @@ const Textarea = ({
       {editable && edit && (
         <FaCheck className="hover:cursor-pointer" onClick={handleSave} />
       )}
-      <TextArea
-        title={title}
-        disabled={editable && !edit}
+      <TextareaCN
+        data-cy={`${title}-textarea`}
         className="border-1 w-full resize-none border border-black pl-3 placeholder:text-hackathon-gray-200 focus:outline-none"
-        name={name}
-        placeholder={placeholder}
-        value={value}
         maxLength={maxLength}
-        setUser={(e) => setUser({ ...user, [name]: e.target.value })}
+        value={value}
+        onChange={(e) => setUser({ ...user, [name]: e.target.value })}
+        placeholder={placeholder}
+        disabled={editable && !edit}
+        name={name}
         rows={rows}
       />
     </div>
