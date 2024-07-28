@@ -16,7 +16,7 @@ describe("Status Component", () => {
     const onClick = cy.stub();
     const color = COLORS["accept"];
     cy.mount(
-      <Tag color={color} text={text} onClick={onClick} classes={classes} />
+      <Tag color={color} text={text} onClick={onClick} classes={classes} />,
     );
 
     cy.contains(text).should("be.visible").and("have.class", classes);

@@ -54,7 +54,7 @@ export const COLUMNS = [
 export const DROPDOWN = ({ object }) => {
   return (
     <div className="flex justify-center">
-      <div className="grid grid-rows-4 grid-flow-col w-11/12">
+      <div className="grid w-11/12 grid-flow-col grid-rows-4">
         {AVAILABILITY.map((text, index) => (
           <Checkbox
             toggle={object.availability.includes(text)}

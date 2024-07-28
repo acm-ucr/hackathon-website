@@ -22,7 +22,7 @@ const Table = ({ data }) => {
   return team === null ? (
     <Loading />
   ) : (
-    <div ref={ref} className="overflow-y-scroll h-full">
+    <div ref={ref} className="h-full overflow-y-scroll">
       {getVirtualItems().map((virtualItem, index) => {
         if (virtualItem.index % 4) return null;
         const row = team.slice(virtualItem.index, virtualItem.index + 4);
@@ -42,10 +42,10 @@ const Table = ({ data }) => {
                 ref={measureElement}
                 data-index={virtualItem.index + index}
               >
-                <div className="bg-white w-full p-3 rounded-xl">
-                  <div className="flex justify-between items-center">
+                <div className="w-full rounded-xl bg-white p-3">
+                  <div className="flex items-center justify-between">
                     <Tag color={COLORS["grayblue"]} text={group.name} />
-                    <div className="flex justify-start w-full ml-2">
+                    <div className="ml-2 flex w-full justify-start">
                       {group.links &&
                         group.links
                           .filter((l) => l.link.length)
@@ -54,21 +54,21 @@ const Table = ({ data }) => {
                               key={index}
                               href={link.link}
                               target="_blank"
-                              className="m-0 p-0 text-black no-underline hover:!text-hackathon-blue-100 text-xl"
+                              className="m-0 p-0 text-xl text-black no-underline hover:!text-hackathon-blue-100"
                             >
                               {ICONS[link.name]}
                             </Link>
                           ))}
                     </div>
                     {group.table && (
-                      <p className="mb-0 text-hackathon-green-300 font-semibold whitespace-nowrap">
+                      <p className="mb-0 whitespace-nowrap font-semibold text-hackathon-green-300">
                         table {group.table}
                       </p>
                     )}
                   </div>
                   {group.rounds.map((judges, index) => (
-                    <div key={index} className="flex items-center my-2">
-                      <p className="font-semibold mb-0 mr-2">{index + 1}</p>
+                    <div key={index} className="my-2 flex items-center">
+                      <p className="mb-0 mr-2 font-semibold">{index + 1}</p>
                       <div className="flex items-center">
                         {judges.map(({ name, affiliation }, i) => (
                           <Tag

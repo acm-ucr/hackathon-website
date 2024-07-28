@@ -4,7 +4,7 @@ import Table from "./dashboard/Dashboard";
 
 const Admin = ({ searchParams }) => {
   return (
-    <div className="h-full font-poppins flex flex-col py-4 gap-3">
+    <div className="flex h-full flex-col gap-3 py-4 font-poppins">
       <Table
         searchParams={searchParams}
         title="Admins"

@@ -2,13 +2,13 @@ const BulletPoints = ({ list }) => {
   return (
     <ul
       data-cy="bulletpoint-list-items"
-      className="flex flex-col items-center justify-center mt-2"
+      className="mt-2 flex flex-col items-center justify-center"
     >
       {list.map((item, index) => (
         <li
           data-cy="bulletpoint-list-item"
           key={index}
-          className="list-disc w-10/12"
+          className="w-10/12 list-disc"
         >
           {item}
         </li>

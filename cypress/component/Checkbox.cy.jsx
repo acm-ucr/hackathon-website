@@ -17,7 +17,7 @@ describe("Checkbox", () => {
 
     cy.get('[data-cy="checkbox-bg"]').should(
       "have.class",
-      "bg-hackathon-gray-100"
+      "bg-hackathon-gray-100",
     );
   });
 
@@ -36,7 +36,7 @@ describe("Checkbox", () => {
 
     cy.get('[data-cy="checkbox-bg"]').should(
       "have.class",
-      "bg-hackathon-blue-100"
+      "bg-hackathon-blue-100",
     );
   });
 
@@ -73,7 +73,7 @@ describe("Checkbox", () => {
     cy.get('[data-cy="checkbox-bg"]').click();
     cy.get('[data-cy="checkbox-bg"]').should(
       "have.class",
-      "bg-hackathon-blue-100"
+      "bg-hackathon-blue-100",
     );
   });
 });
