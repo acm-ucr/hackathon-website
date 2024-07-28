@@ -1,23 +1,4 @@
-type Data = {
-  name: string;
-  short_name: string;
-  email: string;
-  description: string;
-  length: string;
-  date: Date;
-  start_url: string;
-  year: string;
-  end: Date;
-  packet: string;
-  devpost: string;
-  domain: string;
-  instagram: string;
-  linkedin: string;
-  discord: string;
-  heart: string;
-};
-
-const data: Data = {
+const data = {
   name: "HACKATHON",
   short_name: "Hackathon Site",
   email: "contact.acmucr@gmail.com",
