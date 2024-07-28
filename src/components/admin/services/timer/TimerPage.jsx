@@ -24,24 +24,24 @@ const TimerPage = () => {
 
   return (
     <div className="h-[calc(100vh-8em)]">
-      <div className="flex items-center md:my-6 my-4 align-middle justify-start">
-        <h1 className="md:text-5xl text-3xl font-bold mx-10">Timer</h1>
+      <div className="my-4 flex items-center justify-start align-middle md:my-6">
+        <h1 className="mx-10 text-3xl font-bold md:text-5xl">Timer</h1>
         <button
           onClick={addTimer}
-          className="group bg-hackathon-blue-100 md:p-2 p-1 mr-2 md:text-lg text-md text-hackathon-page font-semibold rounded-xl hover:bg-hackathon-blue-200"
+          className="text-md group mr-2 rounded-xl bg-hackathon-blue-100 p-1 font-semibold text-hackathon-page hover:bg-hackathon-blue-200 md:p-2 md:text-lg"
         >
           + add timer
         </button>
         <button
           onClick={clearAll}
-          className="bg-red-500 md:p-2 p-1 mr-2 md:text-lg text-md text-white font-semibold rounded-xl hover:bg-red-700"
+          className="text-md mr-2 rounded-xl bg-red-500 p-1 font-semibold text-white hover:bg-red-700 md:p-2 md:text-lg"
         >
           clear all
         </button>
       </div>
-      <div className="flex flex-col h-full shadow-inner overflow-x-hidden overflow-y-scroll min-w-full bg-gray-200 p-4 rounded-3xl scroll-smooth snap-y snap-always">
+      <div className="flex h-full min-w-full snap-y snap-always flex-col overflow-x-hidden overflow-y-scroll scroll-smooth rounded-3xl bg-gray-200 p-4 shadow-inner">
         {timers.length === 0 ? (
-          <div className="absolute left-[50%] top-[50%] text-2xl font-bold opacity-30 transform-[translate(-50%,-50%)]">
+          <div className="transform-[translate(-50%,-50%)] absolute left-[50%] top-[50%] text-2xl font-bold opacity-30">
             No timers
           </div>
         ) : (

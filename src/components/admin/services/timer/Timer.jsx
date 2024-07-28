@@ -119,13 +119,13 @@ const Timer = ({ name, onRemove }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-between bg-white p-4 rounded-xl mb-4 snap-start scroll-m-4 w-full mx-auto">
-      <div className="w-full flex justify-between items-center">
+    <div className="mx-auto mb-4 flex w-full snap-start scroll-m-4 flex-col items-center justify-between rounded-xl bg-white p-4">
+      <div className="flex w-full items-center justify-between">
         <button onClick={toggleCollapse} className="mx-1 text-2xl">
           {collapsed ? <ChevronDown /> : <ChevronUp />}
         </button>
         <input
-          className="text-3xl bg-transparent font-semibold outline-none pl-2 flex-grow"
+          className="flex-grow bg-transparent pl-2 text-3xl font-semibold outline-none"
           placeholder="Enter Name"
           defaultValue={name}
         />
@@ -158,7 +158,7 @@ const Timer = ({ name, onRemove }) => {
       )}
       <Progress
         value={((original - total) / original) * 100}
-        className="w-full mt-4"
+        className="mt-4 w-full"
       />
     </div>
   );
