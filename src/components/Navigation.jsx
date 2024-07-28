@@ -7,16 +7,21 @@ import Link from "next/link";
 import { TABS } from "@/data/Navigation";
 import { usePathname } from "next/navigation";
 import data from "@/data/Config";
-import { BiSolidDownArrow } from "react-icons/bi";
 import { BsBoxArrowInRight, BsGlobe2 } from "react-icons/bs";
 import { SiDevpost } from "react-icons/si";
 import { MdFeedback } from "react-icons/md";
 import { signOut } from "next-auth/react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const Navigation = () => {
   const [expand, setExpand] = useState(false);
   const pathName = usePathname();
-  const [tabs, setTabs] = useState(TABS[pathName.split("/")[1]]);
+  const [tabs] = useState(TABS[pathName.split("/")[1]]);
 
   const global = [
     {
@@ -58,61 +63,54 @@ const Navigation = () => {
           expand ? "fixed left-0 h-screen w-1/2 pt-5" : `hidden`
         }`}
       >
-        <div className="flex h-full w-full flex-col items-center justify-between overflow-y-scroll bg-hackathon-blue-200">
-          <div className="my-3 hidden items-center lg:flex">
+        <div className="grid h-full w-full grid-cols-1 grid-rows-10 flex-col place-items-center overflow-y-scroll bg-hackathon-blue-200">
+          <div className="row-start-1 row-end-2 my-3 items-center lg:flex">
             <Image
               src={LOGO}
               className="mx-2 h-10 w-10"
               alt={`${data.name} Logo`}
             />
           </div>
-          <div className="flex h-full w-full flex-col items-center">
+          <Accordion
+            defaultValue={["Dashboards", "Services"]}
+            type="multiple"
+            className="row-start-2 row-end-10 w-full place-self-start overflow-y-scroll"
+          >
             {Object.entries(tabs)
               .filter(([title]) => title !== " " && title !== "dropdown")
               .map(([title, subTabs], index) => (
-                <div key={index} className="w-full">
-                  <p
-                    className={`font-poppin mb-0 flex w-full items-center justify-between px-2 text-xl font-bold text-white hover:cursor-pointer ${subTabs.mt} opacity-100 transition-opacity hover:opacity-40`}
-                    onClick={() =>
-                      setTabs({
-                        ...tabs,
-                        [title]: { ...subTabs, expand: !subTabs.expand },
-                      })
-                    }
+                <AccordionItem key={index} value={title}>
+                  <AccordionTrigger
+                    className={`font-poppin flex items-center justify-between pl-3 text-left text-xl font-bold text-white opacity-100 transition-opacity hover:cursor-pointer hover:opacity-40`}
                   >
                     {title}
-                    {tabs.dropdown && (
-                      <BiSolidDownArrow
-                        className={`text-sm duration-300 ${
-                          subTabs.expand && "rotate-180"
-                        }`}
-                      />
-                    )}
-                  </p>
-                  {(subTabs.expand || !tabs.dropdown) &&
-                    subTabs.tabs.map((tab, index) => (
-                      <Link
-                        key={index}
-                        href={tab.link}
-                        className="w-full p-0 no-underline"
-                      >
-                        <div
-                          onClick={() => setExpand(false)}
-                          className={`flex w-full items-center justify-start py-1 pl-[10%] [&>*]:text-white ${
-                            pathName.endsWith(tab.link)
-                              ? "bg-hackathon-blue-100"
-                              : "[&>*]:hover:text-hackathon-blue-100"
-                          }`}
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    {subTabs.tabs &&
+                      subTabs.tabs.map((tab, index) => (
+                        <Link
+                          key={index}
+                          href={tab.link}
+                          className="w-full p-0 no-underline"
                         >
-                          {tab.icon}
-                          <p className="m-0 text-lg">{tab.name}</p>
-                        </div>
-                      </Link>
-                    ))}
-                </div>
+                          <div
+                            onClick={() => setExpand(false)}
+                            className={`flex w-full items-center justify-start py-1 pl-[15%] [&>*]:text-white ${
+                              pathName.endsWith(tab.link)
+                                ? "bg-hackathon-blue-100"
+                                : "[&>*]:hover:text-hackathon-blue-100"
+                            }`}
+                          >
+                            {tab.icon}
+                            <p className="m-0 text-lg">{tab.name}</p>
+                          </div>
+                        </Link>
+                      ))}
+                  </AccordionContent>
+                </AccordionItem>
               ))}
-          </div>
-          <div className="mb-3 flex w-full flex-row items-center justify-center">
+          </Accordion>
+          <div className="row-start-10 mb-3 flex w-full flex-row items-center justify-center place-self-end">
             {global.map((tab, index) => (
               <Link
                 key={index}
