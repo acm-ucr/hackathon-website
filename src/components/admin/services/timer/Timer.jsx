@@ -93,24 +93,24 @@ export default function Timer({ name, onRemove }) {
   };
 
   const saveChanges = () => {
-    const dateObject = numberToDate(editedValue);
+    const { hours, minutes, seconds } = numberToDate(editedValue);
 
-    if (dateObject.minutes > 59 || dateObject.seconds > 59) {
+    if (minutes > 59 || seconds > 59) {
       setInvalid(true);
       return;
     }
     setEditMode(false);
 
-    const total =
-      dateObject.hours * 3600 + dateObject.minutes * 60 + dateObject.seconds;
+    const total = hours * 3600 + minutes * 60 + seconds;
     setOriginal(total);
     setTotal(total);
   };
 
   const inputOnChange = (value) => {
     if (value.length === 6) {
-      const dateObject = numberToDate(value);
-      if (dateObject.minutes > 59 || dateObject.seconds > 59) {
+      const { minutes, seconds } = numberToDate(value);
+
+      if (minutes > 59 || seconds > 59) {
         setInvalid(true);
       } else {
         setInvalid(false);
