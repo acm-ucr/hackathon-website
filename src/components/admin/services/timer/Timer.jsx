@@ -6,7 +6,7 @@ import TimerEditMode from "./TimerEditMode";
 import { Progress } from "@/components/ui/progress";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
-export default function Timer({ name, onRemove }) {
+const Timer = ({ name, onRemove }) => {
   const [paused, setPaused] = useState(true);
   const [total, setTotal] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
@@ -27,7 +27,7 @@ export default function Timer({ name, onRemove }) {
   useEffect(() => {
     resetTimer();
     setEditedValue("");
-  }, [isEditMode]);
+  }, [isEditMode, resetTimer]);
 
   useEffect(() => {
     const calculateTime = (seconds) => {
@@ -174,4 +174,6 @@ export default function Timer({ name, onRemove }) {
       />
     </div>
   );
-}
+};
+
+export default Timer;

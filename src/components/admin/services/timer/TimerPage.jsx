@@ -2,12 +2,12 @@ import { useState } from "react";
 import Timer from "./Timer";
 import { v4 as uuidv4 } from "uuid";
 
-export default function TimerPage() {
-  const [timerArray, setTimerArray] = useState([]);
+const TimerPage = () => {
+  const [timers, setTimers] = useState([]);
 
   const addTimer = () => {
-    setTimerArray([
-      ...timerArray,
+    setTimers([
+      ...timers,
       {
         id: uuidv4(),
       },
@@ -15,11 +15,11 @@ export default function TimerPage() {
   };
 
   const clearAll = () => {
-    setTimerArray([]);
+    setTimers([]);
   };
 
-  const deleteTime = (id) => {
-    setTimerArray(timerArray.filter((timer) => timer.id !== id));
+  const deleteTimer = (id) => {
+    setTimers(timers.filter((timer) => timer.id !== id));
   };
 
   return (
@@ -40,16 +40,18 @@ export default function TimerPage() {
         </button>
       </div>
       <div className="flex flex-col h-full shadow-inner overflow-x-hidden overflow-y-scroll min-w-full bg-gray-200 p-4 rounded-3xl scroll-smooth snap-y snap-always">
-        {timerArray.length === 0 ? (
+        {timers.length === 0 ? (
           <div className="absolute left-[50%] top-[50%] text-2xl font-bold opacity-30 transform-[translate(-50%,-50%)]">
             No timers
           </div>
         ) : (
-          timerArray.map((timer) => (
-            <Timer key={timer.id} onRemove={() => deleteTime(timer.id)} />
+          timers.map((timer) => (
+            <Timer key={timer.id} onRemove={() => deleteTimer(timer.id)} />
           ))
         )}
       </div>
     </div>
   );
-}
+};
+
+export default TimerPage;
