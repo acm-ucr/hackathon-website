@@ -63,7 +63,7 @@ const Navigation = () => {
           expand ? "fixed left-0 h-screen w-1/2 pt-5" : `hidden`
         }`}
       >
-        <div className="grid h-full w-full grid-cols-1 grid-rows-10 flex-col place-items-center overflow-y-scroll bg-hackathon-blue-200">
+        <div className="grid h-full w-full grid-cols-1 grid-rows-10 flex-col place-items-center bg-hackathon-blue-200">
           <div className="row-start-1 row-end-2 my-3 items-center lg:flex">
             <Image
               src={LOGO}
@@ -74,14 +74,18 @@ const Navigation = () => {
           <Accordion
             defaultValue={["Dashboards", "Services"]}
             type="multiple"
-            className="row-start-2 row-end-10 w-full place-self-start overflow-y-scroll"
+            className="row-start-2 row-end-10 w-full place-self-start"
           >
             {Object.entries(tabs)
               .filter(([title]) => title !== " " && title !== "dropdown")
               .map(([title, subTabs], index) => (
-                <AccordionItem key={index} value={title}>
+                <AccordionItem
+                  key={index}
+                  value={title}
+                  className="border-none"
+                >
                   <AccordionTrigger
-                    className={`font-poppin flex items-center justify-between pl-3 text-left text-xl font-bold text-white opacity-100 transition-opacity hover:cursor-pointer hover:opacity-40`}
+                    className={`font-poppin flex items-center justify-between px-3 py-2 text-left text-xl font-bold text-white opacity-100 transition-opacity hover:cursor-pointer hover:opacity-40`}
                   >
                     {title}
                   </AccordionTrigger>
