@@ -1,4 +1,4 @@
-type Data = {
+type config = {
   name: string;
   short_name: string;
   email: string;
@@ -17,7 +17,7 @@ type Data = {
   heart: string;
 };
 
-const data: Data = {
+const data: config = {
   name: "HACKATHON",
   short_name: "Hackathon Site",
   email: "contact.acmucr@gmail.com",
