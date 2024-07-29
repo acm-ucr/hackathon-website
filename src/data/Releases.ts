@@ -1,4 +1,4 @@
-const RELEASES = {
+const RELEASES: { [key: string]: Date | { START: Date; END: Date } } = {
   LIVE: {
     START: new Date("10/01/2023"),
     END: new Date("10/10/2024"),
