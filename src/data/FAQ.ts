@@ -1,4 +1,9 @@
-export const QUESTIONS: { question: string; answer: string }[] = [
+type QuestionAnswer = {
+  question: string;
+  answer: string;
+}
+
+export const QUESTIONS: QuestionAnswer[] = [
   {
     question: "What is hackathon website?",
     answer:
