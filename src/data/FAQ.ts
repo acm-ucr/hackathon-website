@@ -1,7 +1,7 @@
 type QuestionAnswer = {
   question: string;
   answer: string;
-}
+};
 
 export const QUESTIONS: QuestionAnswer[] = [
   {
