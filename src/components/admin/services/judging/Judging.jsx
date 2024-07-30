@@ -11,7 +11,7 @@ const Judging = () => {
   const [view, setView] = useState(false);
 
   return (
-    <div className="h-full font-poppins flex flex-col py-4 gap-3">
+    <div className="flex h-full flex-col gap-3 py-4 font-poppins">
       <Title title="Judging" />
       <Toolbar
         data={teams}
@@ -24,7 +24,7 @@ const Judging = () => {
       />
       <Title title={view ? "Judges" : "Teams"} />
       {filters === null || filters.length === 0 ? (
-        <div className="flex-grow flex items-center justify-center">
+        <div className="flex flex-grow items-center justify-center">
           {view ? "No Judges Available" : "No Teams Available"}
         </div>
       ) : (

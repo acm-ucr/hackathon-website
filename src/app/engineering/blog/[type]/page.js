@@ -30,7 +30,7 @@ const Page = async ({ params }) => {
 
     return (
       <div
-        className={"w-full flex items-start justify-center font-poppins my-8"}
+        className={"my-8 flex w-full items-start justify-center font-poppins"}
       >
         <title>{`Engineering | ${data.title}`}</title>
         <div className="prose min-h-screen">
@@ -42,7 +42,7 @@ const Page = async ({ params }) => {
     throw new Fault(
       404,
       "Page Not Found",
-      "The page you are looking for does not seem to exist"
+      "The page you are looking for does not seem to exist",
     );
   }
 };

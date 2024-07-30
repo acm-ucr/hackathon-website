@@ -1,5 +1,5 @@
 "use client";
-import { BsFillPersonFill } from "react-icons/bs";
+import { User } from "lucide-react";
 import Button from "../../Button";
 import Select from "@/components/Select";
 import { useState } from "react";
@@ -40,9 +40,9 @@ const Contact = ({ role, disabled, setDisabled }) => {
   };
 
   return (
-    <div className="grid grid-cols-3 w-full lg:w-1/2 gap-0.5 text-sm lg:text-md bg-white p-2 rounded">
+    <div className="lg:text-md grid w-full grid-cols-3 gap-0.5 rounded bg-white p-2 text-sm lg:w-1/2">
       <div className="flex items-center">
-        <BsFillPersonFill className="mx-2" /> {role}
+        <User className="mx-2" /> {role}
       </div>
 
       <Select
