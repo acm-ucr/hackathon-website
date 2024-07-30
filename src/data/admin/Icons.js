@@ -1,19 +1,19 @@
 import {
-  Devpost,
   Apple,
   Phone,
   Crown,
   School,
-  Venus,
+  User,
   Cake,
   BookOpen,
   Clock,
   Mail,
-  TShirt,
-  ContactPage,
+  Shirt,
+  Calendar,
 } from "lucide-react";
 
 import {
+  SiDevpost as Devpost,
   SiGithub as Github,
   SiFigma as Figma,
 } from "@icons-pack/react-simple-icons";
@@ -31,13 +31,13 @@ export const ICONS = {
   winner: <Crown className="ml-1 text-lg text-hackathon-yellow-100" />,
   phone: <Phone className="mr-2 text-hackathon-blue-200" />,
   email: <Mail className="mr-2 text-lg text-hackathon-blue-200" />,
-  shirt: <TShirt className="mr-2 text-lg text-hackathon-blue-200" />,
+  shirt: <Shirt className="mr-2 text-lg text-hackathon-blue-200" />,
   diet: <Apple className="mr-2 text-hackathon-blue-200" />,
   age: <Cake className="mr-2 text-lg text-hackathon-blue-200" />,
-  gender: <Venus className="mr-2 text-lg text-hackathon-blue-200" />,
+  gender: <User className="mr-2 text-lg text-hackathon-blue-200" />,
   grade: <School className="mr-2 text-lg text-hackathon-blue-200" />,
   major: <BookOpen className="mr-2 text-lg text-hackathon-blue-200" />,
   school: <School className="mr-2 text-lg text-hackathon-blue-200" />,
-  eventSource: <ContactPage className="mr-2 text-lg text-hackathon-blue-200" />,
+  eventSource: <Calendar className="mr-2 text-lg text-hackathon-blue-200" />,
   priorHackathons: <Clock className="mr-2 text-lg text-hackathon-blue-200" />,
 };

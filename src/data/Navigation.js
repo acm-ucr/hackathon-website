@@ -4,7 +4,7 @@ import {
   BarChart,
   Hand,
   Heart,
-  Feedback,
+  MessagesSquare,
   Handshake,
   MonitorCog,
   Mail,
@@ -14,7 +14,6 @@ import {
   Search,
   Settings,
   QrCode,
-  Team,
   CircleHelp,
   Presentation,
 } from "lucide-react";
@@ -80,7 +79,7 @@ export const TABS = {
         {
           name: "feedback",
           link: "/admin/feedback",
-          icon: <Feedback className={iconStyle} />,
+          icon: <MessagesSquare className={iconStyle} />,
         },
         {
           name: "leads",
@@ -148,7 +147,7 @@ export const TABS = {
         {
           name: "team",
           link: "/user/team",
-          icon: <Team className={iconStyle} />,
+          icon: <Users className={iconStyle} />,
         },
         {
           name: "find a team",

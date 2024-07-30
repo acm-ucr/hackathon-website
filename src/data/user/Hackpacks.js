@@ -1,10 +1,10 @@
 import {
   SiJavascript as Javascript,
   SiArduino as Arduino,
-  SiNextjs as Nextjs,
-  SiTailwind as Tailwind,
+  SiNextdotjs as Nextjs,
+  SiTailwindcss as Tailwind,
   SiFirebase as Firebase,
-  SiCPlusPlus as CPlusPlus,
+  SiCplusplus as CPlusPlus,
   SiMongodb as Mongodb,
 } from "@icons-pack/react-simple-icons";
 
