@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Clock from "./Clock";
 import { v4 as uuidv4 } from "uuid";
+import Title from "../../Title";
+import { Button } from "@/components/ui/button";
 
 const Timer = () => {
   const [timers, setTimers] = useState([]);
@@ -23,26 +25,18 @@ const Timer = () => {
   };
 
   return (
-    <div className="h-[calc(100vh-8em)]">
-      <div className="my-4 flex items-center justify-start align-middle md:my-6">
-        <h1 className="mx-10 text-3xl font-bold md:text-5xl">Timer</h1>
-        <button
-          onClick={addTimer}
-          className="text-md group mr-2 rounded-xl bg-hackathon-blue-100 p-1 font-semibold text-hackathon-page hover:bg-hackathon-blue-200 md:p-2 md:text-lg"
-        >
-          + add timer
-        </button>
-        <button
-          onClick={clearAll}
-          className="text-md mr-2 rounded-xl bg-red-500 p-1 font-semibold text-white hover:bg-red-700 md:p-2 md:text-lg"
-        >
+    <div className="flex h-full flex-col py-4 font-poppins">
+      <div className="mb-4 flex gap-3">
+        <Title title="Timer" />
+        <Button onClick={addTimer}>+ add timer</Button>
+        <Button variant="destructive" onClick={clearAll}>
           clear all
-        </button>
+        </Button>
       </div>
-      <div className="flex h-full min-w-full snap-y snap-always flex-col overflow-x-hidden overflow-y-scroll scroll-smooth rounded-3xl bg-gray-200 p-4 shadow-inner">
+      <div className="flex h-full flex-col overflow-y-scroll rounded-3xl bg-gray-200 p-4">
         {timers.length === 0 ? (
-          <div className="transform-[translate(-50%,-50%)] absolute left-[50%] top-[50%] text-2xl font-bold opacity-30">
-            No timers
+          <div className="flex h-full items-center justify-center text-2xl font-bold opacity-30">
+            No Timers
           </div>
         ) : (
           timers.map((timer) => (

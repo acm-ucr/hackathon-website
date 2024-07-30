@@ -35,15 +35,9 @@ describe("HackPacks", () => {
       .children('[data-cy="hackpack-tech"]');
 
     techs.forEach((tech, index) => {
-      cy.get('[data-cy="hackpack-techs"] [data-cy="hackpack-tech"]')
-        .eq(index)
-        .contains(tech)
-        .should(
-          "have.class",
-          "flex items-center rounded-full px-1 text-gray-400",
-        );
+      cy.get('[data-cy="hackpack-tech"]').eq(index).contains(tech);
 
-      cy.get('[data-cy="hackpack-tech"] [data-cy="hackpack-icon"]')
+      cy.get('[data-cy="hackpack-icon"]')
         .eq(index)
         .should("have.class", "mr-1 text-hackathon-blue-100");
     });

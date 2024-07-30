@@ -1,4 +1,4 @@
-import { RiArrowDownSLine } from "react-icons/ri";
+import { ChevronDown } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 
@@ -68,7 +68,7 @@ const Select = ({
       >
         {user[field] || placeholder}
         {editable && (
-          <RiArrowDownSLine
+          <ChevronDown
             className={`${show && "rotate-180"} text-black duration-300`}
             data-cy="select-arrow"
           />

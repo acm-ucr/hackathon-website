@@ -4,7 +4,7 @@ import * as React from "react";
 import { OTPInput, OTPInputContext } from "input-otp";
 import { Dot } from "lucide-react";
 
-import { cn } from "@/utils/utils";
+import { cn } from "@/utils/tailwind";
 
 const InputOTP = React.forwardRef(
   ({ className, containerClassName, ...props }, ref) => (

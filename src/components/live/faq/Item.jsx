@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { FaChevronDown } from "react-icons/fa6";
+import { ChevronDown } from "lucide-react";
 
 const Item = ({ title, children }) => {
   const [state, setState] = useState(false);
@@ -11,7 +11,7 @@ const Item = ({ title, children }) => {
         className="flex w-full items-center justify-between whitespace-nowrap py-3 text-lg"
       >
         {title}
-        <FaChevronDown className={`${state && "rotate-180"} duration-500`} />
+        <ChevronDown className={`${state && "rotate-180"} duration-500`} />
       </button>
       <div
         className={`transition-opacity duration-500 ease-in-out ${
