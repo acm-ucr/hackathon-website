@@ -1,6 +1,11 @@
 import { useState } from "react";
-import { BsUpload } from "react-icons/bs";
-import { FaFilePdf, FaImage, FaTimes, FaEye } from "react-icons/fa";
+import {
+  Upload as LucideUpload,
+  FileText,
+  Image as LucideImage,
+  X,
+  Eye,
+} from "lucide-react";
 import toaster from "@/utils/toaster";
 import { BYTES } from "@/data/Bytes";
 import { readFileAsBase64, compress } from "@/utils/convert";
@@ -47,7 +52,7 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
             className="flex h-fit w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-gray-300 bg-gray-50 hover:bg-gray-100"
           >
             <div className="flex flex-col items-center justify-center py-4">
-              <BsUpload className="mb-2 text-3xl text-hackathon-green-300" />
+              <LucideUpload className="mb-2 text-3xl text-hackathon-green-300" />
               <p className="text-sm font-semibold text-gray-500">
                 Upload from my computer
               </p>
@@ -70,21 +75,21 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
           >
             <div className="flex items-center">
               {file.type.split("/")[0] === "image" ? (
-                <FaImage className="mr-2 text-xl" />
+                <LucideImage className="mr-2 text-xl" />
               ) : (
-                <FaFilePdf className="mr-2 text-xl" />
+                <FileText className="mr-2 text-xl" />
               )}
               {file.title}
             </div>
             <div className="flex flex-row">
               {file.type.split("/")[0] === "image" && (
-                <FaEye
+                <Eye
                   onClick={() => setShowModal(true)}
                   className="mr-2 text-gray-500 hover:cursor-pointer hover:text-gray-800"
                 />
               )}
 
-              <FaTimes
+              <X
                 className="text-gray-500 hover:cursor-pointer hover:text-red-600"
                 onClick={() => setFile(null)}
                 data-cy="upload-cancel"

@@ -7,9 +7,7 @@ import Link from "next/link";
 import { TABS } from "@/data/Navigation";
 import { usePathname } from "next/navigation";
 import data from "@/data/Config";
-import { BsBoxArrowInRight, BsGlobe2 } from "react-icons/bs";
-import { SiDevpost } from "react-icons/si";
-import { MdFeedback } from "react-icons/md";
+import { LogIn, Globe, Code, MessageSquare } from "lucide-react";
 import { signOut } from "next-auth/react";
 import {
   Accordion,
@@ -28,17 +26,17 @@ const Navigation = () => {
     {
       name: "feedback",
       link: "/form/feedback",
-      icon: <MdFeedback />,
+      icon: <MessageSquare />,
     },
     {
       name: "devpost",
       link: data.devpost,
-      icon: <SiDevpost />,
+      icon: <Code />,
     },
     {
       name: "website",
       link: "/",
-      icon: <BsGlobe2 />,
+      icon: <Globe />,
     },
   ];
 
@@ -88,7 +86,7 @@ const Navigation = () => {
                       >
                         <div
                           onClick={() => setExpand(false)}
-                          className={`flex w-full items-center justify-start py-1 pl-[15%] [&>*]:text-white ${
+                          className={`flex w-full items-center justify-start py-1 pl-[10%] [&>*]:text-white ${
                             pathName.endsWith(tab.link)
                               ? "bg-hackathon-blue-100"
                               : "[&>*]:hover:text-hackathon-blue-100"
@@ -126,7 +124,7 @@ const Navigation = () => {
               onClick={() => signOut({ callbackUrl: "/", redirect: true })}
               className="flex w-full items-center justify-center py-1 text-white hover:cursor-pointer hover:text-hackathon-blue-100"
             >
-              <BsBoxArrowInRight className="mr-2" />
+              <LogIn className="mr-2" />
             </div>
           </div>
         </div>

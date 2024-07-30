@@ -1,4 +1,4 @@
-import { MdCancel } from "react-icons/md";
+import { XCircle } from "lucide-react";
 
 const Input = ({
   object,
@@ -28,7 +28,7 @@ const Input = ({
           onChange={onChangeFn}
         />
         {clear && (
-          <MdCancel
+          <XCircle
             className="mr-2 text-xl text-hackathon-gray-300 hover:cursor-pointer hover:text-hackathon-gray-200"
             onClick={clearFn}
             data-cy={`${label}-clear-input`}

@@ -1,4 +1,4 @@
-import { SiGithub } from "react-icons/si";
+import { SiGithub as Github } from "@icons-pack/react-simple-icons";
 
 export const TABS = [
   {
@@ -10,7 +10,7 @@ export const TABS = [
     link: "/engineering/blog",
   },
   {
-    label: <SiGithub className="self-center text-4xl" />,
+    label: <Github className="self-center text-4xl" />,
     link: "https://github.com/acm-ucr/hackathon-website",
   },
 ];
