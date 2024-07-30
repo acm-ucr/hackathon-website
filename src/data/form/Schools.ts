@@ -1,4 +1,6 @@
-export const SCHOOLS = [
+type schools = string[];
+
+export const SCHOOLS: schools = [
   "Aalto University",
   "Aarhus University",
   "Abbey Park High School",

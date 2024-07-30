@@ -1,6 +1,4 @@
-import { FaTimes } from "react-icons/fa";
-import { FaLocationDot } from "react-icons/fa6";
-import { BsPersonFill } from "react-icons/bs";
+import { X, MapPin, User } from "lucide-react";
 import Tag from "../../Tag";
 import { LABELS } from "@/data/admin/Calendar";
 import { COLORS } from "@/data/Tags";
@@ -12,7 +10,7 @@ const CalendarModal = ({ event, setEvent }) => {
         className={`bg-hackathon-red-200 flex items-center justify-between rounded-t-xl p-3 ${event.color}`}
       >
         <span className="text-3xl font-bold text-white">{event.summary}</span>
-        <FaTimes
+        <X
           onClick={() => setEvent(null)}
           className="text-xl text-white hover:cursor-pointer hover:!text-red-500"
         />
@@ -40,11 +38,11 @@ const CalendarModal = ({ event, setEvent }) => {
           </div>
         </div>
         <div className="my-2 flex items-center">
-          <FaLocationDot className="mr-2" />
+          <MapPin className="mr-2" />
           {event.location ? event.location : "No Location Specified"}
         </div>
         <div className="my-2 flex items-center">
-          <BsPersonFill className="mr-2" />
+          <User className="mr-2" />
           {event.assignee}
         </div>
         <p className="mb-0">{event.description.split("\n")[1]}</p>
