@@ -3,7 +3,7 @@ import Radio from "@/components/Radio";
 import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
 import Button from "@/components/Button.jsx";
-import Textarea from "@/components/form/form/Textarea.jsx";
+import { Textarea } from "@/components/ui/textarea";
 import Upload from "@/components/form/form/Upload";
 import toaster from "@/utils/toaster";
 import Link from "next/link";
@@ -162,13 +162,17 @@ const Questions = ({
           )}
           {field.input === "textarea" && (
             <Textarea
+              data-cy={`${field.title}-textarea`}
+              className="border-1 w-full resize-none border border-black pl-3 placeholder:text-hackathon-gray-200 focus:outline-none"
+              maxLength={500}
+              value={object[field.name]}
+              onChange={(e) =>
+                setObject({ ...object, [field.name]: e.target.value })
+              }
+              placeholder={field.placeholder}
               name={field.name}
               rows={field.rows}
               title={field.title}
-              placeholder={field.placeholder}
-              value={object[field.name]}
-              user={object}
-              setUser={setObject}
               required={field.required}
             />
           )}
