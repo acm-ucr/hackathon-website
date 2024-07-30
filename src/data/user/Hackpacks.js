@@ -1,12 +1,12 @@
 import {
-  Javascript,
-  Arduino,
-  Nextjs,
-  Tailwind,
-  Firebase,
-  CPlusPlus,
-  Mongodb,
-} from "lucide-react";
+  SiJavascript as Javascript,
+  SiArduino as Arduino,
+  SiNextjs as Nextjs,
+  SiTailwind as Tailwind,
+  SiFirebase as Firebase,
+  SiCPlusPlus as CPlusPlus,
+  SiMongodb as Mongodb,
+} from "@icons-pack/react-simple-icons";
 
 export const TECHSTACKS = {
   Javascript: <Javascript />,

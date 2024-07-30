@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Github } from "lucide-react";
+import { SiGithub as Github } from "@icons-pack/react-simple-icons";
 import Pages from "@/public/engineering/pages.webp";
 import Image from "next/image";
 

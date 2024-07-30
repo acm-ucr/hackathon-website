@@ -1,4 +1,4 @@
-import { Github } from "lucide-react";
+import { SiGithub as Github } from "@icons-pack/react-simple-icons";
 
 export const TABS = [
   {

@@ -7,19 +7,20 @@ import Link from "next/link";
 import { TABS } from "@/data/Navigation";
 import { usePathname } from "next/navigation";
 import data from "@/data/Config";
-import {
-  ArrowDownCircle,
-  LogIn,
-  Globe,
-  Code,
-  MessageSquare,
-} from "lucide-react";
+import { LogIn, Globe, Code, MessageSquare } from "lucide-react";
 import { signOut } from "next-auth/react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const Navigation = () => {
   const [expand, setExpand] = useState(false);
   const pathName = usePathname();
-  const [tabs, setTabs] = useState(TABS[pathName.split("/")[1]]);
+
+  const tabs = TABS[pathName.split("/")[1]];
 
   const global = [
     {
@@ -61,38 +62,22 @@ const Navigation = () => {
           expand ? "fixed left-0 h-screen w-1/2 pt-5" : `hidden`
         }`}
       >
-        <div className="flex h-full w-full flex-col items-center justify-between overflow-y-scroll bg-hackathon-blue-200">
-          <div className="my-3 hidden items-center lg:flex">
-            <Image
-              src={LOGO}
-              className="mx-2 h-10 w-10"
-              alt={`${data.name} Logo`}
-            />
+        <div className="grid h-full w-full grid-cols-1 grid-rows-10 flex-col place-items-center bg-hackathon-blue-200">
+          <div className="items-center lg:flex">
+            <Image src={LOGO} className="h-10 w-10" alt={`${data.name} Logo`} />
           </div>
-          <div className="flex h-full w-full flex-col items-center">
-            {Object.entries(tabs)
-              .filter(([title]) => title !== " " && title !== "dropdown")
-              .map(([title, subTabs], index) => (
-                <div key={index} className="w-full">
-                  <p
-                    className={`font-poppin mb-0 flex w-full items-center justify-between px-2 text-xl font-bold text-white hover:cursor-pointer ${subTabs.mt} opacity-100 transition-opacity hover:opacity-40`}
-                    onClick={() =>
-                      setTabs({
-                        ...tabs,
-                        [title]: { ...subTabs, expand: !subTabs.expand },
-                      })
-                    }
-                  >
-                    {title}
-                    {tabs.dropdown && (
-                      <ArrowDownCircle
-                        className={`text-sm duration-300 ${
-                          subTabs.expand && "rotate-180"
-                        }`}
-                      />
-                    )}
-                  </p>
-                  {(subTabs.expand || !tabs.dropdown) &&
+          <Accordion
+            defaultValue={["Dashboards", "Services"]}
+            type="multiple"
+            className="row-start-2 w-full place-self-start"
+          >
+            {Object.entries(tabs).map(([title, subTabs], index) => (
+              <AccordionItem key={index} value={title} className="border-none">
+                <AccordionTrigger className="px-3 py-0 text-xl font-bold text-white opacity-100 transition-opacity hover:cursor-pointer hover:opacity-40">
+                  {title}
+                </AccordionTrigger>
+                <AccordionContent>
+                  {subTabs.tabs &&
                     subTabs.tabs.map((tab, index) => (
                       <Link
                         key={index}
@@ -112,10 +97,11 @@ const Navigation = () => {
                         </div>
                       </Link>
                     ))}
-                </div>
-              ))}
-          </div>
-          <div className="mb-3 flex w-full flex-row items-center justify-center">
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+          <div className="row-start-10 mb-3 flex w-full flex-row items-center justify-center place-self-end">
             {global.map((tab, index) => (
               <Link
                 key={index}
@@ -136,7 +122,7 @@ const Navigation = () => {
             ))}
             <div
               onClick={() => signOut({ callbackUrl: "/", redirect: true })}
-              className={`flex w-full items-center justify-center py-1 text-white hover:cursor-pointer hover:text-hackathon-blue-100`}
+              className="flex w-full items-center justify-center py-1 text-white hover:cursor-pointer hover:text-hackathon-blue-100"
             >
               <LogIn className="mr-2" />
             </div>

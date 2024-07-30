@@ -2,9 +2,7 @@ import {
   Mail,
   Shirt,
   School,
-  Github,
   FileCode,
-  Figma,
   Apple,
   Phone,
   Crown,
@@ -15,6 +13,11 @@ import {
   Clock,
   Contact,
 } from "lucide-react";
+
+import {
+  SiGithub as Github,
+  SiFigma as Figma,
+} from "@icons-pack/react-simple-icons";
 
 export const ICONS = {
   github: (
