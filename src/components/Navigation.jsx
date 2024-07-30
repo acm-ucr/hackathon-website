@@ -61,7 +61,7 @@ const Navigation = () => {
       </div>
       <div
         className={`z-10 overflow-y-scroll lg:flex lg:w-[12%] ${
-          expand ? "fixed left-0 h-screen w-1/2 bg-blue-500 pt-5" : `hidden`
+          expand ? "fixed left-0 h-screen w-1/2 pt-5" : `hidden`
         }`}
       >
         <div className="grid h-full w-full grid-cols-1 grid-rows-10 flex-col place-items-center bg-hackathon-blue-200">
