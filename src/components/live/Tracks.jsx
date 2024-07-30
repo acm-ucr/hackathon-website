@@ -1,5 +1,5 @@
 const Tracks = () => {
-  return <div className="flex justify-center items-center ">Tracks</div>;
+  return <div className="flex items-center justify-center">Tracks</div>;
 };
 
 export default Tracks;

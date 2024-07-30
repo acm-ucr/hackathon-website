@@ -1,5 +1,5 @@
 const Committees = () => {
-  return <div className="flex justify-center items-center ">Committees</div>;
+  return <div className="flex items-center justify-center">Committees</div>;
 };
 
 export default Committees;

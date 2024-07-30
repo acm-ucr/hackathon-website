@@ -50,7 +50,7 @@ const Page = ({ params, searchParams }) => {
     return (
       <ProtectedPage
         title={`Admin | ${capitalizeFirstLetter(params.type)}`}
-        restrictions={{ admins: 1 }}
+        restrictions={{ admins: [1] }}
       >
         {components[params.type]}
       </ProtectedPage>
@@ -59,7 +59,7 @@ const Page = ({ params, searchParams }) => {
     throw new Fault(
       404,
       "Page Not Found",
-      "The page you are looking for does not seem to exist"
+      "The page you are looking for does not seem to exist",
     );
   }
 };

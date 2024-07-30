@@ -13,7 +13,7 @@ export const GET = async () => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${"MESSAGE VARIABLE SHOULD BE HERE"}` },
-      { status: auth }
+      { status: auth },
     );
   }
 
@@ -24,15 +24,15 @@ export const GET = async () => {
     ]);
 
     const {
-      teams: { 1: teams },
-      participants: { 1: participants },
-      volunteers: { 1: volunteers },
-      judges: { 1: judges },
-      mentors: { 1: mentors },
-      committees: { 1: committees },
-      sponsors: { 1: sponsors },
-      panels: { 1: panels },
-      admins: { 1: admins },
+      teams,
+      participants,
+      volunteers,
+      judges,
+      mentors,
+      committees,
+      sponsors,
+      panels,
+      admins,
     } = statistics.data();
 
     const attendees = {};
@@ -58,7 +58,7 @@ export const GET = async () => {
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };

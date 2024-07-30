@@ -5,6 +5,8 @@ import Tabs from "./Tabs";
 import Loading from "@/components/Loading";
 import { api } from "@/utils/api";
 
+import Charts from "./Charts";
+
 const Statistics = () => {
   const [counts, setCounts] = useState(null);
 
@@ -16,12 +18,15 @@ const Statistics = () => {
   }, []);
 
   return (
-    <div className="h-full font-poppins flex flex-col py-4">
+    <div className="flex h-full flex-col py-4 font-poppins">
       <Title title="Statistics" />
       {!counts ? (
         <Loading />
       ) : (
-        <Tabs counts={counts.users} events={counts.events} />
+        <div>
+          <Tabs counts={counts.users} events={counts.events} />
+          <Charts counts={counts.users} />
+        </div>
       )}
     </div>
   );

@@ -14,7 +14,7 @@ const DropDown = ({ options, setOptions, option, setOption, empty }) => {
         hidden: !option.name
           .toLowerCase()
           .includes(e.target.value.toLowerCase()),
-      }))
+      })),
     );
   };
 
@@ -35,13 +35,13 @@ const DropDown = ({ options, setOptions, option, setOption, empty }) => {
     options && (
       <div
         onToggle={() => setShow(!show)}
-        className="w-full m-0 relative"
+        className="relative m-0 w-full"
         data-cy="dropdown"
         ref={ref}
       >
         <button
           onClick={() => setShow(!show)}
-          className="my-1 bg-hackathon-gray-100 rounded-md relative z-20 w-full justify-between flex items-center px-3 py-1"
+          className="relative z-20 my-1 flex w-full items-center justify-between rounded-md bg-hackathon-gray-100 px-3 py-1"
           data-cy="dropdown-selected"
         >
           {option.name}
@@ -51,10 +51,10 @@ const DropDown = ({ options, setOptions, option, setOption, empty }) => {
           />
         </button>
         {show && (
-          <div className="bg-white absolute rounded-md border-0 max-h-[50vh] overflow-scroll w-full !rounded-b-lg !rounded-t-none p-0 !z-10 !-mt-4 pt-4">
+          <div className="absolute !z-10 !-mt-4 max-h-[50vh] w-full overflow-scroll rounded-md !rounded-b-lg !rounded-t-none border-0 bg-white p-0 pt-4">
             <input
               autoFocus
-              className="mx-1.5 my-1 w-11/12 ring-0 outline-none px-2 py-1"
+              className="mx-1.5 my-1 w-11/12 px-2 py-1 outline-none ring-0"
               placeholder="Type to filter..."
               onChange={handleInput}
               value={value}
@@ -66,7 +66,7 @@ const DropDown = ({ options, setOptions, option, setOption, empty }) => {
                 .map((option, index) => (
                   <div
                     data-cy={`dropdown-option-${index}`}
-                    className=" hover:!bg-hackathon-green-300 hover:!text-white bg-transparent overflow-hidden px-3 py-1 last:rounded-b-lg"
+                    className="overflow-hidden bg-transparent px-3 py-1 last:rounded-b-lg hover:!bg-hackathon-green-300 hover:!text-white"
                     key={index}
                     onClick={() => {
                       setOption(option);

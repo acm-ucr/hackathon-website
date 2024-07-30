@@ -4,18 +4,25 @@ import Link from "next/link";
 const Hackpack = ({ text, techs, link }) => {
   return (
     <Link
-      className="w-full bg-gray-100 rounded-xl p-4 hover:border-gray-300 border-gray-100 border-2 duration-300"
+      data-cy="hackpack-link"
+      className="w-full rounded-xl border-2 border-gray-100 bg-gray-100 p-4 duration-300 hover:border-gray-300"
       href={link}
       target="_black"
     >
-      <div className="font-bold">{text}</div>
-      <div className="flex flex-wrap">
+      <div data-cy="hackpack-text" className="font-bold">
+        {text}
+      </div>
+      <div data-cy="hackpack-techs" className="flex flex-wrap">
         {techs.map((tech, index) => (
           <div
+            data-cy="hackpack-tech"
             key={index}
-            className="text-gray-400 rounded-full flex items-center px-1"
+            className="flex items-center rounded-full px-1 text-gray-400"
           >
-            <div className="text-hackathon-blue-100 mr-1">
+            <div
+              data-cy="hackpack-icon"
+              className="mr-1 text-hackathon-blue-100"
+            >
               {TECHSTACKS[tech]}
             </div>
             {tech}
