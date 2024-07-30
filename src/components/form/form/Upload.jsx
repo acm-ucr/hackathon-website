@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
   Upload as LucideUpload,
   FileText,
-  LucideImage,
+  Image as LucideImage,
   X,
   Eye,
 } from "lucide-react";

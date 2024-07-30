@@ -1,22 +1,21 @@
 import {
-  Users,
   User,
-  BarChart2,
-  NotebookPen,
-  HandHeart,
-  MessageSquare,
-  CircleHelp,
-  CircleDollarSign,
+  Users,
+  BarChart,
+  Hand,
+  Heart,
+  Feedback,
+  Handshake,
   MonitorCog,
   Mail,
   Lock,
   Calendar,
-  MessageCircleHeart,
+  AlertCircle,
   Search,
   Settings,
   QrCode,
-  Handshake,
-  Speech,
+  Team,
+  CircleHelp,
   Presentation,
 } from "lucide-react";
 
@@ -46,7 +45,7 @@ export const TABS = {
         {
           name: "volunteers",
           link: "/admin/volunteers",
-          icon: <HandHeart className={iconStyle} />,
+          icon: <Heart className={iconStyle} />,
         },
         {
           name: "mentors",
@@ -66,27 +65,27 @@ export const TABS = {
         {
           name: "sponsors",
           link: "/admin/sponsors",
-          icon: <CircleDollarSign className={iconStyle} />,
+          icon: <Users className={iconStyle} />, // Replace with the correct icon if available
         },
         {
           name: "panelists",
           link: "/admin/panelists",
-          icon: <Speech className={iconStyle} />,
+          icon: <Users className={iconStyle} />, // Replace with the correct icon if available
         },
         {
           name: "interests",
           link: "/admin/interests",
-          icon: <MessageCircleHeart className={iconStyle} />,
+          icon: <AlertCircle className={iconStyle} />,
         },
         {
           name: "feedback",
           link: "/admin/feedback",
-          icon: <MessageSquare className={iconStyle} />,
+          icon: <Feedback className={iconStyle} />,
         },
         {
           name: "leads",
           link: "/admin/leads",
-          icon: <NotebookPen className={iconStyle} />,
+          icon: <Hand className={iconStyle} />,
         },
       ],
     },
@@ -117,7 +116,7 @@ export const TABS = {
         {
           name: "statistics",
           link: "/admin/statistics",
-          icon: <BarChart2 className={iconStyle} />,
+          icon: <BarChart className={iconStyle} />,
         },
         {
           name: "settings",
@@ -149,7 +148,7 @@ export const TABS = {
         {
           name: "team",
           link: "/user/team",
-          icon: <Users className={iconStyle} />,
+          icon: <Team className={iconStyle} />,
         },
         {
           name: "find a team",
