@@ -36,7 +36,7 @@ const Tag = ({ color, text, onClick, classes, statuses }) => {
       data-cy={`${text}-tag`}
       className={`${classes} ${color.background} ${color.text} ${
         onClick && `hover:cursor-pointer ${color.hover}`
-      } whitespace-nowrap px-2 py-0.5 rounded text-xs md:text-sm w-fit m-0`}
+      } m-0 w-fit whitespace-nowrap rounded px-2 py-0.5 text-xs md:text-sm`}
       onClick={onClick}
     >
       {isNaN(text) ? text : statuses[text]}
@@ -97,7 +97,7 @@ Tailwind CSS breakpoints are a crucial aspect of creating responsive designs. Ta
 `md:text-lg`: This class changes the text size to large (lg) starting from the medium screen breakpoint (md). On medium and larger screens, the text will appear larger due to this class.
 
 ```js
-<p className="text-center text-sm md:text-lg  text-hackathon-blue-200 m-0">
+<p className="m-0 text-center text-sm text-hackathon-blue-200 md:text-lg">
   {message}
 </p>
 ```
@@ -113,7 +113,7 @@ Each utility class in Tailwind can be conditionally applied by prefixing the cla
 ```js title="src/components/dynamic/admin/services/Dropdown.jsx"
 <div
   data-cy={`dropdown-option-${index}`}
-  className=" hover:!bg-hackathon-green-300 hover:!text-white bg-transparent overflow-hidden px-3 py-1 last:rounded-b-lg"
+  className="overflow-hidden bg-transparent px-3 py-1 last:rounded-b-lg hover:!bg-hackathon-green-300 hover:!text-white"
   key={index}
   onClick={() => {
     setOption(option);

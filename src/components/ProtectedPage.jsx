@@ -18,7 +18,7 @@ const ProtectedPage = ({ children, restrictions, title }) => {
       throw new Fault(
         423,
         "Locked Resource",
-        "This resource has not been released"
+        "This resource has not been released",
       );
     }
 
@@ -32,14 +32,14 @@ const ProtectedPage = ({ children, restrictions, title }) => {
       throw new Fault(
         403,
         "Unauthorized",
-        "You do not have any assigned roles"
+        "You do not have any assigned roles",
       );
     }
 
     const authorized = Object.entries(restrictions).some(([key, values]) =>
       Array.isArray(values)
         ? values.includes(session.user.roles[key])
-        : session.user.roles[key] === values
+        : session.user.roles[key] === values,
     );
 
     if (!authorized && Object.keys(restrictions).length > 0) {
@@ -57,8 +57,8 @@ const ProtectedPage = ({ children, restrictions, title }) => {
         <>
           <title>{title}</title>
           {navigation && <Navigation />}
-          <div className="flex justify-center items-start w-full bg-hackathon-page h-screen py-12 lg:py-0 z-0 overflow-x-hidden">
-            <div className="w-11/12 h-full">{children}</div>
+          <div className="z-0 flex h-screen w-full items-start justify-center overflow-x-hidden bg-hackathon-page py-12 lg:py-0">
+            <div className="h-full w-11/12">{children}</div>
           </div>
         </>
       )}

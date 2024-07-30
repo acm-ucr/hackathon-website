@@ -41,41 +41,41 @@ const Navigation = () => {
 
   return (
     <>
-      <div className="flex lg:hidden w-full bg-hackathon-blue-200 h-12 items-center fixed z-20">
+      <div className="fixed z-20 flex h-12 w-full items-center bg-hackathon-blue-200 lg:hidden">
         <div
           className="flex items-center hover:cursor-pointer"
           onClick={() => setExpand(!expand)}
         >
           <Image
             src={LOGO}
-            className="w-10 h-10 mx-2"
+            className="mx-2 h-10 w-10"
             alt={`${data.name} Logo`}
           />
-          <div className="text-white text-xl font-semibold">
+          <div className="text-xl font-semibold text-white">
             {pathName.split("/")[2]}
           </div>
         </div>
       </div>
       <div
-        className={`overflow-y-scroll z-10 lg:flex lg:w-[12%] ${
-          expand ? "left-0 h-screen w-1/2 fixed pt-5" : `hidden`
+        className={`z-10 overflow-y-scroll lg:flex lg:w-[12%] ${
+          expand ? "fixed left-0 h-screen w-1/2 pt-5" : `hidden`
         }`}
       >
-        <div className="overflow-y-scroll bg-hackathon-blue-200 h-full flex flex-col justify-between items-center w-full">
-          <div className="hidden lg:flex items-center my-3">
+        <div className="flex h-full w-full flex-col items-center justify-between overflow-y-scroll bg-hackathon-blue-200">
+          <div className="my-3 hidden items-center lg:flex">
             <Image
               src={LOGO}
-              className="w-10 h-10 mx-2"
+              className="mx-2 h-10 w-10"
               alt={`${data.name} Logo`}
             />
           </div>
-          <div className="w-full flex flex-col items-center h-full">
+          <div className="flex h-full w-full flex-col items-center">
             {Object.entries(tabs)
               .filter(([title]) => title !== " " && title !== "dropdown")
               .map(([title, subTabs], index) => (
                 <div key={index} className="w-full">
                   <p
-                    className={`text-white text-xl font-poppin font-bold w-full px-2 mb-0 flex items-center justify-between hover:cursor-pointer ${subTabs.mt} opacity-100 hover:opacity-40 transition-opacity`}
+                    className={`font-poppin mb-0 flex w-full items-center justify-between px-2 text-xl font-bold text-white hover:cursor-pointer ${subTabs.mt} opacity-100 transition-opacity hover:opacity-40`}
                     onClick={() =>
                       setTabs({
                         ...tabs,
@@ -97,34 +97,34 @@ const Navigation = () => {
                       <Link
                         key={index}
                         href={tab.link}
-                        className="no-underline p-0 w-full"
+                        className="w-full p-0 no-underline"
                       >
                         <div
                           onClick={() => setExpand(false)}
-                          className={`w-full flex [&>*]:text-white items-center justify-start py-1 pl-[10%] ${
+                          className={`flex w-full items-center justify-start py-1 pl-[10%] [&>*]:text-white ${
                             pathName.endsWith(tab.link)
                               ? "bg-hackathon-blue-100"
                               : "[&>*]:hover:text-hackathon-blue-100"
                           }`}
                         >
                           {tab.icon}
-                          <p className="text-lg m-0">{tab.name}</p>
+                          <p className="m-0 text-lg">{tab.name}</p>
                         </div>
                       </Link>
                     ))}
                 </div>
               ))}
           </div>
-          <div className="w-full flex flex-row justify-center items-center mb-3">
+          <div className="mb-3 flex w-full flex-row items-center justify-center">
             {global.map((tab, index) => (
               <Link
                 key={index}
                 href={tab.link}
                 target="_blank"
-                className="no-underline w-full bg-red-"
+                className="bg-red- w-full no-underline"
               >
                 <div
-                  className={`w-full flex [&>*]:text-white items-center justify-center py-1 ${
+                  className={`flex w-full items-center justify-center py-1 [&>*]:text-white ${
                     pathName.endsWith(tab.link)
                       ? "bg-hackathon-blue-100"
                       : "[&>*]:hover:text-hackathon-blue-100"
@@ -136,7 +136,7 @@ const Navigation = () => {
             ))}
             <div
               onClick={() => signOut({ callbackUrl: "/", redirect: true })}
-              className={`w-full flex text-white items-center justify-center py-1 hover:text-hackathon-blue-100 hover:cursor-pointer`}
+              className={`flex w-full items-center justify-center py-1 text-white hover:cursor-pointer hover:text-hackathon-blue-100`}
             >
               <LogIn className="mr-2" />
             </div>

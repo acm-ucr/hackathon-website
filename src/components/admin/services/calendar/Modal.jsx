@@ -5,18 +5,18 @@ import { COLORS } from "@/data/Tags";
 
 const CalendarModal = ({ event, setEvent }) => {
   return (
-    <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-10 w-1/2 rounded-xl">
+    <div className="absolute left-1/2 top-1/2 z-10 w-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl">
       <div
-        className={`flex justify-between items-center p-3 rounded-t-xl bg-hackathon-red-200 ${event.color}`}
+        className={`bg-hackathon-red-200 flex items-center justify-between rounded-t-xl p-3 ${event.color}`}
       >
-        <span className="text-3xl text-white font-bold">{event.summary}</span>
+        <span className="text-3xl font-bold text-white">{event.summary}</span>
         <X
           onClick={() => setEvent(null)}
-          className="hover:cursor-pointer text-white hover:!text-red-500 text-xl"
+          className="text-xl text-white hover:cursor-pointer hover:!text-red-500"
         />
       </div>
-      <div className="bg-white px-3 rounded-b-xl py-2 border-x-2 border-b-2 border-hackathon-darkgray">
-        <div className="flex justify-between items-center">
+      <div className="border-hackathon-darkgray rounded-b-xl border-x-2 border-b-2 bg-white px-3 py-2">
+        <div className="flex items-center justify-between">
           <div>
             {event.start.toLocaleString("default", {
               month: "long",
@@ -37,11 +37,11 @@ const CalendarModal = ({ event, setEvent }) => {
             />
           </div>
         </div>
-        <div className="flex my-2 items-center">
+        <div className="my-2 flex items-center">
           <MapPin className="mr-2" />
           {event.location ? event.location : "No Location Specified"}
         </div>
-        <div className="flex my-2 items-center">
+        <div className="my-2 flex items-center">
           <User className="mr-2" />
           {event.assignee}
         </div>

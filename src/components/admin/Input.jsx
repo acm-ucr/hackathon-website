@@ -15,21 +15,21 @@ const Input = ({
 }) => {
   return (
     <div className={`flex items-center ${classes}`}>
-      {showLabel && <p className="text-lg font-extrabold mr-2 my-0">{label}</p>}
+      {showLabel && <p className="my-0 mr-2 text-lg font-extrabold">{label}</p>}
 
-      <div className="flex items-center my-1 bg-hackathon-gray-100 rounded-md w-full">
+      <div className="my-1 flex w-full items-center rounded-md bg-hackathon-gray-100">
         <input
           data-cy={`${label}-input`}
           value={value}
           maxLength={maxLength}
           placeholder={placeholder}
           type="text"
-          className="outline-none w-full font-poppins text-base py-1 bg-transparent px-2"
+          className="w-full bg-transparent px-2 py-1 font-poppins text-base outline-none"
           onChange={onChangeFn}
         />
         {clear && (
           <XCircle
-            className="hover:cursor-pointer text-xl text-hackathon-gray-300 mr-2 hover:text-hackathon-gray-200"
+            className="mr-2 text-xl text-hackathon-gray-300 hover:cursor-pointer hover:text-hackathon-gray-200"
             onClick={clearFn}
             data-cy={`${label}-clear-input`}
           />
