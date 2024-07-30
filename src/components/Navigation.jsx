@@ -65,17 +65,13 @@ const Navigation = () => {
         }`}
       >
         <div className="grid h-full w-full grid-cols-1 grid-rows-10 flex-col place-items-center bg-hackathon-blue-200">
-          <div className="row-start-1 row-end-2 my-3 items-center lg:flex">
-            <Image
-              src={LOGO}
-              className="mx-2 h-10 w-10"
-              alt={`${data.name} Logo`}
-            />
+          <div className="items-center lg:flex">
+            <Image src={LOGO} className="h-10 w-10" alt={`${data.name} Logo`} />
           </div>
           <Accordion
             defaultValue={["Dashboards", "Services"]}
             type="multiple"
-            className="row-start-2 row-end-10 w-full place-self-start"
+            className="row-start-2 w-full place-self-start"
           >
             {Object.entries(tabs).map(([title, subTabs], index) => (
               <AccordionItem key={index} value={title} className="border-none">
@@ -128,7 +124,7 @@ const Navigation = () => {
             ))}
             <div
               onClick={() => signOut({ callbackUrl: "/", redirect: true })}
-              className={`flex w-full items-center justify-center py-1 text-white hover:cursor-pointer hover:text-hackathon-blue-100`}
+              className="flex w-full items-center justify-center py-1 text-white hover:cursor-pointer hover:text-hackathon-blue-100"
             >
               <BsBoxArrowInRight className="mr-2" />
             </div>
