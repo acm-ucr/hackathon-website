@@ -3,7 +3,7 @@ import Hackpack from "./Hackpack";
 
 const Hackpacks = () => {
   return (
-    <div className="grid grid-cols-4 mt-4">
+    <div className="mt-4 grid grid-cols-4">
       {HACKPACKS.map((hackpack, index) => (
         <Hackpack
           key={index}

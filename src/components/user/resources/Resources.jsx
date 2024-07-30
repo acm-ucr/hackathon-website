@@ -13,7 +13,7 @@ const Resources = () => {
         <Hackpacks />;
       </div>
     </>
-  )
+  );
 };
 
 export default Resources;
