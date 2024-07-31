@@ -1,5 +1,6 @@
 "use client";
-import { STATUSES, TAGS, COLUMNS, DROPDOWN } from "@/data/admin/Volunteers";
+import { TAGS, COLUMNS, DROPDOWN } from "@/data/admin/Volunteers";
+import { STATUSES } from "@/data/Statuses";
 import Table from "./dashboard/Dashboard";
 
 const Volunteers = ({ searchParams }) => {

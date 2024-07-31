@@ -1,9 +1,5 @@
 import { generateSelect, generateStatus } from "./Columns";
-
-export const STATUSES = {
-  1: "accepted",
-  0: "pending",
-};
+import { STATUSES } from "@/data/Statuses";
 
 export const TAGS = [
   {
