@@ -7,12 +7,12 @@ interface statuses {
   1: string;
   0: string;
   "-1": string;
-};
+}
 
 interface tags {
   text: string;
   value: number;
-};
+}
 
 interface cellProps {
   cell: {
