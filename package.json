@@ -32,7 +32,7 @@
     "@tanstack/react-virtual": "^3.0.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "cmdk": "^1.0.0",
+    "cmdk": "0.2.0",
     "compressorjs": "^1.2.1",
     "firebase": "^10.8.0",
     "firebase-admin": "^11.11.0",
