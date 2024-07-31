@@ -1,8 +1,7 @@
 export const JUDGING = [
-  "You may not submit a project that has already been submitted or started before our hackathon period.",
-  "Your project must be an original and not copied from someone else's work.",
-  "Teams of 1-4 are required.",
-  "A Github is required for submission.",
-  "Github commits may not be dated before the hackathon period has started.",
-  "We will not judge any late projects.",
+  "Demos should be 2-3 minutes maximum",
+  "All members need to be present when project is being judged",
+  "Submission must be through Github",
+  "All Github commits must occur within the hackathon period",
+  "Late projects will not be judged",
 ];
