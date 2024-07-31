@@ -1,11 +1,7 @@
 import Link from "next/link";
 import { generateSelect, generateStatus } from "./Columns";
 import { ICONS } from "./Icons";
-export const STATUSES = {
-  1: "accepted",
-  0: "pending",
-  "-1": "rejected",
-};
+import { STATUSES } from "@/data/Statuses";
 
 export const TAGS = [
   {
