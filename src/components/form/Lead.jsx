@@ -6,7 +6,7 @@ import { FIELDS, ATTRIBUTES } from "@/data/form/Leads";
 import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
-import { STATUSES } from "@/data/admin/Leads";
+import { STATUSES } from "@/data/Statuses";
 
 const Lead = () => {
   const { data: session } = useSession();
