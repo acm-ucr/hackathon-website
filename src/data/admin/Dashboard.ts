@@ -1,4 +1,31 @@
-export const ATTRIBUTES = {
+interface attributes {
+  admins: string[];
+  committees: string[];
+  judges: string[];
+  mentors: string[];
+  volunteers: string[];
+  interests: string[];
+  participants: string[];
+  sponsors: string[];
+  panels: string[];
+  feedback: string[];
+  leads: string[];
+}
+
+interface auth {
+  POST: {};
+  GET: {
+    admins: number[];
+  };
+  PUT: {
+    admins: number[];
+  };
+  DELETE: {
+    admins: number[];
+  };
+}
+
+export const ATTRIBUTES: attributes = {
   admins: [
     "name",
     "email",
@@ -91,7 +118,7 @@ export const ATTRIBUTES = {
   ],
 };
 
-export const AUTH = {
+export const AUTH: auth = {
   POST: {},
   GET: {
     admins: [1],
