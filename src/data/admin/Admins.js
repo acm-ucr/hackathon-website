@@ -1,6 +1,7 @@
 import { generateAffiliation, generateSelect, generateStatus } from "./Columns";
 import { AFFILIATIONS } from "../form/Information";
 import { ICONS } from "./Icons";
+import { STATUSES } from "../Statuses";
 
 export const TAGS = [
   {

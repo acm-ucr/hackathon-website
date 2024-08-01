@@ -1,7 +1,12 @@
 import { flexRender } from "@tanstack/react-table";
 import Body from "./Body";
-import { ArrowRightLeft } from "lucide-react";
-import { ChevronLeft, ChevronRight, SortAsc, SortDesc } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  SortAsc,
+  SortDesc,
+  ArrowRightLeft,
+} from "lucide-react";
 import Loading from "@/components/Loading";
 import Link from "next/link";
 
