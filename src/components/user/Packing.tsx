@@ -9,7 +9,7 @@ const list: string[] = [
   "Medication (if needed)",
   "Refillable water bottle",
 ];
-//note
+// note
 const Packing = (): React.ReactNode => {
   return (
     <div className="my-3 rounded-lg bg-white p-3 shadow-xl">
