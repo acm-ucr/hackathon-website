@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Form from "@/components/form/form/Form.jsx";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Ideas";
-// import { api } from "@/utils/api";
-// import toaster from "@/utils/toaster";
+import { api } from "@/utils/api";
+import toaster from "@/utils/toaster";
 import { useSession } from "next-auth/react";
 
 const Ideas = () => {
@@ -17,22 +17,18 @@ const Ideas = () => {
     form: "idea",
   });
 
-  console.log(FIELDS);
-
   const onSubmit = (setLoading, setState) => {
-    console.log(idea);
-
-    // api({
-    //   method: "POST",
-    //   url: "/api/dashboard/interests",
-    //   body: interest,
-    // })
-    //   .then(() => toaster(`Submitted successfully!`, "success"))
-    //   .catch(() => toaster(`Internal Server Error`, "error"))
-    //   .finally(() => {
-    //     setLoading(false);
-    //     setState(2);
-    //   });
+    api({
+      method: "POST",
+      url: "/api/teams/ideas",
+      body: idea,
+    })
+      .then(() => toaster(`Submitted successfully!`, "success"))
+      .catch(() => toaster(`Internal Server Error`, "error"))
+      .finally(() => {
+        setLoading(false);
+        setState(2);
+      });
   };
 
   return (

@@ -62,6 +62,6 @@ export const FIELDS = {
 export const ATTRIBUTES = {
   idea: "",
   languages: [],
-  description: "",
+  details: "",
   contact: "",
 };
