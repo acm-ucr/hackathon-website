@@ -7,19 +7,15 @@ export const FIELDS = {
     input: "description",
     width: 12,
     texts: [
-      `Welcome to ${
-        data.name
-      }. Thank you for being on the organizing team, we appreciate your efforts to help support ${
-        data.name
-      }. ${data.name} is a ${data.description} hackathon spanning ${
+      `Welcome to ${data.name}. ${data.name} is a ${data.description} hackathon spanning ${
         data.length
       } on ${data.date.toLocaleString("default", {
         month: "long",
         day: "numeric",
         year: "numeric",
       })}.`,
-      "Admins are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
-      "Note: Admins are not permitted to become participants for the hackathon.",
+      "You may submit a project idea to find teammates. These submissions will be public so be mindful of any language and information you share. You can find all submissions on the user portal.",
+      "Note: Submissions must comply with the code of conduct, failure to do so may result in removal from the event.",
     ],
   },
   idea: {
