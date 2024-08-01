@@ -18,14 +18,22 @@ const Hackpack = ({ text, techs, link, description }: props) => {
         href={link}
         target="_black"
       >
-        <p className="text-lg font-semibold">{text}</p>
+        <p className="text-lg font-semibold" data-cy="hackpack-text">
+          {text}
+        </p>
         <Github size={20} />
       </Link>
 
-      <div className="my-2 flex flex-wrap gap-2">
+      <div className="my-2 flex flex-wrap gap-2" data-cy="hackpack-techs">
         {techs.map((tech, index) => (
-          <div key={index} className="flex items-center gap-2 text-gray-400">
-            <div className="text-hackathon-blue-100">{TECHSTACKS[tech]}</div>
+          <div
+            key={index}
+            className="flex items-center gap-2 text-gray-400"
+            data-cy="hackpack-tech"
+          >
+            <div className="text-hackathon-blue-100" data-cy="hackpack-icon">
+              {TECHSTACKS[tech]}
+            </div>
             {tech}
           </div>
         ))}
