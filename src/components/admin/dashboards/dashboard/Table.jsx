@@ -5,7 +5,6 @@ import {
   ChevronRight,
   SortAsc,
   SortDesc,
-  Download,
   ArrowRightLeft,
 } from "lucide-react";
 import Loading from "@/components/Loading";
@@ -61,14 +60,6 @@ const Table = ({
                         onClick={column.getToggleSortingHandler()}
                         data-cy={`${column.columnDef.header}-sorting-asc`}
                         className="mx-2 text-white hover:cursor-pointer hover:opacity-50"
-                      />
-                    )}
-                    {column.columnDef.customAction && (
-                      <Download
-                        className="mx-2 text-hackathon-gray-200 hover:cursor-pointer hover:opacity-50"
-                        onClick={() =>
-                          column.columnDef.customAction(getRowModel().rows)
-                        }
                       />
                     )}
                   </div>
