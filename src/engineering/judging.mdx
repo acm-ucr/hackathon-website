@@ -19,42 +19,18 @@ UCR hackathons used to follow a common system for inviting, assigning and runnin
 
 Cons:
 
-Issues with judge info collection and verification via email
+\*Issues with judge info collection and verification via email
 
-Added effort and time for organizers to manually assign judges
+\*Added effort and time for organizers to manually assign judges
 
-Bad coordination, rounds with some teams missing judges
+\*Bad coordination, rounds with some teams missing judges
 
-Delayed hackathon closing, keeping participants for ~2-3 hours extra
+\*Delayed hackathon closing, keeping participants for ~2-3 hours extra
 
-## **Solution 1: Judge Sign Up**
+## **Solution: The Online Judging Service**
 
-Hackathon website has customized forms for judges to sign up that collects and stores all the necessary information for the admin. Below are all the fields we have the judges fill out. We sort out the judges based on their affiliations and use that data for our system. This highly increased efficiency and reduced possible errors for the hackathon committees.
-
-```
-export const ATTRIBUTES = {
-  name: "",
-  email: "",
-  phone: "",
-  gender: "",
-  shirt: "",
-  affiliation: "",
-  title: "",
-  photo: "",
-  requirements: [],
-};
-
-export const AFFILIATIONS = {
-  professor: "Professor",
-  student: "Student",
-  industry: "Industry",
-};
-
-```
-
-## **Solution 2: The Online Judging Service**
-
-Hackathon website implemented an effective online judging service in place of the manual judging system. It is essentially the same routine with timed rounds but it streamlines the entire assignment process. First both teams and judges data is pulled by the service using api.
+Firstly, hackathon website created customized forms for judges to sign up that collects and stores all the necessary information for the admin. This highly increased efficiency and reduced possible errors in information for the hackathon committees.
+Hackathon website then implemented an effective online judging service in place of the manual judging system. It is essentially the same routine with timed rounds but it streamlines the entire assignment process. First both teams and judges data is pulled by the service using api.
 
 ```
   const load = () => {
@@ -167,4 +143,4 @@ Then we can set a rotation value i.e. the number of rounds. Based on this value,
 
 ## **Results:**
 
-RoseHack'24 was the first hackathon to use this service. Starting from smoother operations to easier judge handling, it led to the event successfully finishing more than 30 minutes early. Then the subsequent hackathons like Bear Hack, Designverse, Cutiehack all saved significant time and energy during their judging events.
+Cutiehack'24 was the first hackathon to use this service. Starting from smoother operations to easier judge handling, it led to the event successfully finishing more than 30 minutes early. Then the subsequent hackathons like Rose Hack and Bear Hack saved significant time and energy during their judging events.
