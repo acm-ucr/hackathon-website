@@ -1,5 +1,5 @@
-import { LABELS } from "@/data/admin/Calendar.js";
-import Tag from "../../Tag.jsx";
+import { LABELS } from "@/data/admin/Calendar";
+import Tag from "../../Tag";
 import { COLORS } from "@/data/Tags.js";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect } from "react";
