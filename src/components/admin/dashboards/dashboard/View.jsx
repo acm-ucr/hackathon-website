@@ -3,22 +3,11 @@ import { useState } from "react";
 import Tag from "../../Tag";
 import Modal from "./Modal";
 import { COLORS } from "@/data/Tags";
-import { FaDownload } from "react-icons/fa";
-import Popup from "../../Popup";
-import { performDownload } from "@/utils/download";
+import { Download } from "lucide-react";
+import { download } from "@/utils/download";
 
 const View = ({ title, src }) => {
   const [modal, setModal] = useState(null);
-
-  const [popup, setPopup] = useState({
-    title: "Download Confirmation",
-    text: "Are you sure you want to download this image?",
-    color: "blue",
-    button: "confirm",
-    visible: false,
-  });
-
-  const confirmDownload = () => setPopup({ ...popup, visible: true });
 
   return (
     <div className="flex w-full items-center justify-between">
@@ -28,19 +17,10 @@ const View = ({ title, src }) => {
         text="view"
         color={COLORS["gray"]}
       />
-      <FaDownload
+      <Download
         className={`h-full hover:cursor-pointer hover:opacity-70`}
-        onClick={confirmDownload}
+        onClick={() => download(src, `${title.replace(" ", "_")}.png`)}
       />
-
-      {popup.visible && (
-        <Popup
-          popup={popup}
-          onClick={() => performDownload(src)}
-          setPopup={setPopup}
-          text={popup.button}
-        />
-      )}
     </div>
   );
 };

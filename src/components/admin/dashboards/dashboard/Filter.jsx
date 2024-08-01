@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { TiPlus } from "react-icons/ti";
+import { Plus } from "lucide-react";
 
 const Filter = ({ value, status, isActive, setFilters }) => {
   const onClick = () => {
@@ -36,7 +36,7 @@ const Filter = ({ value, status, isActive, setFilters }) => {
         data-cy={status + "-filter"}
       >
         <p className="mx-1 my-0 whitespace-nowrap px-1 py-[2px]">{status}</p>
-        <TiPlus
+        <Plus
           className={`mr-2 mt-[2px] duration-300 hover:opacity-80 ${
             isActive ? "-rotate-45" : ""
           }`}

@@ -1,16 +1,21 @@
-import { RiJavascriptFill } from "react-icons/ri";
-import { SiArduino, SiNextdotjs, SiTailwindcss } from "react-icons/si";
-import { IoLogoFirebase } from "react-icons/io5";
-import { BiLogoCPlusPlus, BiLogoMongodb } from "react-icons/bi";
+import {
+  SiJavascript as Javascript,
+  SiArduino as Arduino,
+  SiNextdotjs as Nextjs,
+  SiTailwindcss as Tailwind,
+  SiFirebase as Firebase,
+  SiCplusplus as CPlusPlus,
+  SiMongodb as Mongodb,
+} from "@icons-pack/react-simple-icons";
 
 export const TECHSTACKS = {
-  Javascript: <RiJavascriptFill />,
-  "Next.js": <SiNextdotjs />,
-  Firebase: <IoLogoFirebase />,
-  Tailwind: <SiTailwindcss />,
-  MongoDB: <BiLogoMongodb />,
-  Arduino: <SiArduino />,
-  "C++": <BiLogoCPlusPlus />,
+  Javascript: <Javascript />,
+  "Next.js": <Nextjs />,
+  Firebase: <Firebase />,
+  Tailwind: <Tailwind />,
+  MongoDB: <Mongodb />,
+  Arduino: <Arduino />,
+  "C++": <CPlusPlus />,
 };
 export const HACKPACKS = [
   {

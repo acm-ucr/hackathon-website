@@ -2,11 +2,7 @@ import View from "@/components/admin/dashboards/dashboard/View";
 import { generateSelect, generateStatus } from "./Columns";
 import Tag from "@/components/admin/Tag";
 import { COLORS } from "@/data/Tags";
-export const STATUSES = {
-  1: "accepted",
-  0: "pending",
-  "-1": "rejected",
-};
+import { STATUSES } from "@/data/Statuses";
 
 export const TAGS = [
   {

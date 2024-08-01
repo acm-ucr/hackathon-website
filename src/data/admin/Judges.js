@@ -1,16 +1,12 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
 import View from "@/components/admin/dashboards/dashboard/View";
 import { AFFILIATIONS } from "../form/Information";
 import { generateAffiliation, generateSelect, generateStatus } from "./Columns";
-import { performDownload } from "../../utils/download";
-import Popup from "../../components/admin/Popup";
-
-export const STATUSES = {
-  1: "accepted",
-  0: "pending",
-  "-1": "rejected",
-};
+import { STATUSES } from "@/data/Statuses";
+import JSZip from "jszip";
+import { save } from "@/utils/download";
+import { Download } from "lucide-react";
+import data from "../Config";
 
 export const TAGS = [
   {
@@ -56,30 +52,44 @@ export const COLUMNS = [
   generateStatus(STATUSES),
   {
     accessorKey: "photo",
-    header: "Photo",
+    header: ({ table }) => {
+      const downloadZip = () => {
+        const { rows } = table.getRowModel();
+        const photos = rows.map(({ original: { name, photo } }) => ({
+          photo,
+          name,
+        }));
+
+        console.log(photos);
+
+        const zip = new JSZip();
+        const folder = zip.folder();
+
+        photos.forEach(({ photo, name }) => {
+          const src = photo.split(",")[1];
+          folder.file(`${name.replace(" ", "_")}.png`, src, { base64: true });
+        });
+
+        zip.generateAsync({ type: "blob" }).then((blob) => {
+          const url = URL.createObjectURL(blob);
+          save(
+            `${data.name.replace(" ", "_")}_${data.year}_judges_images.zip`,
+            url,
+          );
+          URL.revokeObjectURL(url);
+        });
+      };
+
+      return (
+        <div className="flex">
+          Photo <Download onClick={downloadZip} />
+        </div>
+      );
+    },
     width: "w-1/12",
     enableSorting: false,
-    customAction: (rows) => {
-      const popupInfo = {
-        title: "Download Confirmation",
-        text: "Are you sure you want to download all images?",
-        color: "blue",
-        button: "confirm",
-        visible: true,
-      };
-      const div = document.createElement("div");
-      const hidePopup = () => div.remove();
-      const root = createRoot(div);
-      root.render(
-        <Popup
-          popup={popupInfo}
-          onClick={() => rows.map((row) => performDownload(row.original.photo))}
-          setPopup={hidePopup}
-          text={popupInfo.button}
-        />,
-      );
-      document.body.appendChild(div);
-    },
-    cell: ({ getValue }) => <View src={getValue()} title="Photo" />,
+    cell: ({ getValue, row }) => (
+      <View src={getValue()} title={row.getValue("name")} />
+    ),
   },
 ];
