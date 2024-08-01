@@ -4,15 +4,15 @@ import { signOut } from "next-auth/react";
 const Header = () => {
   const { data: session } = useSession();
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex items-center justify-between">
       <div>
         <p className="font-medium">Welcome</p>
-        <p className="text-2xl font-bold mb-0">{session.user.name}</p>
+        <p className="mb-0 text-2xl font-bold">{session.user.name}</p>
       </div>
       <div className="mr-6">
         <button
           onClick={() => signOut({ callbackUrl: "/", redirect: true })}
-          className="bg-hackathon-tags-red-text text-white py-1 px-4 rounded-lg font-bold opacity-100 hover:opacity-50 transition-opacity"
+          className="rounded-lg bg-hackathon-tags-red-text px-4 py-1 font-bold text-white opacity-100 transition-opacity hover:opacity-50"
         >
           logout
         </button>

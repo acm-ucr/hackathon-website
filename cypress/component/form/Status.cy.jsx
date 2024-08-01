@@ -1,5 +1,5 @@
 import Status from "@/components/form/form/Status";
-import { STATUSES } from "@/data/admin/Admins";
+import { STATUSES } from "@/data/Statuses";
 import Tag from "@/components/admin/Tag";
 import { COLORS } from "@/data/Tags";
 
@@ -16,7 +16,7 @@ describe("Status Component", () => {
     const onClick = cy.stub();
     const color = COLORS["accept"];
     cy.mount(
-      <Tag color={color} text={text} onClick={onClick} classes={classes} />
+      <Tag color={color} text={text} onClick={onClick} classes={classes} />,
     );
 
     cy.contains(text).should("be.visible").and("have.class", classes);

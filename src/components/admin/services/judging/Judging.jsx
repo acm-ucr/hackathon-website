@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import Title from "../../Title.jsx";
-import Table from "./Table.jsx";
-import Toolbar from "./Toolbar.jsx";
+import Title from "../../Title";
+import Table from "./Table";
+import Toolbar from "./Toolbar";
 
 const Judging = () => {
   const [teams, setTeams] = useState(null);
@@ -11,7 +11,7 @@ const Judging = () => {
   const [view, setView] = useState(false);
 
   return (
-    <div className="h-full font-poppins flex flex-col py-4 gap-3">
+    <div className="flex h-full flex-col gap-3 py-4 font-poppins">
       <Title title="Judging" />
       <Toolbar
         data={teams}
@@ -24,7 +24,7 @@ const Judging = () => {
       />
       <Title title={view ? "Judges" : "Teams"} />
       {filters === null || filters.length === 0 ? (
-        <div className="flex-grow flex items-center justify-center">
+        <div className="flex flex-grow items-center justify-center">
           {view ? "No Judges Available" : "No Teams Available"}
         </div>
       ) : (

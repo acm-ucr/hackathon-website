@@ -50,7 +50,7 @@ const CalendarWrapper = ({ events }) => {
                     .split("#")
                     .filter((item) => item !== "")[0]
                     .trim()
-                    .toLowerCase() === tag
+                    .toLowerCase() === tag,
               )
         }
         localizer={mLocalizer}

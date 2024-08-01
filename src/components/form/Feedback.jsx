@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Form from "@/components/form/form/Form.jsx";
+import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Feedback.js";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
@@ -9,7 +9,7 @@ import { useSession } from "next-auth/react";
 
 const Feedback = () => {
   const { data: session } = useSession();
-  const [feedback, setfeedback] = useState({
+  const [feedback, setFeedback] = useState({
     ...ATTRIBUTES,
     roles: session.user.roles,
     form: "feedback",
@@ -33,7 +33,7 @@ const Feedback = () => {
     <Form
       fields={FIELDS}
       object={feedback}
-      setObject={setfeedback}
+      setObject={setFeedback}
       header="FEEDBACK APPLICATION"
       onSubmit={handleSubmit}
       bypass={true}

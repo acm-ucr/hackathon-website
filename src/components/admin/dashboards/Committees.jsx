@@ -1,10 +1,11 @@
 "use client";
-import { STATUSES, TAGS, COLUMNS, DROPDOWN } from "@/data/admin/Committees";
+import { TAGS, COLUMNS, DROPDOWN } from "@/data/admin/Committees";
+import { STATUSES } from "@/data/Statuses";
 import Table from "./dashboard/Dashboard";
 
 const Committee = ({ searchParams }) => {
   return (
-    <div className="h-full font-poppins flex flex-col py-4 gap-3">
+    <div className="flex h-full flex-col gap-3 py-4 font-poppins">
       <Table
         searchParams={searchParams}
         title="Committees"

@@ -16,7 +16,7 @@ const Acceptance = ({ name, position, preview }) => {
       <Section className="text-center">
         <Button
           href={data.discord}
-          className="bg-[#7289da] rounded text-white text-xs font-semibold no-underline text-center px-5 py-3"
+          className="rounded bg-[#7289da] px-5 py-3 text-center text-xs font-semibold text-white no-underline"
         >
           Join Discord
         </Button>

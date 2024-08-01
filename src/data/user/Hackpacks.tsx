@@ -1,46 +1,58 @@
-import { RiJavascriptFill } from "react-icons/ri";
-import { SiArduino, SiNextdotjs, SiTailwindcss } from "react-icons/si";
-import { IoLogoFirebase } from "react-icons/io5";
-import { BiLogoCPlusPlus, BiLogoMongodb } from "react-icons/bi";
+import {
+  SiJavascript as Javascript,
+  SiArduino as Arduino,
+  SiNextdotjs as Nextjs,
+  SiTailwindcss as Tailwind,
+  SiFirebase as Firebase,
+  SiCplusplus as CPlusPlus,
+  SiMongodb as Mongodb,
+} from "@icons-pack/react-simple-icons";
+import { ReactNode } from "react";
 
-export const TECHSTACKS = {
-  Javascript: <RiJavascriptFill />,
-  "Next.js": <SiNextdotjs />,
-  Firebase: <IoLogoFirebase />,
-  Tailwind: <SiTailwindcss />,
-  MongoDB: <BiLogoMongodb />,
-  Arduino: <SiArduino />,
-  "C++": <BiLogoCPlusPlus />,
+export const TECHSTACKS: Record<string, ReactNode> = {
+  Javascript: <Javascript />,
+  "Next.js": <Nextjs />,
+  Firebase: <Firebase />,
+  Tailwind: <Tailwind />,
+  MongoDB: <Mongodb />,
+  Arduino: <Arduino />,
+  "C++": <CPlusPlus />,
 };
 export const HACKPACKS = [
   {
     link: "https://github.com/acm-ucr/firebase-nextjs-hackpack",
     text: "Full Stack Web App",
     techs: ["Javascript", "Next.js", "Firebase", "Tailwind"],
+    description: "A Firebase + Next.js Starter Pack",
   },
   {
     link: "https://github.com/acm-ucr/nextjs-hackpack",
     text: "Full Stack Web App",
     techs: ["Javascript", "Next.js", "Tailwind"],
+    description: "A Firebase + Next.js Starter Pack",
   },
   {
     link: "https://github.com/acm-ucr/arduino-hackpack",
     text: "Hardware",
     techs: ["Arduino", "C++"],
+    description: "A Firebase + Next.js Starter Pack",
   },
   {
     link: "https://github.com/acm-ucr/unity-hackpack",
     text: "Game Development",
     techs: ["Unity, C#"],
+    description: "A Firebase + Next.js Starter Pack",
   },
   {
     link: "https://github.com/acm-ucr/discord_python_hackpack",
     text: "Discord Bot",
     techs: ["Python"],
+    description: "A Firebase + Next.js Starter Pack",
   },
   {
     link: "https://github.com/acm-ucr/discord_python_hackpack",
     text: "Python Application",
     techs: ["Python"],
+    description: "A Firebase + Next.js Starter Pack",
   },
 ];

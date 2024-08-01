@@ -11,12 +11,12 @@ const Packing = () => {
     "Refillable water bottle",
   ];
   return (
-    <div className="bg-white rounded-lg shadow-xl p-3 my-3">
-      <div className="font-bold p-2" data-cy="packing-title">
+    <div className="my-3 rounded-lg bg-white p-3 shadow-xl">
+      <div className="p-2 font-bold" data-cy="packing-title">
         🎒Packing List
       </div>
 
-      <ul className="font-light list-disc pl-9 mb-2" data-cy="packing-items">
+      <ul className="mb-2 list-disc pl-9 font-light" data-cy="packing-items">
         {list.map((list, index) => (
           <li key={index}>{list}</li>
         ))}

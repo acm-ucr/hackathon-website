@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import Form from "@/components/form/form/Form.jsx";
+import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Sponsors";
 import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
-import { STATUSES } from "@/data/admin/Sponsors";
+import { STATUSES } from "@/data/Statuses";
 
 const Sponsor = () => {
   const { data: session } = useSession();

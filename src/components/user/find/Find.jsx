@@ -35,12 +35,12 @@ const Find = () => {
   ];
 
   return (
-    <div className="flex w-full flex-col h-[calc(100vh-48px)]">
+    <div className="flex h-[calc(100vh-48px)] w-full flex-col">
       <div className="pb-3 pt-4">
         <Title title="Find a Team" />
       </div>
       <Toolbar />
-      <div className="grid grid-cols-4 gap-4 mt-4">
+      <div className="mt-4 grid grid-cols-4 gap-4">
         {ideas.map(({ title, technologies, description, contact }, index) => (
           <Idea
             key={index}
