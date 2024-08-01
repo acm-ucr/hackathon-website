@@ -2,41 +2,53 @@ import Checkbox from "@/components/Checkbox";
 import { AVAILABILITY } from "../form/Information";
 import { generateSelect, generateStatus } from "./Columns";
 import { STATUSES } from "@/data/Statuses";
+import { Table, Row } from "@tanstack/react-table";
 
-interface tags {
+interface Person {
+  name: string;
+  email: string;
+  discord: string;
+  status: number | string;
+}
+
+interface tagsDef {
   text: string;
   value: number;
 }
 
-interface columns {
+interface columnsDef {
   accessorKey: string;
   header: string;
   width: string;
   enableColumnFilter: boolean;
   filterFn: string;
   searchable: boolean;
-  cell: (props: { getValue: () => any }) => React.JSX.Element;
+  cell: (props: { getValue: () => string }) => React.JSX.Element;
 }
 
-interface select {
+interface generateSelectDef {
   id: string;
   width: string;
-  header: (props: { table: any }) => React.JSX.Element;
-  cell: (props: { row: any }) => React.JSX.Element;
+  header: (props: { table: Table<Person> }) => React.JSX.Element;
+  cell: (props: { row: Row<Person> }) => React.JSX.Element;
 }
 
-interface status {
+interface generateStatusDef {
   accessorKey: string;
   header: string;
   width: string;
   enableColumnFilter: boolean;
-  filterFn: (row: any, col: any, filter: any) => any;
-  cell: (props: { getValue: () => any }) => React.JSX.Element;
+  filterFn: (
+    row: Row<Person>,
+    col: string,
+    filter: number | number[],
+  ) => boolean;
+  cell: (props: { getValue: () => number | string }) => React.JSX.Element;
 }
 
-type column = columns | select | status;
+type column = columnsDef | generateSelectDef | generateStatusDef;
 
-export const TAGS: tags[] = [
+export const TAGS: tagsDef[] = [
   {
     text: "confirm",
     value: 1,
@@ -56,7 +68,7 @@ export const COLUMNS: column[] = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: (props: { getValue: () => any }) => <div>{props.getValue()}</div>,
+    cell: (props: { getValue: () => string }) => <div>{props.getValue()}</div>,
   },
   {
     accessorKey: "email",
@@ -65,7 +77,7 @@ export const COLUMNS: column[] = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: (props: { getValue: () => any }) => <div>{props.getValue()}</div>,
+    cell: (props: { getValue: () => string }) => <div>{props.getValue()}</div>,
   },
   {
     accessorKey: "discord",
@@ -74,12 +86,16 @@ export const COLUMNS: column[] = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: (props: { getValue: () => any }) => <div>{props.getValue()}</div>,
+    cell: (props: { getValue: () => string }) => <div>{props.getValue()}</div>,
   },
   generateStatus(STATUSES),
 ];
 
-export const DROPDOWN = ({ object }: { object: any }) => {
+export const DROPDOWN = ({
+  object,
+}: {
+  object: { availability: string[]; response: string };
+}) => {
   return (
     <>
       <div className="flex justify-center">
@@ -89,7 +105,7 @@ export const DROPDOWN = ({ object }: { object: any }) => {
               toggle={object.availability.includes(text)}
               text={text}
               key={index}
-              color
+              color={"bg-hackathon-gray-100"}
             />
           ))}
         </div>
