@@ -1,12 +1,7 @@
 import View from "@/components/admin/dashboards/dashboard/View";
 import { AFFILIATIONS } from "../form/Information";
 import { generateAffiliation, generateSelect, generateStatus } from "./Columns";
-
-export const STATUSES = {
-  1: "accepted",
-  0: "pending",
-  "-1": "rejected",
-};
+import { STATUSES } from "@/data/Statuses";
 
 export const TAGS = [
   {

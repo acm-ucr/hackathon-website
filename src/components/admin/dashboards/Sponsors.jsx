@@ -1,5 +1,6 @@
 "use client";
-import { STATUSES, TAGS, COLUMNS, DROPDOWN } from "@/data/admin/Sponsors.js";
+import { TAGS, COLUMNS, DROPDOWN } from "@/data/admin/Sponsors.js";
+import { STATUSES } from "@/data/Statuses";
 import Table from "./dashboard/Dashboard";
 
 const Sponsors = ({ searchParams }) => {

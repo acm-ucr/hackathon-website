@@ -1,5 +1,5 @@
 import Status from "@/components/form/form/Status";
-import { STATUSES } from "@/data/admin/Admins";
+import { STATUSES } from "@/data/Statuses";
 import Tag from "@/components/admin/Tag";
 import { COLORS } from "@/data/Tags";
 
