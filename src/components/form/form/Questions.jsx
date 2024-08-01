@@ -2,7 +2,7 @@ import Select from "@/components/Select";
 import Radio from "@/components/Radio";
 import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
-import Button from "@/components/Button.jsx";
+import Button from "@/components/Button";
 import { Textarea } from "@/components/ui/textarea";
 import Upload from "@/components/form/form/Upload";
 import toaster from "@/utils/toaster";

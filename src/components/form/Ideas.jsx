@@ -2,26 +2,26 @@
 
 import { useState } from "react";
 import Form from "@/components/form/form/Form";
-import { FIELDS, ATTRIBUTES } from "@/data/form/Committees";
-import { useSession } from "next-auth/react";
+import { FIELDS, ATTRIBUTES } from "@/data/form/Ideas";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
-import { STATUSES } from "@/data/Statuses";
-const Committee = () => {
+import { useSession } from "next-auth/react";
+
+const Ideas = () => {
   const { data: session } = useSession();
-  const [committee, setCommittee] = useState({
+  const [idea, setIdea] = useState({
     ...ATTRIBUTES,
     name: session.user.name,
     email: session.user.email,
     roles: session.user.roles,
-    form: "committees",
+    form: "idea",
   });
 
-  const handleSubmit = (setLoading, setState) => {
+  const onSubmit = (setLoading, setState) => {
     api({
       method: "POST",
-      url: "/api/dashboard/committees",
-      body: committee,
+      url: "/api/teams/ideas",
+      body: idea,
     })
       .then(() => toaster(`Submitted successfully!`, "success"))
       .catch(() => toaster(`Internal Server Error`, "error"))
@@ -30,16 +30,17 @@ const Committee = () => {
         setState(2);
       });
   };
+
   return (
     <Form
       fields={FIELDS}
-      object={committee}
-      setObject={setCommittee}
-      header="COMMITTEE PORTAL REQUEST"
-      onSubmit={handleSubmit}
-      statuses={STATUSES}
+      object={idea}
+      setObject={setIdea}
+      header="TEAM IDEA APPLICATION"
+      onSubmit={onSubmit}
+      bypass={true}
     />
   );
 };
 
-export default Committee;
+export default Ideas;

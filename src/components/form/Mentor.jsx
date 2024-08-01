@@ -1,12 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import Form from "@/components/form/form/Form.jsx";
+import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Mentors.js";
 import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
+<<<<<<< HEAD
 import { STATUSES } from "@/data/admin/Mentors.tsx";
+=======
+import { STATUSES } from "@/data/Statuses";
+>>>>>>> dcb903ddca0ce0a13a254b6c31a105a1ba72c15b
 
 const Mentor = () => {
   const { data: session } = useSession();

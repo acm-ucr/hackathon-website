@@ -9,6 +9,7 @@ import Sponsor from "@/components/form/Sponsor";
 import Volunteer from "@/components/form/Volunteer";
 import Panel from "@/components/form/Panelist";
 import Lead from "@/components/form/Lead";
+import Ideas from "@/components/form/Ideas";
 import ProtectedPage from "@/components/ProtectedPage";
 import Fault from "@/utils/error";
 
@@ -25,6 +26,7 @@ const Page = ({ params }) => {
     panel: <Panel />,
     volunteer: <Volunteer />,
     lead: <Lead />,
+    idea: <Ideas />,
   };
 
   const capitalizeFirstLetter = (word) => {

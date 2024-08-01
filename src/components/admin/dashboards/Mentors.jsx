@@ -1,5 +1,11 @@
 "use client";
+<<<<<<< HEAD
 import { STATUSES, TAGS, COLUMNS, DROPDOWN } from "@/data/admin/Mentors.tsx";
+=======
+import { TAGS, COLUMNS, DROPDOWN } from "@/data/admin/Mentors.js";
+import { STATUSES } from "@/data/Statuses";
+
+>>>>>>> dcb903ddca0ce0a13a254b6c31a105a1ba72c15b
 import Table from "./dashboard/Dashboard";
 
 const Mentors = ({ searchParams }) => {

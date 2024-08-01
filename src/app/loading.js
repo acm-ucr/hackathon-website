@@ -1,2 +1,2 @@
-import Loading from "@/components/Loading.jsx";
+import Loading from "@/components/Loading";
 export default Loading;

@@ -1,23 +1,11 @@
 import Checkbox from "@/components/Checkbox";
 import { AVAILABILITY } from "../form/Information";
 import { generateSelect, generateStatus } from "./Columns";
-import React from "react";
-
-interface statuses {
-  1: string;
-  0: string;
-  "-1": string;
-}
+import { STATUSES } from "@/data/Statuses";
 
 interface tags {
   text: string;
   value: number;
-}
-
-interface cellProps {
-  cell: {
-    getValue: () => any;
-  };
 }
 
 interface columns {
@@ -27,7 +15,7 @@ interface columns {
   enableColumnFilter: boolean;
   filterFn: string;
   searchable: boolean;
-  cell: (props: cellProps) => React.JSX.Element;
+  cell: (props: { getValue : () => any }) => React.JSX.Element;
 }
 
 interface select {
@@ -43,16 +31,10 @@ interface status {
   width: string;
   enableColumnFilter: boolean;
   filterFn: (row: any, col: any, filter: any) => any;
-  cell: ({ getValue }: { getValue: any }) => React.JSX.Element;
+  cell: (props: { getValue: () => any }) => React.JSX.Element;
 }
 
 type column = columns | select | status;
-
-export const STATUSES: statuses = {
-  1: "accepted",
-  0: "pending",
-  "-1": "rejected",
-};
 
 export const TAGS: tags[] = [
   {
@@ -74,7 +56,7 @@ export const COLUMNS: column[] = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ cell }: cellProps) => <div>{cell.getValue()}</div>,
+    cell: (props: { getValue : () => any }) => <div>{ props.getValue() }</div>,
   },
   {
     accessorKey: "email",
@@ -83,7 +65,7 @@ export const COLUMNS: column[] = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ cell }: cellProps) => <div>{cell.getValue()}</div>,
+    cell: (props: { getValue : () => any }) => <div>{ props.getValue() }</div>,
   },
   {
     accessorKey: "discord",
@@ -92,7 +74,7 @@ export const COLUMNS: column[] = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ cell }: cellProps) => <div>{cell.getValue()}</div>,
+    cell: (props: { getValue : () => any }) => <div>{ props.getValue() }</div>,
   },
   generateStatus(STATUSES),
 ];
