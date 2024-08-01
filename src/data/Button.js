@@ -19,6 +19,11 @@ export const COLORS = {
     text: "text-white",
     border: "border-0",
   },
+  blue: {
+    bg: "bg-hackathon-blue-200",
+    text: "text-white",
+    border: "border-0",
+  },
 };
 export const SIZES = {
   xs: "text-xs",

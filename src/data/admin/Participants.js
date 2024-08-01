@@ -1,6 +1,7 @@
 import View from "@/components/admin/dashboards/dashboard/View";
 import { ICONS } from "./Icons";
 import { generateSelect, generateStatus } from "./Columns";
+import { STATUSES } from "@/data/Statuses";
 
 export const TAGS = [
   {
