@@ -1,12 +1,7 @@
 import View from "@/components/admin/dashboards/dashboard/View";
 import { ICONS } from "./Icons";
 import { generateSelect, generateStatus } from "./Columns";
-
-export const STATUSES = {
-  1: "accepted",
-  0: "pending",
-  "-1": "rejected",
-};
+import { STATUSES } from "@/data/Statuses";
 
 export const TAGS = [
   {

@@ -2,27 +2,26 @@
 
 import { useState } from "react";
 import Form from "@/components/form/form/Form.jsx";
+import { FIELDS, ATTRIBUTES } from "@/data/form/Ideas";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
-import { FIELDS, ATTRIBUTES } from "@/data/form/Interest";
 import { useSession } from "next-auth/react";
-import { STATUSES } from "@/data/Statuses";
 
-const Interest = () => {
+const Ideas = () => {
   const { data: session } = useSession();
-  const [interest, setInterest] = useState({
+  const [idea, setIdea] = useState({
     ...ATTRIBUTES,
     name: session.user.name,
     email: session.user.email,
     roles: session.user.roles,
-    form: "interests",
+    form: "idea",
   });
 
   const onSubmit = (setLoading, setState) => {
     api({
       method: "POST",
-      url: "/api/dashboard/interests",
-      body: interest,
+      url: "/api/teams/ideas",
+      body: idea,
     })
       .then(() => toaster(`Submitted successfully!`, "success"))
       .catch(() => toaster(`Internal Server Error`, "error"))
@@ -35,13 +34,13 @@ const Interest = () => {
   return (
     <Form
       fields={FIELDS}
-      object={interest}
-      setObject={setInterest}
-      header="INTEREST APPLICATION"
+      object={idea}
+      setObject={setIdea}
+      header="TEAM IDEA APPLICATION"
       onSubmit={onSubmit}
-      statuses={STATUSES}
+      bypass={true}
     />
   );
 };
 
-export default Interest;
+export default Ideas;
