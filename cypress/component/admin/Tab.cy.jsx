@@ -1,4 +1,4 @@
-import Tab from "@/components/admin/services/statistics/Tab.jsx";
+import Tab from "@/components/admin/services/statistics/Tab";
 
 describe("Tab", () => {
   it("Tab-box", () => {

@@ -1,5 +1,6 @@
 "use client";
-import { STATUSES, TAGS, COLUMNS } from "@/data/admin/Panelists.js";
+import { TAGS, COLUMNS } from "@/data/admin/Panelists.js";
+import { STATUSES } from "@/data/Statuses";
 import Table from "./dashboard/Dashboard";
 
 const Panelists = ({ searchParams }) => {

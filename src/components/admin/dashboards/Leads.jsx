@@ -1,5 +1,6 @@
 "use client";
-import { STATUSES, TAGS, COLUMNS, DROPDOWN } from "@/data/admin/Leads.js";
+import { TAGS, COLUMNS, DROPDOWN } from "@/data/admin/Leads.js";
+import { STATUSES } from "@/data/Statuses";
 import Table from "./dashboard/Dashboard";
 
 const Leads = ({ searchParams }) => {

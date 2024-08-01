@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SiGithub } from "react-icons/si";
+import { SiGithub as Github } from "@icons-pack/react-simple-icons";
 import Pages from "@/public/engineering/pages.webp";
 import Image from "next/image";
 
@@ -21,7 +21,7 @@ const Landing = () => {
           href="https://github.com/acm-ucr/hackathon-website"
           className="my-4 flex items-center gap-3 rounded-xl pb-4 text-2xl text-black hover:cursor-pointer hover:opacity-50"
         >
-          <SiGithub className="text-3xl" />
+          <Github className="text-3xl" />
           GitHub
         </Link>
       </div>

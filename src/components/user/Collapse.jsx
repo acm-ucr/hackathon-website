@@ -1,4 +1,4 @@
-import { RiArrowDownSLine } from "react-icons/ri";
+import { ChevronDown } from "lucide-react";
 const Collapse = ({ text, children, setExpand, expand }) => {
   return (
     <div className="w-full rounded-xl bg-white p-4 drop-shadow-md">
@@ -7,7 +7,7 @@ const Collapse = ({ text, children, setExpand, expand }) => {
         onClick={() => setExpand(text === expand ? "" : text)}
       >
         {text}
-        <RiArrowDownSLine
+        <ChevronDown
           className={`${text === expand && "rotate-180"} text-2xl duration-300`}
         />
       </div>

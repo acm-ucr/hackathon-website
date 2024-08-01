@@ -1,12 +1,12 @@
 import { flexRender } from "@tanstack/react-table";
 import Body from "./Body";
-import { FaArrowRightArrowLeft } from "react-icons/fa6";
 import {
-  FaChevronLeft,
-  FaChevronRight,
-  FaSortAlphaDown,
-  FaSortAlphaUp,
-} from "react-icons/fa";
+  ChevronLeft,
+  ChevronRight,
+  SortAsc,
+  SortDesc,
+  ArrowRightLeft,
+} from "lucide-react";
 import Loading from "@/components/Loading";
 import Link from "next/link";
 
@@ -40,7 +40,7 @@ const Table = ({
                   >
                     {flexRender(column.columnDef.header, getContext())}
                     {column.getCanSort() && (
-                      <FaArrowRightArrowLeft
+                      <ArrowRightLeft
                         className={`mx-2 rotate-90 text-hackathon-gray-200 hover:cursor-pointer hover:opacity-50 ${
                           column.getIsSorted() && "hidden"
                         }`}
@@ -49,14 +49,14 @@ const Table = ({
                       />
                     )}
                     {column.getIsSorted() === "asc" && (
-                      <FaSortAlphaDown
+                      <SortDesc
                         onClick={column.getToggleSortingHandler()}
                         data-cy={`${column.id}-sorting-desc`}
                         className="mx-2 text-white hover:cursor-pointer hover:opacity-50"
                       />
                     )}
                     {column.getIsSorted() === "desc" && (
-                      <FaSortAlphaUp
+                      <SortAsc
                         onClick={column.getToggleSortingHandler()}
                         data-cy={`${column.columnDef.header}-sorting-asc`}
                         className="mx-2 text-white hover:cursor-pointer hover:opacity-50"
@@ -103,7 +103,7 @@ const Table = ({
             index <= 1 && "pointer-events-none text-hackathon-gray-200"
           }`}
         >
-          <FaChevronLeft />
+          <ChevronLeft />
         </Link>
         <div>
           Page {index} of {Math.ceil(total / size)}
@@ -117,7 +117,7 @@ const Table = ({
             "pointer-events-none text-hackathon-gray-200"
           }`}
         >
-          <FaChevronRight />
+          <ChevronRight />
         </Link>
       </div>
     </>
