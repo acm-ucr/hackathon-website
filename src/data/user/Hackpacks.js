@@ -22,30 +22,36 @@ export const HACKPACKS = [
     link: "https://github.com/acm-ucr/firebase-nextjs-hackpack",
     text: "Full Stack Web App",
     techs: ["Javascript", "Next.js", "Firebase", "Tailwind"],
+    description: "A Firebase + Next.js Starter Pack",
   },
   {
     link: "https://github.com/acm-ucr/nextjs-hackpack",
     text: "Full Stack Web App",
     techs: ["Javascript", "Next.js", "Tailwind"],
+    description: "A Firebase + Next.js Starter Pack",
   },
   {
     link: "https://github.com/acm-ucr/arduino-hackpack",
     text: "Hardware",
     techs: ["Arduino", "C++"],
+    description: "A Firebase + Next.js Starter Pack",
   },
   {
     link: "https://github.com/acm-ucr/unity-hackpack",
     text: "Game Development",
     techs: ["Unity, C#"],
+    description: "A Firebase + Next.js Starter Pack",
   },
   {
     link: "https://github.com/acm-ucr/discord_python_hackpack",
     text: "Discord Bot",
     techs: ["Python"],
+    description: "A Firebase + Next.js Starter Pack",
   },
   {
     link: "https://github.com/acm-ucr/discord_python_hackpack",
     text: "Python Application",
     techs: ["Python"],
+    description: "A Firebase + Next.js Starter Pack",
   },
 ];
