@@ -6,7 +6,7 @@ import { FIELDS, ATTRIBUTES } from "@/data/form/Panelists.js";
 import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
-import { STATUSES } from "@/data/admin/Panelists";
+import { STATUSES } from "@/data/Statuses";
 
 const Panel = () => {
   const { data: session } = useSession();
