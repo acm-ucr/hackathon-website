@@ -7,8 +7,9 @@ import {
   SiCplusplus as CPlusPlus,
   SiMongodb as Mongodb,
 } from "@icons-pack/react-simple-icons";
+import { ReactNode } from "react";
 
-export const TECHSTACKS = {
+export const TECHSTACKS: Record<string, ReactNode> = {
   Javascript: <Javascript />,
   "Next.js": <Nextjs />,
   Firebase: <Firebase />,

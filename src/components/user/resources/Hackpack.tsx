@@ -2,7 +2,14 @@ import { TECHSTACKS } from "@/data/user/Hackpacks";
 import Link from "next/link";
 import { SiGithub as Github } from "@icons-pack/react-simple-icons";
 
-const Hackpack = ({ text, techs, link, description }) => {
+type props = {
+  text: string;
+  techs: string[];
+  link: string;
+  description: string;
+};
+
+const Hackpack = ({ text, techs, link, description }: props) => {
   return (
     <div className="rounded-xl bg-white p-3">
       <Link
