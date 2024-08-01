@@ -15,7 +15,7 @@ interface columns {
   enableColumnFilter: boolean;
   filterFn: string;
   searchable: boolean;
-  cell: (props: { getValue : () => any }) => React.JSX.Element;
+  cell: (props: { getValue: () => any }) => React.JSX.Element;
 }
 
 interface select {
@@ -56,7 +56,7 @@ export const COLUMNS: column[] = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: (props: { getValue : () => any }) => <div>{ props.getValue() }</div>,
+    cell: (props: { getValue: () => any }) => <div>{props.getValue()}</div>,
   },
   {
     accessorKey: "email",
@@ -65,7 +65,7 @@ export const COLUMNS: column[] = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: (props: { getValue : () => any }) => <div>{ props.getValue() }</div>,
+    cell: (props: { getValue: () => any }) => <div>{props.getValue()}</div>,
   },
   {
     accessorKey: "discord",
@@ -74,7 +74,7 @@ export const COLUMNS: column[] = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: (props: { getValue : () => any }) => <div>{ props.getValue() }</div>,
+    cell: (props: { getValue: () => any }) => <div>{props.getValue()}</div>,
   },
   generateStatus(STATUSES),
 ];
