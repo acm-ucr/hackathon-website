@@ -1,15 +1,13 @@
 import { toast, ToastType } from "react-hot-toast";
 
-const toastMap: Record<ToastType, (message: string | JSX.Element) => string> = {
+const toaster: Record<ToastType, (message: string) => string> = {
   success: toast.success,
   error: toast.error,
   loading: toast.loading,
-  blank: toast.custom,
-  custom: toast.custom,
 };
 
-const toaster = (message: string | JSX.Element, type: ToastType): string => {
-  return toastMap[type](message);
+const Toaster = (message: string, type: ToastType): string => {
+  return toaster[type](message);
 };
 
-export default toaster;
+export default Toaster;
