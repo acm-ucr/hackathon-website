@@ -2,24 +2,26 @@
 
 import { useState } from "react";
 import Form from "@/components/form/form/Form.jsx";
-import { FIELDS, ATTRIBUTES } from "@/data/form/Feedback.js";
+import { FIELDS, ATTRIBUTES } from "@/data/form/Ideas";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
 import { useSession } from "next-auth/react";
 
-const Feedback = () => {
+const Ideas = () => {
   const { data: session } = useSession();
-  const [feedback, setFeedback] = useState({
+  const [idea, setIdea] = useState({
     ...ATTRIBUTES,
+    name: session.user.name,
+    email: session.user.email,
     roles: session.user.roles,
-    form: "feedback",
+    form: "idea",
   });
 
-  const handleSubmit = (setLoading, setState) => {
+  const onSubmit = (setLoading, setState) => {
     api({
       method: "POST",
-      url: "/api/dashboard/feedback",
-      body: feedback,
+      url: "/api/teams/ideas",
+      body: idea,
     })
       .then(() => toaster(`Submitted successfully!`, "success"))
       .catch(() => toaster(`Internal Server Error`, "error"))
@@ -32,13 +34,13 @@ const Feedback = () => {
   return (
     <Form
       fields={FIELDS}
-      object={feedback}
-      setObject={setFeedback}
-      header="FEEDBACK APPLICATION"
-      onSubmit={handleSubmit}
+      object={idea}
+      setObject={setIdea}
+      header="TEAM IDEA APPLICATION"
+      onSubmit={onSubmit}
       bypass={true}
     />
   );
 };
 
-export default Feedback;
+export default Ideas;
