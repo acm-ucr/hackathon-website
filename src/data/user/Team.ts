@@ -1,9 +1,4 @@
-type Auth = {
-  POST: { participants: number[] };
-  GET: { participants: number[] };
-  PUT: { participants: number[] };
-  DELETE: { participants: number[] };
-};
+import { Auth } from "./types/types";
 
 export const AUTH: Auth = {
   POST: { participants: [1] },
