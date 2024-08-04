@@ -1,11 +1,7 @@
 import Link from "next/link";
 import { generateSelect, generateStatus } from "./Columns";
 import { ICONS } from "./Icons";
-export const STATUSES = {
-  1: "accepted",
-  0: "pending",
-  "-1": "rejected",
-};
+import { STATUSES } from "@/data/Statuses";
 
 export const TAGS = [
   {
@@ -32,7 +28,7 @@ export const COLUMNS = [
   {
     accessorKey: "teamid",
     header: "Team ID",
-    width: "w-2/12",
+    width: "w-3/12",
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -73,7 +69,7 @@ export const COLUMNS = [
   {
     accessorKey: "links",
     header: "Links",
-    width: "w-3/12",
+    width: "w-2/12",
     enableSorting: false,
     cell: ({ getValue }) => (
       <div>

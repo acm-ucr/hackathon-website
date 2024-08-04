@@ -1,13 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import Form from "@/components/form/form/Form.jsx";
+import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Committees";
 import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
-import { STATUSES } from "@/data/admin/Committees";
-
+import { STATUSES } from "@/data/Statuses";
 const Committee = () => {
   const { data: session } = useSession();
   const [committee, setCommittee] = useState({

@@ -50,7 +50,7 @@ const Page = ({ params, searchParams }) => {
     return (
       <ProtectedPage
         title={`Admin | ${capitalizeFirstLetter(params.type)}`}
-        restrictions={{ admins: 1 }}
+        restrictions={{ admins: [1] }}
       >
         {components[params.type]}
       </ProtectedPage>

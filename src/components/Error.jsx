@@ -1,17 +1,17 @@
 const Error = ({ code, error, message, dev }) => {
   return (
-    <div className="w-screen h-screen flex flex-col items-center justify-center fixed">
-      <p className="text-center text-6xl font-extrabold text-hackathon-blue-100 m-0">
+    <div className="fixed flex h-screen w-screen flex-col items-center justify-center">
+      <p className="m-0 text-center text-6xl font-extrabold text-hackathon-blue-100">
         {code}
       </p>
-      <p className="text-center text-lg md:text-2xl font-bold text-black m-0">
+      <p className="m-0 text-center text-lg font-bold text-black md:text-2xl">
         {error}
       </p>
-      <p className="text-center text-sm md:text-lg  text-hackathon-blue-200 m-0">
+      <p className="m-0 text-center text-sm text-hackathon-blue-200 md:text-lg">
         {message}
       </p>
       {dev && (
-        <p className="text-center text-sm md:text-lg text-hackathon-blue-200 m-0">
+        <p className="m-0 text-center text-sm text-hackathon-blue-200 md:text-lg">
           Developer Notes: {dev}
         </p>
       )}

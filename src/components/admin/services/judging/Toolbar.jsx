@@ -198,7 +198,7 @@ const Toolbar = ({
           text="add judges"
         />
       )}
-      <div className="flex items-center justify-between w-full">
+      <div className="flex w-full items-center justify-between">
         <div className="flex items-center">
           <form className="flex items-center pr-2" onSubmit={generate}>
             <Input
@@ -209,8 +209,9 @@ const Toolbar = ({
               maxLength={2}
               placeholder="ie. 5"
               clear={true}
+              classes="w-20"
             />
-            <p className="mb-0 font-semibold mx-2"># of rotations</p>
+            <p className="mx-2 mb-0 font-semibold"># of rotations</p>
             <Button color="green" text="generate" onClick={generate} />
           </form>
           <Button

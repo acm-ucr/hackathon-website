@@ -1,12 +1,12 @@
 import { flexRender } from "@tanstack/react-table";
 import Body from "./Body";
-import { FaArrowRightArrowLeft } from "react-icons/fa6";
 import {
-  FaChevronLeft,
-  FaChevronRight,
-  FaSortAlphaDown,
-  FaSortAlphaUp,
-} from "react-icons/fa";
+  ChevronLeft,
+  ChevronRight,
+  SortAsc,
+  SortDesc,
+  ArrowRightLeft,
+} from "lucide-react";
 import Loading from "@/components/Loading";
 import Link from "next/link";
 
@@ -27,9 +27,9 @@ const Table = ({
 
   return (
     <>
-      <div className="bg-white h-[75vh] overflow-y-scroll flex flex-col justify-between">
+      <div className="flex h-[75vh] flex-col justify-between overflow-y-scroll bg-white">
         <div className="h-full">
-          <div className="text-white bg-hackathon-blue-200 rounded-t-lg">
+          <div className="rounded-t-lg bg-hackathon-blue-200 text-white">
             {getHeaderGroups().map(({ headers, id }) => (
               <div key={id} className="flex items-center px-3 py-2">
                 {headers.map(({ id, column, getContext }) => (
@@ -40,8 +40,8 @@ const Table = ({
                   >
                     {flexRender(column.columnDef.header, getContext())}
                     {column.getCanSort() && (
-                      <FaArrowRightArrowLeft
-                        className={`mx-2 rotate-90 hover:cursor-pointer hover:opacity-50 text-hackathon-gray-200 ${
+                      <ArrowRightLeft
+                        className={`mx-2 rotate-90 text-hackathon-gray-200 hover:cursor-pointer hover:opacity-50 ${
                           column.getIsSorted() && "hidden"
                         }`}
                         data-cy={`${column.id}-sorting`}
@@ -49,17 +49,17 @@ const Table = ({
                       />
                     )}
                     {column.getIsSorted() === "asc" && (
-                      <FaSortAlphaDown
+                      <SortDesc
                         onClick={column.getToggleSortingHandler()}
                         data-cy={`${column.id}-sorting-desc`}
-                        className="mx-2 hover:cursor-pointer hover:opacity-50 text-white"
+                        className="mx-2 text-white hover:cursor-pointer hover:opacity-50"
                       />
                     )}
                     {column.getIsSorted() === "desc" && (
-                      <FaSortAlphaUp
+                      <SortAsc
                         onClick={column.getToggleSortingHandler()}
                         data-cy={`${column.columnDef.header}-sorting-asc`}
-                        className="mx-2 hover:cursor-pointer hover:opacity-50 text-white"
+                        className="mx-2 text-white hover:cursor-pointer hover:opacity-50"
                       />
                     )}
                   </div>
@@ -75,7 +75,7 @@ const Table = ({
             ) : (
               <>
                 {getRowModel().rows.length === 0 && (
-                  <p className="w-full text-center py-8 bg-white">{empty}</p>
+                  <p className="w-full bg-white py-8 text-center">{empty}</p>
                 )}
                 {getRowModel().rows.map(
                   ({ id, getVisibleCells, original, getIsSelected }) => (
@@ -93,7 +93,7 @@ const Table = ({
           </>
         </div>
       </div>
-      <div className="flex justify-end items-center p-4 text-lg bg-white w-full rounded-b-lg">
+      <div className="flex w-full items-center justify-end rounded-b-lg bg-white p-4 text-lg">
         <div className="mx-2">{getRowModel().rows.length} row(s)</div>
         <Link
           href={`/admin/${page}?direction=prev&index=${
@@ -103,7 +103,7 @@ const Table = ({
             index <= 1 && "pointer-events-none text-hackathon-gray-200"
           }`}
         >
-          <FaChevronLeft />
+          <ChevronLeft />
         </Link>
         <div>
           Page {index} of {Math.ceil(total / size)}
@@ -117,7 +117,7 @@ const Table = ({
             "pointer-events-none text-hackathon-gray-200"
           }`}
         >
-          <FaChevronRight />
+          <ChevronRight />
         </Link>
       </div>
     </>
