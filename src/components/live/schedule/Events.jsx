@@ -8,7 +8,7 @@ const Events = ({ events, totalDays }) => {
           timeZone: "America/Los_Angeles",
           weekday: "long",
         })
-      : "Monday"
+      : "Monday",
   );
 
   return (

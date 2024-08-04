@@ -10,18 +10,18 @@ describe("Filter", () => {
 
   it("change colors", () => {
     cy.mount(
-      <Filter {...initialProps} isActive={false} setFilters={() => {}} />
+      <Filter {...initialProps} isActive={false} setFilters={() => {}} />,
     );
     cy.get('[data-cy="Active-filter"]').should(
       "have.class",
-      "text-hackathon-blue-100 bg-white"
+      "text-hackathon-blue-100 bg-white",
     );
     cy.mount(
-      <Filter {...initialProps} isActive={true} setFilters={() => {}} />
+      <Filter {...initialProps} isActive={true} setFilters={() => {}} />,
     );
     cy.get('[data-cy="Active-filter"]').should(
       "have.class",
-      "text-white bg-hackathon-blue-100"
+      "text-white bg-hackathon-blue-100",
     );
   });
 
@@ -34,18 +34,18 @@ describe("Filter", () => {
 
   it("TiPlus rotation", () => {
     cy.mount(
-      <Filter {...initialProps} isActive={false} setFilters={() => {}} />
+      <Filter {...initialProps} isActive={false} setFilters={() => {}} />,
     );
     cy.get('[data-cy="Active-filter"] .duration-300').should(
       "not.have.class",
-      "-rotate-45"
+      "-rotate-45",
     );
     cy.mount(
-      <Filter {...initialProps} isActive={true} setFilters={() => {}} />
+      <Filter {...initialProps} isActive={true} setFilters={() => {}} />,
     );
     cy.get('[data-cy="Active-filter"] .duration-300').should(
       "have.class",
-      "-rotate-45"
+      "-rotate-45",
     );
   });
 });

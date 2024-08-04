@@ -30,7 +30,7 @@ const Questions = ({
           value.required &&
           (!object[key] ||
             object[key] === "" ||
-            object[key].includes("Invalid"))
+            object[key].includes("Invalid")),
       )
     ) {
       toaster("Please complete all required fields!", "error");
@@ -40,7 +40,7 @@ const Questions = ({
     if (
       fields.requirements &&
       fields.requirements.options.some(
-        (requirement) => !object.requirements.includes(requirement)
+        (requirement) => !object.requirements.includes(requirement),
       )
     ) {
       toaster("Please agree to all the terms!", "error");
@@ -123,7 +123,7 @@ const Questions = ({
                         ...object,
                         [field.field]: object[field.field].includes(option)
                           ? object[field.field].filter(
-                              (item) => item !== option
+                              (item) => item !== option,
                             )
                           : [...object[field.field], option],
                       })

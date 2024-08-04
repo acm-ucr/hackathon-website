@@ -13,7 +13,10 @@ describe("Interests Actions", () => {
 
   it("Confirm First 5 Entries", () => {
     interests.forEach((interest) =>
-      cy.get(`[data-cy="${interest.uid}"]`).find('[data-cy="checkbox"]').click()
+      cy
+        .get(`[data-cy="${interest.uid}"]`)
+        .find('[data-cy="checkbox"]')
+        .click(),
     );
 
     cy.action({
@@ -25,13 +28,16 @@ describe("Interests Actions", () => {
       cy
         .get(`[data-cy="${interest.uid}"]`)
         .find('[data-cy="accepted-tag"]')
-        .should("exist")
+        .should("exist"),
     );
   });
 
   it("Delete First 5 Entries", () => {
     interests.forEach((interest) =>
-      cy.get(`[data-cy="${interest.uid}"]`).find('[data-cy="checkbox"]').click()
+      cy
+        .get(`[data-cy="${interest.uid}"]`)
+        .find('[data-cy="checkbox"]')
+        .click(),
     );
 
     cy.delete({
@@ -39,7 +45,7 @@ describe("Interests Actions", () => {
     });
 
     interests.forEach((interest) =>
-      cy.get(`[data-cy="${interest.uid}"]`).should("not.exist")
+      cy.get(`[data-cy="${interest.uid}"]`).should("not.exist"),
     );
   });
 });

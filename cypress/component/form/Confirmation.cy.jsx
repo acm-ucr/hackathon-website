@@ -9,7 +9,7 @@ describe("Confirmation", () => {
     cy.get('[data-cy="confirmation-message"]').should("exist");
     cy.get('[data-cy="confirmation-message"]').should(
       "have.text",
-      expectedText
+      expectedText,
     );
   });
 });
