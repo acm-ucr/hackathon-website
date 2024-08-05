@@ -6,18 +6,14 @@ import Tile from "./Tile";
 import { QrCode, ParkingCircle } from "lucide-react";
 import Rooms from "./Rooms";
 import Packing from "./Packing";
-import Hackpacks from "./Hackpacks";
 import BulletList from "./BulletList";
-import { useState } from "react";
 import BulletPoints from "./BulletPoints";
 import { JUDGING } from "@/data/user/Judging";
 import { RULES } from "@/data/user/Rules";
-import Collapse from "./Collapse";
+import Resources from "./Resources";
 
 const Dashboard = () => {
   const { data: session } = useSession();
-  const [expand, setExpand] = useState("Rules");
-
   return (
     <div className="flex h-full flex-col gap-3 py-4 font-poppins">
       <Header email={session.user.email} name={session.user.name} />
@@ -43,9 +39,7 @@ const Dashboard = () => {
           <BulletList text="Judging">
             <BulletPoints list={JUDGING} />
           </BulletList>
-          <Collapse setExpand={setExpand} expand={expand} text="Hackpacks">
-            <Hackpacks />
-          </Collapse>
+          <Resources />
         </div>
       </div>
     </div>

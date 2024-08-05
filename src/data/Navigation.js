@@ -17,6 +17,7 @@ import {
   CircleHelp,
   Presentation,
   Timer,
+  Newspaper,
 } from "lucide-react";
 
 const iconStyle = "mr-2";
@@ -154,6 +155,11 @@ export const TABS = {
           name: "team",
           link: "/user/team",
           icon: <Users className={iconStyle} />,
+        },
+        {
+          name: "resources",
+          link: "/user/resources",
+          icon: <Newspaper className={iconStyle} />,
         },
         {
           name: "find a team",
