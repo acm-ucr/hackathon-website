@@ -40,8 +40,6 @@ const Details = ({ team }) => {
   };
 
   const handleSave = async () => {
-    console.log(details);
-
     if (
       !(
         details.links.github === "" ||
