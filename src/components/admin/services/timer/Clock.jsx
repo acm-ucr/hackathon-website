@@ -63,8 +63,6 @@ const Timer = ({ onRemove }) => {
     return () => clearInterval(id);
   }, [play, total]);
 
-  console.log(total, time);
-
   return (
     <div className="mb-4 flex scroll-m-4 flex-col items-center justify-between rounded-xl bg-white p-4">
       <div className="flex w-full items-center justify-between">
