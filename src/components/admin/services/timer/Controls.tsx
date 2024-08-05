@@ -1,6 +1,12 @@
 import { Trash2, Pen, Check } from "lucide-react";
 
-const Controls = ({ edit, setEdit, onRemove }) => {
+type props = {
+  edit: boolean;
+  setEdit: (value: boolean) => void;
+  onRemove: () => void;
+};
+
+const Controls = ({ edit, setEdit, onRemove }: props) => {
   return (
     <div className="flex gap-4">
       {edit && (

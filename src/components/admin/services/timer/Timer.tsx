@@ -4,8 +4,12 @@ import { v4 as uuidv4 } from "uuid";
 import Title from "../../Title";
 import { Button } from "@/components/ui/button";
 
+type TimerType = {
+  id: string;
+};
+
 const Timer = () => {
-  const [timers, setTimers] = useState([]);
+  const [timers, setTimers] = useState<TimerType[]>([]);
 
   const addTimer = () => {
     setTimers([
@@ -20,7 +24,7 @@ const Timer = () => {
     setTimers([]);
   };
 
-  const deleteTimer = (id) => {
+  const deleteTimer = (id: string) => {
     setTimers(timers.filter((timer) => timer.id !== id));
   };
 
