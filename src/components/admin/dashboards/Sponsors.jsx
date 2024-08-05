@@ -1,10 +1,11 @@
 "use client";
-import { STATUSES, TAGS, COLUMNS, DROPDOWN } from "@/data/admin/Sponsors.js";
+import { TAGS, COLUMNS, DROPDOWN } from "@/data/admin/Sponsors.js";
+import { STATUSES } from "@/data/Statuses";
 import Table from "./dashboard/Dashboard";
 
 const Sponsors = ({ searchParams }) => {
   return (
-    <div className="h-full font-poppins flex flex-col py-4 gap-3">
+    <div className="flex h-full flex-col gap-3 py-4 font-poppins">
       <Table
         searchParams={searchParams}
         title="Sponsors"

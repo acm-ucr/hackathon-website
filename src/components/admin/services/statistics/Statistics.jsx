@@ -18,7 +18,7 @@ const Statistics = () => {
   }, []);
 
   return (
-    <div className="h-full font-poppins flex flex-col py-4">
+    <div className="flex h-full flex-col py-4 font-poppins">
       <Title title="Statistics" />
       {!counts ? (
         <Loading />

@@ -2,8 +2,8 @@ import BulletPoints from "@/components/user/BulletPoints";
 
 describe("BulletPoints", () => {
   it("BulletPoints", () => {
-    const classes = "flex flex-col items-center justify-center mt-2";
-    const listClass = "list-disc w-10/12";
+    const classes = "mt-2 flex flex-col items-center justify-center";
+    const listClass = "w-10/12 list-disc";
     const list = ["first item", "second item"];
 
     cy.mount(<BulletPoints list={list} />);

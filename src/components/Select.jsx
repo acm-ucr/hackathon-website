@@ -38,8 +38,8 @@ const Select = ({
   const handleSearch = (search) => {
     setFiltered(
       items.filter((item) =>
-        item.toLowerCase().includes(search.toLowerCase() ?? [])
-      )
+        item.toLowerCase().includes(search.toLowerCase() ?? []),
+      ),
     );
   };
 
@@ -63,12 +63,12 @@ const Select = ({
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-[750px] p-0 text-lg ">
+        <PopoverContent className="w-[750px] p-0 text-lg">
           <Command shouldFilter={false}>
             <CommandInput
               onValueChange={handleSearch}
               placeholder="search"
-              className="text-lg "
+              className="text-lg"
             />
             <CommandEmpty>No Options Available.</CommandEmpty>
             <CommandList ref={parent}>

@@ -25,7 +25,7 @@ const Details = ({ team }) => {
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(
-      `${process.env.NEXT_PUBLIC_URL}user/join/${details.id}`
+      `${process.env.NEXT_PUBLIC_URL}user/join/${details.id}`,
     );
     toaster("Successfully copied join link!", "success");
   };
@@ -40,8 +40,6 @@ const Details = ({ team }) => {
   };
 
   const handleSave = async () => {
-    console.log(details);
-
     if (
       !(
         details.links.github === "" ||
@@ -91,11 +89,11 @@ const Details = ({ team }) => {
             <Input id="team" placeholder={details.id} disabled />
             <Copy
               onClick={handleCopy}
-              className="hover:opacity-50 hover:cursor-pointer"
+              className="hover:cursor-pointer hover:opacity-50"
             />
             <Link
               onClick={handleCopyLink}
-              className="hover:opacity-50 hover:cursor-pointer"
+              className="hover:cursor-pointer hover:opacity-50"
             />
           </div>
         </div>
@@ -175,7 +173,7 @@ const Details = ({ team }) => {
                 <p className="text-sm font-medium leading-none">
                   {member.name} - {member.discord}
                 </p>
-                <p className="text-sm text-muted-foreground"></p>
+                <p className="text-muted-foreground text-sm"></p>
               </div>
             </div>
           ))}

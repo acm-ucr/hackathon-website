@@ -19,6 +19,7 @@ import Volunteers from "@/components/admin/dashboards/Volunteers";
 import Leads from "@/components/admin/dashboards/Leads";
 import Fault from "@/utils/error";
 import Settings from "@/components/admin/services/settings/Settings";
+import Timer from "@/components/admin/services/timer/Timer";
 
 const Page = ({ params, searchParams }) => {
   const components = {
@@ -40,6 +41,7 @@ const Page = ({ params, searchParams }) => {
     teams: <Teams searchParams={searchParams} />,
     volunteers: <Volunteers searchParams={searchParams} />,
     leads: <Leads searchParams={searchParams} />,
+    timer: <Timer searchParams={searchParams} />,
   };
 
   const capitalizeFirstLetter = (word) => {
@@ -59,7 +61,7 @@ const Page = ({ params, searchParams }) => {
     throw new Fault(
       404,
       "Page Not Found",
-      "The page you are looking for does not seem to exist"
+      "The page you are looking for does not seem to exist",
     );
   }
 };
