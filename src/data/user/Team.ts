@@ -1,4 +1,6 @@
-export const AUTH = {
+import { Auth } from "./types/types";
+
+export const AUTH: Auth = {
   POST: { participants: [1] },
   GET: {
     participants: [1],
