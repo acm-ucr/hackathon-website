@@ -1,56 +1,22 @@
-import { Play, Pause, Undo2, Trash2, Pen, Check, X } from "lucide-react";
-import Tooltip from "./Tooltip";
+import { Trash2, Pen, Check } from "lucide-react";
 
-const Controls = ({
-  isEditMode,
-  paused,
-  isComplete,
-  resumeTimer,
-  pauseTimer,
-  openEditMode,
-  resetTimer,
-  onRemove,
-  saveChanges,
-  discardChanges,
-  collapsed,
-}) => (
-  <div className="flex items-center *:px-4">
-    {!isEditMode ? (
-      <>
-        {paused || isComplete ? (
-          <Tooltip text="Resume">
-            <Play onClick={resumeTimer} className="mx-1 text-2xl" />
-          </Tooltip>
-        ) : (
-          <Tooltip text="Pause">
-            <Pause onClick={pauseTimer} className="mx-1 text-2xl" />
-          </Tooltip>
-        )}
-        {!collapsed && (
-          <>
-            <Tooltip text="Edit">
-              <Pen onClick={openEditMode} className="mx-1 text-2xl" />
-            </Tooltip>
-            <Tooltip text="Reset">
-              <Undo2 onClick={resetTimer} className="mx-1 text-2xl" />
-            </Tooltip>
-          </>
-        )}
-        <Tooltip text="Delete">
-          <Trash2 onClick={onRemove} className="mx-1 text-2xl" />
-        </Tooltip>
-      </>
-    ) : (
-      <>
-        <Tooltip text="Save">
-          <Check onClick={saveChanges} className={`mx-1 text-2xl`} />
-        </Tooltip>
-        <Tooltip text="Discard">
-          <X onClick={discardChanges} className="mx-1 text-2xl" />
-        </Tooltip>
-      </>
-    )}
-  </div>
-);
+const Controls = ({ edit, setEdit, onRemove }) => {
+  return (
+    <div className="flex gap-4">
+      {edit && (
+        <>
+          <Check onClick={() => setEdit(false)} />
+          <Trash2 onClick={onRemove} />
+        </>
+      )}
 
+      {!edit && (
+        <>
+          <Pen onClick={() => setEdit(true)} />
+          <Trash2 onClick={onRemove} />
+        </>
+      )}
+    </div>
+  );
+};
 export default Controls;
