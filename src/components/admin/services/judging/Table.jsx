@@ -13,6 +13,9 @@ const Table = ({ data }) => {
     count: team?.length,
     getScrollElement: () => ref.current,
     estimateSize: () => 100,
+    measureElement: (el) => {
+      if (el.clientHeight > 100) return el.clientHeight;
+    },
     lanes: 4,
     overscan: 4,
   });
@@ -37,7 +40,7 @@ const Table = ({ data }) => {
                 key={`column: ${index}`}
                 className="flex items-start p-2"
                 ref={measureElement}
-                data-index={virtualItem.index}
+                data-index={virtualItem.index + index}
               >
                 <div className="w-full rounded-xl bg-white p-3">
                   <div className="flex items-center justify-between">
