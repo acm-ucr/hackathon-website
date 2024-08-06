@@ -1,14 +1,19 @@
 "use client";
-import { TAGS, COLUMNS, DROPDOWN } from "@/data/admin/Volunteers";
+import { TAGS, COLUMNS, DROPDOWN } from "@/data/admin/Leads";
 import { STATUSES } from "@/data/Statuses";
 import Table from "./dashboard/Dashboard";
+import { SearchParams } from "@/types/dashboard";
 
-const Volunteers = ({ searchParams }) => {
+type props = {
+  searchParams: SearchParams;
+};
+
+const Leads = ({ searchParams }: props) => {
   return (
     <div className="flex h-full flex-col gap-3 py-4 font-poppins">
       <Table
         searchParams={searchParams}
-        title="Volunteers"
+        title="Leads"
         columns={COLUMNS}
         tags={TAGS}
         statuses={STATUSES}
@@ -17,4 +22,4 @@ const Volunteers = ({ searchParams }) => {
     </div>
   );
 };
-export default Volunteers;
+export default Leads;
