@@ -23,7 +23,7 @@ const Table = ({ data }) => {
     <Loading />
   ) : (
     <div ref={ref} className="h-full overflow-y-scroll">
-      {getVirtualItems().map((virtualItem, index) => {
+      {getVirtualItems().map((virtualItem) => {
         if (virtualItem.index % 4) return null;
         const row = team.slice(virtualItem.index, virtualItem.index + 4);
         return (

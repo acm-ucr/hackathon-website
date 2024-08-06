@@ -19,11 +19,11 @@ const generateDummyIdeas = (count) => {
 const Find = () => {
   const ideas = useMemo(() => generateDummyIdeas(75), []);
 
-  const containerRef = useRef(null);
+  const ref = useRef(null);
 
   const { measureElement, getVirtualItems } = useVirtualizer({
     count: ideas.length,
-    getScrollElement: () => containerRef.current,
+    getScrollElement: () => ref.current,
     estimateSize: () => 30,
     measureElement: (el) => {
       if (el.clientHeight > 300) return 70;
@@ -38,31 +38,31 @@ const Find = () => {
         <Title title="Find a Team" />
       </div>
       <Toolbar />
-      <div ref={containerRef} className="relative h-full overflow-y-scroll">
+      <div ref={ref} className="h-full overflow-y-scroll">
         {getVirtualItems().map(({ index, size, start }) => {
           if (index % 4) return null;
           const row = ideas.slice(index, index + 4);
           return (
             <div
-              key={`row: ${index}`}
+              key={`row: ${Math.floor(index / 4)}`}
               className="grid grid-cols-4"
               style={{
                 height: `${size}px`,
                 transform: `translateY(${start}px)`,
               }}
             >
-              {row.map((group, i) => (
+              {row.map(({ title, technologies, description, contact }, i) => (
                 <div
-                  key={`column: ${index}`}
+                  key={`column: ${i}`}
                   ref={measureElement}
                   data-index={index + i}
                   className="flex items-start p-2"
                 >
                   <Idea
-                    title={group.title}
-                    technologies={group.technologies}
-                    description={group.description}
-                    contact={group.contact}
+                    title={title}
+                    technologies={technologies}
+                    description={description}
+                    contact={contact}
                   />
                 </div>
               ))}
