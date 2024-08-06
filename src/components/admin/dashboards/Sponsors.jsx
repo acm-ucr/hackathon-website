@@ -1,5 +1,5 @@
 "use client";
-import { TAGS, COLUMNS, DROPDOWN } from "@/data/admin/Sponsors.js";
+import { TAGS, COLUMNS, DROPDOWN } from "@/data/admin/Sponsors";
 import { STATUSES } from "@/data/Statuses";
 import Table from "./dashboard/Dashboard";
 
