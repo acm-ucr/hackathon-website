@@ -12,25 +12,24 @@ const Table = ({ data }) => {
   const { measureElement, getVirtualItems } = useVirtualizer({
     count: team?.length,
     getScrollElement: () => ref.current,
-    estimateSize: () => 100,
+    estimateSize: () => 30,
     measureElement: (el) => {
-      if (el.clientHeight > 100) return el.clientHeight;
-      return 100;
+      if (el.clientHeight > 300) return 80;
+      else if (el.clientHeight > 200) return 60;
+      else return 30;
     },
-    lanes: 4,
-    overscan: 4,
   });
   return team === null ? (
     <Loading />
   ) : (
-    <div ref={ref} className="relative h-full overflow-y-scroll">
+    <div ref={ref} className="h-full overflow-y-scroll">
       {getVirtualItems().map((virtualItem, index) => {
         if (virtualItem.index % 4) return null;
         const row = team.slice(virtualItem.index, virtualItem.index + 4);
         return (
           <div
             key={`row: ${Math.floor(virtualItem.index / 4)}`}
-            className="absolute left-0 top-0 grid w-full grid-cols-4"
+            className="grid grid-cols-4"
             style={{
               height: `${virtualItem.size}px`,
               transform: `translateY(${virtualItem.start}px)`,
@@ -74,7 +73,7 @@ const Table = ({ data }) => {
                         {judges.map(({ name, affiliation }, i) => (
                           <Tag
                             classes="mx-1"
-                            color={COLORS[affiliation.toLowerCase()]}
+                            color={COLORS[affiliation]}
                             key={i}
                             text={name}
                           />

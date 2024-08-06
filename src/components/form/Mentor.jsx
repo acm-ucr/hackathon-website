@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import Form from "@/components/form/form/Form";
-import { FIELDS, ATTRIBUTES } from "@/data/form/Mentors";
+import { FIELDS, ATTRIBUTES } from "@/data/form/Mentors.js";
 import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
-import { STATUSES } from "@/data/admin/Mentors";
+import { STATUSES } from "@/data/Statuses";
 
 const Mentor = () => {
   const { data: session } = useSession();

@@ -59,6 +59,8 @@ export const COLUMNS = [
           name,
         }));
 
+        console.log(photos);
+
         const zip = new JSZip();
         const folder = zip.folder();
 

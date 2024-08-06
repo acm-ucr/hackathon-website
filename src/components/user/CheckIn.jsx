@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image from "next/image.js";
 import Title from "../admin/Title";
 import { QRCodeSVG } from "qrcode.react";
 import { useState, useEffect } from "react";

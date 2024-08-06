@@ -1,5 +1,5 @@
 "use client";
-import { TAGS, COLUMNS } from "@/data/admin/Teams";
+import { TAGS, COLUMNS } from "@/data/admin/Teams.js";
 import { STATUSES } from "@/data/Statuses";
 import Table from "./dashboard/Dashboard";
 
