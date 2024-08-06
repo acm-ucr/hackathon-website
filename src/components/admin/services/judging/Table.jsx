@@ -15,6 +15,7 @@ const Table = ({ data }) => {
     estimateSize: () => 100,
     measureElement: (el) => {
       if (el.clientHeight > 100) return el.clientHeight;
+      return 100;
     },
     lanes: 4,
     overscan: 4,
