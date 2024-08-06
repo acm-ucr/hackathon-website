@@ -3,7 +3,45 @@ import { GRADES, GENDERS, SOURCES } from "./Information";
 import { SCHOOLS } from "./Schools";
 import data from "@/data/Config";
 
-export const FIELDS = {
+type FieldOption = {
+  input: string;
+  width: number;
+  texts?: string[];
+  name?: string;
+  type?: string;
+  title?: string;
+  maxLength?: number;
+  editable?: boolean;
+  required?: boolean;
+  placeholder?: string;
+  options?: string[];
+  field?: string;
+  searchable?: boolean;
+  text?: string;
+  rows?: number;
+  types?: string[];
+  maxSize?: [number, string];
+};
+
+type Feilds = {
+  [key: string]: FieldOption;
+};
+
+type Attributes = {
+  name: string;
+  email: string;
+  phone: string;
+  major: string;
+  age: string;
+  school: string;
+  grade: string;
+  gender: string;
+  resume: string;
+  requirements: string[];
+  priorHackathons: string[];
+};
+
+export const FIELDS: Feilds = {
   description: {
     input: "description",
     width: 12,
@@ -174,7 +212,7 @@ export const FIELDS = {
   },
 };
 
-export const ATTRIBUTES = {
+export const ATTRIBUTES: Attributes = {
   name: "",
   email: "",
   phone: "",
