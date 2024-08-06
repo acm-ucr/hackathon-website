@@ -4,11 +4,16 @@ import { generateSelect, generateStatus } from "./Columns";
 import { STATUSES } from "@/data/Statuses";
 import { ColumnDef } from "@tanstack/react-table";
 
-type Person = {
+type Mentor = {
   name: string;
   email: string;
   discord: string;
-  status: string | number;
+  availability: string[];
+  response: string;
+};
+
+type cellProp = {
+  getValue: () => string;
 };
 
 type tags = {
@@ -19,10 +24,6 @@ type tags = {
 type objectProp = {
   availability: string[];
   response: string;
-};
-
-type extendedColumnDef<TData, TValue> = ColumnDef<TData, TValue> & {
-  width: string;
 };
 
 export const TAGS: tags[] = [
@@ -36,31 +37,31 @@ export const TAGS: tags[] = [
   },
 ];
 
-export const COLUMNS: extendedColumnDef<Person, string>[] = [
+export const COLUMNS: ColumnDef<Mentor, string>[] = [
   generateSelect(),
   {
     accessorKey: "name",
     header: "Name",
-    width: "w-3/12",
+    meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props: { getValue: () => string }) => <div>{props.getValue()}</div>,
+    cell: (props: cellProp) => <div>{props.getValue()}</div>,
   },
   {
     accessorKey: "email",
     header: "Email",
-    width: "w-4/12",
+    meta: { width: "w-4/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props: { getValue: () => string }) => <div>{props.getValue()}</div>,
+    cell: (props: cellProp) => <div>{props.getValue()}</div>,
   },
   {
     accessorKey: "discord",
     header: "Discord",
-    width: "w-3/12",
+    meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props: { getValue: () => string }) => <div>{props.getValue()}</div>,
+    cell: (props: cellProp) => <div>{props.getValue()}</div>,
   },
   generateStatus(STATUSES),
 ];
