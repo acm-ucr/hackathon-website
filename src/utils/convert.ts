@@ -1,6 +1,6 @@
 import Compressor from "compressorjs";
 
-export const readFileAsBase64 = (file) => {
+export const readFileAsBase64 = (file: File) => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -9,7 +9,7 @@ export const readFileAsBase64 = (file) => {
   });
 };
 
-export const compress = (file) => {
+export const compress = (file: File) => {
   if (file.type.split("/")[0] !== "image") return file;
 
   return new Promise((resolve, reject) => {

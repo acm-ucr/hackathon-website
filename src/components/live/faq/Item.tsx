@@ -2,7 +2,12 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
-const Item = ({ title, children }) => {
+type props = {
+  title: string;
+  children: React.ReactNode;
+};
+
+const Item = ({ title, children }: props) => {
   const [state, setState] = useState(false);
   return (
     <div>

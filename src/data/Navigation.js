@@ -20,7 +20,7 @@ import {
   Newspaper,
 } from "lucide-react";
 
-const iconStyle = "mr-2";
+const iconStyle = "mr-2 w-4 h-4";
 
 export const TABS = {
   admin: {

@@ -1,5 +1,9 @@
 class Fault extends Error {
-  constructor(code, name, message, dev) {
+  name: string;
+  code: number;
+  dev?: string;
+
+  constructor(code: number, name: string, message: string, dev: string) {
     super(message);
     this.name = name;
     this.code = code;

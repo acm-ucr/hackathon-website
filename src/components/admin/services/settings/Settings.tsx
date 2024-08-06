@@ -6,7 +6,7 @@ import toaster from "@/utils/toaster";
 
 const Settings = () => {
   const syncStatsWithDatabase = () => {
-    toaster("Syncing Stats...", "info");
+    toaster("Syncing Stats...", "loading");
     api({
       method: "GET",
       url: "/api/settings",

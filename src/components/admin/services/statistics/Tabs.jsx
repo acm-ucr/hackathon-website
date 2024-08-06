@@ -1,6 +1,6 @@
 import Tab from "./Tab";
 
-const Tabs = ({ counts, events }) => {
+const Tabs = ({ events }) => {
   return (
     <>
       <div className="mt-3 grid w-full grid-cols-1 gap-4 p-4 md:grid-cols-4">
