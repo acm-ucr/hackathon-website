@@ -1,4 +1,4 @@
-export const save = (filename, content) => {
+export const save = (filename: string, content: string) => {
   const element = document.createElement("a");
   element.setAttribute("href", content);
   element.setAttribute("download", filename);
@@ -8,7 +8,7 @@ export const save = (filename, content) => {
   document.body.removeChild(element);
 };
 
-export const download = async (src, file) => {
+export const download = async (src: string, file: string) => {
   const result = await fetch(src, {
     method: "GET",
     headers: {},
