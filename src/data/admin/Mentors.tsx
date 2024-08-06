@@ -11,12 +11,21 @@ type Person = {
   status: string | number;
 };
 
-interface tagsDef {
+type tags = {
   text: string;
   value: number;
-}
+};
 
-export const TAGS: tagsDef[] = [
+type objectProp = {
+  availability: string[];
+  response: string;
+};
+
+type extendedColumnDef<TData, TValue> = ColumnDef<TData, TValue> & {
+  width: string;
+};
+
+export const TAGS: tags[] = [
   {
     text: "confirm",
     value: 1,
@@ -27,12 +36,12 @@ export const TAGS: tagsDef[] = [
   },
 ];
 
-export const COLUMNS: ColumnDef<Person, string>[] = [
+export const COLUMNS: extendedColumnDef<Person, string>[] = [
   generateSelect(),
   {
     accessorKey: "name",
     header: "Name",
-    // width: "w-3/12",
+    width: "w-3/12",
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: (props: { getValue: () => string }) => <div>{props.getValue()}</div>,
@@ -40,7 +49,7 @@ export const COLUMNS: ColumnDef<Person, string>[] = [
   {
     accessorKey: "email",
     header: "Email",
-    // width: "w-4/12",
+    width: "w-4/12",
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: (props: { getValue: () => string }) => <div>{props.getValue()}</div>,
@@ -48,7 +57,7 @@ export const COLUMNS: ColumnDef<Person, string>[] = [
   {
     accessorKey: "discord",
     header: "Discord",
-    // width: "w-3/12",
+    width: "w-3/12",
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: (props: { getValue: () => string }) => <div>{props.getValue()}</div>,
@@ -56,11 +65,7 @@ export const COLUMNS: ColumnDef<Person, string>[] = [
   generateStatus(STATUSES),
 ];
 
-export const DROPDOWN = ({
-  object,
-}: {
-  object: { availability: string[]; response: string };
-}) => {
+export const DROPDOWN = ({ object }: { object: objectProp }) => {
   return (
     <>
       <div className="flex justify-center">
