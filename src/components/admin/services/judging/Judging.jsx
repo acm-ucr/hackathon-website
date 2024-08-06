@@ -4,10 +4,28 @@ import Title from "../../Title";
 import Table from "./Table";
 import Toolbar from "./Toolbar";
 
+function generateArray() {
+  const objectsArray = [];
+  const charSet =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:',.<>?/";
+
+  for (let i = 0; i < 1000; i++) {
+    const charIndex = i % charSet.length;
+    objectsArray.push({
+      hidden: false,
+      name: `${charSet[charIndex]}Name${i + 1}`,
+      members: "stream brat",
+      rounds: [],
+    });
+  }
+
+  return objectsArray;
+}
+
 const Judging = () => {
-  const [teams, setTeams] = useState(null);
+  const [teams, setTeams] = useState(generateArray());
   const [filters, setFilters] = useState(teams);
-  const [judges, setJudges] = useState(null);
+  const [judges, setJudges] = useState([{ name: "helen" }]);
   const [view, setView] = useState(false);
 
   return (
