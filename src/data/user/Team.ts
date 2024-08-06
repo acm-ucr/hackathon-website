@@ -1,4 +1,4 @@
-import { Auth } from "./types/types";
+import { Auth } from "@/types/types";
 
 export const AUTH: Auth = {
   POST: { participants: [1] },
