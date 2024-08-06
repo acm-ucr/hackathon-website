@@ -6,7 +6,7 @@ const FAQ = () => {
     <div className="flex h-full w-full flex-col items-center">
       <div className="flex w-8/12 flex-col overflow-hidden">
         {QUESTIONS.map((faq, index) => (
-          <Item key={index} index={index} title={faq.question}>
+          <Item key={index} title={faq.question}>
             {faq.answer}
           </Item>
         ))}
