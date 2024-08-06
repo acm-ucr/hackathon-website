@@ -2,8 +2,13 @@
 import { TAGS, COLUMNS, DROPDOWN } from "@/data/admin/Committees";
 import { STATUSES } from "@/data/Statuses";
 import Table from "./dashboard/Dashboard";
+import { SearchParams } from "@/types/dashboard";
 
-const Committee = ({ searchParams }) => {
+type props = {
+  searchParams: SearchParams;
+};
+
+const Committee = ({ searchParams }: props) => {
   return (
     <div className="flex h-full flex-col gap-3 py-4 font-poppins">
       <Table

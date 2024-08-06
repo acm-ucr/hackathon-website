@@ -1,4 +1,3 @@
-import React from "react";
 import View from "@/components/admin/dashboards/dashboard/View";
 import { AFFILIATIONS } from "../form/Information";
 import { generateAffiliation, generateSelect, generateStatus } from "./Columns";

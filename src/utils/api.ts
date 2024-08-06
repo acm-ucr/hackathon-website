@@ -1,4 +1,10 @@
-export const api = async ({ url, method, body }) => {
+type API = {
+  url: string;
+  method: "GET" | "POST" | "PUT" | "DELETE";
+  body?: Object;
+};
+
+export const api = async ({ url, method, body }: API) => {
   const response = await fetch(url, {
     method: method,
     body: JSON.stringify(body),
