@@ -1,5 +1,5 @@
 "use client";
-import { TAGS, COLUMNS } from "@/data/admin/Interests.js";
+import { TAGS, COLUMNS } from "@/data/admin/Interests";
 import { STATUSES } from "@/data/Statuses";
 import Table from "./dashboard/Dashboard";
 

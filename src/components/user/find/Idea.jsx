@@ -1,6 +1,5 @@
 import Tag from "@/components/admin/Tag";
 import { COLORS } from "@/data/Tags";
-import React from "react";
 
 const Idea = ({ title, technologies, description, contact }) => {
   return (
