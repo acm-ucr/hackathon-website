@@ -18,25 +18,7 @@ import {
   SiFigma as Figma,
 } from "@icons-pack/react-simple-icons";
 
-interface icons {
-  github: JSX.Element;
-  devpost: JSX.Element;
-  figma: JSX.Element;
-  winner: JSX.Element;
-  phone: JSX.Element;
-  email: JSX.Element;
-  shirt: JSX.Element;
-  diet: JSX.Element;
-  age: JSX.Element;
-  gender: JSX.Element;
-  grade: JSX.Element;
-  major: JSX.Element;
-  school: JSX.Element;
-  eventSource: JSX.Element;
-  priorHackathons: JSX.Element;
-}
-
-export const ICONS: icons = {
+export const ICONS: Record<string, JSX.Element> = {
   github: (
     <Github className="mr-2 text-lg hover:text-hackathon-green-300 hover:opacity-75" />
   ),
