@@ -17,19 +17,16 @@ const generateDummyIdeas = (count) => {
 };
 
 const Find = () => {
-  const ideas = useMemo(() => generateDummyIdeas(75), []);
+  const ideas = useMemo(() => generateDummyIdeas(1000), []);
 
   const ref = useRef(null);
 
   const { measureElement, getVirtualItems } = useVirtualizer({
     count: ideas.length,
     getScrollElement: () => ref.current,
-    estimateSize: () => 30,
-    measureElement: (el) => {
-      if (el.clientHeight > 300) return 70;
-      if (el.clientHeight > 200) return 60;
-      else return 30;
-    },
+    estimateSize: () => 325,
+    lanes: 4,
+    overscan: 4,
   });
 
   return (
@@ -38,26 +35,23 @@ const Find = () => {
         <Title title="Find a Team" />
       </div>
       <Toolbar />
-      <div ref={ref} className="h-full overflow-y-scroll">
+      <div ref={ref} className="relative h-full overflow-y-scroll">
         {getVirtualItems().map(({ index, size, start }) => {
           if (index % 4) return null;
           const row = ideas.slice(index, index + 4);
           return (
             <div
               key={`row: ${Math.floor(index / 4)}`}
-              className="grid grid-cols-4"
+              className="absolute left-0 top-0 grid w-full grid-cols-4"
               style={{
                 height: `${size}px`,
                 transform: `translateY(${start}px)`,
               }}
+              ref={measureElement}
+              data-index={index}
             >
               {row.map(({ title, technologies, description, contact }, i) => (
-                <div
-                  key={`column: ${i}`}
-                  ref={measureElement}
-                  data-index={index + i}
-                  className="flex items-start p-2"
-                >
+                <div key={`column: ${i}`} className="flex items-start p-2">
                   <Idea
                     title={title}
                     technologies={technologies}
