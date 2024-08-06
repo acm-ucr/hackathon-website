@@ -18,7 +18,7 @@ import {
   SiFigma as Figma,
 } from "@icons-pack/react-simple-icons";
 
-export const ICONS = {
+export const ICONS: Record<string, JSX.Element> = {
   github: (
     <Github className="mr-2 text-lg hover:text-hackathon-green-300 hover:opacity-75" />
   ),
