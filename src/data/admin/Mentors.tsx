@@ -76,7 +76,6 @@ export const DROPDOWN = ({ object }: { object: objectProp }) => {
               toggle={object.availability.includes(text)}
               text={text}
               key={index}
-              color={"bg-hackathon-blue-100"}
             />
           ))}
         </div>
