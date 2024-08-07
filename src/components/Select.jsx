@@ -16,19 +16,19 @@ import { useVirtualizer } from "@tanstack/react-virtual";
 import { Check, ChevronsUpDown } from "lucide-react";
 import { useState, useRef } from "react";
 
-const VirtualizedCommand = ({ options, selected, setSelected, setOpen }) => {
-  const [filteredOptions, setFilteredOptions] = useState(options);
-  const parentRef = useRef(null);
+const Virtualized = ({ options, selected, setSelected, setOpen }) => {
+  const [filtered, setFiltered] = useState(options);
+  const ref = useRef(null);
 
   const { getTotalSize, getVirtualItems } = useVirtualizer({
-    count: filteredOptions.length,
-    getScrollElement: () => parentRef.current,
+    count: filtered.length,
+    getScrollElement: () => ref.current,
     estimateSize: () => 40,
     overscan: 5,
   });
 
   const handleSearch = (search) => {
-    setFilteredOptions(
+    setFiltered(
       options.filter((option) =>
         option.toLowerCase().includes(search.toLowerCase() ?? []),
       ),
@@ -46,10 +46,7 @@ const VirtualizedCommand = ({ options, selected, setSelected, setOpen }) => {
     <Command shouldFilter={false} onKeyDown={handleKeyDown}>
       <CommandInput onValueChange={handleSearch} placeholder="search" />
       <CommandEmpty>No item found.</CommandEmpty>
-      <CommandGroup
-        className="h-[400px] w-full overflow-y-scroll"
-        ref={parentRef}
-      >
+      <CommandGroup className="h-[400px] w-full overflow-y-scroll" ref={ref}>
         <div
           className="relative w-full"
           style={{
@@ -64,21 +61,21 @@ const VirtualizedCommand = ({ options, selected, setSelected, setOpen }) => {
                 transform: `translateY(${virtualRow.start}px)`,
               }}
               key={virtualRow.index}
-              value={filteredOptions[virtualRow.index]}
+              value={filtered[virtualRow.index]}
               onSelect={() => {
-                setSelected(filteredOptions[virtualRow.index]);
+                setSelected(filtered[virtualRow.index]);
                 setOpen(false);
               }}
             >
               <Check
                 className={cn(
                   "mr-2 h-4 w-4",
-                  selected === filteredOptions[virtualRow.index]
+                  selected === filtered[virtualRow.index]
                     ? "opacity-100"
                     : "opacity-0",
                 )}
               />
-              {filteredOptions[virtualRow.index]}
+              {filtered[virtualRow.index]}
             </CommandItem>
           ))}
         </div>
@@ -110,7 +107,7 @@ const Select = ({ title, required = false, items, placeholder }) => {
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-[700px] p-0">
-          <VirtualizedCommand
+          <Virtualized
             options={items}
             placeholder={placeholder}
             selected={selected}
