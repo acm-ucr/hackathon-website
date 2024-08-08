@@ -1,4 +1,3 @@
-import React from "react";
 import Tile from "@/components/user/Tile";
 import { QrCode, ParkingCircle } from "lucide-react";
 

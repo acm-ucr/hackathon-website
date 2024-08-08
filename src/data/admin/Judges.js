@@ -1,4 +1,3 @@
-import React from "react";
 import View from "@/components/admin/dashboards/dashboard/View";
 import { AFFILIATIONS } from "../form/Information";
 import { generateAffiliation, generateSelect, generateStatus } from "./Columns";
@@ -59,8 +58,6 @@ export const COLUMNS = [
           photo,
           name,
         }));
-
-        console.log(photos);
 
         const zip = new JSZip();
         const folder = zip.folder();
