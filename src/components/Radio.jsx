@@ -1,3 +1,5 @@
+import { RadioGroup, RadioGroupItem } from "./ui/radio";
+
 const Radio = ({
   text,
   field,
@@ -20,28 +22,28 @@ const Radio = ({
         </div>
       )}
       {editable && (
-        <div className="grid w-full grid-cols-2 md:grid-cols-3">
+        <RadioGroup value={user[field]}>
           {Object.values(options).map((option, index) => (
             <div
-              data-cy={`radio-${option.toLowerCase()}`}
-              className="flex items-center whitespace-nowrap hover:cursor-pointer"
               key={index}
-              onClick={() => onClick(option, field)}
+              className="flex items-center whitespace-nowrap hover:cursor-pointer"
+              data-cy={`radio-${option.toLowerCase()}`}
             >
-              <div className="mr-1 aspect-square w-4 rounded-full border border-black bg-transparent p-0.5">
-                <div
-                  data-cy={`radio-button-${option.toLowerCase()}`}
-                  className={`aspect-square w-full rounded-full duration-100 ${
-                    user[field] === option
-                      ? "bg-hackathon-green-300"
-                      : "bg-transparent"
-                  }`}
-                />
-              </div>
+              <RadioGroupItem
+                value={option}
+                defaultValue={option}
+                onClick={() => onClick(option, field)}
+                data-cy={`radio-button-${option.toLowerCase()}`}
+                className={`${
+                  user[field] === option
+                    ? "fill-hackathon-green-300"
+                    : "fill-current"
+                }`}
+              />
               {option}
             </div>
           ))}
-        </div>
+        </RadioGroup>
       )}
     </div>
   );
