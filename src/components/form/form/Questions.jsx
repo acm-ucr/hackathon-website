@@ -1,5 +1,4 @@
 import Select from "@/components/Select";
-import Radio from "@/components/Radio";
 import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
@@ -10,7 +9,7 @@ import Link from "next/link";
 import { Link as LucideLink } from "lucide-react";
 import data from "@/data/Config";
 import Terms from "./Terms";
-
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 const Questions = ({
   fields,
   object,
@@ -150,15 +149,23 @@ const Questions = ({
             />
           )}
           {field.input === "radio" && (
-            <Radio
-              text={field.text}
-              options={field.options}
-              field={field.field}
-              user={object}
-              setUser={setObject}
-              required={field.required}
-              onClick={handleClick}
-            />
+            <>
+              <p className="mb-1 font-semibold">
+                {field.text}
+                {field.required && <span className="text-red-500">*</span>}
+              </p>
+              <RadioGroup value={object[field.field]}>
+                {field.options.map((option, index) => (
+                  <div key={index}>
+                    <RadioGroupItem
+                      value={option}
+                      onClick={() => handleClick(option, field.field)}
+                    />
+                    {option}
+                  </div>
+                ))}
+              </RadioGroup>
+            </>
           )}
           {field.input === "textarea" && (
             <Textarea
