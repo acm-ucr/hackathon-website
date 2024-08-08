@@ -19,8 +19,10 @@ const Schedule = ({ eventList }) => {
 
   return (
     <>
-      <Toolbar onFilterChange={filterChange} />
-      <div className="sticky top-0 z-50 flex w-full bg-gray-100 text-white">
+      <div style={{ position: 'sticky', top: 0, zIndex: 1000, backgroundColor: '#f5f5f5' }}>
+       <Toolbar onFilterChange={filterChange} />
+      </div>
+      <div className="sticky top-7 z-50 flex w-full bg-gray-100 text-white">
         {days.map((day, index) => (
           <div
             className="font-montserrat m-5 ml-0 flex flex-grow items-center justify-start border-b-[1px] border-black text-sm font-light text-black md:text-lg"
