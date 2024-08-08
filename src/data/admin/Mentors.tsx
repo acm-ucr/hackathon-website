@@ -12,10 +12,6 @@ type Mentor = {
   response: string;
 };
 
-type cellProp = {
-  getValue: () => string;
-};
-
 type tags = {
   text: string;
   value: number;
@@ -24,6 +20,10 @@ type tags = {
 type objectProp = {
   availability: string[];
   response: string;
+};
+
+type dropdownProp = {
+  object: objectProp;
 };
 
 export const TAGS: tags[] = [
@@ -45,7 +45,7 @@ export const COLUMNS: ColumnDef<Mentor, string>[] = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props: cellProp) => <div>{props.getValue()}</div>,
+    cell: (props) => <div>{props.getValue()}</div>,
   },
   {
     accessorKey: "email",
@@ -53,7 +53,7 @@ export const COLUMNS: ColumnDef<Mentor, string>[] = [
     meta: { width: "w-4/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props: cellProp) => <div>{props.getValue()}</div>,
+    cell: (props) => <div>{props.getValue()}</div>,
   },
   {
     accessorKey: "discord",
@@ -61,12 +61,12 @@ export const COLUMNS: ColumnDef<Mentor, string>[] = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props: cellProp) => <div>{props.getValue()}</div>,
+    cell: (props) => <div>{props.getValue()}</div>,
   },
   generateStatus(STATUSES),
 ];
 
-export const DROPDOWN = ({ object }: { object: objectProp }) => {
+export const DROPDOWN: React.FC<dropdownProp> = ({ object }) => {
   return (
     <>
       <div className="flex justify-center">
