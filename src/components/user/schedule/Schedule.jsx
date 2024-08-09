@@ -19,15 +19,15 @@ const Schedule = ({ eventList }) => {
 
   return (
     <>
-      <div 
-        style={{ 
-          position: 'sticky', 
-          top: 0, 
-          zIndex: 1000, 
-          backgroundColor: '#f5f5f5' 
+      <div
+        style={{
+          position: "sticky",
+          top: 0,
+          zIndex: 1000,
+          backgroundColor: "#f5f5f5",
         }}
       >
-       <Toolbar onFilterChange={filterChange} />
+        <Toolbar onFilterChange={filterChange} />
       </div>
       <div className="sticky top-7 z-50 flex w-full bg-gray-100 text-white">
         {days.map((day, index) => (
