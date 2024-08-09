@@ -63,6 +63,7 @@ export const ATTRIBUTES: attributes = {
     "phone",
     "major",
     "age",
+    "country",
     "school",
     "grade",
     "gender",
