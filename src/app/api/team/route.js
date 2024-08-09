@@ -34,13 +34,7 @@ export const POST = async (req) => {
     return res.json(
       {
         message: "OK",
-        items: {
-          github: newTeam.links.github,
-          devpost: newTeam.links.devpost,
-          figma: newTeam.links.figma,
-          members: newTeam.members,
-          id: docRef.id,
-        },
+        id: docRef.id,
       },
       { status: 200 },
     );
@@ -63,7 +57,11 @@ export const PUT = async (req) => {
     );
   }
 
-  const { github, figma, devpost, members, name } = await req.json();
+  const {
+    links: { github, figma, devpost },
+    members,
+    name,
+  } = await req.json();
 
   try {
     await updateDoc(doc(db, "teams", user.team), {

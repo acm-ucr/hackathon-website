@@ -1,4 +1,5 @@
-import Hackpack from "@/components/user/Hackpack";
+import Hackpack from "@/components/user/resources/Hackpack";
+
 describe("HackPacks", () => {
   it("HackPack Components", () => {
     const techs = [
@@ -18,34 +19,23 @@ describe("HackPacks", () => {
     cy.get('[data-cy="hackpack-link"]')
       .should(
         "have.class",
-        "w-full bg-gray-100 rounded-xl p-4 hover:border-gray-300 border-gray-100 border-2 duration-300",
+        "flex items-center justify-between opacity-100 hover:opacity-70",
       )
       .should("have.attr", "href", link)
       .should("have.attr", "target", "_black");
 
-    cy.get('[data-cy="hackpack-text"]').should(
-      "have.class",
-      "font-bold",
-      "contain.text",
-      "Hackpack",
-    );
+    cy.get('[data-cy="hackpack-text"]').should("contain.text", "Hackpack");
 
     cy.get('[data-cy="hackpack-techs"]')
       .should("have.class", "flex flex-wrap", "have.length", techs.length)
       .children('[data-cy="hackpack-tech"]');
 
     techs.forEach((tech, index) => {
-      cy.get('[data-cy="hackpack-techs"] [data-cy="hackpack-tech"]')
-        .eq(index)
-        .should("contain.text", tech)
-        .should(
-          "have.class",
-          "text-gray-400 rounded-full flex items-center px-1",
-        );
+      cy.get('[data-cy="hackpack-tech"]').eq(index).contains(tech);
 
-      cy.get('[data-cy="hackpack-tech"] [data-cy="hackpack-icon"]')
+      cy.get('[data-cy="hackpack-icon"]')
         .eq(index)
-        .should("have.class", "text-hackathon-blue-100 mr-1");
+        .should("have.class", "text-hackathon-blue-100");
     });
   });
 });

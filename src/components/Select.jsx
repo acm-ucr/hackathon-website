@@ -1,4 +1,4 @@
-import { RiArrowDownSLine } from "react-icons/ri";
+import { ChevronDown } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 
@@ -63,13 +63,13 @@ const Select = ({
         onClick={() => setShow(!show)}
         className={`${
           !user[field] && "text-hackathon-gray-200"
-        } bg-transparent flex items-center justify-between w-full pb-1`}
+        } flex w-full items-center justify-between bg-transparent pb-1`}
         data-cy="select-toggle"
       >
         {user[field] || placeholder}
         {editable && (
-          <RiArrowDownSLine
-            className={`${show && "rotate-180"} duration-300 text-black`}
+          <ChevronDown
+            className={`${show && "rotate-180"} text-black duration-300`}
             data-cy="select-arrow"
           />
         )}
@@ -78,14 +78,14 @@ const Select = ({
         <div className="relative">
           <div
             ref={ref}
-            className="absolute overflow-y-scroll bg-hackathon-green-100 w-full h-fit max-h-[35vh]"
+            className="absolute h-fit max-h-[35vh] w-full overflow-y-scroll bg-hackathon-green-100"
             data-cy="select-menu"
           >
             {searchable && (
               <input
                 value={input}
                 autoFocus
-                className="my-1 w-full ring-0 outline-none px-2 py-2 bg-hackathon-green-100 sticky top-0 left-0 z-10"
+                className="sticky left-0 top-0 z-10 my-1 w-full bg-hackathon-green-100 px-2 py-2 outline-none ring-0"
                 placeholder="search"
                 onChange={handleInput}
               />
@@ -96,7 +96,7 @@ const Select = ({
               </div>
             )}
             <div
-              className="w-full relative"
+              className="relative w-full"
               style={{
                 height: `${getTotalSize()}px`,
               }}
@@ -106,7 +106,7 @@ const Select = ({
 
                 return (
                   <div
-                    className="absolute top-0 left-0 w-full hover:bg-hackathon-green-200 hover:cursor-pointer flex items-center px-2"
+                    className="absolute left-0 top-0 flex w-full items-center px-2 hover:cursor-pointer hover:bg-hackathon-green-200"
                     key={virtualRow.index}
                     data-index={virtualRow.index}
                     ref={measureElement}

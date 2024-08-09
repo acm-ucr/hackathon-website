@@ -1,23 +1,21 @@
-import React from "react";
-
 const Events = ({ event }) => {
   return (
     <div
-      className={` bg-white text-black flex flex-col p-3 rounded-lg w-full shadow-sm`}
+      className={`flex w-full flex-col rounded-lg bg-white p-3 text-black shadow-sm`}
     >
-      <div className="font-extrabold text-sm">{event.summary}</div>
-      <div className="flex flex-col gap-0 items-center justify-center w-full mt-2">
-        <div className="w-full font-semibold text-xs md:text-sm">
+      <div className="text-sm font-extrabold">{event.summary}</div>
+      <div className="mt-2 flex w-full flex-col items-center justify-center gap-0">
+        <div className="w-full text-xs font-semibold md:text-sm">
           {event.location}
         </div>
         <div
           className={`${
             event.start < new Date()
               ? event.end > new Date()
-                ? "bg-white/30 animate-bounce"
+                ? "animate-bounce bg-white/30"
                 : "opacity-70"
               : "bg-white/20"
-          } py-0 flex w-full`}
+          } flex w-full py-0`}
         >
           <div className={`text-center text-xs md:text-sm`}>
             {event.start.getHours() === 12 ? 12 : event.start.getHours() % 12}:

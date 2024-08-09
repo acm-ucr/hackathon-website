@@ -1,16 +1,15 @@
 import Select from "@/components/Select";
-import Radio from "@/components/Radio";
 import Checkbox from "@/components/Checkbox";
 import Input from "@/components/Input";
-import Button from "@/components/Button.jsx";
-import Textarea from "@/components/form/form/Textarea.jsx";
+import Button from "@/components/Button";
+import { Textarea } from "@/components/ui/textarea";
 import Upload from "@/components/form/form/Upload";
 import toaster from "@/utils/toaster";
 import Link from "next/link";
-import { FaLink } from "react-icons/fa";
+import { Link as LucideLink } from "lucide-react";
 import data from "@/data/Config";
 import Terms from "./Terms";
-
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 const Questions = ({
   fields,
   object,
@@ -64,7 +63,7 @@ const Questions = ({
   };
 
   return (
-    <div className="flex flex-col w-full gap-5">
+    <div className="flex w-full flex-col gap-5">
       {Object.values(fields).map((field, index) => (
         <div key={index}>
           {field.input === "description" &&
@@ -150,25 +149,37 @@ const Questions = ({
             />
           )}
           {field.input === "radio" && (
-            <Radio
-              text={field.text}
-              options={field.options}
-              field={field.field}
-              user={object}
-              setUser={setObject}
-              required={field.required}
-              onClick={handleClick}
-            />
+            <>
+              <p className="mb-1 font-semibold">
+                {field.text}
+                {field.required && <span className="text-red-500">*</span>}
+              </p>
+              <RadioGroup value={object[field.field]}>
+                {field.options.map((option, index) => (
+                  <div key={index}>
+                    <RadioGroupItem
+                      value={option}
+                      onClick={() => handleClick(option, field.field)}
+                    />
+                    {option}
+                  </div>
+                ))}
+              </RadioGroup>
+            </>
           )}
           {field.input === "textarea" && (
             <Textarea
+              data-cy={`${field.title}-textarea`}
+              className="border-1 w-full resize-none border border-black pl-3 placeholder:text-hackathon-gray-200 focus:outline-none"
+              maxLength={500}
+              value={object[field.name]}
+              onChange={(e) =>
+                setObject({ ...object, [field.name]: e.target.value })
+              }
+              placeholder={field.placeholder}
               name={field.name}
               rows={field.rows}
               title={field.title}
-              placeholder={field.placeholder}
-              value={object[field.name]}
-              user={object}
-              setUser={setObject}
               required={field.required}
             />
           )}
@@ -186,30 +197,30 @@ const Questions = ({
         </div>
       ))}
       <div>
-        <p className="font-semibold mt-3">Resources</p>
+        <p className="mt-3 font-semibold">Resources</p>
         <Link
           href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf"
           target="_blank"
-          className="no-underline flex items-center text-hackathon-green-300 hover:text-opacity-65 mt-1"
+          className="mt-1 flex items-center text-hackathon-green-300 no-underline hover:text-opacity-65"
         >
           MLH Code of Conduct
-          <FaLink className="mx-2" />
+          <LucideLink className="mx-2" />
         </Link>
         <Link
           href="https://mlh.io/privacy"
           target="_blank"
-          className="no-underline flex items-center text-hackathon-green-300 hover:text-opacity-65 mt-3"
+          className="mt-3 flex items-center text-hackathon-green-300 no-underline hover:text-opacity-65"
         >
           MLH Privacy Policy
-          <FaLink className="mx-2" />
+          <LucideLink className="mx-2" />
         </Link>
         <Link
           href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md"
           target="_blank"
-          className="no-underline flex items-center text-hackathon-green-300 hover:text-opacity-65 mt-3"
+          className="mt-3 flex items-center text-hackathon-green-300 no-underline hover:text-opacity-65"
         >
           MLH Contest Terms and Conditions
-          <FaLink className="mx-2" />
+          <LucideLink className="mx-2" />
         </Link>
       </div>
       {packet && (
@@ -217,10 +228,10 @@ const Questions = ({
           href={data.packet}
           target="_blank"
           rel="noreferrer noopener"
-          className="no-underline flex items-center "
+          className="flex items-center no-underline"
         >
           Sponsorship Packet
-          <FaLink className="mx-2" />
+          <LucideLink className="mx-2" />
         </Link>
       )}
       <div className="flex justify-center">
