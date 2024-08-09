@@ -167,7 +167,7 @@ export const GET = async (req, { params }) => {
     const total = countFromServer.data().count;
     const lastDoc = output.length > 0 ? output[output.length - 1].uid : "";
     const firstDoc = output.length > 0 ? output[0].uid : "";
-
+    console.log(output[0]);
     return res.json(
       {
         message: "OK",
@@ -192,6 +192,8 @@ export const PUT = async (req, { params }) => {
   const { objects, status } = await req.json();
   const { auth, message } = await authenticate(AUTH.PUT);
 
+  console.log("Authentication Result:", auth, message);
+
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
@@ -204,6 +206,7 @@ export const PUT = async (req, { params }) => {
         objects.map(async (object) => {
           await updateDoc(doc(db, "users", object.uid), {
             [`roles.${params.type}`]: status,
+            [`roles.${params.type}`]: object.shirt,
           });
 
           const id = status === 1 ? "acceptance" : "rejection";
@@ -227,16 +230,21 @@ export const PUT = async (req, { params }) => {
             preview: preview,
           });
 
+          const size = object.shirt;
+          console.log("PUT: ", size);
+
           status === 1 &&
             (await updateDoc(doc(db, "statistics", "statistics"), {
               [`${params.type}.1`]: increment(1),
               [`${params.type}.0`]: increment(-1),
+              [`${params.type}.${size}`]: increment(1),
             }));
 
           status === -1 &&
             (await updateDoc(doc(db, "statistics", "statistics"), {
               [`${params.type}.-1`]: increment(1),
               [`${params.type}.0`]: increment(-1),
+              [`${params.type}.${size}`]: increment(-1),
             }));
         })
       );
