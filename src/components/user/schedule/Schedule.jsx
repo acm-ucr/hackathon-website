@@ -19,14 +19,7 @@ const Schedule = ({ eventList }) => {
 
   return (
     <>
-      <div
-        style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 1000,
-          backgroundColor: "#f5f5f5",
-        }}
-      >
+      <div className="sticky top-0 z-[1000] bg-gray-100">
         <Toolbar onFilterChange={filterChange} />
       </div>
       <div className="sticky top-7 z-50 flex w-full bg-gray-100 text-white">
