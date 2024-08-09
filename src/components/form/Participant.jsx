@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
+import { participantSchema } from "@/schemas/participant.ts";
 
 const Participant = () => {
   const { data: session } = useSession();
@@ -18,18 +19,32 @@ const Participant = () => {
     form: "participants",
   });
 
-  const handleSubmit = (setLoading, setState) => {
-    api({
-      method: "POST",
-      url: "/api/dashboard/participants",
-      body: participant,
-    })
-      .then(() => toaster(`Submitted successfully!`, "success"))
-      .catch(() => toaster(`Internal Server Error`, "error"))
-      .finally(() => {
-        setLoading(false);
-        setState(2);
+  const handleSubmit = async (setLoading, setState) => {
+    setLoading(true);
+    const result = participantSchema.safeParse(participant);
+
+    if (!result.success) {
+      result.error.errors.forEach((err) => {
+        toaster(err.message, "error");
       });
+      setLoading(false);
+      return;
+    }
+
+    try {
+      await api({
+        method: "POST",
+        url: "/api/dashboard/participants",
+        body: participant,
+      });
+      toaster(`Submitted successfully!`, "success");
+      setState(2);
+    } catch (error) {
+      toaster(`Internal Server Error`, "error");
+      setState(0);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
