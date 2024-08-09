@@ -17,13 +17,11 @@ type tags = {
   value: number;
 };
 
-type objectProp = {
-  availability: string[];
-  response: string;
-};
-
 type dropdownProp = {
-  object: objectProp;
+  object: {
+    availability: string[];
+    response: string;
+  };
 };
 
 export const TAGS: tags[] = [
