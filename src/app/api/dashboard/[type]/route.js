@@ -167,7 +167,7 @@ export const GET = async (req, { params }) => {
     const total = countFromServer.data().count;
     const lastDoc = output.length > 0 ? output[output.length - 1].uid : "";
     const firstDoc = output.length > 0 ? output[0].uid : "";
-    console.log(output[0]);
+
     return res.json(
       {
         message: "OK",
@@ -191,8 +191,6 @@ export const PUT = async (req, { params }) => {
   const res = NextResponse;
   const { objects, status } = await req.json();
   const { auth, message } = await authenticate(AUTH.PUT);
-
-  console.log("Authentication Result:", auth, message);
 
   if (auth !== 200) {
     return res.json(

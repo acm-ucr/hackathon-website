@@ -18,18 +18,6 @@ export const GET = async () => {
   }
 
   try {
-    // const roles = [
-    //   "participants",
-    //   "judges",
-    //   "volunteers",
-    //   "mentors",
-    //   "committees",
-    //   "sponsors",
-    //   "panels",
-    //   "admins",
-    // ];
-    // const sizes = ["XS", "S", "M", "L", "XL", "XXL"];
-
     const [statistics, events] = await Promise.all([
       getDoc(doc(db, "statistics", "statistics")),
       getDocs(collection(db, "events")),
@@ -45,27 +33,6 @@ export const GET = async () => {
       panels,
       admins,
     } = statistics.data();
-    console.log(statistics.data());
-    // const shirt = {};
-
-    // roles.forEach((role) => {
-    //   shirt[role] = sizes.reduce((acc, size) => {
-    //     acc[size] = 0;
-    //     return acc;
-    //   }, {});
-    // });
-
-    // shirts.forEach((doc) => {
-    //   const data = doc.data();
-    //   const userRoles = Object.keys(data.roles);
-    //   const size = data.shirt;
-
-    //   if (sizes.includes(size)) {
-    //     userRoles.forEach((role) => {
-    //       shirt[role][size]++;
-    //     });
-    //   }
-    // });
 
     const attendees = {};
 
@@ -86,7 +53,26 @@ export const GET = async () => {
       admins,
     };
 
-    return res.json({ items: { users, events: attendees } }, { status: 200 });
+    const sizeData = ["XS", "S", "M", "L", "XL", "XXL"];
+    const statusData = ["1", "0", "-1"];
+
+    const size = {};
+    const status = {};
+
+    Object.entries(users).forEach(([group, entries]) => {
+      size[group] = Object.fromEntries(
+        Object.entries(entries).filter(([key]) => sizeData.includes(key))
+      );
+
+      status[group] = Object.fromEntries(
+        Object.entries(entries).filter(([key]) => statusData.includes(key))
+      );
+    });
+
+    return res.json(
+      { items: { users: { status, size }, events: attendees } },
+      { status: 200 }
+    );
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
