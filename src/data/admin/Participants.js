@@ -77,6 +77,7 @@ const attributes = [
   "phone",
   "age",
   "gender",
+  "country",
   "school",
   "major",
   "grade",
