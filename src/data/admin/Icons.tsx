@@ -10,6 +10,7 @@ import {
   Mail,
   Shirt,
   Calendar,
+  MapPin,
 } from "lucide-react";
 
 import {
@@ -38,6 +39,7 @@ export const ICONS: Record<string, JSX.Element> = {
   grade: <School className="mr-2 text-lg text-hackathon-blue-200" />,
   major: <BookOpen className="mr-2 text-lg text-hackathon-blue-200" />,
   school: <School className="mr-2 text-lg text-hackathon-blue-200" />,
+  country: <MapPin className="mr-2 text-lg text-hackathon-blue-200" />,
   eventSource: <Calendar className="mr-2 text-lg text-hackathon-blue-200" />,
   priorHackathons: <Clock className="mr-2 text-lg text-hackathon-blue-200" />,
 };
