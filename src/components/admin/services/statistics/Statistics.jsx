@@ -25,8 +25,7 @@ const Statistics = () => {
       ) : (
         <div>
           <Tabs events={counts.events} />
-          <Charts counts={counts.users.status} />
-          <Charts counts={counts.users.size} />
+          <Charts counts={counts.users} />
         </div>
       )}
     </div>
