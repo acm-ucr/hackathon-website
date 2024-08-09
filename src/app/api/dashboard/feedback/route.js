@@ -26,7 +26,7 @@ export const POST = async (req) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
 
@@ -53,7 +53,7 @@ export const POST = async (req) => {
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };
@@ -71,7 +71,7 @@ export const GET = async (req) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
 
@@ -88,8 +88,8 @@ export const GET = async (req) => {
           orderBy(`status`),
           where(`status`, "in", [-1, 0, 1]),
           startAfter(lastDocument),
-          limit(size)
-        )
+          limit(size),
+        ),
       );
     } else if (direction === "prev" && first !== "undefined") {
       const firstDocument = await getDoc(doc(db, "feedback", first));
@@ -100,8 +100,8 @@ export const GET = async (req) => {
           orderBy(`status`),
           where(`status`, "in", [-1, 0, 1]),
           endBefore(firstDocument),
-          limitToLast(size)
-        )
+          limitToLast(size),
+        ),
       );
     } else {
       snapshot = await getDocs(
@@ -109,8 +109,8 @@ export const GET = async (req) => {
           collection(db, "feedback"),
           orderBy(`status`),
           where(`status`, "in", [-1, 0, 1]),
-          limit(size)
-        )
+          limit(size),
+        ),
       );
     }
 
@@ -137,7 +137,7 @@ export const GET = async (req) => {
     });
 
     const countFromServer = await getCountFromServer(
-      query(collection(db, "feedback"), where(`status`, "in", [-1, 0, 1]))
+      query(collection(db, "feedback"), where(`status`, "in", [-1, 0, 1])),
     );
 
     const total = countFromServer.data().count;
@@ -153,12 +153,12 @@ export const GET = async (req) => {
         last: lastDoc,
         page: parseInt(index) + 1,
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };
@@ -170,7 +170,7 @@ export const PUT = async (req) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
 
@@ -182,14 +182,14 @@ export const PUT = async (req) => {
         await updateDoc(doc(db, "feedback", object.uid), {
           status: status,
         });
-      })
+      }),
     );
 
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };
@@ -202,20 +202,20 @@ export const DELETE = async (req) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
   try {
     await Promise.all(
       objects.map(async (object) => {
         await deleteDoc(doc(db, "feedback", object));
-      })
+      }),
     );
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };

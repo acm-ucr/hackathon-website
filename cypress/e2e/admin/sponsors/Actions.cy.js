@@ -13,7 +13,7 @@ describe("Sponsors Actions", () => {
 
   it("Confirm First 5 Entries", () => {
     five.forEach((sponsor) =>
-      cy.get(`[data-cy="${sponsor.uid}"]`).find('[data-cy="checkbox"]').click()
+      cy.get(`[data-cy="${sponsor.uid}"]`).find('[data-cy="checkbox"]').click(),
     );
 
     cy.action({
@@ -25,13 +25,13 @@ describe("Sponsors Actions", () => {
       cy
         .get(`[data-cy="${sponsor.uid}"]`)
         .find('[data-cy="accepted-tag"]')
-        .should("exist")
+        .should("exist"),
     );
   });
 
   it("Not Attending First 5 Entries", () => {
     five.forEach((sponsor) =>
-      cy.get(`[data-cy="${sponsor.uid}"]`).find('[data-cy="checkbox"]').click()
+      cy.get(`[data-cy="${sponsor.uid}"]`).find('[data-cy="checkbox"]').click(),
     );
 
     cy.action({
@@ -43,13 +43,13 @@ describe("Sponsors Actions", () => {
       cy
         .get(`[data-cy="${sponsor.uid}"]`)
         .find('[data-cy="rejected-tag"]')
-        .should("exist")
+        .should("exist"),
     );
   });
 
   it("Delete First 5 Entries", () => {
     five.forEach((sponsor) =>
-      cy.get(`[data-cy="${sponsor.uid}"]`).find('[data-cy="checkbox"]').click()
+      cy.get(`[data-cy="${sponsor.uid}"]`).find('[data-cy="checkbox"]').click(),
     );
 
     cy.delete({
@@ -57,7 +57,7 @@ describe("Sponsors Actions", () => {
     });
 
     five.forEach((sponsor) =>
-      cy.get(`[data-cy="${sponsor.uid}"]`).should("not.exist")
+      cy.get(`[data-cy="${sponsor.uid}"]`).should("not.exist"),
     );
   });
 });

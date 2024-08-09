@@ -21,7 +21,7 @@ describe("Lead Select", () => {
 
   it("Select First 5 Entries", () => {
     five.map((lead) =>
-      cy.get(`[data-cy="${lead.uid}"]`).find('[data-cy="checkbox"]').click()
+      cy.get(`[data-cy="${lead.uid}"]`).find('[data-cy="checkbox"]').click(),
     );
     leads.forEach((lead, index) => {
       if (index < 5)

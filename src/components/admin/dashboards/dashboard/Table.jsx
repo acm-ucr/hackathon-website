@@ -86,7 +86,7 @@ const Table = ({
                       Dropdown={Dropdown}
                       original={original}
                     />
-                  )
+                  ),
                 )}
               </>
             )}

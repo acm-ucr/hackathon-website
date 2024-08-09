@@ -12,7 +12,7 @@ export const POST = async (req) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
 
@@ -42,12 +42,12 @@ export const POST = async (req) => {
           id: docRef.id,
         },
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };
@@ -59,7 +59,7 @@ export const PUT = async (req) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${"MESSAGE VARIABLE SHOULD BE HERE"}` },
-      { status: auth }
+      { status: auth },
     );
   }
 
@@ -79,7 +79,7 @@ export const PUT = async (req) => {
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };
@@ -91,7 +91,7 @@ export const GET = async (req) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
 
@@ -113,12 +113,12 @@ export const GET = async (req) => {
           name: name,
         },
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };

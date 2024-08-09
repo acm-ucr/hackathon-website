@@ -43,7 +43,7 @@ export const POST = async (req, { params }) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
   const body = await req.json();
@@ -79,7 +79,7 @@ export const POST = async (req, { params }) => {
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };
@@ -97,7 +97,7 @@ export const GET = async (req, { params }) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
 
@@ -114,8 +114,8 @@ export const GET = async (req, { params }) => {
             orderBy(`roles.${params.type}`),
             where(`roles.${params.type}`, "in", [-1, 0, 1]),
             startAfter(lastDocument),
-            limit(size)
-          )
+            limit(size),
+          ),
         );
       } else if (direction === "prev" && first !== "undefined") {
         const firstDocument = await getDoc(doc(db, "users", first));
@@ -126,8 +126,8 @@ export const GET = async (req, { params }) => {
             orderBy(`roles.${params.type}`),
             where(`roles.${params.type}`, "in", [-1, 0, 1]),
             endBefore(firstDocument),
-            limitToLast(size)
-          )
+            limitToLast(size),
+          ),
         );
       } else {
         snapshot = await getDocs(
@@ -135,8 +135,8 @@ export const GET = async (req, { params }) => {
             collection(db, "users"),
             orderBy(`roles.${params.type}`),
             where(`roles.${params.type}`, "in", [-1, 0, 1]),
-            limit(size)
-          )
+            limit(size),
+          ),
         );
       }
 
@@ -160,8 +160,8 @@ export const GET = async (req, { params }) => {
     const countFromServer = await getCountFromServer(
       query(
         collection(db, "users"),
-        where(`roles.${params.type}`, "in", [-1, 0, 1])
-      )
+        where(`roles.${params.type}`, "in", [-1, 0, 1]),
+      ),
     );
 
     const total = countFromServer.data().count;
@@ -177,12 +177,12 @@ export const GET = async (req, { params }) => {
         last: lastDoc,
         page: parseInt(index) + 1,
       },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };
@@ -195,7 +195,7 @@ export const PUT = async (req, { params }) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
   try {
@@ -244,14 +244,14 @@ export const PUT = async (req, { params }) => {
               [`${params.type}.0`]: increment(-1),
               [`${params.type}.${size}`]: increment(-1),
             }));
-        })
+        }),
       );
     }
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };
@@ -264,7 +264,7 @@ export const DELETE = async (req, { params }) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
   try {
@@ -279,14 +279,14 @@ export const DELETE = async (req, { params }) => {
           await updateDoc(doc(db, "statistics", "statistics"), {
             [`${params.type}.${status}`]: increment(-1),
           });
-        })
+        }),
       );
     }
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };

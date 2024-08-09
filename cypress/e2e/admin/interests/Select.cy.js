@@ -17,20 +17,23 @@ describe("Interests Select", () => {
     interests.forEach((interest) => {
       cy.get(`[data-cy="${interest.uid}"]`).should(
         "have.class",
-        "bg-green-100"
+        "bg-green-100",
       );
     });
   });
 
   it("Select First 5 Entries", () => {
     five.map((interest) =>
-      cy.get(`[data-cy="${interest.uid}"]`).find('[data-cy="checkbox"]').click()
+      cy
+        .get(`[data-cy="${interest.uid}"]`)
+        .find('[data-cy="checkbox"]')
+        .click(),
     );
     interests.forEach((interest, index) => {
       if (index < 5)
         cy.get(`[data-cy="${interest.uid}"]`).should(
           "have.class",
-          "bg-green-100"
+          "bg-green-100",
         );
       else
         cy.get(`[data-cy="${interest.uid}"]`).should("have.class", "bg-white");

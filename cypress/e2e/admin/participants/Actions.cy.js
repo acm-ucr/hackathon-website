@@ -16,7 +16,7 @@ describe("Participants Actions", () => {
       cy
         .get(`[data-cy="${participant.uid}"]`)
         .find('[data-cy="checkbox"]')
-        .click()
+        .click(),
     );
     cy.action({
       tag: "confirm",
@@ -27,7 +27,7 @@ describe("Participants Actions", () => {
       cy
         .get(`[data-cy="${participant.uid}"]`)
         .find('[data-cy="accepted-tag"]')
-        .should("exist")
+        .should("exist"),
     );
   });
 
@@ -36,7 +36,7 @@ describe("Participants Actions", () => {
       cy
         .get(`[data-cy="${participant.uid}"]`)
         .find('[data-cy="checkbox"]')
-        .click()
+        .click(),
     );
     cy.action({
       tag: "not attending",
@@ -47,7 +47,7 @@ describe("Participants Actions", () => {
       cy
         .get(`[data-cy="${participant.uid}"]`)
         .find('[data-cy="rejected-tag"]')
-        .should("exist")
+        .should("exist"),
     );
   });
 
@@ -56,14 +56,14 @@ describe("Participants Actions", () => {
       cy
         .get(`[data-cy="${participant.uid}"]`)
         .find('[data-cy="checkbox"]')
-        .click()
+        .click(),
     );
     cy.delete({
       page: "participants",
     });
 
     five.forEach((participant) =>
-      cy.get(`[data-cy="${participant.uid}"]`).should("not.exist")
+      cy.get(`[data-cy="${participant.uid}"]`).should("not.exist"),
     );
   });
 });

@@ -29,7 +29,7 @@ const Details = () => {
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(
-      `${process.env.NEXT_PUBLIC_URL}user/join/${user.team}`
+      `${process.env.NEXT_PUBLIC_URL}user/join/${user.team}`,
     );
     toaster("Successfully copied join link!", "success");
   };
