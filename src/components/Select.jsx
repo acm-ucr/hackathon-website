@@ -30,7 +30,10 @@ const VirtualizedContent = ({ items, setSelected, userFn }) => {
     );
   };
   return (
-    <DropdownMenuContent ref={ref} className="h-[400px] overflow-y-scroll">
+    <DropdownMenuContent
+      ref={ref}
+      className="h-fit max-h-[400px] overflow-y-scroll"
+    >
       <Input
         placeholder="search"
         className="sticky top-0 z-50 bg-white"
@@ -40,7 +43,7 @@ const VirtualizedContent = ({ items, setSelected, userFn }) => {
       <DropdownMenuGroup className="relative w-[700px]">
         <div style={{ height: `${getTotalSize()}px` }}>
           {getVirtualItems().map((virtualRow) => {
-            const name = options[virtualRow.index];
+            const option = options[virtualRow.index];
 
             return (
               <DropdownMenuItem
@@ -51,11 +54,12 @@ const VirtualizedContent = ({ items, setSelected, userFn }) => {
                 }}
                 key={virtualRow.index}
                 onClick={() => {
-                  setSelected(name);
-                  userFn(name);
+                  console.log(option);
+                  setSelected(option.name || option);
+                  userFn(option);
                 }}
               >
-                {name}
+                {option.name || option}
               </DropdownMenuItem>
             );
           })}
