@@ -32,7 +32,7 @@ const VirtualizedContent = ({ items, setSelected, userFn, searchable }) => {
   return (
     <DropdownMenuContent
       ref={ref}
-      className="h-fit max-h-[400px] overflow-y-scroll"
+      className="dropdown-content h-fit max-h-[400px] w-[var(--radix-dropdown-menu-trigger-width)] overflow-y-scroll"
       data-cy="select-menu"
     >
       {searchable && (
@@ -43,7 +43,7 @@ const VirtualizedContent = ({ items, setSelected, userFn, searchable }) => {
           onChange={handleInput}
         />
       )}
-      <DropdownMenuGroup className="relative w-[700px]">
+      <DropdownMenuGroup className="relative w-full">
         <div style={{ height: `${getTotalSize()}px` }}>
           {getVirtualItems().map((virtualRow) => {
             const option = options[virtualRow.index];
@@ -94,11 +94,11 @@ const Select = ({
           {required && <span className="text-red-500">*</span>}
         </p>
       )}
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
+      <DropdownMenu className="max-w-full">
+        <DropdownMenuTrigger className="w-full" asChild>
           <Button
             data-cy="select-toggle"
-            className="w-full justify-between"
+            className="w-full justify-between whitespace-normal break-words"
             variant="outline"
             disabled={disabled}
           >
