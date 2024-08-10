@@ -19,16 +19,18 @@ const Schedule = ({ eventList }) => {
 
   return (
     <>
-      <Toolbar onFilterChange={filterChange} />
-      <div className="sticky top-0 z-50 flex w-full bg-gray-100 text-white">
-        {days.map((day, index) => (
-          <div
-            className="font-montserrat m-5 ml-0 flex flex-grow items-center justify-start border-b-[1px] border-black text-sm font-light text-black md:text-lg"
-            key={index}
-          >
-            {day}
-          </div>
-        ))}
+      <div className="sticky top-0 z-10 flex w-full flex-col bg-gray-100 pt-4 text-white">
+        <Toolbar onFilterChange={filterChange} />
+        <div className="flex">
+          {days.map((day, index) => (
+            <div
+              className="font-montserrat m-5 ml-0 flex flex-grow items-center justify-start border-b-[1px] border-black text-sm font-light text-black md:text-lg"
+              key={index}
+            >
+              {day}
+            </div>
+          ))}
+        </div>
       </div>
       <div className="mr-4 flex">
         {days.map((day, dayIndex) => (
