@@ -1,3 +1,51 @@
+const fs = require("fs");
+const pathToFile = "@/data/admin/Messenger.js";
+
+function verifyAndDeleteFile(pathToFile) {
+  fs.access(pathToFile, fs.constants.F_OK, (err) => {
+    if (err) {
+      if (err.code === "ENOENT") {
+        console.log("File does not exist.");
+      } else {
+        console.log("Error accessing file:", err.message);
+      }
+      return;
+    }
+    fs.open(pathToFile, "r+", (err, fd) => {
+      if (err) {
+        if (err.code === "EBUSY") {
+          console.log("File and content is being use.");
+        } else if (err.code === "ENOENT") {
+          console.log("File does not exist.");
+        } else {
+          console.error(
+            "An error occurred when opening the file:",
+            err.message,
+          );
+        }
+        return;
+      }
+
+      fs.close(fd, (closeErr) => {
+        if (closeErr) {
+          console.error("Error closing file:", closeErr.message);
+          return;
+        }
+
+        fs.unlink(pathToFile, (unlinkErr) => {
+          if (unlinkErr) {
+            console.error("Error deleting file:", unlinkErr.message);
+          } else {
+            console.log("File deleted.");
+          }
+        });
+      });
+    });
+  });
+}
+
+verifyAndDeleteFile(pathToFile);
+
 export const FILTERS = {
   participants: {
     state: false,
