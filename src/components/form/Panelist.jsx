@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
+import { panelSchema } from "@/schemas/panel.ts";
 
 const Panel = () => {
   const { data: session } = useSession();
@@ -19,18 +20,32 @@ const Panel = () => {
     form: "panels",
   });
 
-  const handleSubmit = (setLoading, setState) => {
-    api({
-      method: "POST",
-      url: "/api/dashboard/panels",
-      body: panel,
-    })
-      .then(() => toaster(`✅ Submitted successfully!`))
-      .catch(() => toaster(`❌ Internal Server Error`))
-      .finally(() => {
-        setLoading(false);
-        setState(2);
+  const handleSubmit = async (setLoading, setState) => {
+    setLoading(true);
+    const result = panelSchema.safeParse(panel);
+
+    if (!result.success) {
+      result.error.errors.forEach((err) => {
+        toaster(err.message, "error");
       });
+      setLoading(false);
+      return;
+    }
+
+    try {
+      await api({
+        method: "POST",
+        url: "/api/dashboard/panelists",
+        body: panel,
+      });
+      toaster(`Submitted successfully!`, "success");
+      setState(2);
+    } catch (error) {
+      toaster(`Internal Server Error`, "error");
+      setState(0);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

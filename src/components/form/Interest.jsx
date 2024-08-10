@@ -7,6 +7,7 @@ import toaster from "@/utils/toaster";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Interest";
 import { useSession } from "next-auth/react";
 import { STATUSES } from "@/data/Statuses";
+import { interestSchema } from "@/schemas/interest.ts";
 
 const Interest = () => {
   const { data: session } = useSession();
@@ -18,18 +19,32 @@ const Interest = () => {
     form: "interests",
   });
 
-  const onSubmit = (setLoading, setState) => {
-    api({
-      method: "POST",
-      url: "/api/dashboard/interests",
-      body: interest,
-    })
-      .then(() => toaster(`Submitted successfully!`, "success"))
-      .catch(() => toaster(`Internal Server Error`, "error"))
-      .finally(() => {
-        setLoading(false);
-        setState(2);
+  const onSubmit = async (setLoading, setState) => {
+    setLoading(true);
+    const result = interestSchema.safeParse(interest);
+
+    if (!result.success) {
+      result.error.errors.forEach((err) => {
+        toaster(err.message, "error");
       });
+      setLoading(false);
+      return;
+    }
+
+    try {
+      await api({
+        method: "POST",
+        url: "/api/dashboard/interests",
+        body: interest,
+      });
+      toaster(`Submitted successfully!`, "success");
+      setState(2);
+    } catch (error) {
+      toaster(`Internal Server Error`, "error");
+      setState(0);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
