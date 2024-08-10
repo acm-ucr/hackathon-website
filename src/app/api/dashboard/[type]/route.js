@@ -229,7 +229,6 @@ export const PUT = async (req, { params }) => {
           });
 
           const size = object.shirt;
-          console.log("PUT: ", size);
 
           status === 1 &&
             (await updateDoc(doc(db, "statistics", "statistics"), {

@@ -12,15 +12,17 @@ import {
 } from "@/components/ui/chart";
 
 const Chart = ({ title, data }) => {
+  const ITEMS = { ...ROLES, ...SIZES };
+
   const chartData = Object.entries(data).map(([type, value]) => ({
-    type: ROLES[type]?.label || SIZES[type]?.label,
+    type: ITEMS[type].label,
     value: value,
-    className: ROLES[type]?.className || SIZES[type]?.className,
-    fill: ROLES[type]?.fill || SIZES[type]?.fill,
+    className: ITEMS[type].className,
+    fill: ITEMS[type].fill,
   }));
 
   const chartConfig = Object.entries(data).map(([type, value]) => {
-    const label = ROLES[type]?.label || SIZES[type]?.label;
+    const label = ITEMS[type].label;
 
     return {
       label: {
