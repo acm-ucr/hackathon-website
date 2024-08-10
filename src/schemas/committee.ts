@@ -6,15 +6,26 @@ export const committeeSchema = z.object({
   discord: z.string().min(1, { message: "Discord username is required" }),
   major: z.string().min(1, { message: "Please select your major" }),
   grade: z.string().min(1, { message: "Please select your grade" }),
-  gender: z.enum(["Male", "Female", "Non-binary", "Prefer not to say"], {
+  gender: z.enum(["Male", "Female", "Transgender", "Non-binary", "Other"], {
     required_error: "Please select your gender",
   }),
-  shirt: z.enum(["S", "M", "L", "XL", "XXL"], {
+  shirt: z.enum(["XS", "S", "M", "L", "XL", "XXL"], {
     required_error: "Please select your shirt size",
   }),
-  affiliation: z.enum(["Professor", "Student", "Industry"], {
-    required_error: "Please select your affiliation",
-  }),
+  affiliation: z.enum(
+    [
+      "director",
+      "marketing",
+      "sponsorship",
+      "recruitment",
+      "software",
+      "uiux",
+      "operations",
+    ],
+    {
+      required_error: "Please select your affiliation",
+    },
+  ),
   requirements: z
     .array(z.string())
     .min(1, { message: "You must agree to the terms and conditions" }),
