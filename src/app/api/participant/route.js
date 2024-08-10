@@ -11,10 +11,10 @@ export const POST = async (req) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
-  const { phone, major, age, school, grade, gender, shirt, diet } =
+  const { phone, major, age, country, school, grade, gender, shirt, diet } =
     await req.json();
 
   try {
@@ -22,6 +22,7 @@ export const POST = async (req) => {
       phone: phone,
       major: major,
       age: age,
+      country: country,
       school: school,
       grade: grade,
       gender: gender,
@@ -32,7 +33,7 @@ export const POST = async (req) => {
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };

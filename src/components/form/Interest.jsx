@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import Form from "@/components/form/form/Form.jsx";
+import Form from "@/components/form/form/Form";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Interest";
 import { useSession } from "next-auth/react";
-import { STATUSES } from "@/data/admin/Interests";
+import { STATUSES } from "@/data/Statuses";
 
 const Interest = () => {
   const { data: session } = useSession();

@@ -4,16 +4,16 @@ const Toolbar = ({ onFilterChange }) => {
   const [selected, setSelected] = useState("all");
 
   return (
-    <div className="flex items-center justify-end mt-4">
-      <div className="flex border-2 rounded-md bg-white ">
+    <div className="mt-4 flex items-center justify-end">
+      <div className="flex rounded-md border-2 bg-white">
         <button
           onClick={() => {
             setSelected("all");
             onFilterChange("all");
           }}
-          className={`px-3 py-1 m-0.5 ${
+          className={`m-0.5 px-3 py-1 ${
             selected === "all"
-              ? "bg-hackathon-green-300 text-white rounded"
+              ? "rounded bg-hackathon-green-300 text-white"
               : "bg-white text-black"
           }`}
         >
@@ -24,9 +24,9 @@ const Toolbar = ({ onFilterChange }) => {
             setSelected("hackweek");
             onFilterChange("hackweek");
           }}
-          className={`px-3 py-1 m-0.5 ${
+          className={`m-0.5 px-3 py-1 ${
             selected === "hackweek"
-              ? "bg-hackathon-green-300 text-white rounded"
+              ? "rounded bg-hackathon-green-300 text-white"
               : "bg-white text-black"
           }`}
         >
@@ -37,9 +37,9 @@ const Toolbar = ({ onFilterChange }) => {
             setSelected("hackathon");
             onFilterChange("hackathon");
           }}
-          className={`px-3 py-1 m-0.5 ${
+          className={`m-0.5 px-3 py-1 ${
             selected === "hackathon"
-              ? "bg-hackathon-green-300 text-white rounded"
+              ? "rounded bg-hackathon-green-300 text-white"
               : "bg-white text-black"
           }`}
         >

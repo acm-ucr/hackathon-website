@@ -1,6 +1,6 @@
 import Tag from "../../admin/Tag";
 import { COLORS } from "@/data/Tags";
-import Button from "@/components/Button.jsx";
+import Button from "@/components/Button";
 
 const Status = ({ object, statuses, setState }) => {
   return (

@@ -1,31 +1,29 @@
 import {
-  BsFillPersonFill,
-  BsPeopleFill,
-  BsBarChartFill,
-  BsPersonRaisedHand,
-} from "react-icons/bs";
-import { MdVolunteerActivism, MdFeedback } from "react-icons/md";
-import { BiSolidHelpCircle } from "react-icons/bi";
-import { GoSponsorTiers } from "react-icons/go";
-import {
-  FaGavel,
-  FaEnvelope,
-  FaLock,
-  FaCalendarDay,
-  FaExclamation,
-  FaSearch,
-} from "react-icons/fa";
-import { FaGear } from "react-icons/fa6";
-import { AiOutlineQrcode } from "react-icons/ai";
-import { SiHandshake } from "react-icons/si";
-import { RiTeamFill } from "react-icons/ri";
-import { IoIosPeople } from "react-icons/io";
+  User,
+  Users,
+  BarChart,
+  Hand,
+  Heart,
+  MessagesSquare,
+  Handshake,
+  MonitorCog,
+  Mail,
+  Lock,
+  Calendar,
+  AlertCircle,
+  Search,
+  Settings,
+  QrCode,
+  CircleHelp,
+  Presentation,
+  Timer,
+  Newspaper,
+} from "lucide-react";
 
-const iconStyle = "mr-2";
+const iconStyle = "mr-2 w-4 h-4";
 
 export const TABS = {
   admin: {
-    dropdown: true,
     Dashboards: {
       expand: true,
       mt: "mt-0",
@@ -33,62 +31,62 @@ export const TABS = {
         {
           name: "participants",
           link: "/admin/participants",
-          icon: <BsFillPersonFill className={iconStyle} />,
+          icon: <User className={iconStyle} />,
         },
         {
           name: "teams",
           link: "/admin/teams",
-          icon: <BsPeopleFill className={iconStyle} />,
+          icon: <Users className={iconStyle} />,
         },
         {
           name: "judges",
           link: "/admin/judges",
-          icon: <FaGavel className={iconStyle} />,
+          icon: <Presentation className={iconStyle} />,
         },
         {
           name: "volunteers",
           link: "/admin/volunteers",
-          icon: <MdVolunteerActivism className={iconStyle} />,
+          icon: <Heart className={iconStyle} />,
         },
         {
           name: "mentors",
           link: "/admin/mentors",
-          icon: <BiSolidHelpCircle className={iconStyle} />,
+          icon: <CircleHelp className={iconStyle} />,
         },
         {
           name: "admin",
           link: "/admin/admins",
-          icon: <FaLock className={iconStyle} />,
+          icon: <Lock className={iconStyle} />,
         },
         {
           name: "committees",
           link: "/admin/committees",
-          icon: <SiHandshake className={iconStyle} />,
+          icon: <Handshake className={iconStyle} />,
         },
         {
           name: "sponsors",
           link: "/admin/sponsors",
-          icon: <GoSponsorTiers className={iconStyle} />,
+          icon: <Users className={iconStyle} />, // Replace with the correct icon if available
         },
         {
           name: "panelists",
           link: "/admin/panelists",
-          icon: <IoIosPeople className={iconStyle} />,
+          icon: <Users className={iconStyle} />, // Replace with the correct icon if available
         },
         {
           name: "interests",
           link: "/admin/interests",
-          icon: <FaExclamation className={iconStyle} />,
+          icon: <AlertCircle className={iconStyle} />,
         },
         {
           name: "feedback",
           link: "/admin/feedback",
-          icon: <MdFeedback className={iconStyle} />,
+          icon: <MessagesSquare className={iconStyle} />,
         },
         {
           name: "leads",
           link: "/admin/leads",
-          icon: <BsPersonRaisedHand className={iconStyle} />,
+          icon: <Hand className={iconStyle} />,
         },
       ],
     },
@@ -99,32 +97,37 @@ export const TABS = {
         {
           name: "calendar",
           link: "/admin/calendar",
-          icon: <FaCalendarDay className={iconStyle} />,
+          icon: <Calendar className={iconStyle} />,
         },
         {
           name: "contacts",
           link: "/admin/contacts",
-          icon: <FaEnvelope className={iconStyle} />,
+          icon: <Mail className={iconStyle} />,
         },
         {
           name: "check in",
           link: "/admin/checkin",
-          icon: <AiOutlineQrcode className={iconStyle} />,
+          icon: <QrCode className={iconStyle} />,
         },
         {
           name: "judging",
           link: "/admin/judging",
-          icon: <FaGavel className={iconStyle} />,
+          icon: <MonitorCog className={iconStyle} />,
         },
         {
           name: "statistics",
           link: "/admin/statistics",
-          icon: <BsBarChartFill className={iconStyle} />,
+          icon: <BarChart className={iconStyle} />,
         },
         {
           name: "settings",
           link: "/admin/settings",
-          icon: <FaGear className={iconStyle} />,
+          icon: <Settings className={iconStyle} />,
+        },
+        {
+          name: "timer",
+          link: "/admin/timer",
+          icon: <Timer className={iconStyle} />,
         },
       ],
     },
@@ -136,27 +139,32 @@ export const TABS = {
         {
           name: "dashboard",
           link: "/user/dashboard",
-          icon: <BsFillPersonFill className={iconStyle} />,
+          icon: <User className={iconStyle} />,
         },
         {
           name: "checkin",
           link: "/user/checkin",
-          icon: <AiOutlineQrcode className={iconStyle} />,
+          icon: <QrCode className={iconStyle} />,
         },
         {
           name: "schedule",
           link: "/user/schedule",
-          icon: <FaCalendarDay className={iconStyle} />,
+          icon: <Calendar className={iconStyle} />,
         },
         {
           name: "team",
           link: "/user/team",
-          icon: <RiTeamFill className={iconStyle} />,
+          icon: <Users className={iconStyle} />,
+        },
+        {
+          name: "resources",
+          link: "/user/resources",
+          icon: <Newspaper className={iconStyle} />,
         },
         {
           name: "find a team",
           link: "/user/find",
-          icon: <FaSearch className={iconStyle} />,
+          icon: <Search className={iconStyle} />,
         },
       ],
     },

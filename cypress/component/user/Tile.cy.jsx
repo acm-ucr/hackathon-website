@@ -1,11 +1,9 @@
-import React from "react";
 import Tile from "@/components/user/Tile";
-import { BsQrCode } from "react-icons/bs";
-import { LuParkingCircle } from "react-icons/lu";
+import { QrCode, ParkingCircle } from "lucide-react";
 
 describe("Tile", () => {
   it("Checkin", () => {
-    const icon = <BsQrCode />;
+    const icon = <QrCode />;
     const text = "Check In";
     const link = "/checkin";
 
@@ -17,7 +15,7 @@ describe("Tile", () => {
   });
 
   it("Parking", () => {
-    const icon = <LuParkingCircle />;
+    const icon = <ParkingCircle />;
     const text = "Parking";
     const link = "/parking";
 

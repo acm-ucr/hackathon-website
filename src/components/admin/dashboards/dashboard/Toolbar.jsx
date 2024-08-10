@@ -1,7 +1,7 @@
 "use client";
 import { api } from "@/utils/api";
 import { useState, useEffect } from "react";
-import { FaTrashAlt, FaUndoAlt } from "react-icons/fa";
+import { Trash2, RotateCcw } from "lucide-react";
 import toaster from "@/utils/toaster";
 import Popup from "../../Popup";
 import Tag from "../../Tag";
@@ -56,7 +56,7 @@ const Toolbar = ({
       setLoading(false);
       toaster(
         `Fetched ${page.charAt(0).toUpperCase() + page.slice(1)} Successfully`,
-        "success"
+        "success",
       );
     });
   };
@@ -121,7 +121,7 @@ const Toolbar = ({
           data.map((a) => {
             if (ids.includes(a.uid)) a.status = value;
             return a;
-          })
+          }),
         );
 
         toggleAllRowsSelected(false);
@@ -139,15 +139,15 @@ const Toolbar = ({
 
   const onChange = (id, value) =>
     setFilters((prev) =>
-      prev.filter(({ id }) => id !== search.search).concat({ id, value })
+      prev.filter(({ id }) => id !== search.search).concat({ id, value }),
     );
 
   return (
     <div
-      className="flex flex-col lg:flex-row items-center my-2 gap-3 w-full"
+      className="my-2 flex w-full flex-col items-center gap-3 lg:flex-row"
       data-cy="toolbar"
     >
-      <div className="flex gap-3 ">
+      <div className="flex gap-3">
         {tags.map((tag, index) => (
           <Tag
             key={index}
@@ -158,8 +158,8 @@ const Toolbar = ({
         ))}
       </div>
 
-      <div className="flex lg:flex-row items-center gap-5 w-full">
-        <div className="w-2/12 z-10 mx-2">
+      <div className="flex w-full items-center gap-5 lg:flex-row">
+        <div className="z-10 mx-2 w-2/12">
           <Select
             items={searchableItems}
             user={search}
@@ -181,16 +181,16 @@ const Toolbar = ({
         <div>
           Rows:<span className="mx-2">{meta.total}</span>
         </div>
-        <FaUndoAlt
+        <RotateCcw
           size={22.5}
           onClick={handleReload}
-          className="text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer"
+          className="text-hackathon-gray-300 duration-150 hover:cursor-pointer hover:opacity-70"
         />
-        <FaTrashAlt
+        <Trash2
           data-cy="delete"
           onClick={confirmDelete}
           size={22.5}
-          className="text-hackathon-gray-300 hover:opacity-70 duration-150 hover:cursor-pointer mx-2"
+          className="mx-2 text-hackathon-gray-300 duration-150 hover:cursor-pointer hover:opacity-70"
         />
       </div>
 

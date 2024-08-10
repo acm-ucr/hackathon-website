@@ -1,11 +1,6 @@
 import { generateSelect, generateStatus } from "./Columns";
 import { ICONS } from "./Icons";
-
-export const STATUSES = {
-  1: "accepted",
-  0: "pending",
-  "-1": "rejected",
-};
+import { STATUSES } from "@/data/Statuses";
 
 export const TAGS = [
   {
@@ -23,7 +18,7 @@ export const COLUMNS = [
   {
     accessorKey: "name",
     header: "Name",
-    width: "w-3/12",
+    meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -32,7 +27,7 @@ export const COLUMNS = [
   {
     accessorKey: "email",
     header: "Email",
-    width: "w-3/12",
+    meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -41,7 +36,7 @@ export const COLUMNS = [
   {
     accessorKey: "discord",
     header: "Discord",
-    width: "w-3/12",
+    meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -61,10 +56,10 @@ const attributes = [
 
 export const DROPDOWN = ({ object }) => {
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="grid grid-cols-3 w-11/12">
+    <div className="flex flex-col items-center justify-center">
+      <div className="grid w-11/12 grid-cols-3">
         {attributes.map((attribute, index) => (
-          <div key={index} className="my-1 px-1 flex text-sm">
+          <div key={index} className="my-1 flex px-1 text-sm">
             {ICONS[attribute]}
             {Array.isArray(object[attribute])
               ? object[attribute].length !== 0
@@ -74,7 +69,7 @@ export const DROPDOWN = ({ object }) => {
           </div>
         ))}
       </div>
-      <div className="flex flex-row justify-evenly px-5 w-full">
+      <div className="flex w-full flex-row justify-evenly px-5">
         <div>Why do you want to join?: {object.response}</div>
         <div>Prior Experience: {object.priorExperience}</div>
       </div>

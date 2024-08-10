@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image.js";
-import Title from "../admin/Title.jsx";
+import Image from "next/image";
+import Title from "../admin/Title";
 import { QRCodeSVG } from "qrcode.react";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
@@ -19,28 +19,28 @@ const CheckinPage = () => {
   }, []);
 
   return (
-    <div className="flex w-full flex-col h-[calc(100vh-48px)]">
+    <div className="flex h-[calc(100vh-48px)] w-full flex-col">
       <div className="pb-3 pt-4">
         <Title title="Check In" />
       </div>
-      <div className="flex flex-col h-full lg:flex-row">
-        <div className="flex flex-col items-center m-auto">
+      <div className="flex h-full flex-col lg:flex-row">
+        <div className="m-auto flex flex-col items-center">
           <Image
             width={125}
             height={125}
             src={session.user.image}
-            className="rounded-full overflow-hidden"
+            className="overflow-hidden rounded-full"
             alt="Picture of user's profile"
           />
           <p className="text-2xl font-bold">{session.user.name}</p>
           <p className="text-base">{session.user.email}</p>
         </div>
-        <div className="bg-white w-2/3 h-1/3 lg:h-5/6 flex justify-center items-center flex-col rounded-lg m-auto">
+        <div className="m-auto flex h-1/3 w-2/3 flex-col items-center justify-center rounded-lg bg-white lg:h-5/6">
           <QRCodeSVG
             value={`${session.user.id}&${date.toISOString()}&${
               session.user.name
             }`}
-            className="w-2/3 h-2/3"
+            className="h-2/3 w-2/3"
           />
         </div>
       </div>
