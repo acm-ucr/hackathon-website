@@ -2,8 +2,29 @@ import Checkbox from "@/components/Checkbox";
 import { AVAILABILITY } from "../form/Information";
 import { generateSelect, generateStatus } from "./Columns";
 import { STATUSES } from "@/data/Statuses";
+import { ColumnDef } from "@tanstack/react-table";
 
-export const TAGS = [
+type Mentor = {
+  name: string;
+  email: string;
+  discord: string;
+  availability: string[];
+  response: string;
+};
+
+type tags = {
+  text: string;
+  value: number;
+};
+
+type dropdownProp = {
+  object: {
+    availability: string[];
+    response: string;
+  };
+};
+
+export const TAGS: tags[] = [
   {
     text: "confirm",
     value: 1,
@@ -14,39 +35,36 @@ export const TAGS = [
   },
 ];
 
-export const COLUMNS = [
+export const COLUMNS: ColumnDef<Mentor, string>[] = [
   generateSelect(),
   {
     accessorKey: "name",
     header: "Name",
-    width: "w-3/12",
+    meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props) => <div>{props.getValue()}</div>,
   },
   {
     accessorKey: "email",
     header: "Email",
-    width: "w-4/12",
+    meta: { width: "w-4/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props) => <div>{props.getValue()}</div>,
   },
   {
     accessorKey: "discord",
     header: "Discord",
-    width: "w-3/12",
+    meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props) => <div>{props.getValue()}</div>,
   },
   generateStatus(STATUSES),
 ];
 
-export const DROPDOWN = ({ object }) => {
+export const DROPDOWN: React.FC<dropdownProp> = ({ object }) => {
   return (
     <>
       <div className="flex justify-center">

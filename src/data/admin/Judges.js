@@ -23,7 +23,7 @@ export const COLUMNS = [
   {
     accessorKey: "name",
     header: "Name",
-    width: "w-2/12",
+    meta: { width: "w-2/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -32,7 +32,7 @@ export const COLUMNS = [
   {
     accessorKey: "email",
     header: "Email",
-    width: "w-3/12",
+    meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -41,7 +41,7 @@ export const COLUMNS = [
   {
     accessorKey: "title",
     header: "Title",
-    width: "w-3/12",
+    meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -83,7 +83,7 @@ export const COLUMNS = [
         </div>
       );
     },
-    width: "w-1/12",
+    meta: { width: "w-1/12" },
     enableSorting: false,
     cell: ({ getValue, row }) => (
       <View src={getValue()} title={row.getValue("name")} />
