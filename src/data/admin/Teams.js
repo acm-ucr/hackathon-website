@@ -19,7 +19,7 @@ export const COLUMNS = [
   {
     accessorKey: "name",
     header: "Name",
-    width: "w-2/12",
+    meta: { width: "w-2/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -28,7 +28,7 @@ export const COLUMNS = [
   {
     accessorKey: "teamid",
     header: "Team ID",
-    width: "w-3/12",
+    meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -37,7 +37,7 @@ export const COLUMNS = [
   {
     accessorKey: "members",
     header: "Members",
-    width: "w-2/12",
+    meta: { width: "w-2/12" },
     enableSorting: false,
     filterFn: "includesString",
     enableColumnFilter: true,
@@ -53,7 +53,7 @@ export const COLUMNS = [
   {
     accessorKey: "discords",
     header: "Discords",
-    width: "w-2/12",
+    meta: { width: "w-2/12" },
     enableSorting: false,
     searchable: true,
     enableColumnFilter: true,
@@ -69,7 +69,7 @@ export const COLUMNS = [
   {
     accessorKey: "links",
     header: "Links",
-    width: "w-2/12",
+    meta: { width: "w-2/12" },
     enableSorting: false,
     cell: ({ getValue }) => (
       <div>
