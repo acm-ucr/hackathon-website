@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
-import { committeeSchema } from "@/schemas/committee.ts";
+import { schema } from "@/schemas/committee";
 
 const Committee = () => {
   const { data: session } = useSession();
@@ -21,7 +21,7 @@ const Committee = () => {
 
   const handleSubmit = async (setLoading, setState) => {
     setLoading(true);
-    const result = committeeSchema.safeParse(committee);
+    const result = schema.safeParse(committee);
 
     if (!result.success) {
       result.error.errors.forEach((err) => {

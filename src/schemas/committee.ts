@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const committeeSchema = z.object({
+export const schema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
   email: z.string().email({ message: "Invalid email address" }),
   discord: z.string().min(1, { message: "Discord username is required" }),

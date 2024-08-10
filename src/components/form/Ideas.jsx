@@ -6,7 +6,7 @@ import { FIELDS, ATTRIBUTES } from "@/data/form/Ideas";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
 import { useSession } from "next-auth/react";
-import { ideaSchema } from "@/schemas/idea.ts";
+import { schema } from "@/schemas/idea";
 
 const Ideas = () => {
   const { data: session } = useSession();
@@ -20,7 +20,7 @@ const Ideas = () => {
 
   const onSubmit = async (setLoading, setState) => {
     setLoading(true);
-    const result = ideaSchema.safeParse(idea);
+    const result = schema.safeParse(idea);
 
     if (!result.success) {
       result.error.errors.forEach((err) => {

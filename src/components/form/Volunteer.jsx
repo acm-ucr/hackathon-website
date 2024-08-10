@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
-import { volunteerSchema } from "@/schemas/volunteer.ts";
+import { schema } from "@/schemas/volunteer";
 const Volunteer = () => {
   const { data: session } = useSession();
 
@@ -21,7 +21,7 @@ const Volunteer = () => {
 
   const handleSubmit = async (setLoading, setState) => {
     setLoading(true);
-    const result = volunteerSchema.safeParse(volunteer);
+    const result = schema.safeParse(volunteer);
 
     if (!result.success) {
       result.error.errors.forEach((err) => {

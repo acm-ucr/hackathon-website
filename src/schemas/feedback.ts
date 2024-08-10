@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const feedbackSchema = z.object({
+export const schema = z.object({
   eventSource: z
     .string()
     .min(1, { message: "Please select how you found the event" }),

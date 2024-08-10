@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const ideaSchema = z.object({
+export const schema = z.object({
   idea: z.string().min(1, { message: "Title of idea is required" }),
   languages: z
     .array(z.string())

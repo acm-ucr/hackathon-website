@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
-import { mentorSchema } from "@/schemas/mentor.ts";
+import { schema } from "@/schemas/mentor";
 
 const Mentor = () => {
   const { data: session } = useSession();
@@ -22,7 +22,7 @@ const Mentor = () => {
 
   const handleSubmit = async (setLoading, setState) => {
     setLoading(true);
-    const result = mentorSchema.safeParse(mentor);
+    const result = schema.safeParse(mentor);
 
     if (!result.success) {
       result.error.errors.forEach((err) => {

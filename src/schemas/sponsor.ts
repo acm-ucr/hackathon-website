@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const sponsorSchema = z.object({
+export const schema = z.object({
   name: z.string().min(1, { message: "Name is invalid" }),
   email: z.string().email({ message: "Invalid email address" }),
   phone: z.string().regex(/^\d{3} \d{3} \d{4}$/, {

@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
-import { judgeSchema } from "@/schemas/judge.ts";
+import { schema } from "@/schemas/judge";
 
 const Judge = () => {
   const { data: session } = useSession();
@@ -22,7 +22,7 @@ const Judge = () => {
 
   const handleSubmit = async (setLoading, setState) => {
     setLoading(true);
-    const result = judgeSchema.safeParse(judge);
+    const result = schema.safeParse(judge);
 
     if (!result.success) {
       result.error.errors.forEach((err) => {

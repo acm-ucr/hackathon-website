@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
-import { adminSchema } from "@/schemas/admin.ts";
+import { schema } from "@/schemas/admin";
 
 const Admin = () => {
   const { data: session } = useSession();
@@ -21,7 +21,7 @@ const Admin = () => {
 
   const handleSubmit = async (setLoading, setState) => {
     setLoading(true);
-    const result = adminSchema.safeParse(admin);
+    const result = schema.safeParse(admin);
 
     if (!result.success) {
       result.error.errors.forEach((err) => {

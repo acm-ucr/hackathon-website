@@ -7,7 +7,7 @@ import toaster from "@/utils/toaster";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Interest";
 import { useSession } from "next-auth/react";
 import { STATUSES } from "@/data/Statuses";
-import { interestSchema } from "@/schemas/interest.ts";
+import { schema } from "@/schemas/interest";
 
 const Interest = () => {
   const { data: session } = useSession();
@@ -21,7 +21,7 @@ const Interest = () => {
 
   const onSubmit = async (setLoading, setState) => {
     setLoading(true);
-    const result = interestSchema.safeParse(interest);
+    const result = schema.safeParse(interest);
 
     if (!result.success) {
       result.error.errors.forEach((err) => {

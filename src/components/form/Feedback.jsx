@@ -6,7 +6,7 @@ import { FIELDS, ATTRIBUTES } from "@/data/form/Feedback.js";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
 import { useSession } from "next-auth/react";
-import { feedbackSchema } from "@/schemas/feedback.ts";
+import { schema } from "@/schemas/feedback";
 
 const Feedback = () => {
   const { data: session } = useSession();
@@ -18,7 +18,7 @@ const Feedback = () => {
 
   const handleSubmit = async (setLoading, setState) => {
     setLoading(true);
-    const result = feedbackSchema.safeParse(feedback);
+    const result = schema.safeParse(feedback);
 
     if (!result.success) {
       result.error.errors.forEach((err) => {

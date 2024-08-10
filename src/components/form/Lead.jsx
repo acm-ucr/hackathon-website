@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
-import { leadSchema } from "@/schemas/lead.ts";
+import { schema } from "@/schemas/lead";
 
 const Lead = () => {
   const { data: session } = useSession();
@@ -21,7 +21,7 @@ const Lead = () => {
 
   const handleSubmit = async (setLoading, setState) => {
     setLoading(true);
-    const result = leadSchema.safeParse(lead);
+    const result = schema.safeParse(lead);
 
     if (!result.success) {
       result.error.errors.forEach((err) => {
