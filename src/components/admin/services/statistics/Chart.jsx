@@ -3,7 +3,6 @@
 import * as React from "react";
 import { Label, Pie, PieChart } from "recharts";
 import { ROLES } from "@/data/admin/Statistics";
-
 import { Card, CardContent } from "@/components/ui/card";
 import {
   ChartContainer,
@@ -12,22 +11,22 @@ import {
 } from "@/components/ui/chart";
 
 const Chart = ({ title, data }) => {
-  const chartData = Object.entries(data).map(([type, value]) => ({
-    type: ROLES[type].label,
-    value: value,
-    className: ROLES[type].className,
-    fill: ROLES[type].fill,
-  }));
+  const chartData = Object.entries(data)
+    .filter(([type]) => ROLES[type])
+    .map(([type, value]) => ({
+      type: ROLES[type].label,
+      value: value,
+      className: ROLES[type].className,
+      fill: ROLES[type].fill,
+    }));
 
-  const chartConfig = Object.entries(data).map(([type, value]) => {
-    const label = ROLES[type].label;
-
-    return {
+  const chartConfig = Object.entries(data)
+    .filter(([type]) => ROLES[type])
+    .map(([type, value]) => ({
       label: {
-        label: label,
+        label: ROLES[type].label,
       },
-    };
-  });
+    }));
 
   const total = React.useMemo(() => {
     return chartData.reduce((acc, curr) => acc + curr.value, 0);
@@ -35,6 +34,13 @@ const Chart = ({ title, data }) => {
 
   return (
     <Card className="flex flex-col">
+      <div className="flex flex-col p-6">
+        {chartData.map((entry, index) => (
+          <div key={index} className="flex items-center">
+            <span className="text-md font-medium">{`${entry.type}: ${entry.value}`}</span>
+          </div>
+        ))}
+      </div>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
