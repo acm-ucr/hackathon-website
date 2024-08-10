@@ -12,7 +12,7 @@ import {
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { Input } from "@/components/ui/input";
 
-const VirtualizedContent = ({ items, setSelected, userFn }) => {
+const VirtualizedContent = ({ items, setSelected, userFn, searchable }) => {
   const ref = useRef(null);
   const [options, setOptions] = useState(items);
   const { getTotalSize, getVirtualItems } = useVirtualizer({
@@ -35,12 +35,14 @@ const VirtualizedContent = ({ items, setSelected, userFn }) => {
       className="h-fit max-h-[400px] overflow-y-scroll"
       data-cy="select-menu"
     >
-      <Input
-        placeholder="search"
-        className="sticky top-0 z-50 bg-white"
-        onKeyDown={(event) => event.stopPropagation()}
-        onChange={handleInput}
-      />
+      {searchable && (
+        <Input
+          placeholder="search"
+          className="sticky top-0 z-50 bg-white"
+          onKeyDown={(event) => event.stopPropagation()}
+          onChange={handleInput}
+        />
+      )}
       <DropdownMenuGroup className="relative w-[700px]">
         <div style={{ height: `${getTotalSize()}px` }}>
           {getVirtualItems().map((virtualRow) => {
@@ -78,6 +80,8 @@ const Select = ({
   user,
   setUser,
   field,
+  disabled = false,
+  searchable = false,
   userFn = (value) => setUser({ ...user, [field]: value }),
 }) => {
   const [selected, setSelected] = useState(null);
@@ -96,6 +100,7 @@ const Select = ({
             data-cy="select-toggle"
             className="w-full justify-between"
             variant="outline"
+            disabled={disabled}
           >
             {selected ? selected : placeholder}
             <ChevronDown />
@@ -106,6 +111,7 @@ const Select = ({
             items={items}
             setSelected={setSelected}
             userFn={userFn}
+            searchable={searchable}
           />
         </DropdownMenuPortal>
       </DropdownMenu>
