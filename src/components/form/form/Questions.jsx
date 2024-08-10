@@ -155,7 +155,7 @@ const Questions = ({
                 {field.required && <span className="text-red-500">*</span>}
               </p>
               <RadioGroup value={object[field.field]}>
-                {field.options.map((option, index) => (
+                {Object.values(field.options).map((option, index) => (
                   <div key={index}>
                     <RadioGroupItem
                       value={option}
