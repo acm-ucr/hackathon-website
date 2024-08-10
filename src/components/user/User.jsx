@@ -7,6 +7,7 @@ import {
   SHIRTS,
 } from "@/data/form/Information";
 import { SCHOOLS } from "@/data/form/Schools";
+import { COUNTRIES } from "@/data/form/Country";
 import Input from "../Input";
 import Radio from "../Radio";
 import Select from "../Select";
@@ -57,6 +58,14 @@ const User = ({ user, setUser, edit, setEdit }) => {
           title="School"
           items={SCHOOLS}
           field="school"
+          user={user}
+          setUser={setUser}
+          editable={edit}
+        />
+        <Select
+          title="Country"
+          items={COUNTRIES}
+          field="country"
           user={user}
           setUser={setUser}
           editable={edit}

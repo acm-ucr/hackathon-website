@@ -35,7 +35,7 @@ const Table = ({
                 {headers.map(({ id, column, getContext }) => (
                   <div
                     key={id}
-                    className={`${column.columnDef.width} flex items-center`}
+                    className={`${column.columnDef.meta?.width} flex items-center`}
                     data-cy="header"
                   >
                     {flexRender(column.columnDef.header, getContext())}

@@ -14,7 +14,7 @@ export const POST = async (req) => {
       { status: auth },
     );
   }
-  const { phone, major, age, school, grade, gender, shirt, diet } =
+  const { phone, major, age, country, school, grade, gender, shirt, diet } =
     await req.json();
 
   try {
@@ -22,6 +22,7 @@ export const POST = async (req) => {
       phone: phone,
       major: major,
       age: age,
+      country: country,
       school: school,
       grade: grade,
       gender: gender,

@@ -1,6 +1,13 @@
 import { Checkbox as Check } from "./ui/checkbox";
 
-const Checkbox = ({ toggle, onClick = () => {}, text = "", color }) => {
+type checkbox = {
+  toggle: boolean;
+  text: string;
+  color?: string;
+  onClick?: () => {};
+};
+
+const Checkbox: React.FC<checkbox> = ({ toggle, onClick, text, color }) => {
   return (
     <div
       className="flex w-fit items-center hover:cursor-pointer"

@@ -1,4 +1,26 @@
-export const LABELS = {
+interface types {
+  color: string;
+  background: string;
+  type: string;
+}
+
+interface label {
+  directors: types;
+  marketing: types;
+  operations: types;
+  sponsorship: types;
+  recruitment: types;
+  software: types;
+  uiux: types;
+  leads: types;
+  workshop: types;
+  general: types;
+  food: types;
+  social: types;
+  activities: types;
+}
+
+export const LABELS: label = {
   directors: {
     color: "red",
     background: "!bg-hackathon-tags-red-text",

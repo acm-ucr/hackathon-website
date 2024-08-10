@@ -21,9 +21,13 @@ const Dashboard = () => {
         <div className="col-span-1 md:col-span-2">
           <Countdown />
           <div className="mt-4 flex flex-col gap-4 md:flex-row">
-            <Tile icon={<QrCode />} text="Check In" link="/user/checkin" />
             <Tile
-              icon={<ParkingCircle />}
+              icon={<QrCode size={40} />}
+              text="Check In"
+              link="/user/checkin"
+            />
+            <Tile
+              icon={<ParkingCircle size={40} />}
               text="Parking Info"
               link="https://transportation.ucr.edu/visitor-parking"
             />
