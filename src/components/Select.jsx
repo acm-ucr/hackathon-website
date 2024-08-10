@@ -33,6 +33,7 @@ const VirtualizedContent = ({ items, setSelected, userFn }) => {
     <DropdownMenuContent
       ref={ref}
       className="h-fit max-h-[400px] overflow-y-scroll"
+      data-cy="select-menu"
     >
       <Input
         placeholder="search"
@@ -91,7 +92,11 @@ const Select = ({
       )}
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button className="w-full justify-between" variant="outline">
+          <Button
+            data-cy="select-toggle"
+            className="w-full justify-between"
+            variant="outline"
+          >
             {selected ? selected : placeholder}
             <ChevronDown />
           </Button>
