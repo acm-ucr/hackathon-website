@@ -70,8 +70,11 @@ const CheckIn = () => {
   return (
     <div className="flex h-full flex-col gap-3 py-4 font-poppins">
       <Title title="Check In" />
-      <div className="grid grid-cols-1">
-        <div className="flex flex-col items-center gap-3 p-3">
+      <div className="grid flex-grow grid-cols-1 overflow-auto">
+        <div
+          className="flex flex-col items-center gap-3 p-3"
+          style={{ flexGrow: 1, overflow: "hidden" }}
+        >
           {events && (
             <Select
               items={events}
@@ -81,15 +84,29 @@ const CheckIn = () => {
               userFn={(event) => setEvent(event)}
             />
           )}
-          <Scanner setResult={setResult} />
+          <div
+            className="flex w-full flex-col items-center justify-center"
+            style={{ maxHeight: "85vh", width: "90%", overflow: "hidden" }}
+          >
+            <Scanner
+              setResult={setResult}
+              style={{ height: "100%", width: "100%" }}
+            />
+          </div>
           <div>{code && code.split("&")[2]}</div>
-          <Button
-            text="Check In"
-            color="green"
-            onClick={handleCheckIn}
-            size="text-xl"
-          />
         </div>
+      </div>
+
+      <div
+        className="flex flex-shrink-0 justify-center p-6"
+        style={{ paddingTop: "5px", paddingBottom: "10px" }}
+      >
+        <Button
+          text="Check in"
+          color="green"
+          onClick={handleCheckIn}
+          size="text-xl"
+        />
       </div>
     </div>
   );
