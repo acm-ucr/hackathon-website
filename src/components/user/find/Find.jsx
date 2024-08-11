@@ -6,18 +6,8 @@ import Idea from "./Idea";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { useMemo, useRef } from "react";
 
-const generateDummyIdeas = (count) => {
-  return Array.from({ length: count }, (_, i) => ({
-    title: `Idea ${i}`,
-    technologies: ["Python", "TensorFlow"],
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    contact: "Please contact me on Discord using webdiv",
-  }));
-};
-
 const Find = () => {
-  const ideas = useMemo(() => generateDummyIdeas(1000), []);
+  const ideas = useMemo(() => [], []);
 
   const ref = useRef(null);
 
@@ -25,6 +15,10 @@ const Find = () => {
     count: ideas.length,
     getScrollElement: () => ref.current,
     estimateSize: () => 325,
+    measureElement: (el) => {
+      if (el.clientHeight > 325) return el.clientHeight;
+      return 325;
+    },
     lanes: 4,
     overscan: 4,
   });
@@ -47,11 +41,14 @@ const Find = () => {
                 height: `${size}px`,
                 transform: `translateY(${start}px)`,
               }}
-              ref={measureElement}
-              data-index={index}
             >
               {row.map(({ title, technologies, description, contact }, i) => (
-                <div key={`column: ${i}`} className="flex items-start p-2">
+                <div
+                  key={`column: ${i}`}
+                  ref={measureElement}
+                  data-index={index + i}
+                  className="flex items-start p-2"
+                >
                   <Idea
                     title={title}
                     technologies={technologies}
