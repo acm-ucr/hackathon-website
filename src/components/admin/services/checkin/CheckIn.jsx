@@ -71,10 +71,7 @@ const CheckIn = () => {
     <div className="flex h-full flex-col gap-3 py-4 font-poppins">
       <Title title="Check In" />
       <div className="grid grid-cols-1 overflow-auto">
-        <div
-          className="flex flex-col gap-3 py-3"
-          style={{ overflow: "hidden" }}
-        >
+        <div className="flex flex-col gap-3 overflow-hidden py-3">
           {events && (
             <Select
               items={events}
