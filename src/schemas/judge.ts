@@ -7,7 +7,9 @@ export const schema = z.object({
     message: "Invalid phone number. Expected format: 123 456 7890",
   }),
   gender: z.string().min(1, { message: "Gender is required" }),
-  shirt: z.string().min(1, { message: "Shirt size is required" }),
+  shirt: z.enum(["XS", "S", "M", "L", "XL", "XXL"], {
+    required_error: "Please select your shirt size",
+  }),
   affiliation: z.string().min(1, { message: "Affiliation is required" }),
   title: z.string().min(1, { message: "Title is required" }),
   photo: z.string().optional(),

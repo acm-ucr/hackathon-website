@@ -13,7 +13,9 @@ export const schema = z.object({
     .array(z.string())
     .min(1, { message: "At least one availability option must be selected" }),
   gender: z.string().min(1, { message: "Gender is invalid" }),
-  shirt: z.string().min(1, { message: "Shirt size is invalid" }),
+  shirt: z.enum(["XS", "S", "M", "L", "XL", "XXL"], {
+    required_error: "Please select your shirt size",
+  }),
   requirements: z
     .array(z.string())
     .min(1, { message: "You must agree to the terms and conditions" }),

@@ -7,7 +7,9 @@ export const schema = z.object({
   major: z.string().min(1, { message: "Major is invalid" }),
   grade: z.string().min(1, { message: "Grade is invalid" }),
   gender: z.string().min(1, { message: "Gender is invalid" }),
-  shirt: z.string().min(1, { message: "Shirt size is invalid" }),
+  shirt: z.enum(["XS", "S", "M", "L", "XL", "XXL"], {
+    required_error: "Please select your shirt size",
+  }),
   affiliation: z.string().min(1, { message: "Affiliation is invalid" }),
   requirements: z
     .array(z.string())

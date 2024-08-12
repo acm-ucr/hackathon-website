@@ -10,7 +10,9 @@ export const schema = z.object({
   company: z.string().min(1, { message: "Company name is invalid" }),
   title: z.string().min(1, { message: "Title is invalid" }),
   gender: z.string().min(1, { message: "Gender is invalid" }),
-  shirt: z.string().min(1, { message: "Shirt size is invalid" }),
+  shirt: z.enum(["XS", "S", "M", "L", "XL", "XXL"], {
+    required_error: "Please select your shirt size",
+  }),
   photo: z.string().min(1, { message: "Photo is required" }), // Photo validation assumes a string path is used. Adjust if using file types directly.
   requirements: z
     .array(z.string())
