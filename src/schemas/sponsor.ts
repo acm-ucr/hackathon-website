@@ -8,7 +8,9 @@ export const schema = z.object({
   }),
   company: z.string().min(1, { message: "Company name is invalid" }),
   position: z.string().min(1, { message: "Position is invalid" }),
-  tier: z.string().min(1, { message: "Sponsorship tier is required" }),
+  tier: z.enum(["Bronze", "Silver", "Gold", "Tier4", "Tier5", "Other"], {
+    required_error: "Please select your tier",
+  }),
   comments: z.string().min(1, { message: "Comments/Questions are required" }),
   requirements: z
     .array(z.string())

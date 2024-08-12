@@ -9,7 +9,9 @@ export const schema = z.object({
   panelist: z.string().min(1, { message: "Panelist role is invalid" }),
   company: z.string().min(1, { message: "Company name is invalid" }),
   title: z.string().min(1, { message: "Title is invalid" }),
-  gender: z.string().min(1, { message: "Gender is invalid" }),
+  gender: z.enum(["Male", "Female", "Transgender", "Non-binary", "Other"], {
+    required_error: "Please select your gender",
+  }),
   shirt: z.enum(["XS", "S", "M", "L", "XL", "XXL"], {
     required_error: "Please select your shirt size",
   }),

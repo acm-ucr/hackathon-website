@@ -12,7 +12,9 @@ export const schema = z.object({
   availability: z
     .array(z.string())
     .min(1, { message: "At least one availability option must be selected" }),
-  gender: z.string().min(1, { message: "Gender is invalid" }),
+  gender: z.enum(["Male", "Female", "Transgender", "Non-binary", "Other"], {
+    required_error: "Please select your gender",
+  }),
   shirt: z.enum(["XS", "S", "M", "L", "XL", "XXL"], {
     required_error: "Please select your shirt size",
   }),

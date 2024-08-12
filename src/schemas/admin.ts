@@ -6,7 +6,9 @@ export const schema = z.object({
   discord: z.string().min(1, { message: "Discord username is invalid" }),
   major: z.string().min(1, { message: "Major is invalid" }),
   grade: z.string().min(1, { message: "Grade is invalid" }),
-  gender: z.string().min(1, { message: "Gender is invalid" }),
+  gender: z.enum(["Male", "Female", "Transgender", "Non-binary", "Other"], {
+    required_error: "Please select your gender",
+  }),
   shirt: z.enum(["XS", "S", "M", "L", "XL", "XXL"], {
     required_error: "Please select your shirt size",
   }),

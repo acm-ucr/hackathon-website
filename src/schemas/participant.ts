@@ -11,7 +11,9 @@ export const schema = z.object({
   age: z.string().min(1, { message: "Age is invalid" }),
   school: z.string().min(1, { message: "School is invalid" }),
   grade: z.string().min(1, { message: "Grade is invalid" }),
-  gender: z.string().min(1, { message: "Gender is invalid" }),
+  gender: z.enum(["Male", "Female", "Transgender", "Non-binary", "Other"], {
+    required_error: "Please select your gender",
+  }),
   shirt: z.enum(["XS", "S", "M", "L", "XL", "XXL"], {
     required_error: "Please select your shirt size",
   }),
