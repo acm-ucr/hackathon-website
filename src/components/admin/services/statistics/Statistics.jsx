@@ -9,7 +9,6 @@ import Charts from "./Charts";
 
 const Statistics = () => {
   const [counts, setCounts] = useState(null);
-
   useEffect(() => {
     api({
       method: "GET",
