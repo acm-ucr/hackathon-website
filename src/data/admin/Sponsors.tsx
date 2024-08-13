@@ -1,8 +1,25 @@
 import { TIERS } from "@/data/form/Sponsors";
 import { generateSelect, generateStatus, generateTiers } from "./Columns";
 import { STATUSES } from "@/data/Statuses";
+import { ColumnDef } from "@tanstack/react-table";
+import { Tags } from "@/types/dashboard";
 
-export const TAGS = [
+type Sponsor = {
+  name: string;
+  email: string;
+  company: string;
+  position: string;
+  tier: string;
+  comments: string;
+};
+
+type dropdownProp = {
+  object: {
+    response: string;
+  };
+};
+
+export const TAGS: Tags[] = [
   {
     text: "accept",
     value: 1,
@@ -13,7 +30,7 @@ export const TAGS = [
   },
 ];
 
-export const COLUMNS = [
+export const COLUMNS: ColumnDef<Sponsor, string>[] = [
   generateSelect(),
   {
     accessorKey: "name",
@@ -21,8 +38,7 @@ export const COLUMNS = [
     meta: { width: "w-2/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props) => <div>{props.getValue()}</div>,
   },
   {
     accessorKey: "email",
@@ -30,8 +46,7 @@ export const COLUMNS = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props) => <div>{props.getValue()}</div>,
   },
   {
     accessorKey: "company",
@@ -39,8 +54,7 @@ export const COLUMNS = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props) => <div>{props.getValue()}</div>,
   },
   {
     accessorKey: "position",
@@ -48,13 +62,13 @@ export const COLUMNS = [
     meta: { width: "w-2/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props) => <div>{props.getValue()}</div>,
   },
   generateTiers(TIERS),
   generateStatus(STATUSES),
 ];
-export const DROPDOWN = ({ object }) => {
+
+export const DROPDOWN: React.FC<dropdownProp> = ({ object }) => {
   return (
     <>
       <p className="ml-5 mt-3">{object.response}</p>
