@@ -238,7 +238,7 @@ export const PUT = async (req, { params }) => {
               [`${params.type}.1`]: increment(1),
               [`${params.type}.0`]: increment(-1),
               [`${params.type}.${size}`]: increment(1),
-              [`${"participants"}.${school}`]: increment(1),
+              [`${params}.participants.${school}`]: increment(1),
             }));
 
           status === -1 &&
@@ -246,7 +246,7 @@ export const PUT = async (req, { params }) => {
               [`${params.type}.-1`]: increment(1),
               [`${params.type}.0`]: increment(-1),
               [`${params.type}.${size}`]: increment(-1),
-              [`${"participants"}.${school}`]: increment(-1),
+              [`${params}.participants.${school}`]: increment(-1),
             }));
         }),
       );
