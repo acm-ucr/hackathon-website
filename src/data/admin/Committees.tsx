@@ -2,8 +2,37 @@ import { generateAffiliation, generateSelect, generateStatus } from "./Columns";
 import { AFFILIATIONS } from "../form/Information";
 import { ICONS } from "./Icons";
 import { STATUSES } from "@/data/Statuses";
+import { ColumnDef } from "@tanstack/react-table";
+import { ReactNode } from "react";
 
-export const TAGS = [
+type TAGS = {
+  text: string;
+  value: number;
+};
+
+type Attributes = string[];
+
+type Meta = {
+  width: string;
+};
+type Committee<TData extends object> = ColumnDef<TData> & {
+  searchable?: boolean;
+};
+
+interface Column {
+  accessorKey: string;
+  header: string;
+  meta: Meta;
+  enableColumnFilter: boolean;
+  filterFn: string;
+  cell: ({ getValue }: { getValue: () => any }) => JSX.Element;
+}
+
+type Dropdown = {
+  object: Record<string, any>;
+};
+
+export const TAGS: TAGS[] = [
   {
     text: "accept",
     value: 1,
@@ -14,7 +43,7 @@ export const TAGS = [
   },
 ];
 
-export const COLUMNS = [
+export const COLUMNS: Committee<Column>[] = [
   generateSelect(),
   {
     accessorKey: "name",
@@ -23,7 +52,7 @@ export const COLUMNS = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: ({ getValue }) => <div>{getValue() as ReactNode}</div>,
   },
   {
     accessorKey: "email",
@@ -32,7 +61,7 @@ export const COLUMNS = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: ({ getValue }) => <div>{getValue() as ReactNode}</div>,
   },
   {
     accessorKey: "discord",
@@ -41,13 +70,13 @@ export const COLUMNS = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: ({ getValue }) => <div>{getValue() as ReactNode}</div>,
   },
   generateAffiliation(AFFILIATIONS),
   generateStatus(STATUSES),
 ];
 
-const attributes = [
+const attributes: Attributes = [
   "email",
   "phone",
   "age",
@@ -60,7 +89,7 @@ const attributes = [
   "restriction",
 ];
 
-export const DROPDOWN = ({ object }) => {
+export const DROPDOWN: React.FC<Dropdown> = ({ object }) => {
   return (
     <div className="flex items-center justify-center">
       <div className="grid w-11/12 grid-cols-3">
