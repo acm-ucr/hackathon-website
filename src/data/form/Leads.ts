@@ -1,9 +1,66 @@
+import {
+  CheckboxInput,
+  Description,
+  RadioInput,
+  SelectInput,
+  TermsAndConditions,
+  TextareaInput,
+  TextInput,
+  UploadInput,
+} from "@/types/forms";
 import { AGES, MAJORS } from "./Information";
 import { GRADES, GENDERS, SOURCES } from "./Information";
 import { SCHOOLS } from "./Schools";
 import data from "@/data/Config";
 
-export const FIELDS = {
+interface Attributes {
+  name: string;
+  email: string;
+  phone: string;
+  major: string;
+  age: string;
+  school: string;
+  grade: string;
+  gender: string;
+  resume: string;
+  requirements: string[];
+  priorHackathons: string[];
+}
+
+export const ATTRIBUTES: Attributes = {
+  name: "",
+  email: "",
+  phone: "",
+  major: "",
+  age: "",
+  school: "",
+  grade: "",
+  gender: "",
+  resume: "",
+  requirements: [],
+  priorHackathons: [],
+};
+
+interface Fields {
+  description: Description;
+  name: TextInput;
+  email: TextInput;
+  phone: TextInput;
+  discord: TextInput;
+  major: SelectInput;
+  age: SelectInput;
+  school: SelectInput;
+  grade: SelectInput;
+  gender: RadioInput;
+  eventSource: SelectInput;
+  priorHackathons: CheckboxInput;
+  priorExperience: TextareaInput;
+  response: TextareaInput;
+  resume: UploadInput;
+  requirements: TermsAndConditions;
+}
+
+export const FIELDS: Fields = {
   description: {
     input: "description",
     width: 12,
@@ -18,6 +75,7 @@ export const FIELDS = {
   name: {
     input: "input",
     name: "name",
+    placeholder: "John Doe",
     type: "text",
     title: "Name",
     maxLength: 50,
@@ -28,6 +86,7 @@ export const FIELDS = {
   email: {
     input: "input",
     name: "email",
+    placeholder: "john.doe@gmail.com",
     type: "email",
     title: "Email Address",
     maxLength: 50,
@@ -43,6 +102,7 @@ export const FIELDS = {
     placeholder: "ie. 123 456 7890",
     maxLength: 50,
     width: 12,
+    editable: true,
     required: true,
   },
   discord: {
@@ -53,6 +113,7 @@ export const FIELDS = {
     placeholder: "ie. john_doe#1234",
     maxLength: 50,
     width: 12,
+    editable: true,
     required: true,
   },
   major: {
@@ -63,6 +124,7 @@ export const FIELDS = {
     placeholder: "ie. Computer Science",
     width: 12,
     required: true,
+    editable: true,
     searchable: true,
   },
   age: {
@@ -73,6 +135,7 @@ export const FIELDS = {
     placeholder: "ie. 18",
     width: 12,
     required: true,
+    editable: true,
     searchable: true,
   },
   school: {
@@ -83,6 +146,7 @@ export const FIELDS = {
     placeholder: "ie. University of California, Riverside",
     width: 12,
     required: true,
+    editable: true,
     searchable: true,
   },
   grade: {
@@ -93,6 +157,7 @@ export const FIELDS = {
     placeholder: "ie. Undergraduate",
     width: 12,
     required: true,
+    editable: true,
     searchable: true,
   },
   gender: {
@@ -101,6 +166,7 @@ export const FIELDS = {
     options: GENDERS,
     field: "gender",
     width: 12,
+    editable: true,
     required: true,
   },
   eventSource: {
@@ -110,6 +176,8 @@ export const FIELDS = {
     field: "eventSource",
     placeholder: "ie. Social Media",
     width: 12,
+    editable: true,
+    searchable: true,
     required: true,
   },
   priorHackathons: {
@@ -118,6 +186,7 @@ export const FIELDS = {
     field: "priorHackathons",
     width: 12,
     required: true,
+    editable: true,
     options: [
       "Cutie Hack",
       "Rose Hack",
@@ -136,6 +205,7 @@ export const FIELDS = {
     placeholder: "ie. I have prior experience in...",
     width: 12,
     required: true,
+    editable: true,
   },
   response: {
     input: "textarea",
@@ -145,14 +215,16 @@ export const FIELDS = {
     placeholder: "ie. I want to join because...",
     width: 12,
     required: true,
+    editable: true,
   },
   resume: {
     input: "upload",
     field: "resume",
-    text: "Upload  Resume",
+    text: "Upload Resume",
     width: 12,
     types: ["pdf"],
     maxSize: [200, "KB"],
+    editable: true,
     required: false,
   },
   requirements: {
@@ -161,6 +233,7 @@ export const FIELDS = {
     width: 12,
     field: "requirements",
     required: true,
+    editable: true,
     options: [
       "I have read the MLH code of conduct and agree to the terms and conditions listed",
       "I consent to photographs being taken and being used for marketing purposes",
@@ -172,18 +245,4 @@ export const FIELDS = {
       "I further agree to the terms of both the MLH Contest Terms and Conditions and the MLH Privacy Policy",
     ],
   },
-};
-
-export const ATTRIBUTES = {
-  name: "",
-  email: "",
-  phone: "",
-  major: "",
-  age: "",
-  school: "",
-  grade: "",
-  gender: "",
-  resume: "",
-  requirements: [],
-  priorHackathons: [],
 };
