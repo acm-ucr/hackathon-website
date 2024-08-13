@@ -1,5 +1,6 @@
 "use client";
-import { STATUSES, TAGS, COLUMNS } from "@/data/admin/Teams.js";
+import { TAGS, COLUMNS } from "@/data/admin/Teams";
+import { STATUSES } from "@/data/Statuses";
 import Table from "./dashboard/Dashboard";
 
 const Teams = ({ searchParams }) => {

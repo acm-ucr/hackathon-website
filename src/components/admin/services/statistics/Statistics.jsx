@@ -9,7 +9,6 @@ import Charts from "./Charts";
 
 const Statistics = () => {
   const [counts, setCounts] = useState(null);
-
   useEffect(() => {
     api({
       method: "GET",
@@ -24,7 +23,7 @@ const Statistics = () => {
         <Loading />
       ) : (
         <div>
-          <Tabs counts={counts.users} events={counts.events} />
+          <Tabs events={counts.events} />
           <Charts counts={counts.users} />
         </div>
       )}

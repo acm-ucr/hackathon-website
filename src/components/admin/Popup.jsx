@@ -1,5 +1,5 @@
 import Button from "./Button";
-import { LiaTimesSolid } from "react-icons/lia";
+import { X } from "lucide-react";
 
 const Popup = ({ popup, onClick, setPopup, text }) => {
   return (
@@ -10,7 +10,7 @@ const Popup = ({ popup, onClick, setPopup, text }) => {
       <div className="flex flex-col items-center gap-3 rounded-lg bg-white p-3">
         <div className="flex w-full items-center justify-between">
           <p className="m-0 text-lg font-bold">{popup.title}</p>
-          <LiaTimesSolid
+          <X
             className="text-lg hover:cursor-pointer"
             onClick={() => setPopup({ ...popup, visible: false })}
           />

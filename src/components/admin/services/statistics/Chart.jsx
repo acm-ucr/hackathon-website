@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Label, Pie, PieChart } from "recharts";
-import { ROLES } from "@/data/admin/Statistics";
+import { ROLES, SIZES } from "@/data/admin/Statistics";
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -12,15 +12,17 @@ import {
 } from "@/components/ui/chart";
 
 const Chart = ({ title, data }) => {
+  const ITEMS = { ...ROLES, ...SIZES };
+
   const chartData = Object.entries(data).map(([type, value]) => ({
-    type: ROLES[type].label,
+    type: ITEMS[type].label,
     value: value,
-    className: ROLES[type].className,
-    fill: ROLES[type].fill,
+    className: ITEMS[type].className,
+    fill: ITEMS[type].fill,
   }));
 
   const chartConfig = Object.entries(data).map(([type, value]) => {
-    const label = ROLES[type].label;
+    const label = ITEMS[type].label;
 
     return {
       label: {

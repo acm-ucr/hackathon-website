@@ -1,12 +1,7 @@
 import Checkbox from "@/components/Checkbox";
 import { AVAILABILITY } from "../form/Information";
 import { generateSelect, generateStatus } from "./Columns";
-
-export const STATUSES = {
-  1: "accepted",
-  0: "pending",
-  "-1": "rejected",
-};
+import { STATUSES } from "@/data/Statuses";
 
 export const TAGS = [
   {
@@ -24,7 +19,7 @@ export const COLUMNS = [
   {
     accessorKey: "name",
     header: "Name",
-    width: "w-3/12",
+    meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -33,7 +28,7 @@ export const COLUMNS = [
   {
     accessorKey: "email",
     header: "Email",
-    width: "w-4/12",
+    meta: { width: "w-4/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -42,7 +37,7 @@ export const COLUMNS = [
   {
     accessorKey: "discord",
     header: "Discord",
-    width: "w-3/12",
+    meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,

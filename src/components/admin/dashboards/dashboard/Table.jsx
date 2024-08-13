@@ -1,12 +1,12 @@
 import { flexRender } from "@tanstack/react-table";
 import Body from "./Body";
-import { FaArrowRightArrowLeft } from "react-icons/fa6";
 import {
-  FaChevronLeft,
-  FaChevronRight,
-  FaSortAlphaDown,
-  FaSortAlphaUp,
-} from "react-icons/fa";
+  ChevronLeft,
+  ChevronRight,
+  SortAsc,
+  SortDesc,
+  ArrowRightLeft,
+} from "lucide-react";
 import Loading from "@/components/Loading";
 import Link from "next/link";
 
@@ -35,13 +35,13 @@ const Table = ({
                 {headers.map(({ id, column, getContext }) => (
                   <div
                     key={id}
-                    className={`${column.columnDef.width} flex items-center`}
+                    className={`${column.columnDef.meta?.width} flex items-center`}
                     data-cy="header"
                   >
                     {flexRender(column.columnDef.header, getContext())}
                     {column.getCanSort() && (
-                      <FaArrowRightArrowLeft
-                        className={`mx-2 rotate-90 text-hackathon-gray-200 hover:cursor-pointer hover:opacity-50 ${
+                      <ArrowRightLeft
+                        className={`mx-2 w-4 rotate-90 text-hackathon-gray-200 hover:cursor-pointer hover:opacity-50 ${
                           column.getIsSorted() && "hidden"
                         }`}
                         data-cy={`${column.id}-sorting`}
@@ -49,17 +49,17 @@ const Table = ({
                       />
                     )}
                     {column.getIsSorted() === "asc" && (
-                      <FaSortAlphaDown
+                      <SortDesc
                         onClick={column.getToggleSortingHandler()}
                         data-cy={`${column.id}-sorting-desc`}
-                        className="mx-2 text-white hover:cursor-pointer hover:opacity-50"
+                        className="mx-2 w-4 text-white hover:cursor-pointer hover:opacity-50"
                       />
                     )}
                     {column.getIsSorted() === "desc" && (
-                      <FaSortAlphaUp
+                      <SortAsc
                         onClick={column.getToggleSortingHandler()}
                         data-cy={`${column.columnDef.header}-sorting-asc`}
-                        className="mx-2 text-white hover:cursor-pointer hover:opacity-50"
+                        className="mx-2 w-4 text-white hover:cursor-pointer hover:opacity-50"
                       />
                     )}
                   </div>
@@ -103,7 +103,7 @@ const Table = ({
             index <= 1 && "pointer-events-none text-hackathon-gray-200"
           }`}
         >
-          <FaChevronLeft />
+          <ChevronLeft />
         </Link>
         <div>
           Page {index} of {Math.ceil(total / size)}
@@ -117,7 +117,7 @@ const Table = ({
             "pointer-events-none text-hackathon-gray-200"
           }`}
         >
-          <FaChevronRight />
+          <ChevronRight />
         </Link>
       </div>
     </>

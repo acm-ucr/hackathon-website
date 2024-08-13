@@ -1,9 +1,5 @@
 import { generateSelect, generateStatus } from "./Columns";
-
-export const STATUSES = {
-  1: "accepted",
-  0: "pending",
-};
+import { STATUSES } from "@/data/Statuses";
 
 export const TAGS = [
   {
@@ -21,7 +17,7 @@ export const COLUMNS = [
   {
     accessorKey: "name",
     header: "Name",
-    width: "w-5/12",
+    meta: { width: "w-5/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -30,7 +26,7 @@ export const COLUMNS = [
   {
     accessorKey: "email",
     header: "Email",
-    width: "w-5/12",
+    meta: { width: "w-5/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,

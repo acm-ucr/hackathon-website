@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Title from "../../Title";
 import Scanner from "./Scanner";
-import Dropdown from "../Dropdown";
+import Select from "@/components/Select";
 import Button from "../../Button";
 import toaster from "@/utils/toaster";
 import { api } from "@/utils/api";
@@ -34,7 +34,7 @@ const CheckIn = () => {
   const [code, setCode] = useState(null);
   const [user, setUser] = useState(null);
 
-  const { data: eventsData, isLoading } = useQuery({
+  const { data: eventsData } = useQuery({
     queryKey: ["events"],
     queryFn: fetchEvents,
   });
@@ -110,18 +110,14 @@ const CheckIn = () => {
       <Title title="Check In" />
       <div className="grid grid-cols-1">
         <div className="flex flex-col items-center gap-3 p-3">
-          {isLoading ? (
-            <div>Loading...</div>
-          ) : (
-            events && (
-              <Dropdown
-                option={event}
-                setOption={setEvent}
-                options={events}
-                setOptions={setEvents}
-                empty="no events"
-              />
-            )
+          {events && (
+            <Select
+              items={events}
+              user={event}
+              setUser={setEvent}
+              placeholder="Select Events"
+              userFn={(event) => setEvent(event)}
+            />
           )}
           <Scanner setResult={setResult} />
           <div>{code && code.split("&")[2]}</div>

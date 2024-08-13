@@ -1,7 +1,7 @@
 "use client";
 import { api } from "@/utils/api";
 import { useState, useEffect } from "react";
-import { FaTrashAlt, FaUndoAlt } from "react-icons/fa";
+import { Trash2, RotateCcw } from "lucide-react";
 import toaster from "@/utils/toaster";
 import Popup from "../../Popup";
 import Tag from "../../Tag";
@@ -165,6 +165,7 @@ const Toolbar = ({
             user={search}
             setUser={setSearch}
             field="search"
+            placeholder="filter"
           />
         </div>
         <Input
@@ -181,12 +182,12 @@ const Toolbar = ({
         <div>
           Rows:<span className="mx-2">{meta.total}</span>
         </div>
-        <FaUndoAlt
+        <RotateCcw
           size={22.5}
           onClick={handleReload}
           className="text-hackathon-gray-300 duration-150 hover:cursor-pointer hover:opacity-70"
         />
-        <FaTrashAlt
+        <Trash2
           data-cy="delete"
           onClick={confirmDelete}
           size={22.5}

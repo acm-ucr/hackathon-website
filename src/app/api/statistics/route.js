@@ -22,7 +22,6 @@ export const GET = async () => {
       getDoc(doc(db, "statistics", "statistics")),
       getDocs(collection(db, "events")),
     ]);
-
     const {
       teams,
       participants,
@@ -54,7 +53,26 @@ export const GET = async () => {
       admins,
     };
 
-    return res.json({ items: { users, events: attendees } }, { status: 200 });
+    const sizeData = ["XS", "S", "M", "L", "XL", "XXL"];
+    const statusData = ["1", "0", "-1"];
+
+    const size = {};
+    const status = {};
+
+    Object.entries(users).forEach(([group, entries]) => {
+      size[group] = Object.fromEntries(
+        Object.entries(entries).filter(([key]) => sizeData.includes(key)),
+      );
+
+      status[group] = Object.fromEntries(
+        Object.entries(entries).filter(([key]) => statusData.includes(key)),
+      );
+    });
+
+    return res.json(
+      { items: { users: { status, size }, events: attendees } },
+      { status: 200 },
+    );
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
