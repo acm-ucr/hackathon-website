@@ -1,11 +1,11 @@
-import Checkin from "./CheckIn";
-import { getEvents } from "./actions";
 import { ReactQuery } from "@/utils/react-query";
+import { getEvents } from "./actions";
+import Calendar from "./Calendar";
 
-const Index = async () => {
+const Index = () => {
   return (
     <ReactQuery query={getEvents}>
-      <Checkin />
+      <Calendar />
     </ReactQuery>
   );
 };

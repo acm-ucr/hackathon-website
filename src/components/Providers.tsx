@@ -14,10 +14,7 @@ const Providers = ({ children, session }: props) => {
     () =>
       new QueryClient({
         defaultOptions: {
-          queries: {
-            staleTime: 6 * 1000,
-            refetchInterval: 6 * 1000,
-          },
+          queries: {},
         },
       }),
   );
