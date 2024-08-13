@@ -1,4 +1,13 @@
 import { z } from "zod";
+import {
+  GENDERS,
+  SHIRTS,
+  MAJORS,
+  AGES,
+  DIETS,
+  GRADES,
+} from "@/data/form/Information";
+import { SCHOOLS } from "@/data/form/Schools";
 
 export const schema = z.object({
   name: z.string().min(1, { message: "Name is invalid" }),
@@ -7,17 +16,27 @@ export const schema = z.object({
     message: "Invalid phone number. Expected format: 123 456 7890",
   }),
   discord: z.string().min(1, { message: "Discord username is invalid" }),
-  major: z.string().min(1, { message: "Major is invalid" }),
-  age: z.string().min(1, { message: "Age is invalid" }),
-  school: z.string().min(1, { message: "School is invalid" }),
-  grade: z.string().min(1, { message: "Grade is invalid" }),
-  gender: z.enum(["Male", "Female", "Transgender", "Non-binary", "Other"], {
+  major: z.enum(MAJORS as [string, ...string[]], {
+    required_error: "Please select your major",
+  }),
+  age: z.enum(AGES as [string, ...string[]], {
+    required_error: "Please select your age",
+  }),
+  school: z.enum(SCHOOLS as [string, ...string[]], {
+    required_error: "Please select your school",
+  }),
+  grade: z.enum(GRADES as [string, ...string[]], {
+    required_error: "Please select your grade",
+  }),
+  gender: z.enum(GENDERS as [string, ...string[]], {
     required_error: "Please select your gender",
   }),
-  shirt: z.enum(["XS", "S", "M", "L", "XL", "XXL"], {
+  shirt: z.enum(SHIRTS as [string, ...string[]], {
     required_error: "Please select your shirt size",
   }),
-  diet: z.array(z.string()),
+  diet: z
+    .array(z.enum(DIETS as [string, ...string[]]))
+    .min(0, { message: "Please select your dietary restrictions" }),
   resume: z.string().optional(),
   requirements: z
     .array(z.string())

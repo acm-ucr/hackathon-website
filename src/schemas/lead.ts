@@ -1,4 +1,12 @@
 import { z } from "zod";
+import {
+  GENDERS,
+  GRADES,
+  MAJORS,
+  AGES,
+  SOURCES,
+} from "@/data/form/Information";
+import { SCHOOLS } from "@/data/form/Schools";
 
 export const schema = z.object({
   name: z.string().min(1, { message: "Name is invalid" }),
@@ -7,14 +15,24 @@ export const schema = z.object({
     message: "Invalid phone number. Expected format: 123 456 7890",
   }),
   discord: z.string().min(1, { message: "Discord username is invalid" }),
-  major: z.string().min(1, { message: "Major is invalid" }),
-  age: z.string().min(1, { message: "Age is invalid" }),
-  school: z.string().min(1, { message: "School is invalid" }),
-  grade: z.string().min(1, { message: "Grade is invalid" }),
-  gender: z.enum(["Male", "Female", "Transgender", "Non-binary", "Other"], {
+  major: z.enum(MAJORS as [string, ...string[]], {
+    required_error: "Please select your major",
+  }),
+  age: z.enum(AGES as [string, ...string[]], {
+    required_error: "Please select your age",
+  }),
+  school: z.enum(SCHOOLS as [string, ...string[]], {
+    required_error: "Please select your school",
+  }),
+  grade: z.enum(GRADES as [string, ...string[]], {
+    required_error: "Please select your grade",
+  }),
+  gender: z.enum(GENDERS as [string, ...string[]], {
     required_error: "Please select your gender",
   }),
-  eventSource: z.string().min(1, { message: "Event source is required" }),
+  eventSource: z.enum(SOURCES as [string, ...string[]], {
+    required_error: "Please select where you found the event",
+  }),
   priorHackathons: z
     .array(z.string())
     .min(1, { message: "Prior hackathons is required" }),

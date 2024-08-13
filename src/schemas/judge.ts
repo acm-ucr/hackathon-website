@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { GENDERS, SHIRTS } from "@/data/form/Information";
 
 export const schema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
@@ -6,10 +7,10 @@ export const schema = z.object({
   phone: z.string().regex(/^\d{3} \d{3} \d{4}$/, {
     message: "Invalid phone number. Expected format: 123 456 7890",
   }),
-  gender: z.enum(["Male", "Female", "Transgender", "Non-binary", "Other"], {
+  gender: z.enum(GENDERS as [string, ...string[]], {
     required_error: "Please select your gender",
   }),
-  shirt: z.enum(["XS", "S", "M", "L", "XL", "XXL"], {
+  shirt: z.enum(SHIRTS as [string, ...string[]], {
     required_error: "Please select your shirt size",
   }),
   affiliation: z.enum(["Professor", "Student", "Industry"], {

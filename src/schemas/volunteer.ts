@@ -1,5 +1,11 @@
 import { z } from "zod";
-
+import {
+  GENDERS,
+  SHIRTS,
+  GRADES,
+  MAJORS,
+  AVAILABILITY,
+} from "@/data/form/Information";
 export const schema = z.object({
   name: z.string().min(1, { message: "Name is invalid" }),
   email: z.string().email({ message: "Invalid email address" }),
@@ -7,15 +13,19 @@ export const schema = z.object({
     message: "Invalid phone number. Expected format: 123 456 7890",
   }),
   discord: z.string().min(1, { message: "Discord username is invalid" }),
-  major: z.string().min(1, { message: "Major is invalid" }),
-  grade: z.string().min(1, { message: "Grade is invalid" }),
+  major: z.enum(MAJORS as [string, ...string[]], {
+    required_error: "Please select your major",
+  }),
+  grade: z.enum(GRADES as [string, ...string[]], {
+    required_error: "Please select your grade",
+  }),
   availability: z
-    .array(z.string())
-    .min(1, { message: "At least one availability option must be selected" }),
-  gender: z.enum(["Male", "Female", "Transgender", "Non-binary", "Other"], {
+    .array(z.enum(AVAILABILITY as [string, ...string[]]))
+    .min(1, { message: "Please select at least one availability option" }),
+  gender: z.enum(GENDERS as [string, ...string[]], {
     required_error: "Please select your gender",
   }),
-  shirt: z.enum(["XS", "S", "M", "L", "XL", "XXL"], {
+  shirt: z.enum(SHIRTS as [string, ...string[]], {
     required_error: "Please select your shirt size",
   }),
   requirements: z
