@@ -3,6 +3,7 @@ import { AVAILABILITY } from "../form/Information";
 import { generateSelect, generateStatus } from "./Columns";
 import { STATUSES } from "@/data/Statuses";
 import { ColumnDef } from "@tanstack/react-table";
+import { Tags } from "@/types/dashboard";
 
 type Mentor = {
   name: string;
@@ -12,11 +13,6 @@ type Mentor = {
   response: string;
 };
 
-type tags = {
-  text: string;
-  value: number;
-};
-
 type dropdownProp = {
   object: {
     availability: string[];
@@ -24,7 +20,7 @@ type dropdownProp = {
   };
 };
 
-export const TAGS: tags[] = [
+export const TAGS: Tags[] = [
   {
     text: "confirm",
     value: 1,
