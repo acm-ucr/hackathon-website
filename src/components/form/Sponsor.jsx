@@ -4,10 +4,9 @@ import { useState } from "react";
 import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Sponsors";
 import { useSession } from "next-auth/react";
-import { api } from "@/utils/api";
-import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
 import { schema } from "@/schemas/sponsor";
+import { handleSubmit } from "@/utils/handlesubmit";
 
 const Sponsor = () => {
   const { data: session } = useSession();
@@ -19,32 +18,14 @@ const Sponsor = () => {
     form: "sponsors",
   });
 
-  const handleSubmit = async (setLoading, setState) => {
-    setLoading(true);
-    const result = schema.safeParse(sponsor);
-
-    if (!result.success) {
-      result.error.errors.forEach((err) => {
-        toaster(err.message, "error");
-      });
-      setLoading(false);
-      return;
-    }
-
-    try {
-      await api({
-        method: "POST",
-        url: "/api/dashboard/sponsors",
-        body: sponsor,
-      });
-      toaster(`Submitted successfully!`, "success");
-      setState(2);
-    } catch (error) {
-      toaster(`Internal Server Error`, "error");
-      setState(0);
-    } finally {
-      setLoading(false);
-    }
+  const onSubmit = async (setLoading, setState) => {
+    await handleSubmit({
+      data: sponsor,
+      schema,
+      url: "/api/dashboard/sponsors",
+      setLoading,
+      setState,
+    });
   };
   return (
     <Form
@@ -52,7 +33,7 @@ const Sponsor = () => {
       object={sponsor}
       setObject={setSponsor}
       header="SPONSORSHIP INQUIRY"
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
       statuses={STATUSES}
       packet={true}
     />

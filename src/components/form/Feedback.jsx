@@ -3,10 +3,9 @@
 import { useState } from "react";
 import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Feedback.js";
-import { api } from "@/utils/api";
-import toaster from "@/utils/toaster";
 import { useSession } from "next-auth/react";
 import { schema } from "@/schemas/feedback";
+import { handleSubmit } from "@/utils/handlesubmit";
 
 const Feedback = () => {
   const { data: session } = useSession();
@@ -16,32 +15,14 @@ const Feedback = () => {
     form: "feedback",
   });
 
-  const handleSubmit = async (setLoading, setState) => {
-    setLoading(true);
-    const result = schema.safeParse(feedback);
-
-    if (!result.success) {
-      result.error.errors.forEach((err) => {
-        toaster(err.message, "error");
-      });
-      setLoading(false);
-      return;
-    }
-
-    try {
-      await api({
-        method: "POST",
-        url: "/api/dashboard/feedback",
-        body: feedback,
-      });
-      toaster(`Submitted successfully!`, "success");
-      setState(2);
-    } catch (error) {
-      toaster(`Internal Server Error`, "error");
-      setState(0);
-    } finally {
-      setLoading(false);
-    }
+  const onSubmit = async (setLoading, setState) => {
+    await handleSubmit({
+      data: feedback,
+      schema,
+      url: "/api/dashboard/feedback",
+      setLoading,
+      setState,
+    });
   };
 
   return (
@@ -50,7 +31,7 @@ const Feedback = () => {
       object={feedback}
       setObject={setFeedback}
       header="FEEDBACK APPLICATION"
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
       bypass={true}
     />
   );

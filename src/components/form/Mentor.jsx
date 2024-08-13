@@ -4,10 +4,9 @@ import { useState } from "react";
 import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Mentors.js";
 import { useSession } from "next-auth/react";
-import { api } from "@/utils/api";
-import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
 import { schema } from "@/schemas/mentor";
+import { handleSubmit } from "@/utils/handlesubmit";
 
 const Mentor = () => {
   const { data: session } = useSession();
@@ -20,32 +19,14 @@ const Mentor = () => {
     form: "mentors",
   });
 
-  const handleSubmit = async (setLoading, setState) => {
-    setLoading(true);
-    const result = schema.safeParse(mentor);
-
-    if (!result.success) {
-      result.error.errors.forEach((err) => {
-        toaster(err.message, "error");
-      });
-      setLoading(false);
-      return;
-    }
-
-    try {
-      await api({
-        method: "POST",
-        url: "/api/dashboard/mentors",
-        body: mentor,
-      });
-      toaster(`Submitted successfully!`, "success");
-      setState(2);
-    } catch (error) {
-      toaster(`Internal Server Error`, "error");
-      setState(0);
-    } finally {
-      setLoading(false);
-    }
+  const onSubmit = async (setLoading, setState) => {
+    await handleSubmit({
+      data: mentor,
+      schema,
+      url: "/api/dashboard/mentors",
+      setLoading,
+      setState,
+    });
   };
   return (
     <Form
@@ -53,7 +34,7 @@ const Mentor = () => {
       object={mentor}
       setObject={setMentor}
       header="MENTOR APPLICATION"
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
       statuses={STATUSES}
     />
   );

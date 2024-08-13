@@ -4,10 +4,9 @@ import { useState } from "react";
 import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Leads";
 import { useSession } from "next-auth/react";
-import { api } from "@/utils/api";
-import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
 import { schema } from "@/schemas/lead";
+import { handleSubmit } from "@/utils/handlesubmit";
 
 const Lead = () => {
   const { data: session } = useSession();
@@ -19,32 +18,14 @@ const Lead = () => {
     form: "leads",
   });
 
-  const handleSubmit = async (setLoading, setState) => {
-    setLoading(true);
-    const result = schema.safeParse(lead);
-
-    if (!result.success) {
-      result.error.errors.forEach((err) => {
-        toaster(err.message, "error");
-      });
-      setLoading(false);
-      return;
-    }
-
-    try {
-      await api({
-        method: "POST",
-        url: "/api/dashboard/leads",
-        body: lead,
-      });
-      toaster(`Submitted successfully!`, "success");
-      setState(2);
-    } catch (error) {
-      toaster(`Internal Server Error`, "error");
-      setState(0);
-    } finally {
-      setLoading(false);
-    }
+  const onSubmit = async (setLoading, setState) => {
+    await handleSubmit({
+      data: lead,
+      schema,
+      url: "/api/dashboard/leads",
+      setLoading,
+      setState,
+    });
   };
   return (
     <Form
@@ -52,7 +33,7 @@ const Lead = () => {
       object={lead}
       setObject={setLead}
       header="LEAD APPLICATION"
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
       statuses={STATUSES}
     />
   );

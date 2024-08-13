@@ -4,10 +4,9 @@ import { useState } from "react";
 import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Participant.js";
 import { useSession } from "next-auth/react";
-import { api } from "@/utils/api";
-import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
 import { schema } from "@/schemas/participant";
+import { handleSubmit } from "@/utils/handlesubmit";
 
 const Participant = () => {
   const { data: session } = useSession();
@@ -19,32 +18,14 @@ const Participant = () => {
     form: "participants",
   });
 
-  const handleSubmit = async (setLoading, setState) => {
-    setLoading(true);
-    const result = schema.safeParse(participant);
-
-    if (!result.success) {
-      result.error.errors.forEach((err) => {
-        toaster(err.message, "error");
-      });
-      setLoading(false);
-      return;
-    }
-
-    try {
-      await api({
-        method: "POST",
-        url: "/api/dashboard/participants",
-        body: participant,
-      });
-      toaster(`Submitted successfully!`, "success");
-      setState(2);
-    } catch (error) {
-      toaster(`Internal Server Error`, "error");
-      setState(0);
-    } finally {
-      setLoading(false);
-    }
+  const onSubmit = async (setLoading, setState) => {
+    await handleSubmit({
+      data: participant,
+      schema,
+      url: "/api/dashboard/participants",
+      setLoading,
+      setState,
+    });
   };
 
   return (
@@ -53,7 +34,7 @@ const Participant = () => {
       object={participant}
       setObject={setParticipant}
       header="HACKER APPLICATION"
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
       statuses={STATUSES}
     />
   );

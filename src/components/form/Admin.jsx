@@ -4,10 +4,9 @@ import { useState } from "react";
 import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Admins";
 import { useSession } from "next-auth/react";
-import { api } from "@/utils/api";
-import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
 import { schema } from "@/schemas/admin";
+import { handleSubmit } from "@/utils/handlesubmit";
 
 const Admin = () => {
   const { data: session } = useSession();
@@ -19,32 +18,14 @@ const Admin = () => {
     form: "admins",
   });
 
-  const handleSubmit = async (setLoading, setState) => {
-    setLoading(true);
-    const result = schema.safeParse(admin);
-
-    if (!result.success) {
-      result.error.errors.forEach((err) => {
-        toaster(err.message, "error");
-      });
-      setLoading(false);
-      return;
-    }
-
-    try {
-      await api({
-        method: "POST",
-        url: "/api/dashboard/admins",
-        body: admin,
-      });
-      toaster(`Submitted successfully!`, "success");
-      setState(2);
-    } catch (error) {
-      toaster(`Internal Server Error`, "error");
-      setState(0);
-    } finally {
-      setLoading(false);
-    }
+  const onSubmit = async (setLoading, setState) => {
+    await handleSubmit({
+      data: admin,
+      schema,
+      url: "/api/dashboard/admins",
+      setLoading,
+      setState,
+    });
   };
   return (
     <Form
@@ -52,7 +33,7 @@ const Admin = () => {
       object={admin}
       setObject={setAdmin}
       header="ADMIN PORTAL REQUEST"
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
       statuses={STATUSES}
     />
   );
