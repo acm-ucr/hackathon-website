@@ -2,8 +2,34 @@ import View from "@/components/admin/dashboards/dashboard/View";
 import { ICONS } from "./Icons";
 import { generateSelect, generateStatus } from "./Columns";
 import { STATUSES } from "@/data/Statuses";
+import { Tags } from "@/types/dashboard";
+import { ColumnDef } from "@tanstack/react-table";
 
-export const TAGS = [
+type Participant = {
+  phone: string;
+  major: string;
+  age: number;
+  country: string;
+  school: string;
+  grade: string;
+  gender: string;
+  shirt: string;
+  diet: string;
+  resume: string;
+  name: string;
+  email: string;
+  roles: string;
+  discord: string;
+  team: string;
+};
+
+type dropdownProp = {
+  object: {
+    [key: string]: string[];
+  };
+};
+
+export const TAGS: Tags[] = [
   {
     text: "confirm",
     value: 1,
@@ -14,7 +40,7 @@ export const TAGS = [
   },
 ];
 
-export const COLUMNS = [
+export const COLUMNS: ColumnDef<Participant, string>[] = [
   generateSelect(),
   {
     accessorKey: "name",
@@ -22,8 +48,7 @@ export const COLUMNS = [
     meta: { width: "w-2/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props) => <div>{props.getValue()}</div>,
   },
   {
     accessorKey: "email",
@@ -31,8 +56,7 @@ export const COLUMNS = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props) => <div>{props.getValue()}</div>,
   },
   {
     accessorKey: "discord",
@@ -40,8 +64,7 @@ export const COLUMNS = [
     meta: { width: "w-2/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props) => <div>{props.getValue()}</div>,
   },
   {
     accessorKey: "team",
@@ -49,8 +72,7 @@ export const COLUMNS = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue() ?? "N/A"}</div>,
+    cell: (props) => <div>{props.getValue() ?? "N/A"}</div>,
   },
   {
     accessorKey: "shirt",
@@ -58,8 +80,7 @@ export const COLUMNS = [
     meta: { width: "w-1/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue() ?? "N/A"}</div>,
+    cell: (props) => <div>{props.getValue() ?? "N/A"}</div>,
   },
   generateStatus(STATUSES),
   {
@@ -67,8 +88,12 @@ export const COLUMNS = [
     header: "Resume",
     meta: { width: "w-1/12" },
     enableSorting: false,
-    cell: ({ getValue }) =>
-      getValue() ? <View title="Resume" src={getValue()} /> : <div>N/A</div>,
+    cell: (props) =>
+      props.getValue() ? (
+        <View title="Resume" src={props.getValue()} />
+      ) : (
+        <div>N/A</div>
+      ),
   },
 ];
 
@@ -86,7 +111,7 @@ const attributes = [
   "restriction",
 ];
 
-export const DROPDOWN = ({ object }) => {
+export const DROPDOWN: React.FC<dropdownProp> = ({ object }) => {
   return (
     <div className="flex items-center justify-center">
       <div className="grid w-11/12 grid-cols-3">
