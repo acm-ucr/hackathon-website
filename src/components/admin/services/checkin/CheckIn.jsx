@@ -55,7 +55,7 @@ const CheckIn = () => {
       return;
     }
 
-    if (code === "") {
+    if (code) {
       toaster("Please scan a valid QR code!", "error");
       return;
     }
