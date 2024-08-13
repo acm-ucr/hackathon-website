@@ -4,7 +4,7 @@ import Checkbox from "@/components/Checkbox";
 
 export const generateSelect = () => ({
   id: "select",
-  width: "w-1/12",
+  meta: { width: "w-1/12" },
   header: ({ table }) => (
     <Checkbox
       toggle={table.getIsAllRowsSelected()}
@@ -22,7 +22,7 @@ export const generateSelect = () => ({
 export const generateAffiliation = (affiliations) => ({
   accessorKey: "affiliation",
   header: "Affiliation",
-  width: "w-1/12",
+  meta: { width: "w-1/12" },
   cell: ({ getValue }) => (
     <Tag
       text={affiliations[getValue().toLowerCase()]}
@@ -34,7 +34,7 @@ export const generateAffiliation = (affiliations) => ({
 export const generateStatus = (statuses) => ({
   accessorKey: "status",
   header: "Status",
-  width: "w-1/12",
+  meta: { width: "w-1/12" },
   enableColumnFilter: true,
   filterFn: (row, col, filter) => {
     const status = row.getValue(col);
@@ -47,7 +47,7 @@ export const generateStatus = (statuses) => ({
 export const generateTiers = (tiers) => ({
   accessorKey: "tier",
   header: "Tier",
-  width: "w-1/12",
+  meta: { width: "w-1/12" },
   cell: ({ getValue }) => (
     <Tag text={tiers[getValue()]} color={COLORS[getValue()]} />
   ),

@@ -204,6 +204,7 @@ export const PUT = async (req, { params }) => {
         objects.map(async (object) => {
           await updateDoc(doc(db, "users", object.uid), {
             [`roles.${params.type}`]: status,
+            [`roles.${params.type}`]: object.shirt,
           });
 
           const id = status === 1 ? "acceptance" : "rejection";
@@ -227,16 +228,20 @@ export const PUT = async (req, { params }) => {
             preview: preview,
           });
 
+          const size = object.shirt;
+
           status === 1 &&
             (await updateDoc(doc(db, "statistics", "statistics"), {
               [`${params.type}.1`]: increment(1),
               [`${params.type}.0`]: increment(-1),
+              [`${params.type}.${size}`]: increment(1),
             }));
 
           status === -1 &&
             (await updateDoc(doc(db, "statistics", "statistics"), {
               [`${params.type}.-1`]: increment(1),
               [`${params.type}.0`]: increment(-1),
+              [`${params.type}.${size}`]: increment(-1),
             }));
         }),
       );

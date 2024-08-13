@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Form from "@/components/form/form/Form";
-import { FIELDS, ATTRIBUTES } from "@/data/form/Volunteers.js";
+import { FIELDS, ATTRIBUTES } from "@/data/form/Volunteers";
 import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";

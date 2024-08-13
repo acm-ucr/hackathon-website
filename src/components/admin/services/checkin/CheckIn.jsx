@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Title from "../../Title";
 import Scanner from "./Scanner";
-import Dropdown from "../Dropdown";
+import Select from "@/components/Select";
 import Button from "../../Button";
 import toaster from "@/utils/toaster";
 import { api } from "@/utils/api";
@@ -73,12 +73,12 @@ const CheckIn = () => {
       <div className="grid grid-cols-1">
         <div className="flex flex-col items-center gap-3 p-3">
           {events && (
-            <Dropdown
-              option={event}
-              setOption={setEvent}
-              options={events}
-              setOptions={setEvents}
-              empty="no events"
+            <Select
+              items={events}
+              user={event}
+              setUser={setEvent}
+              placeholder="Select Events"
+              userFn={(event) => setEvent(event)}
             />
           )}
           <Scanner setResult={setResult} />

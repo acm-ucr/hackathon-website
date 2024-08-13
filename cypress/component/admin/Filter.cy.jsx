@@ -1,5 +1,4 @@
 import Filter from "@/components/admin/dashboards/dashboard/Filter";
-import React from "react";
 
 describe("Filter", () => {
   const props = {
