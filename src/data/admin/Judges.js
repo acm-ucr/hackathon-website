@@ -55,6 +55,6 @@ export const COLUMNS = [
     header: "Photo",
     width: "w-1/12",
     enableSorting: false,
-    cell: ({ getValue }) => <View src={getValue()} title="Photo" />,
+    cell: ({ getValue }) => <View src={getValue()} title="Photo space-x-0" />,
   },
 ];
