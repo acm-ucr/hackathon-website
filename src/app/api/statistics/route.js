@@ -33,7 +33,7 @@ export const GET = async () => {
       panels,
       admins,
     } = statistics.data();
-
+    console.log(statistics.data());
     const attendees = {};
 
     events.forEach((doc) => {
@@ -53,11 +53,13 @@ export const GET = async () => {
       admins,
     };
 
+    // console.log(users);
     const sizeData = ["XS", "S", "M", "L", "XL", "XXL"];
     const statusData = ["1", "0", "-1"];
 
     const size = {};
     const status = {};
+    const school = {};
 
     Object.entries(users).forEach(([group, entries]) => {
       size[group] = Object.fromEntries(
@@ -67,10 +69,14 @@ export const GET = async () => {
       status[group] = Object.fromEntries(
         Object.entries(entries).filter(([key]) => statusData.includes(key)),
       );
+
+      status[group] = Object.fromEntries(
+        Object.entries(entries).filter(([key]) => statusData.includes(key)),
+      );
     });
 
     return res.json(
-      { items: { users: { status, size }, events: attendees } },
+      { items: { users: { status, size, school }, events: attendees } },
       { status: 200 },
     );
   } catch (err) {

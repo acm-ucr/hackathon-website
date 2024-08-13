@@ -202,9 +202,11 @@ export const PUT = async (req, { params }) => {
     if (types.has(params.type)) {
       await Promise.all(
         objects.map(async (object) => {
+          // const participant = [`roles.${params}.participants`];
           await updateDoc(doc(db, "users", object.uid), {
             [`roles.${params.type}`]: status,
             [`roles.${params.type}`]: object.shirt,
+            [`roles.${params}.participants`]: object.school,
           });
 
           const id = status === 1 ? "acceptance" : "rejection";
@@ -229,12 +231,14 @@ export const PUT = async (req, { params }) => {
           });
 
           const size = object.shirt;
+          const school = object.school;
 
           status === 1 &&
             (await updateDoc(doc(db, "statistics", "statistics"), {
               [`${params.type}.1`]: increment(1),
               [`${params.type}.0`]: increment(-1),
               [`${params.type}.${size}`]: increment(1),
+              [`${"participants"}.${school}`]: increment(1),
             }));
 
           status === -1 &&
@@ -242,6 +246,7 @@ export const PUT = async (req, { params }) => {
               [`${params.type}.-1`]: increment(1),
               [`${params.type}.0`]: increment(-1),
               [`${params.type}.${size}`]: increment(-1),
+              [`${"participants"}.${school}`]: increment(-1),
             }));
         }),
       );

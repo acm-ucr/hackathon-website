@@ -48,3 +48,9 @@ export const SIZES = {
     fill: "bg-hackathon-tags-teal-text",
   },
 };
+
+export const SCHOOL = {
+  label: "Extra Small",
+  className: "fill-hackathon-tags-pink-text",
+  fill: "bg-hackathon-tags-pink-text",
+};
