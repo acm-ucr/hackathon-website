@@ -16,10 +16,11 @@ import {
   QrCode,
   CircleHelp,
   Presentation,
+  Timer,
   Newspaper,
 } from "lucide-react";
 
-const iconStyle = "mr-2";
+const iconStyle = "mr-2 w-4 h-4";
 
 export const TABS = {
   admin: {
@@ -122,6 +123,11 @@ export const TABS = {
           name: "settings",
           link: "/admin/settings",
           icon: <Settings className={iconStyle} />,
+        },
+        {
+          name: "timer",
+          link: "/admin/timer",
+          icon: <Timer className={iconStyle} />,
         },
       ],
     },

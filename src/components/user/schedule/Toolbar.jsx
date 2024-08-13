@@ -4,7 +4,7 @@ const Toolbar = ({ onFilterChange }) => {
   const [selected, setSelected] = useState("all");
 
   return (
-    <div className="mt-4 flex items-center justify-end">
+    <div className="flex items-center justify-end">
       <div className="flex rounded-md border-2 bg-white">
         <button
           onClick={() => {

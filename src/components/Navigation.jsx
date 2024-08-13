@@ -67,7 +67,7 @@ const Navigation = () => {
             <Image src={LOGO} className="h-10 w-10" alt={`${data.name} Logo`} />
           </div>
           <Accordion
-            defaultValue={["Dashboards", "Services"]}
+            defaultValue={["Dashboards", "Services", "Portal"]}
             type="multiple"
             className="row-start-2 w-full place-self-start"
           >

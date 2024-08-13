@@ -165,6 +165,7 @@ const Toolbar = ({
             user={search}
             setUser={setSearch}
             field="search"
+            placeholder="filter"
           />
         </div>
         <Input

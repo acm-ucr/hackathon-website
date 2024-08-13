@@ -1,6 +1,6 @@
 import { GENDERS, GRADES, SHIRTS, MAJORS } from "./Information";
 import data from "@/data/Config";
-import { AFFILIATIONS } from "./Information.js";
+import { AFFILIATIONS } from "./Information";
 
 export const FIELDS = {
   description: {

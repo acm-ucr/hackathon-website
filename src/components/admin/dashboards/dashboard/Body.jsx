@@ -15,7 +15,7 @@ const Body = ({ getIsSelected, getVisibleCells, Dropdown, original }) => {
       >
         {getVisibleCells().map(({ id, column, getContext }) => (
           <div
-            className={`flex items-center ${column.columnDef.width}`}
+            className={`flex items-center ${column.columnDef.meta?.width}`}
             key={id}
           >
             {flexRender(column.columnDef.cell, getContext())}
