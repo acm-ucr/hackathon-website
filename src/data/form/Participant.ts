@@ -1,3 +1,12 @@
+import {
+  CheckboxInput,
+  Description,
+  RadioInput,
+  SelectInput,
+  TermsAndConditions,
+  TextInput,
+  UploadInput,
+} from "@/types/forms";
 import { AGES, DIETS, MAJORS } from "./Information";
 import { GRADES } from "./Information";
 import { GENDERS } from "./Information";
@@ -6,7 +15,42 @@ import { SCHOOLS } from "./Schools";
 import data from "@/data/Config";
 import { COUNTRIES } from "./Countries";
 
-export const FIELDS = {
+interface Attributes {
+  name: string;
+  email: string;
+  phone: string;
+  major: string;
+  age: string;
+  country: string;
+  school: string;
+  grade: string;
+  gender: string;
+  shirt: string;
+  diet: string[];
+  resume: string;
+  requirements: string[];
+  team: string;
+}
+
+interface Fields {
+  description: Description;
+  name: TextInput;
+  email: TextInput;
+  phone: TextInput;
+  discord: TextInput;
+  major: SelectInput;
+  age: SelectInput;
+  country: SelectInput;
+  school: SelectInput;
+  grade: SelectInput;
+  gender: RadioInput;
+  shirt: RadioInput;
+  diet: CheckboxInput;
+  resume: UploadInput;
+  requirements: TermsAndConditions;
+}
+
+export const FIELDS: Fields = {
   description: {
     input: "description",
     width: 12,
@@ -28,6 +72,7 @@ export const FIELDS = {
   name: {
     input: "input",
     name: "name",
+    placeholder: "John Doe",
     type: "text",
     title: "Name",
     maxLength: 50,
@@ -38,6 +83,7 @@ export const FIELDS = {
   email: {
     input: "input",
     name: "email",
+    placeholder: "John Doe",
     type: "email",
     title: "Email Address",
     maxLength: 50,
@@ -54,16 +100,18 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     required: true,
+    editable: true,
   },
   discord: {
     input: "input",
     name: "discord",
+    placeholder: "John Doe",
     type: "text",
     title: "Discord Username",
-    placeholder: "ie. john_doe#1234",
     maxLength: 50,
     width: 12,
     required: true,
+    editable: true,
   },
   major: {
     input: "select",
@@ -73,6 +121,7 @@ export const FIELDS = {
     placeholder: "ie. Computer Science",
     width: 12,
     required: true,
+    editable: true,
     searchable: true,
   },
   age: {
@@ -83,6 +132,7 @@ export const FIELDS = {
     placeholder: "ie. 18",
     width: 12,
     required: true,
+    editable: true,
     searchable: true,
   },
   country: {
@@ -93,6 +143,7 @@ export const FIELDS = {
     placeholder: "ie. United States of America",
     width: 12,
     required: true,
+    editable: true,
     searchable: true,
   },
   school: {
@@ -103,6 +154,7 @@ export const FIELDS = {
     placeholder: "ie. University of California, Riverside",
     width: 12,
     required: true,
+    editable: true,
     searchable: true,
   },
   grade: {
@@ -113,6 +165,7 @@ export const FIELDS = {
     placeholder: "ie. Undergraduate",
     width: 12,
     required: true,
+    editable: true,
     searchable: true,
   },
   gender: {
@@ -122,6 +175,7 @@ export const FIELDS = {
     field: "gender",
     width: 12,
     required: true,
+    editable: true,
   },
   shirt: {
     input: "radio",
@@ -130,6 +184,7 @@ export const FIELDS = {
     field: "shirt",
     width: 12,
     required: true,
+    editable: true,
   },
   diet: {
     input: "checkboxes",
@@ -138,6 +193,7 @@ export const FIELDS = {
     field: "diet",
     options: DIETS,
     required: false,
+    editable: true,
   },
 
   resume: {
@@ -148,6 +204,7 @@ export const FIELDS = {
     types: ["pdf"],
     maxSize: [200, "KB"],
     required: false,
+    editable: true,
   },
   requirements: {
     text: "Terms and Conditions",
@@ -155,6 +212,7 @@ export const FIELDS = {
     width: 12,
     field: "requirements",
     required: true,
+    editable: true,
     options: [
       "I have read the MLH code of conduct and agree to the terms and conditions listed",
       "I consent to photographs being taken and being used for marketing purposes",
@@ -168,7 +226,7 @@ export const FIELDS = {
   },
 };
 
-export const ATTRIBUTES = {
+export const ATTRIBUTES: Attributes = {
   name: "",
   email: "",
   phone: "",
