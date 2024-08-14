@@ -1,19 +1,59 @@
-import { AGES, DIETS, MAJORS } from "./Information";
-import { GRADES } from "./Information";
+import {
+  Description,
+  RadioInput,
+  TermsAndConditions,
+  TextInput,
+  UploadInput,
+} from "@/types/forms";
 import { GENDERS } from "./Information";
 import { SHIRTS } from "./Information";
-import { SCHOOLS } from "./Schools";
 import data from "@/data/Config";
-import { COUNTRIES } from "./Countries";
 
-export const FIELDS = {
+interface Attributes {
+  name: string;
+  email: string;
+  phone: string;
+  gender: string;
+  shirt: string;
+  affiliation: string;
+  title: string;
+  photo: string;
+  requirements: string[];
+}
+
+interface Affiliations {
+  professor: string;
+  student: string;
+  industry: string;
+}
+
+interface Fields {
+  description: Description;
+  name: TextInput;
+  email: TextInput;
+  phone: TextInput;
+  gender: RadioInput;
+  shirt: RadioInput;
+  affiliation: RadioInput;
+  title: TextInput;
+  photo: UploadInput;
+  requirements: TermsAndConditions;
+}
+
+export const AFFILIATIONS: Affiliations = {
+  professor: "Professor",
+  student: "Student",
+  industry: "Industry",
+};
+
+export const FIELDS: Fields = {
   description: {
     input: "description",
     width: 12,
     texts: [
       `Welcome to ${
         data.name
-      }. Thank you for considering to become a participant, we appreciate your enthusiasm to join ${
+      }. Thank you for considering to become a judge, we appreciate your efforts to help support ${
         data.name
       }. ${data.name} is a ${data.description} hackathon spanning ${
         data.length
@@ -22,12 +62,15 @@ export const FIELDS = {
         day: "numeric",
         year: "numeric",
       })}.`,
-      "Participants are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
+      "Judges are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
+      "Judge duties include but are not limited to visiting various teams to assess teams on their idea, technical complexities, and overall presentation after which they will decide the winners.",
+      "Note: Judges are not permitted to become participants for the hackathon.",
     ],
   },
   name: {
     input: "input",
     name: "name",
+    placeholder: "John Doe",
     type: "text",
     title: "Name",
     maxLength: 50,
@@ -38,6 +81,7 @@ export const FIELDS = {
   email: {
     input: "input",
     name: "email",
+    placeholder: "John Doe",
     type: "email",
     title: "Email Address",
     maxLength: 50,
@@ -54,66 +98,7 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     required: true,
-  },
-  discord: {
-    input: "input",
-    name: "discord",
-    type: "text",
-    title: "Discord Username",
-    placeholder: "ie. john_doe#1234",
-    maxLength: 50,
-    width: 12,
-    required: true,
-  },
-  major: {
-    input: "select",
-    title: "Major",
-    options: MAJORS,
-    field: "major",
-    placeholder: "ie. Computer Science",
-    width: 12,
-    required: true,
-    searchable: true,
-  },
-  age: {
-    input: "select",
-    title: "Age",
-    options: AGES,
-    field: "age",
-    placeholder: "ie. 18",
-    width: 12,
-    required: true,
-    searchable: true,
-  },
-  country: {
-    input: "select",
-    title: "Country",
-    options: COUNTRIES,
-    field: "country",
-    placeholder: "ie. United States of America",
-    width: 12,
-    required: true,
-    searchable: true,
-  },
-  school: {
-    input: "select",
-    title: "School",
-    options: SCHOOLS,
-    field: "school",
-    placeholder: "ie. University of California, Riverside",
-    width: 12,
-    required: true,
-    searchable: true,
-  },
-  grade: {
-    input: "select",
-    title: "Grade",
-    options: GRADES,
-    field: "grade",
-    placeholder: "ie. Undergraduate",
-    width: 12,
-    required: true,
-    searchable: true,
+    editable: true,
   },
   gender: {
     input: "radio",
@@ -122,6 +107,7 @@ export const FIELDS = {
     field: "gender",
     width: 12,
     required: true,
+    editable: true,
   },
   shirt: {
     input: "radio",
@@ -130,24 +116,39 @@ export const FIELDS = {
     field: "shirt",
     width: 12,
     required: true,
-  },
-  diet: {
-    input: "checkboxes",
-    text: "Dietary Restrictions",
-    width: 12,
-    field: "diet",
-    options: DIETS,
-    required: false,
+    editable: true,
   },
 
-  resume: {
-    input: "upload",
-    field: "resume",
-    text: "Upload  Resume",
+  affiliation: {
+    input: "radio",
+    text: "Affiliation",
+    options: Object.values(AFFILIATIONS),
+    field: "affiliation",
     width: 12,
-    types: ["pdf"],
-    maxSize: [200, "KB"],
-    required: false,
+    required: true,
+    editable: true,
+  },
+
+  title: {
+    input: "input",
+    name: "title",
+    type: "text",
+    title: "Title",
+    placeholder: "ie. Hackathon Director",
+    maxLength: 50,
+    width: 12,
+    required: true,
+    editable: true,
+  },
+  photo: {
+    input: "upload",
+    field: "photo",
+    text: "Upload Photo",
+    width: 12,
+    types: ["png", "jpg", "jpeg"],
+    maxSize: [1, "MB"],
+    required: true,
+    editable: true,
   },
   requirements: {
     text: "Terms and Conditions",
@@ -155,6 +156,7 @@ export const FIELDS = {
     width: 12,
     field: "requirements",
     required: true,
+    editable: true,
     options: [
       "I have read the MLH code of conduct and agree to the terms and conditions listed",
       "I authorize you to share my application/registration information with Major League Hacking for event administration, ranking, and MLH administration in-line with the MLH Privacy Policy",
@@ -163,24 +165,19 @@ export const FIELDS = {
       "I consent to providing a safe space for hackers to learn and grow their interests in computing",
       "I consent to following the provided guidelines and rules instructed by the organizing team",
       "I understand that failure to comply with guidelines or creating an unsafe space will result in my removal from the event",
-      "I understand this is an in person event taking place in UCR and I must attend in person in order to participate",
+      "I understand this is an in person event taking place in UCR and I must attend in person in order to judge",
     ],
   },
 };
 
-export const ATTRIBUTES = {
+export const ATTRIBUTES: Attributes = {
   name: "",
   email: "",
   phone: "",
-  major: "",
-  age: "",
-  country: "",
-  school: "",
-  grade: "",
   gender: "",
   shirt: "",
-  diet: [],
-  resume: "",
+  affiliation: "",
+  title: "",
+  photo: "",
   requirements: [],
-  team: "",
 };
