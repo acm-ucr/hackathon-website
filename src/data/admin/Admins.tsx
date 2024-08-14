@@ -5,7 +5,6 @@ import { STATUSES } from "../Statuses";
 import { CellContext, ColumnDef } from "@tanstack/react-table";
 import { Tags } from "@/types/dashboard";
 
-
 type Admin = {
   name: string;
   email: string;
@@ -40,7 +39,9 @@ export const COLUMNS: ColumnDef<Admin, string>[] = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props: CellContext<Admin, Admin["name"]>) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Admin, Admin["name"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "email",
@@ -48,7 +49,9 @@ export const COLUMNS: ColumnDef<Admin, string>[] = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props: CellContext<Admin, Admin["email"]>) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Admin, Admin["email"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "discord",
@@ -56,7 +59,9 @@ export const COLUMNS: ColumnDef<Admin, string>[] = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props: CellContext<Admin, Admin["discord"]>) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Admin, Admin["discord"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   generateAffiliation(AFFILIATIONS),
   generateStatus(STATUSES),
@@ -79,7 +84,7 @@ export const DROPDOWN: React.FC<dropdownProps> = ({ object }) => {
   return (
     <div className="flex items-center justify-center">
       <div className="grid w-11/12 grid-cols-3">
-        {attributes.map((attribute: string, index: number) => (
+        {attributes.map((attribute, index) => (
           <div key={index} className="my-1 flex px-1 text-sm">
             {ICONS[attribute]}
             {Array.isArray(object[attribute])
