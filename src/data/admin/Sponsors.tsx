@@ -13,7 +13,7 @@ type Sponsor = {
   comments: string;
 };
 
-type dropdownProp = {
+type dropdownProps = {
   object: {
     response: string;
   };
@@ -76,7 +76,7 @@ export const COLUMNS: ColumnDef<Sponsor, string>[] = [
   generateStatus(STATUSES),
 ];
 
-export const DROPDOWN: React.FC<dropdownProp> = ({ object }) => {
+export const DROPDOWN: React.FC<dropdownProps> = ({ object }) => {
   return (
     <>
       <p className="ml-5 mt-3">{object.response}</p>

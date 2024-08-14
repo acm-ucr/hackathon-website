@@ -13,7 +13,7 @@ type Mentor = {
   response: string;
 };
 
-type dropdownProp = {
+type dropdownProps = {
   object: {
     availability: string[];
     response: string;
@@ -66,7 +66,7 @@ export const COLUMNS: ColumnDef<Mentor, string>[] = [
   generateStatus(STATUSES),
 ];
 
-export const DROPDOWN: React.FC<dropdownProp> = ({ object }) => {
+export const DROPDOWN: React.FC<dropdownProps> = ({ object }) => {
   return (
     <>
       <div className="flex justify-center">

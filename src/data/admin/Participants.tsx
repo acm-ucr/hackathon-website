@@ -23,10 +23,8 @@ type Participant = {
   team: string;
 };
 
-type dropdownProp = {
-  object: {
-    [key: string]: string[];
-  };
+type dropdownProps = {
+  object: Record<string, string[]>;
 };
 
 export const TAGS: Tags[] = [
@@ -107,7 +105,7 @@ export const COLUMNS: ColumnDef<Participant, string>[] = [
   },
 ];
 
-const attributes = [
+const attributes: string[] = [
   "email",
   "phone",
   "age",
@@ -121,7 +119,7 @@ const attributes = [
   "restriction",
 ];
 
-export const DROPDOWN: React.FC<dropdownProp> = ({ object }) => {
+export const DROPDOWN: React.FC<dropdownProps> = ({ object }) => {
   return (
     <div className="flex items-center justify-center">
       <div className="grid w-11/12 grid-cols-3">
