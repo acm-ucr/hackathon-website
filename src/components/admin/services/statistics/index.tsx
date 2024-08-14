@@ -4,7 +4,7 @@ import Statistics from "./Statistics";
 
 const Index = () => {
   return (
-    <ReactQuery query={getStats}>
+    <ReactQuery query={getStats} queryKey={["/admin/statistics"]}>
       <Statistics />
     </ReactQuery>
   );

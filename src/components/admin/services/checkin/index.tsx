@@ -4,7 +4,7 @@ import { ReactQuery } from "@/utils/react-query";
 
 const Index = async () => {
   return (
-    <ReactQuery query={getEvents}>
+    <ReactQuery query={getEvents} queryKey={["/admin/checkin"]}>
       <Checkin />
     </ReactQuery>
   );

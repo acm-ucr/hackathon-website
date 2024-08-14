@@ -4,7 +4,7 @@ import Calendar from "./Calendar";
 
 const Index = () => {
   return (
-    <ReactQuery query={getEvents}>
+    <ReactQuery query={getEvents} queryKey={["/admin/calendar"]}>
       <Calendar />
     </ReactQuery>
   );
