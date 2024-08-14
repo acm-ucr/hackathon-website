@@ -2,20 +2,9 @@ import { generateAffiliation, generateSelect, generateStatus } from "./Columns";
 import { AFFILIATIONS } from "../form/Information";
 import { ICONS } from "./Icons";
 import { STATUSES } from "../Statuses";
-import {
-  AccessorColumnDef,
-  DisplayColumnDef,
-  GroupColumnDef,
-  RowData,
-} from "@tanstack/react-table";
+import { CellContext, ColumnDef } from "@tanstack/react-table";
+import { Tags } from "@/types/dashboard";
 
-type TagText = "accept" | "reject";
-type TagCode = 1 | -1;
-
-type Tag = {
-  text: TagText;
-  value: TagCode;
-};
 
 type Admin = {
   name: string;
@@ -28,18 +17,11 @@ type Admin = {
   shirt: string;
 };
 
-type SearchableColumnDef<TData extends RowData, TValue = unknown> =
-  | DisplayColumnDef<TData, TValue>
-  | GroupColumnDef<TData, TValue>
-  | (AccessorColumnDef<TData, TValue> & {
-      searchable: boolean;
-    });
-
 type dropdownProps = {
   object: Record<string, string[] | string>;
 };
 
-export const TAGS: Tag[] = [
+export const TAGS: Tags[] = [
   {
     text: "accept",
     value: 1,
@@ -50,7 +32,7 @@ export const TAGS: Tag[] = [
   },
 ];
 
-export const COLUMNS: SearchableColumnDef<Admin, string>[] = [
+export const COLUMNS: ColumnDef<Admin, string>[] = [
   generateSelect(),
   {
     accessorKey: "name",
@@ -58,8 +40,7 @@ export const COLUMNS: SearchableColumnDef<Admin, string>[] = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: (props: { getValue: () => string }) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Admin, Admin["name"]>) => <div>{props.getValue()}</div>,
   },
   {
     accessorKey: "email",
@@ -67,8 +48,7 @@ export const COLUMNS: SearchableColumnDef<Admin, string>[] = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: (props: { getValue: () => string }) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Admin, Admin["email"]>) => <div>{props.getValue()}</div>,
   },
   {
     accessorKey: "discord",
@@ -76,8 +56,7 @@ export const COLUMNS: SearchableColumnDef<Admin, string>[] = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: (props: { getValue: () => string }) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Admin, Admin["discord"]>) => <div>{props.getValue()}</div>,
   },
   generateAffiliation(AFFILIATIONS),
   generateStatus(STATUSES),
