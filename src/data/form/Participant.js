@@ -4,14 +4,24 @@ import { GENDERS } from "./Information";
 import { SHIRTS } from "./Information";
 import { SCHOOLS } from "./Schools";
 import data from "@/data/Config";
-import { phone } from "@/data/form/Regex";
+import { COUNTRIES } from "./Countries";
 
 export const FIELDS = {
   description: {
     input: "description",
     width: 12,
     texts: [
-      `Welcome to ${data.name}. Thank you for considering to become a participant, we appreciate your enthusiasm to join ${data.name}. ${data.name} is a ${data.description} hackathon spanning ${data.length} on ${data.date}.`,
+      `Welcome to ${
+        data.name
+      }. Thank you for considering to become a participant, we appreciate your enthusiasm to join ${
+        data.name
+      }. ${data.name} is a ${data.description} hackathon spanning ${
+        data.length
+      } on ${data.date.toLocaleString("default", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      })}.`,
       "Participants are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
     ],
   },
@@ -44,7 +54,6 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     required: true,
-    regex: phone,
   },
   discord: {
     input: "input",
@@ -72,6 +81,16 @@ export const FIELDS = {
     options: AGES,
     field: "age",
     placeholder: "ie. 18",
+    width: 12,
+    required: true,
+    searchable: true,
+  },
+  country: {
+    input: "select",
+    title: "Country",
+    options: COUNTRIES,
+    field: "country",
+    placeholder: "ie. United States of America",
     width: 12,
     required: true,
     searchable: true,
@@ -155,6 +174,7 @@ export const ATTRIBUTES = {
   phone: "",
   major: "",
   age: "",
+  country: "",
   school: "",
   grade: "",
   gender: "",
@@ -162,4 +182,5 @@ export const ATTRIBUTES = {
   diet: [],
   resume: "",
   requirements: [],
+  team: "",
 };

@@ -1,7 +1,7 @@
-import { LABELS } from "@/data/admin/Calendar.js";
-import Tag from "../../Tag.jsx";
-import { COLORS } from "@/data/Tags.js";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+import { LABELS } from "@/data/admin/Calendar";
+import Tag from "../../Tag";
+import { COLORS } from "@/data/Tags";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCallback, useEffect } from "react";
 
 const CustomToolbar = ({ onView, onNavigate, date, view, setTag }) => {
@@ -16,7 +16,7 @@ const CustomToolbar = ({ onView, onNavigate, date, view, setTag }) => {
           break;
       }
     },
-    [onNavigate]
+    [onNavigate],
   );
 
   useEffect(() => {
@@ -25,23 +25,23 @@ const CustomToolbar = ({ onView, onNavigate, date, view, setTag }) => {
   }, [handleShortcuts]);
 
   return (
-    <div className="flex items-center justify-between">
+    <div className="mb-2 flex flex-col items-center justify-between md:flex-row">
       <div className="flex flex-col items-center">
-        <div className="flex justify-center items-center my-2">
-          <FaChevronLeft
+        <div className="my-2 flex items-center justify-center">
+          <ChevronLeft
             onClick={() => onNavigate("PREV")}
-            className="hover:cursor-pointer mx-2"
+            className="mx-2 hover:cursor-pointer"
           />
           <p className="mb-0 text-3xl font-semibold">
             {date.toLocaleString("default", { month: "short" })}{" "}
             {date.getFullYear()}
           </p>
-          <FaChevronRight
+          <ChevronRight
             onClick={() => onNavigate("NEXT")}
-            className="hover:cursor-pointer mx-2"
+            className="mx-2 hover:cursor-pointer"
           />
         </div>
-        <div className="flex justify-center items-center">
+        <div className="flex items-center justify-center">
           <Tag
             onClick={() => onView("month")}
             text="month"
@@ -56,38 +56,40 @@ const CustomToolbar = ({ onView, onNavigate, date, view, setTag }) => {
           />
         </div>
       </div>
-      <div className="flex flex-col items-end">
+      <div className="flex flex-col items-center md:items-end">
         <Tag
           text="all events"
           color={COLORS["gray"]}
           classes="my-1"
           onClick={() => setTag("all")}
         />
-        <div className="flex justify-end items-center flex-wrap gap-x-2">
-          {Object.entries(LABELS)
-            .filter(([_, { type }]) => type === "leads")
-            .map(([key, { color }], index) => (
-              <Tag
-                key={index}
-                text={key}
-                color={COLORS[color]}
-                classes="my-1"
-                onClick={() => setTag(key)}
-              />
-            ))}
-        </div>
-        <div className="flex justify-evenly items-center flex-wrap gap-x-2">
-          {Object.entries(LABELS)
-            .filter(([_, { type }]) => type !== "leads")
-            .map(([key, { color }], index) => (
-              <Tag
-                key={index}
-                text={key}
-                color={COLORS[color]}
-                classes="my-1"
-                onClick={() => setTag(key)}
-              />
-            ))}
+        <div className="flex flex-col md:block">
+          <div className="flex flex-wrap items-center justify-center gap-x-2 md:justify-end">
+            {Object.entries(LABELS)
+              .filter(([_, { type }]) => type === "leads")
+              .map(([key, { color }], index) => (
+                <Tag
+                  key={index}
+                  text={key}
+                  color={COLORS[color]}
+                  classes="my-1"
+                  onClick={() => setTag(key)}
+                />
+              ))}
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-2 md:justify-end">
+            {Object.entries(LABELS)
+              .filter(([_, { type }]) => type !== "leads")
+              .map(([key, { color }], index) => (
+                <Tag
+                  key={index}
+                  text={key}
+                  color={COLORS[color]}
+                  classes="my-1"
+                  onClick={() => setTag(key)}
+                />
+              ))}
+          </div>
         </div>
       </div>
     </div>

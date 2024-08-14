@@ -1,20 +1,20 @@
-import { RiArrowDownSLine } from "react-icons/ri";
+import { ChevronDown } from "lucide-react";
 const Collapse = ({ text, children, setExpand, expand }) => {
   return (
-    <div className="w-full bg-white rounded-xl p-4 drop-shadow-md">
+    <div className="w-full rounded-xl bg-white p-4 drop-shadow-md">
       <div
-        className="flex items-center justify-between cursor-pointer text-xl font-bold"
+        className="flex cursor-pointer items-center justify-between text-xl font-bold"
         onClick={() => setExpand(text === expand ? "" : text)}
       >
         {text}
-        <RiArrowDownSLine
-          className={`${text === expand && "rotate-180"} duration-300 text-2xl`}
+        <ChevronDown
+          className={`${text === expand && "rotate-180"} text-2xl duration-300`}
         />
       </div>
       <div
         className={`${
           text === expand ? "max-h-[1000px]" : "max-h-0"
-        } duration-500 transition-[max-height] overflow-hidden`}
+        } overflow-hidden transition-[max-height] duration-500`}
         style={{
           transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
         }}

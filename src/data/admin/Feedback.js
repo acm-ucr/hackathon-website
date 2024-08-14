@@ -21,25 +21,25 @@ export const COLUMNS = [
   {
     accessorKey: "rating",
     header: "Rating",
-    width: "w-1/12",
+    meta: { width: "w-1/12" },
     cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   {
     accessorKey: "eventSource",
     header: "Event Source",
-    width: "w-2/12",
+    meta: { width: "w-2/12" },
     cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   {
     accessorKey: "improvements",
     header: "Improvements",
-    width: "w-4/12",
+    meta: { width: "w-4/12" },
     cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   {
     accessorKey: "helpful",
     header: "Helpful",
-    width: "w-3/12",
+    meta: { width: "w-3/12" },
     cell: ({ getValue }) => <div>{getValue()}</div>,
   },
   generateStatus(STATUSES),
@@ -48,7 +48,7 @@ export const COLUMNS = [
 export const DROPDOWN = ({ object }) => {
   return (
     <div className="flex justify-center">
-      <div className="grid grid-cols-2 w-11/12">
+      <div className="grid w-11/12 grid-cols-2">
         <div>
           <span className="font-bold">Additional Comments: </span>
           {object.additionalComments}

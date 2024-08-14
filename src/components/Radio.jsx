@@ -6,15 +6,8 @@ const Radio = ({
   setUser,
   editable = true,
   required,
+  onClick,
 }) => {
-  const handleClick = (optionKey, option) => {
-    if (field === "tier" || field === "affiliation" || field === "panelist") {
-      setUser({ ...user, [field]: optionKey });
-    } else {
-      setUser({ ...user, [field]: option });
-    }
-  };
-
   return (
     <div data-cy={`radio-${field}`} className="flex flex-col">
       <p className="mb-1 font-semibold">
@@ -27,19 +20,19 @@ const Radio = ({
         </div>
       )}
       {editable && (
-        <div className="grid grid-cols-2 md:grid-cols-3 w-full">
-          {Object.entries(options).map(([optionKey, option], index) => (
+        <div className="grid w-full grid-cols-2 md:grid-cols-3">
+          {Object.values(options).map((option, index) => (
             <div
-              data-cy={`radio-${option}`}
+              data-cy={`radio-${option.toLowerCase()}`}
               className="flex items-center whitespace-nowrap hover:cursor-pointer"
               key={index}
-              onClick={() => handleClick(optionKey, option)}
+              onClick={() => onClick(option, field)}
             >
-              <div className="rounded-full w-4 border-black border aspect-square bg-transparent p-0.5 mr-1">
+              <div className="mr-1 aspect-square w-4 rounded-full border border-black bg-transparent p-0.5">
                 <div
-                  data-cy={`radio-button-${option}`}
-                  className={`rounded-full w-full aspect-square duration-100 ${
-                    user[field] === option || user[field] === optionKey
+                  data-cy={`radio-button-${option.toLowerCase()}`}
+                  className={`aspect-square w-full rounded-full duration-100 ${
+                    user[field] === option
                       ? "bg-hackathon-green-300"
                       : "bg-transparent"
                   }`}

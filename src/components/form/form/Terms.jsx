@@ -7,7 +7,7 @@ const Terms = ({ options, toggle, onClick }) => {
         Terms and Conditions
         <span className="text-red-500">*</span>
       </p>
-      <ul className="pl-5 list-disc mb-4 text-sm">
+      <ul className="mb-4 list-disc pl-5 text-sm">
         {options.map((option, index) => (
           <li key={index}>{option}</li>
         ))}

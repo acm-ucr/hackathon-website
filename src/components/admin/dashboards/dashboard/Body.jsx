@@ -1,6 +1,6 @@
 import { flexRender } from "@tanstack/react-table";
 import { useState } from "react";
-import { FaChevronDown } from "react-icons/fa6";
+import { ChevronDown } from "lucide-react";
 
 const Body = ({ getIsSelected, getVisibleCells, Dropdown, original }) => {
   const [dropdown, setDropdown] = useState(false);
@@ -8,21 +8,21 @@ const Body = ({ getIsSelected, getVisibleCells, Dropdown, original }) => {
   return (
     <>
       <div
-        className={`flex px-3 py-2 border-b-[1px] border-hackathon-gray-200 items-center ${
+        className={`flex items-center border-b-[1px] border-hackathon-gray-200 px-3 py-2 ${
           getIsSelected() ? "bg-green-100" : "bg-white"
         }`}
         data-cy={original.uid}
       >
         {getVisibleCells().map(({ id, column, getContext }) => (
           <div
-            className={`flex items-center ${column.columnDef.width}`}
+            className={`flex items-center ${column.columnDef.meta?.width}`}
             key={id}
           >
             {flexRender(column.columnDef.cell, getContext())}
           </div>
         ))}
         {Dropdown && (
-          <FaChevronDown
+          <ChevronDown
             className={`${
               dropdown && "rotate-180"
             } duration-300 hover:cursor-pointer`}

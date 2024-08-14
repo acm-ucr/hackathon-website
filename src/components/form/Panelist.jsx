@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import Form from "@/components/form/form/Form.jsx";
-import { FIELDS, ATTRIBUTES } from "@/data/form/Panelists.js";
+import Form from "@/components/form/form/Form";
+import { FIELDS, ATTRIBUTES } from "@/data/form/Panelists";
 import { useSession } from "next-auth/react";
 import { api } from "@/utils/api";
-import toast from "react-hot-toast";
-import { STATUSES } from "@/data/admin/Panelists";
+import toaster from "@/utils/toaster";
+import { STATUSES } from "@/data/Statuses";
 
 const Panel = () => {
   const { data: session } = useSession();
@@ -25,8 +25,8 @@ const Panel = () => {
       url: "/api/dashboard/panels",
       body: panel,
     })
-      .then(() => toast(`✅ Submitted successfully!`))
-      .catch(() => toast(`❌ Internal Server Error`))
+      .then(() => toaster(`✅ Submitted successfully!`))
+      .catch(() => toaster(`❌ Internal Server Error`))
       .finally(() => {
         setLoading(false);
         setState(2);

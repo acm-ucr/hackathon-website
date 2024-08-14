@@ -17,11 +17,7 @@ describe("Checkbox", () => {
 
     cy.get('[data-cy="checkbox-bg"]').should(
       "have.class",
-      "bg-hackathon-gray-100"
-    );
-    cy.get('[data-cy="checkmark"]').should(
-      "have.class",
-      "text-hackathon-gray-100"
+      "bg-hackathon-gray-100",
     );
   });
 
@@ -40,9 +36,8 @@ describe("Checkbox", () => {
 
     cy.get('[data-cy="checkbox-bg"]').should(
       "have.class",
-      "bg-hackathon-blue-100"
+      "bg-hackathon-blue-100",
     );
-    cy.get('[data-cy="checkmark"]').should("have.class", "text-white");
   });
 
   it("Display Text", () => {
@@ -59,15 +54,7 @@ describe("Checkbox", () => {
 
     cy.mount(<Parent />);
 
-    cy.get('[data-cy="checkbox-bg"]').should(
-      "have.class",
-      "bg-hackathon-gray-100"
-    );
-    cy.get('[data-cy="checkbox"]').contains("Hello World");
-    cy.get('[data-cy="checkmark"]').should(
-      "have.class",
-      "text-hackathon-gray-100"
-    );
+    cy.get('[data-cy="checkbox-text"]').contains("Hello World");
   });
 
   it("Toggle", () => {
@@ -86,8 +73,7 @@ describe("Checkbox", () => {
     cy.get('[data-cy="checkbox-bg"]').click();
     cy.get('[data-cy="checkbox-bg"]').should(
       "have.class",
-      "bg-hackathon-blue-100"
+      "bg-hackathon-blue-100",
     );
-    cy.get('[data-cy="checkmark"]').should("have.class", "text-white");
   });
 });

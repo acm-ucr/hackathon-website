@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Title from "../../Title";
 import Scanner from "./Scanner";
-import Dropdown from "../Dropdown";
+import Select from "@/components/Select";
 import Button from "../../Button";
 import toaster from "@/utils/toaster";
 import { api } from "@/utils/api";
@@ -20,7 +20,7 @@ const CheckIn = () => {
       setEvents(
         items.map((event) => {
           return { id: event.id, name: event.summary, hidden: false };
-        })
+        }),
       );
     });
   }, []);
@@ -45,7 +45,6 @@ const CheckIn = () => {
     const [user, date] = code.split("&");
     const delta = Math.round((new Date() - new Date(date)) / 1000);
 
-    // TODO: CHANGE TO 5 SECONDS ONCE DEPLOYED
     if (delta < 5000) {
       const { items } = await api({
         method: "GET",
@@ -69,17 +68,17 @@ const CheckIn = () => {
   };
 
   return (
-    <div className="h-full font-poppins flex flex-col py-4 gap-3">
+    <div className="flex h-full flex-col gap-3 py-4 font-poppins">
       <Title title="Check In" />
       <div className="grid grid-cols-1">
-        <div className="p-3 flex flex-col items-center">
+        <div className="flex flex-col items-center gap-3 p-3">
           {events && (
-            <Dropdown
-              option={event}
-              setOption={setEvent}
-              options={events}
-              setOptions={setEvents}
-              empty="no events"
+            <Select
+              items={events}
+              user={event}
+              setUser={setEvent}
+              placeholder="Select Events"
+              userFn={(event) => setEvent(event)}
             />
           )}
           <Scanner setResult={setResult} />

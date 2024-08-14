@@ -1,8 +1,15 @@
 const BulletPoints = ({ list }) => {
   return (
-    <ul className="flex flex-col items-center justify-center mt-2">
+    <ul
+      data-cy="bulletpoint-list-items"
+      className="mt-2 flex flex-col items-center justify-center"
+    >
       {list.map((item, index) => (
-        <li key={index} className="list-disc w-10/12">
+        <li
+          data-cy="bulletpoint-list-item"
+          key={index}
+          className="w-10/12 list-disc"
+        >
           {item}
         </li>
       ))}

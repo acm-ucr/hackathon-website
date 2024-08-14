@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { TiPlus } from "react-icons/ti";
+import { Plus } from "lucide-react";
 
 const Filter = ({ value, status, isActive, setFilters }) => {
   const onClick = () => {
@@ -20,24 +20,24 @@ const Filter = ({ value, status, isActive, setFilters }) => {
                 ? statuses.filter((s) => s !== value)
                 : statuses.concat(value),
             }
-          : f
+          : f,
       );
     });
   };
 
   return (
-    <div className="flex justify-center" onClick={onClick}>
+    <div className="flex w-full justify-center" onClick={onClick}>
       <div
-        className={`rounded hover:opacity-70 duration-300 ${
+        className={`rounded duration-300 hover:opacity-70 ${
           isActive
-            ? "text-white bg-hackathon-blue-100"
-            : "text-hackathon-blue-100 bg-white"
-        } cursor-pointer flex items-center justify-between w-full`}
+            ? "bg-hackathon-blue-100 text-white"
+            : "bg-white text-hackathon-blue-100"
+        } flex w-full cursor-pointer items-center justify-between`}
         data-cy={status + "-filter"}
       >
-        <p className="my-0 mx-1 px-1 py-[2px] whitespace-nowrap">{status}</p>
-        <TiPlus
-          className={`duration-300 mt-[2px] mr-2 hover:opacity-80 ${
+        <p className="mx-1 my-0 whitespace-nowrap px-1 py-[2px]">{status}</p>
+        <Plus
+          className={`mr-2 mt-[2px] duration-300 hover:opacity-80 ${
             isActive ? "-rotate-45" : ""
           }`}
         />

@@ -18,7 +18,7 @@ export const GET = async (req) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
 
@@ -31,7 +31,7 @@ export const GET = async (req) => {
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };
@@ -44,18 +44,21 @@ export const PUT = async (req) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
 
   const { uid, event, name } = await req.json();
 
   try {
-    await updateDoc(doc(db, "users", uid), {
-      events: arrayUnion(event),
-    });
+    // eslint-disable-next-line no-unused-vars
+    const [_, data] = await Promise.all([
+      updateDoc(doc(db, "users", uid), {
+        events: arrayUnion(event),
+      }),
+      getDoc(doc(db, "events", event)),
+    ]);
 
-    const data = await getDoc(doc(db, "events", event));
     if (data.exists()) {
       await updateDoc(doc(db, "events", event), {
         attendance: increment(1),
@@ -71,7 +74,7 @@ export const PUT = async (req) => {
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };

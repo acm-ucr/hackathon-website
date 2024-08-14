@@ -20,7 +20,7 @@ export const GET = async () => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
 
@@ -28,12 +28,22 @@ export const GET = async () => {
   const judges = [];
 
   try {
-    const teamsSnapshot = await getDocs(
+    const teamsPromise = getDocs(
       query(
         collection(db, "teams"),
-        or(where("status", "==", 1), where("status", "==", 0))
-      )
+        or(where("status", "==", 1), where("status", "==", 0)),
+      ),
     );
+
+    const judgesPromise = getDocs(
+      query(collection(db, "users"), where("roles.judges", "==", 1)),
+    );
+
+    const [teamsSnapshot, judgesSnapshot] = await Promise.all([
+      teamsPromise,
+      judgesPromise,
+    ]);
+
     teamsSnapshot.forEach((doc) => {
       const { links, name, rounds, table } = doc.data();
 
@@ -55,9 +65,6 @@ export const GET = async () => {
       }
     });
 
-    const judgesSnapshot = await getDocs(
-      query(collection(db, "users"), where("roles.judges", "==", 1))
-    );
     judgesSnapshot.forEach((doc) => {
       const { affiliation, name } = doc.data();
 
@@ -70,12 +77,12 @@ export const GET = async () => {
 
     return res.json(
       { message: "OK", items: { teams, judges } },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };
@@ -87,25 +94,27 @@ export const DELETE = async (req) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
 
   const ids = req.nextUrl.searchParams.get("ids").split(",");
 
   try {
-    ids.forEach(async (id) => {
-      await updateDoc(doc(db, "teams", id), {
-        table: deleteField(),
-        rounds: deleteField(),
-      });
-    });
+    await Promise.all(
+      ids.map(async (id) => {
+        await updateDoc(doc(db, "teams", id), {
+          table: deleteField(),
+          rounds: deleteField(),
+        });
+      }),
+    );
 
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };
@@ -117,7 +126,7 @@ export const PUT = async (req) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
 
@@ -131,14 +140,14 @@ export const PUT = async (req) => {
           table: object.table,
           rounds: rounds,
         });
-      })
+      }),
     );
 
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };

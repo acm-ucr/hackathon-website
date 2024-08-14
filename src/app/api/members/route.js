@@ -7,7 +7,6 @@ import {
   arrayRemove,
   arrayUnion,
   deleteDoc,
-  deleteField,
 } from "firebase/firestore";
 import { authenticate } from "@/utils/auth";
 import { AUTH } from "@/data/user/Members";
@@ -19,7 +18,7 @@ export const DELETE = async () => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
 
@@ -36,13 +35,13 @@ export const DELETE = async () => {
         }),
       });
     await updateDoc(doc(db, "users", user.id), {
-      team: deleteField(),
+      team: "",
     });
     return res.json({ message: "OK" }, { status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };
@@ -54,7 +53,7 @@ export const PUT = async (req) => {
   if (auth !== 200) {
     return res.json(
       { message: `Authentication Error: ${message}` },
-      { status: auth }
+      { status: auth },
     );
   }
 
@@ -82,7 +81,7 @@ export const PUT = async (req) => {
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };

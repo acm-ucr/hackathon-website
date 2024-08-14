@@ -1,12 +1,7 @@
 import View from "@/components/admin/dashboards/dashboard/View";
 import { ICONS } from "./Icons";
 import { generateSelect, generateStatus } from "./Columns";
-
-export const STATUSES = {
-  1: "accepted",
-  0: "pending",
-  "-1": "rejected",
-};
+import { STATUSES } from "@/data/Statuses";
 
 export const TAGS = [
   {
@@ -24,7 +19,7 @@ export const COLUMNS = [
   {
     accessorKey: "name",
     header: "Name",
-    width: "w-2/12",
+    meta: { width: "w-2/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -33,7 +28,7 @@ export const COLUMNS = [
   {
     accessorKey: "email",
     header: "Email",
-    width: "w-3/12",
+    meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -42,7 +37,7 @@ export const COLUMNS = [
   {
     accessorKey: "discord",
     header: "Discord",
-    width: "w-2/12",
+    meta: { width: "w-2/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -51,7 +46,7 @@ export const COLUMNS = [
   {
     accessorKey: "team",
     header: "Team",
-    width: "w-3/12",
+    meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -60,7 +55,7 @@ export const COLUMNS = [
   {
     accessorKey: "shirt",
     header: "Shirt",
-    width: "w-1/12",
+    meta: { width: "w-1/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -70,7 +65,7 @@ export const COLUMNS = [
   {
     accessorKey: "resume",
     header: "Resume",
-    width: "w-1/12",
+    meta: { width: "w-1/12" },
     enableSorting: false,
     cell: ({ getValue }) =>
       getValue() ? <View title="Resume" src={getValue()} /> : <div>N/A</div>,
@@ -82,6 +77,7 @@ const attributes = [
   "phone",
   "age",
   "gender",
+  "country",
   "school",
   "major",
   "grade",
@@ -92,10 +88,10 @@ const attributes = [
 
 export const DROPDOWN = ({ object }) => {
   return (
-    <div className="flex justify-center items-center">
-      <div className="grid grid-cols-3 w-11/12">
+    <div className="flex items-center justify-center">
+      <div className="grid w-11/12 grid-cols-3">
         {attributes.map((attribute, index) => (
-          <div key={index} className="my-1 px-1 flex text-sm">
+          <div key={index} className="my-1 flex px-1 text-sm">
             {ICONS[attribute]}
             {Array.isArray(object[attribute])
               ? object[attribute].length !== 0

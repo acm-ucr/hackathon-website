@@ -1,6 +1,11 @@
 import { useState } from "react";
-import { BsUpload } from "react-icons/bs";
-import { FaFilePdf, FaImage, FaTimes, FaEye } from "react-icons/fa";
+import {
+  Upload as LucideUpload,
+  FileText,
+  Image as LucideImage,
+  X,
+  Eye,
+} from "lucide-react";
 import toaster from "@/utils/toaster";
 import { BYTES } from "@/data/Bytes";
 import { readFileAsBase64, compress } from "@/utils/convert";
@@ -12,7 +17,7 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
   const [file, setFile] = useState(
     user[field] && user[field].startsWith("data:image")
       ? { src: user[field], type: "image", title: `${user.name}.png` }
-      : null
+      : null,
   );
   const [uploading, setUploading] = useState(false);
   const [showModal, setShowModal] = useState(null);
@@ -40,15 +45,15 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
         {text}
         {required && <span className="text-red-500">*</span>}
       </p>
-      <div className="flex items-center w-full flex-col" data-cy="upload">
+      <div className="flex w-full flex-col items-center" data-cy="upload">
         {!file && (
           <label
             htmlFor="dropzone-file"
-            className="flex flex-col items-center justify-center w-full h-fit border-2 border-gray-300 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100"
+            className="flex h-fit w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-gray-300 bg-gray-50 hover:bg-gray-100"
           >
             <div className="flex flex-col items-center justify-center py-4">
-              <BsUpload className=" text-3xl mb-2 text-hackathon-green-300" />
-              <p className="text-sm text-gray-500 font-semibold">
+              <LucideUpload className="mb-2 text-3xl text-hackathon-green-300" />
+              <p className="text-sm font-semibold text-gray-500">
                 Upload from my computer
               </p>
             </div>
@@ -65,26 +70,26 @@ const Upload = ({ field, user, setUser, text, maxSize, types, required }) => {
         )}
         {file && (
           <div
-            className="flex items-center justify-between w-full my-2 bg-gray-200 px-2 py-2"
+            className="my-2 flex w-full items-center justify-between bg-gray-200 px-2 py-2"
             data-cy="upload-success"
           >
             <div className="flex items-center">
               {file.type.split("/")[0] === "image" ? (
-                <FaImage className="text-xl mr-2" />
+                <LucideImage className="mr-2 text-xl" />
               ) : (
-                <FaFilePdf className="text-xl mr-2" />
+                <FileText className="mr-2 text-xl" />
               )}
               {file.title}
             </div>
             <div className="flex flex-row">
               {file.type.split("/")[0] === "image" && (
-                <FaEye
+                <Eye
                   onClick={() => setShowModal(true)}
-                  className="text-gray-500 hover:cursor-pointer hover:text-gray-800 mr-2"
+                  className="mr-2 text-gray-500 hover:cursor-pointer hover:text-gray-800"
                 />
               )}
 
-              <FaTimes
+              <X
                 className="text-gray-500 hover:cursor-pointer hover:text-red-600"
                 onClick={() => setFile(null)}
                 data-cy="upload-cancel"

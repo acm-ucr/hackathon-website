@@ -9,14 +9,14 @@ describe("Button", () => {
     const size = "md";
 
     cy.mount(
-      <Button color={color} text={text} onClick={onClick} size={size} />
+      <Button color={color} text={text} onClick={onClick} size={size} />,
     );
 
     cy.get('[data-cy="send-button"]').contains("send");
     cy.get('[data-cy="send-button"]').should(
       "have.class",
       "bg-hackathon-green-300",
-      "text-base"
+      "text-base",
     );
     cy.get('[data-cy="send-button"]')
       .click()
@@ -30,14 +30,14 @@ describe("Button", () => {
     const size = "xl";
 
     cy.mount(
-      <Button color={color} text={text} onClick={onClick} size={size} />
+      <Button color={color} text={text} onClick={onClick} size={size} />,
     );
     cy.get('[data-cy="Check In-button"]').contains("Check In");
     cy.get('[data-cy="Check In-button"]').should(
       "have.class",
       "bg-hackathon-green-300",
       "text-xl",
-      "hover:opacity-50"
+      "hover:opacity-50",
     );
     cy.get('[data-cy="Check In-button"]')
       .click()
@@ -66,7 +66,7 @@ describe("Button", () => {
       "have.class",
       "bg-hackathon-green-300",
       "text-xl",
-      "hover:opacity-50"
+      "hover:opacity-50",
     );
     cy.get('[data-cy="Confirm-button"]')
       .click()

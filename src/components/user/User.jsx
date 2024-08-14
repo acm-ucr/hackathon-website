@@ -7,6 +7,7 @@ import {
   SHIRTS,
 } from "@/data/form/Information";
 import { SCHOOLS } from "@/data/form/Schools";
+import { COUNTRIES } from "@/data/form/Country";
 import Input from "../Input";
 import Radio from "../Radio";
 import Select from "../Select";
@@ -14,17 +15,23 @@ import Button from "../Button";
 import Checkbox from "../Checkbox";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
-import { phone } from "@/data/form/Regex";
 
 const User = ({ user, setUser, edit, setEdit }) => {
   const handleEdit = () => {
     setEdit(true);
   };
 
+  const handleClick = (option, field) => {
+    setUser({
+      ...user,
+      [field]: option,
+    });
+  };
+
   const handleSave = async () => {
     if (
       Object.values(user).some(
-        (value) => typeof value === "string" && value.includes("Invalid")
+        (value) => typeof value === "string" && value.includes("Invalid"),
       )
     ) {
       toaster("Please complete all required fields!", "error");
@@ -45,12 +52,20 @@ const User = ({ user, setUser, edit, setEdit }) => {
       });
   };
   return (
-    <div className="bg-white rounded-lg gap-3 flex flex-col m-2 max-h-[70vh] pb-4">
-      <div className="gap-3 flex flex-col m-2 overflow-scroll h-[90%] p-4 bg-transparent">
+    <div className="m-2 flex max-h-[70vh] flex-col gap-3 rounded-lg bg-white pb-4">
+      <div className="m-2 flex h-[90%] flex-col gap-3 overflow-scroll bg-transparent p-4">
         <Select
           title="School"
           items={SCHOOLS}
           field="school"
+          user={user}
+          setUser={setUser}
+          editable={edit}
+        />
+        <Select
+          title="Country"
+          items={COUNTRIES}
+          field="country"
           user={user}
           setUser={setUser}
           editable={edit}
@@ -79,7 +94,6 @@ const User = ({ user, setUser, edit, setEdit }) => {
           user={user}
           setUser={setUser}
           editable={edit}
-          regex={phone}
         />
         <Select
           title="Age"
@@ -96,6 +110,7 @@ const User = ({ user, setUser, edit, setEdit }) => {
           user={user}
           setUser={setUser}
           editable={edit}
+          onClick={handleClick}
         />
         <Radio
           text="Shirt"
@@ -104,6 +119,7 @@ const User = ({ user, setUser, edit, setEdit }) => {
           user={user}
           setUser={setUser}
           editable={edit}
+          onClick={handleClick}
         />
         <div>
           <p className="mb-1 font-semibold">Diet</p>
@@ -127,16 +143,16 @@ const User = ({ user, setUser, edit, setEdit }) => {
             ))
           ) : user.diet.length > 0 ? (
             user.diet.map((diet, index) => (
-              <p className="pl-3 mb-1" key={index}>
+              <p className="mb-1 pl-3" key={index}>
                 {diet}
               </p>
             ))
           ) : (
-            <p className="pl-3 mb-1">No diet restrictions</p>
+            <p className="mb-1 pl-3">No diet restrictions</p>
           )}
         </div>
       </div>
-      <div className="w-full flex justify-center">
+      <div className="flex w-full justify-center">
         {edit && (
           <Button color="green" size="xl" text="save" onClick={handleSave} />
         )}

@@ -1,0 +1,85 @@
+{
+  "message": "OK",
+  "items": [
+    {
+      "uid": "1",
+      "name": "Menthy Wu",
+      "email": "yhung022@ucr.edu",
+      "status": 0,
+      "selected": false,
+      "hidden": false
+    },
+    {
+      "uid": "2",
+      "name": "Divyank Shah",
+      "email": "yhung022@ucr.edu",
+      "status": 0,
+      "selected": false,
+      "hidden": false
+    },
+    {
+      "uid": "3",
+      "name": "Shing Hung",
+      "email": "yhung022@ucr.edu",
+      "status": 0,
+      "selected": false,
+      "hidden": false
+    },
+    {
+      "uid": "4",
+      "name": "Sachin Chopra",
+      "email": "yhung022@ucr.edu",
+      "status": 0,
+      "selected": false,
+      "hidden": false
+    },
+    {
+      "uid": "5",
+      "name": "Tiffany Wang",
+      "email": "xxx022@ucr.edu",
+      "status": 0,
+      "selected": false,
+      "hidden": false
+    },
+    {
+      "uid": "6",
+      "name": "Alex Wu",
+      "email": "yhung022@ucr.edu",
+      "status": 0,
+      "selected": false,
+      "hidden": false
+    },
+    {
+      "uid": "7",
+      "name": "Cindy Jones",
+      "email": "yhung022@ucr.edu",
+      "status": 0,
+      "selected": false,
+      "hidden": false
+    },
+    {
+      "uid": "8",
+      "name": "AJ Hall",
+      "email": "yhung022@ucr.edu",
+      "status": 0,
+      "selected": false,
+      "hidden": false
+    },
+    {
+      "uid": "9",
+      "name": "Lucy Pan",
+      "email": "yhung022@ucr.edu",
+      "status": 0,
+      "selected": false,
+      "hidden": false
+    },
+    {
+      "uid": "10",
+      "name": "Ben Du",
+      "email": "yhung987@ucr.edu",
+      "status": 0,
+      "selected": false,
+      "hidden": false
+    }
+  ]
+}
