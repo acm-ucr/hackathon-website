@@ -18,7 +18,7 @@ type Admin = {
 };
 
 type dropdownProps = {
-  object: Record<string, string[] | string>;
+  object: Record<string, string[]>;
 };
 
 export const TAGS: Tags[] = [
