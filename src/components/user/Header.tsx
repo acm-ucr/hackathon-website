@@ -7,7 +7,7 @@ const Header = () => {
     <div className="flex items-center justify-between">
       <div>
         <p className="font-medium">Welcome</p>
-        <p className="mb-0 text-2xl font-bold">{session.user.name}</p>
+        <p className="mb-0 text-2xl font-bold">{session?.user?.name}</p>
       </div>
       <div className="mr-6">
         <button
