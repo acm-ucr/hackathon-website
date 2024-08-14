@@ -8,5 +8,5 @@ export type SearchParams = {
 
 export type Tags = {
   text: string;
-  value: number;
+  value: -1 | 0 | 1;
 };
