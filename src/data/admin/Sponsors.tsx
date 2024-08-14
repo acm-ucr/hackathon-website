@@ -1,7 +1,7 @@
 import { TIERS } from "@/data/form/Sponsors";
 import { generateSelect, generateStatus, generateTiers } from "./Columns";
 import { STATUSES } from "@/data/Statuses";
-import { ColumnDef } from "@tanstack/react-table";
+import { ColumnDef, CellContext } from "@tanstack/react-table";
 import { Tags } from "@/types/dashboard";
 
 type Sponsor = {
@@ -38,7 +38,9 @@ export const COLUMNS: ColumnDef<Sponsor, string>[] = [
     meta: { width: "w-2/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Sponsor, Sponsor["name"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "email",
@@ -46,7 +48,9 @@ export const COLUMNS: ColumnDef<Sponsor, string>[] = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Sponsor, Sponsor["email"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "company",
@@ -54,7 +58,9 @@ export const COLUMNS: ColumnDef<Sponsor, string>[] = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Sponsor, Sponsor["company"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "position",
@@ -62,7 +68,9 @@ export const COLUMNS: ColumnDef<Sponsor, string>[] = [
     meta: { width: "w-2/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Sponsor, Sponsor["position"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   generateTiers(TIERS),
   generateStatus(STATUSES),

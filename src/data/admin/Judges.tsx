@@ -7,7 +7,7 @@ import { save } from "@/utils/download";
 import { Download } from "lucide-react";
 import data from "../Config";
 import { Tags } from "@/types/dashboard";
-import { ColumnDef } from "@tanstack/react-table";
+import { ColumnDef, CellContext } from "@tanstack/react-table";
 
 type Judge = {
   name: string;
@@ -39,7 +39,9 @@ export const COLUMNS: ColumnDef<Judge, string>[] = [
     meta: { width: "w-2/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Judge, Judge["name"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "email",
@@ -47,7 +49,9 @@ export const COLUMNS: ColumnDef<Judge, string>[] = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Judge, Judge["email"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "title",
@@ -55,7 +59,9 @@ export const COLUMNS: ColumnDef<Judge, string>[] = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Judge, Judge["title"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   generateAffiliation(AFFILIATIONS),
   generateStatus(STATUSES),
@@ -97,7 +103,7 @@ export const COLUMNS: ColumnDef<Judge, string>[] = [
     },
     meta: { width: "w-1/12" },
     enableSorting: false,
-    cell: (props) => (
+    cell: (props: CellContext<Judge, Judge["photo"]>) => (
       <View src={props.getValue()} title={props.row.getValue("name")} />
     ),
   },

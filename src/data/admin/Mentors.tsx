@@ -2,7 +2,7 @@ import Checkbox from "@/components/Checkbox";
 import { AVAILABILITY } from "../form/Information";
 import { generateSelect, generateStatus } from "./Columns";
 import { STATUSES } from "@/data/Statuses";
-import { ColumnDef } from "@tanstack/react-table";
+import { ColumnDef, CellContext } from "@tanstack/react-table";
 import { Tags } from "@/types/dashboard";
 
 type Mentor = {
@@ -39,7 +39,9 @@ export const COLUMNS: ColumnDef<Mentor, string>[] = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Mentor, Mentor["name"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "email",
@@ -47,7 +49,9 @@ export const COLUMNS: ColumnDef<Mentor, string>[] = [
     meta: { width: "w-4/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Mentor, Mentor["email"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "discord",
@@ -55,7 +59,9 @@ export const COLUMNS: ColumnDef<Mentor, string>[] = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Mentor, Mentor["discord"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   generateStatus(STATUSES),
 ];

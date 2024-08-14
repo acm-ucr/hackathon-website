@@ -3,7 +3,7 @@ import { ICONS } from "./Icons";
 import { generateSelect, generateStatus } from "./Columns";
 import { STATUSES } from "@/data/Statuses";
 import { Tags } from "@/types/dashboard";
-import { ColumnDef } from "@tanstack/react-table";
+import { ColumnDef, CellContext } from "@tanstack/react-table";
 
 type Participant = {
   phone: string;
@@ -48,7 +48,9 @@ export const COLUMNS: ColumnDef<Participant, string>[] = [
     meta: { width: "w-2/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Participant, Participant["name"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "email",
@@ -56,7 +58,9 @@ export const COLUMNS: ColumnDef<Participant, string>[] = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Participant, Participant["email"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "discord",
@@ -64,7 +68,9 @@ export const COLUMNS: ColumnDef<Participant, string>[] = [
     meta: { width: "w-2/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Participant, Participant["discord"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "team",
@@ -72,7 +78,9 @@ export const COLUMNS: ColumnDef<Participant, string>[] = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props) => <div>{props.getValue() ?? "N/A"}</div>,
+    cell: (props: CellContext<Participant, Participant["team"]>) => (
+      <div>{props.getValue() ?? "N/A"}</div>
+    ),
   },
   {
     accessorKey: "shirt",
@@ -80,7 +88,9 @@ export const COLUMNS: ColumnDef<Participant, string>[] = [
     meta: { width: "w-1/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props) => <div>{props.getValue() ?? "N/A"}</div>,
+    cell: (props: CellContext<Participant, Participant["shirt"]>) => (
+      <div>{props.getValue() ?? "N/A"}</div>
+    ),
   },
   generateStatus(STATUSES),
   {
@@ -88,7 +98,7 @@ export const COLUMNS: ColumnDef<Participant, string>[] = [
     header: "Resume",
     meta: { width: "w-1/12" },
     enableSorting: false,
-    cell: (props) =>
+    cell: (props: CellContext<Participant, Participant["resume"]>) =>
       props.getValue() ? (
         <View title="Resume" src={props.getValue()} />
       ) : (

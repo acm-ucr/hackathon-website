@@ -1,7 +1,7 @@
 import { generateSelect, generateStatus } from "./Columns";
 import { STATUSES } from "@/data/Statuses";
 import { Tags } from "@/types/dashboard";
-import { ColumnDef } from "@tanstack/react-table";
+import { ColumnDef, CellContext } from "@tanstack/react-table";
 
 type Interest = {
   name: string;
@@ -27,7 +27,9 @@ export const COLUMNS: ColumnDef<Interest, string>[] = [
     meta: { width: "w-5/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Interest, Interest["name"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "email",
@@ -35,7 +37,9 @@ export const COLUMNS: ColumnDef<Interest, string>[] = [
     meta: { width: "w-5/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props) => <div>{props.getValue()}</div>,
+    cell: (props: CellContext<Interest, Interest["email"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   generateStatus(STATUSES),
 ];
