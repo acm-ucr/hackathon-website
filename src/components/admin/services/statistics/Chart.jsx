@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/chart";
 
 const Chart = ({ title, data }) => {
-  const ITEMS = { ...ROLES, ...SIZES };
+  const ITEMS = { ...ROLES, ...SIZES, ...SCHOOLS };
 
   const chartData = Object.entries(data).map(([type, value]) => ({
     type: ITEMS[type].label,

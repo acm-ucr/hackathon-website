@@ -49,8 +49,30 @@ export const SIZES = {
   },
 };
 
-export const SCHOOL = {
-  label: "Extra Small",
-  className: "fill-hackathon-tags-pink-text",
-  fill: "bg-hackathon-tags-pink-text",
+export const SCHOOLS = {
+  pink: {
+    label: null,
+    className: "fill-hackathon-tags-pink-text",
+    fill: "bg-hackathon-tags-pink-text",
+  },
+  blue: {
+    label: null,
+    className: "fill-hackathon-tags-blue-text",
+    fill: "bg-hackathon-tags-blue-text",
+  },
+  yellow: {
+    label: null,
+    className: "fill-hackathon-tags-yellow-text",
+    fill: "bg-hackathon-tags-yellow-text",
+  },
+  green: {
+    label: null,
+    className: "fill-hackathon-tags-green-text",
+    fill: "bg-hackathon-tags-green-text",
+  },
+  orange: {
+    label: null,
+    className: "fill-hackathon-tags-orange-text",
+    fill: "bg-hackathon-tags-orange-text",
+  },
 };

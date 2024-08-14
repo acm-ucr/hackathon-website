@@ -208,7 +208,7 @@ export const PUT = async (req, { params }) => {
             [`roles.${params.type}`]: object.shirt,
             [`roles.${params}.participants`]: object.school,
           });
-
+          console.log(object.school);
           const id = status === 1 ? "acceptance" : "rejection";
 
           const preview =
