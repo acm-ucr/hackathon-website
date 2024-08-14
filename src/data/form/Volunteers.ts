@@ -1,7 +1,29 @@
 import { MAJORS, GRADES, GENDERS, SHIRTS, AVAILABILITY } from "./Information";
 import data from "@/data/Config";
+import {
+  CheckboxInput,
+  Description,
+  RadioInput,
+  SelectInput,
+  TermsAndConditions,
+  TextInput,
+} from "@/types/forms";
 
-export const FIELDS = {
+interface Fields {
+  description: Description;
+  name: TextInput;
+  email: TextInput;
+  phone: TextInput;
+  discord: TextInput;
+  major: SelectInput;
+  grade: SelectInput;
+  availability: CheckboxInput;
+  gender: RadioInput;
+  shirt: RadioInput;
+  requirements: TermsAndConditions;
+}
+
+export const FIELDS: Fields = {
   description: {
     input: "description",
     width: 12,
@@ -25,6 +47,7 @@ export const FIELDS = {
   name: {
     input: "input",
     name: "name",
+    placeholder: "John Doe",
     type: "text",
     title: "Name",
     maxLength: 50,
@@ -35,6 +58,7 @@ export const FIELDS = {
   email: {
     input: "input",
     name: "email",
+    placeholder: "john.doe@gmail.com",
     type: "email",
     title: "Email Address",
     maxLength: 50,
@@ -50,6 +74,7 @@ export const FIELDS = {
     placeholder: "ie. 123 456 7890",
     maxLength: 50,
     width: 12,
+    editable: true,
     required: true,
   },
 
@@ -61,6 +86,7 @@ export const FIELDS = {
     placeholder: "ie. john123",
     maxLength: 30,
     width: 12,
+    editable: true,
     required: true,
   },
   major: {
@@ -71,6 +97,7 @@ export const FIELDS = {
     placeholder: "ie. Computer Science",
     width: 12,
     required: true,
+    editable: true,
     searchable: true,
   },
   grade: {
@@ -81,6 +108,7 @@ export const FIELDS = {
     placeholder: "ie. Undergraduate",
     width: 12,
     required: true,
+    editable: true,
     searchable: true,
   },
   availability: {
@@ -89,6 +117,7 @@ export const FIELDS = {
     field: "availability",
     text: "Availability",
     required: true,
+    editable: true,
     options: AVAILABILITY,
   },
   gender: {
@@ -97,6 +126,7 @@ export const FIELDS = {
     options: GENDERS,
     field: "gender",
     width: 12,
+    editable: true,
     required: true,
   },
   shirt: {
@@ -105,6 +135,7 @@ export const FIELDS = {
     options: SHIRTS,
     field: "shirt",
     width: 12,
+    editable: true,
     required: true,
   },
   requirements: {
@@ -113,6 +144,7 @@ export const FIELDS = {
     width: 12,
     field: "requirements",
     required: true,
+    editable: true,
     options: [
       "I have read the MLH code of conduct and agree to the terms and conditions listed",
       "I authorize you to share my application/registration information with Major League Hacking for event administration, ranking, and MLH administration in-line with the MLH Privacy Policy",
@@ -126,7 +158,21 @@ export const FIELDS = {
   },
 };
 
-export const ATTRIBUTES = {
+interface Attributes {
+  name: string;
+  email: string;
+  phone: string;
+  discord: string;
+  major: string;
+  grade: string;
+  availability: string[];
+  gender: string;
+  shirt: string;
+  response: string;
+  requirements: string[];
+}
+
+export const ATTRIBUTES: Attributes = {
   name: "",
   email: "",
   phone: "",
