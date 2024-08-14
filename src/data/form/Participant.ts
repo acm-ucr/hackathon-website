@@ -4,14 +4,16 @@ import {
   RadioInput,
   SelectInput,
   TermsAndConditions,
-  TextareaInput,
   TextInput,
   UploadInput,
 } from "@/types/forms";
-import { AGES, MAJORS } from "./Information";
-import { GRADES, GENDERS, SOURCES } from "./Information";
+import { AGES, DIETS, MAJORS } from "./Information";
+import { GRADES } from "./Information";
+import { GENDERS } from "./Information";
+import { SHIRTS } from "./Information";
 import { SCHOOLS } from "./Schools";
 import data from "@/data/Config";
+import { COUNTRIES } from "./Countries";
 
 interface Attributes {
   name: string;
@@ -19,27 +21,16 @@ interface Attributes {
   phone: string;
   major: string;
   age: string;
+  country: string;
   school: string;
   grade: string;
   gender: string;
+  shirt: string;
+  diet: string[];
   resume: string;
   requirements: string[];
-  priorHackathons: string[];
+  team: string;
 }
-
-export const ATTRIBUTES: Attributes = {
-  name: "",
-  email: "",
-  phone: "",
-  major: "",
-  age: "",
-  school: "",
-  grade: "",
-  gender: "",
-  resume: "",
-  requirements: [],
-  priorHackathons: [],
-};
 
 interface Fields {
   description: Description;
@@ -49,13 +40,12 @@ interface Fields {
   discord: TextInput;
   major: SelectInput;
   age: SelectInput;
+  country: SelectInput;
   school: SelectInput;
   grade: SelectInput;
   gender: RadioInput;
-  eventSource: SelectInput;
-  priorHackathons: CheckboxInput;
-  priorExperience: TextareaInput;
-  response: TextareaInput;
+  shirt: RadioInput;
+  diet: CheckboxInput;
   resume: UploadInput;
   requirements: TermsAndConditions;
 }
@@ -65,11 +55,18 @@ export const FIELDS: Fields = {
     input: "description",
     width: 12,
     texts: [
-      `Welcome to ${data.name} ${
-        data.date.getFullYear() + 1
-      }. Thank you for considering to become a lead, we appreciate your enthusiasm to join ${
+      `Welcome to ${
         data.name
-      }, a ${data.description} hackathon.`,
+      }. Thank you for considering to become a participant, we appreciate your enthusiasm to join ${
+        data.name
+      }. ${data.name} is a ${data.description} hackathon spanning ${
+        data.length
+      } on ${data.date.toLocaleString("default", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      })}.`,
+      "Participants are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
     ],
   },
   name: {
@@ -86,7 +83,7 @@ export const FIELDS: Fields = {
   email: {
     input: "input",
     name: "email",
-    placeholder: "john.doe@gmail.com",
+    placeholder: "John Doe",
     type: "email",
     title: "Email Address",
     maxLength: 50,
@@ -102,19 +99,19 @@ export const FIELDS: Fields = {
     placeholder: "ie. 123 456 7890",
     maxLength: 50,
     width: 12,
-    editable: true,
     required: true,
+    editable: true,
   },
   discord: {
     input: "input",
     name: "discord",
+    placeholder: "John Doe",
     type: "text",
     title: "Discord Username",
-    placeholder: "ie. john_doe#1234",
     maxLength: 50,
     width: 12,
-    editable: true,
     required: true,
+    editable: true,
   },
   major: {
     input: "select",
@@ -133,6 +130,17 @@ export const FIELDS: Fields = {
     options: AGES,
     field: "age",
     placeholder: "ie. 18",
+    width: 12,
+    required: true,
+    editable: true,
+    searchable: true,
+  },
+  country: {
+    input: "select",
+    title: "Country",
+    options: COUNTRIES,
+    field: "country",
+    placeholder: "ie. United States of America",
     width: 12,
     required: true,
     editable: true,
@@ -166,66 +174,37 @@ export const FIELDS: Fields = {
     options: GENDERS,
     field: "gender",
     width: 12,
-    editable: true,
     required: true,
+    editable: true,
   },
-  eventSource: {
-    input: "select",
-    title: "How did you find the event?",
-    options: SOURCES,
-    field: "eventSource",
-    placeholder: "ie. Social Media",
+  shirt: {
+    input: "radio",
+    text: "Shirt Size",
+    options: SHIRTS,
+    field: "shirt",
     width: 12,
-    editable: true,
-    searchable: true,
     required: true,
+    editable: true,
   },
-  priorHackathons: {
+  diet: {
     input: "checkboxes",
-    text: "Prior Hackathons",
-    field: "priorHackathons",
+    text: "Dietary Restrictions",
     width: 12,
-    required: true,
-    editable: true,
-    options: [
-      "Cutie Hack",
-      "Rose Hack",
-      "DesignVerse",
-      "Bear Hack",
-      "Citrus Hack",
-      "MLH",
-      "Other",
-    ],
-  },
-  priorExperience: {
-    input: "textarea",
-    name: "priorExperience",
-    rows: 4,
-    title: "Please tell us about your prior experience",
-    placeholder: "ie. I have prior experience in...",
-    width: 12,
-    required: true,
+    field: "diet",
+    options: DIETS,
+    required: false,
     editable: true,
   },
-  response: {
-    input: "textarea",
-    name: "response",
-    rows: 4,
-    title: `Why do you want to join ${data.name}?`,
-    placeholder: "ie. I want to join because...",
-    width: 12,
-    required: true,
-    editable: true,
-  },
+
   resume: {
     input: "upload",
     field: "resume",
-    text: "Upload Resume",
+    text: "Upload  Resume",
     width: 12,
     types: ["pdf"],
     maxSize: [200, "KB"],
-    editable: true,
     required: false,
+    editable: true,
   },
   requirements: {
     text: "Terms and Conditions",
@@ -245,4 +224,21 @@ export const FIELDS: Fields = {
       "I understand this is an in person event taking place in UCR and I must attend in person in order to participate",
     ],
   },
+};
+
+export const ATTRIBUTES: Attributes = {
+  name: "",
+  email: "",
+  phone: "",
+  major: "",
+  age: "",
+  country: "",
+  school: "",
+  grade: "",
+  gender: "",
+  shirt: "",
+  diet: [],
+  resume: "",
+  requirements: [],
+  team: "",
 };
