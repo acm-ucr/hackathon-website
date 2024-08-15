@@ -1,4 +1,11 @@
-export const ROLES = {
+type Code = "1" | "0" | "-1";
+type LabelCode = "Pending" | "Accepted" | "Rejected";
+interface roles {
+  label: LabelCode;
+  className: string;
+  fill: string;
+}
+export const ROLES: Record<Code, roles> = {
   0: {
     label: "Pending",
     className: "fill-hackathon-yellow-100",
@@ -15,8 +22,20 @@ export const ROLES = {
     fill: "bg-hackathon-tags-red-text",
   },
 };
-
-export const SIZES = {
+type SizeCode = "XS" | "S" | "M" | "L" | "XL" | "XXL";
+type Sizeagain =
+  | "Extra Small"
+  | "Small"
+  | "Medium"
+  | "Large"
+  | "Extra Large"
+  | "Double Extra Large";
+interface sizes {
+  label: Sizeagain;
+  className: string;
+  fill: string;
+}
+export const SIZES: Record<SizeCode, sizes> = {
   XS: {
     label: "Extra Small",
     className: "fill-hackathon-tags-pink-text",
