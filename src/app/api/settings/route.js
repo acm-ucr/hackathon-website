@@ -41,12 +41,16 @@ const updateRoleCounts = async (role) => {
     getRoleCount(role, -1),
     getRoleCount(role, 0),
     getRoleCount(role, 1),
+    // getRoleCount(role, "L"),
+    // getRoleCount(role, "diet")
   ]);
 
   await updateDoc(doc(db, "statistics", "statistics"), {
     [`${role}.-1`]: roleMinusOneCount,
     [`${role}.0`]: roleZeroCount,
     [`${role}.1`]: roleOneCount,
+    // [`${role}.shirt.1.L`]: sizeCount,
+    // [`${role}.diet.1.Halal`]: dietCount,
   });
 };
 export const GET = async () => {

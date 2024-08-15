@@ -22,6 +22,7 @@ export const GET = async () => {
       getDoc(doc(db, "statistics", "statistics")),
       getDocs(collection(db, "events")),
     ]);
+    // console.log(statistics.data());
     const {
       teams,
       participants,
@@ -33,7 +34,7 @@ export const GET = async () => {
       panels,
       admins,
     } = statistics.data();
-
+    // console.log(statistics.data());
     const attendees = {};
 
     events.forEach((doc) => {
@@ -52,7 +53,7 @@ export const GET = async () => {
       panels,
       admins,
     };
-
+    // console.log(users)
     const sizeData = ["XS", "S", "M", "L", "XL", "XXL"];
     const statusData = ["1", "0", "-1"];
 
@@ -68,6 +69,9 @@ export const GET = async () => {
         Object.entries(entries).filter(([key]) => statusData.includes(key)),
       );
     });
+
+    console.log("Sort:", size);
+    console.log("Sort", status);
 
     return res.json(
       { items: { users: { status, size }, events: attendees } },

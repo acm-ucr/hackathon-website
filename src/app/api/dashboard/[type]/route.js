@@ -63,6 +63,8 @@ export const POST = async (req, { params }) => {
         }),
         updateDoc(doc(db, "statistics", "statistics"), {
           [`${params.type}.0`]: increment(1),
+          // [`${params.type}.0.${element.size}`]: increment(1),
+          // [`${params.type}.0.${element.diet}`]: increment(1),
         }),
         send({
           email: user.email,
@@ -167,7 +169,7 @@ export const GET = async (req, { params }) => {
     const total = countFromServer.data().count;
     const lastDoc = output.length > 0 ? output[output.length - 1].uid : "";
     const firstDoc = output.length > 0 ? output[0].uid : "";
-
+    // console.log(output);
     return res.json(
       {
         message: "OK",
@@ -205,8 +207,9 @@ export const PUT = async (req, { params }) => {
           await updateDoc(doc(db, "users", object.uid), {
             [`roles.${params.type}`]: status,
             [`roles.${params.type}`]: object.shirt,
+            [`roles.${params.type}`]: object.diet,
           });
-
+          console.log("PUT", object, school, object.diet);
           const id = status === 1 ? "acceptance" : "rejection";
 
           const preview =
@@ -229,19 +232,22 @@ export const PUT = async (req, { params }) => {
           });
 
           const size = object.shirt;
+          const diet = object.diet;
 
           status === 1 &&
             (await updateDoc(doc(db, "statistics", "statistics"), {
               [`${params.type}.1`]: increment(1),
               [`${params.type}.0`]: increment(-1),
-              [`${params.type}.${size}`]: increment(1),
+              [`${params.type}.shirt.1.${size}`]: increment(1),
+              [`${params.type}.diet.1.${diet}`]: increment(1),
             }));
 
           status === -1 &&
             (await updateDoc(doc(db, "statistics", "statistics"), {
               [`${params.type}.-1`]: increment(1),
               [`${params.type}.0`]: increment(-1),
-              [`${params.type}.${size}`]: increment(-1),
+              [`${params.type}.-1.${size}`]: increment(-1),
+              [`${params.type}.-1.${diet}`]: increment(-1),
             }));
         }),
       );
