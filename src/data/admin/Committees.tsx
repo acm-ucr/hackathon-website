@@ -4,35 +4,30 @@ import { ICONS } from "./Icons";
 import { STATUSES } from "@/data/Statuses";
 import { ColumnDef } from "@tanstack/react-table";
 import { ReactNode } from "react";
+import { Tags } from "@/types/dashboard";
 
-type TAGS = {
-  text: string;
-  value: number;
+type Committee = {
+  email: string;
+  phone: string;
+  age: string;
+  gender: string;
+  school: string;
+  major: string;
+  grade: string;
+  shirt: string;
+  diet: string;
+  restriction: string;
 };
 
-type Attributes = string[];
-
-type Meta = {
-  width: string;
-};
-type Committee<TData extends object> = ColumnDef<TData> & {
+type Column<TData extends object> = ColumnDef<TData> & {
   searchable?: boolean;
 };
 
-interface Column {
-  accessorKey: string;
-  header: string;
-  meta: Meta;
-  enableColumnFilter: boolean;
-  filterFn: string;
-  cell: ({ getValue }: { getValue: () => any }) => JSX.Element;
-}
-
 type Dropdown = {
-  object: Record<string, any>;
+  object: Record<string, string[]>;
 };
 
-export const TAGS: TAGS[] = [
+export const TAGS: Tags[] = [
   {
     text: "accept",
     value: 1,
@@ -43,7 +38,7 @@ export const TAGS: TAGS[] = [
   },
 ];
 
-export const COLUMNS: Committee<Column>[] = [
+export const COLUMNS: Column<Committee>[] = [
   generateSelect(),
   {
     accessorKey: "name",
@@ -76,7 +71,7 @@ export const COLUMNS: Committee<Column>[] = [
   generateStatus(STATUSES),
 ];
 
-const attributes: Attributes = [
+const attributes: string[] = [
   "email",
   "phone",
   "age",
