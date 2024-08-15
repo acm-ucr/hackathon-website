@@ -1,8 +1,52 @@
+import {
+  Description,
+  RadioInput,
+  SelectInput,
+  TermsAndConditions,
+  TextInput,
+} from "@/types/forms";
 import { GENDERS, GRADES, SHIRTS, MAJORS } from "./Information";
 import data from "@/data/Config";
 import { AFFILIATIONS } from "./Information";
 
-export const FIELDS = {
+interface Attributes {
+  name: string;
+  email: string;
+  discord: string;
+  grade: string;
+  major: string;
+  gender: string;
+  shirt: string;
+  affiliation: string;
+  requirements: string[];
+}
+
+interface Fields {
+  description: Description;
+  name: TextInput;
+  email: TextInput;
+  discord: TextInput;
+  major: SelectInput;
+  gender: RadioInput;
+  requirements: TermsAndConditions;
+  affiliation: RadioInput;
+  shirt: RadioInput;
+  grade: SelectInput;
+}
+
+export const ATTRIBUTES: Attributes = {
+  name: "",
+  email: "",
+  discord: "",
+  grade: "",
+  major: "",
+  gender: "",
+  shirt: "",
+  affiliation: "",
+  requirements: [],
+};
+
+export const FIELDS: Fields = {
   description: {
     input: "description",
     width: 12,
@@ -31,6 +75,7 @@ export const FIELDS = {
     width: 12,
     editable: false,
     required: true,
+    placeholder: "John Doe",
   },
   email: {
     input: "input",
@@ -41,9 +86,11 @@ export const FIELDS = {
     width: 12,
     editable: false,
     required: true,
+    placeholder: "john.doe@gmail.com",
   },
   discord: {
     input: "input",
+    editable: true,
     name: "discord",
     type: "text",
     title: "Discord Username",
@@ -55,6 +102,7 @@ export const FIELDS = {
   major: {
     input: "select",
     title: "Major",
+    editable: true,
     options: MAJORS,
     field: "major",
     placeholder: "ie. Computer Science",
@@ -65,6 +113,7 @@ export const FIELDS = {
   grade: {
     input: "select",
     title: "Grade",
+    editable: true,
     options: GRADES,
     field: "grade",
     placeholder: "ie. Undergraduate",
@@ -79,6 +128,7 @@ export const FIELDS = {
     field: "gender",
     width: 12,
     required: true,
+    editable: true,
   },
   shirt: {
     input: "radio",
@@ -87,20 +137,23 @@ export const FIELDS = {
     field: "shirt",
     width: 12,
     required: true,
+    editable: true,
   },
   affiliation: {
     input: "radio",
     text: "Affiliation",
-    options: AFFILIATIONS,
+    options: Object.values(AFFILIATIONS),
     field: "affiliation",
     width: 12,
     required: true,
+    editable: true,
   },
   requirements: {
     text: "Terms and Conditions",
     input: "terms",
     width: 12,
     field: "requirements",
+    editable: true,
     options: [
       "I have read the MLH code of conduct and agree to the terms and conditions listed",
       "I authorize you to share my application/registration information with Major League Hacking for event administration, ranking, and MLH administration in-line with the MLH Privacy Policy",
@@ -114,16 +167,4 @@ export const FIELDS = {
     ],
     required: true,
   },
-};
-
-export const ATTRIBUTES = {
-  name: "",
-  email: "",
-  discord: "",
-  grade: "",
-  major: "",
-  gender: "",
-  shirt: "",
-  affiliation: "",
-  requirements: [],
 };
