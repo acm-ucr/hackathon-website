@@ -2,8 +2,21 @@ import Link from "next/link";
 import { generateSelect, generateStatus } from "./Columns";
 import { ICONS } from "./Icons";
 import { STATUSES } from "@/data/Statuses";
+import { ColumnDef, CellContext } from "@tanstack/react-table";
+import { Tags } from "@/types/dashboard";
 
-export const TAGS = [
+type Team = {
+  name: string;
+  teamid: string;
+  members: string[];
+  discords: string[];
+  links: {
+    name: string;
+    url: string;
+  }[];
+};
+
+export const TAGS: Tags[] = [
   {
     text: "accept",
     value: 1,
@@ -14,7 +27,7 @@ export const TAGS = [
   },
 ];
 
-export const COLUMNS = [
+export const COLUMNS: ColumnDef<Team, any>[] = [
   generateSelect(),
   {
     accessorKey: "name",
@@ -22,8 +35,9 @@ export const COLUMNS = [
     meta: { width: "w-2/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Team, Team["name"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "teamid",
@@ -31,8 +45,9 @@ export const COLUMNS = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Team, Team["teamid"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "members",
@@ -41,10 +56,9 @@ export const COLUMNS = [
     enableSorting: false,
     filterFn: "includesString",
     enableColumnFilter: true,
-    searchable: true,
-    cell: ({ getValue }) => (
+    cell: (props: CellContext<Team, Team["members"]>) => (
       <div>
-        {getValue().map((data, index) => (
+        {props.getValue().map((data, index) => (
           <p key={index}>{data}</p>
         ))}
       </div>
@@ -55,12 +69,11 @@ export const COLUMNS = [
     header: "Discords",
     meta: { width: "w-2/12" },
     enableSorting: false,
-    searchable: true,
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: ({ getValue }) => (
+    cell: (props: CellContext<Team, Team["discords"]>) => (
       <div>
-        {getValue().map((data, index) => (
+        {props.getValue().map((data, index) => (
           <p key={index}>{data}</p>
         ))}
       </div>
@@ -71,10 +84,10 @@ export const COLUMNS = [
     header: "Links",
     meta: { width: "w-2/12" },
     enableSorting: false,
-    cell: ({ getValue }) => (
+    cell: (props: CellContext<Team, Team["links"]>) => (
       <div>
-        {getValue().map(({ name, link }, index) => (
-          <Link key={index} href={link} className="mx-2 inline-flex">
+        {props.getValue().map(({ name, url }, index) => (
+          <Link key={index} href={url} className="mx-2 inline-flex">
             {ICONS[name]}
           </Link>
         ))}
