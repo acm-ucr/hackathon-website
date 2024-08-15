@@ -10,7 +10,7 @@ import {
 import { MAJORS, GRADES, GENDERS, SHIRTS, AVAILABILITY } from "./Information";
 import data from "@/data/Config";
 
-type Feilds = {
+type Fields = {
   description: Description;
   name: TextInput;
   email: TextInput;
@@ -39,7 +39,7 @@ type Attributes = {
   requirements: string[];
 };
 
-export const FIELDS: Feilds = {
+export const FIELDS: Fields = {
   description: {
     input: "description",
     width: 12,
