@@ -6,7 +6,7 @@ import { FIELDS, ATTRIBUTES } from "@/data/form/Leads";
 import { useSession } from "next-auth/react";
 import { STATUSES } from "@/data/Statuses";
 import { schema } from "@/schemas/lead";
-import { handleSubmit } from "@/utils/handlesubmit";
+import { submit } from "@/utils/form";
 
 const Lead = () => {
   const { data: session } = useSession();
@@ -19,7 +19,7 @@ const Lead = () => {
   });
 
   const onSubmit = async (setLoading, setState) => {
-    await handleSubmit({
+    await submit({
       data: lead,
       schema,
       url: "/api/dashboard/leads",

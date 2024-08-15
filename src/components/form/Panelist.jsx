@@ -6,7 +6,7 @@ import { FIELDS, ATTRIBUTES } from "@/data/form/Panelists.js";
 import { useSession } from "next-auth/react";
 import { STATUSES } from "@/data/Statuses";
 import { schema } from "@/schemas/panel";
-import { handleSubmit } from "@/utils/handlesubmit";
+import { submit } from "@/utils/form";
 
 const Panel = () => {
   const { data: session } = useSession();
@@ -20,7 +20,7 @@ const Panel = () => {
   });
 
   const onSubmit = async (setLoading, setState) => {
-    await handleSubmit({
+    await submit({
       data: panel,
       schema,
       url: "/api/dashboard/panelists",

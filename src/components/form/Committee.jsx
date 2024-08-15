@@ -6,7 +6,7 @@ import { FIELDS, ATTRIBUTES } from "@/data/form/Committees";
 import { useSession } from "next-auth/react";
 import { STATUSES } from "@/data/Statuses";
 import { schema } from "@/schemas/committee";
-import { handleSubmit } from "@/utils/handlesubmit";
+import { submit } from "@/utils/form";
 
 const Committee = () => {
   const { data: session } = useSession();
@@ -19,7 +19,7 @@ const Committee = () => {
   });
 
   const onSubmit = async (setLoading, setState) => {
-    await handleSubmit({
+    await submit({
       data: committee,
       schema,
       url: "/api/dashboard/committees",

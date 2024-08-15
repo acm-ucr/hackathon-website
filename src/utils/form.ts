@@ -2,7 +2,7 @@ import { z } from "zod";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
 
-export const handleSubmit = async ({
+export const submit = async ({
   data,
   schema,
   url,

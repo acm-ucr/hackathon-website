@@ -6,7 +6,7 @@ import { FIELDS, ATTRIBUTES } from "@/data/form/Mentors.js";
 import { useSession } from "next-auth/react";
 import { STATUSES } from "@/data/Statuses";
 import { schema } from "@/schemas/mentor";
-import { handleSubmit } from "@/utils/handlesubmit";
+import { submit } from "@/utils/form";
 
 const Mentor = () => {
   const { data: session } = useSession();
@@ -20,7 +20,7 @@ const Mentor = () => {
   });
 
   const onSubmit = async (setLoading, setState) => {
-    await handleSubmit({
+    await submit({
       data: mentor,
       schema,
       url: "/api/dashboard/mentors",

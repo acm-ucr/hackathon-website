@@ -5,7 +5,7 @@ import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Ideas";
 import { useSession } from "next-auth/react";
 import { schema } from "@/schemas/idea";
-import { handleSubmit } from "@/utils/handlesubmit";
+import { submit } from "@/utils/form";
 
 const Ideas = () => {
   const { data: session } = useSession();
@@ -18,7 +18,7 @@ const Ideas = () => {
   });
 
   const onSubmit = async (setLoading, setState) => {
-    await handleSubmit({
+    await submit({
       data: idea,
       schema,
       url: "/api/dashboard/ideas",

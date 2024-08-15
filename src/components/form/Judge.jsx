@@ -6,7 +6,7 @@ import { FIELDS, ATTRIBUTES } from "@/data/form/Judge.js";
 import { useSession } from "next-auth/react";
 import { STATUSES } from "@/data/Statuses";
 import { schema } from "@/schemas/judge";
-import { handleSubmit } from "@/utils/handlesubmit";
+import { submit } from "@/utils/form";
 
 const Judge = () => {
   const { data: session } = useSession();
@@ -20,7 +20,7 @@ const Judge = () => {
   });
 
   const onSubmit = async (setLoading, setState) => {
-    await handleSubmit({
+    await submit({
       data: judge,
       schema,
       url: "/api/dashboard/judges",

@@ -6,7 +6,7 @@ import { FIELDS, ATTRIBUTES } from "@/data/form/Volunteers.js";
 import { useSession } from "next-auth/react";
 import { STATUSES } from "@/data/Statuses";
 import { schema } from "@/schemas/volunteer";
-import { handleSubmit } from "@/utils/handlesubmit";
+import { submit } from "@/utils/form";
 
 const Volunteer = () => {
   const { data: session } = useSession();
@@ -20,7 +20,7 @@ const Volunteer = () => {
   });
 
   const onSubmit = async (setLoading, setState) => {
-    await handleSubmit({
+    await submit({
       data: volunteer,
       schema,
       url: "/api/dashboard/volunteers",
