@@ -46,7 +46,7 @@ export const ATTRIBUTES: Attributes = {
   requirements: [],
 };
 
-type Feilds = {
+type Fields = {
   description: Description;
   name: TextInput;
   email: TextInput;
@@ -58,7 +58,7 @@ type Feilds = {
   requirements: TermsAndConditions;
 };
 
-export const FIELDS: Feilds = {
+export const FIELDS: Fields = {
   description: {
     input: "description",
     width: 12,
