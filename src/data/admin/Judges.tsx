@@ -6,8 +6,21 @@ import JSZip from "jszip";
 import { save } from "@/utils/download";
 import { Download } from "lucide-react";
 import data from "../Config";
+import { Tags } from "@/types/dashboard";
+import { ColumnDef, CellContext } from "@tanstack/react-table";
 
-export const TAGS = [
+type Judge = {
+  name: string;
+  email: string;
+  phone: string;
+  gender: string;
+  title: string;
+  affiliation: string;
+  shirt: string;
+  photo: string;
+};
+
+export const TAGS: Tags[] = [
   {
     text: "accept",
     value: 1,
@@ -18,7 +31,7 @@ export const TAGS = [
   },
 ];
 
-export const COLUMNS = [
+export const COLUMNS: ColumnDef<Judge, string>[] = [
   generateSelect(),
   {
     accessorKey: "name",
@@ -26,8 +39,9 @@ export const COLUMNS = [
     meta: { width: "w-2/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Judge, Judge["name"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "email",
@@ -35,8 +49,9 @@ export const COLUMNS = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Judge, Judge["email"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "title",
@@ -44,8 +59,9 @@ export const COLUMNS = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Judge, Judge["title"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   generateAffiliation(AFFILIATIONS),
   generateStatus(STATUSES),
@@ -60,12 +76,14 @@ export const COLUMNS = [
         }));
 
         const zip = new JSZip();
-        const folder = zip.folder();
+        const folder = zip.folder("photos");
 
-        photos.forEach(({ photo, name }) => {
-          const src = photo.split(",")[1];
-          folder.file(`${name.replace(" ", "_")}.png`, src, { base64: true });
-        });
+        if (folder) {
+          photos.forEach(({ photo, name }) => {
+            const src = photo.split(",")[1];
+            folder.file(`${name.replace(" ", "_")}.png`, src, { base64: true });
+          });
+        }
 
         zip.generateAsync({ type: "blob" }).then((blob) => {
           const url = URL.createObjectURL(blob);
@@ -85,8 +103,8 @@ export const COLUMNS = [
     },
     meta: { width: "w-1/12" },
     enableSorting: false,
-    cell: ({ getValue, row }) => (
-      <View src={getValue()} title={row.getValue("name")} />
+    cell: (props: CellContext<Judge, Judge["photo"]>) => (
+      <View src={props.getValue()} title={props.row.getValue("name")} />
     ),
   },
 ];
