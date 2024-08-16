@@ -3,10 +3,6 @@ import { SiArduino, SiNextdotjs, SiTailwindcss } from "react-icons/si";
 import { IoLogoFirebase } from "react-icons/io5";
 import { BiLogoCPlusPlus, BiLogoMongodb } from "react-icons/bi";
 
-type TechStacks = {
-  [key: string]: Element;
-};
-
 export const TECHSTACKS = {
   Javascript: <RiJavascriptFill />,
   "Next.js": <SiNextdotjs />,
