@@ -97,7 +97,7 @@ export const COLUMNS: ColumnDef<Judge, string>[] = [
 
       return (
         <div className="flex">
-          Photo <Download onClick={downloadZip} />
+          Photo <Download className="ml-2" onClick={downloadZip} />
         </div>
       );
     },
