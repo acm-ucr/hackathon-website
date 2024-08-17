@@ -1,4 +1,4 @@
-export const RULES = [
+export const RULES: string[] = [
   "Max team size is 4 people",
   "Previous projects may not be submitted",
   "All work must be original and sources cited if used",
