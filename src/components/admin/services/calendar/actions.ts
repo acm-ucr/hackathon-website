@@ -1,6 +1,6 @@
-import { LABELS } from "@/data/admin/Calendar";
+import { LABELS, label } from "@/data/admin/Calendar";
 import { api } from "@/utils/api";
-
+import { Event } from "@/types/calendar";
 const min = new Date(
   new Date().getTime() - 20 * 7 * 24 * 60 * 60 * 1000,
 ).toISOString();
@@ -20,20 +20,28 @@ export const getEvents = async () => {
     url: `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_LEADS}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime&timeMin=${min}&timeMax=${max}`,
   });
 
-  console.log(leadsResponse, hackathonResponse);
-
-  const items = [...hackathonResponse.items, leadsResponse.items];
-
-  items.forEach((item: any) => {
-    item.start = new Date(item.start.dateTime);
-    item.end = new Date(item.end.dateTime);
-    const [category, assignee] = item.description
-      .split("\n")[0]
-      .split("#")
-      .map((item: any) => item.trim())
-      .filter((item: any) => item !== "");
+  const items = [...hackathonResponse.items, leadsResponse.items][0];
+  items.forEach((item: Event) => {
+    item.startDate = new Date(item.start.dateTime);
+    item.endDate = new Date(item.end.dateTime);
+    let category: string = "other";
+    let assignee: string = "";
+    if (item.description) {
+      [category, assignee] = item.description
+        .split("\n")[0]
+        .split("#")
+        .map((item: string) => item.trim())
+        .filter((item: string) => item !== "");
+    } else {
+      item.description = "N/A";
+    }
+    if (category in LABELS) {
+      item.color = LABELS[category as keyof label].background;
+    } else {
+      category = "other";
+      item.color = "!bg-hackathon-tags-gray-text";
+    }
     item.category = category;
-    item.color = LABELS[item.category].background;
     item.assignee = assignee;
     item.hidden = false;
   });

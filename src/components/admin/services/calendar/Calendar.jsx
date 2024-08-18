@@ -48,6 +48,8 @@ const Calendar = () => {
     <>
       {event && <Modal event={event} setEvent={setEvent} />}
       <ReactBigCalendar
+        startAccessor="startDate"
+        endAccessor="endDate"
         date={date}
         view={view}
         className="py-4"
@@ -55,15 +57,7 @@ const Calendar = () => {
         events={
           tag === "all"
             ? events
-            : events.filter(
-                ({ description }) =>
-                  description
-                    .split("\n")[0]
-                    .split("#")
-                    .filter((item) => item !== "")[0]
-                    .trim()
-                    .toLowerCase() === tag,
-              )
+            : events.filter((event) => event.category === tag)
         }
         localizer={mLocalizer}
         defaultView="month"

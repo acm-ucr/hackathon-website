@@ -4,7 +4,7 @@ const Event = ({ event, view }) => {
       <p className="inline text-xs" data-cy="event">
         {view === "month" && (
           <>
-            {new Date(event.start).toLocaleTimeString(navigator.language, {
+            {new Date(event.startDate).toLocaleTimeString(navigator.language, {
               hour: "2-digit",
               minute: "2-digit",
             })}
