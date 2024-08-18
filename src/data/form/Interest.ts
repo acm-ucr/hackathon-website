@@ -1,7 +1,45 @@
 import data from "@/data/Config";
 import { SOURCES } from "./Information";
 
-export const FIELDS = {
+type descriptionField = {
+  input: "description";
+  width: number;
+  texts: string[];
+};
+
+type inputField = {
+  input: "input";
+  name: string;
+  type: "text" | "email";
+  title: string;
+  maxLength: number;
+  width: 12;
+  editable: boolean;
+  required: boolean;
+};
+
+type selectField = {
+  input: "select";
+  title: string;
+  options: string[];
+  field: string;
+  placeholder: string;
+  width: number;
+  required: boolean;
+};
+
+type termsField = {
+  text: string;
+  input: "terms";
+  width: number;
+  field: string;
+  required: boolean;
+  options: string[];
+};
+
+type field = descriptionField | inputField | selectField | termsField;
+
+export const FIELDS: { [key: string]: field } = {
   description: {
     input: "description",
     width: 12,
@@ -68,7 +106,7 @@ export const FIELDS = {
   },
 };
 
-export const ATTRIBUTES = {
+export const ATTRIBUTES: { [key: string]: string | string[] } = {
   name: "",
   email: "",
   requirements: [],
