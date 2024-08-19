@@ -1,4 +1,4 @@
-import { 
+import {
   Description,
   TextInput,
   SelectInput,
@@ -19,7 +19,7 @@ export const ATTRIBUTES: Attributes = {
   email: "",
   eventSource: "",
   requirements: [],
-}
+};
 
 interface Fields {
   description: Description;
@@ -27,7 +27,7 @@ interface Fields {
   email: TextInput;
   eventSource: SelectInput;
   requirements: TermsAndConditions;
-};
+}
 
 export const FIELDS: Fields = {
   description: {
