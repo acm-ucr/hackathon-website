@@ -2,8 +2,28 @@ import Checkbox from "@/components/Checkbox";
 import { AVAILABILITY } from "../form/Information";
 import { generateSelect, generateStatus } from "./Columns";
 import { STATUSES } from "@/data/Statuses";
+import { Tags } from "@/types/dashboard";
+import { ColumnDef, CellContext } from "@tanstack/react-table";
 
-export const TAGS = [
+type Volunteer = {
+  name: string;
+  email: string;
+  phone: string;
+  discord: string;
+  major: string;
+  grade: string;
+  availability: string[];
+  gender: string;
+  shirt: string;
+};
+
+type dropdownProps = {
+  object: {
+    availability: string[];
+  };
+};
+
+export const TAGS: Tags[] = [
   {
     text: "confirm",
     value: 1,
@@ -14,7 +34,7 @@ export const TAGS = [
   },
 ];
 
-export const COLUMNS = [
+export const COLUMNS: ColumnDef<Volunteer, string>[] = [
   generateSelect(),
   {
     accessorKey: "name",
@@ -22,8 +42,9 @@ export const COLUMNS = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Volunteer, Volunteer["name"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "email",
@@ -31,8 +52,9 @@ export const COLUMNS = [
     meta: { width: "w-4/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Volunteer, Volunteer["email"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "discord",
@@ -40,13 +62,14 @@ export const COLUMNS = [
     meta: { width: "w-3/12" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Volunteer, Volunteer["discord"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   generateStatus(STATUSES),
 ];
 
-export const DROPDOWN = ({ object }) => {
+export const DROPDOWN: React.FC<dropdownProps> = ({ object }) => {
   return (
     <div className="flex justify-center">
       <div className="grid w-11/12 grid-flow-col grid-rows-4">

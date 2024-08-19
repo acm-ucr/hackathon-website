@@ -1,6 +1,23 @@
+import {
+  Description,
+  RadioInput,
+  TermsAndConditions,
+  TextareaInput,
+  TextInput,
+} from "@/types/forms";
+
 import data from "@/data/Config";
 
-export const TIERS = {
+type Tiers = {
+  tier1: string;
+  tier2: string;
+  tier3: string;
+  tier4: string;
+  tier5: string;
+  other: string;
+};
+
+export const TIERS: Tiers = {
   tier1: "Bronze",
   tier2: "Silver",
   tier3: "Gold",
@@ -9,7 +26,39 @@ export const TIERS = {
   other: "Other",
 };
 
-export const FIELDS = {
+interface Attributes {
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  position: string;
+  tier: string;
+  requirements: string[];
+}
+
+export const ATTRIBUTES: Attributes = {
+  name: "",
+  email: "",
+  phone: "",
+  company: "",
+  position: "",
+  tier: "",
+  requirements: [],
+};
+
+type Fields = {
+  description: Description;
+  name: TextInput;
+  email: TextInput;
+  phone: TextInput;
+  company: TextInput;
+  position: TextInput;
+  tier: RadioInput;
+  comments: TextareaInput;
+  requirements: TermsAndConditions;
+};
+
+export const FIELDS: Fields = {
   description: {
     input: "description",
     width: 12,
@@ -38,6 +87,7 @@ export const FIELDS = {
     width: 12,
     editable: false,
     required: true,
+    placeholder: "John Doe",
   },
   email: {
     input: "input",
@@ -48,6 +98,7 @@ export const FIELDS = {
     width: 12,
     editable: false,
     required: true,
+    placeholder: "john.doe@gmail.com",
   },
   phone: {
     input: "input",
@@ -58,6 +109,7 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     required: true,
+    editable: true,
   },
   company: {
     input: "input",
@@ -68,6 +120,7 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     required: true,
+    editable: true,
   },
   position: {
     input: "input",
@@ -78,14 +131,16 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     required: true,
+    editable: true,
   },
   tier: {
     input: "radio",
     text: "Sponsorship Tier (check sponsorship packet)",
-    options: TIERS,
+    options: Object.values(TIERS),
     field: "tier",
     width: 12,
     required: true,
+    editable: true,
   },
   comments: {
     input: "textarea",
@@ -95,12 +150,14 @@ export const FIELDS = {
     placeholder: "ie. How can my organization assist your hackathon?",
     width: 12,
     required: true,
+    editable: true,
   },
   requirements: {
     text: "Terms and Conditions",
     input: "terms",
     width: 12,
     field: "requirements",
+    editable: true,
     options: [
       "I have read the MLH code of conduct and agree to the terms and conditions listed",
       "I authorize you to share my application/registration information with Major League Hacking for event administration, ranking, and MLH administration in-line with the MLH Privacy Policy",
@@ -114,14 +171,4 @@ export const FIELDS = {
     ],
     required: true,
   },
-};
-
-export const ATTRIBUTES = {
-  name: "",
-  email: "",
-  phone: "",
-  company: "",
-  position: "",
-  tier: "",
-  requirements: [],
 };
