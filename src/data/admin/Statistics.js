@@ -49,6 +49,39 @@ export const SIZES = {
   },
 };
 
+export const DIETS = {
+  Vegan: {
+    label: "Vegan",
+    className: "fill-hackathon-tags-pink-text",
+    fill: "bg-hackathon-tags-pink-text",
+  },
+  Lactose: {
+    label: "Lactose Intolerant",
+    className: "fill-hackathon-yellow-100",
+    fill: "bg-hackathon-yellow-100",
+  },
+  Gluten: {
+    label: "No Gluten",
+    className: "fill-hackathon-green-200",
+    fill: "bg-hackathon-green-200",
+  },
+  Vegitarian: {
+    label: "Vegetarian",
+    className: "fill-hackathon-tags-red-text",
+    fill: "bg-hackathon-tags-red-text",
+  },
+  Nut: {
+    label: "Nut Allergy",
+    className: "fill-hackathon-tags-purple-text",
+    fill: "bg-hackathon-tags-purple-text",
+  },
+  Halal: {
+    label: "Halal",
+    className: "fill-hackathon-tags-teal-text",
+    fill: "bg-hackathon-tags-teal-text",
+  },
+};
+
 export const SCHOOLS = {
   pink: {
     label: null,

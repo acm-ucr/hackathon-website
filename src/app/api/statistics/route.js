@@ -53,32 +53,7 @@ export const GET = async () => {
       admins,
     };
 
-    // console.log(users);
-    const sizeData = ["XS", "S", "M", "L", "XL", "XXL"];
-    const statusData = ["1", "0", "-1"];
-
-    const size = {};
-    const status = {};
-    const school = {};
-
-    Object.entries(users).forEach(([group, entries]) => {
-      size[group] = Object.fromEntries(
-        Object.entries(entries).filter(([key]) => sizeData.includes(key)),
-      );
-
-      status[group] = Object.fromEntries(
-        Object.entries(entries).filter(([key]) => statusData.includes(key)),
-      );
-
-      status[group] = Object.fromEntries(
-        Object.entries(entries).filter(([key]) => statusData.includes(key)),
-      );
-    });
-
-    return res.json(
-      { items: { users: { status, size, school }, events: attendees } },
-      { status: 200 },
-    );
+    return res.json({ items: { users, events: attendees } }, { status: 200 });
   } catch (err) {
     return res.json(
       { message: `Internal Server Error: ${err}` },

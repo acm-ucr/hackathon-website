@@ -22,7 +22,7 @@ const syncStatsWithDatabase = async () => {
     updateRoleCounts("teams"),
   ]);
 };
-const getRoleCount = async (role, value) => {
+const getRoleCount = async (role, value, subType = null, subValue = null) => {
   if (role === "teams") {
     return (
       await getCountFromServer(
@@ -30,6 +30,21 @@ const getRoleCount = async (role, value) => {
       )
     ).data().count;
   }
+
+  if (subType) {
+    return (
+      await getCountFromServer(
+        query(collection(db, "users"), where(`${subType}`, "==", subValue)),
+      )
+    ).data().count;
+  }
+  // if (value == "school") {
+  //   return (
+  //     await getCountFromServer(
+  //       query(collection(db, "users"), where(`school`, "==", value)),
+  //     )
+  //   ).data().count;
+  // }
   return (
     await getCountFromServer(
       query(collection(db, "users"), where(`roles.${role}`, "==", value)),
@@ -41,13 +56,36 @@ const updateRoleCounts = async (role) => {
     getRoleCount(role, -1),
     getRoleCount(role, 0),
     getRoleCount(role, 1),
+    // getRoleCount("participants", "school"),
   ]);
 
-  await updateDoc(doc(db, "statistics", "statistics"), {
-    [`${role}.-1`]: roleMinusOneCount,
-    [`${role}.0`]: roleZeroCount,
-    [`${role}.1`]: roleOneCount,
+  const shirtSizes = ["XS", "S", "M", "L", "XL"];
+  const dietOptions = ["Halal", "Vegan"];
+
+  const shirtCounts = await Promise.all(
+    shirtSizes.map((size) => getRoleCount(role, 1, "shirt", size)),
+  );
+
+  const dietCounts = await Promise.all(
+    dietOptions.map((option) => getRoleCount(role, 1, "diet", option)),
+  );
+
+  const updateData = {
+    [`${role}.status.-1`]: roleMinusOneCount,
+    [`${role}.status.0`]: roleZeroCount,
+    [`${role}.status.1`]: roleOneCount,
+    // [`participants.school`]: schoolCount,
+  };
+
+  shirtSizes.forEach((size, index) => {
+    updateData[`${role}.shirt.${size}`] = shirtCounts[index];
   });
+
+  dietOptions.forEach((option, index) => {
+    updateData[`${role}.diet.${option}`] = dietCounts[index];
+  });
+
+  await updateDoc(doc(db, "statistics", "statistics"), updateData);
 };
 export const GET = async () => {
   const res = NextResponse;

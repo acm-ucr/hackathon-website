@@ -63,6 +63,8 @@ export const POST = async (req, { params }) => {
         }),
         updateDoc(doc(db, "statistics", "statistics"), {
           [`${params.type}.0`]: increment(1),
+          // [`${params.type}.shirt.0.${element.size}`]: increment(1),
+          // [`${params.type}.diet.0.${element.diet}`]: increment(1),
         }),
         send({
           email: user.email,
@@ -167,7 +169,7 @@ export const GET = async (req, { params }) => {
     const total = countFromServer.data().count;
     const lastDoc = output.length > 0 ? output[output.length - 1].uid : "";
     const firstDoc = output.length > 0 ? output[0].uid : "";
-
+    console.log(output);
     return res.json(
       {
         message: "OK",
@@ -202,13 +204,13 @@ export const PUT = async (req, { params }) => {
     if (types.has(params.type)) {
       await Promise.all(
         objects.map(async (object) => {
-          // const participant = [`roles.${params}.participants`];
           await updateDoc(doc(db, "users", object.uid), {
             [`roles.${params.type}`]: status,
             [`roles.${params.type}`]: object.shirt,
+            [`roles.${params.type}`]: object.diet,
             [`roles.${params}.participants`]: object.school,
           });
-          console.log(object.school);
+          console.log("PUT", object, school, object.diet);
           const id = status === 1 ? "acceptance" : "rejection";
 
           const preview =
@@ -231,22 +233,38 @@ export const PUT = async (req, { params }) => {
           });
 
           const size = object.shirt;
-          const school = object.school;
+          const diet = object.diet;
+          const school = object.size;
 
           status === 1 &&
             (await updateDoc(doc(db, "statistics", "statistics"), {
-              [`${params.type}.1`]: increment(1),
-              [`${params.type}.0`]: increment(-1),
-              [`${params.type}.${size}`]: increment(1),
-              [`${params}.participants.${school}`]: increment(1),
+              [`${params.type}.status.1`]: increment(1),
+              [`${params.type}.status.0`]: increment(-1),
+              [`${params.type}.shirt.${size}`]: increment(1),
+              [`${params.type}.diet.${diet}`]: increment(1),
+              // [`${params}.participants.school.${school}`]: increment(1),
             }));
+
+          // admin: {
+          //   status :{1: 10, 0: 2, -1:0}
+
+          //   shirt: {
+          //     1:{S: 2, M: 10 L:10},
+          //     0:{S: 0, M: 3 L:0}
+          //       }
+          //   diet: {
+          //         1:{halal: 1, Vegan: 10},
+          //         0:{halal: 1, Vegan: 10}
+          //       }
+          //     }
 
           status === -1 &&
             (await updateDoc(doc(db, "statistics", "statistics"), {
               [`${params.type}.-1`]: increment(1),
               [`${params.type}.0`]: increment(-1),
-              [`${params.type}.${size}`]: increment(-1),
-              [`${params}.participants.${school}`]: increment(-1),
+              [`${params.type}.shirt.${size}`]: increment(-1),
+              [`${params.type}.diet.${diet}`]: increment(-1),
+              // [`${params}.participants.school.${school}`]: increment(-1),
             }));
         }),
       );
