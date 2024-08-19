@@ -1,45 +1,35 @@
+import { 
+  Description,
+  TextInput,
+  SelectInput,
+  TermsAndConditions,
+} from "@/types/forms";
 import data from "@/data/Config";
 import { SOURCES } from "./Information";
 
-type descriptionField = {
-  input: "description";
-  width: number;
-  texts: string[];
-};
-
-type inputField = {
-  input: "input";
+interface Attributes {
   name: string;
-  type: "text" | "email";
-  title: string;
-  maxLength: number;
-  width: 12;
-  editable: boolean;
-  required: boolean;
+  email: string;
+  eventSource: string;
+  requirements: string[];
+}
+
+export const ATTRIBUTES: Attributes = {
+  name: "",
+  email: "",
+  eventSource: "",
+  requirements: [],
+}
+
+interface Fields {
+  description: Description;
+  name: TextInput;
+  email: TextInput;
+  eventSource: SelectInput;
+  requirements: TermsAndConditions;
 };
 
-type selectField = {
-  input: "select";
-  title: string;
-  options: string[];
-  field: string;
-  placeholder: string;
-  width: number;
-  required: boolean;
-};
-
-type termsField = {
-  text: string;
-  input: "terms";
-  width: number;
-  field: string;
-  required: boolean;
-  options: string[];
-};
-
-type field = descriptionField | inputField | selectField | termsField;
-
-export const FIELDS: { [key: string]: field } = {
+export const FIELDS: Fields = {
   description: {
     input: "description",
     width: 12,
@@ -61,6 +51,7 @@ export const FIELDS: { [key: string]: field } = {
   name: {
     input: "input",
     name: "name",
+    placeholder: "John Doe",
     type: "text",
     title: "Name",
     maxLength: 50,
@@ -71,6 +62,7 @@ export const FIELDS: { [key: string]: field } = {
   email: {
     input: "input",
     name: "email",
+    placeholder: "john.doe@gmail.com",
     type: "email",
     title: "Email Address",
     maxLength: 50,
@@ -86,6 +78,8 @@ export const FIELDS: { [key: string]: field } = {
     placeholder: "ie. Social Media",
     width: 12,
     required: true,
+    editable: false,
+    searchable: true,
   },
   requirements: {
     text: "Terms and Conditions",
@@ -93,6 +87,7 @@ export const FIELDS: { [key: string]: field } = {
     width: 12,
     field: "requirements",
     required: true,
+    editable: true,
     options: [
       "I have read the MLH code of conduct and agree to the terms and conditions listed",
       "I authorize you to share my application/registration information with Major League Hacking for event administration, ranking, and MLH administration in-line with the MLH Privacy Policy",
@@ -104,10 +99,4 @@ export const FIELDS: { [key: string]: field } = {
       "I understand this is an in person event taking place in UCR and I must attend in person in order to participate",
     ],
   },
-};
-
-export const ATTRIBUTES: { [key: string]: string | string[] } = {
-  name: "",
-  email: "",
-  requirements: [],
 };
