@@ -1,10 +1,11 @@
 import Hackathons from "@/components/engineering/hackathons/Hackathons";
-const Hackathon = () => {
+import React from "react";
+
+const Hackathon: React.FC = () => {
   return (
     <div>
       <Hackathons />
     </div>
   );
 };
-
 export default Hackathon;
