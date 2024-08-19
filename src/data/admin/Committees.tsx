@@ -2,12 +2,13 @@ import { generateAffiliation, generateSelect, generateStatus } from "./Columns";
 import { AFFILIATIONS } from "../form/Information";
 import { ICONS } from "./Icons";
 import { STATUSES } from "@/data/Statuses";
-import { ColumnDef } from "@tanstack/react-table";
-import { ReactNode } from "react";
+import { ColumnDef, CellContext } from "@tanstack/react-table";
 import { Tags } from "@/types/dashboard";
 
 type Committee = {
+  name: string;
   email: string;
+  discord: string;
   phone: string;
   age: string;
   gender: string;
@@ -19,11 +20,11 @@ type Committee = {
   restriction: string;
 };
 
-type Column<TData extends object> = ColumnDef<TData> & {
+type Column<TData extends object> = ColumnDef<TData, string> & {
   searchable?: boolean;
 };
 
-type Dropdown = {
+type dropdownProps = {
   object: Record<string, string[]>;
 };
 
@@ -47,7 +48,9 @@ export const COLUMNS: Column<Committee>[] = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ getValue }) => <div>{getValue() as ReactNode}</div>,
+    cell: (props: CellContext<Committee, Committee["name"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "email",
@@ -56,7 +59,9 @@ export const COLUMNS: Column<Committee>[] = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ getValue }) => <div>{getValue() as ReactNode}</div>,
+    cell: (props: CellContext<Committee, Committee["email"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "discord",
@@ -65,7 +70,9 @@ export const COLUMNS: Column<Committee>[] = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ getValue }) => <div>{getValue() as ReactNode}</div>,
+    cell: (props: CellContext<Committee, Committee["discord"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   generateAffiliation(AFFILIATIONS),
   generateStatus(STATUSES),
@@ -84,7 +91,7 @@ const attributes: string[] = [
   "restriction",
 ];
 
-export const DROPDOWN: React.FC<Dropdown> = ({ object }) => {
+export const DROPDOWN: React.FC<dropdownProps> = ({ object }) => {
   return (
     <div className="flex items-center justify-center">
       <div className="grid w-11/12 grid-cols-3">
