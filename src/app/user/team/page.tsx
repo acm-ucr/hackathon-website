@@ -1,7 +1,8 @@
 import ProtectedPage from "@/components/ProtectedPage";
 import Team from "@/components/user/team/Team";
+import React from "react";
 
-const Page = () => {
+const Page: React.FC = () => {
   return (
     <ProtectedPage
       title="User | Team"
