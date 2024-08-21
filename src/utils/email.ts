@@ -1,20 +1,15 @@
 import Email from "@/components/email/Email";
-import { Resend } from "resend";
+import { Resend, CreateEmailResponse } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY as string);
 
-interface SendEmailParams {
+interface Params {
   email: string;
   id: string;
   name: string;
   position: string;
   subject: string;
   preview: boolean;
-}
-
-interface SendResponse {
-  data: unknown;
-  error: unknown;
 }
 
 const send = async ({
@@ -24,7 +19,7 @@ const send = async ({
   position,
   subject,
   preview,
-}: SendEmailParams): Promise<SendResponse> => {
+}: Params): Promise<CreateEmailResponse> => {
   const { data, error } = await resend.emails.send({
     from: "Hackathon <info@hackathon.com>",
     to: [email],
