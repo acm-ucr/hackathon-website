@@ -43,7 +43,7 @@ export const COLUMNS: ColumnDef<Participant, string>[] = [
   {
     accessorKey: "name",
     header: "Name",
-    meta: { width: "w-2/12" },
+    meta: { width: "w-[16%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: (props: CellContext<Participant, Participant["name"]>) => (
@@ -53,7 +53,7 @@ export const COLUMNS: ColumnDef<Participant, string>[] = [
   {
     accessorKey: "email",
     header: "Email",
-    meta: { width: "w-3/12" },
+    meta: { width: "w-[25%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: (props: CellContext<Participant, Participant["email"]>) => (
@@ -63,7 +63,7 @@ export const COLUMNS: ColumnDef<Participant, string>[] = [
   {
     accessorKey: "discord",
     header: "Discord",
-    meta: { width: "w-2/12" },
+    meta: { width: "w-[13%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: (props: CellContext<Participant, Participant["discord"]>) => (
@@ -73,7 +73,7 @@ export const COLUMNS: ColumnDef<Participant, string>[] = [
   {
     accessorKey: "team",
     header: "Team",
-    meta: { width: "w-3/12" },
+    meta: { width: "w-[20%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: (props: CellContext<Participant, Participant["team"]>) => (
@@ -83,7 +83,7 @@ export const COLUMNS: ColumnDef<Participant, string>[] = [
   {
     accessorKey: "shirt",
     header: "Shirt",
-    meta: { width: "w-1/12" },
+    meta: { width: "w-[7%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: (props: CellContext<Participant, Participant["shirt"]>) => (
@@ -94,7 +94,7 @@ export const COLUMNS: ColumnDef<Participant, string>[] = [
   {
     accessorKey: "resume",
     header: "Resume",
-    meta: { width: "w-1/12" },
+    meta: { width: "w-[3%]" },
     enableSorting: false,
     cell: (props: CellContext<Participant, Participant["resume"]>) =>
       props.getValue() ? (
