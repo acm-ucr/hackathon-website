@@ -3,7 +3,7 @@ import { Resend, CreateEmailResponse } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY as string);
 
-interface Params {
+interface params {
   email: string;
   id: string;
   name: string;
@@ -19,7 +19,7 @@ const send = async ({
   position,
   subject,
   preview,
-}: Params): Promise<CreateEmailResponse> => {
+}: params): Promise<CreateEmailResponse> => {
   const { data, error } = await resend.emails.send({
     from: "Hackathon <info@hackathon.com>",
     to: [email],
