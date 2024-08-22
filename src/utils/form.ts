@@ -9,8 +9,8 @@ export const submit = async ({
   setLoading,
   setState,
 }: {
-  data: any;
-  schema: z.ZodSchema<any>;
+  data: z.infer<typeof data>;
+  schema: z.ZodSchema<z.infer<typeof schema>>;
   url: string;
   setLoading: (loading: boolean) => void;
   setState: (state: number) => void;
