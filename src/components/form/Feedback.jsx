@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Form from "@/components/form/form/Form";
-import { FIELDS, ATTRIBUTES } from "@/data/form/Feedback.js";
+import { FIELDS, ATTRIBUTES } from "@/data/form/Feedback";
 import { useSession } from "next-auth/react";
 import { schema } from "@/schemas/feedback";
 import { submit } from "@/utils/form";

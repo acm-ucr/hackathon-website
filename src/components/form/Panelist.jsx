@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Form from "@/components/form/form/Form";
-import { FIELDS, ATTRIBUTES } from "@/data/form/Panelists.js";
+import { FIELDS, ATTRIBUTES } from "@/data/form/Panelists";
 import { useSession } from "next-auth/react";
 import { STATUSES } from "@/data/Statuses";
 import { schema } from "@/schemas/panel";

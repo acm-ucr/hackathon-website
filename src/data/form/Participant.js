@@ -4,6 +4,7 @@ import { GENDERS } from "./Information";
 import { SHIRTS } from "./Information";
 import { SCHOOLS } from "./Schools";
 import data from "@/data/Config";
+import { COUNTRIES } from "./Countries";
 
 export const FIELDS = {
   description: {
@@ -80,6 +81,16 @@ export const FIELDS = {
     options: AGES,
     field: "age",
     placeholder: "ie. 18",
+    width: 12,
+    required: true,
+    searchable: true,
+  },
+  country: {
+    input: "select",
+    title: "Country",
+    options: COUNTRIES,
+    field: "country",
+    placeholder: "ie. United States of America",
     width: 12,
     required: true,
     searchable: true,
@@ -163,6 +174,7 @@ export const ATTRIBUTES = {
   phone: "",
   major: "",
   age: "",
+  country: "",
   school: "",
   grade: "",
   gender: "",
