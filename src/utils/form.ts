@@ -2,15 +2,15 @@ import { z } from "zod";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
 
-export const submit = async ({
+export const submit = async <T extends z.ZodObject<any>>({
   data,
   schema,
   url,
   setLoading,
   setState,
 }: {
-  data: z.infer<typeof data>;
-  schema: z.ZodSchema<z.infer<typeof schema>>;
+  data: z.infer<T>;
+  schema: T;
   url: string;
   setLoading: (loading: boolean) => void;
   setState: (state: number) => void;
