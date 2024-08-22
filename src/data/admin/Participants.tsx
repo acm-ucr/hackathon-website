@@ -5,6 +5,13 @@ import { STATUSES } from "@/data/Statuses";
 import { Tags } from "@/types/dashboard";
 import { ColumnDef, CellContext } from "@tanstack/react-table";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 type Participant = {
   phone: string;
   major: string;
@@ -121,19 +128,28 @@ const attributes: string[] = [
 
 export const DROPDOWN: React.FC<dropdownProps> = ({ object }) => {
   return (
-    <div className="flex items-center justify-center">
-      <div className="grid w-11/12 grid-cols-3">
-        {attributes.map((attribute, index) => (
-          <div key={index} className="my-1 flex px-1 text-sm">
-            {ICONS[attribute]}
-            {Array.isArray(object[attribute])
-              ? object[attribute].length !== 0
-                ? object[attribute].join(",")
-                : "N/A"
-              : object[attribute]}
+    <Accordion type="multiple" className="w-full">
+      <AccordionItem value="participant-info">
+        <AccordionTrigger className="flex items-center justify-between p-4 text-sm font-medium">
+          {/* hi raidah */}
+        </AccordionTrigger>
+        <AccordionContent>
+          <div className="grid grid-cols-3 gap-4 p-4 text-sm">
+            {attributes.map((attribute, index) => (
+              <div key={index} className="flex items-center">
+                {ICONS[attribute] && (
+                  <span className="mr-2">{ICONS[attribute]}</span>
+                )}
+                {Array.isArray(object[attribute])
+                  ? object[attribute].length !== 0
+                    ? object[attribute].join(",")
+                    : "N/A"
+                  : object[attribute]}
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
   );
 };

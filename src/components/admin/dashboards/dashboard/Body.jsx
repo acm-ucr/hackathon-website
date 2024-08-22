@@ -1,9 +1,9 @@
 import { flexRender } from "@tanstack/react-table";
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+// import { useState } from "react";
+// import { ChevronDown } from "lucide-react";
 
 const Body = ({ getIsSelected, getVisibleCells, Dropdown, original }) => {
-  const [dropdown, setDropdown] = useState(false);
+  // const [dropdown, setDropdown] = useState(false);
 
   return (
     <>
@@ -21,16 +21,18 @@ const Body = ({ getIsSelected, getVisibleCells, Dropdown, original }) => {
             {flexRender(column.columnDef.cell, getContext())}
           </div>
         ))}
-        {Dropdown && (
+        {/* {Dropdown && (
           <ChevronDown
             className={`${
               dropdown && "rotate-180"
             } duration-300 hover:cursor-pointer`}
             onClick={() => setDropdown(!dropdown)}
           />
-        )}
+        )} */}
+        <Dropdown object={original} />
       </div>
-      {dropdown && <Dropdown object={original} />}
+
+      {/* {dropdown && <Dropdown object={original} />} */}
     </>
   );
 };
