@@ -3,7 +3,7 @@ class Fault extends Error {
   code: number;
   dev?: string;
 
-  constructor(code: number, name: string, message: string, dev: string) {
+  constructor(code: number, name: string, message: string, dev?: string) {
     super(message);
     this.name = name;
     this.code = code;

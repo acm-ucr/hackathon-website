@@ -12,9 +12,18 @@ import Lead from "@/components/form/Lead";
 import Ideas from "@/components/form/Ideas";
 import ProtectedPage from "@/components/ProtectedPage";
 import Fault from "@/utils/error";
+import React from "react";
 
-const Page = ({ params }) => {
-  const components = {
+interface props {
+  params: any;
+}
+
+type componentsType = {
+  [key: string]: React.ReactElement;
+};
+
+const Page = ({ params }: props): React.ReactElement | undefined => {
+  const components: componentsType = {
     admin: <Admin />,
     committee: <Committee />,
     feedback: <Feedback />,
@@ -29,7 +38,7 @@ const Page = ({ params }) => {
     idea: <Ideas />,
   };
 
-  const capitalizeFirstLetter = (word) => {
+  const capitalizeFirstLetter = (word: string) => {
     return word[0].toUpperCase() + word.slice(1);
   };
 
