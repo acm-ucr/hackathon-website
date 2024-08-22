@@ -14,9 +14,9 @@ import ProtectedPage from "@/components/ProtectedPage";
 import Fault from "@/utils/error";
 import React from "react";
 
-interface props {
-  params: any;
-}
+type props = {
+  params: { type: string };
+};
 
 type componentsType = {
   [key: string]: React.ReactElement;
