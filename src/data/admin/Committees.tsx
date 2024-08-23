@@ -20,10 +20,6 @@ type Committee = {
   restriction: string;
 };
 
-type Column<TData extends object> = ColumnDef<TData, string> & {
-  searchable?: boolean;
-};
-
 type dropdownProps = {
   object: Record<string, string[]>;
 };
@@ -39,7 +35,9 @@ export const TAGS: Tags[] = [
   },
 ];
 
-export const COLUMNS: Column<Committee>[] = [
+export const COLUMNS: (ColumnDef<Committee, string> & {
+  searchable?: boolean;
+})[] = [
   generateSelect(),
   {
     accessorKey: "name",
