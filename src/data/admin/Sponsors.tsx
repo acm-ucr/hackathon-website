@@ -35,7 +35,7 @@ export const COLUMNS: ColumnDef<Sponsor, string>[] = [
   {
     accessorKey: "name",
     header: "Name",
-    meta: { width: "w-2/12" },
+    meta: { width: "w-[20%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: (props: CellContext<Sponsor, Sponsor["name"]>) => (
@@ -45,7 +45,7 @@ export const COLUMNS: ColumnDef<Sponsor, string>[] = [
   {
     accessorKey: "email",
     header: "Email",
-    meta: { width: "w-3/12" },
+    meta: { width: "w-[28%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: (props: CellContext<Sponsor, Sponsor["email"]>) => (
@@ -55,7 +55,7 @@ export const COLUMNS: ColumnDef<Sponsor, string>[] = [
   {
     accessorKey: "company",
     header: "Company",
-    meta: { width: "w-3/12" },
+    meta: { width: "w-[25%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: (props: CellContext<Sponsor, Sponsor["company"]>) => (
@@ -65,7 +65,7 @@ export const COLUMNS: ColumnDef<Sponsor, string>[] = [
   {
     accessorKey: "position",
     header: "Position",
-    meta: { width: "w-2/12" },
+    meta: { width: "w-[15%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: (props: CellContext<Sponsor, Sponsor["position"]>) => (
