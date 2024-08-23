@@ -18,12 +18,8 @@ type props = {
   params: { type: string };
 };
 
-type componentsType = {
-  [key: string]: React.ReactElement;
-};
-
-const Page = ({ params }: props): React.ReactElement | undefined => {
-  const components: componentsType = {
+const Page = ({ params }: props) => {
+  const components: Record<string, React.ReactElement> = {
     admin: <Admin />,
     committee: <Committee />,
     feedback: <Feedback />,
