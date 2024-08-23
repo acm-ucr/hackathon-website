@@ -7,7 +7,6 @@ import {
   SiCplusplus as CPlusPlus,
   SiMongodb as Mongodb,
 } from "@icons-pack/react-simple-icons";
-// import { ReactNode } from "react";
 
 interface TechStackItem {
   key: string;

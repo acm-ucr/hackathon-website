@@ -40,8 +40,7 @@ const Hackpack = ({ text, techs, link, description }: props) => {
               data-cy="hackpack-tech"
             >
               <div className="text-hackathon-blue-100" data-cy="hackpack-icon">
-                {IconComponent ? <IconComponent /> : null}{" "}
-                {/* Render the icon component */}
+                {IconComponent ? <IconComponent /> : null} {}
               </div>
               {tech}
             </div>
