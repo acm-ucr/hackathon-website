@@ -9,16 +9,29 @@ import {
 } from "@icons-pack/react-simple-icons";
 import { ReactNode } from "react";
 
-export const TECHSTACKS: Record<string, ReactNode> = {
-  Javascript: <Javascript />,
-  "Next.js": <Nextjs />,
-  Firebase: <Firebase />,
-  Tailwind: <Tailwind />,
-  MongoDB: <Mongodb />,
-  Arduino: <Arduino />,
-  "C++": <CPlusPlus />,
-};
-export const HACKPACKS = [
+interface TechStackItem {
+  key: string;
+  component: React.ComponentType;
+}
+
+export const TECHSTACKS: TechStackItem[] = [
+  { key: "Javascript", component: Javascript },
+  { key: "Next.js", component: Nextjs },
+  { key: "Firebase", component: Firebase },
+  { key: "Tailwind", component: Tailwind },
+  { key: "MongoDB", component: Mongodb },
+  { key: "Arduino", component: Arduino },
+  { key: "C++", component: CPlusPlus },
+];
+
+interface packs {
+  link: string;
+  text: string;
+  techs: string[];
+  description: string;
+}
+
+export const HACKPACKS: packs[] = [
   {
     link: "https://github.com/acm-ucr/firebase-nextjs-hackpack",
     text: "Full Stack Web App",
