@@ -22,7 +22,7 @@ const syncStatsWithDatabase = async () => {
     updateRoleCounts("teams"),
   ]);
 };
-const getRoleCount = async (role, value, subType = null, subValue = null) => {
+const getRoleCount = async (role, value, subType, subValue) => {
   if (role === "teams") {
     return (
       await getCountFromServer(
@@ -34,7 +34,11 @@ const getRoleCount = async (role, value, subType = null, subValue = null) => {
   if (subType) {
     return (
       await getCountFromServer(
-        query(collection(db, "users"), where(`${subType}`, "==", subValue)),
+        query(
+          collection(db, "users"),
+          where(`${subType}`, "==", subValue),
+          where(`roles.${role}`, "==", value),
+        ),
       )
     ).data().count;
   }
@@ -58,7 +62,7 @@ const updateRoleCounts = async (role) => {
     getRoleCount(role, 1),
     // getRoleCount("participants", "school"),
   ]);
-
+  // const type = [ 1, 0 ,-1]
   const shirtSizes = ["XS", "S", "M", "L", "XL"];
   const dietOptions = ["Halal", "Vegan"];
 
@@ -78,11 +82,11 @@ const updateRoleCounts = async (role) => {
   };
 
   shirtSizes.forEach((size, index) => {
-    updateData[`${role}.shirt.${size}`] = shirtCounts[index];
+    updateData[`${role}.shirt.1.${size}`] = shirtCounts[index];
   });
 
   dietOptions.forEach((option, index) => {
-    updateData[`${role}.diet.${option}`] = dietCounts[index];
+    updateData[`${role}.diet.1.${option}`] = dietCounts[index];
   });
 
   await updateDoc(doc(db, "statistics", "statistics"), updateData);

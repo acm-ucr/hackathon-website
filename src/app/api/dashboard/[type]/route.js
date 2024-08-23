@@ -240,8 +240,10 @@ export const PUT = async (req, { params }) => {
             (await updateDoc(doc(db, "statistics", "statistics"), {
               [`${params.type}.status.1`]: increment(1),
               [`${params.type}.status.0`]: increment(-1),
-              [`${params.type}.shirt.${size}`]: increment(1),
-              [`${params.type}.diet.${diet}`]: increment(1),
+              [`${params.type}.shirt.1.${size}`]: increment(1),
+              [`${params.type}.shirt.0${size}`]: increment(-1),
+              [`${params.type}.diet.1.${diet}`]: increment(1),
+              [`${params.type}.diet.0${diet}`]: increment(-1),
               // [`${params}.participants.school.${school}`]: increment(1),
             }));
 
@@ -262,8 +264,10 @@ export const PUT = async (req, { params }) => {
             (await updateDoc(doc(db, "statistics", "statistics"), {
               [`${params.type}.-1`]: increment(1),
               [`${params.type}.0`]: increment(-1),
-              [`${params.type}.shirt.${size}`]: increment(-1),
-              [`${params.type}.diet.${diet}`]: increment(-1),
+              [`${params.type}.shirt.-1.${size}`]: increment(1),
+              [`${params.type}.shirt.0.${size}`]: increment(-1),
+              [`${params.type}.diet.-1.${diet}`]: increment(1),
+              [`${params.type}.diet.0.${diet}`]: increment(-1),
               // [`${params}.participants.school.${school}`]: increment(-1),
             }));
         }),
