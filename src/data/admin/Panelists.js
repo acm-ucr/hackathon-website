@@ -20,7 +20,7 @@ export const COLUMNS = [
   {
     accessorKey: "name",
     header: "Name",
-    meta: { width: "w-2/12" },
+    meta: { width: "w-[23%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -29,7 +29,7 @@ export const COLUMNS = [
   {
     accessorKey: "email",
     header: "Email",
-    meta: { width: "w-3/12" },
+    meta: { width: "w-[30%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -38,7 +38,7 @@ export const COLUMNS = [
   {
     accessorKey: "title",
     header: "Title",
-    meta: { width: "w-3/12" },
+    meta: { width: "w-[15%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -47,7 +47,7 @@ export const COLUMNS = [
   {
     accessorKey: "panelist",
     header: "Panelist",
-    meta: { width: "w-3/12" },
+    meta: { width: "w-[15%]" },
     cell: ({ getValue }) => (
       <Tag text={getValue()} color={COLORS[getValue()]} />
     ),
@@ -56,7 +56,7 @@ export const COLUMNS = [
   {
     accessorKey: "photo",
     header: "Photo",
-    meta: { width: "w-1/12" },
+    meta: { width: "w-[8%]" },
     enableSorting: false,
     cell: ({ getValue }) => <View src={getValue()} title="Photo" />,
   },

@@ -36,7 +36,7 @@ export const COLUMNS: ColumnDef<Admin, string>[] = [
   {
     accessorKey: "name",
     header: "Name",
-    meta: { width: "w-3/12" },
+    meta: { width: "w-[25%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: (props: CellContext<Admin, Admin["name"]>) => (
@@ -46,7 +46,7 @@ export const COLUMNS: ColumnDef<Admin, string>[] = [
   {
     accessorKey: "email",
     header: "Email",
-    meta: { width: "w-3/12" },
+    meta: { width: "w-[30%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: (props: CellContext<Admin, Admin["email"]>) => (
@@ -56,7 +56,7 @@ export const COLUMNS: ColumnDef<Admin, string>[] = [
   {
     accessorKey: "discord",
     header: "Discord",
-    meta: { width: "w-3/12" },
+    meta: { width: "w-[15%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: (props: CellContext<Admin, Admin["discord"]>) => (

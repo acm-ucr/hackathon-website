@@ -19,7 +19,7 @@ export const COLUMNS = [
   {
     accessorKey: "name",
     header: "Name",
-    meta: { width: "w-3/12" },
+    meta: { width: "w-[20%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -28,7 +28,7 @@ export const COLUMNS = [
   {
     accessorKey: "email",
     header: "Email",
-    meta: { width: "w-3/12" },
+    meta: { width: "w-[25%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
@@ -37,7 +37,7 @@ export const COLUMNS = [
   {
     accessorKey: "discord",
     header: "Discord",
-    meta: { width: "w-3/12" },
+    meta: { width: "w-[15%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
