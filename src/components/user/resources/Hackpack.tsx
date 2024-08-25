@@ -9,12 +9,6 @@ type props = {
   description: string;
 };
 
-// Function to get the icon component based on the technology name
-const getIconComponent = (tech: string) => {
-  const techStackItem = TECHSTACKS.find((item) => item.key === tech);
-  return techStackItem ? techStackItem.component : null;
-};
-
 const Hackpack = ({ text, techs, link, description }: props) => {
   return (
     <div className="rounded-xl bg-white p-3">
@@ -31,24 +25,21 @@ const Hackpack = ({ text, techs, link, description }: props) => {
       </Link>
 
       <div className="my-2 flex flex-wrap gap-2" data-cy="hackpack-techs">
-        {techs.map((tech, index) => {
-          const IconComponent = getIconComponent(tech);
-          return (
-            <div
-              key={index}
-              className="flex items-center gap-2 text-gray-400"
-              data-cy="hackpack-tech"
-            >
-              <div className="text-hackathon-blue-100" data-cy="hackpack-icon">
-                {IconComponent ? <IconComponent /> : null} {}
-              </div>
-              {tech}
+        {techs.map((tech, index) => (
+          <div
+            key={index}
+            className="flex items-center gap-2 text-gray-400"
+            data-cy="hackpack-tech"
+          >
+            <div className="text-hackathon-blue-100" data-cy="hackpack-icon">
+              {TECHSTACKS[tech]}
             </div>
-          );
-        })}
-
-        <p className="mt-2">{description}</p>
+            {tech}
+          </div>
+        ))}
       </div>
+
+      <p className="mt-2">{description}</p>
     </div>
   );
 };

@@ -6,31 +6,24 @@ import {
   SiFirebase as Firebase,
   SiCplusplus as CPlusPlus,
   SiMongodb as Mongodb,
+  SiPython as Python,
+  SiUnity as Unity,
+  SiCsharp as CSharp,
 } from "@icons-pack/react-simple-icons";
 
-interface TechStackItem {
-  key: string;
-  component: React.ComponentType;
-}
-
-export const TECHSTACKS: TechStackItem[] = [
-  { key: "Javascript", component: Javascript },
-  { key: "Next.js", component: Nextjs },
-  { key: "Firebase", component: Firebase },
-  { key: "Tailwind", component: Tailwind },
-  { key: "MongoDB", component: Mongodb },
-  { key: "Arduino", component: Arduino },
-  { key: "C++", component: CPlusPlus },
-];
-
-interface packs {
-  link: string;
-  text: string;
-  techs: string[];
-  description: string;
-}
-
-export const HACKPACKS: packs[] = [
+export const TECHSTACKS: Record<string, React.ReactNode> = {
+  Javascript: <Javascript />,
+  "Next.js": <Nextjs />,
+  Firebase: <Firebase />,
+  Tailwind: <Tailwind />,
+  MongoDB: <Mongodb />,
+  Arduino: <Arduino />,
+  Python: <Python />,
+  Unity: <Unity />,
+  "C#": <CSharp />,
+  "C++": <CPlusPlus />,
+};
+export const HACKPACKS = [
   {
     link: "https://github.com/acm-ucr/firebase-nextjs-hackpack",
     text: "Full Stack Web App",
@@ -52,7 +45,7 @@ export const HACKPACKS: packs[] = [
   {
     link: "https://github.com/acm-ucr/unity-hackpack",
     text: "Game Development",
-    techs: ["Unity, C#"],
+    techs: ["Unity", "C#"],
     description: "A Firebase + Next.js Starter Pack",
   },
   {
