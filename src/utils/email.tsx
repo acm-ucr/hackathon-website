@@ -24,8 +24,7 @@ const send = async ({
     from: "Hackathon <info@hackathon.com>",
     to: [email],
     subject: subject,
-    text: `Dear ${name},\n\ Here is a preview to where to meet \n\ Happy Hacking
-    \n\, Hackathon Team `,
+    text: ``,
     // eslint-disable-next-line new-cap
     react: Email({ id, name, position, preview }),
   });
