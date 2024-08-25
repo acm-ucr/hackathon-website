@@ -1,4 +1,14 @@
-const Event = ({ event, view }) => {
+import React from "react";
+
+interface EventProps {
+  event: {
+    start: Date;
+    summary: string;
+  };
+  view: string;
+}
+
+const Event: React.FC<EventProps> = ({ event, view }) => {
   return (
     <div className="p-0.5">
       <p className="inline text-xs" data-cy="event">
