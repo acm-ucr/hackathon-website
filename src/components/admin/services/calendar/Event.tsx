@@ -2,7 +2,7 @@ import React from "react";
 
 interface EventProps {
   event: {
-    start: Date & string;
+    start: Date;
     summary: string;
   };
   view: string;
