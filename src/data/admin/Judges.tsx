@@ -36,7 +36,7 @@ export const COLUMNS: ColumnDef<Judge, string>[] = [
   {
     accessorKey: "name",
     header: "Name",
-    meta: { width: "w-2/12" },
+    meta: { width: "w-[23%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: (props: CellContext<Judge, Judge["name"]>) => (
@@ -46,7 +46,7 @@ export const COLUMNS: ColumnDef<Judge, string>[] = [
   {
     accessorKey: "email",
     header: "Email",
-    meta: { width: "w-3/12" },
+    meta: { width: "w-[30%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: (props: CellContext<Judge, Judge["email"]>) => (
@@ -56,7 +56,7 @@ export const COLUMNS: ColumnDef<Judge, string>[] = [
   {
     accessorKey: "title",
     header: "Title",
-    meta: { width: "w-3/12" },
+    meta: { width: "w-[18%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: (props: CellContext<Judge, Judge["title"]>) => (

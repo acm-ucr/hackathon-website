@@ -32,7 +32,7 @@ export const COLUMNS: ColumnDef<Team, any>[] = [
   {
     accessorKey: "name",
     header: "Name",
-    meta: { width: "w-2/12" },
+    meta: { width: "w-[18%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: (props: CellContext<Team, Team["name"]>) => (
@@ -42,7 +42,7 @@ export const COLUMNS: ColumnDef<Team, any>[] = [
   {
     accessorKey: "teamid",
     header: "Team ID",
-    meta: { width: "w-3/12" },
+    meta: { width: "w-[20%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
     cell: (props: CellContext<Team, Team["teamid"]>) => (
@@ -52,7 +52,7 @@ export const COLUMNS: ColumnDef<Team, any>[] = [
   {
     accessorKey: "members",
     header: "Members",
-    meta: { width: "w-2/12" },
+    meta: { width: "w-[20%]" },
     enableSorting: false,
     filterFn: "includesString",
     enableColumnFilter: true,
@@ -67,7 +67,7 @@ export const COLUMNS: ColumnDef<Team, any>[] = [
   {
     accessorKey: "discords",
     header: "Discords",
-    meta: { width: "w-2/12" },
+    meta: { width: "w-[15%]" },
     enableSorting: false,
     enableColumnFilter: true,
     filterFn: "includesString",
@@ -82,7 +82,7 @@ export const COLUMNS: ColumnDef<Team, any>[] = [
   {
     accessorKey: "links",
     header: "Links",
-    meta: { width: "w-2/12" },
+    meta: { width: "w-[20%]" },
     enableSorting: false,
     cell: (props: CellContext<Team, Team["links"]>) => (
       <div>
