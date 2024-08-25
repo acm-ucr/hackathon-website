@@ -9,7 +9,7 @@ interface params {
   name: string;
   position: string;
   subject: string;
-  preview: boolean;
+  preview: string;
 }
 
 const send = async ({
