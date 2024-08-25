@@ -22,7 +22,33 @@ import {
 
 const iconStyle = "mr-2 w-4 h-4";
 
-export const TABS = {
+interface Tab {
+  name: string;
+  link: string;
+  icon: JSX.Element;
+}
+
+interface Service {
+  expand: true;
+  mt: string;
+  tabs: Tab[];
+}
+
+interface UserPortal {
+  expand: true;
+  mt: string;
+  tabs: Tab[];
+}
+
+interface Tabs {
+  [key: string]:
+    | {
+        [key: string]: Service;
+      }
+    | UserPortal;
+}
+
+export const TABS: Tabs = {
   admin: {
     Dashboards: {
       expand: true,
@@ -134,6 +160,7 @@ export const TABS = {
   },
   user: {
     Portal: {
+      expand: true,
       mt: "mt-0",
       tabs: [
         {
