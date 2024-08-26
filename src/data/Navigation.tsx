@@ -36,7 +36,6 @@ interface Service {
 
 interface UserPortal {
   expand: true;
-  mt: string;
   tabs: Tab[];
 }
 
