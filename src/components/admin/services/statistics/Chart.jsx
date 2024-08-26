@@ -12,6 +12,9 @@ import {
 } from "@/components/ui/chart";
 
 const Chart = ({ title, data }) => {
+  console.log("Title", title);
+  console.log("DATA", data);
+
   const ITEMS = { ...ROLES, ...SIZES, ...DIETS };
 
   const chartData = Object.entries(data).map(([type, value]) => ({
