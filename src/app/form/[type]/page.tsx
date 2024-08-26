@@ -12,9 +12,14 @@ import Lead from "@/components/form/Lead";
 import Ideas from "@/components/form/Ideas";
 import ProtectedPage from "@/components/ProtectedPage";
 import Fault from "@/utils/error";
+import React from "react";
 
-const Page = ({ params }) => {
-  const components = {
+type props = {
+  params: { type: string };
+};
+
+const Page = ({ params }: props) => {
+  const components: Record<string, React.ReactElement> = {
     admin: <Admin />,
     committee: <Committee />,
     feedback: <Feedback />,
@@ -29,7 +34,7 @@ const Page = ({ params }) => {
     idea: <Ideas />,
   };
 
-  const capitalizeFirstLetter = (word) => {
+  const capitalizeFirstLetter = (word: string) => {
     return word[0].toUpperCase() + word.slice(1);
   };
 

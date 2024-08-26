@@ -1,14 +1,59 @@
-import { MAJORS, GRADES, GENDERS, SHIRTS, AVAILABILITY } from "./Information";
+import {
+  Description,
+  RadioInput,
+  SelectInput,
+  TermsAndConditions,
+  TextInput,
+} from "@/types/forms";
+import { GENDERS, GRADES, SHIRTS, MAJORS } from "./Information";
 import data from "@/data/Config";
+import { AFFILIATIONS } from "./Information";
 
-export const FIELDS = {
+interface Attributes {
+  name: string;
+  email: string;
+  discord: string;
+  grade: string;
+  major: string;
+  gender: string;
+  shirt: string;
+  affiliation: string;
+  requirements: string[];
+}
+
+interface Fields {
+  description: Description;
+  name: TextInput;
+  email: TextInput;
+  discord: TextInput;
+  major: SelectInput;
+  gender: RadioInput;
+  requirements: TermsAndConditions;
+  affiliation: RadioInput;
+  shirt: RadioInput;
+  grade: SelectInput;
+}
+
+export const ATTRIBUTES: Attributes = {
+  name: "",
+  email: "",
+  discord: "",
+  grade: "",
+  major: "",
+  gender: "",
+  shirt: "",
+  affiliation: "",
+  requirements: [],
+};
+
+export const FIELDS: Fields = {
   description: {
     input: "description",
     width: 12,
     texts: [
       `Welcome to ${
         data.name
-      }. Thank you for considering to become a mentor, we appreciate your efforts to help support ${
+      }. Thank you for being on the organizing team, we appreciate your efforts to help support ${
         data.name
       }. ${data.name} is a ${data.description} hackathon spanning ${
         data.length
@@ -17,9 +62,8 @@ export const FIELDS = {
         day: "numeric",
         year: "numeric",
       })}.`,
-      "Mentors are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
-      "Mentor duties include but are not limited to providing expertise and assistance to hackers throughout the hackathon without jeopardizing their chances at winning.",
-      "Note: Mentors are not permitted to become participants for the hackathon.",
+      "Admins are not required to stay the full duration of the event, but are encouraged to checkout the various events, workshops, and opportunities that are available.",
+      "Note: Admins are not permitted to become participants for the hackathon.",
     ],
   },
   name: {
@@ -31,6 +75,7 @@ export const FIELDS = {
     width: 12,
     editable: false,
     required: true,
+    placeholder: "John Doe",
   },
   email: {
     input: "input",
@@ -41,19 +86,11 @@ export const FIELDS = {
     width: 12,
     editable: false,
     required: true,
-  },
-  phone: {
-    input: "input",
-    name: "phone",
-    type: "phone",
-    title: "Phone Number",
-    placeholder: "ie. 123 456 7890",
-    maxLength: 50,
-    width: 12,
-    required: true,
+    placeholder: "john.doe@gmail.com",
   },
   discord: {
     input: "input",
+    editable: true,
     name: "discord",
     type: "text",
     title: "Discord Username",
@@ -65,6 +102,7 @@ export const FIELDS = {
   major: {
     input: "select",
     title: "Major",
+    editable: true,
     options: MAJORS,
     field: "major",
     placeholder: "ie. Computer Science",
@@ -75,20 +113,13 @@ export const FIELDS = {
   grade: {
     input: "select",
     title: "Grade",
+    editable: true,
     options: GRADES,
     field: "grade",
     placeholder: "ie. Undergraduate",
     width: 12,
     required: true,
     searchable: true,
-  },
-  availability: {
-    input: "checkboxes",
-    width: 12,
-    field: "availability",
-    text: "Availability",
-    required: true,
-    options: AVAILABILITY,
   },
   gender: {
     input: "radio",
@@ -97,6 +128,7 @@ export const FIELDS = {
     field: "gender",
     width: 12,
     required: true,
+    editable: true,
   },
   shirt: {
     input: "radio",
@@ -105,22 +137,23 @@ export const FIELDS = {
     field: "shirt",
     width: 12,
     required: true,
+    editable: true,
   },
-  response: {
-    input: "textarea",
-    name: "response",
-    rows: 4,
-    title: "What skills and experience can you bring as a mentor?",
-    placeholder: "ie. I can bring...",
+  affiliation: {
+    input: "radio",
+    text: "Affiliation",
+    options: Object.values(AFFILIATIONS),
+    field: "affiliation",
     width: 12,
     required: true,
+    editable: true,
   },
   requirements: {
     text: "Terms and Conditions",
     input: "terms",
     width: 12,
     field: "requirements",
-    required: true,
+    editable: true,
     options: [
       "I have read the MLH code of conduct and agree to the terms and conditions listed",
       "I authorize you to share my application/registration information with Major League Hacking for event administration, ranking, and MLH administration in-line with the MLH Privacy Policy",
@@ -129,21 +162,9 @@ export const FIELDS = {
       "I consent to providing a safe space for hackers to learn and grow their interests in computing",
       "I consent to following the provided guidelines and rules instructed by the organizing team",
       "I understand that failure to comply with guidelines or creating an unsafe space will result in my removal from the event",
-      "I understand this is an in person event taking place in UCR and I must attend in person in order to mentor",
+      "I understand this is an in person event taking place in UCR and I must attend in person in order to participate",
+      "I understand that I will be given access to private data and malicious intents and actions will be reported immediately",
     ],
+    required: true,
   },
-};
-
-export const ATTRIBUTES = {
-  name: "",
-  email: "",
-  phone: "",
-  discord: "",
-  major: "",
-  grade: "",
-  availability: [],
-  gender: "",
-  shirt: "",
-  response: "",
-  requirements: [],
 };

@@ -1,4 +1,11 @@
-export const ROLES = {
+type code = "1" | "0" | "-1";
+type labels = "Pending" | "Accepted" | "Rejected";
+interface roles {
+  label: labels;
+  className: string;
+  fill: string;
+}
+export const ROLES: Record<code, roles> = {
   0: {
     label: "Pending",
     className: "fill-hackathon-yellow-100",
@@ -16,7 +23,20 @@ export const ROLES = {
   },
 };
 
-export const SIZES = {
+type sizesShort = "XS" | "S" | "M" | "L" | "XL" | "XXL";
+type sizesLong =
+  | "Extra Small"
+  | "Small"
+  | "Medium"
+  | "Large"
+  | "Extra Large"
+  | "Double Extra Large";
+interface sizes {
+  label: sizesLong;
+  className: string;
+  fill: string;
+}
+export const SIZES: Record<sizesShort, sizes> = {
   XS: {
     label: "Extra Small",
     className: "fill-hackathon-tags-pink-text",
