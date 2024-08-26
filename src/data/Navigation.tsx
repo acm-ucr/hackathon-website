@@ -40,13 +40,7 @@ interface UserPortal {
   tabs: Tab[];
 }
 
-interface Tabs {
-  [key: string]:
-    | {
-        [key: string]: Service;
-      }
-    | UserPortal;
-}
+type Tabs = Record<string, Record<string, Service> | UserPortal>;
 
 export const TABS: Tabs = {
   admin: {
