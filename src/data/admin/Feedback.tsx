@@ -16,36 +16,53 @@ export const TAGS = [
   },
 ];
 
+interface CellProp {
+  getValue: () => any;
+}
+
 export const COLUMNS = [
   generateSelect(),
   {
     accessorKey: "rating",
     header: "Rating",
     meta: { width: "w-[8%]" },
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: ({ getValue }: CellProp) => <div>{getValue()}</div>,
   },
   {
     accessorKey: "eventSource",
     header: "Event Source",
     meta: { width: "w-[15%]" },
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: ({ getValue }: CellProp) => <div>{getValue()}</div>,
   },
   {
     accessorKey: "improvements",
     header: "Improvements",
     meta: { width: "w-[31%]" },
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: ({ getValue }: CellProp) => <div>{getValue()}</div>,
   },
   {
     accessorKey: "helpful",
     header: "Helpful",
     meta: { width: "w-[31%]" },
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: ({ getValue }: CellProp) => <div>{getValue()}</div>,
   },
   generateStatus(STATUSES),
 ];
 
-export const DROPDOWN = ({ object }) => {
+interface ObjectProp {
+  object: {
+    [key: string]: string;
+    addtionalComments: string;
+    notBeneficial: string;
+  };
+}
+
+export const DROPDOWN: React.FC<ObjectProp> = ({
+  object = {
+    addtionalComments: "",
+    notBeneficial: "",
+  },
+}) => {
   return (
     <div className="flex justify-center">
       <div className="grid w-11/12 grid-cols-2">
