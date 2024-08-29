@@ -1,8 +1,10 @@
 import { generateSelect, generateStatus } from "./Columns";
 import { ICONS } from "./Icons";
 import { STATUSES } from "@/data/Statuses";
+import { Tags } from "@/types/dashboard";
+import { ColumnDef, CellContext } from "@tanstack/react-table";
 
-export const TAGS = [
+export const TAGS: Tags[] = [
   {
     text: "accept",
     value: 1,
@@ -13,38 +15,43 @@ export const TAGS = [
   },
 ];
 
-interface CellProps {
-  getValue: () => any;
-}
+type Leads = {
+  name: string;
+  email: string;
+  discord: string;
+};
 
-export const COLUMNS = [
+export const COLUMNS: ColumnDef<Leads, string>[] = [
   generateSelect(),
   {
     accessorKey: "name",
     header: "Name",
-    meta: { width: "w-[25%]" },
+    meta: { width: "w-[25%]", searchable: true },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }: CellProps) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Leads, Leads["name"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "email",
     header: "Email",
-    meta: { width: "w-[30%]" },
+    meta: { width: "w-[30%]", searchable: true },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }: CellProps) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Leads, Leads["email"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "discord",
     header: "Discord",
-    meta: { width: "w-[30%]" },
+    meta: { width: "w-[30%]", searchable: true },
     enableColumnFilter: true,
     filterFn: "includesString",
-    searchable: true,
-    cell: ({ getValue }: CellProps) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Leads, Leads["discord"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   generateStatus(STATUSES),
 ];
