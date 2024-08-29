@@ -1,7 +1,5 @@
 import View from "@/components/admin/dashboards/dashboard/View";
 import { generateSelect, generateStatus } from "./Columns";
-import Tag from "@/components/admin/Tag";
-import { COLORS } from "@/data/Tags";
 import { STATUSES } from "@/data/Statuses";
 
 export const TAGS = [
@@ -15,6 +13,10 @@ export const TAGS = [
   },
 ];
 
+interface CellProps {
+  getValue: () => any;
+}
+
 export const COLUMNS = [
   generateSelect(),
   {
@@ -24,7 +26,7 @@ export const COLUMNS = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: ({ getValue }: CellProps) => <div>{getValue()}</div>,
   },
   {
     accessorKey: "email",
@@ -33,7 +35,7 @@ export const COLUMNS = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: ({ getValue }: CellProps) => <div>{getValue()}</div>,
   },
   {
     accessorKey: "title",
@@ -42,15 +44,12 @@ export const COLUMNS = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: ({ getValue }: CellProps) => <div>{getValue()}</div>,
   },
   {
     accessorKey: "panelist",
     header: "Panelist",
     meta: { width: "w-[15%]" },
-    cell: ({ getValue }) => (
-      <Tag text={getValue()} color={COLORS[getValue()]} />
-    ),
   },
   generateStatus(STATUSES),
   {
@@ -58,6 +57,6 @@ export const COLUMNS = [
     header: "Photo",
     meta: { width: "w-[8%]" },
     enableSorting: false,
-    cell: ({ getValue }) => <View src={getValue()} title="Photo" />,
+    cell: ({ getValue }: CellProps) => <View src={getValue()} title="Photo" />,
   },
 ];
