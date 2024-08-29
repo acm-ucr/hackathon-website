@@ -13,6 +13,10 @@ export const TAGS = [
   },
 ];
 
+interface CellProps {
+  getValue: () => any;
+}
+
 export const COLUMNS = [
   generateSelect(),
   {
@@ -22,7 +26,7 @@ export const COLUMNS = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: ({ getValue }: CellProps) => <div>{getValue()}</div>,
   },
   {
     accessorKey: "email",
@@ -31,7 +35,7 @@ export const COLUMNS = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: ({ getValue }: CellProps) => <div>{getValue()}</div>,
   },
   {
     accessorKey: "discord",
@@ -40,7 +44,7 @@ export const COLUMNS = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: ({ getValue }: CellProps) => <div>{getValue()}</div>,
   },
   generateStatus(STATUSES),
 ];
@@ -54,7 +58,22 @@ const attributes = [
   "priorHackathons",
 ];
 
-export const DROPDOWN = ({ object }) => {
+interface ObjectProps {
+  object: {
+    [key: string]: string;
+    attribute: string;
+    response: string;
+    priorExperience: string;
+  };
+}
+
+export const DROPDOWN: React.FC<ObjectProps> = ({
+  object = {
+    attribute: "",
+    response: "",
+    priorExperience: "",
+  },
+}) => {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="grid w-11/12 grid-cols-3">
