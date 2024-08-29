@@ -1,10 +1,9 @@
 interface TagProps {
   color: {
-    background: any;
+    background: string;
     text: string;
     hover?: string;
   };
-  background: string;
   text: string;
   onClick?: () => void;
   classes: string;
@@ -12,7 +11,7 @@ interface TagProps {
 }
 
 const Tag: React.FC<TagProps> = ({
-  color,
+  color = { background: "", text: "" },
   text,
   onClick,
   classes,
