@@ -1,7 +1,6 @@
 import { CellContext, ColumnDef } from "@tanstack/react-table";
 import { generateSelect, generateStatus } from "./Columns";
 import { Tags } from "@/types/dashboard";
-import Interest from "@/components/form/Interest";
 
 export const STATUSES = {
   1: "read",
@@ -19,20 +18,20 @@ export const TAGS: Tags[] = [
   },
 ];
 
-type Interest = {
+type Feedback = {
   rating: string;
   eventSource: string;
   improvements: string;
   helpful: string;
 };
 
-export const COLUMNS: ColumnDef<Interest, string>[] = [
+export const COLUMNS: ColumnDef<Feedback, string>[] = [
   generateSelect(),
   {
     accessorKey: "rating",
     header: "Rating",
     meta: { width: "w-[8%]" },
-    cell: (props: CellContext<Interest, Interest["rating"]>) => (
+    cell: (props: CellContext<Feedback, Feedback["rating"]>) => (
       <div>{props.getValue()}</div>
     ),
   },
@@ -40,7 +39,7 @@ export const COLUMNS: ColumnDef<Interest, string>[] = [
     accessorKey: "eventSource",
     header: "Event Source",
     meta: { width: "w-[15%]" },
-    cell: (props: CellContext<Interest, Interest["eventSource"]>) => (
+    cell: (props: CellContext<Feedback, Feedback["eventSource"]>) => (
       <div>{props.getValue()}</div>
     ),
   },
@@ -48,7 +47,7 @@ export const COLUMNS: ColumnDef<Interest, string>[] = [
     accessorKey: "improvements",
     header: "Improvements",
     meta: { width: "w-[31%]" },
-    cell: (props: CellContext<Interest, Interest["improvements"]>) => (
+    cell: (props: CellContext<Feedback, Feedback["improvements"]>) => (
       <div>{props.getValue()}</div>
     ),
   },
@@ -56,7 +55,7 @@ export const COLUMNS: ColumnDef<Interest, string>[] = [
     accessorKey: "helpful",
     header: "Helpful",
     meta: { width: "w-[31%]" },
-    cell: (props: CellContext<Interest, Interest["helpful"]>) => (
+    cell: (props: CellContext<Feedback, Feedback["helpful"]>) => (
       <div>{props.getValue()}</div>
     ),
   },
