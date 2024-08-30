@@ -1,4 +1,14 @@
-export const HackathonsData = [
+type Hackathon = {
+  name: string;
+  image: string;
+  alt1: string;
+  logo: string;
+  alt2: string;
+  title: string;
+  text: string;
+};
+
+export const HackathonsData: Hackathon[] = [
   {
     name: "CutieHack",
     image: "/engineering/hackathon/cutie.webp",
