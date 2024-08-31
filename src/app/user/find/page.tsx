@@ -1,7 +1,18 @@
+// Import necessary types
+import React from "react";
 import ProtectedPage from "@/components/ProtectedPage";
 import Find from "@/components/user/find/Find";
 
-const Page = () => {
+// Define types for ProtectedPage props
+// interface ProtectedPageProps {
+//   title: string;
+//   restrictions: {
+//     participants: number[];
+//   };
+// }
+
+// Define the Page component with TypeScript
+const Page: React.FC = () => {
   return (
     <ProtectedPage
       title="User | Find"
