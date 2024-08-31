@@ -25,6 +25,13 @@ type Feedback = {
   helpful: string;
 };
 
+type dropdownProps = {
+  object: {
+    additionalComments: string;
+    notBeneficial: string;
+  };
+};
+
 export const COLUMNS: ColumnDef<Feedback, string>[] = [
   generateSelect(),
   {
@@ -62,20 +69,7 @@ export const COLUMNS: ColumnDef<Feedback, string>[] = [
   generateStatus(STATUSES),
 ];
 
-interface ObjectProp {
-  object: {
-    [key: string]: string;
-    addtionalComments: string;
-    notBeneficial: string;
-  };
-}
-
-export const DROPDOWN: React.FC<ObjectProp> = ({
-  object = {
-    addtionalComments: "",
-    notBeneficial: "",
-  },
-}) => {
+export const DROPDOWN: React.FC<dropdownProps> = ({ object }) => {
   return (
     <div className="flex justify-center">
       <div className="grid w-11/12 grid-cols-2">
