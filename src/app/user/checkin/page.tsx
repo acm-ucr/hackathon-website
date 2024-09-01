@@ -1,7 +1,7 @@
 import ProtectedPage from "@/components/ProtectedPage";
 import CheckinPage from "@/components/user/CheckIn";
 
-const Page = () => {
+const Page: React.FC = () => {
   return (
     <ProtectedPage
       title="User | CheckIn"
