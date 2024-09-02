@@ -2,21 +2,24 @@ import Checkbox from "@/components/Checkbox";
 import { AVAILABILITY } from "../form/Information";
 import { generateSelect, generateStatus } from "./Columns";
 import { STATUSES } from "@/data/Statuses";
-import { ColumnDef, CellContext } from "@tanstack/react-table";
 import { Tags } from "@/types/dashboard";
+import { ColumnDef, CellContext } from "@tanstack/react-table";
 
-type Mentor = {
+type Volunteer = {
   name: string;
   email: string;
+  phone: string;
   discord: string;
+  major: string;
+  grade: string;
   availability: string[];
-  response: string;
+  gender: string;
+  shirt: string;
 };
 
 type dropdownProps = {
   object: {
     availability: string[];
-    response: string;
   };
 };
 
@@ -31,7 +34,7 @@ export const TAGS: Tags[] = [
   },
 ];
 
-export const COLUMNS: ColumnDef<Mentor, string>[] = [
+export const COLUMNS: ColumnDef<Volunteer, string>[] = [
   generateSelect(),
   {
     accessorKey: "name",
@@ -39,27 +42,27 @@ export const COLUMNS: ColumnDef<Mentor, string>[] = [
     meta: { width: "w-[28%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props: CellContext<Mentor, Mentor["name"]>) => (
+    cell: (props: CellContext<Volunteer, Volunteer["name"]>) => (
       <div>{props.getValue()}</div>
     ),
   },
   {
     accessorKey: "email",
     header: "Email",
-    meta: { width: "w-[35%]" },
+    meta: { width: "w-[30%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props: CellContext<Mentor, Mentor["email"]>) => (
+    cell: (props: CellContext<Volunteer, Volunteer["email"]>) => (
       <div>{props.getValue()}</div>
     ),
   },
   {
     accessorKey: "discord",
     header: "Discord",
-    meta: { width: "w-[20%]" },
+    meta: { width: "w-[25%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
-    cell: (props: CellContext<Mentor, Mentor["discord"]>) => (
+    cell: (props: CellContext<Volunteer, Volunteer["discord"]>) => (
       <div>{props.getValue()}</div>
     ),
   },
@@ -68,19 +71,16 @@ export const COLUMNS: ColumnDef<Mentor, string>[] = [
 
 export const DROPDOWN: React.FC<dropdownProps> = ({ object }) => {
   return (
-    <>
-      <div className="flex justify-center">
-        <div className="grid w-11/12 grid-flow-col grid-rows-4">
-          {AVAILABILITY.map((text, index) => (
-            <Checkbox
-              toggle={object.availability.includes(text)}
-              text={text}
-              key={index}
-            />
-          ))}
-        </div>
+    <div className="flex justify-center">
+      <div className="grid w-11/12 grid-flow-col grid-rows-4">
+        {AVAILABILITY.map((text, index) => (
+          <Checkbox
+            toggle={object.availability.includes(text)}
+            text={text}
+            key={index}
+          />
+        ))}
       </div>
-      <p className="ml-5 mt-3">{object.response}</p>
-    </>
+    </div>
   );
 };

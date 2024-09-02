@@ -19,6 +19,7 @@ const syncStatsWithDatabase = async () => {
     updateRoleCounts("committees"),
     updateRoleCounts("sponsors"),
     updateRoleCounts("admins"),
+    updateRoleCounts("panels"),
     updateRoleCounts("teams"),
   ]);
 };
