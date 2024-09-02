@@ -69,7 +69,13 @@ export const SIZES: Record<sizesShort, sizes> = {
   },
 };
 
-type label = "Vegan" | "Lactose Intolerant" | "No Gluten" | "Vegetarian" | "Nut Allergy" | "Halal";
+type label =
+  | "Vegan"
+  | "Lactose Intolerant"
+  | "No Gluten"
+  | "Vegetarian"
+  | "Nut Allergy"
+  | "Halal";
 type dietLong =
   | "Vegan"
   | "Lactose Intolerant"
