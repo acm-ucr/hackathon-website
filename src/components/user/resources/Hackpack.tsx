@@ -37,9 +37,9 @@ const Hackpack = ({ text, techs, link, description }: props) => {
             {tech}
           </div>
         ))}
-
-        <p className="mt-2">{description}</p>
       </div>
+
+      <p className="mt-2">{description}</p>
     </div>
   );
 };
