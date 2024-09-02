@@ -55,22 +55,22 @@ export const DIETS = {
     className: "fill-hackathon-tags-pink-text",
     fill: "bg-hackathon-tags-pink-text",
   },
-  Lactose: {
+  "Lactose Intolerant": {
     label: "Lactose Intolerant",
     className: "fill-hackathon-yellow-100",
     fill: "bg-hackathon-yellow-100",
   },
-  Gluten: {
+  "No Glutten": {
     label: "No Gluten",
     className: "fill-hackathon-green-200",
     fill: "bg-hackathon-green-200",
   },
-  Vegitarian: {
+  Vegetarian: {
     label: "Vegetarian",
     className: "fill-hackathon-tags-red-text",
     fill: "bg-hackathon-tags-red-text",
   },
-  Nut: {
+  "Nut Allergy": {
     label: "Nut Allergy",
     className: "fill-hackathon-tags-purple-text",
     fill: "bg-hackathon-tags-purple-text",
@@ -83,15 +83,15 @@ export const DIETS = {
 };
 
 export const SCHOOLS = {
-  pink: {
-    label: null,
+  "New York University": {
+    label: "NYU",
     className: "fill-hackathon-tags-pink-text",
     fill: "bg-hackathon-tags-pink-text",
   },
-  blue: {
-    label: null,
-    className: "fill-hackathon-tags-blue-text",
-    fill: "bg-hackathon-tags-blue-text",
+  "University of California, Riverside": {
+    label: "UCR",
+    className: "fill-hackathon-tags-teal-text",
+    fill: "bg-hackathon-tags-teal-text",
   },
   yellow: {
     label: null,

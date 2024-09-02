@@ -33,7 +33,7 @@ export const GET = async () => {
       panels,
       admins,
     } = statistics.data();
-    console.log(statistics.data());
+
     const attendees = {};
 
     events.forEach((doc) => {
