@@ -3,11 +3,24 @@ import { Resend, CreateEmailResponse } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY as string);
 
+type ids = "confirmation" | "acceptance" | "rejection";
+
+type positions =
+  | "admins"
+  | "committees"
+  | "judges"
+  | "mentors"
+  | "volunteers"
+  | "participants"
+  | "interests"
+  | "sponsors"
+  | "panels"
+  | "leads";
 interface params {
   email: string;
-  id: string;
+  id: ids;
   name: string;
-  position: string;
+  position: positions;
   subject: string;
   preview: string;
 }
