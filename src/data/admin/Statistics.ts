@@ -69,7 +69,20 @@ export const SIZES: Record<sizesShort, sizes> = {
   },
 };
 
-export const DIETS = {
+type label = "Vegan" | "Lactose Intolerant" | "No Gluten" | "Vegetarian" | "Nut Allergy" | "Halal";
+type dietLong =
+  | "Vegan"
+  | "Lactose Intolerant"
+  | "No Gluten"
+  | "Vegetarian"
+  | "Nut Allergy"
+  | "Halal";
+interface diets {
+  label: dietLong;
+  className: string;
+  fill: string;
+}
+export const DIETS: Record<label, diets> = {
   Vegan: {
     label: "Vegan",
     className: "fill-hackathon-tags-pink-text",
@@ -80,7 +93,7 @@ export const DIETS = {
     className: "fill-hackathon-yellow-100",
     fill: "bg-hackathon-yellow-100",
   },
-  "No Glutten": {
+  "No Gluten": {
     label: "No Gluten",
     className: "fill-hackathon-green-200",
     fill: "bg-hackathon-green-200",
@@ -112,20 +125,5 @@ export const SCHOOLS = {
     label: "UCR",
     className: "fill-hackathon-tags-teal-text",
     fill: "bg-hackathon-tags-teal-text",
-  },
-  yellow: {
-    label: null,
-    className: "fill-hackathon-tags-yellow-text",
-    fill: "bg-hackathon-tags-yellow-text",
-  },
-  green: {
-    label: null,
-    className: "fill-hackathon-tags-green-text",
-    fill: "bg-hackathon-tags-green-text",
-  },
-  orange: {
-    label: null,
-    className: "fill-hackathon-tags-orange-text",
-    fill: "bg-hackathon-tags-orange-text",
   },
 };

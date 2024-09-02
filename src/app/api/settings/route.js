@@ -73,7 +73,7 @@ const updateRoleCounts = async (role) => {
     "Vegan",
     "Vegetarian",
     "Nut Allergy",
-    "No Glutten",
+    "No Gluten",
     "Lactose Intolerant",
   ];
   const schoolOptions = [
