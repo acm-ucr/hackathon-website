@@ -1,10 +1,9 @@
 import View from "@/components/admin/dashboards/dashboard/View";
 import { generateSelect, generateStatus } from "./Columns";
-import  {Tag}   from "@/components/admin/Tag";
+import { Tag } from "@/components/admin/Tag";
 import { COLORS } from "@/data/Tags";
 import { STATUSES } from "@/data/Statuses";
 import { CellContext, ColumnDef } from "@tanstack/react-table";
-
 
 export const TAGS = [
   {
@@ -17,24 +16,18 @@ export const TAGS = [
   },
 ];
 
-
-
-
 type Panelist = {
   name: string;
   email: string;
   title: string;
   panelist: string;
   photo: string;
-}
+};
 
+type ColorType = string & keyof typeof COLORS;
 
-
-
-
-
-export const COLUMNS: (ColumnDef <Panelist, string> &
-  {searchable?: boolean;
+export const COLUMNS: (ColumnDef<Panelist, string> & {
+  searchable?: boolean;
 })[] = [
   generateSelect(),
   {
@@ -56,7 +49,7 @@ export const COLUMNS: (ColumnDef <Panelist, string> &
     filterFn: "includesString",
     searchable: true,
     cell: (props: CellContext<Panelist, Panelist["email"]>) => (
-     <div>{props.getValue()}</div>
+      <div>{props.getValue()}</div>
     ),
   },
   {
@@ -75,7 +68,19 @@ export const COLUMNS: (ColumnDef <Panelist, string> &
     header: "Panelist",
     meta: { width: "w-[15%]" },
     cell: (props: CellContext<Panelist, Panelist["panelist"]>) => {
-   return <Tag text={props.getValue()} color={[props.getValue()]} />
+      const status = TAGS.find((tag) => tag.text === props.getValue());
+      const color = status ? COLORS[status.text as ColorType] : undefined;
+
+      return (
+        <Tag
+          color={color}
+          text={status?.text || ""}
+          statuses={{
+            accept: "Accepted",
+            reject: "Rejected",
+          }}
+        />
+      );
     },
   },
   generateStatus(STATUSES),
@@ -84,7 +89,8 @@ export const COLUMNS: (ColumnDef <Panelist, string> &
     header: "Photo",
     meta: { width: "w-[8%]" },
     enableSorting: false,
-    cell: (props: CellContext<Panelist, Panelist["photo"]>) => 
+    cell: (props: CellContext<Panelist, Panelist["photo"]>) => (
       <View src={props.getValue()} title="Photo" />
+    ),
   },
 ];

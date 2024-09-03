@@ -1,19 +1,8 @@
-export type TagProps = React.HtmlHTMLAttributes<HTMLDivElement> & {
-  color: {
-    background: string;
-    text: string;
-    hover: string;
-  };
-  text: string | number;
-  onClick?: () => void;
-  className?: string;
-  statuses?: { [key: string | number]: string };
-};
-export const Tag: React.FC<TagProps> = ({
+export const Tag = ({
   color,
   text,
-  onClick,
-  className,
+  onClick = () => {},
+  className = "",
   statuses = {},
 }) => {
   return (
@@ -28,3 +17,5 @@ export const Tag: React.FC<TagProps> = ({
     </div>
   );
 };
+
+export default Tag;
