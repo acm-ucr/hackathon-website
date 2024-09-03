@@ -1,32 +1,38 @@
 import { db } from "@/utils/firebase";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 
-type Status = {
-  pending: number;
-  accepted: number;
-  rejected: number;
-};
-
-type Sizes = {
-  XS?: number;
-  S?: number;
-  M?: number;
-  L?: number;
-  XL?: number;
-  XXL?: number;
-};
-
-interface Stats {
-  teams: Status | Sizes;
-  participants: Status | Sizes;
-  volunteers: Status | Sizes;
-  judges: Status | Sizes;
-  mentors: Status | Sizes;
-  committees: Status | Sizes;
-  sponsors: Status | Sizes;
-  panels: Status | Sizes;
-  admins: Status | Sizes;
+enum Status {
+  pending = 0,
+  accepted = 1,
+  rejected = -1,
 }
+
+type Statuses = Record<keyof typeof Status, Status>;
+
+enum Size {
+  XS = "XS",
+  S = "S",
+  M = "M",
+  L = "L",
+  XL = "XL",
+  XXL = "XXL",
+}
+
+type Sizes = Record<Size, number | undefined>;
+
+enum StatsCategory {
+  Teams = "teams",
+  Participants = "participants",
+  Volunteers = "volunteers",
+  Judges = "judges",
+  Mentors = "mentors",
+  Committees = "committees",
+  Sponsors = "sponsors",
+  Panels = "panels",
+  Admins = "admins",
+}
+
+type Stats = Record<StatsCategory, Sizes | Statuses>;
 
 type Event = {
   attendance: number;
@@ -58,58 +64,58 @@ export const getStats = async () => {
     attendees[name] = attendance;
   });
 
-  const users = {
-    admins,
-    participants,
-    teams,
-    judges,
-    volunteers,
-    mentors,
-    committees,
-    sponsors,
-    panels,
+  const users: Record<StatsCategory, Sizes | Statuses> = {
+    [StatsCategory.Admins]: admins,
+    [StatsCategory.Participants]: participants,
+    [StatsCategory.Teams]: teams,
+    [StatsCategory.Judges]: judges,
+    [StatsCategory.Volunteers]: volunteers,
+    [StatsCategory.Mentors]: mentors,
+    [StatsCategory.Committees]: committees,
+    [StatsCategory.Sponsors]: sponsors,
+    [StatsCategory.Panels]: panels,
   };
 
   const sizeData = ["XS", "S", "M", "L", "XL", "XXL"];
   const statusData = ["1", "0", "-1"];
 
   const defaultShirts: Sizes = {
-    XS: 0,
-    S: 0,
-    M: 0,
-    L: 0,
-    XL: 0,
-    XXL: 0,
+    [Size.XS]: 0,
+    [Size.S]: 0,
+    [Size.M]: 0,
+    [Size.L]: 0,
+    [Size.XL]: 0,
+    [Size.XXL]: 0,
   };
 
-  const size = {
-    teams: { ...defaultShirts },
-    participants: { ...defaultShirts },
-    volunteers: { ...defaultShirts },
-    judges: { ...defaultShirts },
-    mentors: { ...defaultShirts },
-    committees: { ...defaultShirts },
-    sponsors: { ...defaultShirts },
-    panels: { ...defaultShirts },
-    admins: { ...defaultShirts },
+  const size: Record<StatsCategory, Sizes> = {
+    [StatsCategory.Teams]: defaultShirts,
+    [StatsCategory.Participants]: defaultShirts,
+    [StatsCategory.Volunteers]: defaultShirts,
+    [StatsCategory.Judges]: defaultShirts,
+    [StatsCategory.Mentors]: defaultShirts,
+    [StatsCategory.Committees]: defaultShirts,
+    [StatsCategory.Sponsors]: defaultShirts,
+    [StatsCategory.Panels]: defaultShirts,
+    [StatsCategory.Admins]: defaultShirts,
   };
 
-  const defaultRoles: Status = {
-    pending: 0,
-    accepted: 0,
-    rejected: 0,
+  const defaultRoles: Statuses = {
+    pending: Status.pending,
+    accepted: Status.accepted,
+    rejected: Status.rejected,
   };
 
-  const status = {
-    teams: { ...defaultRoles },
-    participants: { ...defaultRoles },
-    volunteers: { ...defaultRoles },
-    judges: { ...defaultRoles },
-    mentors: { ...defaultRoles },
-    committees: { ...defaultRoles },
-    sponsors: { ...defaultRoles },
-    panels: { ...defaultRoles },
-    admins: { ...defaultRoles },
+  const status: Record<StatsCategory, Statuses> = {
+    [StatsCategory.Teams]: defaultRoles,
+    [StatsCategory.Participants]: defaultRoles,
+    [StatsCategory.Volunteers]: defaultRoles,
+    [StatsCategory.Judges]: defaultRoles,
+    [StatsCategory.Mentors]: defaultRoles,
+    [StatsCategory.Committees]: defaultRoles,
+    [StatsCategory.Sponsors]: defaultRoles,
+    [StatsCategory.Panels]: defaultRoles,
+    [StatsCategory.Admins]: defaultRoles,
   };
 
   Object.entries(users).forEach(([group, entries]) => {
@@ -121,7 +127,7 @@ export const getStats = async () => {
 
     status[role] = Object.fromEntries(
       Object.entries(entries).filter(([key]) => statusData.includes(key)),
-    ) as Status;
+    ) as Statuses;
   });
 
   return { users: { status, size }, events: attendees };
