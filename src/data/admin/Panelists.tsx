@@ -94,4 +94,3 @@ export const COLUMNS: (ColumnDef<Panelist, string> & {
     ),
   },
 ];
-// TESTING
