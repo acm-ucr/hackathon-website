@@ -72,8 +72,8 @@ export const COLUMNS: (ColumnDef<Panelist, string> & {
       const color = status ? COLORS[status.text as ColorType] : undefined;
       return (
         <Tag
-          color={color}
-          text={status?.text || ""}
+          color={color || "green"}
+          text={status?.text || "Error"}
           statuses={{
             accept: "Accepted",
             reject: "Rejected",
