@@ -14,7 +14,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@auth/firebase-adapter": "^1.0.3",
+    "@auth/firebase-adapter": "^2.4.2",
     "@icons-pack/react-simple-icons": "^10.0.0",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
@@ -36,8 +36,8 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "compressorjs": "^1.2.1",
-    "firebase": "^10.8.0",
-    "firebase-admin": "^11.11.0",
+    "firebase": "^10.13.1",
+    "firebase-admin": "^11.11.1",
     "gray-matter": "^4.0.3",
     "input-otp": "^1.2.4",
     "jszip": "^3.10.1",
