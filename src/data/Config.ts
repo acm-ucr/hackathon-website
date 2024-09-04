@@ -5,7 +5,6 @@ type config = {
   description: string;
   length: string;
   date: Date;
-  year: string;
   end: Date;
   packet: string;
   devpost: string;
@@ -23,7 +22,6 @@ const data: config = {
   description: "DESCRIPTION",
   length: "HACKATHON_LENGTH",
   date: new Date("2024-04-12T13:20:00"),
-  year: "2024",
   end: new Date("2024-04-12T13:20:00"),
   packet: "",
   devpost: "https://devpost.com/",
