@@ -4,9 +4,9 @@ import { useState } from "react";
 import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Mentors";
 import { useSession } from "next-auth/react";
-import { api } from "@/utils/api";
-import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
+import { schema } from "@/schemas/mentor";
+import { submit } from "@/utils/form";
 
 const Mentor = () => {
   const { data: session } = useSession();
@@ -19,18 +19,14 @@ const Mentor = () => {
     form: "mentors",
   });
 
-  const handleSubmit = (setLoading, setState) => {
-    api({
-      method: "POST",
+  const onSubmit = async (setLoading, setState) => {
+    await submit({
+      data: mentor,
+      schema,
       url: "/api/dashboard/mentors",
-      body: mentor,
-    })
-      .then(() => toaster(`Submitted successfully!`, "success"))
-      .catch(() => toaster(`Internal Server Error`, "error"))
-      .finally(() => {
-        setLoading(false);
-        setState(2);
-      });
+      setLoading,
+      setState,
+    });
   };
   return (
     <Form
@@ -38,7 +34,7 @@ const Mentor = () => {
       object={mentor}
       setObject={setMentor}
       header="MENTOR APPLICATION"
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
       statuses={STATUSES}
     />
   );
