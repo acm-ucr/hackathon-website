@@ -44,12 +44,17 @@ jobs:
       - name: Use ACM Build
         uses: acm-ucr/build@v2
 
+      - name: List files
+        run: ls -al
+
       - name: Save build folder
         uses: actions/upload-artifact@v4
         with:
           name: build
           if-no-files-found: error
           path: ./.next
+
+     
     env:
       NEXT_PUBLIC_FIREBASE_API_KEY: ${{secrets.NEXT_PUBLIC_FIREBASE_API_KEY}}
       NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN}}
