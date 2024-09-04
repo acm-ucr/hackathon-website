@@ -4,9 +4,9 @@ import { useState } from "react";
 import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Panelists";
 import { useSession } from "next-auth/react";
-import { api } from "@/utils/api";
-import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
+import { schema } from "@/schemas/panel";
+import { submit } from "@/utils/form";
 
 const Panel = () => {
   const { data: session } = useSession();
@@ -19,18 +19,14 @@ const Panel = () => {
     form: "panels",
   });
 
-  const handleSubmit = (setLoading, setState) => {
-    api({
-      method: "POST",
-      url: "/api/dashboard/panels",
-      body: panel,
-    })
-      .then(() => toaster(`✅ Submitted successfully!`))
-      .catch(() => toaster(`❌ Internal Server Error`))
-      .finally(() => {
-        setLoading(false);
-        setState(2);
-      });
+  const onSubmit = async (setLoading, setState) => {
+    await submit({
+      data: panel,
+      schema,
+      url: "/api/dashboard/panelists",
+      setLoading,
+      setState,
+    });
   };
 
   return (
@@ -39,7 +35,7 @@ const Panel = () => {
       object={panel}
       setObject={setPanel}
       header="PANEL APPLICATIONS"
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
       statuses={STATUSES}
     />
   );

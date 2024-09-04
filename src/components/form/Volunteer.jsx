@@ -4,9 +4,9 @@ import { useState } from "react";
 import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Volunteers";
 import { useSession } from "next-auth/react";
-import { api } from "@/utils/api";
-import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
+import { schema } from "@/schemas/volunteer";
+import { submit } from "@/utils/form";
 
 const Volunteer = () => {
   const { data: session } = useSession();
@@ -19,18 +19,14 @@ const Volunteer = () => {
     form: "volunteers",
   });
 
-  const handleSubmit = (setLoading, setState) => {
-    api({
-      method: "POST",
+  const onSubmit = async (setLoading, setState) => {
+    await submit({
+      data: volunteer,
+      schema,
       url: "/api/dashboard/volunteers",
-      body: volunteer,
-    })
-      .then(() => toaster(`Submitted successfully!`, "success"))
-      .catch(() => toaster(`Internal Server Error`, "error"))
-      .finally(() => {
-        setLoading(false);
-        setState(2);
-      });
+      setLoading,
+      setState,
+    });
   };
 
   return (
@@ -39,7 +35,7 @@ const Volunteer = () => {
       object={volunteer}
       setObject={setVolunteer}
       header="VOLUNTEER APPLICATION"
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
       statuses={STATUSES}
     />
   );
