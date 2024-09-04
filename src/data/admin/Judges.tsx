@@ -88,7 +88,7 @@ export const COLUMNS: ColumnDef<Judge, string>[] = [
         zip.generateAsync({ type: "blob" }).then((blob) => {
           const url = URL.createObjectURL(blob);
           save(
-            `${data.name.replace(" ", "_")}_${data.year}_judges_images.zip`,
+            `${data.name.replace(" ", "_")}_${data.date.getFullYear()}_judges_images.zip`,
             url,
           );
           URL.revokeObjectURL(url);
