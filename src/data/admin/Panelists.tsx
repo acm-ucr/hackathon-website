@@ -70,7 +70,6 @@ export const COLUMNS: (ColumnDef<Panelist, string> & {
     cell: (props: CellContext<Panelist, Panelist["panelist"]>) => {
       const status = TAGS.find((tag) => tag.text === props.getValue());
       const color = status ? COLORS[status.text as ColorType] : undefined;
-
       return (
         <Tag
           color={color}
