@@ -4,9 +4,9 @@ import { useState } from "react";
 import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Judge";
 import { useSession } from "next-auth/react";
-import { api } from "@/utils/api";
-import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
+import { schema } from "@/schemas/judge";
+import { submit } from "@/utils/form";
 
 const Judge = () => {
   const { data: session } = useSession();
@@ -19,18 +19,14 @@ const Judge = () => {
     form: "judges",
   });
 
-  const handleSubmit = (setLoading, setState) => {
-    api({
-      method: "POST",
+  const onSubmit = async (setLoading, setState) => {
+    await submit({
+      data: judge,
+      schema,
       url: "/api/dashboard/judges",
-      body: judge,
-    })
-      .then(() => toaster(`Submitted successfully!`, "success"))
-      .catch(() => toaster(`Internal Server Error`, "error"))
-      .finally(() => {
-        setLoading(false);
-        setState(2);
-      });
+      setLoading,
+      setState,
+    });
   };
 
   return (
@@ -39,7 +35,7 @@ const Judge = () => {
       object={judge}
       setObject={setJudge}
       header="JUDGE APPLICATION"
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
       statuses={STATUSES}
     />
   );
