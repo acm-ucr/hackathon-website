@@ -11,8 +11,23 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
-const Chart = ({ title, data }) => {
+const Chart = ({ title, status = null, data }) => {
+  console.log("status", status);
+  console.log("chart", data);
+  console.log(ROLES[status]);
   const ITEMS = { ...ROLES, ...SIZES, ...DIETS, ...SCHOOLS };
+
+  const statusData =
+    status !== null
+      ? [
+          {
+            type: ROLES[status].label,
+            value: 1,
+            className: ROLES[status].className,
+            fill: ROLES[status].fill,
+          },
+        ]
+      : [];
 
   const chartData = Object.entries(data).map(([type, value]) => ({
     type: ITEMS[type].label,
@@ -58,32 +73,42 @@ const Chart = ({ title, data }) => {
                 content={({ viewBox }) => {
                   if (viewBox && "cx" in viewBox && "cy" in viewBox) {
                     return (
-                      <text
-                        x={viewBox.cx}
-                        y={viewBox.cy}
-                        textAnchor="middle"
-                        dominantBaseline="middle"
-                      >
-                        <tspan
+                      <>
+                        <text
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-foreground text-3xl font-bold"
+                          textAnchor="middle"
+                          dominantBaseline="middle"
                         >
-                          {total.toLocaleString()}
-                        </tspan>
-                        <tspan
-                          x={viewBox.cx}
-                          y={(viewBox.cy || 0) + 24}
-                          className="fill-muted-foreground"
-                        >
-                          {title}
-                        </tspan>
-                      </text>
+                          <tspan
+                            x={viewBox.cx}
+                            y={viewBox.cy}
+                            className="fill-foreground text-3xl font-bold"
+                          >
+                            {total.toLocaleString()}
+                          </tspan>
+                          <tspan
+                            x={viewBox.cx}
+                            y={(viewBox.cy || 0) + 24}
+                            className="fill-muted-foreground"
+                          >
+                            {title}
+                          </tspan>
+                        </text>
+                      </>
                     );
                   }
                 }}
               />
             </Pie>
+            <Pie
+              data={statusData}
+              dataKey="value"
+              nameKey="type"
+              innerRadius={50}
+              outerRadius={55}
+              strokeWidth={5}
+            />
           </PieChart>
         </ChartContainer>
       </CardContent>

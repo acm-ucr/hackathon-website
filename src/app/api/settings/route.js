@@ -66,7 +66,7 @@ const updateRoleCounts = async (role) => {
     getRoleCount(role, 0),
     getRoleCount(role, 1),
   ]);
-  // const type = [ 1, 0 ,-1]
+
   const shirtSizes = ["XS", "S", "M", "L", "XL", "XXL"];
   const dietOptions = [
     "Halal",
