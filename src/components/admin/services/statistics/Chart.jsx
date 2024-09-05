@@ -73,7 +73,6 @@ const Chart = ({ title, status = null, data }) => {
                 content={({ viewBox }) => {
                   if (viewBox && "cx" in viewBox && "cy" in viewBox) {
                     return (
-                      <>
                         <text
                           x={viewBox.cx}
                           y={viewBox.cy}
@@ -95,7 +94,6 @@ const Chart = ({ title, status = null, data }) => {
                             {title}
                           </tspan>
                         </text>
-                      </>
                     );
                   }
                 }}
