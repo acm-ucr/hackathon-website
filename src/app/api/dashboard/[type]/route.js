@@ -248,19 +248,6 @@ export const PUT = async (req, { params }) => {
               [`${params}.participants.school.0.${school}`]: increment(-1),
             }));
 
-          // admin: {
-          //   status :{1: 10, 0: 2, -1:0}
-
-          //   shirt: {
-          //     1:{S: 2, M: 10 L:10},
-          //     0:{S: 0, M: 3 L:0}
-          //       }
-          //   diet: {
-          //         1:{halal: 1, Vegan: 10},
-          //         0:{halal: 1, Vegan: 10}
-          //       }
-          //     }
-
           status === -1 &&
             (await updateDoc(doc(db, "statistics", "statistics"), {
               [`${params.type}.-1`]: increment(1),

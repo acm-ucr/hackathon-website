@@ -42,7 +42,7 @@ const Charts = ({ counts }) => {
                     }
                   }
                   return null;
-                })
+                }),
             )}
           </div>
         </div>
