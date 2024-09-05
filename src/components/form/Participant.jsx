@@ -4,9 +4,9 @@ import { useState } from "react";
 import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Participant";
 import { useSession } from "next-auth/react";
-import { api } from "@/utils/api";
-import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
+import { schema } from "@/schemas/participant";
+import { submit } from "@/utils/form";
 
 const Participant = () => {
   const { data: session } = useSession();
@@ -18,18 +18,14 @@ const Participant = () => {
     form: "participants",
   });
 
-  const handleSubmit = (setLoading, setState) => {
-    api({
-      method: "POST",
+  const onSubmit = async (setLoading, setState) => {
+    await submit({
+      data: participant,
+      schema,
       url: "/api/dashboard/participants",
-      body: participant,
-    })
-      .then(() => toaster(`Submitted successfully!`, "success"))
-      .catch(() => toaster(`Internal Server Error`, "error"))
-      .finally(() => {
-        setLoading(false);
-        setState(2);
-      });
+      setLoading,
+      setState,
+    });
   };
 
   return (
@@ -38,7 +34,7 @@ const Participant = () => {
       object={participant}
       setObject={setParticipant}
       header="HACKER APPLICATION"
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
       statuses={STATUSES}
     />
   );
