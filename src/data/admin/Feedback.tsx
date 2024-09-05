@@ -1,11 +1,13 @@
+import { CellContext, ColumnDef } from "@tanstack/react-table";
 import { generateSelect, generateStatus } from "./Columns";
+import { Tags } from "@/types/dashboard";
 
 export const STATUSES = {
   1: "read",
   0: "unread",
 };
 
-export const TAGS = [
+export const TAGS: Tags[] = [
   {
     text: "read",
     value: 1,
@@ -16,36 +18,58 @@ export const TAGS = [
   },
 ];
 
-export const COLUMNS = [
+type Feedback = {
+  rating: string;
+  eventSource: string;
+  improvements: string;
+  helpful: string;
+};
+
+type dropdownProps = {
+  object: {
+    additionalComments: string;
+    notBeneficial: string;
+  };
+};
+
+export const COLUMNS: ColumnDef<Feedback, string>[] = [
   generateSelect(),
   {
     accessorKey: "rating",
     header: "Rating",
     meta: { width: "w-[8%]" },
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Feedback, Feedback["rating"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "eventSource",
     header: "Event Source",
     meta: { width: "w-[15%]" },
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Feedback, Feedback["eventSource"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "improvements",
     header: "Improvements",
     meta: { width: "w-[31%]" },
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Feedback, Feedback["improvements"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "helpful",
     header: "Helpful",
     meta: { width: "w-[31%]" },
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Feedback, Feedback["helpful"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   generateStatus(STATUSES),
 ];
 
-export const DROPDOWN = ({ object }) => {
+export const DROPDOWN: React.FC<dropdownProps> = ({ object }) => {
   return (
     <div className="flex justify-center">
       <div className="grid w-11/12 grid-cols-2">
