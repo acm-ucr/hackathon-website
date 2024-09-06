@@ -70,8 +70,8 @@ const CheckIn = () => {
   return (
     <div className="flex h-full flex-col gap-3 py-4 font-poppins">
       <Title title="Check In" />
-      <div className="grid grid-cols-1">
-        <div className="flex flex-col items-center gap-3 p-3">
+      <div className="grid grid-cols-1 overflow-auto">
+        <div className="flex flex-col gap-3 overflow-hidden py-3">
           {events && (
             <Select
               items={events}
@@ -82,14 +82,17 @@ const CheckIn = () => {
             />
           )}
           <Scanner setResult={setResult} />
-          <div>{code && code.split("&")[2]}</div>
-          <Button
-            text="Check In"
-            color="green"
-            onClick={handleCheckIn}
-            size="text-xl"
-          />
         </div>
+        <div>{code && code.split("&")[2]}</div>
+      </div>
+
+      <div className="flex flex-shrink-0 justify-center p-6">
+        <Button
+          text="Check in"
+          color="green"
+          onClick={handleCheckIn}
+          size="text-xl"
+        />
       </div>
     </div>
   );

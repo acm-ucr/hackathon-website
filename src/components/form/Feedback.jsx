@@ -3,9 +3,9 @@
 import { useState } from "react";
 import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Feedback";
-import { api } from "@/utils/api";
-import toaster from "@/utils/toaster";
 import { useSession } from "next-auth/react";
+import { schema } from "@/schemas/feedback";
+import { submit } from "@/utils/form";
 
 const Feedback = () => {
   const { data: session } = useSession();
@@ -15,18 +15,14 @@ const Feedback = () => {
     form: "feedback",
   });
 
-  const handleSubmit = (setLoading, setState) => {
-    api({
-      method: "POST",
+  const onSubmit = async (setLoading, setState) => {
+    await submit({
+      data: feedback,
+      schema,
       url: "/api/dashboard/feedback",
-      body: feedback,
-    })
-      .then(() => toaster(`Submitted successfully!`, "success"))
-      .catch(() => toaster(`Internal Server Error`, "error"))
-      .finally(() => {
-        setLoading(false);
-        setState(2);
-      });
+      setLoading,
+      setState,
+    });
   };
 
   return (
@@ -35,7 +31,7 @@ const Feedback = () => {
       object={feedback}
       setObject={setFeedback}
       header="FEEDBACK APPLICATION"
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
       bypass={true}
     />
   );
