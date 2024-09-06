@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Title from "../../Title";
 import Scanner from "./Scanner";
 import Select from "@/components/Select";
@@ -7,22 +7,17 @@ import Button from "../../Button";
 import toaster from "@/utils/toaster";
 import { api } from "@/utils/api";
 import { getEvents, getUser } from "./actions";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const CheckIn = () => {
   const [event, setEvent] = useState({ name: "No events" });
   const [code, setCode] = useState("");
-  const [user, setUser] = useState(null);
+  const queryClient = useQueryClient();
 
   const { data: events } = useQuery({
     queryKey: ["events"],
     queryFn: async () => getEvents(),
-  });
-
-  const { data: userData } = useQuery({
-    queryKey: ["/adin/checkin/user", user],
-    queryFn: () => getUser(user),
-    enabled: !!user,
+    refetchOnWindowFocus: false,
   });
 
   const mutation = useMutation({
@@ -32,13 +27,11 @@ const CheckIn = () => {
         url: "/api/checkin",
         body,
       }),
-
     onSuccess: () => {
       toaster(`Checked in for ${event.name}`, "success");
     },
-
     onError: (error) => {
-      toaster("Error checking in!", "error");
+      toaster("Error checking in!", error);
     },
   });
 
@@ -54,32 +47,36 @@ const CheckIn = () => {
       toaster("Please select an event!", "error");
       return;
     }
-
-    if (code) {
+    if (!code) {
       toaster("Please scan a valid QR code!", "error");
       return;
     }
 
     const [userId, date] = code.split("&");
-    const delta = Math.round((new Date() - new Date(date)) / 1000);
+    const delta = Math.round(new Date() - new Date(date));
 
     if (delta < 5000) {
-      setUser(userId);
+      queryClient
+        .fetchQuery({
+          queryKey: ["/admin/checkin/user", userId],
+          queryFn: () => getUser(userId),
+          staleTime: 0,
+        })
+        .then((userData) => {
+          if (userData.includes(event.id)) {
+            toaster("Already Checked In!", "error");
+          } else {
+            mutation.mutate({ uid: userId, event: event.id, name: event.name });
+          }
+        })
+        .catch((error) => {
+          toaster("Error Fetching User Data!", "error");
+        });
     } else {
       toaster("Expired QR code!", "error");
       return;
     }
   };
-
-  useEffect(() => {
-    if (userData) {
-      if (userData.includes(event.id)) {
-        toaster("Already Checked In!", "error");
-      } else {
-        mutation.mutate({ uid: user, event: event.id, name: event.name });
-      }
-    }
-  }, [userData]);
 
   return (
     <div className="flex h-full flex-col gap-3 py-4 font-poppins">
