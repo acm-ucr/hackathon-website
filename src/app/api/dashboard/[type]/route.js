@@ -203,7 +203,7 @@ export const PUT = async (req, { params }) => {
       await Promise.all(
         objects.map(async (object) => {
           await updateDoc(doc(db, "users", object.uid), {
-            [`roles.${params.type}`]: status
+            [`roles.${params.type}`]: status,
           });
 
           const id = status === 1 ? "acceptance" : "rejection";
