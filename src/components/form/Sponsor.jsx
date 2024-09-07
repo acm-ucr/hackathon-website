@@ -4,9 +4,9 @@ import { useState } from "react";
 import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Sponsors";
 import { useSession } from "next-auth/react";
-import { api } from "@/utils/api";
-import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
+import { schema } from "@/schemas/sponsor";
+import { submit } from "@/utils/form";
 
 const Sponsor = () => {
   const { data: session } = useSession();
@@ -18,18 +18,14 @@ const Sponsor = () => {
     form: "sponsors",
   });
 
-  const handleSubmit = (setLoading, setState) => {
-    api({
-      method: "POST",
+  const onSubmit = async (setLoading, setState) => {
+    await submit({
+      data: sponsor,
+      schema,
       url: "/api/dashboard/sponsors",
-      body: sponsor,
-    })
-      .then(() => toaster(`Submitted successfully!`, "success"))
-      .catch(() => toaster(`Internal Server Error`, "error"))
-      .finally(() => {
-        setLoading(false);
-        setState(2);
-      });
+      setLoading,
+      setState,
+    });
   };
   return (
     <Form
@@ -37,7 +33,7 @@ const Sponsor = () => {
       object={sponsor}
       setObject={setSponsor}
       header="SPONSORSHIP INQUIRY"
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
       statuses={STATUSES}
       packet={true}
     />

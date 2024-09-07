@@ -1,8 +1,11 @@
 import Fault from "@/utils/error";
 import fs from "fs";
 import matter from "gray-matter";
-import { remark } from "remark";
-import html from "remark-html";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
+import rehypePrettyCode from "rehype-pretty-code";
 
 const getBlogPosts = () => {
   const directory = process.cwd() + "/src/engineering/";
@@ -19,7 +22,14 @@ const getBlogPosts = () => {
 };
 
 const convertMarkdownToHtml = async (content) =>
-  (await remark().use(html).process(content)).toString();
+  (
+    await unified()
+      .use(remarkParse)
+      .use(remarkRehype)
+      .use(rehypePrettyCode)
+      .use(rehypeStringify)
+      .process(content)
+  ).toString();
 
 const Page = async ({ params }) => {
   const article = await getBlogPosts();

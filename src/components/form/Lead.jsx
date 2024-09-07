@@ -4,9 +4,9 @@ import { useState } from "react";
 import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Leads";
 import { useSession } from "next-auth/react";
-import { api } from "@/utils/api";
-import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
+import { schema } from "@/schemas/lead";
+import { submit } from "@/utils/form";
 
 const Lead = () => {
   const { data: session } = useSession();
@@ -18,18 +18,14 @@ const Lead = () => {
     form: "leads",
   });
 
-  const handleSubmit = (setLoading, setState) => {
-    api({
-      method: "POST",
+  const onSubmit = async (setLoading, setState) => {
+    await submit({
+      data: lead,
+      schema,
       url: "/api/dashboard/leads",
-      body: lead,
-    })
-      .then(() => toaster(`✅ Submitted successfully!`))
-      .catch(() => toaster(`❌ Internal Server Error`))
-      .finally(() => {
-        setLoading(false);
-        setState(2);
-      });
+      setLoading,
+      setState,
+    });
   };
   return (
     <Form
@@ -37,7 +33,7 @@ const Lead = () => {
       object={lead}
       setObject={setLead}
       header="LEAD APPLICATION"
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
       statuses={STATUSES}
     />
   );

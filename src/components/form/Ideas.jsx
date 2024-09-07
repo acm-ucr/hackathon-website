@@ -3,9 +3,9 @@
 import { useState } from "react";
 import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Ideas";
-import { api } from "@/utils/api";
-import toaster from "@/utils/toaster";
 import { useSession } from "next-auth/react";
+import { schema } from "@/schemas/idea";
+import { submit } from "@/utils/form";
 
 const Ideas = () => {
   const { data: session } = useSession();
@@ -17,18 +17,14 @@ const Ideas = () => {
     form: "idea",
   });
 
-  const onSubmit = (setLoading, setState) => {
-    api({
-      method: "POST",
-      url: "/api/teams/ideas",
-      body: idea,
-    })
-      .then(() => toaster(`Submitted successfully!`, "success"))
-      .catch(() => toaster(`Internal Server Error`, "error"))
-      .finally(() => {
-        setLoading(false);
-        setState(2);
-      });
+  const onSubmit = async (setLoading, setState) => {
+    await submit({
+      data: idea,
+      schema,
+      url: "/api/dashboard/ideas",
+      setLoading,
+      setState,
+    });
   };
 
   return (

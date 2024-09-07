@@ -2,8 +2,29 @@ import { generateAffiliation, generateSelect, generateStatus } from "./Columns";
 import { AFFILIATIONS } from "../form/Information";
 import { ICONS } from "./Icons";
 import { STATUSES } from "@/data/Statuses";
+import { ColumnDef, CellContext } from "@tanstack/react-table";
+import { Tags } from "@/types/dashboard";
 
-export const TAGS = [
+type Committee = {
+  name: string;
+  email: string;
+  discord: string;
+  phone: string;
+  age: string;
+  gender: string;
+  school: string;
+  major: string;
+  grade: string;
+  shirt: string;
+  diet: string;
+  restriction: string;
+};
+
+type dropdownProps = {
+  object: Record<string, string[]>;
+};
+
+export const TAGS: Tags[] = [
   {
     text: "accept",
     value: 1,
@@ -14,7 +35,9 @@ export const TAGS = [
   },
 ];
 
-export const COLUMNS = [
+export const COLUMNS: (ColumnDef<Committee, string> & {
+  searchable?: boolean;
+})[] = [
   generateSelect(),
   {
     accessorKey: "name",
@@ -23,7 +46,9 @@ export const COLUMNS = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Committee, Committee["name"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "email",
@@ -32,7 +57,9 @@ export const COLUMNS = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Committee, Committee["email"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "discord",
@@ -41,13 +68,15 @@ export const COLUMNS = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Committee, Committee["discord"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   generateAffiliation(AFFILIATIONS),
   generateStatus(STATUSES),
 ];
 
-const attributes = [
+const attributes: string[] = [
   "email",
   "phone",
   "age",
@@ -60,7 +89,7 @@ const attributes = [
   "restriction",
 ];
 
-export const DROPDOWN = ({ object }) => {
+export const DROPDOWN: React.FC<dropdownProps> = ({ object }) => {
   return (
     <div className="flex items-center justify-center">
       <div className="grid w-11/12 grid-cols-3">
