@@ -10,10 +10,20 @@ const Schedule = ({ eventList }) => {
   const [filteredEvents, setFilteredEvents] = useState(eventList);
 
   const filterChange = (filterType) => {
-    if (filterType === "all") {
-      setFilteredEvents(events);
+    if (filterType === "hackweek") {
+      setFilteredEvents(
+        events.filter((event) => event.description.includes("#workshop")),
+      );
+    } else if (filterType === "hackathon") {
+      setFilteredEvents(
+        events.filter(
+          (event) =>
+            event.description.includes("#general") ||
+            event.description.includes("#food"),
+        ),
+      );
     } else {
-      setFilteredEvents(events.filter((event) => event.type === filterType));
+      setFilteredEvents(events);
     }
   };
 
