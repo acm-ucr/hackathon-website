@@ -1,8 +1,4 @@
-type props = {
-  title: string;
-};
-
-const Subtitle = ({ title }: props) => {
+const Subtitle = ({ title }: { title: string }) => {
   return (
     <div
       data-cy={`${title}-title`}
