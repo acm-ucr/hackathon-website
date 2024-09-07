@@ -68,12 +68,12 @@ export const COLUMNS: (ColumnDef<Panelist, string> & {
     header: "Panelist",
     meta: { width: "w-[15%]" },
     cell: (props: CellContext<Panelist, Panelist["panelist"]>) => {
-      const status = TAGS.find(() => props.getValue());
+      const status = TAGS.find((tag) => tag.text === props.getValue());
       const color = status ? COLORS[status.text as ColorType] : undefined;
       return (
         <Tag
-          color={color || "green"}
-          text={status?.text || "Error"}
+          color={color}
+          text={status?.text || ""}
           statuses={{
             accept: "Accepted",
             reject: "Rejected",
