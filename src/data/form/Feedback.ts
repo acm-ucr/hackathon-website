@@ -9,7 +9,7 @@ import {
 
 const RATE = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
-type Feilds = {
+type Fields = {
   description: Description;
   eventSource: SelectInput;
   helpful: TextareaInput;
@@ -28,7 +28,7 @@ type Attributes = {
   additionalComments: string;
 };
 
-export const FIELDS: Feilds = {
+export const FIELDS: Fields = {
   description: {
     input: "description",
     width: 12,
