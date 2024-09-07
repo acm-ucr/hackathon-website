@@ -1,12 +1,12 @@
 import ProtectedPage from "@/components/ProtectedPage";
 import Join from "@/components/user/join/Join";
 
-type teamIDProps = {
+type teamIdProps = {
   teamID: string;
 };
 
 type props = {
-  params: teamIDProps;
+  params: teamIdProps;
 };
 
 const Page = ({ params }: props) => {
