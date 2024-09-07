@@ -1,4 +1,4 @@
-import { STATUSES } from "@/data/Statuses";
+import { StatusMapping } from "@/data/Statuses";
 
 type color = {
   background: string;
@@ -6,24 +6,26 @@ type color = {
   hover: string;
 };
 
-const Tag = (props: {
+type props = {
   color: color;
   text: string;
   onClick?: () => void;
   classes?: string;
-  statuses?: typeof STATUSES;
-}) => {
+  statuses?: StatusMapping;
+};
+
+const Tag = ({ color, text, onClick, classes, statuses }: props) => {
   return (
     <div
-      data-cy={`${props.text}-tag`}
-      className={`${props.classes} ${props.color.background} ${props.color.text} ${
-        props.onClick && `hover:cursor-pointer ${props.color.hover}`
+      data-cy={`${text}-tag`}
+      className={`${classes} ${color.background} ${color.text} ${
+        onClick && `hover:cursor-pointer ${color.hover}`
       } m-0 w-fit whitespace-nowrap rounded px-2 py-0.5 text-xs md:text-sm`}
-      onClick={props.onClick}
+      onClick={onClick}
     >
-      {isNaN(Number(props.text))
-        ? props.text
-        : props.statuses?.[props.text as keyof typeof STATUSES]}
+      {isNaN(Number(text))
+        ? text
+        : statuses?.[text as keyof StatusMapping]}
     </div>
   );
 };
