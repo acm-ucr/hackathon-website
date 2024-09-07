@@ -23,9 +23,7 @@ const Tag = ({ color, text, onClick, classes, statuses }: props) => {
       } m-0 w-fit whitespace-nowrap rounded px-2 py-0.5 text-xs md:text-sm`}
       onClick={onClick}
     >
-      {isNaN(Number(text))
-        ? text
-        : statuses?.[text as keyof StatusMapping]}
+      {isNaN(Number(text)) ? text : statuses?.[text as keyof StatusMapping]}
     </div>
   );
 };
