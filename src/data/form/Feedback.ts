@@ -5,7 +5,7 @@ import {
   TextareaInput,
   SelectInput,
   Description,
-} from "../../types/forms";
+} from "@/src/types/forms";
 
 const RATE = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
