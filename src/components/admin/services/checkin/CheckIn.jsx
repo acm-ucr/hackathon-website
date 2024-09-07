@@ -53,7 +53,11 @@ const CheckIn = () => {
     }
 
     const [userId, date] = code.split("&");
-    const delta = Math.round(new Date() - new Date(date));
+    console.log("HELLO", process.env.NODE_ENV);
+    const delta =
+      process.env.NODE_ENV === "development"
+        ? Math.round(new Date() - new Date(date)) / 1000
+        : Math.round(new Date() - new Date(date));
 
     if (delta < 5000) {
       queryClient
