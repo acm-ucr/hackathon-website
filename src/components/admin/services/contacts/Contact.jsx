@@ -51,14 +51,14 @@ const Contact = ({ role, disabled, setDisabled }) => {
   };
 
   return (
-    <div className="lg:text-md grid w-full grid-cols-3 gap-0.5 rounded p-2 text-sm lg:w-1/2">
-      <Card key={role} className="min-w-[300px] flex-1">
+    <div className="grid w-full grid-cols-1 gap-4 p-4 md:grid-cols-2 lg:grid-cols-3">
+      <Card key={role} className="flex flex-col min-w-[300px]">
         <CardHeader>
           <CardTitle className="flex items-center">
             {roleIcons[role]} {role}
           </CardTitle>
         </CardHeader>
-        <CardContent className="flex flex-col gap-4">
+        <CardContent className="flex flex-col gap-2">
           <Select
             items={STATUSES}
             placeholder="Select a status..."
