@@ -1,5 +1,6 @@
 "use client";
 import Title from "@/components/admin/Title";
+import Subtitle from "@/components/admin/Subtitle";
 import { useEffect, useState } from "react";
 import Tabs from "./Tabs";
 import Loading from "@/components/Loading";
@@ -22,8 +23,10 @@ const Statistics = () => {
       {!counts ? (
         <Loading />
       ) : (
-        <div>
+        <div className="mt-4">
+          <Subtitle title="Registrations" />
           <Tabs events={counts.events} />
+          <Subtitle title="Attendance" />
           <Charts counts={counts.users} />
         </div>
       )}
