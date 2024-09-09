@@ -1,10 +1,11 @@
 "use client";
-import { User } from "lucide-react";
+import { User, Gavel, Handshake, Lock, Heart, HandHeart } from "lucide-react";
 import Button from "../../Button";
 import Select from "@/components/Select";
 import { useState } from "react";
 import { api } from "@/utils/api";
 import toaster from "@/utils/toaster";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const STATUSES = ["confirmed", "pending", "not attending"];
 
@@ -14,9 +15,18 @@ const MAPPINGS = {
   "not attending": -1,
 };
 
+const roleIcons = {
+  participants: <User className="mx-2" />,
+  judges: <Gavel className="mx-2" />,
+  volunteers: <Heart className="mx-2" />,
+  mentors: <HandHeart className="mx-2" />,
+  admins: <Lock className="mx-2" />,
+  committees: <Handshake className="mx-2" />,
+};
+
 const Contact = ({ role, disabled, setDisabled }) => {
   const [status, setStatus] = useState({
-    status: "confirmed",
+    status: "",
   });
 
   const onClick = async () => {
@@ -30,6 +40,7 @@ const Contact = ({ role, disabled, setDisabled }) => {
 
     if (items.length === 0) {
       toaster("The email list is empty!", "error");
+      setDisabled(false);
       return;
     }
 
@@ -40,21 +51,30 @@ const Contact = ({ role, disabled, setDisabled }) => {
   };
 
   return (
-    <div className="lg:text-md grid w-full grid-cols-3 gap-0.5 rounded bg-white p-2 text-sm lg:w-1/2">
-      <div className="flex items-center">
-        <User className="mx-2" /> {role}
-      </div>
-
-      <Select
-        items={STATUSES}
-        placeholder="Status"
-        field="status"
-        user={status}
-        setUser={setStatus}
-      />
-
-      <Button text="copy" color="green" onClick={onClick} disabled={disabled} />
-    </div>
+    <Card key={role} className="flex min-w-[300px] flex-col">
+      <CardHeader>
+        <CardTitle className="flex items-center">
+          {roleIcons[role]} {role}
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="flex flex-col gap-2">
+        <Select
+          items={STATUSES}
+          placeholder="Select a status..."
+          field="status"
+          user={status}
+          setUser={setStatus}
+          onChange={() => setDisabled(status.status === "")}
+          className="placeholder-gray-400"
+        />
+        <Button
+          text="copy"
+          color="green"
+          onClick={onClick}
+          disabled={status.status === "" || disabled}
+        />
+      </CardContent>
+    </Card>
   );
 };
 
