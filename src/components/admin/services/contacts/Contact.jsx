@@ -51,32 +51,30 @@ const Contact = ({ role, disabled, setDisabled }) => {
   };
 
   return (
-    <div className="grid w-full grid-cols-1 gap-4 p-4 md:grid-cols-2 lg:grid-cols-3">
-      <Card key={role} className="flex min-w-[300px] flex-col">
-        <CardHeader>
-          <CardTitle className="flex items-center">
-            {roleIcons[role]} {role}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-2">
-          <Select
-            items={STATUSES}
-            placeholder="Select a status..."
-            field="status"
-            user={status}
-            setUser={setStatus}
-            onChange={() => setDisabled(status.status === "")}
-            className="placeholder-gray-400"
-          />
-          <Button
-            text="copy"
-            color="green"
-            onClick={onClick}
-            disabled={status.status === "" || disabled}
-          />
-        </CardContent>
-      </Card>
-    </div>
+    <Card key={role} className="flex min-w-[300px] flex-col">
+      <CardHeader>
+        <CardTitle className="flex items-center">
+          {roleIcons[role]} {role}
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="flex flex-col gap-2">
+        <Select
+          items={STATUSES}
+          placeholder="Select a status..."
+          field="status"
+          user={status}
+          setUser={setStatus}
+          onChange={() => setDisabled(status.status === "")}
+          className="placeholder-gray-400"
+        />
+        <Button
+          text="copy"
+          color="green"
+          onClick={onClick}
+          disabled={status.status === "" || disabled}
+        />
+      </CardContent>
+    </Card>
   );
 };
 
