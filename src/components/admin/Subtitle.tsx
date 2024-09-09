@@ -1,4 +1,8 @@
-const Subtitle = ({ title }: { title: string }) => {
+interface props {
+  title: string;
+}
+
+const Subtitle = ({ title }: props) => {
   return (
     <div
       data-cy={`${title}-title`}
