@@ -8,6 +8,11 @@ import Popup from "../../Popup";
 import toaster from "@/utils/toaster";
 import { useRouter } from "next/navigation";
 import { api } from "@/utils/api";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@/components/ui/input-otp";
 
 const tags = ["professor", "industry", "student"];
 
@@ -203,15 +208,12 @@ const Toolbar = ({
         onSubmit={generate}
       >
         <div className="flex flex-row items-center gap-2 pb-3 pl-2">
-          <Input
-            setObject={setInput}
-            object={input}
-            label="rotations"
-            showLabel={false}
-            maxLength={2}
-            placeholder="ie. 5"
-            clear={true}
-          />
+          <InputOTP maxLength={2}>
+            <InputOTPGroup>
+              <InputOTPSlot index={0} />
+              <InputOTPSlot index={1} />
+            </InputOTPGroup>
+          </InputOTP>
           <p className="font-semibold"># of rotations</p>
         </div>
 
