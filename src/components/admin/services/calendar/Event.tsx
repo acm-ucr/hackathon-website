@@ -2,7 +2,7 @@ import React from "react";
 
 interface EventProps {
   event: {
-    start: Date;
+    startDate: Date;
     summary: string;
   };
   view: string;
@@ -14,7 +14,7 @@ const Event: React.FC<EventProps> = ({ event, view }) => {
       <p className="inline text-xs" data-cy="event">
         {view === "month" && (
           <>
-            {new Date(event.start).toLocaleTimeString(navigator.language, {
+            {new Date(event.startDate).toLocaleTimeString(navigator.language, {
               hour: "2-digit",
               minute: "2-digit",
             })}

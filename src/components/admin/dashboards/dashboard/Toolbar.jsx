@@ -183,14 +183,14 @@ const Toolbar = ({
           Rows:<span className="mx-2">{meta.total}</span>
         </div>
         <RotateCcw
-          size={22.5}
+          size={30}
           onClick={handleReload}
           className="text-hackathon-gray-300 duration-150 hover:cursor-pointer hover:opacity-70"
         />
         <Trash2
           data-cy="delete"
           onClick={confirmDelete}
-          size={22.5}
+          size={30}
           className="mx-2 text-hackathon-gray-300 duration-150 hover:cursor-pointer hover:opacity-70"
         />
       </div>

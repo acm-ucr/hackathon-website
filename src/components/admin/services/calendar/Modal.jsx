@@ -18,14 +18,14 @@ const CalendarModal = ({ event, setEvent }) => {
       <div className="border-hackathon-darkgray rounded-b-xl border-x-2 border-b-2 bg-white px-3 py-2">
         <div className="flex items-center justify-between">
           <div>
-            {event.start.toLocaleString("default", {
+            {event.startDate.toLocaleString("default", {
               month: "long",
               weekday: "long",
               day: "2-digit",
               year: "numeric",
             })}
             <br />
-            {event.start.toLocaleString("default", {
+            {event.startDate.toLocaleString("default", {
               hour: "numeric",
               minute: "2-digit",
             })}
