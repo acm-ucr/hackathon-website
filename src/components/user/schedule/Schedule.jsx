@@ -10,17 +10,16 @@ const Schedule = ({ eventList }) => {
   const [filteredEvents, setFilteredEvents] = useState(eventList);
 
   const filterChange = (filterType) => {
+    for (var i = 0; i < events.length; i++) {
+      console.log(events[i]);
+    }
     if (filterType === "hackweek") {
       setFilteredEvents(
-        events.filter((event) => event.description.includes("#workshop")),
+        events.filter((event) => event.day >= 1 && event.day <= 5),
       );
     } else if (filterType === "hackathon") {
       setFilteredEvents(
-        events.filter(
-          (event) =>
-            event.description.includes("#general") ||
-            event.description.includes("#food"),
-        ),
+        events.filter((event) => event.day == 6 || event.day == 0),
       );
     } else {
       setFilteredEvents(events);
