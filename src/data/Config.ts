@@ -20,7 +20,7 @@ const data: config = {
   short_name: "Hackathon Site",
   email: "contact.acmucr@gmail.com",
   description: "DESCRIPTION",
-  length: 0,
+  length: 24,
   date: new Date("2024-04-12T13:20:00"),
   end: new Date("2024-04-12T13:20:00"),
   packet: "",

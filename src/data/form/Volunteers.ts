@@ -34,7 +34,7 @@ export const FIELDS: Fields = {
         data.name
       }. ${data.name} is a ${data.description} hackathon spanning ${
         data.length
-      } on ${data.date.toLocaleString("default", {
+      } hours on ${data.date.toLocaleString("default", {
         month: "long",
         day: "numeric",
         year: "numeric",
