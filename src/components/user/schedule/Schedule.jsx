@@ -10,9 +10,6 @@ const Schedule = ({ eventList }) => {
   const [filteredEvents, setFilteredEvents] = useState(eventList);
 
   const filterChange = (filterType) => {
-    for (var i = 0; i < events.length; i++) {
-      console.log(events[i]);
-    }
     if (filterType === "hackweek") {
       setFilteredEvents(
         events.filter((event) => event.day >= 1 && event.day <= 5),
