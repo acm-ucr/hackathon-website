@@ -96,7 +96,7 @@ describe("Tag", () => {
     );
     cy.get('[data-cy="Accept-tag"]').should(
       "not.have.class",
-      "hover:shadow-[inset_0px_0px_0px_2px_#00AFB9]",
+      "shadow-[inset_0px_0px_0px_2px_#00AFB9]",
     );
   });
 });
