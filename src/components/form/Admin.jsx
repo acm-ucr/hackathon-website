@@ -4,9 +4,9 @@ import { useState } from "react";
 import Form from "@/components/form/form/Form";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Admins";
 import { useSession } from "next-auth/react";
-import { api } from "@/utils/api";
-import toaster from "@/utils/toaster";
 import { STATUSES } from "@/data/Statuses";
+import { schema } from "@/schemas/admin";
+import { submit } from "@/utils/form";
 
 const Admin = () => {
   const { data: session } = useSession();
@@ -18,18 +18,14 @@ const Admin = () => {
     form: "admins",
   });
 
-  const handleSubmit = (setLoading, setState) => {
-    api({
-      method: "POST",
+  const onSubmit = async (setLoading, setState) => {
+    await submit({
+      data: admin,
+      schema,
       url: "/api/dashboard/admins",
-      body: admin,
-    })
-      .then(() => toaster(`Submitted successfully!`, "success"))
-      .catch(() => toaster(`Internal Server Error`, "error"))
-      .finally(() => {
-        setLoading(false);
-        setState(2);
-      });
+      setLoading,
+      setState,
+    });
   };
   return (
     <Form
@@ -37,7 +33,7 @@ const Admin = () => {
       object={admin}
       setObject={setAdmin}
       header="ADMIN PORTAL REQUEST"
-      onSubmit={handleSubmit}
+      onSubmit={onSubmit}
       statuses={STATUSES}
     />
   );

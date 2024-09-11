@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import Form from "@/components/form/form/Form";
-import { api } from "@/utils/api";
-import toaster from "@/utils/toaster";
 import { FIELDS, ATTRIBUTES } from "@/data/form/Interest";
 import { useSession } from "next-auth/react";
 import { STATUSES } from "@/data/Statuses";
+import { schema } from "@/schemas/interest";
+import { submit } from "@/utils/form";
 
 const Interest = () => {
   const { data: session } = useSession();
@@ -18,18 +18,14 @@ const Interest = () => {
     form: "interests",
   });
 
-  const onSubmit = (setLoading, setState) => {
-    api({
-      method: "POST",
+  const onSubmit = async (setLoading, setState) => {
+    await submit({
+      data: interest,
+      schema,
       url: "/api/dashboard/interests",
-      body: interest,
-    })
-      .then(() => toaster(`Submitted successfully!`, "success"))
-      .catch(() => toaster(`Internal Server Error`, "error"))
-      .finally(() => {
-        setLoading(false);
-        setState(2);
-      });
+      setLoading,
+      setState,
+    });
   };
 
   return (

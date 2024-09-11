@@ -14,8 +14,8 @@ import {
   Search,
   Settings,
   QrCode,
-  CircleHelp,
-  Presentation,
+  HandHeart,
+  Gavel,
   Timer,
   Newspaper,
 } from "lucide-react";
@@ -60,7 +60,7 @@ export const TABS: Tabs = {
         {
           name: "judges",
           link: "/admin/judges",
-          icon: <Presentation className={iconStyle} />,
+          icon: <Gavel className={iconStyle} />,
         },
         {
           name: "volunteers",
@@ -70,7 +70,7 @@ export const TABS: Tabs = {
         {
           name: "mentors",
           link: "/admin/mentors",
-          icon: <CircleHelp className={iconStyle} />,
+          icon: <HandHeart className={iconStyle} />,
         },
         {
           name: "admin",

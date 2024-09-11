@@ -1,8 +1,10 @@
 import { generateSelect, generateStatus } from "./Columns";
 import { ICONS } from "./Icons";
 import { STATUSES } from "@/data/Statuses";
+import { Tags } from "@/types/dashboard";
+import { ColumnDef, CellContext } from "@tanstack/react-table";
 
-export const TAGS = [
+export const TAGS: Tags[] = [
   {
     text: "accept",
     value: 1,
@@ -13,7 +15,15 @@ export const TAGS = [
   },
 ];
 
-export const COLUMNS = [
+type Leads = {
+  name: string;
+  email: string;
+  discord: string;
+};
+
+export const COLUMNS: (ColumnDef<Leads, string> & {
+  searchable?: boolean;
+})[] = [
   generateSelect(),
   {
     accessorKey: "name",
@@ -22,7 +32,9 @@ export const COLUMNS = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Leads, Leads["name"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "email",
@@ -31,7 +43,9 @@ export const COLUMNS = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Leads, Leads["email"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   {
     accessorKey: "discord",
@@ -40,7 +54,9 @@ export const COLUMNS = [
     enableColumnFilter: true,
     filterFn: "includesString",
     searchable: true,
-    cell: ({ getValue }) => <div>{getValue()}</div>,
+    cell: (props: CellContext<Leads, Leads["discord"]>) => (
+      <div>{props.getValue()}</div>
+    ),
   },
   generateStatus(STATUSES),
 ];
@@ -54,7 +70,11 @@ const attributes = [
   "priorHackathons",
 ];
 
-export const DROPDOWN = ({ object }) => {
+type dropdownProp = {
+  object: Record<string, string[]>;
+};
+
+export const DROPDOWN: React.FC<dropdownProp> = ({ object }) => {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="grid w-11/12 grid-cols-3">

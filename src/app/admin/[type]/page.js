@@ -1,8 +1,8 @@
 "use client";
 import ProtectedPage from "@/components/ProtectedPage";
 import Admins from "@/components/admin/dashboards/Admins";
-import Events from "@/components/admin/services/calendar/Events";
-import CheckIn from "@/components/admin/services/checkin/CheckIn";
+import Events from "@/components/admin/services/calendar";
+import CheckIn from "@/components/admin/services/checkin";
 import Committees from "@/components/admin/dashboards/Committees";
 import Feedback from "@/components/admin/dashboards/Feedback";
 import Interests from "@/components/admin/dashboards/Interests";
