@@ -24,6 +24,8 @@ type Panelist = {
   photo: string;
 };
 
+type ColorType = string & keyof typeof COLORS;
+
 export const COLUMNS: (ColumnDef<Panelist, string> & {
   searchable?: boolean;
 })[] = [
@@ -67,7 +69,7 @@ export const COLUMNS: (ColumnDef<Panelist, string> & {
     meta: { width: "w-[15%]" },
     cell: (props: CellContext<Panelist, Panelist["panelist"]>) => {
       const status = TAGS.find((tag) => tag.text === props.getValue());
-      const color = COLORS[status?.text as keyof typeof COLORS];
+      const color = status ? COLORS[status.text as ColorType] : undefined;
 
       return (
         <Tag
