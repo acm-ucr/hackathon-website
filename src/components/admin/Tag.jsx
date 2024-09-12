@@ -1,6 +1,8 @@
+import { Badge } from "../ui/badge";
+
 const Tag = ({ color, text, onClick, classes, statuses }) => {
   return (
-    <div
+    <Badge
       data-cy={`${text}-tag`}
       className={`${classes} ${color.background} ${color.text} ${
         onClick && `hover:cursor-pointer ${color.hover}`
@@ -8,7 +10,7 @@ const Tag = ({ color, text, onClick, classes, statuses }) => {
       onClick={onClick}
     >
       {isNaN(text) ? text : statuses[text]}
-    </div>
+    </Badge>
   );
 };
 
