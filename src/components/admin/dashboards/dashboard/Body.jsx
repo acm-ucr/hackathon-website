@@ -1,36 +1,42 @@
 import { flexRender } from "@tanstack/react-table";
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const Body = ({ getIsSelected, getVisibleCells, Dropdown, original }) => {
-  const [dropdown, setDropdown] = useState(false);
-
   return (
     <>
-      <div
-        className={`flex items-center border-b-[1px] border-hackathon-gray-200 px-3 py-2 ${
-          getIsSelected() ? "bg-green-100" : "bg-white"
-        }`}
-        data-cy={original.uid}
+      <Accordion
+        type="multiple"
+        className="border-b-[1px] border-hackathon-gray-200"
       >
-        {getVisibleCells().map(({ id, column, getContext }) => (
+        <AccordionItem value="participant-info">
           <div
-            className={`flex items-center ${column.columnDef.meta?.width}`}
-            key={id}
+            className={`flex items-center px-3 ${
+              getIsSelected() ? "bg-green-100" : "bg-white"
+            }`}
+            data-cy={original.uid}
           >
-            {flexRender(column.columnDef.cell, getContext())}
+            {getVisibleCells().map(({ id, column, getContext }) => (
+              <div
+                className={`flex items-center ${column.columnDef.meta?.width}`}
+                key={id}
+              >
+                {flexRender(column.columnDef.cell, getContext())}
+              </div>
+            ))}
+            <AccordionTrigger className="flex items-center justify-between p-4 text-sm font-medium"></AccordionTrigger>
           </div>
-        ))}
-        {Dropdown && (
-          <ChevronDown
-            className={`${
-              dropdown && "rotate-180"
-            } duration-300 hover:cursor-pointer`}
-            onClick={() => setDropdown(!dropdown)}
-          />
-        )}
-      </div>
-      {dropdown && <Dropdown object={original} />}
+
+          <AccordionContent>
+            <Dropdown object={original} />
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </>
   );
 };

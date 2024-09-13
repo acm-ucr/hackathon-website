@@ -6,16 +6,19 @@ import {
   SiFirebase as Firebase,
   SiCplusplus as CPlusPlus,
   SiMongodb as Mongodb,
+  SiPython as Python,
+  SiUnity as Unity,
 } from "@icons-pack/react-simple-icons";
-import { ReactNode } from "react";
 
-export const TECHSTACKS: Record<string, ReactNode> = {
+export const TECHSTACKS: Record<string, React.ReactNode> = {
   Javascript: <Javascript />,
   "Next.js": <Nextjs />,
   Firebase: <Firebase />,
   Tailwind: <Tailwind />,
   MongoDB: <Mongodb />,
   Arduino: <Arduino />,
+  Python: <Python />,
+  Unity: <Unity />,
   "C++": <CPlusPlus />,
 };
 export const HACKPACKS = [
@@ -40,7 +43,7 @@ export const HACKPACKS = [
   {
     link: "https://github.com/acm-ucr/unity-hackpack",
     text: "Game Development",
-    techs: ["Unity, C#"],
+    techs: ["Unity"],
     description: "A Firebase + Next.js Starter Pack",
   },
   {

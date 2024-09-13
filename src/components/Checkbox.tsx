@@ -4,7 +4,7 @@ type checkbox = {
   toggle: boolean;
   text: string;
   color?: string;
-  onClick?: () => {};
+  onClick?: () => void;
 };
 
 const Checkbox: React.FC<checkbox> = ({ toggle, onClick, text, color }) => {

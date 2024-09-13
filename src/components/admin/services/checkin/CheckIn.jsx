@@ -1,66 +1,81 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Title from "../../Title";
 import Scanner from "./Scanner";
 import Select from "@/components/Select";
 import Button from "../../Button";
 import toaster from "@/utils/toaster";
 import { api } from "@/utils/api";
+import { getEvents, getUser } from "./actions";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const CheckIn = () => {
   const [event, setEvent] = useState({ name: "No events" });
-  const [events, setEvents] = useState(null);
-  const [code, setCode] = useState(null);
+  const [code, setCode] = useState("");
+  const queryClient = useQueryClient();
 
-  useEffect(() => {
-    api({
-      method: "GET",
-      url: `https://www.googleapis.com/calendar/v3/calendars/${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR}/events?key=${process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY}&singleEvents=true&orderBy=startTime`,
-    }).then(({ items }) => {
-      setEvents(
-        items.map((event) => {
-          return { id: event.id, name: event.summary, hidden: false };
-        }),
-      );
-    });
-  }, []);
-  const setResult = async (result) => {
+  const { data: events } = useQuery({
+    queryKey: ["events"],
+    queryFn: async () => getEvents(),
+    refetchOnWindowFocus: false,
+  });
+
+  const mutation = useMutation({
+    mutationFn: (body) =>
+      api({
+        method: "PUT",
+        url: "/api/checkin",
+        body,
+      }),
+    onSuccess: () => {
+      toaster(`Checked in for ${event.name}`, "success");
+    },
+    onError: (error) => {
+      toaster("Error checking in!", error);
+    },
+  });
+
+  const setResult = (result) => {
     if (result !== code) {
       setCode(result);
       toaster("QR Code Scanned", "success");
     }
   };
 
-  const handleCheckIn = async () => {
+  const handleCheckIn = () => {
     if (event.name === "No events") {
       toaster("Please select an event!", "error");
       return;
     }
-
     if (!code) {
       toaster("Please scan a valid QR code!", "error");
       return;
     }
 
-    const [user, date] = code.split("&");
-    const delta = Math.round((new Date() - new Date(date)) / 1000);
+    const [userId, date] = code.split("&");
+    console.log("HELLO", process.env.NODE_ENV);
+    const delta =
+      process.env.NODE_ENV === "development"
+        ? Math.round(new Date() - new Date(date)) / 1000
+        : Math.round(new Date() - new Date(date));
 
     if (delta < 5000) {
-      const { items } = await api({
-        method: "GET",
-        url: `/api/checkin?uid=${user}`,
-      });
-
-      if (items.includes(event.id)) {
-        toaster("Already Checked In!", "error");
-        return;
-      }
-
-      api({
-        method: "PUT",
-        url: "/api/checkin",
-        body: { uid: user, event: event.id, name: event.name },
-      }).then(() => toaster(`Checked in for ${event.name}`, "success"));
+      queryClient
+        .fetchQuery({
+          queryKey: ["/admin/checkin/user", userId],
+          queryFn: () => getUser(userId),
+          staleTime: 0,
+        })
+        .then((userData) => {
+          if (userData.includes(event.id)) {
+            toaster("Already Checked In!", "error");
+          } else {
+            mutation.mutate({ uid: userId, event: event.id, name: event.name });
+          }
+        })
+        .catch((error) => {
+          toaster("Error Fetching User Data!", "error");
+        });
     } else {
       toaster("Expired QR code!", "error");
       return;
@@ -70,8 +85,8 @@ const CheckIn = () => {
   return (
     <div className="flex h-full flex-col gap-3 py-4 font-poppins">
       <Title title="Check In" />
-      <div className="grid grid-cols-1">
-        <div className="flex flex-col items-center gap-3 p-3">
+      <div className="grid grid-cols-1 overflow-auto">
+        <div className="flex flex-col gap-3 overflow-hidden py-3">
           {events && (
             <Select
               items={events}
@@ -82,14 +97,17 @@ const CheckIn = () => {
             />
           )}
           <Scanner setResult={setResult} />
-          <div>{code && code.split("&")[2]}</div>
-          <Button
-            text="Check In"
-            color="green"
-            onClick={handleCheckIn}
-            size="text-xl"
-          />
         </div>
+        <div>{code && code.split("&")[2]}</div>
+      </div>
+
+      <div className="flex flex-shrink-0 justify-center p-6">
+        <Button
+          text="Check in"
+          color="green"
+          onClick={handleCheckIn}
+          size="text-xl"
+        />
       </div>
     </div>
   );

@@ -10,10 +10,16 @@ const Schedule = ({ eventList }) => {
   const [filteredEvents, setFilteredEvents] = useState(eventList);
 
   const filterChange = (filterType) => {
-    if (filterType === "all") {
-      setFilteredEvents(events);
+    if (filterType === "hackweek") {
+      setFilteredEvents(
+        events.filter((event) => event.day >= 1 && event.day <= 5),
+      );
+    } else if (filterType === "hackathon") {
+      setFilteredEvents(
+        events.filter((event) => event.day == 6 || event.day == 0),
+      );
     } else {
-      setFilteredEvents(events.filter((event) => event.type === filterType));
+      setFilteredEvents(events);
     }
   };
 
