@@ -14,12 +14,14 @@ import {
 const Chart = ({ title, data }) => {
   const ITEMS = { ...ROLES, ...SIZES };
 
-  const chartData = Object.entries(data).map(([type, value]) => ({
-    type: ITEMS[type].label,
-    value: value,
-    className: ITEMS[type].className,
-    fill: ITEMS[type].fill,
-  }));
+  const chartData = Object.entries(data)
+    .filter(([type]) => ROLES[type])
+    .map(([type, value]) => ({
+      type: ITEMS[type].label,
+      value: value,
+      className: ITEMS[type].className,
+      fill: ITEMS[type].fill,
+    }));
 
   const chartConfig = Object.entries(data).map(([type, value]) => {
     const label = ITEMS[type].label;
@@ -35,12 +37,28 @@ const Chart = ({ title, data }) => {
     return chartData.reduce((acc, curr) => acc + curr.value, 0);
   }, [chartData]);
 
+  const CustomLabel = ({ x, y, value }) => {
+    return (
+      <text
+        x={x}
+        y={y}
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fill="#000"
+        fontSize="16px"
+        fontWeight="bold"
+      >
+        {value > 0 ? value : ""}
+      </text>
+    );
+  };
+
   return (
     <Card className="flex flex-col">
-      <CardContent className="flex-1 pb-0">
+      <CardContent className="flex-1 p-2">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
+          className="mx-auto aspect-square max-w-[300px]"
         >
           <PieChart>
             <ChartTooltip
@@ -51,8 +69,9 @@ const Chart = ({ title, data }) => {
               data={chartData}
               dataKey="value"
               nameKey="type"
-              innerRadius={60}
+              innerRadius={70}
               strokeWidth={5}
+              label={<CustomLabel />}
             >
               <Label
                 content={({ viewBox }) => {

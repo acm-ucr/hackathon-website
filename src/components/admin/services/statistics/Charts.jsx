@@ -2,7 +2,7 @@ import Chart from "./Chart";
 
 const Charts = ({ counts }) => {
   return (
-    <div className="mt-3 grid w-full grid-cols-2 gap-4 p-4 md:grid-cols-4">
+    <div className="grid w-full grid-cols-2 gap-4 p-4 md:grid-cols-4">
       {Object.entries(counts).map(([category, data]) =>
         Object.entries(data)
           .filter(([title, sizes]) =>

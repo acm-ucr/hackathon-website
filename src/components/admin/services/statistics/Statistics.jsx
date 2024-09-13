@@ -7,7 +7,7 @@ import Loading from "@/components/Loading";
 import Charts from "./Charts";
 import { getStats } from "./actions";
 import { useQuery } from "@tanstack/react-query";
-
+import ChartLegend from "@/components/admin/services/statistics/ChartLegend";
 const Statistics = () => {
   const { data: counts } = useQuery({
     queryKey: ["/admin/statistics"],
@@ -24,6 +24,7 @@ const Statistics = () => {
           <Subtitle title="Registrations" />
           <Tabs events={counts.events} />
           <Subtitle title="Attendance" />
+          <ChartLegend />
           <Charts counts={counts.users} />
         </div>
       )}
