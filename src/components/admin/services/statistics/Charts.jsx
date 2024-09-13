@@ -19,7 +19,7 @@ const Charts = ({ counts }) => {
                       .filter(([statusType, sizeData]) =>
                         Object.values(sizeData).some((count) => count > 0),
                       )
-                      .map(([type, sizeData]) => {
+                      .map(([type, sizeData], idx) => {
                         const data = Object.entries(sizeData).reduce(
                           (acc, [size, count]) => {
                             acc[size] = (acc[size] || 0) + count;
@@ -29,7 +29,7 @@ const Charts = ({ counts }) => {
                         );
                         return (
                           <Chart
-                            key={index}
+                            key={idx}
                             status={type}
                             title={category}
                             data={data}

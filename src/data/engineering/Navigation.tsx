@@ -1,6 +1,12 @@
 import { SiGithub as Github } from "@icons-pack/react-simple-icons";
+import React from "react";
 
-export const TABS = [
+type tab = {
+  label: string | React.ReactElement;
+  link: string;
+};
+
+export const TABS: tab[] = [
   {
     label: "hackathons",
     link: "/engineering/hackathons",

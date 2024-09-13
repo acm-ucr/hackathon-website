@@ -3,7 +3,7 @@ type config = {
   short_name: string;
   email: string;
   description: string;
-  length: string;
+  length: number;
   date: Date;
   end: Date;
   packet: string;
@@ -20,7 +20,7 @@ const data: config = {
   short_name: "Hackathon Site",
   email: "contact.acmucr@gmail.com",
   description: "DESCRIPTION",
-  length: "HACKATHON_LENGTH",
+  length: 24,
   date: new Date("2024-04-12T13:20:00"),
   end: new Date("2024-04-12T13:20:00"),
   packet: "",

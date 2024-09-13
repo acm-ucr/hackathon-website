@@ -47,12 +47,28 @@ const Chart = ({ title, status = null, data }) => {
     return chartData.reduce((acc, curr) => acc + curr.value, 0);
   }, [chartData]);
 
+  const CustomLabel = ({ x, y, value }) => {
+    return (
+      <text
+        x={x}
+        y={y}
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fill="#000"
+        fontSize="16px"
+        fontWeight="bold"
+      >
+        {value > 0 ? value : ""}
+      </text>
+    );
+  };
+
   return (
     <Card className="flex flex-col">
-      <CardContent className="flex-1 pb-0">
+      <CardContent className="flex-1 p-2">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
+          className="mx-auto aspect-square max-w-[300px]"
         >
           <PieChart>
             <ChartTooltip
@@ -63,8 +79,9 @@ const Chart = ({ title, status = null, data }) => {
               data={chartData}
               dataKey="value"
               nameKey="type"
-              innerRadius={60}
+              innerRadius={70}
               strokeWidth={5}
+              label={<CustomLabel />}
             >
               <Label
                 content={({ viewBox }) => {
@@ -100,8 +117,8 @@ const Chart = ({ title, status = null, data }) => {
               data={statusData}
               dataKey="value"
               nameKey="type"
-              innerRadius={50}
-              outerRadius={55}
+              innerRadius={55}
+              outerRadius={60}
               strokeWidth={5}
             />
           </PieChart>
