@@ -36,10 +36,11 @@ const Charts = ({ counts }) => {
                           />
                         );
                       });
-                  } else if (key === "status") {
-                    if (Object.values(data).some((count) => count > 0)) {
-                      return <Chart key={index} title={category} data={data} />;
-                    }
+                  } else if (
+                    key === "status" &&
+                    Object.values(data).some((count) => count > 0)
+                  ) {
+                    return <Chart key={index} title={category} data={data} />;
                   }
                   return null;
                 }),

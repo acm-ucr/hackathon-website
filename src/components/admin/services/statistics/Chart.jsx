@@ -12,9 +12,6 @@ import {
 } from "@/components/ui/chart";
 
 const Chart = ({ title, status = null, data }) => {
-  console.log("status", status);
-  console.log("chart", data);
-  console.log(ROLES[status]);
   const ITEMS = { ...ROLES, ...SIZES, ...DIETS, ...SCHOOLS };
 
   const statusData =
