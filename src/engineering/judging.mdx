@@ -32,113 +32,113 @@ Cons:
 Firstly, hackathon website created customized forms for judges to sign up that collects and stores all the necessary information for the admin. This highly increased efficiency and reduced possible errors in information for the hackathon committees.
 Hackathon website then implemented an effective online judging service in place of the manual judging system. It is essentially the same routine with timed rounds but it streamlines the entire assignment process. First both teams and judges data is pulled by the service using api.
 
-```
-  const load = () => {
-    api({
-      method: "GET",
-      url: "/api/judging",
-    }).then(({ items }) => {
-      setData(items.teams);
-      setFilters(items.teams);
-      setJudges(items.judges);
+```jsx
+const load = () => {
+  api({
+    method: "GET",
+    url: "/api/judging",
+  }).then(({ items }) => {
+    setData(items.teams);
+    setFilters(items.teams);
+    setJudges(items.judges);
 
-      if (items.judges.length === 0) {
-        setPopup({
-          title: "Insufficient Judges",
-          text: "There are not enough judges to go around to each team. Please consider adding more judges via the judge dashboard. ",
-          color: "green",
-          visible: true,
-        });
-      }
-    });
-  };
+    if (items.judges.length === 0) {
+      setPopup({
+        title: "Insufficient Judges",
+        text: "There are not enough judges to go around to each team. Please consider adding more judges via the judge dashboard. ",
+        color: "green",
+        visible: true,
+      });
+    }
+  });
+};
 ```
 
 Then we can set a rotation value i.e. the number of rounds. Based on this value, the _generate()_ function assigns a table and initializes the set number of rounds for each team. Then we use a nested loop to assign a non repeating judge for each team within each round and increment the judge counter. If we run out of judges, then we reset and move on to the next round. Finally, we update the team data and reset rotations.
 
-```
-  const [input, setInput] = useState({
-    rotations: "",
-    input: "",
-  });
-  const [search, setSearch] = useState("");
+```jsx
+const [input, setInput] = useState({
+  rotations: "",
+  input: "",
+});
+const [search, setSearch] = useState("");
 
-  const generate = (e) => {
-    e.preventDefault();
-    if (
-      input.rotations === "" ||
-      isNaN(input.rotations) ||
-      parseInt(input.rotations) < 1 ||
-      parseInt(input.rotations) > 99
-    ) {
-      toaster("Please enter a valid integer value between 1 and 99", "error");
-      return;
-    }
+const generate = (e) => {
+  e.preventDefault();
+  if (
+    input.rotations === "" ||
+    isNaN(input.rotations) ||
+    parseInt(input.rotations) < 1 ||
+    parseInt(input.rotations) > 99
+  ) {
+    toaster("Please enter a valid integer value between 1 and 99", "error");
+    return;
+  }
 
-    if (judges.length === 0) {
-      setPopup({
-        title: "Insufficient Judges",
-        text: "There are not enough judges to go around to each team. Please consider adding more judges via the judge dashboard. ",
-        color: "green",
-        visible: true,
-      });
-      return;
-    }
-
-    const teams = [...data];
-
-    // Reset Rounds
-    teams.forEach((team, index) => {
-      team.rounds = Array.from(Array(parseInt(input.rotations)), () => []);
-      team.table = index + 1;
+  if (judges.length === 0) {
+    setPopup({
+      title: "Insufficient Judges",
+      text: "There are not enough judges to go around to each team. Please consider adding more judges via the judge dashboard. ",
+      color: "green",
+      visible: true,
     });
+    return;
+  }
 
-    let judge = 0;
-    let round = 0;
+  const teams = [...data];
 
-    // assign judges
-    for (let j = 0; j < input.rotations; j += 1) {
-      for (let i = 0; i < teams.length; i += 1) {
-        if (round === parseInt(input.rotations)) continue;
-        if (
-          teams[i].rounds.some((judges) =>
-            judges.some((individual) => individual.name === judges[judge].name)
-          )
+  // Reset Rounds
+  teams.forEach((team, index) => {
+    team.rounds = Array.from(Array(parseInt(input.rotations)), () => []);
+    team.table = index + 1;
+  });
+
+  let judge = 0;
+  let round = 0;
+
+  // assign judges
+  for (let j = 0; j < input.rotations; j += 1) {
+    for (let i = 0; i < teams.length; i += 1) {
+      if (round === parseInt(input.rotations)) continue;
+      if (
+        teams[i].rounds.some((judges) =>
+          judges.some((individual) => individual.name === judges[judge].name),
         )
-          continue;
-        if (judge < judges.length) {
-          teams[i].rounds[round].push(judges[judge]);
-          judge += 1;
-        }
-        if (judge === judges.length) {
-          judge = 0;
-          round += 1;
-        }
+      )
+        continue;
+      if (judge < judges.length) {
+        teams[i].rounds[round].push(judges[judge]);
+        judge += 1;
+      }
+      if (judge === judges.length) {
+        judge = 0;
+        round += 1;
       }
     }
+  }
 
-    if (judges.length * input.rotations < teams.length) {
-      setPopup({
-        title: "Insufficient Judges",
-        text: "There are not enough judges to go around to each team. Please consider adding more judges via the judge dashboard. ",
-        color: "green",
-        visible: true,
-      });
-    }
-
-    setData(teams);
-
-    api({
-      method: "PUT",
-      url: "/api/judging",
-      body: { teams },
-    }).then(() => toaster("Rounds Saved!", "success"));
-
-    setInput({
-      ...input,
-      rotations: "",
+  if (judges.length * input.rotations < teams.length) {
+    setPopup({
+      title: "Insufficient Judges",
+      text: "There are not enough judges to go around to each team. Please consider adding more judges via the judge dashboard. ",
+      color: "green",
+      visible: true,
     });
-  };
+  }
+
+  setData(teams);
+
+  api({
+    method: "PUT",
+    url: "/api/judging",
+    body: { teams },
+  }).then(() => toaster("Rounds Saved!", "success"));
+
+  setInput({
+    ...input,
+    rotations: "",
+  });
+};
 ```
 
 ## **Results:**

@@ -206,8 +206,6 @@ export const PUT = async (req, { params }) => {
         objects.map(async (object) => {
           await updateDoc(doc(db, "users", object.uid), {
             [`roles.${params.type}`]: status,
-            [`roles.${params.type}`]: object.shirt,
-            [`roles.${params.type}`]: object.diet,
           });
           console.log("PUT", object, school, object.diet);
           const id = status === 1 ? "acceptance" : "rejection";

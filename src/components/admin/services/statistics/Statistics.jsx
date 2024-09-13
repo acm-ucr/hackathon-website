@@ -1,21 +1,18 @@
 "use client";
 import Title from "@/components/admin/Title";
-import { useEffect, useState } from "react";
+import Subtitle from "@/components/admin/Subtitle";
 import Tabs from "./Tabs";
 import Loading from "@/components/Loading";
-import { api } from "@/utils/api";
 
 import Charts from "./Charts";
-
+import { getStats } from "./actions";
+import { useQuery } from "@tanstack/react-query";
+import ChartLegend from "@/components/admin/services/statistics/ChartLegend";
 const Statistics = () => {
-  const [counts, setCounts] = useState(null);
-  console.log("text", counts);
-  useEffect(() => {
-    api({
-      method: "GET",
-      url: "/api/statistics",
-    }).then(({ items }) => setCounts(items));
-  }, []);
+  const { data: counts } = useQuery({
+    queryKey: ["/admin/statistics"],
+    queryFn: async () => getStats(),
+  });
 
   return (
     <div className="flex h-full flex-col py-4 font-poppins">
@@ -23,8 +20,11 @@ const Statistics = () => {
       {!counts ? (
         <Loading />
       ) : (
-        <div>
+        <div className="mt-4">
+          <Subtitle title="Registrations" />
           <Tabs events={counts.events} />
+          <Subtitle title="Attendance" />
+          <ChartLegend />
           <Charts counts={counts.users} />
         </div>
       )}

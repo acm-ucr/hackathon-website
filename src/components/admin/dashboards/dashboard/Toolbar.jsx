@@ -26,7 +26,7 @@ const Toolbar = ({
 }) => {
   const selectedRows = getFilteredSelectedRowModel();
   const [search, setSearch] = useState({
-    search: "name",
+    search: searchableItems[0],
   });
 
   const rows = selectedRows.rows.map(({ original }) => original);
@@ -165,7 +165,7 @@ const Toolbar = ({
             user={search}
             setUser={setSearch}
             field="search"
-            placeholder="filter"
+            placeholder={searchableItems[0]}
           />
         </div>
         <Input
@@ -183,14 +183,14 @@ const Toolbar = ({
           Rows:<span className="mx-2">{meta.total}</span>
         </div>
         <RotateCcw
-          size={22.5}
+          size={30}
           onClick={handleReload}
           className="text-hackathon-gray-300 duration-150 hover:cursor-pointer hover:opacity-70"
         />
         <Trash2
           data-cy="delete"
           onClick={confirmDelete}
-          size={22.5}
+          size={30}
           className="mx-2 text-hackathon-gray-300 duration-150 hover:cursor-pointer hover:opacity-70"
         />
       </div>
