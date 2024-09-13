@@ -36,7 +36,7 @@ const Toolbar = ({
 
   const [input, setInput] = useState({
     rotations: "",
-    slots: ["", ""],
+    input: "",
   });
 
   const [search, setSearch] = useState("");
@@ -113,16 +113,8 @@ const Toolbar = ({
     }).then(() => toaster("Rounds Saved!", "success"));
 
     setInput({
+      ...input,
       rotations: "",
-      slots: ["", ""],
-    });
-  };
-
-  const handleInputChange = (value, index) => {
-    setInput((prevInput) => {
-      const updatedInputs = [...prevInput.slots];
-      updatedInputs[index] = value;
-      return { ...prevInput, slots: updatedInputs };
     });
   };
 
@@ -218,18 +210,14 @@ const Toolbar = ({
         onSubmit={generate}
       >
         <div className="flex flex-row items-center gap-2 pb-3 pl-2">
-          <InputOTP maxLength={2} setObject={setInput} object={input}>
+          <InputOTP
+            maxLength={2}
+            value={input.rotations}
+            onChange={(value) => setInput({ ...input, rotations: value })}
+          >
             <InputOTPGroup>
-              <InputOTPSlot
-                index={0}
-                value={input.slots[0]}
-                onChange={(e) => handleInputChange(e.target.value, 0)}
-              />
-              <InputOTPSlot
-                index={1}
-                value={input.slots[1]}
-                onChange={(e) => handleInputChange(e.target.value, 1)}
-              />
+              <InputOTPSlot index={0} />
+              <InputOTPSlot index={1} />
             </InputOTPGroup>
           </InputOTP>
           <p className="font-semibold"># of rotations</p>
