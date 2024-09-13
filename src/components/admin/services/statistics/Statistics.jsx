@@ -6,7 +6,7 @@ import Loading from "@/components/Loading";
 import { api } from "@/utils/api";
 
 import Charts from "./Charts";
-
+import ChartLegend from "@/components/admin/services/statistics/ChartLegend";
 const Statistics = () => {
   const [counts, setCounts] = useState(null);
 
@@ -25,6 +25,7 @@ const Statistics = () => {
       ) : (
         <div>
           <Tabs events={counts.events} />
+          <ChartLegend />
           <Charts counts={counts.users} />
         </div>
       )}
