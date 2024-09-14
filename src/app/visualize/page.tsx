@@ -1,2 +1,2 @@
-import Visualize from "@/components/Visualize";
-export default Visualize;
+import Visualizer from "next-route-visualizer";
+export default Visualizer;
