@@ -1,7 +1,7 @@
 import Tag from "@/components/admin/Tag";
 import { COLORS } from "../Tags";
 import Checkbox from "@/components/Checkbox";
-import { Table, Row } from "@tanstack/react-table";
+import { Table, Row, CellContext } from "@tanstack/react-table";
 
 export const generateSelect = <TData extends object>() => ({
   id: "select",
@@ -20,17 +20,15 @@ export const generateSelect = <TData extends object>() => ({
   ),
 });
 
-type cellProp = {
-  getValue: () => string;
-};
-
 type stringRecord = Record<string, string>;
 
-export const generateAffiliation = (affiliations: stringRecord) => ({
+export const generateAffiliation = <TData extends stringRecord>(
+  affiliations: stringRecord,
+) => ({
   accessorKey: "affiliation",
   header: "Affiliation",
   meta: { width: "w-1/12" },
-  cell: ({ getValue }: cellProp) => (
+  cell: ({ getValue }: CellContext<TData, string>) => (
     <Tag
       text={affiliations[getValue().toLowerCase()]}
       color={COLORS[getValue().toLowerCase() as keyof typeof COLORS]}
@@ -38,7 +36,9 @@ export const generateAffiliation = (affiliations: stringRecord) => ({
   ),
 });
 
-export const generateStatus = (statuses: stringRecord) => ({
+export const generateStatus = <TData extends object>(
+  statuses: stringRecord,
+) => ({
   accessorKey: "status",
   header: "Status",
   meta: { width: "w-[10%]" },
@@ -47,18 +47,20 @@ export const generateStatus = (statuses: stringRecord) => ({
     const status = row.getValue(col);
     return filter.includes(status);
   },
-  cell: ({ getValue }: cellProp) => (
+  cell: ({ getValue }: CellContext<TData, string>) => (
     <Tag
       text={statuses[getValue()]}
       color={COLORS[getValue() as keyof typeof COLORS]}
     />
   ),
 });
-export const generateTiers = (tiers: stringRecord) => ({
+export const generateTiers = <TData extends stringRecord>(
+  tiers: stringRecord,
+) => ({
   accessorKey: "tier",
   header: "Tier",
   meta: { width: "w-1/12" },
-  cell: ({ getValue }: cellProp) => (
+  cell: ({ getValue }: CellContext<TData, string>) => (
     <Tag
       text={tiers[getValue()]}
       color={COLORS[getValue() as keyof typeof COLORS]}
