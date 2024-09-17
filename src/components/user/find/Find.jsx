@@ -29,11 +29,11 @@ const Find = () => {
         <Title title="Find a Team" />
       </div>
       <Toolbar />
-      <div className="m-auto">
+      <div className="relative h-full overflow-y-scroll">
         {ideas.length === 0 ? (
-          <p>No Teams Available</p>
+          <div className="flex items-center justify-center h-full">No Teams Available</div>
         ) : (
-          <div ref={ref} className="relative h-full overflow-y-scroll">
+          <div ref={ref}>
             {getVirtualItems().map(({ index, size, start }) => {
               if (index % 4) return null;
               const row = ideas.slice(index, index + 4);
