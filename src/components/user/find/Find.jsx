@@ -31,7 +31,9 @@ const Find = () => {
       <Toolbar />
       <div className="relative h-full overflow-y-scroll">
         {ideas.length === 0 ? (
-          <div className="flex items-center justify-center h-full">No Teams Available</div>
+          <div className="flex h-full items-center justify-center">
+            No Teams Available
+          </div>
         ) : (
           <div ref={ref}>
             {getVirtualItems().map(({ index, size, start }) => {
