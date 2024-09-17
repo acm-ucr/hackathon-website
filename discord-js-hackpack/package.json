@@ -1,0 +1,33 @@
+{
+  "name": "tsconfig.json",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "main.ts",
+  "scripts": {
+    "prepare": "husky install",
+    "eslint": "npx eslint .",
+    "format": "npx prettier --write .",
+    "check": "npx prettier --check .",
+    "bot": "npx tsx bot/main.ts",
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "node build/main.ts"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.6.0",
+    "@types/node": "^22.5.5",
+    "eslint": "^9.6.0",
+    "globals": "^15.8.0",
+    "husky": "^9.0.11",
+    "prettier": "^3.3.2",
+    "tsx": "^4.19.1"
+  },
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5"
+  },
+  "description": "![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white) ![Prettier](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E) ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)",
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,23 @@
+name: Discord Javascript Hackpack
+on:
+  pull_request:
+    branches: [main, dev]
+  workflow_dispatch:
+
+jobs:
+  format:
+    name: formatting
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: acm-ucr/formatting@v2
+
+  lint:
+    name: linting
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci
+      - run: npm run eslint
