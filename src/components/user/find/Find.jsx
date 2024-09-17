@@ -5,7 +5,6 @@ import Toolbar from "./Toolbar";
 import Idea from "./Idea";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { useMemo, useRef } from "react";
-import { isTemplateSpan } from "typescript";
 
 const Find = () => {
   const ideas = useMemo(() => [], []);
