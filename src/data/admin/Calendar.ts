@@ -4,7 +4,8 @@ interface types {
   type: string;
 }
 
-interface label {
+export interface label {
+  other: types;
   directors: types;
   marketing: types;
   operations: types;
@@ -59,6 +60,11 @@ export const LABELS: label = {
   leads: {
     color: "red",
     background: "!bg-hackathon-tags-red-text",
+    type: "leads",
+  },
+  other: {
+    color: "gray",
+    background: "!bg-hackathon-tags-gray-text",
     type: "leads",
   },
   workshop: {

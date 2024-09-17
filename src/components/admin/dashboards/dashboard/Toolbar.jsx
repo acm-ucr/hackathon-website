@@ -26,7 +26,7 @@ const Toolbar = ({
 }) => {
   const selectedRows = getFilteredSelectedRowModel();
   const [search, setSearch] = useState({
-    search: "name",
+    search: searchableItems[0],
   });
 
   const rows = selectedRows.rows.map(({ original }) => original);
@@ -165,7 +165,7 @@ const Toolbar = ({
             user={search}
             setUser={setSearch}
             field="search"
-            placeholder="filter"
+            placeholder={searchableItems[0]}
           />
         </div>
         <Input

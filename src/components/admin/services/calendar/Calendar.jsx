@@ -1,17 +1,29 @@
 "use client";
 import { useEffect, useState } from "react";
 import moment from "moment";
-import { Calendar, momentLocalizer } from "react-big-calendar";
+import {
+  Calendar as ReactBigCalendar,
+  momentLocalizer,
+} from "react-big-calendar";
 import Toolbar from "./Toolbar";
 import Event from "./Event";
 import Modal from "./Modal";
-const mLocalizer = momentLocalizer(moment);
+import { getEvents } from "./actions";
+import { useQuery } from "@tanstack/react-query";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 
-const CalendarWrapper = ({ events }) => {
+const Calendar = () => {
+  const mLocalizer = momentLocalizer(moment);
+
   const [event, setEvent] = useState(null);
   const [view, setView] = useState("month");
   const [date, setDate] = useState(new Date());
   const [tag, setTag] = useState("all");
+
+  const { data: events } = useQuery({
+    queryKey: ["/admin/calendar"],
+    queryFn: async () => getEvents(),
+  });
 
   const handleShortcuts = (e) => {
     switch (e.key) {
@@ -35,7 +47,9 @@ const CalendarWrapper = ({ events }) => {
   return (
     <>
       {event && <Modal event={event} setEvent={setEvent} />}
-      <Calendar
+      <ReactBigCalendar
+        startAccessor="startDate"
+        endAccessor="endDate"
         date={date}
         view={view}
         className="py-4"
@@ -43,15 +57,7 @@ const CalendarWrapper = ({ events }) => {
         events={
           tag === "all"
             ? events
-            : events.filter(
-                ({ description }) =>
-                  description
-                    .split("\n")[0]
-                    .split("#")
-                    .filter((item) => item !== "")[0]
-                    .trim()
-                    .toLowerCase() === tag,
-              )
+            : events.filter((event) => event.category === tag)
         }
         localizer={mLocalizer}
         defaultView="month"
@@ -103,4 +109,4 @@ const CalendarWrapper = ({ events }) => {
   );
 };
 
-export default CalendarWrapper;
+export default Calendar;
