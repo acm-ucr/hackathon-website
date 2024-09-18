@@ -156,13 +156,13 @@ const Questions = ({
               </p>
               <RadioGroup value={object[field.field]}>
                 {Object.values(field.options).map((option, index) => (
-                  <div key={index}>
+                  <label key={index}>
                     <RadioGroupItem
                       value={option}
                       onClick={() => handleClick(option, field.field)}
                     />
                     {option}
-                  </div>
+                  </label>
                 ))}
               </RadioGroup>
             </>
