@@ -19,7 +19,7 @@ describe("HackPacks", () => {
     cy.get('[data-cy="hackpack-link"]')
       .should(
         "have.class",
-        "flex items-center justify-between opacity-100 hover:opacity-70",
+        "items-center justify-between rounded-xl bg-white p-3 opacity-100 hover:opacity-70",
       )
       .should("have.attr", "href", link)
       .should("have.attr", "target", "_black");
