@@ -9,21 +9,21 @@ import {
 import data from "@/data/Config";
 
 type Tiers = {
-  tier1: string;
-  tier2: string;
-  tier3: string;
+  bronze: string;
+  silver: string;
+  gold: string;
   tier4: string;
   tier5: string;
   other: string;
 };
 
 export const TIERS: Tiers = {
-  tier1: "Bronze",
-  tier2: "Silver",
-  tier3: "Gold",
-  tier4: "Tier4",
-  tier5: "Tier5",
-  other: "Other",
+  bronze: "bronze",
+  silver: "silver",
+  gold: "gold",
+  tier4: "tier4",
+  tier5: "tier5",
+  other: "other",
 };
 
 interface Attributes {

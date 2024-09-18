@@ -126,4 +126,5 @@ export const AFFILIATIONS = {
   software: "software",
   uiux: "uiux",
   operations: "operations",
+  student: "student",
 };
