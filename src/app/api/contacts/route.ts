@@ -1,9 +1,10 @@
 import { authenticate } from "@/utils/auth";
 import { db } from "@/utils/firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
+import { contact } from "@/types/contacts";
 
-export const GET = async (req) => {
+export const GET = async (req: NextRequest) => {
   const res = NextResponse;
 
   const { auth, message } = await authenticate({
@@ -18,9 +19,9 @@ export const GET = async (req) => {
   }
 
   const role = req.nextUrl.searchParams.get("role");
-  const status = parseInt(req.nextUrl.searchParams.get("status"));
+  const status = parseInt(req.nextUrl.searchParams.get("status")!);
 
-  const output = [];
+  const output: contact[] = [];
 
   try {
     const snapshot = await getDocs(
