@@ -2,7 +2,7 @@ import { Checkbox as Check } from "./ui/checkbox";
 
 type checkbox = {
   toggle: boolean;
-  text: string;
+  text?: string;
   color?: string;
   onClick?: () => void;
 };
