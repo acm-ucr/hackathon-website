@@ -62,7 +62,10 @@ export const POST = async (req, { params }) => {
           [`roles.${params.type}`]: 0,
         }),
         updateDoc(doc(db, "statistics", "statistics"), {
-          [`${params.type}.0`]: increment(1),
+          [`${params.type}.status.0`]: increment(1),
+          [`${params.type}.shirt.0.${element.size}`]: increment(1),
+          [`${params.type}.diet.0.${element.diet}`]: increment(1),
+          [`${params}.participants.school.0.${element.school}`]: increment(1),
         }),
         send({
           email: user.email,
@@ -167,7 +170,6 @@ export const GET = async (req, { params }) => {
     const total = countFromServer.data().count;
     const lastDoc = output.length > 0 ? output[output.length - 1].uid : "";
     const firstDoc = output.length > 0 ? output[0].uid : "";
-
     return res.json(
       {
         message: "OK",
@@ -228,19 +230,31 @@ export const PUT = async (req, { params }) => {
           });
 
           const size = object.shirt;
+          const diet = object.diet;
+          const school = object.school;
 
           status === 1 &&
             (await updateDoc(doc(db, "statistics", "statistics"), {
-              [`${params.type}.1`]: increment(1),
-              [`${params.type}.0`]: increment(-1),
-              [`${params.type}.${size}`]: increment(1),
+              [`${params.type}.status.1`]: increment(1),
+              [`${params.type}.status.0`]: increment(-1),
+              [`${params.type}.shirt.1.${size}`]: increment(1),
+              [`${params.type}.shirt.0${size}`]: increment(-1),
+              [`${params.type}.diet.1.${diet}`]: increment(1),
+              [`${params.type}.diet.0${diet}`]: increment(-1),
+              [`${params}.participants.school.1.${school}`]: increment(1),
+              [`${params}.participants.school.0.${school}`]: increment(-1),
             }));
 
           status === -1 &&
             (await updateDoc(doc(db, "statistics", "statistics"), {
-              [`${params.type}.-1`]: increment(1),
-              [`${params.type}.0`]: increment(-1),
-              [`${params.type}.${size}`]: increment(-1),
+              [`${params.type}.status.-1`]: increment(1),
+              [`${params.type}.status.0`]: increment(-1),
+              [`${params.type}.shirt.-1.${size}`]: increment(1),
+              [`${params.type}.shirt.0.${size}`]: increment(-1),
+              [`${params.type}.diet.-1.${diet}`]: increment(1),
+              [`${params.type}.diet.0.${diet}`]: increment(-1),
+              [`${params}.participants.school.-1.${school}`]: increment(1),
+              [`${params}.participants.school.0.${school}`]: increment(-1),
             }));
         }),
       );
