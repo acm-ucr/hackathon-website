@@ -62,8 +62,8 @@ export const generateTiers = <TData extends stringRecord>(
   meta: { width: "w-1/12" },
   cell: ({ getValue }: CellContext<TData, string>) => (
     <Tag
-      text={tiers[getValue()]}
-      color={COLORS[getValue() as keyof typeof COLORS]}
+      text={tiers[getValue().toLowerCase()]}
+      color={COLORS[getValue().toLowerCase() as keyof typeof COLORS]}
     />
   ),
 });
