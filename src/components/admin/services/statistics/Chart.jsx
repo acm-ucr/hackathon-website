@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Label, Pie, PieChart } from "recharts";
-import { ROLES, SIZES } from "@/data/admin/Statistics";
+import { ROLES, SIZES, DIETS, SCHOOLS } from "@/data/admin/Statistics";
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -11,17 +11,27 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
-const Chart = ({ title, data }) => {
-  const ITEMS = { ...ROLES, ...SIZES };
+const Chart = ({ title, status = null, data }) => {
+  const ITEMS = { ...ROLES, ...SIZES, ...DIETS, ...SCHOOLS };
 
-  const chartData = Object.entries(data)
-    .filter(([type]) => ROLES[type])
-    .map(([type, value]) => ({
-      type: ITEMS[type].label,
-      value: value,
-      className: ITEMS[type].className,
-      fill: ITEMS[type].fill,
-    }));
+  const statusData =
+    status !== null
+      ? [
+          {
+            type: ROLES[status].label,
+            value: 1,
+            className: ROLES[status].className,
+            fill: ROLES[status].fill,
+          },
+        ]
+      : [];
+
+  const chartData = Object.entries(data).map(([type, value]) => ({
+    type: ITEMS[type].label,
+    value: value,
+    className: ITEMS[type].className,
+    fill: ITEMS[type].fill,
+  }));
 
   const chartConfig = Object.entries(data).map(([type, value]) => {
     const label = ITEMS[type].label;
@@ -103,6 +113,14 @@ const Chart = ({ title, data }) => {
                 }}
               />
             </Pie>
+            <Pie
+              data={statusData}
+              dataKey="value"
+              nameKey="type"
+              innerRadius={55}
+              outerRadius={60}
+              strokeWidth={5}
+            />
           </PieChart>
         </ChartContainer>
       </CardContent>
