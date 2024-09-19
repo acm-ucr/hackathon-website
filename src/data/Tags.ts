@@ -1,4 +1,22 @@
-const mappings = {
+export type map = {
+  background: string;
+  text: string;
+  hover: string;
+};
+export interface mapping {
+  red: map;
+  yellow: map;
+  green: map;
+  gray: map;
+  purple: map;
+  grayblue: map;
+  teal: map;
+  lightgreen: map;
+  pink: map;
+}
+type colors = Record<string, map>;
+
+const mappings: mapping = {
   red: {
     background: "bg-hackathon-tags-red-bg",
     text: "text-hackathon-tags-red-text",
@@ -46,7 +64,7 @@ const mappings = {
   },
 };
 
-export const COLORS = {
+export const COLORS: colors = {
   qualify: mappings["green"],
   winner: mappings["purple"],
   disqualify: mappings["red"],

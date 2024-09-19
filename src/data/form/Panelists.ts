@@ -2,7 +2,25 @@ import { GENDERS } from "./Information";
 import { SHIRTS } from "./Information";
 import data from "@/data/Config";
 
-export const PANELISTS = {
+interface Attributes {
+  name: string;
+  email: string;
+  phone: string;
+  gender: string;
+  shirt: string;
+  panel: string;
+  title: string;
+  photo: string;
+  requirements: string[];
+}
+
+interface Panelists {
+  professor: string;
+  intern: string;
+  researcher: string;
+}
+
+export const PANELISTS: Panelists = {
   professor: "Professor",
   intern: "Intern",
   researcher: "Researcher",
@@ -57,10 +75,10 @@ export const FIELDS = {
     width: 12,
     required: true,
   },
-  panelist: {
+  panel: {
     input: "radio",
     text: "Panelist Role",
-    options: PANELISTS,
+    options: Object.values(PANELISTS),
     field: "panelist",
     width: 12,
     required: true,
@@ -131,13 +149,13 @@ export const FIELDS = {
   },
 };
 
-export const ATTRIBUTES = {
+export const ATTRIBUTES: Attributes = {
   name: "",
   email: "",
   phone: "",
   gender: "",
   shirt: "",
-  affiliation: "",
+  panel: "",
   title: "",
   photo: "",
   requirements: [],

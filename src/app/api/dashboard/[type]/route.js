@@ -32,7 +32,7 @@ const types = new Set([
   "participants",
   "interests",
   "sponsors",
-  "panels",
+  "panelists",
   "leads",
 ]);
 

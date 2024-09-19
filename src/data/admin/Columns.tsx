@@ -67,3 +67,16 @@ export const generateTiers = <TData extends stringRecord>(
     />
   ),
 });
+export const generatePanelists = <TData extends stringRecord>(
+  panel: stringRecord,
+) => ({
+  accessorKey: "panel",
+  header: "Panel",
+  meta: { width: "w-[15%]" },
+  cell: ({ getValue }: CellContext<TData, string>) => (
+    <Tag
+      text={panel[getValue().toLowerCase()]}
+      color={COLORS[getValue().toLowerCase() as keyof typeof COLORS]}
+    />
+  ),
+});
