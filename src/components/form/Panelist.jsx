@@ -16,7 +16,7 @@ const Panel = () => {
     email: session.user.email,
     roles: session.user.roles,
     photo: session.user.photo ?? null,
-    form: "panelists",
+    form: "panels",
   });
 
   const onSubmit = async (setLoading, setState) => {

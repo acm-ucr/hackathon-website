@@ -13,7 +13,7 @@ type StatsKeys =
   | "mentors"
   | "committees"
   | "sponsors"
-  | "panelists"
+  | "panels"
   | "admins";
 type Stats = Record<StatsKeys, Status>;
 
@@ -33,7 +33,7 @@ export const getStats = async () => {
     mentors,
     committees,
     sponsors,
-    panelists,
+    panels,
     admins,
   } = statistics.data() as Stats;
 
@@ -53,7 +53,7 @@ export const getStats = async () => {
     mentors,
     committees,
     sponsors,
-    panelists,
+    panels,
   };
 
   return { users, events: attendees };
