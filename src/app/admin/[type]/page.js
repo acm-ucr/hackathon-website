@@ -1,4 +1,3 @@
-"use client";
 import ProtectedPage from "@/components/ProtectedPage";
 import Admins from "@/components/admin/dashboards/Admins";
 import Events from "@/components/admin/services/calendar";
