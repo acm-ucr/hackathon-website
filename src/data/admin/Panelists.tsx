@@ -23,6 +23,7 @@ export const TAGS: Tags[] = [
 type Panelists = {
   name: string;
   email: string;
+  company: string;
   phone: string;
   gender: string;
   shirt: string;

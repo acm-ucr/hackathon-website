@@ -88,11 +88,12 @@ export const ATTRIBUTES: attributes = {
   panelists: [
     "name",
     "email",
-    "title",
-    "gender",
-    "title",
     "panelist",
+    "phone",
+    "company",
+    "gender",
     "shirt",
+    "title",
     "photo",
   ],
   feedback: [
