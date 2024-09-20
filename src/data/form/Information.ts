@@ -130,7 +130,7 @@ export const AFFILIATIONS = {
 };
 
 export const PANELISTS = {
-  professor: "Professor",
-  intern: "Intern",
-  researcher: "Researcher",
+  professor: "professor",
+  intern: "intern",
+  researcher: "researcher",
 };
