@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { HACKPACKS } from "@/data/user/Hackpacks";
 import Toolbar from "../find/Toolbar";
 import Title from "@/components/admin/Title";
@@ -12,7 +12,7 @@ const Resources = () => {
       <div className="pb-3 pt-4">
         <Title title="Hackpacks" />
       </div>
-      <Toolbar data={HACKPACKS} setSearch={setSearch}  />
+      <Toolbar data={HACKPACKS} setSearch={setSearch} />
       <div className="mt-8 grid grid-cols-4 gap-4">
         {search.map(({ text, techs, link, description }, index) => (
           <Hackpack
