@@ -1,17 +1,21 @@
+"use client"
 import { HACKPACKS } from "@/data/user/Hackpacks";
 import Toolbar from "../find/Toolbar";
 import Title from "@/components/admin/Title";
 import Hackpack from "./Hackpack";
+import { useState } from "react";
 
 const Resources = () => {
+  const [search, setSearch] = useState(HACKPACKS);
+  console.log("set",setSearch)
   return (
     <>
       <div className="pb-3 pt-4">
         <Title title="Hackpacks" />
       </div>
-      <Toolbar />
+      <Toolbar data={HACKPACKS} setSearch={setSearch}  />
       <div className="mt-8 grid grid-cols-4 gap-4">
-        {HACKPACKS.map(({ text, techs, link, description }, index) => (
+        {search.map(({ text, techs, link, description }, index) => (
           <Hackpack
             key={index}
             text={text}
