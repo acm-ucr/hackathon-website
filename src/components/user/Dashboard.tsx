@@ -1,7 +1,7 @@
 import Countdown from "./Countdown";
 import Header from "./Header";
 import Tile from "./Tile";
-import { Session } from "next-auth";
+import { getServerSession } from "next-auth";
 import { QrCode, ParkingCircle } from "lucide-react";
 import Rooms from "./Rooms";
 import Packing from "./Packing";
@@ -10,14 +10,13 @@ import BulletPoints from "./BulletPoints";
 import { JUDGING } from "@/data/user/Judging";
 import { RULES } from "@/data/user/Rules";
 import Resources from "./Resources";
+import { options } from "@/utils/auth";
 
-const Dashboard = (props: { session: Session | null }) => {
+const Dashboard = async () => {
+  const session = await getServerSession(options);
   return (
     <div className="flex h-full flex-col gap-3 py-4 font-poppins">
-      <Header
-        email={props.session?.user.email}
-        name={props.session?.user.name}
-      />
+      <Header email={session?.user?.email} name={session?.user?.name} />
       <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
         <div className="col-span-1 md:col-span-2">
           <Countdown />
