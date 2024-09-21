@@ -7,7 +7,6 @@ import { useState } from "react";
 
 const Resources = () => {
   const [search, setSearch] = useState(HACKPACKS);
-  console.log("set",setSearch)
   return (
     <>
       <div className="pb-3 pt-4">
