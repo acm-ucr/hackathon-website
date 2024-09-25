@@ -35,7 +35,7 @@ const VirtualizedContent = ({ items, setSelected, userFn, searchable }) => {
       className="dropdown-content h-fit max-h-[400px] w-[var(--radix-dropdown-menu-trigger-width)] overflow-y-scroll"
       data-cy="select-menu"
     >
-      <div className="sticky top-0 z-50 bg-white pt-[4px]">
+      <div className="sticky top-0 z-50 bg-white pt-1">
         {searchable && (
           <Input
             placeholder="search"
