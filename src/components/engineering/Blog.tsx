@@ -2,7 +2,14 @@ import matter from "gray-matter";
 import fs from "fs";
 import Link from "next/link";
 
-const getBlogPost = async () => {
+interface Data {
+    date: string;
+    title: string;
+    author: string;
+    link: string;
+}
+
+const getBlogPost = async (): Promise<Data[]> => {
   const directory = process.cwd() + "/src/engineering/";
   const files = fs.readdirSync(directory);
 
@@ -11,13 +18,13 @@ const getBlogPost = async () => {
     const contents = fs.readFileSync(path);
     const markdown = matter(contents);
 
-    return markdown.data;
+    return markdown.data as Data;
   });
 };
 const Blog = async () => {
   const data = await getBlogPost();
 
-  const blogs = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+  const blogs = data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <>
