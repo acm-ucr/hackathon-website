@@ -32,7 +32,7 @@ const VirtualizedContent = ({ items, setSelected, userFn, searchable }) => {
   return (
     <DropdownMenuContent
       ref={ref}
-      className="dropdown-content h-fit max-h-[400px] w-[var(--radix-dropdown-menu-trigger-width)] overflow-y-scroll"
+      className="dropdown-content h-fit max-h-[400px] w-[var(--radix-dropdown-menu-trigger-width)] overflow-y-scroll pt-0"
       data-cy="select-menu"
     >
       <div className="sticky top-0 z-50 bg-white pt-1">
