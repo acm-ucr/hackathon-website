@@ -173,12 +173,12 @@ const Questions = ({
               className="border-1 w-full resize-none border border-black pl-3 placeholder:text-hackathon-gray-200 focus:outline-none"
               maxLength={500}
               value={object[field.name]}
+              onChange={onChange}
               placeholder={field.placeholder}
               name={field.name}
               rows={field.rows}
               title={field.title}
               required={field.required}
-              onChange={field.name}
             />
           )}
           {field.input === "upload" && (
