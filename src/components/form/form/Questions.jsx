@@ -133,7 +133,7 @@ const Questions = ({
               </div>
             </>
           )}
-          {field.input === "terms" && (
+          {field === "terms" && (
             <Terms
               options={field.options}
               toggle={object[field.field].length === field.options.length}
@@ -173,14 +173,12 @@ const Questions = ({
               className="border-1 w-full resize-none border border-black pl-3 placeholder:text-hackathon-gray-200 focus:outline-none"
               maxLength={500}
               value={object[field.name]}
-              onChange={(e) =>
-                setObject({ ...object, [field.name]: e.target.value })
-              }
               placeholder={field.placeholder}
               name={field.name}
               rows={field.rows}
               title={field.title}
               required={field.required}
+              onChange={field.name}
             />
           )}
           {field.input === "upload" && (

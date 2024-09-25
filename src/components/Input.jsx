@@ -5,7 +5,7 @@ const Input = ({
   placeholder,
   value,
   editable = true,
-  onChange,
+  onChangeFn = (e) => setUser({ ...object, [name]: e.target.value }),
   maxLength,
   required,
 }) => {
@@ -23,7 +23,7 @@ const Input = ({
         placeholder={placeholder}
         value={value}
         maxLength={maxLength}
-        onChange={onChange}
+        onChange={onChangeFn}
         data-cy={`${name}-input`}
       />
     </div>
