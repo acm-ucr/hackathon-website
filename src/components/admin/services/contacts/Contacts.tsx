@@ -3,14 +3,9 @@ import { useState } from "react";
 import Title from "../../Title";
 import Contact from "./Contact";
 
-const contacts = [
-  "participants",
-  "judges",
-  "volunteers",
-  "mentors",
-  "admins",
-  "committees",
-];
+const contacts: Array<
+  "participants" | "judges" | "volunteers" | "mentors" | "admins" | "committees"
+> = ["participants", "judges", "volunteers", "mentors", "admins", "committees"];
 
 const Contacts = () => {
   const [disabled, setDisabled] = useState(false);
