@@ -1,10 +1,5 @@
-type ReleaseType = {
-  START: Date;
-  END: Date;
-};
-
 type props = {
-  release: ReleaseType | Date;
+  release: Date;
   children: React.ReactNode;
 };
 
