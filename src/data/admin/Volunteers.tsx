@@ -34,7 +34,9 @@ export const TAGS: Tags[] = [
   },
 ];
 
-export const COLUMNS: ColumnDef<Volunteer, string>[] = [
+export const COLUMNS: (ColumnDef<Volunteer, string> & {
+  searchable?: boolean;
+})[] = [
   generateSelect(),
   {
     accessorKey: "name",
@@ -42,6 +44,7 @@ export const COLUMNS: ColumnDef<Volunteer, string>[] = [
     meta: { width: "w-[28%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
+    searchable: true,
     cell: (props: CellContext<Volunteer, Volunteer["name"]>) => (
       <div>{props.getValue()}</div>
     ),
@@ -52,6 +55,7 @@ export const COLUMNS: ColumnDef<Volunteer, string>[] = [
     meta: { width: "w-[30%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
+    searchable: true,
     cell: (props: CellContext<Volunteer, Volunteer["email"]>) => (
       <div>{props.getValue()}</div>
     ),
@@ -62,6 +66,7 @@ export const COLUMNS: ColumnDef<Volunteer, string>[] = [
     meta: { width: "w-[25%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
+    searchable: true,
     cell: (props: CellContext<Volunteer, Volunteer["discord"]>) => (
       <div>{props.getValue()}</div>
     ),
