@@ -38,7 +38,9 @@ export const TAGS: Tags[] = [
   },
 ];
 
-export const COLUMNS: ColumnDef<Participant, string>[] = [
+export const COLUMNS: (ColumnDef<Participant, string> & {
+  searchable?: boolean;
+})[] = [
   generateSelect(),
   {
     accessorKey: "name",
@@ -46,6 +48,7 @@ export const COLUMNS: ColumnDef<Participant, string>[] = [
     meta: { width: "w-[16%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
+    searchable: true,
     cell: (props: CellContext<Participant, Participant["name"]>) => (
       <div>{props.getValue()}</div>
     ),
@@ -56,6 +59,7 @@ export const COLUMNS: ColumnDef<Participant, string>[] = [
     meta: { width: "w-[25%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
+    searchable: true,
     cell: (props: CellContext<Participant, Participant["email"]>) => (
       <div>{props.getValue()}</div>
     ),
@@ -66,6 +70,7 @@ export const COLUMNS: ColumnDef<Participant, string>[] = [
     meta: { width: "w-[13%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
+    searchable: true,
     cell: (props: CellContext<Participant, Participant["discord"]>) => (
       <div>{props.getValue()}</div>
     ),
@@ -76,6 +81,7 @@ export const COLUMNS: ColumnDef<Participant, string>[] = [
     meta: { width: "w-[20%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
+    searchable: true,
     cell: (props: CellContext<Participant, Participant["team"]>) => (
       <div>{props.getValue() ?? "N/A"}</div>
     ),
@@ -86,6 +92,7 @@ export const COLUMNS: ColumnDef<Participant, string>[] = [
     meta: { width: "w-[7%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
+    searchable: true,
     cell: (props: CellContext<Participant, Participant["shirt"]>) => (
       <div>{props.getValue() ?? "N/A"}</div>
     ),
@@ -96,6 +103,7 @@ export const COLUMNS: ColumnDef<Participant, string>[] = [
     header: "Resume",
     meta: { width: "w-[3%]" },
     enableSorting: false,
+    searchable: true,
     cell: (props: CellContext<Participant, Participant["resume"]>) =>
       props.getValue() ? (
         <View title="Resume" src={props.getValue()} />
