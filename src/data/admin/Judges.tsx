@@ -31,7 +31,9 @@ export const TAGS: Tags[] = [
   },
 ];
 
-export const COLUMNS: ColumnDef<Judge, string>[] = [
+export const COLUMNS: (ColumnDef<Judge, string> & {
+  searchable?: boolean;
+})[] = [
   generateSelect(),
   {
     accessorKey: "name",
@@ -39,6 +41,7 @@ export const COLUMNS: ColumnDef<Judge, string>[] = [
     meta: { width: "w-[23%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
+    searchable: true,
     cell: (props: CellContext<Judge, Judge["name"]>) => (
       <div>{props.getValue()}</div>
     ),
@@ -49,6 +52,7 @@ export const COLUMNS: ColumnDef<Judge, string>[] = [
     meta: { width: "w-[30%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
+    searchable: true,
     cell: (props: CellContext<Judge, Judge["email"]>) => (
       <div>{props.getValue()}</div>
     ),
@@ -59,6 +63,7 @@ export const COLUMNS: ColumnDef<Judge, string>[] = [
     meta: { width: "w-[18%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
+    searchable: true,
     cell: (props: CellContext<Judge, Judge["title"]>) => (
       <div>{props.getValue()}</div>
     ),
