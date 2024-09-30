@@ -2,8 +2,8 @@ import RELEASES from "@/data/Releases";
 import Fault from "@/utils/error";
 import Navigation from "@/components/Navigation";
 import { headers } from "next/headers";
-import { redirect } from "next/navigation";
 import { getSession } from "@/utils/auth";
+import SignIn from "./SignIn";
 
 const ProtectedPage = async ({ children, restrictions, title }) => {
   const session = await getSession();
@@ -11,7 +11,7 @@ const ProtectedPage = async ({ children, restrictions, title }) => {
   const pathName = header.get("x-url") || "";
 
   if (!session) {
-    redirect(`/api/auth/signin/google?callbackUrl=${pathName}`);
+    return <SignIn callback={pathName} />;
   }
 
   if (RELEASES[pathName] > new Date()) {
