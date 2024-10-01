@@ -51,7 +51,7 @@ const Contact = ({ role, disabled, setDisabled }) => {
   };
 
   return (
-    <Card key={role} className="flex min-w-[300px] flex-col">
+    <Card key={role} className="flex w-full flex-col">
       <CardHeader>
         <CardTitle className="flex items-center">
           {roleIcons[role]} {role}
