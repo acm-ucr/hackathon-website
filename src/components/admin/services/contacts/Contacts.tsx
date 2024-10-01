@@ -10,6 +10,12 @@ const contacts = [
   "mentors",
   "admins",
   "committees",
+  "sponsors",
+  "interests",
+  "feedback",
+  "leads",
+  "panelists",
+  "teams",
 ];
 
 const Contacts = () => {

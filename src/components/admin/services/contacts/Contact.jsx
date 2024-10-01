@@ -1,5 +1,18 @@
 "use client";
-import { User, Gavel, Handshake, Lock, Heart, HandHeart } from "lucide-react";
+import {
+  User,
+  Gavel,
+  Handshake,
+  Lock,
+  Heart,
+  HandHeart,
+  Gem,
+  MessageCircleHeart,
+  MessageSquareText,
+  Crown,
+  CircleHelp,
+  HeartHandshake,
+} from "lucide-react";
 import Button from "../../Button";
 import Select from "@/components/Select";
 import { useState } from "react";
@@ -22,6 +35,12 @@ const roleIcons = {
   mentors: <HandHeart className="mx-2" />,
   admins: <Lock className="mx-2" />,
   committees: <Handshake className="mx-2" />,
+  sponsors: <Gem className="mx-2" />,
+  interests: <MessageCircleHeart className="mx-2" />,
+  feedback: <MessageSquareText className="mx-2" />,
+  leads: <Crown className="mx-2" />,
+  panelists: <CircleHelp className="mx-2" />,
+  teams: <HeartHandshake className="mx-2" />,
 };
 
 const Contact = ({ role, disabled, setDisabled }) => {
