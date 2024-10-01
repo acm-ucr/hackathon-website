@@ -1,22 +1,8 @@
-type live = {
-  LIVE: {
-    START: Date;
-    END: Date;
-  };
-};
-
 type page = {
   [key: string]: Date;
 };
 
-type releases = live | page;
-
-const RELEASES: releases = {
-  LIVE: {
-    START: new Date("10/01/2023"),
-    END: new Date("10/10/2024"),
-  },
-
+const RELEASES: page = {
   "/admin/participants": new Date("10/01/2023"),
   "/admin/timer": new Date("10/01/2023"),
   "/admin/teams": new Date("10/01/2023"),
