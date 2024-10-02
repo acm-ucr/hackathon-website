@@ -27,7 +27,9 @@ export const TAGS: Tags[] = [
   },
 ];
 
-export const COLUMNS: ColumnDef<Team, any>[] = [
+export const COLUMNS: (ColumnDef<Team, any> & {
+  searchable?: boolean;
+})[] = [
   generateSelect(),
   {
     accessorKey: "name",
@@ -35,6 +37,7 @@ export const COLUMNS: ColumnDef<Team, any>[] = [
     meta: { width: "w-[18%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
+    searchable: true,
     cell: (props: CellContext<Team, Team["name"]>) => (
       <div>{props.getValue()}</div>
     ),
@@ -45,6 +48,7 @@ export const COLUMNS: ColumnDef<Team, any>[] = [
     meta: { width: "w-[20%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
+    searchable: true,
     cell: (props: CellContext<Team, Team["teamid"]>) => (
       <div>{props.getValue()}</div>
     ),
@@ -56,6 +60,7 @@ export const COLUMNS: ColumnDef<Team, any>[] = [
     enableSorting: false,
     filterFn: "includesString",
     enableColumnFilter: true,
+    searchable: true,
     cell: (props: CellContext<Team, Team["members"]>) => (
       <div>
         {props.getValue().map((data, index) => (
@@ -71,6 +76,7 @@ export const COLUMNS: ColumnDef<Team, any>[] = [
     enableSorting: false,
     enableColumnFilter: true,
     filterFn: "includesString",
+    searchable: true,
     cell: (props: CellContext<Team, Team["discords"]>) => (
       <div>
         {props.getValue().map((data, index) => (

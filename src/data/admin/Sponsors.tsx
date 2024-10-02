@@ -30,7 +30,9 @@ export const TAGS: Tags[] = [
   },
 ];
 
-export const COLUMNS: ColumnDef<Sponsor, string>[] = [
+export const COLUMNS: (ColumnDef<Sponsor, string> & {
+  searchable?: boolean;
+})[] = [
   generateSelect(),
   {
     accessorKey: "name",
@@ -38,6 +40,7 @@ export const COLUMNS: ColumnDef<Sponsor, string>[] = [
     meta: { width: "w-[20%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
+    searchable: true,
     cell: (props: CellContext<Sponsor, Sponsor["name"]>) => (
       <div>{props.getValue()}</div>
     ),
@@ -48,6 +51,7 @@ export const COLUMNS: ColumnDef<Sponsor, string>[] = [
     meta: { width: "w-[28%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
+    searchable: true,
     cell: (props: CellContext<Sponsor, Sponsor["email"]>) => (
       <div>{props.getValue()}</div>
     ),
@@ -58,6 +62,7 @@ export const COLUMNS: ColumnDef<Sponsor, string>[] = [
     meta: { width: "w-[25%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
+    searchable: true,
     cell: (props: CellContext<Sponsor, Sponsor["company"]>) => (
       <div>{props.getValue()}</div>
     ),
@@ -68,6 +73,7 @@ export const COLUMNS: ColumnDef<Sponsor, string>[] = [
     meta: { width: "w-[15%]" },
     enableColumnFilter: true,
     filterFn: "includesString",
+    searchable: true,
     cell: (props: CellContext<Sponsor, Sponsor["position"]>) => (
       <div>{props.getValue()}</div>
     ),
