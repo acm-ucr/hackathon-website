@@ -1,19 +1,19 @@
+"use client";
 import Countdown from "./Countdown";
 import Header from "./Header";
 import Tile from "./Tile";
-import { getServerSession } from "next-auth";
 import { QrCode, ParkingCircle } from "lucide-react";
 import Rooms from "./Rooms";
 import Packing from "./Packing";
 import BulletList from "./BulletList";
-import BulletPoints from "./BulletPoints";
 import { JUDGING } from "@/data/user/Judging";
 import { RULES } from "@/data/user/Rules";
 import Resources from "./Resources";
-import { options } from "@/utils/auth";
+import { useSession } from "next-auth/react";
 
-const Dashboard = async () => {
-  const session = await getServerSession(options);
+const Dashboard = () => {
+  const { data: session } = useSession();
+
   return (
     <div className="flex h-full flex-col gap-3 py-4 font-poppins">
       <Header email={session?.user?.email} name={session?.user?.name} />
@@ -37,12 +37,8 @@ const Dashboard = async () => {
         </div>
 
         <div className="flex flex-col gap-4">
-          <BulletList text="Rules">
-            <BulletPoints list={RULES} />
-          </BulletList>
-          <BulletList text="Judging">
-            <BulletPoints list={JUDGING} />
-          </BulletList>
+          <BulletList text="Rules" list={RULES} />
+          <BulletList text="Judging" list={JUDGING} />
           <Resources />
         </div>
       </div>
