@@ -1,4 +1,3 @@
-"use client";
 import Countdown from "./Countdown";
 import Header from "./Header";
 import Tile from "./Tile";
@@ -9,14 +8,11 @@ import BulletList from "./BulletList";
 import { JUDGING } from "@/data/user/Judging";
 import { RULES } from "@/data/user/Rules";
 import Resources from "./Resources";
-import { useSession } from "next-auth/react";
 
 const Dashboard = () => {
-  const { data: session } = useSession();
-
   return (
     <div className="flex h-full flex-col gap-3 py-4 font-poppins">
-      <Header email={session?.user?.email} name={session?.user?.name} />
+      <Header />
       <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
         <div className="col-span-1 md:col-span-2">
           <Countdown />
