@@ -18,12 +18,12 @@ type Tiers = {
 };
 
 export const TIERS: Tiers = {
-  bronze: "bronze",
-  silver: "silver",
-  gold: "gold",
-  tier4: "tier4",
-  tier5: "tier5",
-  other: "other",
+  bronze: "Bronze",
+  silver: "Silver",
+  gold: "Gold",
+  tier4: "Tier4",
+  tier5: "Tier5",
+  other: "Other",
 };
 
 interface Attributes {
