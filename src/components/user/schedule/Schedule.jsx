@@ -10,7 +10,6 @@ const date = new Date(data.date);
 const Schedule = ({ eventList }) => {
   const [events, setEvents] = useState(eventList);
   const [filteredEvents, setFilteredEvents] = useState(eventList);
-  //const [date, setDate] = useState(date);
 
   const filterChange = (filterType) => {
     if (filterType === "hackweek") {
@@ -32,7 +31,7 @@ const Schedule = ({ eventList }) => {
         <Toolbar onFilterChange={filterChange} />
         <div className="flex">
           {days.map((day, index) => {
-            let currentDate = new Date(date);
+            const currentDate = new Date(date);
 
             if (index != 0) {
               currentDate.setDate(currentDate.getDate() + index);
