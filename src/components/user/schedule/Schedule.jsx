@@ -32,10 +32,7 @@ const Schedule = ({ eventList }) => {
         <div className="flex">
           {days.map((day, index) => {
             const currentDate = new Date(date);
-
-            if (index != 0) {
-              currentDate.setDate(currentDate.getDate() + index);
-            }
+            currentDate.setDate(currentDate.getDate() + index);
             return (
               <div
                 className="font-montserrat m-5 ml-0 flex flex-grow items-center justify-start border-b-[1px] border-black text-sm font-light text-black md:text-lg"
