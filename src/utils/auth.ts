@@ -41,6 +41,7 @@ export const options: NextAuthOptions = {
 };
 
 type Restrictions = {
+  // eslint-disable-next-line @typescript-eslint/no-wrapper-object-types
   [key: string]: Number[];
 };
 

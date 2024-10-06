@@ -3,7 +3,6 @@ const Radio = ({
   field,
   options,
   user,
-  setUser,
   editable = true,
   required,
   onClick,

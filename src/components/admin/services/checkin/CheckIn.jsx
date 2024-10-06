@@ -73,7 +73,7 @@ const CheckIn = () => {
             mutation.mutate({ uid: userId, event: event.id, name: event.name });
           }
         })
-        .catch((error) => {
+        .catch((_) => {
           toaster("Error Fetching User Data!", "error");
         });
     } else {

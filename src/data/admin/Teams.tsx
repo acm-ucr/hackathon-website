@@ -27,7 +27,7 @@ export const TAGS: Tags[] = [
   },
 ];
 
-export const COLUMNS: (ColumnDef<Team, any> & {
+export const COLUMNS: (ColumnDef<Team, string | string[]> & {
   searchable?: boolean;
 })[] = [
   generateSelect(),

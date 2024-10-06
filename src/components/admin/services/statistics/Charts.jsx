@@ -16,7 +16,7 @@ const Charts = ({ counts }) => {
                 .map(([key, data], index) => {
                   if (key !== "status") {
                     return Object.entries(data)
-                      .filter(([statusType, sizeData]) =>
+                      .filter(([_, sizeData]) =>
                         Object.values(sizeData).some((count) => count > 0),
                       )
                       .map(([type, sizeData], idx) => {
