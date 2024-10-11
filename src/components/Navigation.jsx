@@ -82,7 +82,7 @@ const Navigation = () => {
                       <Link
                         key={index}
                         href={tab.link}
-                        className="w-full p-0 no-underline"
+                        className="no-underline w-full p-0"
                       >
                         <div
                           onClick={() => setExpand(false)}
@@ -107,7 +107,7 @@ const Navigation = () => {
                 key={index}
                 href={tab.link}
                 target="_blank"
-                className="bg-red- w-full no-underline"
+                className="bg-red- no-underline w-full"
               >
                 <div
                   className={`flex w-full items-center justify-center py-1 [&>*]:text-white ${

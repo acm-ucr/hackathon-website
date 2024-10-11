@@ -55,7 +55,7 @@ const Table = ({ data }) => {
                               key={index}
                               href={link.link}
                               target="_blank"
-                              className="m-0 p-0 text-xl text-black no-underline hover:!text-hackathon-blue-100"
+                              className="no-underline m-0 p-0 text-xl text-black hover:!text-hackathon-blue-100"
                             >
                               {ICONS[link.name]}
                             </Link>
