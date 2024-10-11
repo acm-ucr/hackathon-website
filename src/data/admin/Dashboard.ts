@@ -7,7 +7,7 @@ interface attributes {
   interests: string[];
   participants: string[];
   sponsors: string[];
-  panels: string[];
+  panelists: string[];
   feedback: string[];
   leads: string[];
 }
@@ -85,14 +85,15 @@ export const ATTRIBUTES: attributes = {
     "tier",
     "comments",
   ],
-  panels: [
+  panelists: [
     "name",
     "email",
-    "title",
-    "gender",
-    "title",
     "panelist",
+    "phone",
+    "company",
+    "gender",
     "shirt",
+    "title",
     "photo",
   ],
   feedback: [

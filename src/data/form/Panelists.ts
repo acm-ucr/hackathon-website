@@ -1,14 +1,54 @@
 import { GENDERS } from "./Information";
 import { SHIRTS } from "./Information";
 import data from "@/data/Config";
+import {
+  Description,
+  RadioInput,
+  TermsAndConditions,
+  TextInput,
+  UploadInput,
+} from "@/types/forms";
 
-export const PANELISTS = {
+interface Attributes {
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  gender: string;
+  shirt: string;
+  panel: string;
+  title: string;
+  photo: string;
+  requirements: string[];
+}
+
+interface Panelists {
+  professor: string;
+  intern: string;
+  researcher: string;
+}
+
+export const PANELISTS: Panelists = {
   professor: "Professor",
   intern: "Intern",
   researcher: "Researcher",
 };
 
-export const FIELDS = {
+interface Fields {
+  description: Description;
+  name: TextInput;
+  email: TextInput;
+  phone: TextInput;
+  panel: RadioInput;
+  company: TextInput;
+  title: TextInput;
+  gender: RadioInput;
+  shirt: RadioInput;
+  photo: UploadInput;
+  requirements: TermsAndConditions;
+}
+
+export const FIELDS: Fields = {
   description: {
     input: "description",
     width: 12,
@@ -36,6 +76,7 @@ export const FIELDS = {
     width: 12,
     editable: false,
     required: true,
+    placeholder: "John Doe ",
   },
   email: {
     input: "input",
@@ -46,6 +87,7 @@ export const FIELDS = {
     width: 12,
     editable: false,
     required: true,
+    placeholder: "john.doe@gmail.com",
   },
   phone: {
     input: "input",
@@ -56,14 +98,16 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     required: true,
+    editable: true,
   },
-  panelist: {
+  panel: {
     input: "radio",
     text: "Panelist Role",
-    options: PANELISTS,
+    options: Object.values(PANELISTS),
     field: "panelist",
     width: 12,
     required: true,
+    editable: true,
   },
   company: {
     input: "input",
@@ -74,6 +118,7 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     required: true,
+    editable: true,
   },
 
   title: {
@@ -85,6 +130,7 @@ export const FIELDS = {
     maxLength: 50,
     width: 12,
     required: true,
+    editable: true,
   },
   gender: {
     input: "radio",
@@ -93,6 +139,7 @@ export const FIELDS = {
     field: "gender",
     width: 12,
     required: true,
+    editable: true,
   },
   shirt: {
     input: "radio",
@@ -101,6 +148,7 @@ export const FIELDS = {
     field: "shirt",
     width: 12,
     required: true,
+    editable: true,
   },
 
   photo: {
@@ -111,13 +159,14 @@ export const FIELDS = {
     types: ["png", "jpg", "jpeg"],
     maxSize: [1, "MB"],
     required: true,
+    editable: true,
   },
   requirements: {
     text: "Terms and Conditions",
     input: "terms",
     width: 12,
     field: "requirements",
-    required: true,
+    editable: true,
     options: [
       "I have read the MLH code of conduct and agree to the terms and conditions listed",
       "I authorize you to share my application/registration information with Major League Hacking for event administration, ranking, and MLH administration in-line with the MLH Privacy Policy",
@@ -128,16 +177,18 @@ export const FIELDS = {
       "I understand that failure to comply with guidelines or creating an unsafe space will result in my removal from the event",
       "I understand this is an in person event taking place in UCR and I must attend in person in order to judge",
     ],
+    required: true,
   },
 };
 
-export const ATTRIBUTES = {
+export const ATTRIBUTES: Attributes = {
   name: "",
   email: "",
   phone: "",
+  company: "",
   gender: "",
   shirt: "",
-  affiliation: "",
+  panel: "",
   title: "",
   photo: "",
   requirements: [],

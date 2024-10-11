@@ -14,7 +14,7 @@ type positions =
   | "participants"
   | "interests"
   | "sponsors"
-  | "panels"
+  | "panelists"
   | "leads";
 interface params {
   email: string;

@@ -7,7 +7,7 @@ export const schema = z.object({
   phone: z.string().regex(/^\d{3} \d{3} \d{4}$/, {
     message: "Invalid phone number. Expected format: 123 456 7890",
   }),
-  panelist: z.enum(["Professor", "Intern", "Researcher"], {
+  panelists: z.enum(["Professor", "Intern", "Researcher"], {
     required_error: "Please select your panelist role",
   }),
   company: z.string().min(1, { message: "Company name is invalid" }),
