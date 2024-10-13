@@ -35,8 +35,7 @@ export const submit = async <T extends z.ZodObject<z.ZodRawShape>>({
     });
     toaster(`Submitted successfully!`, "success");
     setState(2);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  } catch (error) {
+  } catch {
     toaster(`Internal Server Error`, "error");
     setState(0);
   } finally {
