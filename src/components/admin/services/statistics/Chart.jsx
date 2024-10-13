@@ -33,7 +33,7 @@ const Chart = ({ title, status = null, data }) => {
     fill: ITEMS[type].fill,
   }));
 
-  const chartConfig = Object.entries(data).map(([type, value]) => {
+  const chartConfig = Object.entries(data).map(([type, _]) => {
     const label = ITEMS[type].label;
 
     return {

@@ -13,6 +13,7 @@ interface attributes {
 }
 
 interface auth {
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   POST: {};
   GET: {
     admins: number[];

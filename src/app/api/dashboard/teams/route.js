@@ -83,7 +83,7 @@ export const GET = async (req) => {
       const formattedDiscords = members.map((member) => member.discord);
       const formattedUids = members.map((member) => member.uid);
       const formattedLinks = Object.entries(links)
-        .filter(([key, value]) => value !== "")
+        .filter(([_, value]) => value !== "")
         .map(([key, value]) => {
           return { name: key, link: value };
         });
