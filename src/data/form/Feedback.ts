@@ -1,9 +1,34 @@
 import data from "../Config";
 import { SOURCES } from "./Information";
+import {
+  RadioInput,
+  TextareaInput,
+  SelectInput,
+  Description,
+} from "@/src/types/forms";
 
 const RATE = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
-export const FIELDS = {
+type Fields = {
+  description: Description;
+  eventSource: SelectInput;
+  helpful: TextareaInput;
+  improvements: TextareaInput;
+  notBenficial: TextareaInput;
+  rating: RadioInput;
+  additionalComments: TextareaInput;
+};
+
+type Attributes = {
+  helpful: string;
+  improvements: string;
+  notBeneficial: string;
+  rating: string;
+  eventSource: string;
+  additionalComments: string;
+};
+
+export const FIELDS: Fields = {
   description: {
     input: "description",
     width: 12,
@@ -19,6 +44,8 @@ export const FIELDS = {
     placeholder: "ie. Social Media",
     width: 12,
     required: true,
+    editable: true,
+    searchable: true,
   },
   helpful: {
     input: "textarea",
@@ -28,6 +55,7 @@ export const FIELDS = {
     placeholder: "ie. The officers",
     width: 12,
     required: true,
+    editable: true,
   },
   improvements: {
     input: "textarea",
@@ -37,6 +65,7 @@ export const FIELDS = {
     placeholder: "ie. More food",
     width: 12,
     required: true,
+    editable: true,
   },
   notBenficial: {
     input: "textarea",
@@ -46,6 +75,7 @@ export const FIELDS = {
     placeholder: "N/A",
     width: 12,
     required: true,
+    editable: true,
   },
   rating: {
     input: "radio",
@@ -54,6 +84,7 @@ export const FIELDS = {
     field: "rating",
     width: 12,
     required: true,
+    editable: true,
   },
   additionalComments: {
     input: "textarea",
@@ -63,10 +94,11 @@ export const FIELDS = {
     placeholder: "N/A",
     width: 12,
     required: true,
+    editable: true,
   },
 };
 
-export const ATTRIBUTES = {
+export const ATTRIBUTES: Attributes = {
   helpful: "",
   improvements: "",
   notBeneficial: "",
